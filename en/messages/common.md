@@ -37,8 +37,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 227 | 2
-[Enums](#enumerated-types) | 141 | 7
+[Messages](#messages) | 226 | 3
+[Enums](#enumerated-types) | 139 | 9
 [Commands](#mav_commands) | 165 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -2005,7 +2005,7 @@ battery_remaining | `int8_t` | % | invalid:-1 | Remaining battery energy. Values
 <span class='ext'>fault_bitmask</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | | [MAV_BATTERY_FAULT](#MAV_BATTERY_FAULT) | Fault/health indications. These should be set when charge_state is [MAV_BATTERY_CHARGE_STATE_FAILED](#MAV_BATTERY_CHARGE_STATE_FAILED) or [MAV_BATTERY_CHARGE_STATE_UNHEALTHY](#MAV_BATTERY_CHARGE_STATE_UNHEALTHY) (if not, fault reporting is not supported). 
 
 
-### AUTOPILOT_VERSION (148) {#AUTOPILOT_VERSION}
+### AUTOPILOT_VERSION (148) — \[from: [standard](../messages/standard.md#AUTOPILOT_VERSION)\] {#AUTOPILOT_VERSION}
 
 Version and capability of autopilot software. This should be emitted in response to a request with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
@@ -2015,7 +2015,7 @@ capabilities | `uint64_t` | [MAV_PROTOCOL_CAPABILITY](#MAV_PROTOCOL_CAPABILITY) 
 flight_sw_version | `uint32_t` | | Firmware version number.<br>The field must be encoded as 4 bytes, where each byte (shown from MSB to LSB) is part of a semantic version: (major) (minor) (patch) ([FIRMWARE_VERSION_TYPE](#FIRMWARE_VERSION_TYPE)). 
 middleware_sw_version | `uint32_t` | | Middleware version number 
 os_sw_version | `uint32_t` | | Operating system version number 
-board_version | `uint32_t` | | HW / board version (last 8 bits should be silicon ID, if any). The first 16 bits of this field specify https://github.com/PX4/PX4-Bootloader/blob/master/board_types.txt 
+board_version | `uint32_t` | | HW / board version (last 8 bits should be silicon ID, if any). The first 16 bits of this field specify a board type from an enumeration stored at https://github.com/PX4/PX4-Bootloader/blob/master/board_types.txt and with extensive additions at https://github.com/ArduPilot/ardupilot/blob/master/Tools/AP_Bootloader/board_types.txt 
 flight_custom_version | `uint8_t[8]` | | Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases. 
 middleware_custom_version | `uint8_t[8]` | | Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases. 
 os_custom_version | `uint8_t[8]` | | Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases. 
@@ -3954,18 +3954,6 @@ humidity | `uint16_t` | c% | Humidity
 
 ## Enumerated Types
 
-### FIRMWARE_VERSION_TYPE {#FIRMWARE_VERSION_TYPE}
-
-These values define the type of firmware release.  These values indicate the first version or release of this type.  For example the first alpha release would be 64, the second would be 65.
-
-Value | Name | Description
---- | --- | ---
-<a id='FIRMWARE_VERSION_TYPE_DEV'></a>0 | [FIRMWARE_VERSION_TYPE_DEV](#FIRMWARE_VERSION_TYPE_DEV) | development release 
-<a id='FIRMWARE_VERSION_TYPE_ALPHA'></a>64 | [FIRMWARE_VERSION_TYPE_ALPHA](#FIRMWARE_VERSION_TYPE_ALPHA) | alpha release 
-<a id='FIRMWARE_VERSION_TYPE_BETA'></a>128 | [FIRMWARE_VERSION_TYPE_BETA](#FIRMWARE_VERSION_TYPE_BETA) | beta release 
-<a id='FIRMWARE_VERSION_TYPE_RC'></a>192 | [FIRMWARE_VERSION_TYPE_RC](#FIRMWARE_VERSION_TYPE_RC) | release candidate 
-<a id='FIRMWARE_VERSION_TYPE_OFFICIAL'></a>255 | [FIRMWARE_VERSION_TYPE_OFFICIAL](#FIRMWARE_VERSION_TYPE_OFFICIAL) | official stable release 
-
 ### HL_FAILURE_FLAG {#HL_FAILURE_FLAG}
 
 (Bitmask) Flags to report failure cases over the high latency telemetry.
@@ -4773,34 +4761,6 @@ Value | Name | Description
 <a id='MAV_SENSOR_ROTATION_PITCH_315'></a>39 | [MAV_SENSOR_ROTATION_PITCH_315](#MAV_SENSOR_ROTATION_PITCH_315) | Pitch: 315 
 <a id='MAV_SENSOR_ROTATION_ROLL_90_PITCH_315'></a>40 | [MAV_SENSOR_ROTATION_ROLL_90_PITCH_315](#MAV_SENSOR_ROTATION_ROLL_90_PITCH_315) | Roll: 90, Pitch: 315 
 <a id='MAV_SENSOR_ROTATION_CUSTOM'></a>100 | [MAV_SENSOR_ROTATION_CUSTOM](#MAV_SENSOR_ROTATION_CUSTOM) | Custom orientation 
-
-### MAV_PROTOCOL_CAPABILITY {#MAV_PROTOCOL_CAPABILITY}
-
-(Bitmask) Bitmask of (optional) autopilot capabilities (64 bit). If a bit is set, the autopilot supports this capability.
-
-Value | Name | Description
---- | --- | ---
-<a id='MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT'></a>1 | [MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT](#MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT) | Autopilot supports the [MISSION_ITEM](#MISSION_ITEM) float message type.<br>Note that [MISSION_ITEM](#MISSION_ITEM) is deprecated, and autopilots should use [MISSION_INT](#MISSION_INT) instead. 
-<a id='MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT'></a>2 | [MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT](#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT) | Autopilot supports the new param float message type.<br><span class="warning">**DEPRECATED:** Replaced By [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) (2022-03)</span> 
-<a id='MAV_PROTOCOL_CAPABILITY_MISSION_INT'></a>4 | [MAV_PROTOCOL_CAPABILITY_MISSION_INT](#MAV_PROTOCOL_CAPABILITY_MISSION_INT) | Autopilot supports [MISSION_ITEM_INT](#MISSION_ITEM_INT) scaled integer message type.<br>Note that this flag must always be set if missions are supported, because missions must always use [MISSION_ITEM_INT](#MISSION_ITEM_INT) (rather than [MISSION_ITEM](#MISSION_ITEM), which is deprecated). 
-<a id='MAV_PROTOCOL_CAPABILITY_COMMAND_INT'></a>8 | [MAV_PROTOCOL_CAPABILITY_COMMAND_INT](#MAV_PROTOCOL_CAPABILITY_COMMAND_INT) | Autopilot supports [COMMAND_INT](#COMMAND_INT) scaled integer message type. 
-<a id='MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE'></a>16 | [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) | Parameter protocol uses byte-wise encoding of parameter values into param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.<br>Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) should be set if the parameter protocol is supported. 
-<a id='MAV_PROTOCOL_CAPABILITY_FTP'></a>32 | [MAV_PROTOCOL_CAPABILITY_FTP](#MAV_PROTOCOL_CAPABILITY_FTP) | Autopilot supports the File Transfer Protocol v1: https://mavlink.io/en/services/ftp.html. 
-<a id='MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET'></a>64 | [MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET](#MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET) | Autopilot supports commanding attitude offboard. 
-<a id='MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED'></a>128 | [MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED](#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED) | Autopilot supports commanding position and velocity targets in local NED frame. 
-<a id='MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT'></a>256 | [MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT](#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT) | Autopilot supports commanding position and velocity targets in global scaled integers. 
-<a id='MAV_PROTOCOL_CAPABILITY_TERRAIN'></a>512 | [MAV_PROTOCOL_CAPABILITY_TERRAIN](#MAV_PROTOCOL_CAPABILITY_TERRAIN) | Autopilot supports terrain protocol / data handling. 
-<a id='MAV_PROTOCOL_CAPABILITY_RESERVED3'></a>1024 | [MAV_PROTOCOL_CAPABILITY_RESERVED3](#MAV_PROTOCOL_CAPABILITY_RESERVED3) | Reserved for future use. 
-<a id='MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION'></a>2048 | [MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION](#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION) | Autopilot supports the [MAV_CMD_DO_FLIGHTTERMINATION](#MAV_CMD_DO_FLIGHTTERMINATION) command (flight termination). 
-<a id='MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION'></a>4096 | [MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION](#MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION) | Autopilot supports onboard compass calibration. 
-<a id='MAV_PROTOCOL_CAPABILITY_MAVLINK2'></a>8192 | [MAV_PROTOCOL_CAPABILITY_MAVLINK2](#MAV_PROTOCOL_CAPABILITY_MAVLINK2) | Autopilot supports MAVLink version 2. 
-<a id='MAV_PROTOCOL_CAPABILITY_MISSION_FENCE'></a>16384 | [MAV_PROTOCOL_CAPABILITY_MISSION_FENCE](#MAV_PROTOCOL_CAPABILITY_MISSION_FENCE) | Autopilot supports mission fence protocol. 
-<a id='MAV_PROTOCOL_CAPABILITY_MISSION_RALLY'></a>32768 | [MAV_PROTOCOL_CAPABILITY_MISSION_RALLY](#MAV_PROTOCOL_CAPABILITY_MISSION_RALLY) | Autopilot supports mission rally point protocol. 
-<a id='MAV_PROTOCOL_CAPABILITY_RESERVED2'></a>65536 | [MAV_PROTOCOL_CAPABILITY_RESERVED2](#MAV_PROTOCOL_CAPABILITY_RESERVED2) | Reserved for future use. 
-<a id='MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST'></a>131072 | [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) | Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.<br>Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) should be set if the parameter protocol is supported. 
-<a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER'></a>262144 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER](#MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER) | This component implements/is a gimbal manager. This means the [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION), and other messages can be requested. 
-<a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL'></a>524288 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL](#MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL) | Component supports locking control to a particular GCS independent of its system (via [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL)).<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
-<a id='MAV_PROTOCOL_CAPABILITY_GRIPPER'></a>1048576 | [MAV_PROTOCOL_CAPABILITY_GRIPPER](#MAV_PROTOCOL_CAPABILITY_GRIPPER) | Autopilot has a connected gripper. MAVLink Grippers would set [MAV_TYPE_GRIPPER](#MAV_TYPE_GRIPPER) instead.<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
 
 ### MAV_MISSION_TYPE {#MAV_MISSION_TYPE}
 
@@ -6092,6 +6052,46 @@ Value | Name | Description
 --- | --- | ---
 <a id='MAV_BOOL_FALSE'></a>0 | [MAV_BOOL_FALSE](#MAV_BOOL_FALSE) | False. 
 <a id='MAV_BOOL_TRUE'></a>1 | [MAV_BOOL_TRUE](#MAV_BOOL_TRUE) | True. 
+
+### MAV_PROTOCOL_CAPABILITY — \[from: [standard](../messages/standard.md#MAV_PROTOCOL_CAPABILITY)\] {#MAV_PROTOCOL_CAPABILITY}
+
+(Bitmask) Bitmask of (optional) autopilot capabilities (64 bit). If a bit is set, the autopilot supports this capability.
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT'></a>1 | [MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT](#MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT) | Autopilot supports the [MISSION_ITEM](#MISSION_ITEM) float message type.<br>Note that [MISSION_ITEM](#MISSION_ITEM) is deprecated, and autopilots should use [MISSION_INT](#MISSION_INT) instead. 
+<a id='MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT'></a>2 | [MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT](#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT) | Autopilot supports the new param float message type.<br><span class="warning">**DEPRECATED:** Replaced By [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) (2022-03)</span> 
+<a id='MAV_PROTOCOL_CAPABILITY_MISSION_INT'></a>4 | [MAV_PROTOCOL_CAPABILITY_MISSION_INT](#MAV_PROTOCOL_CAPABILITY_MISSION_INT) | Autopilot supports [MISSION_ITEM_INT](#MISSION_ITEM_INT) scaled integer message type.<br>Note that this flag must always be set if missions are supported, because missions must always use [MISSION_ITEM_INT](#MISSION_ITEM_INT) (rather than [MISSION_ITEM](#MISSION_ITEM), which is deprecated). 
+<a id='MAV_PROTOCOL_CAPABILITY_COMMAND_INT'></a>8 | [MAV_PROTOCOL_CAPABILITY_COMMAND_INT](#MAV_PROTOCOL_CAPABILITY_COMMAND_INT) | Autopilot supports [COMMAND_INT](#COMMAND_INT) scaled integer message type. 
+<a id='MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE'></a>16 | [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) | Parameter protocol uses byte-wise encoding of parameter values into param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.<br>Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) should be set if the parameter protocol is supported. 
+<a id='MAV_PROTOCOL_CAPABILITY_FTP'></a>32 | [MAV_PROTOCOL_CAPABILITY_FTP](#MAV_PROTOCOL_CAPABILITY_FTP) | Autopilot supports the File Transfer Protocol v1: https://mavlink.io/en/services/ftp.html. 
+<a id='MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET'></a>64 | [MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET](#MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET) | Autopilot supports commanding attitude offboard. 
+<a id='MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED'></a>128 | [MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED](#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED) | Autopilot supports commanding position and velocity targets in local NED frame. 
+<a id='MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT'></a>256 | [MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT](#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT) | Autopilot supports commanding position and velocity targets in global scaled integers. 
+<a id='MAV_PROTOCOL_CAPABILITY_TERRAIN'></a>512 | [MAV_PROTOCOL_CAPABILITY_TERRAIN](#MAV_PROTOCOL_CAPABILITY_TERRAIN) | Autopilot supports terrain protocol / data handling. 
+<a id='MAV_PROTOCOL_CAPABILITY_RESERVED3'></a>1024 | [MAV_PROTOCOL_CAPABILITY_RESERVED3](#MAV_PROTOCOL_CAPABILITY_RESERVED3) | Reserved for future use. 
+<a id='MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION'></a>2048 | [MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION](#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION) | Autopilot supports the [MAV_CMD_DO_FLIGHTTERMINATION](#MAV_CMD_DO_FLIGHTTERMINATION) command (flight termination). 
+<a id='MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION'></a>4096 | [MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION](#MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION) | Autopilot supports onboard compass calibration. 
+<a id='MAV_PROTOCOL_CAPABILITY_MAVLINK2'></a>8192 | [MAV_PROTOCOL_CAPABILITY_MAVLINK2](#MAV_PROTOCOL_CAPABILITY_MAVLINK2) | Autopilot supports MAVLink version 2. 
+<a id='MAV_PROTOCOL_CAPABILITY_MISSION_FENCE'></a>16384 | [MAV_PROTOCOL_CAPABILITY_MISSION_FENCE](#MAV_PROTOCOL_CAPABILITY_MISSION_FENCE) | Autopilot supports mission fence protocol. 
+<a id='MAV_PROTOCOL_CAPABILITY_MISSION_RALLY'></a>32768 | [MAV_PROTOCOL_CAPABILITY_MISSION_RALLY](#MAV_PROTOCOL_CAPABILITY_MISSION_RALLY) | Autopilot supports mission rally point protocol. 
+<a id='MAV_PROTOCOL_CAPABILITY_RESERVED2'></a>65536 | [MAV_PROTOCOL_CAPABILITY_RESERVED2](#MAV_PROTOCOL_CAPABILITY_RESERVED2) | Reserved for future use. 
+<a id='MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST'></a>131072 | [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) | Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.<br>Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) should be set if the parameter protocol is supported. 
+<a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER'></a>262144 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER](#MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER) | This component implements/is a gimbal manager. This means the [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION), and other messages can be requested. 
+<a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL'></a>524288 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL](#MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL) | Component supports locking control to a particular GCS independent of its system (via [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL)).<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
+<a id='MAV_PROTOCOL_CAPABILITY_GRIPPER'></a>1048576 | [MAV_PROTOCOL_CAPABILITY_GRIPPER](#MAV_PROTOCOL_CAPABILITY_GRIPPER) | Autopilot has a connected gripper. MAVLink Grippers would set [MAV_TYPE_GRIPPER](#MAV_TYPE_GRIPPER) instead.<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
+
+### FIRMWARE_VERSION_TYPE — \[from: [standard](../messages/standard.md#FIRMWARE_VERSION_TYPE)\] {#FIRMWARE_VERSION_TYPE}
+
+These values define the type of firmware release.  These values indicate the first version or release of this type.  For example the first alpha release would be 64, the second would be 65.
+
+Value | Name | Description
+--- | --- | ---
+<a id='FIRMWARE_VERSION_TYPE_DEV'></a>0 | [FIRMWARE_VERSION_TYPE_DEV](#FIRMWARE_VERSION_TYPE_DEV) | development release 
+<a id='FIRMWARE_VERSION_TYPE_ALPHA'></a>64 | [FIRMWARE_VERSION_TYPE_ALPHA](#FIRMWARE_VERSION_TYPE_ALPHA) | alpha release 
+<a id='FIRMWARE_VERSION_TYPE_BETA'></a>128 | [FIRMWARE_VERSION_TYPE_BETA](#FIRMWARE_VERSION_TYPE_BETA) | beta release 
+<a id='FIRMWARE_VERSION_TYPE_RC'></a>192 | [FIRMWARE_VERSION_TYPE_RC](#FIRMWARE_VERSION_TYPE_RC) | release candidate 
+<a id='FIRMWARE_VERSION_TYPE_OFFICIAL'></a>255 | [FIRMWARE_VERSION_TYPE_OFFICIAL](#FIRMWARE_VERSION_TYPE_OFFICIAL) | official stable release 
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
