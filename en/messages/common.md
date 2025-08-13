@@ -5146,6 +5146,7 @@ Value | Name | Description
 <a id='CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE'></a>1024 | [CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) | Camera supports tracking of a selection rectangle on the camera view. 
 <a id='CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS'></a>2048 | [CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS](#CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS) | Camera supports tracking geo status ([CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS)). 
 <a id='CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE'></a>4096 | [CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE](#CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE) | Camera supports absolute thermal range (request [CAMERA_THERMAL_RANGE](#CAMERA_THERMAL_RANGE) with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE)). 
+<a id='CAMERA_CAP_FLAGS_HAS_MTI'></a>8192 | [CAMERA_CAP_FLAGS_HAS_MTI](#CAMERA_CAP_FLAGS_HAS_MTI) | Camera supports Moving Target Indicators (MTI) on the camera view (using [MAV_CMD_CAMERA_START_MTI](#MAV_CMD_CAMERA_START_MTI)).<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
 
 ### VIDEO_STREAM_STATUS_FLAGS {#VIDEO_STREAM_STATUS_FLAGS}
 
@@ -5180,13 +5181,14 @@ Value | Name | Description
 
 ### CAMERA_TRACKING_STATUS_FLAGS {#CAMERA_TRACKING_STATUS_FLAGS}
 
-Camera tracking status flags
+(Bitmask) Camera tracking status flags
 
 Value | Name | Description
 --- | --- | ---
 <a id='CAMERA_TRACKING_STATUS_FLAGS_IDLE'></a>0 | [CAMERA_TRACKING_STATUS_FLAGS_IDLE](#CAMERA_TRACKING_STATUS_FLAGS_IDLE) | Camera is not tracking 
 <a id='CAMERA_TRACKING_STATUS_FLAGS_ACTIVE'></a>1 | [CAMERA_TRACKING_STATUS_FLAGS_ACTIVE](#CAMERA_TRACKING_STATUS_FLAGS_ACTIVE) | Camera is tracking 
 <a id='CAMERA_TRACKING_STATUS_FLAGS_ERROR'></a>2 | [CAMERA_TRACKING_STATUS_FLAGS_ERROR](#CAMERA_TRACKING_STATUS_FLAGS_ERROR) | Camera tracking in error state 
+<a id='CAMERA_TRACKING_STATUS_FLAGS_MTI'></a>4 | [CAMERA_TRACKING_STATUS_FLAGS_MTI](#CAMERA_TRACKING_STATUS_FLAGS_MTI) | Camera Moving Target Indicators (MTI) are active<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
 
 ### CAMERA_TRACKING_MODE {#CAMERA_TRACKING_MODE}
 

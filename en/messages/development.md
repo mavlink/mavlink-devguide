@@ -38,7 +38,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 13 | 229
 [Enums](#enumerated-types) | 14 | 148
-[Commands](#mav_commands) | 173 | 0
+[Commands](#mav_commands) | 175 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -582,6 +582,30 @@ Param (Label) | Description | Units
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
 7 (Altitude) | Altitude | m 
+
+
+### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Enable Moving Target Indicators (MTI) on streamed video.
+
+Support for feature can be checked with [CAMERA_CAP_FLAGS_HAS_MTI](#CAMERA_CAP_FLAGS_HAS_MTI), and disabled with [MAV_CMD_CAMERA_STOP_MTI](#MAV_CMD_CAMERA_STOP_MTI).
+
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+
+
+### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] {#MAV_CMD_CAMERA_STOP_MTI}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Disable Moving Target Indicators (MTI) on streamed video.
+
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
