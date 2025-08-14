@@ -38,7 +38,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 226 | 3
-[Enums](#enumerated-types) | 139 | 9
+[Enums](#enumerated-types) | 140 | 9
 [Commands](#mav_commands) | 165 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -4517,6 +4517,18 @@ Value | Name | Description
 <a id='MISSION_WRITE_PERSISTENT'></a>1 | [MISSION_WRITE_PERSISTENT](#MISSION_WRITE_PERSISTENT) | Write current mission data to persistent storage 
 <a id='MISSION_RESET_DEFAULT'></a>2 | [MISSION_RESET_DEFAULT](#MISSION_RESET_DEFAULT) | Erase all mission data stored on the vehicle (both persistent and volatile storage) 
 
+### REBOOT_SHUTDOWN_ACTION {#REBOOT_SHUTDOWN_ACTION}
+
+Reboot/shutdown action for selected component in [MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN](#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN).
+
+Value | Name | Description
+--- | --- | ---
+<a id='REBOOT_SHUTDOWN_ACTION_NONE'></a>0 | [REBOOT_SHUTDOWN_ACTION_NONE](#REBOOT_SHUTDOWN_ACTION_NONE) | Do nothing. 
+<a id='REBOOT_SHUTDOWN_ACTION_REBOOT'></a>1 | [REBOOT_SHUTDOWN_ACTION_REBOOT](#REBOOT_SHUTDOWN_ACTION_REBOOT) | Reboot component. 
+<a id='REBOOT_SHUTDOWN_ACTION_SHUTDOWN'></a>2 | [REBOOT_SHUTDOWN_ACTION_SHUTDOWN](#REBOOT_SHUTDOWN_ACTION_SHUTDOWN) | Shutdown component. 
+<a id='REBOOT_SHUTDOWN_ACTION_REBOOT_TO_BOOTLOADER'></a>3 | [REBOOT_SHUTDOWN_ACTION_REBOOT_TO_BOOTLOADER](#REBOOT_SHUTDOWN_ACTION_REBOOT_TO_BOOTLOADER) | Reboot component and keep it in the bootloader until upgraded. 
+<a id='REBOOT_SHUTDOWN_ACTION_POWER_ON'></a>4 | [REBOOT_SHUTDOWN_ACTION_POWER_ON](#REBOOT_SHUTDOWN_ACTION_POWER_ON) | Power on component. Do nothing if component is already powered (ACK command with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED)). 
+
 ### REBOOT_SHUTDOWN_CONDITIONS {#REBOOT_SHUTDOWN_CONDITIONS}
 
 Specifies the conditions under which the [MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN](#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN) command should be accepted.
@@ -7597,9 +7609,9 @@ Request the reboot or shutdown of system components.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Autopilot) | 0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded. | min: 0 max: 3 inc: 1 
-2 (Companion) | 0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded. | min: 0 max: 3 inc: 1 
-3 (Component action) | 0: Do nothing for component, 1: Reboot component, 2: Shutdown component, 3: Reboot component and keep it in the bootloader until upgraded | min: 0 max: 3 inc: 1 
+1 (Autopilot) | Action to take for autopilot. | [REBOOT_SHUTDOWN_ACTION](#REBOOT_SHUTDOWN_ACTION) 
+2 (Companion) | Action to take for onboard computer. | [REBOOT_SHUTDOWN_ACTION](#REBOOT_SHUTDOWN_ACTION) 
+3 (Component Action) | Action to take for component specified in param4. | [REBOOT_SHUTDOWN_ACTION](#REBOOT_SHUTDOWN_ACTION) 
 4 (Component ID) | MAVLink Component ID targeted in param3 (0 for all components). | min: 0 max: 255 inc: 1 
 5 | Reserved (set to 0) |   
 6 (Conditions) | Conditions under which reboot/shutdown is allowed. | [REBOOT_SHUTDOWN_CONDITIONS](#REBOOT_SHUTDOWN_CONDITIONS) 
