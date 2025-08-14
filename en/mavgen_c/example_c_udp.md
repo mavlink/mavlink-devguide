@@ -22,9 +22,11 @@ The following instructions show how to build and run the example.
    ```
 
 4. Navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
+
    ```sh
    cd examples/c
    ```
+
 5. Use `cmake` to compile and build the example:
 
    ```sh
