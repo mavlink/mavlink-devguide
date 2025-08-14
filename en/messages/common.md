@@ -6178,6 +6178,7 @@ Value | Name | Description
 <a id='MAV_TYPE_GROUND_QUADRUPED'></a>46 | [MAV_TYPE_GROUND_QUADRUPED](#MAV_TYPE_GROUND_QUADRUPED) | A generic four-legged ground vehicle (e.g., a robot dog). 
 <a id='MAV_TYPE_VTOL_GYRODYNE'></a>47 | [MAV_TYPE_VTOL_GYRODYNE](#MAV_TYPE_VTOL_GYRODYNE) | VTOL hybrid of helicopter and autogyro. It has a main rotor for lift and separate propellers for forward flight. The rotor must be powered for hover but can autorotate in cruise flight. See: https://en.wikipedia.org/wiki/Gyrodyne 
 <a id='MAV_TYPE_GRIPPER'></a>48 | [MAV_TYPE_GRIPPER](#MAV_TYPE_GRIPPER) | Gripper 
+<a id='MAV_TYPE_RADIO'></a>49 | [MAV_TYPE_RADIO](#MAV_TYPE_RADIO) | Radio 
 
 ### MAV_MODE_FLAG — \[from: [minimal](../messages/minimal.md#MAV_MODE_FLAG)\] {#MAV_MODE_FLAG}
 
@@ -6323,6 +6324,9 @@ Value | Name | Description
 <a id='MAV_COMP_ID_CAMERA4'></a>103 | [MAV_COMP_ID_CAMERA4](#MAV_COMP_ID_CAMERA4) | Camera #4. 
 <a id='MAV_COMP_ID_CAMERA5'></a>104 | [MAV_COMP_ID_CAMERA5](#MAV_COMP_ID_CAMERA5) | Camera #5. 
 <a id='MAV_COMP_ID_CAMERA6'></a>105 | [MAV_COMP_ID_CAMERA6](#MAV_COMP_ID_CAMERA6) | Camera #6. 
+<a id='MAV_COMP_ID_RADIO'></a>110 | [MAV_COMP_ID_RADIO](#MAV_COMP_ID_RADIO) | Radio #1. 
+<a id='MAV_COMP_ID_RADIO2'></a>111 | [MAV_COMP_ID_RADIO2](#MAV_COMP_ID_RADIO2) | Radio #2. 
+<a id='MAV_COMP_ID_RADIO3'></a>112 | [MAV_COMP_ID_RADIO3](#MAV_COMP_ID_RADIO3) | Radio #3. 
 <a id='MAV_COMP_ID_SERVO1'></a>140 | [MAV_COMP_ID_SERVO1](#MAV_COMP_ID_SERVO1) | Servo #1. 
 <a id='MAV_COMP_ID_SERVO2'></a>141 | [MAV_COMP_ID_SERVO2](#MAV_COMP_ID_SERVO2) | Servo #2. 
 <a id='MAV_COMP_ID_SERVO3'></a>142 | [MAV_COMP_ID_SERVO3](#MAV_COMP_ID_SERVO3) | Servo #3. 
