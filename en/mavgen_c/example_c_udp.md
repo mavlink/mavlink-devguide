@@ -1,77 +1,65 @@
 # MAVLink C UDP Example
 
-The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/c) is a simple C example that sends some data to _QGroundControl_ using MAVLink over UDP.
-_QGroundControl_ responds with heartbeats and other messages, which are then printed by this program.
+The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/c) is a simple C example that sends and receives MAVLink HEARTBEATS over UDP.
 
 ::: info
 The example should work on any Unix-like system (Linux, MacOS, BSD, etc.).
-These instructions were tested on a clean _Ubuntu LTS 20.04_ installation using the default version of _gcc_ (9.3.0).
+These instructions were tested on a _Ubuntu LTS 22.04_ installation with either PX4 or ArduPilot dependencies installed (such as cmake).
 :::
 
 ## Building/Running the Example
 
 The following instructions show how to build and run the example.
 
-1. [Install MAVLink](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) the MAVLink 2.0 libraries into the **mavlink/include** directory.
-   For example, to generate the headers for common.xml you could use the command line:
+1. Clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository
+2. Open a terminal in the repository root.
+3. Use `cmake` to install MAVLink locally:
 
    ```sh
-   python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=./include/ message_definitions/v1.0/common.xml
+   cmake -Bbuild -H. -DCMAKE_INSTALL_PREFIX=install
+   cmake --build build --target install
    ```
 
-   ::: tip
-   Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../index.md#prebuilt_libraries) to the same location.
-   :::
-
-   ::: info
-   The example will not work with MAVLink 1 because it uses a message that includes extension fields which do not exist in MAVLink 1 (`SYS_STATUS`).
-   :::
-
-   ::: info
-   You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
-   :::
-
-2. Open a terminal and navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
-
-3. Compile with GCC using the following command:
+4. Navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
 
    ```sh
-   gcc -std=c99 -I ../../include/common -o mavlink_udp udp_example.c
+   cd examples/c
    ```
 
-   ::: info
-   The MAVLink header directory must be added to the include path.
-   The path here assumes you are building the code from the example directory, and that have installed the headers in **mavlink/include**.
-   :::
-
-4. Run the executable from the terminal:
-
-   ```bash
-   ./mavlink_udp
-   ```
-
-   By default, the example will listen for data on the localhost IP address, port 14551.
-   You can specify another IP address as a command line argument (use `./mavlink_udp --help` to see usage).
-
-5. Open _QGroundControl_ on the same machine.
-
-   _QGroundControl_ immediately starts broadcasting its `HEARTBEAT` on port 14551.
-
-   ::: info
-   _QGroundControl_ returns data, but will not actually "connect" to the example (it will continue to display the message _Waiting for Vehicle Connection_).
-   :::
-
-6. The example should start displaying the received data in the terminal:
+5. Use `cmake` to compile and build the example:
 
    ```sh
-   ~/github/mavlink/examples/c$ ./mavlink_udp
-   Bytes Received: 17
-   Datagram: fe 09 00 ff 00 00 00 00 00 00 06 08 c0 04 03 19 87
-   Received packet: SYS: 255, COMP: 0, LEN: 9, MSG ID: 0
+   cmake -Bbuild -H. -DCMAKE_PREFIX_PATH=$(pwd)/../../install
+   cmake --build build
+   ```
 
-    Bytes Received: 17
-   Datagram: fe 09 01 ff 00 00 00 00 00 00 06 08 c0 04 03 f3 f9
-   Received packet: SYS: 255, COMP: 0, LEN: 9, MSG ID: 0
+6. Run the executable from the terminal:
 
+   ```sh
+   ./build/udp_example
+   ```
+
+   By default, the example will listen for data on the localhost IP address, port 14550.
+
+7. Open another terminal on the same machine and start either PX4 or ArduPilot.
+   These publish to port 14550 on localhost by default.
+8. The example should start displaying messages about sent and received HEARTBEAT messages in the terminal.
+   The following output is displayed if you connect to PX4:
+
+   ```sh
+   ~/github/mavlink/mavlink/examples/c$  ./build/udp_example
+
+   Sent heartbeat
+   Got heartbeat from PX4 autopilot
+   Sent heartbeat
+   Got heartbeat from PX4 autopilot
+   Sent heartbeat
+   Got heartbeat from PX4 autopilot
+   Sent heartbeat
+   Got heartbeat from PX4 autopilot
+   Sent heartbeat
+   Got heartbeat from PX4 autopilot
    ...
    ```
+
+Note that the build and installation instructions are from [examples/c/README.md](https://github.com/mavlink/mavlink/blob/master/examples/c/README.md).
