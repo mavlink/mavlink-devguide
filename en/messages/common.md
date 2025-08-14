@@ -5201,6 +5201,7 @@ Value | Name | Description
 <a id='CAMERA_TRACKING_STATUS_FLAGS_ACTIVE'></a>1 | [CAMERA_TRACKING_STATUS_FLAGS_ACTIVE](#CAMERA_TRACKING_STATUS_FLAGS_ACTIVE) | Camera is tracking 
 <a id='CAMERA_TRACKING_STATUS_FLAGS_ERROR'></a>2 | [CAMERA_TRACKING_STATUS_FLAGS_ERROR](#CAMERA_TRACKING_STATUS_FLAGS_ERROR) | Camera tracking in error state 
 <a id='CAMERA_TRACKING_STATUS_FLAGS_MTI'></a>4 | [CAMERA_TRACKING_STATUS_FLAGS_MTI](#CAMERA_TRACKING_STATUS_FLAGS_MTI) | Camera Moving Target Indicators (MTI) are active<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
+<a id='CAMERA_TRACKING_STATUS_FLAGS_COASTING'></a>8 | [CAMERA_TRACKING_STATUS_FLAGS_COASTING](#CAMERA_TRACKING_STATUS_FLAGS_COASTING) | Camera tracking target is obscured and is being predicted<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
 
 ### CAMERA_TRACKING_MODE {#CAMERA_TRACKING_MODE}
 
