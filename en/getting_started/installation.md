@@ -38,7 +38,7 @@ To install the MAVLink toolchain:
 1. Install the required packages:
 
    ```
-   python3 -m pip install -r pymavlink/requirements.txt
+   python3 -m pip install -r mavlink/pymavlink/requirements.txt
    ```
 
 Now you are ready to [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
