@@ -34,9 +34,9 @@ To install the MAVLink toolchain:
    ```
    git clone https://github.com/mavlink/mavlink.git --recursive
    cd mavlink
-2. ```
+   ```
 
-1. Install the required packages:
+2. Install the required packages:
 
    ```
    python3 -m pip install -r pymavlink/requirements.txt
