@@ -43,7 +43,7 @@ Vehicles with direct control over vehicle translation directions (multicopters) 
 
 Button functions are vehicle/flight-stack dependent:
 
-- ArduPilot treats button values as user-configurable using firmware parameters (e.g. ArduCopter's [`BTN_FUNCn`](https://ardupilot.org/copter/docs/parameters.html#btn-func1-button-pin-1-rc-channel-function) or ArduSub's [`BTNn_FUNCTION`](https://www.ardusub.com/developers/full-parameter-list.html#btnnfunction-function-for-button)), through the [Parameter](./parameter.md) or [Extended Parameter](./parameter_ext.md) protocols.
+- ArduPilot treats button values as user-configurable using firmware parameters (e.g. ArduCopter's [`BTN_FUNCn`](https://ardupilot.org/copter/docs/parameters.html#btn-func1-button-pin-1-rc-channel-function) or ArduSub's [`BTNn_FUNCTION`](https://ardupilot.org/sub/docs/buttons.html)), through the [Parameter](./parameter.md) or [Extended Parameter](./parameter_ext.md) protocols.
 - PX4 defines fixed meanings to some of the `buttons` values, and these are mapped to user-selected functions by the ground station.
 
 The `buttons` field is required, and corresponds to the first 16 buttons.
