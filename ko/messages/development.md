@@ -37,9 +37,9 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 12      | 229      |
-| [Enums](#enumerated-types) | 12      | 148      |
-| [Commands](#mav_commands)  | 173     | 0        |
+| [Messages](#messages)      | 13      | 229      |
+| [Enums](#enumerated-types) | 14      | 149      |
+| [Commands](#mav_commands)  | 176     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -58,6 +58,25 @@ Airspeed information from a sensor.
 | temperature                    | `int16_t` | cdegC |                                                                                           | Temperature. INT16_MAX for value unknown/not supplied.                    |
 | raw_press | `float`   | hPa   |                                                                                           | Raw differential pressure. NaN for value unknown/not supplied.                                 |
 | flags                          | `uint8_t` |       | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags.                                                                                         |
+
+### GLOBAL_POSITION (296) — [WIP] {#GLOBAL_POSITION}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Global position measurement or estimate.
+
+| Field Name                         | Type       | Units | Values                                                                                    | Description                                                                                                                                                                                                                                                                                  |
+| ---------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                                 | `uint8_t`  |       |                                                                                           | Sensor ID<br>Messages with same value are from the same source (instance).                                                                                                                                                                                |
+| time_usec     | `uint64_t` | us    |                                                                                           | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+| source                             | `uint8_t`  |       | [GLOBAL_POSITION_SRC](#GLOBAL_POSITION_SRC)     | Source of position/estimate (such as GNSS, estimator, etc.)                                                                                                                                                                                               |
+| flags                              | `uint8_t`  |       | [GLOBAL_POSITION_FLAGS](#GLOBAL_POSITION_FLAGS) | Status flags                                                                                                                                                                                                                                                                                 |
+| lat                                | `int32_t`  | degE7 | invalid:INT32_MAX                                    | Latitude (WGS84)                                                                                                                                                                                                                                                          |
+| lon                                | `int32_t`  | degE7 | invalid:INT32_MAX                                    | Longitude (WGS84)                                                                                                                                                                                                                                                         |
+| alt                                | `float`    | m     | invalid:NaN                                                               | Altitude (MSL - position-system specific value)                                                                                                                                                                                                                           |
+| alt_ellipsoid | `float`    | m     | invalid:NaN                                                               | Altitude (WGS84 elipsoid)                                                                                                                                                                                                                                                 |
+| eph                                | `float`    | m     | invalid:NaN                                                               | Standard deviation of horizontal position error                                                                                                                                                                                                                                              |
+| epv                                | `float`    | m     | invalid:NaN                                                               | Standard deviation of vertical position error                                                                                                                                                                                                                                                |
 
 ### SET_VELOCITY_LIMITS (354) — [WIP] {#SET_VELOCITY_LIMITS}
 
@@ -426,6 +445,33 @@ Actuator groups to test in [MAV_CMD_ACTUATOR_GROUP_TEST](#MAV_CMD_ACTUATOR_GROUP
 | <a id='ACTUATOR_TEST_GROUP_YAW_TORQUE'></a>2      | [ACTUATOR_TEST_GROUP_YAW_TORQUE](#ACTUATOR_TEST_GROUP_YAW_TORQUE)           | Actuators that contribute to yaw torque.   |
 | <a id='ACTUATOR_TEST_GROUP_COLLECTIVE_TILT'></a>3 | [ACTUATOR_TEST_GROUP_COLLECTIVE_TILT](#ACTUATOR_TEST_GROUP_COLLECTIVE_TILT) | Actuators that affect collective tilt.     |
 
+### GLOBAL_POSITION_SRC — [WIP] {#GLOBAL_POSITION_SRC}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Source for [GLOBAL_POSITION](#GLOBAL_POSITION) measurement or estimate.
+
+| Value                                     | Name                                                                                                  | Description                                                                                                                                                  |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id='GLOBAL_POSITION_UNKNOWN'></a>0     | [GLOBAL_POSITION_UNKNOWN](#GLOBAL_POSITION_UNKNOWN)         | Source is unknown or not one of the listed types.                                                                                            |
+| <a id='GLOBAL_POSITION_GNSS'></a>1        | [GLOBAL_POSITION_GNSS](#GLOBAL_POSITION_GNSS)               | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou). |
+| <a id='GLOBAL_POSITION_VISION'></a>2      | [GLOBAL_POSITION_VISION](#GLOBAL_POSITION_VISION)           | Vision system (e.g.: map matching).                                       |
+| <a id='GLOBAL_POSITION_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_PSEUDOLITES](#GLOBAL_POSITION_PSEUDOLITES) | Pseudo-satellite system (performs GNSS-like function, but usually with transceiver beacons).                              |
+| <a id='GLOBAL_POSITION_TRN'></a>4         | [GLOBAL_POSITION_TRN](#GLOBAL_POSITION_TRN)                 | Terrain referenced navigation.                                                                                                               |
+| <a id='GLOBAL_POSITION_MAGNETIC'></a>5    | [GLOBAL_POSITION_MAGNETIC](#GLOBAL_POSITION_MAGNETIC)       | Magnetic positioning.                                                                                                                        |
+| <a id='GLOBAL_POSITION_ESTIMATOR'></a>6   | [GLOBAL_POSITION_ESTIMATOR](#GLOBAL_POSITION_ESTIMATOR)     | Estimated position based on various sensors (eg. a Kalman Filter).                                        |
+
+### GLOBAL_POSITION_FLAGS — [WIP] {#GLOBAL_POSITION_FLAGS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+(Bitmask) Status flags for [GLOBAL_POSITION](#GLOBAL_POSITION)
+
+| Value                                   | Name                                                                                              | Description                                                                               |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| <a id='GLOBAL_POSITION_UNHEALTHY'></a>1 | [GLOBAL_POSITION_UNHEALTHY](#GLOBAL_POSITION_UNHEALTHY) | Unhealthy sensor/estimator.                                               |
+| <a id='GLOBAL_POSITION_PRIMARY'></a>2   | [GLOBAL_POSITION_PRIMARY](#GLOBAL_POSITION_PRIMARY)     | True if the data originates from or is consumed by the primary estimator. |
+
 ## Commands (MAV_CMD) {#mav_commands}
 
 ### MAV_CMD_DO_FIGURE_EIGHT (35) — [WIP] {#MAV_CMD_DO_FIGURE_EIGHT}
@@ -520,6 +566,46 @@ Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GL
 | 5 (Latitude)  | Latitude    |       |
 | 6 (Longitude) | Longitude   |       |
 | 7 (Altitude)  | Altitude    | m     |
+
+### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Set an external estimate of vehicle attitude.
+
+This might be used to provide an initial attitude (especially heading) estimate to the estimator (EKF). Angles are defined in a 3-2-1 (yaw-pitch-roll) intrinsic Tait-Bryan sequence.
+
+| Param (Label)     | Description                                                                                                           | Values                                          | Units |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----- |
+| 1 (Roll)          | Roll angle. Set to NaN if unknown.                                                    | min: 0 max: 360 | deg   |
+| 2 (Pitch)         | Pitch angle. Set to NaN if unknown.                                                   | min: 0 max: 360 | deg   |
+| 3 (Yaw)           | Yaw/heading (relative to true north) angle. Set to NaN if unknown. | min: 0 max: 360 | deg   |
+| 4 (Tilt accuracy) | Estimated 1 sigma accuracy of roll and pitch angles. Set to NaN if unknown.           |                                                 | deg   |
+| 5                                    | Empty                                                                                                                 |                                                 |       |
+| 6                                    | Empty                                                                                                                 |                                                 |       |
+| 7 (Yaw accuracy)  | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown.                       |                                                 | deg   |
+
+### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Enable Moving Target Indicators (MTI) on streamed video.
+
+Support for feature can be checked with [CAMERA_CAP_FLAGS_HAS_MTI](#CAMERA_CAP_FLAGS_HAS_MTI), and disabled with [MAV_CMD_CAMERA_STOP_MTI](#MAV_CMD_CAMERA_STOP_MTI).
+
+| Param (Label)        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Values                                                                 |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
+
+### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] {#MAV_CMD_CAMERA_STOP_MTI}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Disable Moving Target Indicators (MTI) on streamed video.
+
+| Param (Label)        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Values                                                                 |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
 
