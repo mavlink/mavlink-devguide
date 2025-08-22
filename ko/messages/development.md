@@ -39,7 +39,7 @@ span.warning {
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 13      | 229      |
 | [Enums](#enumerated-types) | 14      | 149      |
-| [Commands](#mav_commands)  | 175     | 0        |
+| [Commands](#mav_commands)  | 176     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -566,6 +566,24 @@ Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GL
 | 5 (Latitude)  | Latitude    |       |
 | 6 (Longitude) | Longitude   |       |
 | 7 (Altitude)  | Altitude    | m     |
+
+### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Set an external estimate of vehicle attitude.
+
+This might be used to provide an initial attitude (especially heading) estimate to the estimator (EKF). Angles are defined in a 3-2-1 (yaw-pitch-roll) intrinsic Tait-Bryan sequence.
+
+| Param (Label)     | Description                                                                                                           | Values                                          | Units |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----- |
+| 1 (Roll)          | Roll angle. Set to NaN if unknown.                                                    | min: 0 max: 360 | deg   |
+| 2 (Pitch)         | Pitch angle. Set to NaN if unknown.                                                   | min: 0 max: 360 | deg   |
+| 3 (Yaw)           | Yaw/heading (relative to true north) angle. Set to NaN if unknown. | min: 0 max: 360 | deg   |
+| 4 (Tilt accuracy) | Estimated 1 sigma accuracy of roll and pitch angles. Set to NaN if unknown.           |                                                 | deg   |
+| 5                                    | Empty                                                                                                                 |                                                 |       |
+| 6                                    | Empty                                                                                                                 |                                                 |       |
+| 7 (Yaw accuracy)  | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown.                       |                                                 | deg   |
 
 ### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
 
