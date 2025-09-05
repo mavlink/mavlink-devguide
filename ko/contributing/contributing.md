@@ -47,7 +47,7 @@ Ideally:
 
 ## How to Contribute Stand Alone Generators
 
-We would prefer that new languages are supported via [mavgen](../getting_started/generate_libraries.md#mavgen) rather than "standalone generators", as this provides a consistent inteface for end users, and ensures that source files are parsed and handled consistently.
+We would prefer that new languages are supported via [mavgen](../getting_started/generate_libraries.md#mavgen) rather than "standalone generators", as this provides a consistent interface for end users, and ensures that source files are parsed and handled consistently.
 
 That said will consider moving stand-alone generators into the MAVLink project under the same conditions as for new mavgen generator code (see section above).
 Primarily this means that the team developing the generator must provide sufficient validation that the generator works and commitment to support it.

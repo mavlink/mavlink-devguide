@@ -85,7 +85,7 @@ mavlink/common/../mavlink_helpers.h:86:24: warning: taking address of packed mem
 ```
 
 The warning indicates the potential for hard faults caused by unaligned access to packed data.
-This does not happen on most of the common architectures on which MAVLink is run, and generally the warning can be supressed.
+This does not happen on most of the common architectures on which MAVLink is run, and generally the warning can be suppressed.
 
 You can suppress the warnings using `-Wno-address-of-packed-member`.
 

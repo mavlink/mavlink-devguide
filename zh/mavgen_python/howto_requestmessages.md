@@ -7,7 +7,7 @@ A system can request that additional messages are sent as a stream, or change th
 A single instance of a message can be requested by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
 
 The example below shows how you can request the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is streamed at the rate of 1Hz, by sending `MAV_CMD_SET_MESSAGE_INTERVAL` in a [COMMAND_LONG](../messages/common.md#COMMAND_LONG).
-Because this is a command, we then wait for a `COMMAND_ACK` to be recieved with the matching command id, and then display the result.
+Because this is a command, we then wait for a `COMMAND_ACK` to be received with the matching command id, and then display the result.
 Note that you could equally well send the command in a [COMMAND_INT](../messages/common.md#COMMAND_INT), if supported by the flight stack.
 
 ```python

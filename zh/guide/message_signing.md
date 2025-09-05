@@ -160,7 +160,7 @@ The secret key may be shared to other devices using the [SETUP_SIGNING](../messa
 The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`.
 必须设置接收系统来处理消息, 并将接收到的密钥存储到相应的永久存储中。
 
-The same secure method can be used to both _set_ and _reset_ a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
+The same secure method can be used to both _set_ and _reset_ a system's key (resetting a key does not have to be "more secure" than setting it in the first place).
 
 The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels.
 这是为了避免通过安全链接 (如 usb) 收到的密钥通过不安全的链接 (例如 wifi) 自动转发到另一个系统的情况。
