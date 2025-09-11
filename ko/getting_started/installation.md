@@ -25,14 +25,15 @@ To install the MAVLink toolchain:
 
    - **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
    - **Ubuntu Linux** Make sure Python and Pip are both installed:
-     ```
-     sudo apt install python3-tk
-     ```
+      ```
+      sudo apt install python3-tk
+      ```
 
 2. Clone the official [mavlink repo](https://github.com/mavlink/mavlink) or your fork with your custom dialect:
 
    ```
    git clone https://github.com/mavlink/mavlink.git --recursive
+   cd mavlink
    ```
 
 3. Install the required packages:
