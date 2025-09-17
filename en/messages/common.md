@@ -4258,8 +4258,9 @@ Gripper actions.
 
 Value | Name | Description
 --- | --- | ---
-<a id='GRIPPER_ACTION_RELEASE'></a>0 | [GRIPPER_ACTION_RELEASE](#GRIPPER_ACTION_RELEASE) | Gripper release cargo. 
-<a id='GRIPPER_ACTION_GRAB'></a>1 | [GRIPPER_ACTION_GRAB](#GRIPPER_ACTION_GRAB) | Gripper grab onto cargo. 
+<a id='GRIPPER_ACTION_OPEN'></a>0 | [GRIPPER_ACTION_OPEN](#GRIPPER_ACTION_OPEN) | Gripper commence open. Often used to release cargo. 
+<a id='GRIPPER_ACTION_CLOSE'></a>1 | [GRIPPER_ACTION_CLOSE](#GRIPPER_ACTION_CLOSE) | Gripper commence close. Often used to grab onto cargo. 
+<a id='GRIPPER_ACTION_STOP'></a>2 | [GRIPPER_ACTION_STOP](#GRIPPER_ACTION_STOP) | Gripper stop (maintain current grip position). 
 
 ### WINCH_ACTIONS {#WINCH_ACTIONS}
 
@@ -7386,7 +7387,7 @@ Mission command to operate a gripper.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Gripper ID) | Gripper ID. 1-6 for an autopilot connected gripper. In missions this may be set to 1-6 for an autopilot gripper, or the gripper component id for a MAVLink gripper. 0 targets all grippers. | min: 1 inc: 1 
+1 (Gripper ID) | Gripper ID. 1-6 for an autopilot connected gripper. In missions this may be set to 1-6 for an autopilot gripper, or the gripper component id for a MAVLink gripper. 0 targets all grippers. | min: 0 inc: 1 
 2 (Action) | Gripper action to perform. | [GRIPPER_ACTIONS](#GRIPPER_ACTIONS) 
 3 | Empty |   
 4 | Empty |   
