@@ -34,13 +34,29 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 1       | 2        |
+| [Messages](#messages)      | 2       | 2        |
 | [Enums](#enumerated-types) | 3       | 6        |
 | 命令                         | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
 ## 消息
+
+### GLOBAL_POSITION_INT (33) {#GLOBAL_POSITION_INT}
+
+The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It is designed as scaled integer message since the resolution of float is not sufficient.
+
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                                                       |
+| ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                                                                   |
+| lat                                                    | `int32_t`  | degE7 | Latitude, expressed                                                                                                                                                                                                      |
+| lon                                                    | `int32_t`  | degE7 | Longitude, expressed                                                                                                                                                                                                     |
+| alt                                                    | `int32_t`  | 毫米    | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.                                                                                       |
+| relative_alt                      | `int32_t`  | 毫米    | Altitude above home                                                                                                                                                                                                      |
+| vx                                                     | `int16_t`  | 厘米/秒  | Ground X Speed (Latitude, positive north)                                                                                                                                                             |
+| vy                                                     | `int16_t`  | 厘米/秒  | Ground Y Speed (Longitude, positive east)                                                                                                                                                             |
+| vz                                                     | `int16_t`  | 厘米/秒  | Ground Z Speed (Altitude, positive down)                                                                                                                                                              |
+| hdg                                                    | `uint16_t` | cdeg  | Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX |
 
 ### AUTOPILOT_VERSION (148) {#AUTOPILOT_VERSION}
 
