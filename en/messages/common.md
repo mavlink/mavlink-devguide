@@ -37,7 +37,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 226 | 3
+[Messages](#messages) | 225 | 4
 [Enums](#enumerated-types) | 140 | 9
 [Commands](#mav_commands) | 165 | 0
 
@@ -380,11 +380,9 @@ vy | `float` | m/s | Y Speed
 vz | `float` | m/s | Z Speed 
 
 
-### GLOBAL_POSITION_INT (33) {#GLOBAL_POSITION_INT}
+### GLOBAL_POSITION_INT (33) — \[from: [standard](../messages/standard.md#GLOBAL_POSITION_INT)\] {#GLOBAL_POSITION_INT}
 
-The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It
-
-is designed as scaled integer message since the resolution of float is not sufficient.
+The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It is designed as scaled integer message since the resolution of float is not sufficient.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
