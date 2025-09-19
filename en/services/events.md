@@ -50,7 +50,7 @@ The following key features are provided by the interface:
 
 | Enum                                                                                                                          | Description                                                                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS"></a>[MAV_EVENT_CURRENT_SEQUENCE_FLAGS](../messages/common.md#CURRENT_EVENT_SEQUENCE) | Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE). For exmaple, to indicate when the sequence has reset.                                                                   |
+| <a id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS"></a>[MAV_EVENT_CURRENT_SEQUENCE_FLAGS](../messages/common.md#CURRENT_EVENT_SEQUENCE) | Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE). For example, to indicate when the sequence has reset.                                                                   |
 | <a id="MAV_EVENT_ERROR_REASON"></a>[MAV_EVENT_ERROR_REASON](../messages/common.md#MAV_EVENT_ERROR_REASON)                     | Reasons for an error, as provided in [RESPONSE_EVENT_ERROR](#RESPONSE_EVENT_ERROR). For example, common error would be that the event is not available (i.e. it has been discarded). |
 
 ## Implementations

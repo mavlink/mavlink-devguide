@@ -64,7 +64,7 @@
   - [Component Metadata Protocol (WIP)](services/component_information.md)
   - [MAVLink Id Assignment (sysid, compid)](services/mavlink_id_assignment.md)
   - [Payload Protocols](services/payload.md)
-  - [Traffic Managment (UTM/ADS-B)](services/traffic_management.md)
+  - [Traffic Management (UTM/ADS-B)](services/traffic_management.md)
   - [Events Interface (WIP)](services/events.md)
   - [Standard Flight Modes](services/standard_modes.md)
   - [Time Synchronization](services/timesync.md)

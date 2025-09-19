@@ -45,7 +45,7 @@ This version of the gimbal protocol (v1) has a number of known issues:
 - Unclear “stabilize” flags in `DO_MOUNT_CONFIGURE`.
 - Confusing and unimplemented “absolute” flags in `DO_MOUNT_CONFIGURE`.
 - Unclear when to use `DO_MOUNT_CONTROL` or `DO_MOUNT_CONFIGURE`.
-- Too many overloaded params in DO_MOUNT_CONTROL depending on GPS or targetting.
+- Too many overloaded params in DO_MOUNT_CONTROL depending on GPS or targeting.
 - Unusual param number for `DO_MOUNT_CONTROL`.
 - The GPS mode in `DO_MOUNT_CONTROL` conflicts with `DO_SET_ROI_*` commands.
 - MOUNT naming makes discovery hard.

@@ -57,7 +57,7 @@ Channels can be mapped to firmware parameters using [`PARAM_MAP_RC`](../messages
 
 It's worth noting that the generality of RC channels control is a double-edged sword.
 It is incredibly versatile, and can be used to provide support for several arbitrary control axes, but the user-defined in-vehicle nature of the mapped parameters means additional setup is frequently required for compatibility with GCSs, and there are no guarantees that multiple vehicles running the same firmware will have the same channel-parameter mapping.
-This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targetted MAVLink commands where possible.
+This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targeted MAVLink commands where possible.
 
 ## Implementations
 
@@ -93,4 +93,4 @@ ArduPilot Implementations:
 
 ## Future Extensions
 
-Future extensions are likely to be handled with additional targetted [MAVLink commands](./command.md) rather than mapping functionality in the flight controller (i.e. handling more complex inputs in the GCS to reduce vehicle firmware complexity).
+Future extensions are likely to be handled with additional targeted [MAVLink commands](./command.md) rather than mapping functionality in the flight controller (i.e. handling more complex inputs in the GCS to reduce vehicle firmware complexity).

@@ -258,7 +258,7 @@ This example also tells the GCS not to display this parameter to the user (`cont
 
 #### Param Ranges
 
-It is also possible to define param ranges without individual options, but by specifiying the minimum, maximum, and optionally a step size:
+It is also possible to define param ranges without individual options, but by specifying the minimum, maximum, and optionally a step size:
 
 ```xml
 <parameter name="CAM_APERTURE" type="float" default="2.8" min="2.8" max="14.0" step="0.1">
