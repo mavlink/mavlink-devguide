@@ -44,7 +44,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 72      | 247      |
+| [Messages](#messages)      | 73      | 247      |
 | [Enums](#enumerated-types) | 46      | 165      |
 | [Commands](#mav_commands)  | 198     | 0        |
 
@@ -1010,6 +1010,16 @@ ESC Telemetry Data for ESCs 29 to 32, matching data sent by BLHeli ESCs.
 | rpm          | `uint16_t[4]` | rpm   | RPM (eRPM).                                           |
 | count        | `uint16_t[4]` |       | count of telemetry packets received (wraps at 65535). |
 
+### NAMED_VALUE_STRING (11060) {#NAMED_VALUE_STRING}
+
+Send a key-value pair as string. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.
+
+| Field Name                                             | Type       | Units | Description                                                                                                                    |
+| ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------ |
+| time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                         |
+| name                                                   | `char[10]` |       | Name of the debug variable<br>Messages with same value are from the same source (instance). |
+| value                                                  | `char[64]` |       | Value of the debug variable                                                                                                    |
+
 ## Enumerated Types
 
 ### ACCELCAL_VEHICLE_POS {#ACCELCAL_VEHICLE_POS}
@@ -1484,34 +1494,35 @@ A mapping of plane flight modes for custom_mode field of heartbeat.
 
 A mapping of copter flight modes for custom_mode field of heartbeat.
 
-| Value                                   | Name                                                                                                                 | Description  |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------ |
-| <a id='COPTER_MODE_STABILIZE'></a>0     | [COPTER_MODE_STABILIZE](#COPTER_MODE_STABILIZE)                            | STABILIZE    |
-| <a id='COPTER_MODE_ACRO'></a>1          | [COPTER_MODE_ACRO](#COPTER_MODE_ACRO)                                      | ACRO         |
-| <a id='COPTER_MODE_ALT_HOLD'></a>2      | [COPTER_MODE_ALT_HOLD](#COPTER_MODE_ALT_HOLD)         | ALT HOLD     |
-| <a id='COPTER_MODE_AUTO'></a>3          | [COPTER_MODE_AUTO](#COPTER_MODE_AUTO)                                      | AUTO         |
-| <a id='COPTER_MODE_GUIDED'></a>4        | [COPTER_MODE_GUIDED](#COPTER_MODE_GUIDED)                                  | GUIDED       |
-| <a id='COPTER_MODE_LOITER'></a>5        | [COPTER_MODE_LOITER](#COPTER_MODE_LOITER)                                  | LOITER       |
-| <a id='COPTER_MODE_RTL'></a>6           | [COPTER_MODE_RTL](#COPTER_MODE_RTL)                                        | RTL          |
-| <a id='COPTER_MODE_CIRCLE'></a>7        | [COPTER_MODE_CIRCLE](#COPTER_MODE_CIRCLE)                                  | CIRCLE       |
-| <a id='COPTER_MODE_LAND'></a>9          | [COPTER_MODE_LAND](#COPTER_MODE_LAND)                                      | LAND         |
-| <a id='COPTER_MODE_DRIFT'></a>11        | [COPTER_MODE_DRIFT](#COPTER_MODE_DRIFT)                                    | DRIFT        |
-| <a id='COPTER_MODE_SPORT'></a>13        | [COPTER_MODE_SPORT](#COPTER_MODE_SPORT)                                    | SPORT        |
-| <a id='COPTER_MODE_FLIP'></a>14         | [COPTER_MODE_FLIP](#COPTER_MODE_FLIP)                                      | FLIP         |
-| <a id='COPTER_MODE_AUTOTUNE'></a>15     | [COPTER_MODE_AUTOTUNE](#COPTER_MODE_AUTOTUNE)                              | AUTOTUNE     |
-| <a id='COPTER_MODE_POSHOLD'></a>16      | [COPTER_MODE_POSHOLD](#COPTER_MODE_POSHOLD)                                | POSHOLD      |
-| <a id='COPTER_MODE_BRAKE'></a>17        | [COPTER_MODE_BRAKE](#COPTER_MODE_BRAKE)                                    | BRAKE        |
-| <a id='COPTER_MODE_THROW'></a>18        | [COPTER_MODE_THROW](#COPTER_MODE_THROW)                                    | THROW        |
-| <a id='COPTER_MODE_AVOID_ADSB'></a>19   | [COPTER_MODE_AVOID_ADSB](#COPTER_MODE_AVOID_ADSB)     | AVOID ADSB   |
-| <a id='COPTER_MODE_GUIDED_NOGPS'></a>20 | [COPTER_MODE_GUIDED_NOGPS](#COPTER_MODE_GUIDED_NOGPS) | GUIDED NOGPS |
-| <a id='COPTER_MODE_SMART_RTL'></a>21    | [COPTER_MODE_SMART_RTL](#COPTER_MODE_SMART_RTL)       | SMARTRTL     |
-| <a id='COPTER_MODE_FLOWHOLD'></a>22     | [COPTER_MODE_FLOWHOLD](#COPTER_MODE_FLOWHOLD)                              | FLOWHOLD     |
-| <a id='COPTER_MODE_FOLLOW'></a>23       | [COPTER_MODE_FOLLOW](#COPTER_MODE_FOLLOW)                                  | FOLLOW       |
-| <a id='COPTER_MODE_ZIGZAG'></a>24       | [COPTER_MODE_ZIGZAG](#COPTER_MODE_ZIGZAG)                                  | ZIGZAG       |
-| <a id='COPTER_MODE_SYSTEMID'></a>25     | [COPTER_MODE_SYSTEMID](#COPTER_MODE_SYSTEMID)                              | SYSTEMID     |
-| <a id='COPTER_MODE_AUTOROTATE'></a>26   | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE)                          | AUTOROTATE   |
-| <a id='COPTER_MODE_AUTO_RTL'></a>27     | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL)         | AUTO RTL     |
-| <a id='COPTER_MODE_TURTLE'></a>28       | [COPTER_MODE_TURTLE](#COPTER_MODE_TURTLE)                                  | TURTLE       |
+| Value                                   | Name                                                                                                                 | Description                                  |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| <a id='COPTER_MODE_STABILIZE'></a>0     | [COPTER_MODE_STABILIZE](#COPTER_MODE_STABILIZE)                            | STABILIZE                                    |
+| <a id='COPTER_MODE_ACRO'></a>1          | [COPTER_MODE_ACRO](#COPTER_MODE_ACRO)                                      | ACRO                                         |
+| <a id='COPTER_MODE_ALT_HOLD'></a>2      | [COPTER_MODE_ALT_HOLD](#COPTER_MODE_ALT_HOLD)         | ALT HOLD                                     |
+| <a id='COPTER_MODE_AUTO'></a>3          | [COPTER_MODE_AUTO](#COPTER_MODE_AUTO)                                      | AUTO                                         |
+| <a id='COPTER_MODE_GUIDED'></a>4        | [COPTER_MODE_GUIDED](#COPTER_MODE_GUIDED)                                  | GUIDED                                       |
+| <a id='COPTER_MODE_LOITER'></a>5        | [COPTER_MODE_LOITER](#COPTER_MODE_LOITER)                                  | LOITER                                       |
+| <a id='COPTER_MODE_RTL'></a>6           | [COPTER_MODE_RTL](#COPTER_MODE_RTL)                                        | RTL                                          |
+| <a id='COPTER_MODE_CIRCLE'></a>7        | [COPTER_MODE_CIRCLE](#COPTER_MODE_CIRCLE)                                  | CIRCLE                                       |
+| <a id='COPTER_MODE_LAND'></a>9          | [COPTER_MODE_LAND](#COPTER_MODE_LAND)                                      | LAND                                         |
+| <a id='COPTER_MODE_DRIFT'></a>11        | [COPTER_MODE_DRIFT](#COPTER_MODE_DRIFT)                                    | DRIFT                                        |
+| <a id='COPTER_MODE_SPORT'></a>13        | [COPTER_MODE_SPORT](#COPTER_MODE_SPORT)                                    | SPORT                                        |
+| <a id='COPTER_MODE_FLIP'></a>14         | [COPTER_MODE_FLIP](#COPTER_MODE_FLIP)                                      | FLIP                                         |
+| <a id='COPTER_MODE_AUTOTUNE'></a>15     | [COPTER_MODE_AUTOTUNE](#COPTER_MODE_AUTOTUNE)                              | AUTOTUNE                                     |
+| <a id='COPTER_MODE_POSHOLD'></a>16      | [COPTER_MODE_POSHOLD](#COPTER_MODE_POSHOLD)                                | POSHOLD                                      |
+| <a id='COPTER_MODE_BRAKE'></a>17        | [COPTER_MODE_BRAKE](#COPTER_MODE_BRAKE)                                    | BRAKE                                        |
+| <a id='COPTER_MODE_THROW'></a>18        | [COPTER_MODE_THROW](#COPTER_MODE_THROW)                                    | THROW                                        |
+| <a id='COPTER_MODE_AVOID_ADSB'></a>19   | [COPTER_MODE_AVOID_ADSB](#COPTER_MODE_AVOID_ADSB)     | AVOID ADSB                                   |
+| <a id='COPTER_MODE_GUIDED_NOGPS'></a>20 | [COPTER_MODE_GUIDED_NOGPS](#COPTER_MODE_GUIDED_NOGPS) | GUIDED NOGPS                                 |
+| <a id='COPTER_MODE_SMART_RTL'></a>21    | [COPTER_MODE_SMART_RTL](#COPTER_MODE_SMART_RTL)       | SMARTRTL                                     |
+| <a id='COPTER_MODE_FLOWHOLD'></a>22     | [COPTER_MODE_FLOWHOLD](#COPTER_MODE_FLOWHOLD)                              | FLOWHOLD                                     |
+| <a id='COPTER_MODE_FOLLOW'></a>23       | [COPTER_MODE_FOLLOW](#COPTER_MODE_FOLLOW)                                  | FOLLOW                                       |
+| <a id='COPTER_MODE_ZIGZAG'></a>24       | [COPTER_MODE_ZIGZAG](#COPTER_MODE_ZIGZAG)                                  | ZIGZAG                                       |
+| <a id='COPTER_MODE_SYSTEMID'></a>25     | [COPTER_MODE_SYSTEMID](#COPTER_MODE_SYSTEMID)                              | SYSTEMID                                     |
+| <a id='COPTER_MODE_AUTOROTATE'></a>26   | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE)                          | AUTOROTATE                                   |
+| <a id='COPTER_MODE_AUTO_RTL'></a>27     | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL)         | AUTO RTL                                     |
+| <a id='COPTER_MODE_TURTLE'></a>28       | [COPTER_MODE_TURTLE](#COPTER_MODE_TURTLE)                                  | TURTLE                                       |
+| <a id='COPTER_MODE_RATE_ACRO'></a>29    | [COPTER_MODE_RATE_ACRO](#COPTER_MODE_RATE_ACRO)       | [RATE_ACRO](#RATE_ACRO) |
 
 ### SUB_MODE {#SUB_MODE}
 
