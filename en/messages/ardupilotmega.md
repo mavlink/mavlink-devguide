@@ -43,7 +43,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 72 | 247
+[Messages](#messages) | 73 | 247
 [Enums](#enumerated-types) | 46 | 165
 [Commands](#mav_commands) | 198 | 0
 
@@ -1081,6 +1081,17 @@ rpm | `uint16_t[4]` | rpm | RPM (eRPM).
 count | `uint16_t[4]` | | count of telemetry packets received (wraps at 65535). 
 
 
+### NAMED_VALUE_STRING (11060) {#NAMED_VALUE_STRING}
+
+Send a key-value pair as string. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.
+
+Field Name | Type | Units | Description
+--- | --- | --- | ---
+time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
+name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+value | `char[64]` | | Value of the debug variable 
+
+
 ## Enumerated Types
 
 ### ACCELCAL_VEHICLE_POS {#ACCELCAL_VEHICLE_POS}
@@ -1583,6 +1594,7 @@ Value | Name | Description
 <a id='COPTER_MODE_AUTOROTATE'></a>26 | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE) | AUTOROTATE 
 <a id='COPTER_MODE_AUTO_RTL'></a>27 | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL) | AUTO RTL 
 <a id='COPTER_MODE_TURTLE'></a>28 | [COPTER_MODE_TURTLE](#COPTER_MODE_TURTLE) | TURTLE 
+<a id='COPTER_MODE_RATE_ACRO'></a>29 | [COPTER_MODE_RATE_ACRO](#COPTER_MODE_RATE_ACRO) | [RATE_ACRO](#RATE_ACRO) 
 
 ### SUB_MODE {#SUB_MODE}
 
