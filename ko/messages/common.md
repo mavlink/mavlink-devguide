@@ -5649,7 +5649,7 @@ Reason for an event error response.
 
 ### MAV_EVENT_CURRENT_SEQUENCE_FLAGS {#MAV_EVENT_CURRENT_SEQUENCE_FLAGS}
 
-Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
+(Bitmask) Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
 | Value                                                | Name                                                                                                                                                                                       | Description                                                                                                             |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
