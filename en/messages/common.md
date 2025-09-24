@@ -836,7 +836,9 @@ on_off | `uint8_t` | | 1 stream is enabled, 0 stream is stopped.
 
 ### MANUAL_CONTROL (69) {#MANUAL_CONTROL}
 
-This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask
+Manual (joystick) control message.
+
+This message represents movement axes and button using standard joystick axes nomenclature. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask. For more information see https://mavlink.io/en/manual_control.html
 
 Field Name | Type | Description
 --- | --- | ---
