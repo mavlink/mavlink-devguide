@@ -4657,6 +4657,7 @@ Value | Name | Description
 <a id='MAV_RESULT_COMMAND_LONG_ONLY'></a>7 | [MAV_RESULT_COMMAND_LONG_ONLY](#MAV_RESULT_COMMAND_LONG_ONLY) | Command is only accepted when sent as a [COMMAND_LONG](#COMMAND_LONG). 
 <a id='MAV_RESULT_COMMAND_INT_ONLY'></a>8 | [MAV_RESULT_COMMAND_INT_ONLY](#MAV_RESULT_COMMAND_INT_ONLY) | Command is only accepted when sent as a [COMMAND_INT](#COMMAND_INT). 
 <a id='MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME'></a>9 | [MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME](#MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME) | Command is invalid because a frame is required and the specified frame is not supported. 
+<a id='MAV_RESULT_NOT_IN_CONTROL'></a>10 | [MAV_RESULT_NOT_IN_CONTROL](#MAV_RESULT_NOT_IN_CONTROL) | Command has been rejected because source system is not in control of the target system/component.<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span> 
 
 ### MAV_MISSION_RESULT {#MAV_MISSION_RESULT}
 
