@@ -38,8 +38,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 225     | 4        |
-| [Enums](#enumerated-types) | 141     | 9        |
+| [Messages](#messages)      | 226     | 4        |
+| [Enums](#enumerated-types) | 142     | 9        |
 | [Commands](#mav_commands)  | 165     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -3132,6 +3132,20 @@ The global position resulting from GPS and sensor fusion.
 | flight_state | `uint8_t`     |       | [UTM_FLIGHT_STATE](#UTM_FLIGHT_STATE)                              | Flight state                                                                                          |
 | flags                             | `uint8_t`     |       | [UTM_DATA_AVAIL_FLAGS](#UTM_DATA_AVAIL_FLAGS) | Bitwise OR combination of the data available flags.                                   |
 
+### PARAM_ERROR (345) — [WIP] {#PARAM_ERROR}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Parameter set/get error. Returned from a MAVLink node in response to an error in the parameter protocol, for example failing to set a parameter because it does not exist.
+
+| Field Name                            | Type       | 值                                                                             | 描述                                                                                                                                                                                                                                                                                |
+| ------------------------------------- | ---------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target_system    | `uint8_t`  |                                                                               | System ID                                                                                                                                                                                                                                                                         |
+| target_component | `uint8_t`  |                                                                               | Component ID                                                                                                                                                                                                                                                                      |
+| param_id         | `char[16]` |                                                                               | Parameter id. Terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string |
+| param_index      | `int16_t`  |                                                                               | Parameter index. Will be -1 if the param ID field should be used as an identifier (else the param id will be ignored)                                                                                                                          |
+| error                                 | `uint8_t`  | [MAV_PARAM_ERROR](#MAV_PARAM_ERROR) | Error being returned to client.                                                                                                                                                                                                                                   |
+
 ### DEBUG_FLOAT_ARRAY (350) {#DEBUG_FLOAT_ARRAY}
 
 Large debug/prototyping array. The message uses the maximum available payload for data. The array_id and name fields are used to discriminate between messages in code and in user interfaces (respectively). Do not use in production code.
@@ -4365,6 +4379,21 @@ Specifies the datatype of a MAVLink parameter.
 | <a id='MAV_PARAM_TYPE_REAL32'></a>9  | [MAV_PARAM_TYPE_REAL32](#MAV_PARAM_TYPE_REAL32) | 32-bit floating-point   |
 | <a id='MAV_PARAM_TYPE_REAL64'></a>10 | [MAV_PARAM_TYPE_REAL64](#MAV_PARAM_TYPE_REAL64) | 64-bit floating-point   |
 
+### MAV_PARAM_ERROR — [WIP] {#MAV_PARAM_ERROR}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Parameter protocol error types (see [PARAM_ERROR](#PARAM_ERROR)).
+
+| 值                                                 | Name                                                                                                                                                                                                    | 描述                                                                                                                                                                |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='MAV_PARAM_ERROR_NO_ERROR'></a>0            | [MAV_PARAM_ERROR_NO_ERROR](#MAV_PARAM_ERROR_NO_ERROR)                                                               | No error occurred (not expected in [PARAM_ERROR](#PARAM_ERROR) but may be used in future implementations. |
+| <a id='MAV_PARAM_ERROR_DOES_NOT_EXIST'></a>1      | [MAV_PARAM_ERROR_DOES_NOT_EXIST](#MAV_PARAM_ERROR_DOES_NOT_EXIST)                              | Parameter does not exist                                                                                                                                          |
+| <a id='MAV_PARAM_ERROR_VALUE_OUT_OF_RANGE'></a>2  | [MAV_PARAM_ERROR_VALUE_OUT_OF_RANGE](#MAV_PARAM_ERROR_VALUE_OUT_OF_RANGE) | Parameter value does not fit within accepted range                                                                                                                |
+| <a id='MAV_PARAM_ERROR_PERMISSION_DENIED'></a>3   | [MAV_PARAM_ERROR_PERMISSION_DENIED](#MAV_PARAM_ERROR_PERMISSION_DENIED)                                             | Caller is not permitted to set the value of this parameter                                                                                                        |
+| <a id='MAV_PARAM_ERROR_COMPONENT_NOT_FOUND'></a>4 | [MAV_PARAM_ERROR_COMPONENT_NOT_FOUND](#MAV_PARAM_ERROR_COMPONENT_NOT_FOUND)                    | Unknown component specified                                                                                                                                       |
+| <a id='MAV_PARAM_ERROR_READ_ONLY'></a>5           | [MAV_PARAM_ERROR_READ_ONLY](#MAV_PARAM_ERROR_READ_ONLY)                                                             | Parameter is read-only                                                                                                                                            |
+
 ### MAV_PARAM_EXT_TYPE {#MAV_PARAM_EXT_TYPE}
 
 Specifies the datatype of a MAVLink extended parameter.
@@ -4399,6 +4428,7 @@ Result from a MAVLink command ([MAV_CMD](#mav_commands))
 | <a id='MAV_RESULT_COMMAND_LONG_ONLY'></a>7             | [MAV_RESULT_COMMAND_LONG_ONLY](#MAV_RESULT_COMMAND_LONG_ONLY)                                              | Command is only accepted when sent as a [COMMAND_LONG](#COMMAND_LONG).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | <a id='MAV_RESULT_COMMAND_INT_ONLY'></a>8              | [MAV_RESULT_COMMAND_INT_ONLY](#MAV_RESULT_COMMAND_INT_ONLY)                                                | Command is only accepted when sent as a [COMMAND_INT](#COMMAND_INT).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | <a id='MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME'></a>9 | [MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME](#MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME) | Command is invalid because a frame is required and the specified frame is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| <a id='MAV_RESULT_NOT_IN_CONTROL'></a>10               | [MAV_RESULT_NOT_IN_CONTROL](#MAV_RESULT_NOT_IN_CONTROL)                                                    | Command has been rejected because source system is not in control of the target system/component.<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ### MAV_MISSION_RESULT {#MAV_MISSION_RESULT}
 
