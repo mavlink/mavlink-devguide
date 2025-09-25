@@ -1,4 +1,4 @@
-# Traffic Managment and Avoidance (UTM/ADSB)
+# Traffic Management and Avoidance (UTM/ADSB)
 
 Air traffic management and avoidance systems enable vehicles to share their position and planned path or trajectory with other vehicles (and ground stations),
 allowing them to take appropriate action to avoid collisions.
@@ -19,7 +19,7 @@ There are two main traffic management systems supported by MAVLink:
 
 The two systems share significant overlap and have very similar messages.
 Both have a single message that encapsulates the vehicle position and trajectory: [UTM_GLOBAL_POSITION](#UTM_GLOBAL_POSITION) and [ADSB_VEHICLE](#ADSB_VEHICLE).
-A flight controller will typically recieve these messages from the appropriate transponder or service, and may also publish them to a transponder or service.
+A flight controller will typically receive these messages from the appropriate transponder or service, and may also publish them to a transponder or service.
 
 ::: info
 The [Open Drone ID](https://mavlink.io/en/services/opendroneid.html) service provides additional information about vehicle identity.

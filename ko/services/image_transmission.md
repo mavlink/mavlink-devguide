@@ -3,7 +3,7 @@
 :::warning
 The [Camera Protocol](../services/camera.md) and [MAVLink FTP](../services/ftp.md) are recommended for sending images, video and files.
 
-This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
+This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transferring small images over a low bandwidth channel from an optical flow sensor to a GCS).
 :::
 
 The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another.

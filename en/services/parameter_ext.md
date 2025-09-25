@@ -263,7 +263,7 @@ sequenceDiagram;
 The sequence of operations is:
 
 1. GCS (client) sends [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) specifying the param name to update and its new value (also target system/component and the param type).
-1. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) message).
+1. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) message).
 1. Drone (starts to) write parameter and responds by _broadcasting_ a `PARAM_EXT_ACK`.
    - If the write succeeded the `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_ACCEPTED` and the updated parameter value.
    - If the parameter was unknown or of an unsupported type `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_VALUE_UNSUPPORTED` and the current parameter value will be XXXXX.
