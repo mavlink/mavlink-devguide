@@ -4622,6 +4622,9 @@ Value | Name | Description
 <a id='MAV_PARAM_ERROR_PERMISSION_DENIED'></a>3 | [MAV_PARAM_ERROR_PERMISSION_DENIED](#MAV_PARAM_ERROR_PERMISSION_DENIED) | Caller is not permitted to set the value of this parameter 
 <a id='MAV_PARAM_ERROR_COMPONENT_NOT_FOUND'></a>4 | [MAV_PARAM_ERROR_COMPONENT_NOT_FOUND](#MAV_PARAM_ERROR_COMPONENT_NOT_FOUND) | Unknown component specified 
 <a id='MAV_PARAM_ERROR_READ_ONLY'></a>5 | [MAV_PARAM_ERROR_READ_ONLY](#MAV_PARAM_ERROR_READ_ONLY) | Parameter is read-only 
+<a id='MAV_PARAM_ERROR_TYPE_UNSUPPORTED'></a>6 | [MAV_PARAM_ERROR_TYPE_UNSUPPORTED](#MAV_PARAM_ERROR_TYPE_UNSUPPORTED) | Parameter data type ([MAV_PARAM_TYPE](#MAV_PARAM_TYPE)) is not supported by flight stack (at all) 
+<a id='MAV_PARAM_ERROR_TYPE_MISMATCH'></a>7 | [MAV_PARAM_ERROR_TYPE_MISMATCH](#MAV_PARAM_ERROR_TYPE_MISMATCH) | Parameter type does not match expected type 
+<a id='MAV_PARAM_ERROR_READ_FAIL'></a>8 | [MAV_PARAM_ERROR_READ_FAIL](#MAV_PARAM_ERROR_READ_FAIL) | Parameter exists but reading failed 
 
 ### MAV_PARAM_EXT_TYPE {#MAV_PARAM_EXT_TYPE}
 
