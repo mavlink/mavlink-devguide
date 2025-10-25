@@ -37,27 +37,13 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 13      | 230      |
-| [Enums](#enumerated-types) | 14      | 151      |
+| [Messages](#messages)      | 12      | 231      |
+| [Enums](#enumerated-types) | 13      | 152      |
 | [Commands](#mav_commands)  | 176     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
 ## Messages
-
-### AIRSPEED (295) — [WIP] {#AIRSPEED}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Airspeed information from a sensor.
-
-| Field Name                     | Type      | Units | Values                                                                                    | Description                                                                                                                    |
-| ------------------------------ | --------- | ----- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| id                             | `uint8_t` |       |                                                                                           | Sensor ID.<br>Messages with same value are from the same source (instance). |
-| airspeed                       | `float`   | m/s   |                                                                                           | Calibrated airspeed (CAS).                                                                  |
-| temperature                    | `int16_t` | cdegC |                                                                                           | Temperature. INT16_MAX for value unknown/not supplied.                    |
-| raw_press | `float`   | hPa   |                                                                                           | Raw differential pressure. NaN for value unknown/not supplied.                                 |
-| flags                          | `uint8_t` |       | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags.                                                                                         |
 
 ### GLOBAL_POSITION (296) — [WIP] {#GLOBAL_POSITION}
 
@@ -273,17 +259,6 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 | flags                                                      | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover is allowed, and whether this message instance defines the default controlling GCS for the whole system. |
 
 ## Enumerated Types
-
-### AIRSPEED_SENSOR_FLAGS — [WIP] {#AIRSPEED_SENSOR_FLAGS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-(Bitmask) Airspeed sensor flags
-
-| Value                                   | Name                                                                                              | Description                                                                                                                            |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='AIRSPEED_SENSOR_UNHEALTHY'></a>1 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy                                                                                                           |
-| <a id='AIRSPEED_SENSOR_USING'></a>2     | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING)         | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. |
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
 
