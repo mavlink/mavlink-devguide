@@ -37,8 +37,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 226 | 4
-[Enums](#enumerated-types) | 142 | 9
+[Messages](#messages) | 227 | 4
+[Enums](#enumerated-types) | 143 | 9
 [Commands](#mav_commands) | 165 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -3007,6 +3007,19 @@ time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system bo
 rpm | `int32_t[4]` | rpm | Reported motor RPM from each ESC (negative for reverse rotation). 
 voltage | `float[4]` | V | Voltage measured from each ESC. 
 current | `float[4]` | A | Current measured from each ESC. 
+
+
+### AIRSPEED (295) {#AIRSPEED}
+
+Airspeed information from a sensor.
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+id | `uint8_t` | | | Sensor ID.<br>Messages with same value are from the same source (instance). 
+airspeed | `float` | m/s | | Calibrated airspeed (CAS). 
+temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature. 
+raw_press | `float` | hPa | invalid:NaN | Raw differential pressure. 
+flags | `uint8_t` | | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags. 
 
 
 ### WIFI_CONFIG_AP (299) {#WIFI_CONFIG_AP}
@@ -6103,6 +6116,15 @@ Value | Name | Description
 <a id='COMPUTER_STATUS_FLAGS_CPU_THROTTLE'></a>2 | [COMPUTER_STATUS_FLAGS_CPU_THROTTLE](#COMPUTER_STATUS_FLAGS_CPU_THROTTLE) | Indicates if CPU throttling is active. 
 <a id='COMPUTER_STATUS_FLAGS_THERMAL_THROTTLE'></a>4 | [COMPUTER_STATUS_FLAGS_THERMAL_THROTTLE](#COMPUTER_STATUS_FLAGS_THERMAL_THROTTLE) | Indicates if thermal throttling is active. 
 <a id='COMPUTER_STATUS_FLAGS_DISK_FULL'></a>8 | [COMPUTER_STATUS_FLAGS_DISK_FULL](#COMPUTER_STATUS_FLAGS_DISK_FULL) | Indicates if main disk is full. 
+
+### AIRSPEED_SENSOR_FLAGS {#AIRSPEED_SENSOR_FLAGS}
+
+(Bitmask) Airspeed sensor flags
+
+Value | Name | Description
+--- | --- | ---
+<a id='AIRSPEED_SENSOR_UNHEALTHY'></a>1 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy 
+<a id='AIRSPEED_SENSOR_USING'></a>2 | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING) | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. 
 
 ### MAV_BOOL — \[from: [standard](../messages/standard.md#MAV_BOOL)\] {#MAV_BOOL}
 
