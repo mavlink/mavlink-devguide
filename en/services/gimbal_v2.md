@@ -178,7 +178,7 @@ It is possible for multiple components to want to control a gimbal at the same t
 
 In order to start controlling a gimbal, a component first needs to send the [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) command.
 This allows setting which MAVLink component (set by system ID and component ID) is in primary control and which one is in secondary control.
-The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicity set to "in control".
+The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicitly set to "in control".
 This should prevent conflicts between various inputs as long as all components are fair/co-operative when using the configure command.
 
 To be co-operative entails the following rules:
@@ -350,7 +350,7 @@ This is the set of messages/enums for communication between gimbal manager and g
 
 ## Sequences
 
-Depicted below are message sequences for some common scenarious.
+Depicted below are message sequences for some common scenarios.
 
 ### Discovery
 

@@ -39,7 +39,7 @@ MAVLink has a number of commands for setting actuator outputs. These can be used
 
 ## Payload Deployment Commands
 
-These commands can be used to deploy a payload at a specfic location, controlling the approach and land behaviour.
+These commands can be used to deploy a payload at a specific location, controlling the approach and land behaviour.
 
 | Message                                                                                                   | Description                                           |
 | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |

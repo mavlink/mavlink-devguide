@@ -99,7 +99,7 @@ The following messages and enums are used by the service.
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_MISSION_TYPE"></a>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE)       | [Mission type](#mission_types) for message (mission, geofence, rallypoints).                                                                              |
 | <a id="MAV_MISSION_RESULT"></a>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK). |
-| <a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME)                            | Co-ordinate frame for position/velocity/acceleration data in the message.                                                                                 |
+| <a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME)                            | Coordinate frame for position/velocity/acceleration data in the message.                                                                                 |
 | <a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands)                             | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).                                                  |
 
 ## Deprecated Types: MISSION_ITEM {#command_message_type}
@@ -107,7 +107,7 @@ The following messages and enums are used by the service.
 The legacy version of the protocol also supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
 
 Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and should no longer be sent.
-If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
+If `MISSION_REQUEST` is received the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
 
 ## Frames & Positional Information
 
@@ -120,7 +120,7 @@ The table below shows that the positional parameters can be local (x, y, z), glo
 | param6 | `int32_t` | y     | Longitude                                |
 | param7 | `float`   | z     | Altitude (global - relative or absolute) |
 
-The co-ordinate frame of positional parameters is defined in the `MISSION_ITEM_INT.frame` field using a [MAV_FRAME](#MAV_FRAME) value.
+The coordinate frame of positional parameters is defined in the `MISSION_ITEM_INT.frame` field using a [MAV_FRAME](#MAV_FRAME) value.
 
 The global frames are prefixed with `MAV_FRAME_GLOBAL_*`.
 Mission items should use frame variants that have the suffix `_INT`: e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT_INT`, `MAV_FRAME_GLOBAL_INT`, `MAV_FRAME_GLOBAL_TERRAIN_ALT_INT`.
@@ -539,7 +539,7 @@ The following behaviour is not defined by the specification (but is still of int
 
 - ArduPilot performs some validation of fields when mission items are submitted.
   The validation code is common to all vehicles; mission items that are not understood by the vehicle type are accepted on upload but skipped during mission execution.
-- ArduPilot preforms some vehicle-specific validation at mission runtime (e.g. of jump targets).
+- ArduPilot performs some vehicle-specific validation at mission runtime (e.g. of jump targets).
 - A new mission can be uploaded while a mission is being executed.
   In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
 - ArduPilot missions are not stored in an SD card and therefore have a vehicle/board-specific maximum mission size (as a benefit, on ArduPilot, missions can survive SD card failure in flight).

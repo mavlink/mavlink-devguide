@@ -49,7 +49,7 @@ Use the [commands for known payload types](#payload-specific-commands) where pos
 
 ## Payload Deployment Commands
 
-These commands can be used to deploy a payload at a specfic location, controlling the approach and land behaviour.
+These commands can be used to deploy a payload at a specific location, controlling the approach and land behaviour.
 
 | Message                                                                                                            | Description                                           |
 | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |

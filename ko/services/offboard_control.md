@@ -5,7 +5,7 @@ The offboard control interface allows an external controller to send low-level a
 This is commonly used to provide external control of a real-time flight stack from a companion/mission computer, for example, in order to implement features such as obstacle avoidance or collision prevention.
 
 Generally setpoints are only obeyed in a specific flight-stack mode.
-The flight stack requires the setpoints to be recieved for some time before it will allow the mode to be enabled, and will switch out of the mode if setpoints are no longer received.
+The flight stack requires the setpoints to be received for some time before it will allow the mode to be enabled, and will switch out of the mode if setpoints are no longer received.
 
 The particular types of setpoints that are supported, if any, depend on the vehicle type and flight stack.
 
@@ -13,7 +13,7 @@ The particular types of setpoints that are supported, if any, depend on the vehi
 
 | Message                                                                                                                                                                                                               | Description                                                                                                                          |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id="SET_POSITION_TARGET_LOCAL_NED"></a>[SET_POSITION_TARGET_LOCAL_NED](../messages/common.md#SET_POSITION_TARGET_LOCAL_NED)    | Sets a desired vehicle position, velocity, and/or accelaration setpoint in a local north-east-down coordinate frame. |
+| <a id="SET_POSITION_TARGET_LOCAL_NED"></a>[SET_POSITION_TARGET_LOCAL_NED](../messages/common.md#SET_POSITION_TARGET_LOCAL_NED)    | Sets a desired vehicle position, velocity, and/or acceleration setpoint in a local north-east-down coordinate frame. |
 | <a id="SET_POSITION_TARGET_GLOBAL_INT"></a>[SET_POSITION_TARGET_GLOBAL_INT](../messages/common.md#SET_POSITION_TARGET_GLOBAL_INT) | Sets a desired vehicle position, velocity, and/or acceleration in a global coordinate system (WGS84)              |
 | <a id="SET_ATTITUDE_TARGET"></a>[SET_ATTITUDE_TARGET](../messages/common.md#SET_ATTITUDE_TARGET)                                                                            | Sets a desired vehicle attitude.                                                                                     |
 | <a id="POSITION_TARGET_LOCAL_NED"></a>[POSITION_TARGET_LOCAL_NED](../messages/common.md#POSITION_TARGET_LOCAL_NED)                                     | Publishes current local NED target (set by `SET_POSITION_TARGET_LOCAL_NED`).                      |
