@@ -35,7 +35,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 2       | 2        |
+| [Messages](#messages)      | 2       | 1        |
 | [Enums](#enumerated-types) | 3       | 6        |
 | Commands                   | 0       | 0        |
 
