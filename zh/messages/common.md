@@ -38,7 +38,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 227     | 4        |
+| [Messages](#messages)      | 228     | 3        |
 | [Enums](#enumerated-types) | 143     | 9        |
 | [Commands](#mav_commands)  | 165     | 0        |
 
@@ -2861,9 +2861,7 @@ Configure WiFi AP SSID, password, and mode. This message is re-emitted as an ack
 | <span class='ext'>mode</span> <a href='#mav2_extension_field'>++</a>     | `int8_t`    | [WIFI_CONFIG_AP_MODE](#WIFI_CONFIG_AP_MODE)         | WiFi Mode.                                                                                                                                                            |
 | <span class='ext'>response</span> <a href='#mav2_extension_field'>++</a> | `int8_t`    | [WIFI_CONFIG_AP_RESPONSE](#WIFI_CONFIG_AP_RESPONSE) | Message acceptance response (sent back to GS).                                                                                                     |
 
-### PROTOCOL_VERSION (300) — \[from: [minimal](../messages/minimal.md#PROTOCOL_VERSION)\] [WIP] {#PROTOCOL_VERSION}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### PROTOCOL_VERSION (300) {#PROTOCOL_VERSION}
 
 Version and capability of protocol version. This message can be requested with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for [PROTOCOL_VERSION](#PROTOCOL_VERSION) to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.
 
