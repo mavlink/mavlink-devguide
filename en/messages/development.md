@@ -38,7 +38,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 12 | 231
 [Enums](#enumerated-types) | 13 | 152
-[Commands](#mav_commands) | 176 | 0
+[Commands](#mav_commands) | 177 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -481,6 +481,23 @@ Param (Label) | Description | Units
 5 (Latitude/X) | Center point latitude/X coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle position, or current center if already loitering. |   
 6 (Longitude/Y) | Center point longitude/Y coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle position, or current center if already loitering. |   
 7 (Altitude/Z) | Center point altitude MSL/Z coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle altitude. |   
+
+
+### MAV_CMD_NAV_ARC_WAYPOINT (36) — [WIP] {#MAV_CMD_NAV_ARC_WAYPOINT}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Circular arc path waypoint.
+
+This defines the end/exit point and angle (param1) of an arc path from the previous waypoint. A position is required before this command to define the start of the arc (e.g. current position, a [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT), or a [MAV_CMD_NAV_ARC_WAYPOINT](#MAV_CMD_NAV_ARC_WAYPOINT)).
+The resulting path is a circular arc in the NE frame, with the difference in height being defined by the difference in waypoint altitudes.
+
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Arc Angle) | The angle in degrees from the starting position to the exit position of the arc in the NE frame. Positive values are CW arcs and negative values are CCW arcs. | min: -359 max: 359 inc: 1 | deg 
+5 (Latitude) | Latitude |   |   
+6 (Longitude) | Longitude |   |   
+7 (Altitude) | Altitude |   | m 
 
 
 ### MAV_CMD_DO_UPGRADE (247) — [WIP] {#MAV_CMD_DO_UPGRADE}
