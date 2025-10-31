@@ -19,9 +19,7 @@ Legacy code may be present in generator and test code.
 库的 MAVLink 支持可以通过多种方式来确定:
 
 - [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
-- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
-- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
-  This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+
 - 主要版本可以从数据包起始标记字节中确定:
 
   - MAVLink 1: `0xFE`
@@ -32,6 +30,12 @@ Legacy code may be present in generator and test code.
   so no messages will even be detected (see [Serialization](../guide/serialization.md)).
   :::
 
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
+  This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+
+- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
+  Note that the message allows for additional version information, but is not supported on all flight stacks.
+
 :::tip
 While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 :::
@@ -39,16 +43,28 @@ While messages do not contain version information, an extra CRC is used to ensur
 ## Version Handshaking {#version_handshaking}
 
 Support for _MAVLink 2_ is indicated in the [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) message by the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag.
+It can also be inferred from the packet start marker byte.
 
 如果自动驾驶仪和 gcs 之间的通信链接是完全透明的, 这就足够了。
-但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。
-In order to also test the link, the _MAVLink 2_ handshake protocol sends a _MAVLink 2_ frame to test the complete communication chain.
+However, some communication links are not completely transparent as they include:
 
-To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) and param1=300 (PROTOCOL_VERSION)
+- Routing, which can can change or reserialize MAVLink packets (for example, there might be an intermediate router that converts between versions).
+- Wireless links that rely on fixed length packetization may distort or truncate variable-length MAVLink 2 frames.
 
+:::info
+Some flight stacks assume MAVLink 2 support based on the protocol capability or packet start marker.
+This is reasonable because the majority of systems and communication links now reliably support MAVLink 2.
+:::
+
+To be certain that a link supports _MAVLink 2_ transparently, a GCS or other component can use the _MAVLink 2_ handshake protocol to test the link.
+This is done by sending the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command with `param1=300` ([PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION)).
 If the system supports _MAVLink 2_ and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**.
 If it does not support _MAVLink 2_ it should `NACK` the command.
 如果命令接口未得到适当执行，GCS应返回超时。
+
+:::tip
+If the target system does not support `PROTOCOL_VERSION` you can request any other message that it is able to emit.
+:::
 
 下表显示完整顺序。
 
@@ -67,7 +83,8 @@ sequenceDiagram;
 
 ### 半透明的传输
 
-Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable.
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream.
+Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable.
 However, an additional heartbeat could be an issue for deployed systems.
 Therefore these radios can alternatively confirm their _MAVLink 2_ compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
 

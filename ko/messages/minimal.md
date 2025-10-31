@@ -38,7 +38,7 @@ None
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 2       | 0        |
+| [Messages](#messages)      | 1       | 0        |
 | [Enums](#enumerated-types) | 6       | 0        |
 | Commands                   | 0       | 0        |
 
@@ -58,20 +58,6 @@ The heartbeat message shows that a system or component is present and responding
 | custom_mode     | `uint32_t`                |                                                                           | A bitfield for use for autopilot-specific flags                                                                                                                                                                                                                                                                                                                                                                                               |
 | system_status   | `uint8_t`                 | [MAV_STATE](#MAV_STATE)                              | System status flag.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | mavlink_version | `uint8_t_mavlink_version` |                                                                           | MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version                                                                                                                                                                                                                                              |
-
-### PROTOCOL_VERSION (300) — [WIP] {#PROTOCOL_VERSION}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Version and capability of protocol version. This message can be requested with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for [PROTOCOL_VERSION](#PROTOCOL_VERSION) to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.
-
-| Field Name                                                     | Type         | Description                                                                                                                                    |
-| -------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                                        | `uint16_t`   | Currently active MAVLink version number \* 100: v1.0 is 100, v2.0 is 200, etc. |
-| min_version                               | `uint16_t`   | Minimum MAVLink version supported                                                                                                              |
-| max_version                               | `uint16_t`   | Maximum MAVLink version supported (set to the same value as version by default)                                             |
-| spec_version_hash    | `uint8_t[8]` | The first 8 bytes (not characters printed in hex!) of the git hash.                                         |
-| library_version_hash | `uint8_t[8]` | The first 8 bytes (not characters printed in hex!) of the git hash.                                         |
 
 ## Enumerated Types
 

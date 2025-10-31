@@ -19,9 +19,7 @@ Legacy code may be present in generator and test code.
 A library's MAVLink support can be determined in a number of ways:
 
 - [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
-- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
-- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
-  This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+
 - The major version can be determined from the packet start marker byte:
 
   - MAVLink 1: `0xFE`
@@ -32,6 +30,12 @@ A library's MAVLink support can be determined in a number of ways:
   so no messages will even be detected (see [Serialization](../guide/serialization.md)).
   :::
 
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
+  This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+
+- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
+  Note that the message allows for additional version information, but is not supported on all flight stacks.
+
 :::tip
 While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 :::
@@ -39,16 +43,28 @@ While messages do not contain version information, an extra CRC is used to ensur
 ## Version Handshaking {#version_handshaking}
 
 Support for _MAVLink 2_ is indicated in the [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) message by the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag.
+It can also be inferred from the packet start marker byte.
 
 This is sufficient if the communication link between autopilot and GCS is completely transparent.
-However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization.
-In order to also test the link, the _MAVLink 2_ handshake protocol sends a _MAVLink 2_ frame to test the complete communication chain.
+However, some communication links are not completely transparent as they include:
 
-To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) and param1=300 (PROTOCOL_VERSION)
+- Routing, which can can change or reserialize MAVLink packets (for example, there might be an intermediate router that converts between versions).
+- Wireless links that rely on fixed length packetization may distort or truncate variable-length MAVLink 2 frames.
 
+:::info
+Some flight stacks assume MAVLink 2 support based on the protocol capability or packet start marker.
+This is reasonable because the majority of systems and communication links now reliably support MAVLink 2.
+:::
+
+To be certain that a link supports _MAVLink 2_ transparently, a GCS or other component can use the _MAVLink 2_ handshake protocol to test the link.
+This is done by sending the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command with `param1=300` ([PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION)).
 If the system supports _MAVLink 2_ and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**.
 If it does not support _MAVLink 2_ it should `NACK` the command.
 The GCS should fall back to a timeout in case the command interface is not implemented properly.
+
+:::tip
+If the target system does not support `PROTOCOL_VERSION` you can request any other message that it is able to emit.
+:::
 
 The diagram below illustrates the complete sequence.
 
@@ -67,7 +83,8 @@ sequenceDiagram;
 
 ### Semi-Transparent Legacy Radios
 
-Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable.
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream.
+Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable.
 However, an additional heartbeat could be an issue for deployed systems.
 Therefore these radios can alternatively confirm their _MAVLink 2_ compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
 
