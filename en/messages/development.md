@@ -36,7 +36,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 12 | 231
+[Messages](#messages) | 11 | 232
 [Enums](#enumerated-types) | 13 | 152
 [Commands](#mav_commands) | 177 | 0
 
@@ -93,25 +93,6 @@ Field Name | Type | Units | Description
 horizontal_speed_limit | `float` | m/s | Limit for horizontal movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied 
 vertical_speed_limit | `float` | m/s | Limit for vertical movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied 
 yaw_rate_limit | `float` | rad/s | Limit for vehicle turn rate around its yaw axis. NaN: No limit applied 
-
-
-### FIGURE_EIGHT_EXECUTION_STATUS (361) — [WIP] {#FIGURE_EIGHT_EXECUTION_STATUS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Vehicle status report that is sent out while figure eight execution is in progress (see [MAV_CMD_DO_FIGURE_EIGHT](#MAV_CMD_DO_FIGURE_EIGHT)).
-This may typically send at low rates: of the order of 2Hz.
-
-Field Name | Type | Units | Values | Description
---- | --- | --- | --- | ---
-time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-major_radius | `float` | m | | Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise. 
-minor_radius | `float` | m | | Minor axis radius of the figure eight. Defines the radius of two circles that make up the figure. 
-orientation | `float` | rad | | Orientation of the figure eight major axis with respect to true north in [-pi,pi). 
-frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | The coordinate system of the fields: x, y, z. 
-x | `int32_t` | | | X coordinate of center point. Coordinate system depends on frame field. 
-y | `int32_t` | | | Y coordinate of center point. Coordinate system depends on frame field. 
-z | `float` | m | | Altitude of center point. Coordinate system depends on frame field. 
 
 
 ### BATTERY_STATUS_V2 (369) — [WIP] {#BATTERY_STATUS_V2}
@@ -460,28 +441,6 @@ Value | Name | Description
 <a id='GLOBAL_POSITION_PRIMARY'></a>2 | [GLOBAL_POSITION_PRIMARY](#GLOBAL_POSITION_PRIMARY) | True if the data originates from or is consumed by the primary estimator. 
 
 ## Commands (MAV_CMD) {#mav_commands}
-
-### MAV_CMD_DO_FIGURE_EIGHT (35) — [WIP] {#MAV_CMD_DO_FIGURE_EIGHT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Fly a figure eight path as defined by the parameters.
-
-Set parameters to NaN/INT32_MAX (as appropriate) to use system-default values.
-The command is intended for fixed wing vehicles (and VTOL hybrids flying in fixed-wing mode), allowing POI tracking for gimbals that don't support infinite rotation.
-This command only defines the flight path. Speed should be set independently (use e.g. [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)).
-Yaw and other degrees of freedom are not specified, and will be flight-stack specific (on vehicles where they can be controlled independent of the heading).
-
-Param (Label) | Description | Units
---- | --- | ---
-1 (Major Radius) | Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.<br>NaN: The radius will be set to 2.5 times the minor radius and direction is clockwise.<br>Must be greater or equal to two times the minor radius for feasible values. | m 
-2 (Minor Radius) | Minor axis radius of the figure eight. Defines the radius of the two circles that make up the figure. Negative value has no effect.<br>NaN: The radius will be set to the default loiter radius. | m 
-3 | |   
-4 (Orientation) | Orientation of the figure eight major axis with respect to true north (range: [-pi,pi]). NaN: use default orientation aligned to true north. | rad 
-5 (Latitude/X) | Center point latitude/X coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle position, or current center if already loitering. |   
-6 (Longitude/Y) | Center point longitude/Y coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle position, or current center if already loitering. |   
-7 (Altitude/Z) | Center point altitude MSL/Z coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle altitude. |   
-
 
 ### MAV_CMD_NAV_ARC_WAYPOINT (36) — [WIP] {#MAV_CMD_NAV_ARC_WAYPOINT}
 
