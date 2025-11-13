@@ -214,16 +214,16 @@ sequenceDiagram;
 In more detail, the sequence of operations is:
 
 1. GCS sends [MISSION_COUNT](../messages/common.md#MISSION_COUNT) including the number of mission items to be uploaded (`count`).
-  - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`).
+   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`).
 2. Drone receives message and responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==0`).
-  - A [timeout](#timeout) must be started for the Drone to wait on the `MISSION_ITEM_INT` response from GCS.
+   - A [timeout](#timeout) must be started for the Drone to wait on the `MISSION_ITEM_INT` response from GCS.
 3. GCS receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
 4. Drone and GCS repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until all items are uploaded (`seq==count-1`).
 5. After receiving the last mission item the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission upload completion/success.
-  - The drone should set the new mission to be the current mission, discarding the original data.
-  - The drone considers the upload complete.
+   - The drone should set the new mission to be the current mission, discarding the original data.
+   - The drone considers the upload complete.
 6. GCS receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED` to indicate the operation is complete.
-  - The GCS should store `MISSION_ACK.opaque_id` (the current id of the uploaded plan) and can use it later to [check for plan changes](#detecting-missionplan-changes).
+   - The GCS should store `MISSION_ACK.opaque_id` (the current id of the uploaded plan) and can use it later to [check for plan changes](#detecting-missionplan-changes).
 
 Notes:
 
@@ -301,9 +301,9 @@ In more detail, the sequence of operations is:
 
 1. GCS/App sends [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) (or [MISSION_SET_CURRENT](#MISSION_SET_CURRENT)), specifying the new sequence number (`seq`).
 2. Drone receives message and attempts to update the current mission sequence number.
-  - On success, the Drone must _broadcast_ a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`).
-  - On failure, the Drone must _broadcast_ a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
-    This may be displayed in the UI of receiving systems.
+   - On success, the Drone must _broadcast_ a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`).
+   - On failure, the Drone must _broadcast_ a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
+     This may be displayed in the UI of receiving systems.
 
 Notes:
 
@@ -338,11 +338,11 @@ sequenceDiagram;
 In more detail, the sequence of operations is:
 
 1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
-  - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
+   - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
 2. Drone receives the message, and clears the mission from storage.
 3. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED)[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT).
 4. GCS receives `MISSION_ACK` and clears its own stored information about the mission.
-  The operation is now complete.
+   The operation is now complete.
 
 Note:
 
