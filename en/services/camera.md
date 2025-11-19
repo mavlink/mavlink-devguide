@@ -28,6 +28,7 @@ These cameras have inbuilt support for MAVLink (but not necessarily camera proto
 
 - [PhaseOne Cameras](https://geospatial.phaseone.com/) ([source](https://geospatial.phaseone.com/resources-support/developer/mavlink/)).
 - [Workswell cameras](https://www.drone-thermal-camera.com/): WIRIS Pro, WIRIS Pro SC, WIRIS Security, WIRIS Agro, GIS-320 ([source](https://www.drone-thermal-camera.com/mavlink-interface-for-uav-cameras/)).
+- [AirPixel TAG-E](https://airpixel.cz/tag-e/): USB camera controller for Sony ILX-LR1 via Mavlink Camera control protocol v2
 
 ### Camera Addressing
 
