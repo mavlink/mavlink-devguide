@@ -21,10 +21,12 @@ The key/value pair has a number of important properties:
 | <a id="PARAM_REQUEST_READ"></a>[PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) | Request a single parameter. The recipient broadcasts the specified parameter value using [PARAM_VALUE](#PARAM_VALUE).                                                                                                                                          |
 | <a id="PARAM_SET"></a>[PARAM_SET](../messages/common.md#PARAM_SET)                            | Send command to set a specified parameter to a value. After the value has been set (whether successful or not), the recipient should broadcast the current value using [PARAM_VALUE](#PARAM_VALUE).                                                            |
 | <a id="PARAM_VALUE"></a>[PARAM_VALUE](../messages/common.md#PARAM_VALUE)                      | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ), [PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set ([PARAM_SET](#PARAM_SET)) or changes. |
+| <a id="PARAM_ERROR"></a>[PARAM_ERROR](../messages/common.md#PARAM_ERROR) (WIP)                | An error that may be returned if a value cannot be read ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ) or written ([PARAM_SET](#PARAM_SET)). In some cases a `PARAM_ERROR` and `PARAM_VALUE` may be returned.                                                      |
 
-| Enum                                                                              | Description                                                                                                                                                                                                                              |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id="MAV_PARAM_TYPE"></a>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc. |
+| Enum                                                                                       | Description                                                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_PARAM_TYPE"></a>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)          | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc. |
+| <a id="MAV_PARAM_ERROR"></a>[MAV_PARAM_ERROR](../messages/common.md#MAV_PARAM_ERROR) (WIP) | Parameter protocol error types (see [PARAM_ERROR](#PARAM_ERROR)).                                                                                                                                                                        |
 
 | Flags                                                                                                                                                                          | Description                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -33,13 +35,13 @@ The key/value pair has a number of important properties:
 
 ## Protocol Discovery
 
-Support for the parameter protocol is indicated if either [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) protocol bits are set in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
+Support for the parameter protocol is indicated if either of the [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) protocol bits are set in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION) (or [COMPONENT_INFORMATION_BASIC.capabilities](../messages/common.md#COMPONENT_INFORMATION_BASIC) for non-autopilot components).
 
-These protocol bits indicate different bytewise and C-style [parameter value encoding](#parameter-encoding) respectively.
+These protocol bits indicate that the component supports bytewise or C-style [parameter value encoding](#parameter-encoding), respectively.
 
 ::: info
-The protocol may still be supported even if neither protocol bit is set.
-To use the protocol in this case, a connected system would need to have prior knowledge of connected component.
+The protocol may still be supported by an autopilot or component even if neither protocol bit is set.
+However in this case a GCS would need to have prior knowledge of the encoding that is used.
 :::
 
 ## Parameter Names
@@ -58,11 +60,12 @@ Two encoding approaches are supported:
 
 - **Byte-wise encoding:** The parameter's bytes are copied directly into the bytes used for the field.
   A 32-bit integer is sent as 32 bits of data.
-- **C-style cast:** The parameter value is converted to a `float`. This may result in some loss of precision as a `float` can represent an integer with up to 24 bits of pecision.
+- **C-style cast:** The parameter value is converted to a `float`.
+  This may result in some loss of precision as a `float` can represent an integer with up to 24 bits of precision.
 
-Byte wise encoding is recommended as it allows very large integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
+Byte-wise encoding is recommended as it allows very large integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
 
-A component should support only one type, and indicate that type by setting the [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) (byte-wise encoding) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) (C-style encoding) protocol bits in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
+A component should support only one type, and indicate that type by setting the [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) (byte-wise encoding) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) (C-style encoding) protocol bits in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION) (or [COMPONENT_INFORMATION_BASIC.capabilities](../messages/common.md#COMPONENT_INFORMATION_BASIC) for non-autopilot components).
 A GCS may support both types and use the type that is indicated by the target component.
 
 ### Bytewise Encoding: Mavgen C API
@@ -91,15 +94,20 @@ There is a good example of how to do this in the Pymavlink [mavparm.py](https://
 
 The allowed parameter types are given in [MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE).
 
-Note that not all types are supported: for example PX4 supports only INT32 and FLOAT.
+Note that not all types are supported by every flight stack.
+For example PX4 supports only INT32 and FLOAT.
 A GCS can infer the supported types from the parameters it is sent.
 
 ## Parameter Metadata
 
-Parameter metadata is additional information about a parameters that allow them to be safely used in a ground station.
-This might include a description and listing of possible values.
+Parameter metadata is additional information about parameters that allow them to be safely used in a ground station.
+This might include a description, or a range or listing of allowed values, and translations.
 
-The [Component Information Protocol](../services/component_information.md) has been proposed as a mechanism for getting this information directly from a vehicle.
+The [Component Metadata Protocol](../services/component_information.md) provides a standardized mechanism for a GCS (or other system) to request parameter metadata and translations for a particular vehicle.
+Note however that at time of writing this is not supported by all flight stacks.
+
+Flight stacks that do not support Component Metadata typically have their own mechanisms and data formats for sharing data with the flight stacks that they want to interact with.
+For example, QGC supports component metadata, but can also be updated with static information from ArduPilot.
 
 ## Parameter Caching {#parameter_caching}
 
@@ -116,7 +124,7 @@ Cache synchronisation is not guaranteed; a component may [miss update messages](
 MAVLink supports multiple systems in parallel on the same link, and multiple MAVLink enabled components within a system.
 
 Requests to get and set parameters can be sent to individual systems or components.
-To get a complete parameter list from a system, send the request parameter message with `target_component` set to [MAV_COMP_ID_ALL](../messages/common.md#MAV_COMP_ID_ALL).
+To get a complete parameter list from a system, send [PARAM_REQUEST_READ](#PARAM_REQUEST_READ) with `target_component` set to [MAV_COMP_ID_ALL](../messages/common.md#MAV_COMP_ID_ALL).
 
 All components must respond to parameter request messages addressed to their ID or the ID `MAV_COMP_ID_ALL`.
 
@@ -141,7 +149,7 @@ If working with a non-compliant component, the risk of problems when working wit
 
 A GCS (or other component) that wants to [cache parameters](#parameter_caching) with a component and keep them synchronised, should first get all parameters, and then track any new parameter changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
 
-This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved.
+This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not received.
 This approach may fail for components that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
 
 A component may mitigate this risk by, for example, sending the `PARAM_VALUE` multiple times after a parameter is changed.
@@ -156,7 +164,7 @@ The read-all operation is started by sending the [PARAM_REQUEST_LIST](../message
 The target component must start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message.
 The drone should allow a pause after sending each parameter to ensure that the operation doesn't consume all of the available link bandwidth (30 - 50 percent of the bandwidth is reasonable).
 
-[![Mermaid sequence: Read all parameters](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1JFUVVFU1RfTElTVFxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYW55IHBhcmFtcylcbiAgICBEcm9uZS0-PkdDUzogU2VuZCBOIHBhcmFtZXRlcnMgd2l0aCBQQVJBTV9WQUxVRVxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYWZ0ZXIgZWFjaCBwYXJhbSlcbiAgICBOb3RlIG92ZXIgR0NTOiBGaW5pc2gvdGltZW91dCB3aGVuIG5vIG1vcmUgcGFyYW1zIHJlY2VpdmVkIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1JFUVVFU1RfTElTVFxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYW55IHBhcmFtcylcbiAgICBEcm9uZS0-PkdDUzogU2VuZCBOIHBhcmFtZXRlcnMgd2l0aCBQQVJBTV9WQUxVRVxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYWZ0ZXIgZWFjaCBwYXJhbSlcbiAgICBOb3RlIG92ZXIgR0NTOiBGaW5pc2gvdGltZW91dCB3aGVuIG5vIG1vcmUgcGFyYW1zIHJlY2VpdmVkIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+[![Mermaid sequence: Read all parameters](https://mermaid.ink/img/pako:eNqNUltr2zAU_isHPbWQmbi24lQdgZCGUWjL1qR7KIaiWMeJwJY8Wc6Whfz3HV_awtqH-kXWd76bLB9ZZhUywWr81aDJ8FrLrZPlVWqAnko6rzNdSePh22L1Hrx21mAP0_zLbNYBAr7PH-Z3zw_LH4_L1fr59ma1fiMRixYBK09G4DBDvUfwukTbeDiT5tBGyLI-7zWd5asIjYL7noAeXQ2_td8NeT_nt4_LzwflpAeU2a63G-LurUewexp14vVA79l9Mai9rUA6p_fabOHMVuik19ZAZsuqoF7nXzdudqfrup0Pokwa2CD1oC9de1SgjSID1ciiOAQfhi9IQrGlNpLwDebWvR1A50DKF_fheCpgI7Z1WjHhXYMjVpJctlt2bCNS5ndYYsoEvSrMZVP4lKXmRDK60Sdryxels812x0Qui5p2TaWow_B7_IculfbWvYKO7gjdwjbGMxFGUefMxJH9YSKOeBBNk4RP4viCX_BkxA4tKQn4JIoml3Ey5TzkpxH721UZB4SNJ2HMp2E4no4vo9M_7HnhjA?type=png)](https://mermaid.live/edit#pako:eNqNUltr2zAU_isHPbWQmbi24lQdgZCGUWjL1qR7KIaiWMeJwJY8Wc6Whfz3HV_awtqH-kXWd76bLB9ZZhUywWr81aDJ8FrLrZPlVWqAnko6rzNdSePh22L1Hrx21mAP0_zLbNYBAr7PH-Z3zw_LH4_L1fr59ma1fiMRixYBK09G4DBDvUfwukTbeDiT5tBGyLI-7zWd5asIjYL7noAeXQ2_td8NeT_nt4_LzwflpAeU2a63G-LurUewexp14vVA79l9Mai9rUA6p_fabOHMVuik19ZAZsuqoF7nXzdudqfrup0Pokwa2CD1oC9de1SgjSID1ciiOAQfhi9IQrGlNpLwDebWvR1A50DKF_fheCpgI7Z1WjHhXYMjVpJctlt2bCNS5ndYYsoEvSrMZVP4lKXmRDK60Sdryxels812x0Qui5p2TaWow_B7_IculfbWvYKO7gjdwjbGMxFGUefMxJH9YSKOeBBNk4RP4viCX_BkxA4tKQn4JIoml3Ey5TzkpxH721UZB4SNJ2HMp2E4no4vo9M_7HnhjA)
 
 <!--
 sequenceDiagram;
@@ -166,7 +174,8 @@ sequenceDiagram;
     GCS-- >>GCS: Start receive timeout (any params)
     Drone->>GCS: Send N parameters with PARAM_VALUE
     GCS-- >>GCS: Start receive timeout (after each param)
-    Note over GCS: Finish/timeout when no more params received
+    Note over GCS: Timeout after params stop arriving (operation complete)<br>Missing params can be requested individually.
+    Note over GCS: Can terminate before timeout if all params received.
 -->
 
 The sequence of operations is:
@@ -176,18 +185,19 @@ The sequence of operations is:
      All targeted components should respond with parameters (or ignore the request if they have none).
    - The GCS is expected to accumulate parameters from all responding systems.
    - The timeout/retry behaviour is GSC dependent.
-1. The targeted component(s) should respond, sending all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+2. The targeted component(s) should respond, sending all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
    - Allow breaks between each message in order to avoid saturating the link.
    - Components with no parameters should ignore the request.
-1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
+3. GCS also starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
+4. If the targeted component does not have any parameters then it should ignore the `PARAM_REQUEST_LIST` request.
+   The GCS may resend the request on timeout if no `PARAM_VALUE` is received, but should cease after resends.
 
 Notes:
 
-- The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains the total number of params and index of current param).
+- The GCS/API may accumulate the received parameters for each component and can determine if all have them have been received, and if not which are missing (`PARAM_VALUE` contains the total number of params and index of current param).
+  The above sequence might be terminated before the final timeout once all parameters have been received.
 - Handling of missing params is GCS-dependent.
-  _QGroundControl_, for example, [individually requests](#read_single) each missing parameter by index.
-- If a component does not any parameters then it will ignore a `PARAM_REQUEST_LIST` request.
-  The sender should simply timeout (after resends) if no `PARAM_VALUE` is received.
+  _QGroundControl_, for example, [individually requests](#read_single) each missing parameter by index using `PARAM_REQUEST_READ`.
 
 ### Read Single Parameter {#read_single}
 
@@ -212,7 +222,11 @@ The sequence of operations is:
 1. Drone responds with `PARAM_VALUE` containing the parameter value.
    This is a broadcast message (sent to all systems).
 
-The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not received within the timeout.
+In some cases the drone may not be able read a value, such as if an invalid parameter id or index was specified.
+In older versions of the protocol the drone would silently ignore the message.
+In newer versions the drone may return a [PARAM_ERROR](#PARAM_ERROR) message.
+
+The GCS may restart the sequence if a `PARAM_VALUE` or `PARAM_ERROR` acknowledgment is not received within the timeout.
 
 ::: info
 There is no formal way for the drone to signal when an invalid parameter is requested (i.e. for a parameter name or id that does not exist).
@@ -241,16 +255,17 @@ sequenceDiagram;
 The sequence of operations is:
 
 1. GCS (client) sends [PARAM_SET](../messages/common.md#PARAM_VALUE) specifying the param name to update and its new value (also target system/component and the param type).
-1. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
-1. Drone writes parameter and responds by _broadcasting_ a `PARAM_VALUE` containing the updated parameter value to all components/systems.
+2. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_VALUE](#PARAM_VALUE) and/or [PARAM_ERROR](#PARAM_ERROR) message).
+3. Drone writes parameter and responds by _broadcasting_ a `PARAM_VALUE` containing the updated parameter value to all components/systems.
+4. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 
-   ::: info
-   The Drone must acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` even if the write operation fails.
-   In this case the `PARAM_VALUE` will be the current/unchanged parameter value.
-   :::
+In some cases the drone may not be able write a value, for example because it is a read-only parameter, the specified parameter id or index does not exist, or the id exists but the encoding specified does not match the stored values.
+If the parameter is known (i.e. the id or index is valid) the drone should acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` (in the case of error, with the current/unchanged parameter value).
 
-1. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
-1. The GCS may restart the sequence if the expected `PARAM_VALUE` is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
+In older versions of the protocol, if the parameter is unknown the `PARAM_SET` would be silently ignored.
+In newer versions, if [PARAM_ERROR](#PARAM_ERROR) message is supported, it should be sent for any error (alongside `PARAM_VALUE` if its value can be known).
+
+The GCS may restart the sequence if the expected `PARAM_VALUE` and/or `PARAM_ERROR` is not received within the timeout.
 
 ::: info
 The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol.
@@ -264,29 +279,25 @@ This has no particular advantage over the parameter protocol methods.
 
 PX4 is compatible with the specification:
 
-- Byte-wise encoding of parameters is supported.
-  Note however that PX4 does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE` (at time of writing - PX4 v1.12).
-  See [PX4-Autopilot/issues/19275](https://github.com/PX4/PX4-Autopilot/issues/19275)
+- Byte-wise encoding of parameters is supported and `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE` is set (from circa PX4 v1.14)
 - Only float and Int32 parameters are used.
 
 PX4 provides an addition off-spec mechanism that allows a GCS to _cache_ parameters.
 This significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync.
-The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a _hash_ of the parameter set.
+The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `_PARAM_HASH`) containing a _hash_ of the parameter set.
 
-This hash is calculated by computing the [MAVLink CRC32](../guide/crc.md) over all param names and values (see the `param_hash_check()` in source [here](https://github.com/PX4/Firmware/blob/v1.9.0-alpha/src/lib/parameters/parameters.cpp#L1329)).
+This hash is calculated by computing the [MAVLink CRC32](../guide/crc.md) over all param names and values (see the `param_hash_check()` in [source here](https://github.com/PX4/PX4-Autopilot/blob/release/1.16/src/lib/parameters/parameters.cpp#L1309)).
 If the GCS has a matching hash value it can immediately start using its cached parameters (rather than having to wait while all the rest of the parameters upload).
 
 Source files:
 
-- [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.cpp)
-- [src/modules/mavlink/mavlink_parameters.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.h)
+- [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_parameters.cpp)
+- [src/modules/mavlink/mavlink_parameters.h](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_parameters.h)
 
 ### ArduPilot
 
 ArduPilot implements a largely compatible version of this protocol.
-
-- C-style encoding of parameters is supported.
-  Note however that ArduPilot does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST`.
+ C-style encoding of parameters is used and `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST` is set on versions since circ a 2022.
 
 Off spec-behaviour:
 
