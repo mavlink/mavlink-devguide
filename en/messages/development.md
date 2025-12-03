@@ -399,7 +399,7 @@ Signal jamming state in a GPS receiver.
 Value | Name | Description
 --- | --- | ---
 <a id='GPS_JAMMING_STATE_UNKNOWN'></a>0 | [GPS_JAMMING_STATE_UNKNOWN](#GPS_JAMMING_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal jamming info. 
-<a id='GPS_JAMMING_STATE_OK'></a>1 | [GPS_JAMMING_STATE_OK](#GPS_JAMMING_STATE_OK) | The GPS receiver detected no signal jamming. 
+<a id='GPS_JAMMING_STATE_NOT_JAMMED'></a>1 | [GPS_JAMMING_STATE_NOT_JAMMED](#GPS_JAMMING_STATE_NOT_JAMMED) | The GPS receiver detected no signal jamming. 
 <a id='GPS_JAMMING_STATE_MITIGATED'></a>2 | [GPS_JAMMING_STATE_MITIGATED](#GPS_JAMMING_STATE_MITIGATED) | The GPS receiver detected and mitigated signal jamming. 
 <a id='GPS_JAMMING_STATE_DETECTED'></a>3 | [GPS_JAMMING_STATE_DETECTED](#GPS_JAMMING_STATE_DETECTED) | The GPS receiver detected signal jamming. 
 
@@ -412,7 +412,7 @@ Signal spoofing state in a GPS receiver.
 Value | Name | Description
 --- | --- | ---
 <a id='GPS_SPOOFING_STATE_UNKNOWN'></a>0 | [GPS_SPOOFING_STATE_UNKNOWN](#GPS_SPOOFING_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal spoofing info. 
-<a id='GPS_SPOOFING_STATE_OK'></a>1 | [GPS_SPOOFING_STATE_OK](#GPS_SPOOFING_STATE_OK) | The GPS receiver detected no signal spoofing. 
+<a id='GPS_SPOOFING_STATE_NOT_SPOOFED'></a>1 | [GPS_SPOOFING_STATE_NOT_SPOOFED](#GPS_SPOOFING_STATE_NOT_SPOOFED) | The GPS receiver detected no signal spoofing. 
 <a id='GPS_SPOOFING_STATE_MITIGATED'></a>2 | [GPS_SPOOFING_STATE_MITIGATED](#GPS_SPOOFING_STATE_MITIGATED) | The GPS receiver detected and mitigated signal spoofing. 
 <a id='GPS_SPOOFING_STATE_DETECTED'></a>3 | [GPS_SPOOFING_STATE_DETECTED](#GPS_SPOOFING_STATE_DETECTED) | The GPS receiver detected signal spoofing but still has a fix. 
 
