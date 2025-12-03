@@ -31,8 +31,6 @@ A library's MAVLink support can be determined in a number of ways:
 
 - [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
   This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
-- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
-  Note that the message allows for additional version information, but is not supported on all flight stacks.
 
 ::: tip
 While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
@@ -44,40 +42,42 @@ Support for _MAVLink 2_ is indicated in the [AUTOPILOT_VERSION](../messages/comm
 It can also be inferred from the packet start marker byte.
 
 This is sufficient if the communication link between autopilot and GCS is completely transparent.
-However, some communication links are not completely transparent as they include:
+Most flight stacks now assume MAVLink 2 support based on the protocol capability or packet start marker.
+This is reasonable because the majority of systems and communication links now reliably support MAVLink 2.
+
+### Non-transparent communication links
+
+Most flight stacks assume communication links are transparent.
+Possible causes of links not being transparent are:
 
 - Routing, which can can change or reserialize MAVLink packets (for example, there might be an intermediate router that converts between versions).
 - Wireless links that rely on fixed length packetization may distort or truncate variable-length MAVLink 2 frames.
+  For example, older SiK Radios may consume MAVLink 2 messages.
 
-::: info
-Some flight stacks assume MAVLink 2 support based on the protocol capability or packet start marker.
-This is reasonable because the majority of systems and communication links now reliably support MAVLink 2.
-:::
-
-To be certain that a link supports _MAVLink 2_ transparently, a GCS or other component can use the _MAVLink 2_ handshake protocol to test the link.
-This is done by sending the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command with `param1=300` ([PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION)).
-If the system supports _MAVLink 2_ and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**.
+To be certain that a link supports _MAVLink 2_ transparently, a GCS or other component might send the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command with `param1` set to the id of a _MAVLink 2_ message (with `id > 256`) that is supported by the flight stack.
+If the system supports _MAVLink 2_ and the handshake it will respond with the message **encoded as MAVLink 2 packet**.
 If it does not support _MAVLink 2_ it should `NACK` the command.
 The GCS should fall back to a timeout in case the command interface is not implemented properly.
 
-::: tip
-If the target system does not support `PROTOCOL_VERSION` you can request any other message that it is able to emit.
-:::
+The diagram below illustrates the sequence.
 
-The diagram below illustrates the complete sequence.
-
-[![Mermaid sequence: Request protocol version](https://mermaid.ink/img/pako:eNptkG1rwjAQx79KuFcbOEkftJoxQWoRma6bdb4YBQntVcNs4mK6J_G7L1bcxmZeHLn_3f93x-0gUzkCgy2-VCgzHAi-1Ly8TiWxb8O1EZnYcGnIMEz-iwOtJB5lW7_q9WqBkUl_vggng8U0eniMktliEiVJfxhdWC8vnRuP0svfLhsZSYwFEyNKVJU5VmvaqX4_jWdxGI8X82iajOI7IuRhzljIZ-KSwoKFXJ7ZZVSQfnhr-W_CZCvcEqN-fGfmnO0jShKNGYpXhAYstciBGV1hA0rUJT-ksDvAUjArLDEFZr85FrxamxRSubc2e7InpcqTU6tquQJW8PXWZtUm5-Z0_z9qlAuj9LeoUeaoQ1VJAyzwazCwHbwDa9NW02tT2mlRt931g6ABH8Achzbdju90A-p4vuN3g30DPutVaLPjUK_luY5tdtuuu_8CvZ-j_w?type=png)](https://mermaid.live/edit#pako:eNptkG1rwjAQx79KuFcbOEkftJoxQWoRma6bdb4YBQntVcNs4mK6J_G7L1bcxmZeHLn_3f93x-0gUzkCgy2-VCgzHAi-1Ly8TiWxb8O1EZnYcGnIMEz-iwOtJB5lW7_q9WqBkUl_vggng8U0eniMktliEiVJfxhdWC8vnRuP0svfLhsZSYwFEyNKVJU5VmvaqX4_jWdxGI8X82iajOI7IuRhzljIZ-KSwoKFXJ7ZZVSQfnhr-W_CZCvcEqN-fGfmnO0jShKNGYpXhAYstciBGV1hA0rUJT-ksDvAUjArLDEFZr85FrxamxRSubc2e7InpcqTU6tquQJW8PXWZtUm5-Z0_z9qlAuj9LeoUeaoQ1VJAyzwazCwHbwDa9NW02tT2mlRt931g6ABH8Achzbdju90A-p4vuN3g30DPutVaLPjUK_luY5tdtuuu_8CvZ-j_w)
+[![Mermaid sequence: Check protocol version](https://mermaid.ink/img/pako:eNptUV1rwjAU_SvhPm3QiU0_dBkTpBYR7cbWbQ-jUEJ7W8Ns4mK6L_G_Lyq6sZmHS-4595xzSdZQqBKBwQpfW5QFjgSvNW-uMknsWXJtRCGWXBoyjtL_4EgriXvY8heDwQ5gJBk-5VEyyu_ju8c4fciTOE2H4_jMannjkmsiSqIqkt4mcW5nZ5ObKT0Mnf_2s5WR1NhIYkSDqjV7dpdz5E_ZECG3a8yEfCGUVDZXyPrEqpOKDKOpNXkXppjjihj1ozsVdmqOKEk0FijeEByotSiBGd2iAw3qhm9bWG_NMjBzbDADZq8lVrxdmAwyubEy-6LPSjUHpVZtPQdW8cXKdu2y5ObwPX_QuBRG6SOoUZaoI9VKA8yj3Z0zsDV8APMvw06v5_Wp6_X8IHCpA5_AbNfxe37Xp7RLA9f1Ng587VbpdkLfC_t-2A-oZ7nA3XwDTR6tNw?type=png)](https://mermaid.live/edit#pako:eNptUV1rwjAU_SvhPm3QiU0_dBkTpBYR7cbWbQ-jUEJ7W8Ns4mK6L_G_Lyq6sZmHS-4595xzSdZQqBKBwQpfW5QFjgSvNW-uMknsWXJtRCGWXBoyjtL_4EgriXvY8heDwQ5gJBk-5VEyyu_ju8c4fciTOE2H4_jMannjkmsiSqIqkt4mcW5nZ5ObKT0Mnf_2s5WR1NhIYkSDqjV7dpdz5E_ZECG3a8yEfCGUVDZXyPrEqpOKDKOpNXkXppjjihj1ozsVdmqOKEk0FijeEByotSiBGd2iAw3qhm9bWG_NMjBzbDADZq8lVrxdmAwyubEy-6LPSjUHpVZtPQdW8cXKdu2y5ObwPX_QuBRG6SOoUZaoI9VKA8yj3Z0zsDV8APMvw06v5_Wp6_X8IHCpA5_AbNfxe37Xp7RLA9f1Ng587VbpdkLfC_t-2A-oZ7nA3XwDTR6tNw)
 
 <!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: MAV_CMD_REQUEST_MESSAGE(param1=300)
+    GCS->>Drone: MAV_CMD_REQUEST_MESSAGE(param1 = id of SOME_MAVLINK2_MESSAGE)
     GCS->>GCS: Start timeout
-    Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
+    Drone->>GCS: SOME_MAVLINK2_MESSAGE in MAVLink 2 framing
     GCS->>Drone: If ACK: Switches to MAVLink 2
     Drone->>GCS: Switches to MAVLink 2 on receive
 -->
+
+::: tip
+Historically the message used for testing was `PROTOCOL_VERSION`, which is now deprecated.
+The protocol should work with any other MAVLink 2 telemetry message supported by the flight stack.
+:::
 
 ### Semi-Transparent Legacy Radios
 
