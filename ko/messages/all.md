@@ -56,13 +56,14 @@ span.warning {
 - [cubepilot.xml](../messages/cubepilot.md)
 - [csAirLink.xml](../messages/csAirLink.md)
 - [marsh.xml](../messages/marsh.md)
+- [stemstudios.xml](../messages/stemstudios.md)
 
 ## 목차
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 0       | 385      |
-| [Enums](#enumerated-types) | 0       | 250      |
+| [Messages](#messages)      | 0       | 387      |
+| [Enums](#enumerated-types) | 0       | 251      |
 | [Commands](#mav_commands)  | 223     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
