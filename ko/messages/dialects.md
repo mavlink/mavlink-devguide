@@ -28,6 +28,7 @@ The dialect definitions are:
 - [AVSSUAS.xml](AVSSUAS.md)
 - [ardupilotmega.xml](ardupilotmega.md)
 - [marsh.xml](marsh.md)
+- [stemstudios.xml](stemstudios.md)
 - [loweheiser.xml](loweheiser.md)
 - [icarous.xml](icarous.md)
 
