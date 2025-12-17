@@ -1,6 +1,6 @@
 {
   "name": "mavlink_guide",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": "https://github.com/mavlink/mavlink-devguide",
   "license": "CC-BY-4.0",
   "scripts": {
@@ -17,10 +17,11 @@
   },
   "dependencies": {
     "@red-asuka/vitepress-plugin-tabs": "^0.0.3",
-    "lite-youtube-embed": "^0.3.2",
-    "markdown-it-mathjax3": "^4.3.2",
+    "lite-youtube-embed": "^0.3.4",
+    "markdown-it-mathjax3": "^5.2.0",
     "medium-zoom": "^1.1.0",
-    "vitepress": "^1.5.0",
+    "open-editor": "^5.0.0",
+    "vitepress": "^1.6.4",
     "vue3-tabs-component": "^1.3.7"
   }
 }
