@@ -99,7 +99,7 @@ A GCS can infer the supported types from the parameters it is sent.
 Parameter metadata is additional information about a parameters that allow them to be safely used in a ground station.
 This might include a description and listing of possible values.
 
-The [Component Information Protocol](../services/component_information.md) has been proposed as a mechanism for getting this information directly from a vehicle.
+The [Component Metadata Protocol](../services/component_metadata.md) is one mechanism for getting this information directly from a vehicle.
 
 ## Parameter Caching {#parameter_caching}
 
