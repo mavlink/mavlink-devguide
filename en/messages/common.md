@@ -3616,9 +3616,7 @@ hardware_version | `char[24]` | | | Hardware version. The recommended format is 
 serial_number | `char[32]` | | | Hardware serial number. The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros. 
 
 
-### COMPONENT_METADATA (397) — [WIP] {#COMPONENT_METADATA}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### COMPONENT_METADATA (397) {#COMPONENT_METADATA}
 
 Component metadata message, which may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
