@@ -75,11 +75,11 @@ Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e
 
 ## Metadata Caching (CRC)
 
-The [COMPONENT_METADATA](#COMPONENT_METADATA) message includes the `file_crc` field, which contain [CRC32](../crc.md#crc32-algorithm) values calculated for the file referenced in the `uri` field.
+The [COMPONENT_METADATA](#COMPONENT_METADATA) message includes the `file_crc` field, which contain [CRC32](../guide/crc.md) values calculated for the file referenced in the `uri` field.
 A ground station should cache downloaded component metadata and only update it if the CRC value changes.
 
 The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides file locations for other metadata supported by a component.
-It will also include [CRC32](../crc.md#crc32-algorithm) values any files that contain only static data (no CRC32 should be supplied for metadata files that might be updated dynamically).
+It will also include [CRC32](../guide/crc.md) values any files that contain only static data (no CRC32 should be supplied for metadata files that might be updated dynamically).
 
 ## File Compression
 
