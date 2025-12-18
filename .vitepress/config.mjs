@@ -79,9 +79,9 @@ export default defineConfig({
               ? ({ filePath, frontmatter }) => {
                   if (frontmatter.newEditLink) {
                     //newEditLink defines a frontmatter key you can use to append a path to master
-                    return `https://github.com/mavlink/mavlink-devguide/edit/master/docs/${frontmatter.newEditLink}`;
+                    return `https://github.com/mavlink/mavlink-devguide/edit/master/${frontmatter.newEditLink}`;
                   } else {
-                    return `https://github.com/mavlink/mavlink-devguide/edit/master/docs/${filePath}`;
+                    return `https://github.com/mavlink/mavlink-devguide/edit/master/${filePath}`;
                   }
                 }
               : (c) =>
