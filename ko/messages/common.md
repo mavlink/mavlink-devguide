@@ -4042,11 +4042,11 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 Gripper actions.
 
-| Value                              | Name                                                                                    | Description                                                                            |
-| ---------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| <a id='GRIPPER_ACTION_OPEN'></a>0  | [GRIPPER_ACTION_OPEN](#GRIPPER_ACTION_OPEN)   | Gripper commence open. Often used to release cargo.    |
-| <a id='GRIPPER_ACTION_CLOSE'></a>1 | [GRIPPER_ACTION_CLOSE](#GRIPPER_ACTION_CLOSE) | Gripper commence close. Often used to grab onto cargo. |
-| <a id='GRIPPER_ACTION_STOP'></a>2  | [GRIPPER_ACTION_STOP](#GRIPPER_ACTION_STOP)   | Gripper stop (maintain current grip position).      |
+| Value                                | Name                                                                                        | Description                                               |
+| ------------------------------------ | ------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| <a id='GRIPPER_ACTION_RELEASE'></a>0 | [GRIPPER_ACTION_RELEASE](#GRIPPER_ACTION_RELEASE) | Gripper release cargo.                    |
+| <a id='GRIPPER_ACTION_GRAB'></a>1    | [GRIPPER_ACTION_GRAB](#GRIPPER_ACTION_GRAB)       | Gripper grab onto cargo.                  |
+| <a id='GRIPPER_ACTION_HOLD'></a>2    | [GRIPPER_ACTION_HOLD](#GRIPPER_ACTION_HOLD)       | Gripper hold current grip state/position. |
 
 ### WINCH_ACTIONS {#WINCH_ACTIONS}
 
