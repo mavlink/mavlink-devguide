@@ -38,7 +38,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 229 | 3
-[Enums](#enumerated-types) | 143 | 9
+[Enums](#enumerated-types) | 144 | 9
 [Commands](#mav_commands) | 166 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -5344,6 +5344,14 @@ Value | Name | Description
 <a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX) | Spektrum DSMX 
 <a id='RC_SUB_TYPE_SPEKTRUM_DSMX8'></a>2 | [RC_SUB_TYPE_SPEKTRUM_DSMX8](#RC_SUB_TYPE_SPEKTRUM_DSMX8) | Spektrum DSMX8 
 
+### ENGINE_CONTROL_OPTIONS {#ENGINE_CONTROL_OPTIONS}
+
+(Bitmask) Engine control options
+
+Value | Name | Description
+--- | --- | ---
+<a id='ENGINE_CONTROL_OPTIONS_ALLOW_START_WHILE_DISARMED'></a>1 | [ENGINE_CONTROL_OPTIONS_ALLOW_START_WHILE_DISARMED](#ENGINE_CONTROL_OPTIONS_ALLOW_START_WHILE_DISARMED) | Allow starting the engine while disarmed (without changing the vehicle's armed state). This effectively arms just the ICE, without arming the vehicle to start other motors or propellers. 
+
 ### POSITION_TARGET_TYPEMASK {#POSITION_TARGET_TYPEMASK}
 
 (Bitmask) Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 9 is set the floats afx afy afz should be interpreted as force instead of acceleration.
@@ -7559,7 +7567,7 @@ Param (Label) | Description | Values | Units
 1 (Start Engine) | Start engine (MAV_BOOL_False: Stop engine). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 2 (Cold Start) | Cold start engine (MAV_BOOL_FALSE: Warm start). Values not equal to 0 or 1 are invalid. Controls use of choke where applicable | [MAV_BOOL](#MAV_BOOL) |   
 3 (Height Delay) | Height delay. This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay. | min: 0 | m 
-4 | Empty |   |   
+4 (Options) | A bitmask of options for engine control | [ENGINE_CONTROL_OPTIONS](#ENGINE_CONTROL_OPTIONS) |   
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
