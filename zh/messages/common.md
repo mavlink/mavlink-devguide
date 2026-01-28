@@ -756,23 +756,23 @@ The PPM values of the RC channels received. The standard PPM modulation is as fo
 
 Request a data stream.
 
-| Field Name                                                 | Type       | Units | 描述                                                               |
-| ---------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------- |
-| target_system                         | `uint8_t`  |       | The target requested to send the message stream. |
-| target_component                      | `uint8_t`  |       | The target requested to send the message stream. |
-| req_stream_id    | `uint8_t`  |       | The ID of the requested data stream                              |
-| req_message_rate | `uint16_t` | Hz    | The requested message rate                                       |
-| start_stop                            | `uint8_t`  |       | 1 to start sending, 0 to stop sending.           |
+| Field Name                                                 | Type       | Units | 值                                                                             | 描述                                                               |
+| ---------------------------------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| target_system                         | `uint8_t`  |       |                                                                               | The target requested to send the message stream. |
+| target_component                      | `uint8_t`  |       |                                                                               | The target requested to send the message stream. |
+| req_stream_id    | `uint8_t`  |       | [MAV_DATA_STREAM](#MAV_DATA_STREAM) | The ID of the requested data stream.             |
+| req_message_rate | `uint16_t` | Hz    |                                                                               | The requested message rate                                       |
+| start_stop                            | `uint8_t`  |       |                                                                               | 1 to start sending, 0 to stop sending.           |
 
 ### DATA_STREAM (67) {#DATA_STREAM}
 
 Data stream status information.
 
-| Field Name                        | Type       | Units | 描述                                                        |
-| --------------------------------- | ---------- | ----- | --------------------------------------------------------- |
-| stream_id    | `uint8_t`  |       | The ID of the requested data stream                       |
-| message_rate | `uint16_t` | Hz    | The message rate                                          |
-| on_off       | `uint8_t`  |       | 1 stream is enabled, 0 stream is stopped. |
+| Field Name                        | Type       | Units | 值                                                                             | 描述                                                        |
+| --------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------- | --------------------------------------------------------- |
+| stream_id    | `uint8_t`  |       | [MAV_DATA_STREAM](#MAV_DATA_STREAM) | The ID of the requested data stream.      |
+| message_rate | `uint16_t` | Hz    |                                                                               | The message rate                                          |
+| on_off       | `uint8_t`  |       |                                                                               | 1 stream is enabled, 0 stream is stopped. |
 
 ### MANUAL_CONTROL (69) {#MANUAL_CONTROL}
 
