@@ -34,7 +34,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 27 | 232
+[Messages](#messages) | 27 | 233
 [Enums](#enumerated-types) | 1 | 153
 [Commands](#mav_commands) | 167 | 0
 
