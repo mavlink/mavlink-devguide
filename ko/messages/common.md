@@ -38,7 +38,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 229     | 3        |
+| [Messages](#messages)      | 230     | 3        |
 | [Enums](#enumerated-types) | 144     | 9        |
 | [Commands](#mav_commands)  | 166     | 0        |
 
@@ -3285,6 +3285,19 @@ The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). 
 | time_usec | `uint64_t`  | us    | Timestamp (since system boot).                                        |
 | active                         | `uint32_t`  |       | Active outputs                                                                                           |
 | actuator                       | `float[32]` |       | Servo / motor output array values. Zero values indicate unused channels. |
+
+### RELAY_STATUS (376) {#RELAY_STATUS}
+
+Reports the on/off state of relays, as controlled by [MAV_CMD_DO_SET_RELAY](#MAV_CMD_DO_SET_RELAY).
+
+Message streaming should be requested using [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL).
+Note that it should not be sent on every relay state change to avoid flooding the link.
+
+| Field Name                                             | Type       | Units | Description                                                                                                                                                                                            |
+| ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                                                 |
+| on                                                     | `uint16_t` |       | Relay states. Relay instance numbers are represented as individual bits in this mask by offset.                                                                        |
+| present                                                | `uint16_t` |       | Relay present. Relay instance numbers are represented as individual bits in this mask by offset.  Bits will be true if a relay instance is configured. |
 
 ### TIME_ESTIMATE_TO_TARGET (380) — [WIP] {#TIME_ESTIMATE_TO_TARGET}
 
@@ -6727,7 +6740,7 @@ Set a system parameter.  Caution!  Use of this command requires knowledge of the
 
 ### MAV_CMD_DO_SET_RELAY (181) {#MAV_CMD_DO_SET_RELAY}
 
-Set a relay to a condition.
+Set a relay to a condition. The current value may optionally be reported using [RELAY_STATUS](#RELAY_STATUS).
 
 | Param (Label) | Description                                                                                             | Values                                        |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
