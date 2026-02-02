@@ -34,7 +34,7 @@ A GCS is expected to provide enough information from the individual battery repo
 | Enum                                                                                                                                 | Description                               |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
 | <a id="MAV_BATTERY_FAULT"></a>[MAV_BATTERY_FAULT](../messages/common.md#MAV_BATTERY_FAULT) | Fault/health indications. |
-| <a id="MAV_BATTERY_MODE"></a>[MAV_BATTERY_MODE](../messages/common.md#MAV_BATTERY_MODE)    | Smart battery mode.       |
+| <a id="MAV_BATTERY_MODE"></a>[MAV_BATTERY_MODE](../messages/common.md#MAV_BATTERY_MODE)    | Battery mode.             |
 
 ## Battery Components
 
