@@ -1012,7 +1012,7 @@ q | `float[4]` | | | Attitude quaternion (w, x, y, z order, zero-rotation is 1, 
 body_roll_rate | `float` | rad/s | | Body roll rate 
 body_pitch_rate | `float` | rad/s | | Body pitch rate 
 body_yaw_rate | `float` | rad/s | | Body yaw rate 
-thrust | `float` | | | Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust) 
+thrust | `float` | | | Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse thrust) 
 <span class='ext'>thrust_body</span> <a href='#mav2_extension_field'>++</a> | `float[3]` | | | 3D thrust setpoint in the body NED frame, normalized to -1 .. 1 
 
 
@@ -1028,7 +1028,7 @@ q | `float[4]` | | | Attitude quaternion (w, x, y, z order, zero-rotation is 1, 
 body_roll_rate | `float` | rad/s | | Body roll rate 
 body_pitch_rate | `float` | rad/s | | Body pitch rate 
 body_yaw_rate | `float` | rad/s | | Body yaw rate 
-thrust | `float` | | | Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust) 
+thrust | `float` | | | Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse thrust) 
 
 
 ### SET_POSITION_TARGET_LOCAL_NED (84) {#SET_POSITION_TARGET_LOCAL_NED}
