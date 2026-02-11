@@ -13,11 +13,22 @@ and the Drone (server) responds either with an ACK containing the requested info
 The GCS sets a timeout after most commands, and may resend the command if it is triggered.
 The drone must re-send its response if a request with the same sequence number is received.
 
-All messages (commands, ACK, NAK) are exchanged inside [FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) messages.
+All messages (commands, ACK, NAK) are exchanged inside [FILE_TRANSFER_PROTOCOL](#FILE_TRANSFER_PROTOCOL) messages.
 This message type definition is minimal, with fields for specifying the target network, system and component, and for an "arbitrary" variable-length payload.
 
 The different commands and other information required to implement the protocol are encoded _within_ in the `FILE_TRANSFER_PROTOCOL` payload.
 This topic explains the encoding, packing format, commands and errors, and the order in which the commands are sent to implement the core FTP functionality.
+
+## Message/Enum Summary
+
+| Message                                                                                                   | Description                                  |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| <a id="FILE_TRANSFER_PROTOCOL"></a>[FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) | FTP message. Encodes commands, ACK and NACK. |
+
+| Enum                                                                              | Description                    |
+| --------------------------------------------------------------------------------- | ------------------------------ |
+| <a id="MAV_FTP_OPCODE"></a>[MAV_FTP_OPCODE](../messages/common.md#MAV_FTP_OPCODE) | FTP opcodes. Used in Commands. |
+| <a id="MAV_FTP_ERR"></a>[MAV_FTP_ERR](../messages/common.md#MAV_FTP_ERR)          | FTP errors. Used in NAK.       |
 
 ## Protocol Discovery
 
@@ -58,7 +69,7 @@ Below is the over-the-wire format for the payload part of the [FILE_TRANSFER_PRO
 
 ## OpCodes/Command {#opcodes}
 
-The opcodes that may be sent by the GCS (client) to the drone (server) are listed below.
+The opcodes that may be sent by the GCS (client) to the drone (server) are enumerated in [MAV_FTP_ERR](#MAV_FTP_ERR), and listed below for convenience.
 
 <!--  uint8_t enum Opcode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
 
@@ -95,12 +106,14 @@ Notes:
 
 ## NAK Error Information {#error_codes}
 
-NAK responses must include one of the errors codes listed below in the [payload](#payload) `data[0]` field.
+NAK responses must include one of the errors codes enumerated in [MAV_FTP_ERR](#MAV_FTP_ERR) in the [payload](#payload) `data[0]` field.
+These are listed below for convenience.
 
 An appropriate error code must be used if one is defined.
 If no appropriate error code exists, the Drone (server) may respond with [Fail](#Fail) or [FailErrno](#FailErrno).
 
-If the error code is `FailErrno`, then `data[1]` must additionally contain an error number. This error number is a file-system specific error code (understood by the server).
+If the error code is `FailErrno`, then `data[1]` must additionally contain an error number.
+This error number is a file-system specific error code (understood by the server).
 
 The payload `size` field must be set to either 1 or 2, depending on whether or not `FailErrno` is specified.
 
@@ -208,7 +221,7 @@ After opening a file for reading, it is read in "bursts".
 Each burst delivers a part of the file as a stream of messages.
 The last message in the burst is indicated by setting `burst_complete=1` (without any ACKs).
 
-The client tracks the recieved chunks.
+The client tracks the received chunks.
 On completion of the burst (or the file), if there are any missing parts of the file it can request them using either another burst or using [ReadFile](#reading-a-file-readfile).
 
 ::: info
@@ -233,7 +246,7 @@ sequenceDiagram;
     Client->>Server:  BurstReadFile( session, offset=0, size=data_per_burst )
     Note left of Server: Server streams data in chunks at increasing offsets with burst_complete=0
     Server->>Client: ACK(session, burst_complete=0, offset=0, size=len(buffer), data[0]=buffer)
-    Server->>Client: ACK(session, burst_complete=0, offset=<current_offet>, size=len(buffer), data[0]=buffer)
+    Server->>Client: ACK(session, burst_complete=0, offset=<current_offset>, size=len(buffer), data[0]=buffer)
     Server->>Client: ...
     Note left of Server: For last message in burst set burst_complete=1
     Server->>Client: ACK(session, burst_complete=1, offset=<offset_of_last_burst_chunk>, size=len(buffer), data[0]=buffer)
@@ -415,11 +428,15 @@ The sequence of operations is:
    - The payload must specify:
      - `data[0]` = Information for one or more (sequential) entries, starting at the requested entry index (`offset`).
        Each entry is separated with a null terminator (`\0`), and has the following format (where `type` is one of the letters **F**(ile), **D**(irectory), **S**(skip))
-       ```
+
+       ```txt
        <type><file_or_folder_name>\t<file_size_in_bytes>\0
        ```
+
        For example, given five files named _TestFile1.xml_ to _TestFile5.xml_, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
+
      - `size` = The size of the `data`.
+
 1. The operation is then repeated at different offsets to download the whole directory listing.
 
    ::: info
@@ -520,7 +537,7 @@ The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/
 
 Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
 
-```
+```txt
 mftp://[;comp=<id>]<path>
 ```
 
@@ -534,12 +551,15 @@ Where:
 For example:
 
 - A GCS connected to an autopilot might download a file using the following URL:
-  ```
+
+  ```txt
   ## FTP resource 'camera.xml' from current component
   mftp://camera.xml
   ```
+
 - A GCS connected to an autopilot through a companion computer might host the metadata on the companion (e.g. due to lack of flash space, faster download or if there's a central MAVFTP server on the vehicle), so it would need to specify the component ID of the component running on the companion (e.g. 100 for the camera), so that the request is redirected:
-  ```
+
+  ```txt
   ## FTP resource '/info/version.json' from component with id 100
   mftp://[;comp=100]/info/version.json
   ```
