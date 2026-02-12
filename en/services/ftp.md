@@ -508,6 +508,26 @@ The sequence of operations is:
 
 The GSC should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
+## Virtual Drives (Directory Alias)
+
+MAVFTP supports the concept of "standard" virtual drives for storing particular types of data in a flight-stack-independent and file-system-independent location.
+This allows a GCS to provision or fetch data without having to know how or where it is stored in the target component.
+
+::: info
+MAVFTP represents storage on a remote component as a single entity accessible via a directory structure that the protocol exposes.
+In order to represent multiple physical drives supported by the component, such as "c" or "d" drives, these abstracted to this structure.
+Similarly, in order to support virtual drives, components must abstract the syntax that indicates the drive, and alias it to their physical file system(s).
+:::
+
+In the [MAVLink FTP URL Scheme](#mavlink-ftp-url-scheme) a virtual drive is specified using the `@<drive>` prefix, such as `@LOG` for log files.
+When encoded in the [FILE_TRANSFER_PROTOCOL](#FILE_TRANSFER_PROTOCOL) this prefix should be prepended when a path is being specified.
+For example, when [Listing a directory](#list_directory) the request might encode `data[0]` as `@LOG/path_in_log/`, and the recipient would be expected to map this to the underlying file system.
+If the full path including drive is not known, the recipient would NAK with [FileNotFound](#error_codes) (this is just another "not found" error case).
+
+The following standard directory locations are defined:
+
+- `@LOG`- Log files
+
 ## Implementations
 
 The FTP v1 Protocol has been implemented (at least) in PX4, ArduPilot, QGroundControl and MAVSDK.
@@ -523,7 +543,8 @@ _QGroundControl_ implementation:
 - [src/uas/FileManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.cc)
 - [/src/uas/FileManager.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.h)
 
-Everything is run by the master (QGC in this case); the slave simply responds to packets in order as they arrive. There’s buffering in the server for a little overlap (two packets in the queue at a time). This is a tradeoff between memory and link latency which may need to be reconsidered at some point.
+Everything is run by the master (QGC in this case); the slave simply responds to packets in order as they arrive.
+There's buffering in the server for a little overlap (two packets in the queue at a time). This is a tradeoff between memory and link latency which may need to be reconsidered at some point.
 
 The MAVLink receiver thread copies an incoming request verbatim from the MAVLink buffer into a request queue, and queues a low-priority work item to handle the packet. This avoids trying to do file I/O on the MAVLink receiver thread, as well as avoiding yet another worker thread. The worker is responsible for directly queuing replies, which are sent with the same sequence number as the request.
 
@@ -538,15 +559,17 @@ The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/
 Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
 
 ```txt
-mftp://[;comp=<id>]<path>
+mftp://[;comp=<id>][@<drive>]/<path>
 ```
 
 Where:
 
-- `path`: the location of the resource on the target component.
+- `path`: the location of the resource on the target component and virtual drive.
 - `id`: target _component ID_ of the component hosting the resource.
-  The `[;comp=<id>]` part is optional (if omitted, the resource is downloaded from the current component).
+  The `;comp=<id>` part is optional (if omitted, the resource is downloaded from the current component).
   It should be specified if the request must be redirected
+- `drive`: A [virtual drive](#virtual-drives-directory-alias) on the target source.
+  The `@<drive>` part is optional (if omitted, the resource is downloaded from the "normal" drive).
 
 For example:
 
@@ -554,12 +577,19 @@ For example:
 
   ```txt
   ## FTP resource 'camera.xml' from current component
-  mftp://camera.xml
+  mftp:///camera.xml
   ```
 
 - A GCS connected to an autopilot through a companion computer might host the metadata on the companion (e.g. due to lack of flash space, faster download or if there's a central MAVFTP server on the vehicle), so it would need to specify the component ID of the component running on the companion (e.g. 100 for the camera), so that the request is redirected:
 
   ```txt
   ## FTP resource '/info/version.json' from component with id 100
-  mftp://[;comp=100]/info/version.json
+  mftp://;comp=100/info/version.json
+  ```
+
+- A GCS wanting to download a log might use
+
+  ```txt
+  ## FTP resource '2024.log' from @LOG virtual drive
+  mftp://@LOG/2024.log
   ```
