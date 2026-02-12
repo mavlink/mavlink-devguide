@@ -1420,7 +1420,7 @@ Field Name | Type | Description
 target_network | `uint8_t` | Network ID (0 for broadcast) 
 target_system | `uint8_t` | System ID (0 for broadcast) 
 target_component | `uint8_t` | Component ID (0 for broadcast) 
-payload | `uint8_t[251]` | Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields. The content/format of this block is defined in https://mavlink.io/en/services/ftp.html. 
+payload | `uint8_t[251]` | Variable length payload. The content/format of this block is defined in https://mavlink.io/en/services/ftp.html. The length is defined by the remaining message length when subtracting the header and other fields. See also [MAV_FTP_OPCODE](#MAV_FTP_OPCODE) and [MAV_FTP_ERR](#MAV_FTP_ERR). 
 
 
 ### TIMESYNC (111) {#TIMESYNC}
@@ -5995,7 +5995,7 @@ Value | Name | Description
 
 ### MAV_FTP_ERR {#MAV_FTP_ERR}
 
-MAV FTP error codes (https://mavlink.io/en/services/ftp.html)
+MAV FTP error codes (may be used in [FILE_TRANSFER_PROTOCOL](#FILE_TRANSFER_PROTOCOL)). See https://mavlink.io/en/services/ftp.html.
 
 Value | Name | Description
 --- | --- | ---
@@ -6013,7 +6013,7 @@ Value | Name | Description
 
 ### MAV_FTP_OPCODE {#MAV_FTP_OPCODE}
 
-MAV FTP opcodes: https://mavlink.io/en/services/ftp.html
+MAV FTP opcodes (may be used in [FILE_TRANSFER_PROTOCOL](#FILE_TRANSFER_PROTOCOL)). See https://mavlink.io/en/services/ftp.html.
 
 Value | Name | Description
 --- | --- | ---
