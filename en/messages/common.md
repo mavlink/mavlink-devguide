@@ -7845,7 +7845,7 @@ Param (Label) | Description | Values | Units
 
 Request the home position from the vehicle.
 
-The vehicle will ACK the command and then emit the [HOME_POSITION](#HOME_POSITION) message.
+The vehicle will ACK the command and emit the [HOME_POSITION](#HOME_POSITION) message.
 
 Param (Label) | Description
 --- | ---
