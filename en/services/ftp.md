@@ -516,17 +516,17 @@ This allows a GCS to provision or fetch data without having to know how or where
 ::: info
 MAVFTP represents storage on a remote component as a single entity accessible via a directory structure that the protocol exposes.
 In order to represent multiple physical drives supported by the component, such as "c" or "d" drives, these abstracted to this structure.
-Similarly, in order to support virtual drives, components must abstract the syntax that indicates the drive, and alias it to their physical file system(s).
+Similarly, in order to support virtual drives, components must abstract the syntax that indicates the drive, and map it to their physical file system(s).
 :::
 
-In the [MAVLink FTP URL Scheme](#mavlink-ftp-url-scheme) a virtual drive is specified using the `@<drive>` prefix, such as `@LOG` for log files.
+In the [MAVLink FTP URL Scheme](#mavlink-ftp-url-scheme) a virtual drive is specified using the `@<drive>` prefix, such as `@MAV_LOG` for log files.
 When encoded in the [FILE_TRANSFER_PROTOCOL](#FILE_TRANSFER_PROTOCOL) this prefix should be prepended when a path is being specified.
-For example, when [Listing a directory](#list_directory) the request might encode `data[0]` as `@LOG/path_in_log/`, and the recipient would be expected to map this to the underlying file system.
+For example, when [Listing a directory](#list_directory) the request might encode `data[0]` as `@MAV_LOG/path_in_log/`, and the recipient would be expected to map this to the underlying file system.
 If the full path including drive is not known, the recipient would NAK with [FileNotFound](#error_codes) (this is just another "not found" error case).
 
 The following standard directory locations are defined:
 
-- `@LOG`- Log files
+- `@MAV_LOG`- Log files
 
 ## Implementations
 
@@ -590,6 +590,6 @@ For example:
 - A GCS wanting to download a log might use
 
   ```txt
-  ## FTP resource '2024.log' from @LOG virtual drive
-  mftp://@LOG/2024.log
+  ## FTP resource '2024.log' from @MAV_LOG virtual drive
+  mftp://@MAV_LOG/2024.log
   ```
