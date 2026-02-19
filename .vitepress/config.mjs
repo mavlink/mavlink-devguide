@@ -179,6 +179,10 @@ export default defineConfig({
             link: "/en/mavgen_python/",
           },
           {
+            text: "Rust",
+            link: "https://docs.rs/mavlink/latest/mavlink/",
+          },
+          {
             text: "Other",
             link: "/en/#supported_languages",
           },
