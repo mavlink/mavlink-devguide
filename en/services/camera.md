@@ -114,11 +114,11 @@ It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAG
 Camera identification must be carried out before all other camera operations!
 :::
 
-The first time a heartbeat is received from a new camera component ([HEARTBEAT.type=MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA)), the GCS should send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
+The first time a heartbeat is received from a new camera component, the GCS will send it a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
 The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
-[![Mermaid Sequence: Camera Type](https://mermaid.ink/img/pako:eNp9kVFLwzAYRf9KyJPCFBR8sOIgpnEOl3Y2mSBWSmi_anBNapsKY-y_L2tVnMLyFJJz8t1w1zi3BeAAt_DRgckh1Oq1UdVVapBftWqcznWtjEMTKv4fcvI40-YdUVVBo4b7_bOT8dibAbpjJJE3jEj07FY1BDssk09zllHCWUJeBtmz3th_YmApD7OEPSyYkBlnQpAJO_JRVHV2fX5xefxb7wcK53MipyuwnTuUjMackyjMCL0fsMg6QPYTmj_CqMenZR8nYWIxk16ibC5ZiFowBdKmtKcHZ_V_zabRbZxwIqdxhEfYA5XShW9hvXNT7N6gghQHfltAqbqlS3FqNh7t6kI5YIV2tsFBqZYtjLDqnBUrk-PANR18Q19N_lDQS3you299swXuYKDj?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kVFLwzAYRf9KyJPCFBR8sOIgpnEOl3Y2mSBWSmi_anBNapsKY-y_L2tVnMLyFJJz8t1w1zi3BeAAt_DRgckh1Oq1UdVVapBftWqcznWtjEMTKv4fcvI40-YdUVVBo4b7_bOT8dibAbpjJJE3jEj07FY1BDssk09zllHCWUJeBtmz3th_YmApD7OEPSyYkBlnQpAJO_JRVHV2fX5xefxb7wcK53MipyuwnTuUjMackyjMCL0fsMg6QPYTmj_CqMenZR8nYWIxk16ibC5ZiFowBdKmtKcHZ_V_zabRbZxwIqdxhEfYA5XShW9hvXNT7N6gghQHfltAqbqlS3FqNh7t6kI5YIV2tsFBqZYtjLDqnBUrk-PANR18Q19N_lDQS3you299swXuYKDj)
+[![Mermaid Sequence: Camera Id](https://mermaid.ink/img/pako:eNptkVFLwzAUhf9KyNMGVVDwwYqD2MZZNN1sOl-shNDcamBJa5oKMvbfje0UweXpcvOde09ydrhuFeAY9_A-gK0h1fLVSXNVWRROJ53Xte6k9WiZ8P_NRBpwcupP9cliEcgY3VFSlDeUlOi5Nh3SKkaMPIlkxdYiS0VCGC3IC5o12vV-jqYRQRn006ADz1JR0McN5aVglHOypLNgQJqz6_OLy_lf2biW--AOeW2gHfwxX8EAI3kqSHI_XeetB9R-gDuA0Yhlzbi-oHzzUAY4oeuSpqgHq5C2TXt6dPb4KJHlt6uCkTJb5TjCATBSq_DHu29Nhf0bGKhwHEoFjRy2vsKV3Qd06JT0QJX2rcNxI7c9RFgOvuWftsaxdwP8QIecfikYRWwKc8x0_wV0cJV0?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNptkVFLwzAUhf9KyNMGVVDwwYqD2MZZNN1sOl-shNDcamBJa5oKMvbfje0UweXpcvOde09ydrhuFeAY9_A-gK0h1fLVSXNVWRROJ53Xte6k9WiZ8P_NRBpwcupP9cliEcgY3VFSlDeUlOi5Nh3SKkaMPIlkxdYiS0VCGC3IC5o12vV-jqYRQRn006ADz1JR0McN5aVglHOypLNgQJqz6_OLy_lf2biW--AOeW2gHfwxX8EAI3kqSHI_XeetB9R-gDuA0Yhlzbi-oHzzUAY4oeuSpqgHq5C2TXt6dPb4KJHlt6uCkTJb5TjCATBSq_DHu29Nhf0bGKhwHEoFjRy2vsKV3Qd06JT0QJX2rcNxI7c9RFgOvuWftsaxdwP8QIecfikYRWwKc8x0_wV0cJV0)
 
 <!-- Original diagram
 sequenceDiagram;
@@ -183,7 +183,7 @@ The GCS can determine if it needs to make sure the camera is in the proper mode 
 In addition, some cameras can capture images in any mode but with different resolutions.
 For example, a 20 megapixel camera would take a full resolution image when set to `CAMERA_MODE_IMAGE` but only at the current video resolution if it is set to `CAMERA_MODE_VIDEO`.
 
-To get the current mode, the GCS would send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command asking for [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS).
+To get the current mode, the GCS would send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command asking for [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS).
 The camera component will then respond with the [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (`COMMAND_ACK.result` is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera must then send a [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) message.
 The current mode is the `CAMERA_SETTINGS.mode_id` field.
@@ -230,15 +230,40 @@ The operation follows the normal [Command Protocol](../services/command.md) rule
 ### Storage Status
 
 Before capturing images and/or videos, a GCS should query the storage status to determine if the camera has enough free space for these operations (and provide the user with feedback as to the current storage status).
-The GCS will send the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response.
+The GCS will send the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response.
 For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
 
 ### Camera Capture Status
 
-In addition to querying about storage status, the GCS should also stream the _Camera Capture Status_ in order to provide the user with proper UI indicators.
+In addition to querying about storage status, the GCS will also request the current _Camera Capture Status_ in order to provide the user with proper UI indicators.
+The GCS will send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
 
-This can be done by sending a [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) command asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
-The command it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) should be streamed at the specified rate.
+### Cameras with Multiple Sensors
+
+Most cameras have a single sensor, which is capable of capturing just one "source", such as visible light (RGB), or infrared (thermal images).
+This single sensor will be used for both [still image capture](#still-image-capture) and [video streaming](#video_streaming).
+
+Some cameras support multiple sensors, for example, both IR and visble light.
+
+> **Note** Cameras that have multiple independent sensors, and so can stream/capture from them at the same time, should expose each sensor as a separate MAVLink camera.
+
+Cameras with multiple dependent sensors can usually capture and stream from either sensor or a composite of both (such as picture-in-picture).
+We refer to each of the options above as a "camera source", one of which can be used for both video and image capture at a time.
+
+The camera source used for image capture and streaming can be set in several ways:
+
+- Video streams can be exposed for each source (this would make sense because the different sensors are likely to have different resolutions).
+  The stream to use can be selected in the normal way, and this would also set the active source.
+- The active source can be exposed and set through a [Camera definition file](../services/camera_def.md) setting.
+- The active source can be set using the [MAV_CMD_SET_CAMERA_SOURCE](#MAV_CMD_SET_CAMERA_SOURCE) command.
+  This can be used in missions (unlike camera settings) and does not require that video is streamed to set the source.
+  Note that there is no method to determine whether a particular source/sources are supported on your camera ahead of time, but the command should be rejected if the indicated source is not supported.
+
+Whichever method is used, sets the current source for both image and video capture, and remains in place until a different source is set using one of the methods.
+
+> **Warning** If you're streaming video and you change the source using `MAV_CMD_SET_CAMERA_SOURCE`, the original stream will stop.
+> This is likely to be problematic if you're currently viewing video, as a new stream will need to be selected.
+> Changing video stream while capturing images is usually fine, because the image will just be captured using the current settings.
 
 ### Still Image Capture
 
@@ -246,6 +271,8 @@ A camera supports _still image capture_ if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](
 
 A GCS/MAVLink app uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command to request that the camera capture a specified number of images (or forever), and the duration between them.
 The camera immediately returns the normal command acknowledgment ([MAV_RESULT](../messages/common.md#MAV_RESULT_ACCEPTED)).
+
+> **Note** For cameras that support multiple sources, such as IR, visible light, picture in picture, then you should first set the [current source for image and video capture](#cameras-with-multiple-sensors).
 
 Each time an image is captured, the camera _broadcasts_ a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message.
 This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
@@ -255,7 +282,7 @@ The camera must iterate `CAMERA_IMAGE_CAPTURED.image_index` and the counter used
 The index and total image count can be used to [re-request missing images](#missing_images) (e.g. images captured when the vehicle was out of telemetry range).
 :::
 
-The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
+The [MAV_CMD_IMAGE_STOP_CAPTURE](#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
 
 The still image capture message sequence _for missions_ (as described above) is shown below:
 
@@ -282,7 +309,7 @@ The message sequence for _interactive user-initiated image capture_ through a GU
 In this case the GCS should:
 
 - Confirm that the camera is _ready_ to take images before allowing the user to request image capture.
-  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
 - Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
@@ -316,7 +343,7 @@ The camera broadcasts a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) every ti
 These messages can be lost during transmission; for example if the vehicle is out of data-link range of the ground stations.
 
 Lost image capture messages can be detected by comparing GCS and camera image counts.
-Individual entries can be requested using [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE), where `param1="MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED"` and `param2="the index of the missing image"`.
+Individual entries can be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE), where `param1="MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED"` and `param2="the index of the missing image"`.
 
 The camera image log iterates "forever" (but may be explicitly reset using [MAV_CMD_STORAGE_FORMAT.param3=1](../messages/common.md#MAV_CMD_STORAGE_FORMAT)).
 
@@ -359,11 +386,9 @@ The steps are:
 
 1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag.
-1. If so, the GCS sends the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message to the camera requesting the video streaming configuration (`param1=269`) for all streams (`param2=0`).
 
-   ::: info
-   A GCS can also request information for a _particular stream_ by setting its id in `param2`.
-   :::
+1. If so, the GCS sends the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) message to the camera requesting the video streaming configuration (`param1=269`) for all streams (`param2=0`).
+   > **Note** A GCS can also request information for a _particular stream_ by setting its id in `param2`.
 
 1. Camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
 
@@ -398,6 +423,11 @@ The information is therefore an estimate/approximate.
 The message can be requested for a particular camera and stream using the [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL), when the associated [VIDEO_STREAM_STATUS.flag](#VIDEO_STREAM_STATUS) for the stream has bit [VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED](#VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED) set.
 Note that `MAV_CMD_SET_MESSAGE_INTERVAL.param3` indicates the stream id of the current camera, or 0 for all streams, while `param4` indicates the target `camera_device_id` for autopilot-attached cameras or 0 for MAVLink cameras.
 
+<span></span>
+
+> **Note** Cameras that support multiple sources, such as IR, visible light, picture in picture, can set the [current source for image and video capture](#cameras-with-multiple-sensors).
+> If this happens while you're streaming from a different source, the current stream will be stopped.
+
 ### Camera Tracking
 
 A camera may support tracking a point and/or a rectangle.
@@ -419,7 +449,7 @@ After stopping tracking you should call `MAV_CMD_SET_MESSAGE_INTERVAL` to stop s
 #### Camera tracking message sequence
 
 ::: info
-The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](#CAMERA_INFORMATION) for every camera.
 :::
 
 The sequence for tracking a point is shown below (tracking a rectangle is the same sequence but a different tracking command).
@@ -428,7 +458,7 @@ The sequence for tracking a point is shown below (tracking a rectangle is the sa
 
 The steps are:
 
-1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](#CAMERA_INFORMATION) for every camera.
 1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the `CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE`, `CAMERA_CAP_FLAGS_HAS_TRACKING_POINT`, `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`.
 1. If tracking is supported the GCS sends the command to start the type of tracking it wants to do: [MAV_CMD_CAMERA_TRACK_POINT](#MAV_CMD_CAMERA_TRACK_POINT) or [MAV_CMD_CAMERA_TRACK_RECTANGLE](#MAV_CMD_CAMERA_TRACK_RECTANGLE).
    The sequence above just shows point tracking.
@@ -443,6 +473,7 @@ The steps are:
 Camera components that are powered from their own battery should publish [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) messages.
 
 Other components like a GCS will typically only use the camera `BATTERY_STATUS.battery_remaining` field (or possibly `time_remaining`); generally other fields can be set as "not supported".
+
 
 ## Message/Command/Enum Summary
 
@@ -504,13 +535,14 @@ These commands have been deprecated, replaced by the generic requester command [
 | <a id="CAMERA_TRACKING_STATUS_FLAGS"></a>[CAMERA_TRACKING_STATUS_FLAGS](../messages/common.md#CAMERA_TRACKING_STATUS_FLAGS) | Current tracking status. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) amd [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS).           |
 | <a id="CAMERA_TRACKING_MODE"></a>[CAMERA_TRACKING_MODE](../messages/common.md#CAMERA_TRACKING_MODE)                         | Current tracking mode. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS).                                                                           |
 | <a id="CAMERA_TRACKING_TARGET_DATA"></a>[CAMERA_TRACKING_TARGET_DATA](../messages/common.md#CAMERA_TRACKING_TARGET_DATA)    | Indicates how target data is encoded in image. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS).                                                   |
+| <a id="CAMERA_SOURCE"></a>[CAMERA_SOURCE](../messages/common.md#CAMERA_SOURCE)                                              | Specifies camera sources, such as infrared or IR. Used in [MAV_CMD_SET_CAMERA_SOURCE](#MAV_CMD_SET_CAMERA_SOURCE).                                                          |
 
 ## Migration Notes for GCS & MAVLink SDKs
 
-The original definition of this protocol used specific commands to query for each type of information requested from the camera: [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) (for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION)), [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS), [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS),
+The original definition of this protocol used specific commands to query for each type of information requested from the camera: [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) (for [CAMERA_INFORMATION](#CAMERA_INFORMATION)), [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS), [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS),
 [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION), [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION).
 
-The latest version replaces all of these specific commands with the general requestor [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
+The latest version replaces all of these specific commands with the general requestor [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
 The transition works like this:
 
