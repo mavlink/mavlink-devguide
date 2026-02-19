@@ -7258,8 +7258,8 @@ Param (Label) | Description | Units
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
-5 (Latitude) | Latitude of ROI location | degE7 
-6 (Longitude) | Longitude of ROI location | degE7 
+5 (Latitude) | Latitude of ROI location |   
+6 (Longitude) | Longitude of ROI location |   
 7 (Altitude) | Altitude of ROI location | m 
 
 
