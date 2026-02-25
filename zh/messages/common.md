@@ -38,8 +38,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 230     | 3        |
-| [Enums](#enumerated-types) | 144     | 9        |
+| [Messages](#messages)      | 231     | 3        |
+| [Enums](#enumerated-types) | 146     | 9        |
 | [Commands](#mav_commands)  | 166     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -2831,6 +2831,26 @@ Airspeed information from a sensor.
 | temperature                    | `int16_t` | cdegC | invalid:INT16_MAX                                    | Temperature.                                                                                                   |
 | raw_press | `float`   | hPa   | invalid:NaN                                                               | Raw differential pressure.                                                                                     |
 | flags                          | `uint8_t` |       | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags.                                                                                         |
+
+### GLOBAL_POSITION_SENSOR (296) {#GLOBAL_POSITION_SENSOR}
+
+Reports measurement/estimate from a global position sensor. Used as navigation fusion source and optionally displayed in the UI.
+
+| Field Name                            | Type       | Units | 值                                                                                         | 描述                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target_system    | `uint8_t`  |       | default:0                                                                 | System ID (ID of target system, normally autopilot and ground station).                                                                                                                                                                                                                                                                                         |
+| target_component | `uint8_t`  |       | default:0                                                                 | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                                                                                                                        |
+| id                                    | `uint8_t`  |       |                                                                                           | Sensor ID<br>Messages with same value are from the same source (instance).                                                                                                                                                                                                                                                                                      |
+| time_usec        | `uint64_t` | us    |                                                                                           | Timestamp of message transmission (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                               |
+| processing_time  | `uint32_t` | us    |                                                                                           | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. This is the time between measurement (e.g. camera exposure time) and transmission of this message. Set to NaN if not known. |
+| source                                | `uint8_t`  |       | [GLOBAL_POSITION_SRC](#GLOBAL_POSITION_SRC)     | Source of position/estimate (such as GNSS, estimator, etc.)                                                                                                                                                                                                                                                                                                     |
+| flags                                 | `uint8_t`  |       | [GLOBAL_POSITION_FLAGS](#GLOBAL_POSITION_FLAGS) | Status flags                                                                                                                                                                                                                                                                                                                                                                                       |
+| lat                                   | `int32_t`  | degE7 | invalid:INT32_MAX                                    | Latitude (WGS84)                                                                                                                                                                                                                                                                                                                                                                |
+| lon                                   | `int32_t`  | degE7 | invalid:INT32_MAX                                    | Longitude (WGS84)                                                                                                                                                                                                                                                                                                                                                               |
+| alt_ellipsoid    | `float`    | m     | invalid:NaN                                                               | Altitude (WGS84 elipsoid), preferred if available                                                                                                                                                                                                                                                                                                                               |
+| alt                                   | `float`    | m     | invalid:NaN                                                               | Altitude (MSL - position-system specific value) use if no alt_ellipsoid available                                                                                                                                                                                                                                                                          |
+| eph                                   | `float`    | m     | invalid:NaN                                                               | Standard deviation of horizontal position error                                                                                                                                                                                                                                                                                                                                                    |
+| epv                                   | `float`    | m     | invalid:NaN                                                               | Standard deviation of vertical position error                                                                                                                                                                                                                                                                                                                                                      |
 
 ### WIFI_CONFIG_AP (299) {#WIFI_CONFIG_AP}
 
@@ -5906,6 +5926,29 @@ See https://mavlink.io/en/services/standard_modes.html
 | --------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='AIRSPEED_SENSOR_UNHEALTHY'></a>1 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy                                                                                                           |
 | <a id='AIRSPEED_SENSOR_USING'></a>2     | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING)         | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. |
+
+### GLOBAL_POSITION_SRC {#GLOBAL_POSITION_SRC}
+
+Source for [GLOBAL_POSITION](#GLOBAL_POSITION) measurement or estimate.
+
+| 值                                             | Name                                                                                                                               | 描述                                                                                                                                                           |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id='GLOBAL_POSITION_SRC_UNKNOWN'></a>0     | [GLOBAL_POSITION_SRC_UNKNOWN](#GLOBAL_POSITION_SRC_UNKNOWN)         | Source is unknown or not one of the listed types.                                                                                            |
+| <a id='GLOBAL_POSITION_SRC_GNSS'></a>1        | [GLOBAL_POSITION_SRC_GNSS](#GLOBAL_POSITION_SRC_GNSS)               | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou). |
+| <a id='GLOBAL_POSITION_SRC_VISION'></a>2      | [GLOBAL_POSITION_SRC_VISION](#GLOBAL_POSITION_SRC_VISION)           | Vision system (e.g.: map matching).                                       |
+| <a id='GLOBAL_POSITION_SRC_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_SRC_PSEUDOLITES](#GLOBAL_POSITION_SRC_PSEUDOLITES) | A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning.                                                        |
+| <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4     | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN)         | Terrain referenced navigation.                                                                                                               |
+| <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5    | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC)       | Magnetic positioning.                                                                                                                        |
+| <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6   | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR)     | Estimated position based on various sensors (eg. a Kalman Filter).                                        |
+
+### GLOBAL_POSITION_FLAGS {#GLOBAL_POSITION_FLAGS}
+
+(Bitmask) Status flags for [GLOBAL_POSITION](#GLOBAL_POSITION)
+
+| 值                                       | Name                                                                                              | 描述                                                                                        |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| <a id='GLOBAL_POSITION_UNHEALTHY'></a>1 | [GLOBAL_POSITION_UNHEALTHY](#GLOBAL_POSITION_UNHEALTHY) | Unhealthy sensor/estimator.                                               |
+| <a id='GLOBAL_POSITION_PRIMARY'></a>2   | [GLOBAL_POSITION_PRIMARY](#GLOBAL_POSITION_PRIMARY)     | True if the data originates from or is consumed by the primary estimator. |
 
 ### MAV_BOOL — \[from: [standard](../messages/standard.md#MAV_BOOL)\] {#MAV_BOOL}
 
