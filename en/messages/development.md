@@ -36,8 +36,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 12 | 233
-[Enums](#enumerated-types) | 14 | 153
+[Messages](#messages) | 11 | 234
+[Enums](#enumerated-types) | 12 | 155
 [Commands](#mav_commands) | 177 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -71,29 +71,6 @@ esc_index | `uint8_t` | max:254 | Index of the ESC (0 = ESC1, 1 = ESC2, etc.).
 write_mask | `uint32_t[6]` | | Bitmask indicating which bytes in the data array should be written. Each bit corresponds to a byte index in the data array (bit 0 of write_mask[0] = data[0], bit 31 of write_mask[0] = data[31], bit 0 of write_mask[1] = data[32], etc.). Set bits indicate bytes to write, cleared bits indicate bytes to skip. This allows precise updates of individual parameters without overwriting the entire EEPROM. 
 length | `uint8_t` | max:222 | Number of valid bytes in data array. 
 data | `uint8_t[192]` | | Raw ESC EEPROM data. Unused bytes should be set to zero. 
-
-
-### GLOBAL_POSITION_SENSOR (296) — [WIP] {#GLOBAL_POSITION_SENSOR}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Reports measurement/estimate from a global position sensor. Used as navigation fusion source and optionally displayed in the UI.
-
-Field Name | Type | Units | Values | Description
---- | --- | --- | --- | ---
-target_system | `uint8_t` | | default:0 | System ID (ID of target system, normally autopilot and ground station). 
-target_component | `uint8_t` | | default:0 | Component ID (normally 0 for broadcast). 
-id | `uint8_t` | | | Sensor ID<br>Messages with same value are from the same source (instance). 
-time_usec | `uint64_t` | us | | Timestamp of message transmission (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-processing_time | `uint32_t` | us | | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. This is the time between measurement (e.g. camera exposure time) and transmission of this message. Set to NaN if not known. 
-source | `uint8_t` | | [GLOBAL_POSITION_SRC](#GLOBAL_POSITION_SRC) | Source of position/estimate (such as GNSS, estimator, etc.) 
-flags | `uint8_t` | | [GLOBAL_POSITION_FLAGS](#GLOBAL_POSITION_FLAGS) | Status flags 
-lat | `int32_t` | degE7 | invalid:INT32_MAX | Latitude (WGS84) 
-lon | `int32_t` | degE7 | invalid:INT32_MAX | Longitude (WGS84) 
-alt_ellipsoid | `float` | m | invalid:NaN | Altitude (WGS84 elipsoid), preferred if available 
-alt | `float` | m | invalid:NaN | Altitude (MSL - position-system specific value) use if no alt_ellipsoid available 
-eph | `float` | m | invalid:NaN | Standard deviation of horizontal position error 
-epv | `float` | m | invalid:NaN | Standard deviation of vertical position error 
 
 
 ### SET_VELOCITY_LIMITS (354) — [WIP] {#SET_VELOCITY_LIMITS}
@@ -457,33 +434,6 @@ Value | Name | Description
 <a id='ESC_FIRMWARE_AM32'></a>1 | [ESC_FIRMWARE_AM32](#ESC_FIRMWARE_AM32) | AM32 open source ESC firmware. 
 <a id='ESC_FIRMWARE_BLUEJAY'></a>2 | [ESC_FIRMWARE_BLUEJAY](#ESC_FIRMWARE_BLUEJAY) | Bluejay open source ESC firmware. 
 <a id='ESC_FIRMWARE_BLHELI32'></a>3 | [ESC_FIRMWARE_BLHELI32](#ESC_FIRMWARE_BLHELI32) | BLHeli32 ESC firmware. 
-
-### GLOBAL_POSITION_SRC — [WIP] {#GLOBAL_POSITION_SRC}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Source for [GLOBAL_POSITION](#GLOBAL_POSITION) measurement or estimate.
-
-Value | Name | Description
---- | --- | ---
-<a id='GLOBAL_POSITION_SRC_UNKNOWN'></a>0 | [GLOBAL_POSITION_SRC_UNKNOWN](#GLOBAL_POSITION_SRC_UNKNOWN) | Source is unknown or not one of the listed types. 
-<a id='GLOBAL_POSITION_SRC_GNSS'></a>1 | [GLOBAL_POSITION_SRC_GNSS](#GLOBAL_POSITION_SRC_GNSS) | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou). 
-<a id='GLOBAL_POSITION_SRC_VISION'></a>2 | [GLOBAL_POSITION_SRC_VISION](#GLOBAL_POSITION_SRC_VISION) | Vision system (e.g.: map matching). 
-<a id='GLOBAL_POSITION_SRC_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_SRC_PSEUDOLITES](#GLOBAL_POSITION_SRC_PSEUDOLITES) | A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning. 
-<a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4 | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN) | Terrain referenced navigation. 
-<a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5 | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC) | Magnetic positioning. 
-<a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6 | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR) | Estimated position based on various sensors (eg. a Kalman Filter). 
-
-### GLOBAL_POSITION_FLAGS — [WIP] {#GLOBAL_POSITION_FLAGS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-(Bitmask) Status flags for [GLOBAL_POSITION](#GLOBAL_POSITION)
-
-Value | Name | Description
---- | --- | ---
-<a id='GLOBAL_POSITION_UNHEALTHY'></a>1 | [GLOBAL_POSITION_UNHEALTHY](#GLOBAL_POSITION_UNHEALTHY) | Unhealthy sensor/estimator. 
-<a id='GLOBAL_POSITION_PRIMARY'></a>2 | [GLOBAL_POSITION_PRIMARY](#GLOBAL_POSITION_PRIMARY) | True if the data originates from or is consumed by the primary estimator. 
 
 ## Commands (MAV_CMD) {#mav_commands}
 
