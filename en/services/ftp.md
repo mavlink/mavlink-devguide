@@ -515,7 +515,7 @@ This allows a GCS to provision or fetch data without having to know how or where
 
 ::: info
 MAVFTP represents storage on a remote component as a single entity accessible via a directory structure that the protocol exposes.
-In order to represent multiple physical drives supported by the component, such as "c" or "d" drives, these abstracted to this structure.
+In order to represent multiple physical drives supported by the component, such as "c" or "d" drives, these can be abstracted to this structure.
 Similarly, in order to support virtual drives, components must abstract the syntax that indicates the drive, and map it to their physical file system(s).
 :::
 
@@ -559,7 +559,7 @@ The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/
 Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
 
 ```txt
-mftp://[;comp=<id>][@<drive>]/<path>
+mftp://[;comp=<id>][/@<drive>]/<path>
 ```
 
 Where:
@@ -591,5 +591,5 @@ For example:
 
   ```txt
   ## FTP resource '2024.log' from @MAV_LOG virtual drive
-  mftp://@MAV_LOG/2024.log
+  mftp:///@MAV_LOG/2024.log
   ```
