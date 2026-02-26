@@ -508,21 +508,21 @@ The sequence of operations is:
 
 The GSC should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
-## Virtual Drives (Directory Alias)
+## Virtual Directory Entries (Directory Alias)
 
-MAVFTP supports the concept of "standard" virtual drives for storing particular types of data in a flight-stack-independent and file-system-independent location.
+MAVFTP supports the concept of "standard" virtual directories for storing particular types of data in a flight-stack-independent and file-system-independent location.
 This allows a GCS to provision or fetch data without having to know how or where it is stored in the target component.
 
 ::: info
 MAVFTP represents storage on a remote component as a single entity accessible via a directory structure that the protocol exposes.
 In order to represent multiple physical drives supported by the component, such as "c" or "d" drives, these can be abstracted to this structure.
-Similarly, in order to support virtual drives, components must abstract the syntax that indicates the drive, and map it to their physical file system(s).
+Similarly, in order to support virtual directories, components must abstract the syntax that indicates their location, and map it to their physical file system(s).
 :::
 
-In the [MAVLink FTP URL Scheme](#mavlink-ftp-url-scheme) a virtual drive is specified using the `@<drive>` prefix, such as `@MAV_LOG` for log files.
+In the [MAVLink FTP URL Scheme](#mavlink-ftp-url-scheme) a virtual directory is specified using the `@<directory>` prefix, such as `@MAV_LOG` for log files.
 When encoded in the [FILE_TRANSFER_PROTOCOL](#FILE_TRANSFER_PROTOCOL) this prefix should be prepended when a path is being specified.
 For example, when [Listing a directory](#list_directory) the request might encode `data[0]` as `@MAV_LOG/path_in_log/`, and the recipient would be expected to map this to the underlying file system.
-If the full path including drive is not known, the recipient would NAK with [FileNotFound](#error_codes) (this is just another "not found" error case).
+If the full path including virtual directory is not known, the recipient would NAK with [FileNotFound](#error_codes) (this is just another "not found" error case).
 
 The following standard directory locations are defined:
 
@@ -559,17 +559,17 @@ The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/
 Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
 
 ```txt
-mftp://[;comp=<id>][/@<drive>]/<path>
+mftp://[;comp=<id>][/@<directory>]/<path>
 ```
 
 Where:
 
-- `path`: the location of the resource on the target component and virtual drive.
+- `path`: the location of the resource on the target component and/or in the virtual directory.
 - `id`: target _component ID_ of the component hosting the resource.
   The `;comp=<id>` part is optional (if omitted, the resource is downloaded from the current component).
   It should be specified if the request must be redirected
-- `drive`: A [virtual drive](#virtual-drives-directory-alias) on the target source.
-  The `@<drive>` part is optional (if omitted, the resource is downloaded from the "normal" drive).
+- `directory`: A [virtual directory](#virtual-directory-entries-directory-alias) on the target source.
+  The `@<directory>` part is optional (if omitted, the resource is downloaded from the "normal" directory path).
 
 For example:
 
@@ -590,6 +590,6 @@ For example:
 - A GCS wanting to download a log might use
 
   ```txt
-  ## FTP resource '2024.log' from @MAV_LOG virtual drive
+  ## FTP resource '2024.log' from @MAV_LOG virtual directory
   mftp:///@MAV_LOG/2024.log
   ```
