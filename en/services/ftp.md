@@ -543,7 +543,7 @@ _QGroundControl_ implementation:
 - [src/uas/FileManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.cc)
 - [/src/uas/FileManager.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.h)
 
-Everything is run by the master (QGC in this case); the slave simply responds to packets in order as they arrive.
+Everything is run by the client (QGC in this case); the server simply responds to packets in order as they arrive.
 There's buffering in the server for a little overlap (two packets in the queue at a time). This is a tradeoff between memory and link latency which may need to be reconsidered at some point.
 
 The MAVLink receiver thread copies an incoming request verbatim from the MAVLink buffer into a request queue, and queues a low-priority work item to handle the packet. This avoids trying to do file I/O on the MAVLink receiver thread, as well as avoiding yet another worker thread. The worker is responsible for directly queuing replies, which are sent with the same sequence number as the request.
