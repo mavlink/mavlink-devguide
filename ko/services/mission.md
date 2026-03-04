@@ -107,7 +107,7 @@ The following messages and enums are used by the service.
 The legacy version of the protocol also supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
 
 Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and should no longer be sent.
-If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
+If `MISSION_REQUEST` is received the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
 
 ## Frames & Positional Information
 
@@ -176,7 +176,7 @@ The only expectation is that the scheme used makes it unlikely that the GCS will
 On upload, the generated ID is sent to the GCS in the final part of the upload sequence in the [MISSION_ACK.opaque_id](#MISSION_ACK) field.
 On download, the stored ID is sent to the GCS in the [MISSION_COUNT.opaque_id](#MISSION_COUNT) field.
 
-The GCS should store the value of the ID from the flight stack as the "current id" for whatever part of the plan was uploaded/download.
+The GCS should store the value of the ID from the flight stack as the "current id" for whatever part of the plan was uploaded/downloaded.
 It can then monitor `MISSION_CURRENT`, and check its cached values against the current plan ids to determine whether it has a matching mission, or needs to download the mission from the vehicle.
 
 ### Upload a Mission to the Vehicle {#uploading_mission}
@@ -340,7 +340,7 @@ In more detail, the sequence of operations is:
 1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
    - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
 2. Drone receives the message, and clears the mission from storage.
-3. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED)[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT).
+3. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating success.
 4. GCS receives `MISSION_ACK` and clears its own stored information about the mission.
    The operation is now complete.
 
@@ -382,7 +382,7 @@ An operation may also complete with an error - `MISSION_ACK.type` set to [MAV_MI
 This can occur in response to any message/anywhere in the sequence.
 
 Errors are considered unrecoverable.
-In an error is sent, both ends of the system should reset themselves to the idle state and the current state of the mission on the vehicle should be unaltered.
+If an error is sent, both ends of the system should reset themselves to the idle state and the current state of the mission on the vehicle should be unaltered.
 
 Note:
 
@@ -427,7 +427,7 @@ The direction of loiter for `MAV_CMD_NAV_LOITER_UNLIM` can be set using `param4`
 The remaining parameters (xtrack and heading) apply only to forward flying aircraft (not multicopters!)
 :::
 
-Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will _exit the loiter circle, and its path to the next waypoint_ (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`).
+Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will _exit the loiter circle, and its path to the next waypoint_ (these apply only to `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`).
 
 | Param (:Label) | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Units                                                                   |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
