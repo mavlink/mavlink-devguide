@@ -340,7 +340,7 @@ In more detail, the sequence of operations is:
 1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
    - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
 1. Drone receives the message, and clears the mission from storage.
-1. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED)[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT).
+1. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission clearing completion/success.
 1. GCS receives `MISSION_ACK` and clears its own stored information about the mission.
    The operation is now complete.
 
@@ -546,4 +546,4 @@ The following behaviour is not defined by the specification (but is still of int
 
 #### Geofence & Rally Point Plans
 
-QGroundControl is the reference implementation for mission / rally point plans.
+QGroundControl is the reference implementation for geofence / rally point plans.
