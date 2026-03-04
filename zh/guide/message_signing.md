@@ -14,24 +14,24 @@ It explains how a system can determine if a message is signed and whether the si
 
 ## 帧格式
 
-For a signed packet the **0x01** bit of the [incompatibility flag field](../guide/mavlink_2.md#incompat_flags) is set true and an additional 13 bytes of "signature" data appended to the packet.
+For a signed packet the **0x01** bit of the [incompatibility flag field](../guide/serialization.md#incompat_flags) is set true and an additional 13 bytes of "signature" data appended to the packet.
 签名的数据包格式如下。
 
 ![MAVLink 2 Signed](../../assets/packets/packet_mavlink_v2_signing.png)
 
 :::info
-The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
+The [incompatibility flags](../guide/serialization.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
 In other words, a MAVLink library that does not support signing must drop signed packets.
-The C library uses [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
+The C library uses [MAVLINK_IFLAG_SIGNED](../guide/serialization.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
 :::
 
 签字的13字节为：
 
-| 数据                                                                           | 描述                                                                                                                                                                          |
-| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [linkID](#link_ids) (8&amp;nbsp;bits) | 发送数据包的链接ID。 通常与<em>channel</em>相同。 Normally this is the same as the _channel_.                                                                              |
-| [timestamp](#timestamps) (48 bits)                        | 2015年1月1日GMT时间以来的10个微秒时间戳。 This _must_ monotonically increase for every message on a particular [link](#link_ids). 请注意，如果数据包平均每秒100,000多个数据包，那么时间戳可能早于实际时间。 |
-| [signature](#signature) (48 bits)                         | 基于完整的数据包、时间戳和秘密密钥，数据包有48位签名。                                                                                                                                                |
+| 数据                                                                       | 描述                                                                                                                                                                          |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [linkID](#link_ids) (8&nbsp;bits) | 发送数据包的链接ID。 通常与<em>channel</em>相同。 Normally this is the same as the _channel_.                                                                              |
+| [timestamp](#timestamp) (48 bits)                     | 2015年1月1日GMT时间以来的10个微秒时间戳。 This _must_ monotonically increase for every message on a particular [link](#link_ids). 请注意，如果数据包平均每秒100,000多个数据包，那么时间戳可能早于实际时间。 |
+| [signature](#signature) (48 bits)                     | 基于完整的数据包、时间戳和秘密密钥，数据包有48位签名。                                                                                                                                                |
 
 见下文关于字段的更多信息。
 
@@ -160,7 +160,7 @@ The secret key may be shared to other devices using the [SETUP_SIGNING](../messa
 The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`.
 必须设置接收系统来处理消息, 并将接收到的密钥存储到相应的永久存储中。
 
-The same secure method can be used to both _set_ and _reset_ a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
+The same secure method can be used to both _set_ and _reset_ a system's key (resetting a key does not have to be "more secure" than setting it in the first place).
 
 The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels.
 这是为了避免通过安全链接 (如 usb) 收到的密钥通过不安全的链接 (例如 wifi) 自动转发到另一个系统的情况。
@@ -176,7 +176,7 @@ The receiving system may be configured to ignore message signatures on the secur
 
 In order to avoid leaking the secret key used for signing, systems should omit [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) messages from logs (or replace the secret with 32 0xFF bytes in the logged message).
 
-Similarly, signed packets should have the signature [incompatibility bit](../guide/mavlink_2.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files.
+Similarly, signed packets should have the signature [incompatibility bit](../guide/serialization.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files.
 这使得潜在攻击者更难以收集大量签名数据来攻击系统。
 
 ## 更多信息
