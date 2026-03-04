@@ -7,7 +7,7 @@ The benefits of using _Wireshark_ over other alternatives are:
 - it can view _all_ traffic on a network interface (GCS tools like [MAVLink Inspector](https://docs.qgroundcontrol.com/master/en/analyze_view/mavlink_inspector.html) often only analyse incoming traffic).
 - you can use it to analyse traffic logged on a companion computer (this allows analysis of traffic between the companion computer and flight controller, which might otherwise not be visible to _Wireshark_).
 - it is easy to update for new custom messages and dialects.
-  Rebuilding _QGroundControl_ so you can use it analyse custom messages is much harder!
+  Rebuilding _QGroundControl_ so you can use it to analyse custom messages is much harder!
 
 This topic shows how to generate a Wireshark plugin for a particular dialect file and install it on Wireshark, and how to perform basic filtering. It also provides an overview of how you can use <em x-id="3">tcpdump</em> for collecting traffic on a linux computer (for later analysis).
 It also provides an overview of how you can use _tcpdump_ for collecting traffic on a linux computer (for later analysis).
@@ -24,7 +24,7 @@ The MAVLink generator (**mavgen**) can build this plugin for a dialect in the sa
 The steps are:
 
 1. [Install MAVLink](../getting_started/installation.md) (if you have not already done so).
-2. Build libraries for your target dialect, specifing `WLua` as the target language.
+2. Build libraries for your target dialect, specifying `WLua` as the target language.
    This process is described in the topic [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
 
    For example, to build the MAVLink 2 Wireshark plugin for [common.xml](../messages/common.md) you might use the following command:
@@ -57,7 +57,7 @@ This might be necessary, for example, in order to monitor traffic recorded on th
 
 To import the plugin into _Wireshark_:
 
-1. Copy the plugin file into the wireshare plugins directory.
+1. Copy the plugin file into the wireshark plugins directory.
    - On Linux systems this might be: `~/.local/lib/wireshark/plugins` (or `~/.wireshark/plugins` for older versions of Wireshark).
      Note that users will need to be added to the `wireshark` group to use the tool.)
    - On Windows this might be: `Program Files/Wireshark/plugins`.
