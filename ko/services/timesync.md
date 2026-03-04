@@ -61,7 +61,7 @@ This allows filtering of the response to a particular system (but not component)
 :::
 
 :::info
-Version 2 makes adds the target address, so a syncing system can filter on just the responses to its requests.
+Version 2 adds the target address, so a syncing system can filter on just the responses to its requests.
 :::
 
 ## 구현
