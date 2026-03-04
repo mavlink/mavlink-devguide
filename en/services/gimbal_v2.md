@@ -178,7 +178,7 @@ It is possible for multiple components to want to control a gimbal at the same t
 
 In order to start controlling a gimbal, a component first needs to send the [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) command.
 This allows setting which MAVLink component (set by system ID and component ID) is in primary control and which one is in secondary control.
-The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicity set to "in control".
+The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicitly set to "in control".
 This should prevent conflicts between various inputs as long as all components are fair/co-operative when using the configure command.
 
 To be co-operative entails the following rules:
@@ -203,7 +203,7 @@ A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_MA
 This allows controlling the gimbal with either angles, or angular rates, using a normalized unit (-1..1).
 The gimbal device is responsible for translating the input based on angle, speed, and "smoothness" settings.
 
-This input can additionally be scaled by the gimbal manager depending on its state. For example, if the gimbal manager is on a camera and knows the current zoom level / focal length of the camera, it can scale the angular rate down to support smooth paning and tilting.
+This input can additionally be scaled by the gimbal manager depending on its state. For example, if the gimbal manager is on a camera and knows the current zoom level / focal length of the camera, it can scale the angular rate down to support smooth panning and tilting.
 
 #### Controlling Gimbal Angle and/or Angular Rate using MAVLink
 
@@ -232,7 +232,7 @@ This data is required by the _Gimbal Device_ attitude estimator (horizon compens
 
 The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) at a regular rate, e.g. 10 Hz.
 
-This message is a meant as broadcast, so it's set to the GCS, _Gimbal Manager_, and all parties on the network (not just _Gimbal Manager_, like all other messages).
+This message is a meant as broadcast, so it's sent to the GCS, _Gimbal Manager_, and all parties on the network (not just _Gimbal Manager_, like all other messages).
 
 ### Custom Gimbal Device Settings
 
@@ -278,7 +278,7 @@ The recommendation is to make it configurable using (for instance) a parameter.
 
 A non-MAVLink gimbal needs to be connected to a gimbal manager, which then takes care of sending the gimbal device messages.
 Since a non-MAVLink gimbal can't be addressed with a MAVLink component ID, the `gimbal_device_id` needs to be set to one of the magic values (1 to 6).
-This signals that the gimbal manager also is also acting as the gimbal device.
+This signals that the gimbal manager is also acting as the gimbal device.
 
 Also see [how to address non-MAVLink gimbal devices](#non_mavlink_gimbal_device_addressing).
 
@@ -350,7 +350,7 @@ This is the set of messages/enums for communication between gimbal manager and g
 
 ## Sequences
 
-Depicted below are message sequences for some common scenarious.
+Depicted below are message sequences for some common scenarios.
 
 ### Discovery
 
@@ -408,7 +408,7 @@ sequenceDiagram
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgR3JvdW5kIFN0YXRpb25cbiAgICBwYXJ0aWNpcGFudCBHaW1iYWwgTWFuYWdlclxuICAgIHBhcnRpY2lwYW50IEdpbWJhbCBEZXZpY2VcbiAgICBHcm91bmQgU3RhdGlvbi0-PkdpbWJhbCBNYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHaW1iYWwgTWFuYWdlci0-Pkdyb3VuZCBTdGF0aW9uOiBDT01NQU5EX0FDS1xuICAgIEdpbWJhbCBNYW5hZ2VyLT4-R2ltYmFsIERldmljZTogR0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREUgKHN0cmVhbSlcbiAgICBHaW1iYWwgRGV2aWNlLT4-R2ltYmFsIE1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG4gICAgR2ltYmFsIERldmljZS0-Pkdyb3VuZCBTdGF0aW9uOiBHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUyAoc3RyZWFtKVxuICAgIEdyb3VuZCBTdGF0aW9uLT4-R2ltYmFsIE1hbmFnZXI6IE1BVl9DTURfRE9fU0VUX1JPSV9OT05FXG4gICAgR2ltYmFsIE1hbmFnZXItPj5Hcm91bmQgU3RhdGlvbjogQ09NTUFORF9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgR3JvdW5kIFN0YXRpb25cbiAgICBwYXJ0aWNpcGFudCBHaW1iYWwgTWFuYWdlclxuICAgIHBhcnRpY2lwYW50IEdpbWJhbCBEZXZpY2VcbiAgICBHcm91bmQgU3RhdGlvbi0-PkdpbWJhbCBNYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHaW1iYWwgTWFuYWdlci0-Pkdyb3VuZCBTdGF0aW9uOiBDT01NQU5EX0FDS1xuICAgIEdpbWJhbCBNYW5hZ2VyLT4-R2ltYmFsIERldmljZTogR0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREUgKHN0cmVhbSlcbiAgICBHaW1iYWwgRGV2aWNlLT4-R2ltYmFsIE1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG4gICAgR2ltYmFsIERldmljZS0-Pkdyb3VuZCBTdGF0aW9uOiBHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUyAoc3RyZWFtKVxuICAgIEdyb3VuZCBTdGF0aW9uLT4-R2ltYmFsIE1hbmFnZXI6IE1BVl9DTURfRE9fU0VUX1JPSV9OT05FXG4gICAgR2ltYmFsIE1hbmFnZXItPj5Hcm91bmQgU3RhdGlvbjogQ09NTUFORF9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-ROI can be started using a command and should also be stopped again with a command. The ROI command is translated to a gimbal attitude in the the gimbal manager.
+ROI can be started using a command and should also be stopped again with a command. The ROI command is translated to a gimbal attitude in the gimbal manager.
 
 ### Attitude Set During Mission
 

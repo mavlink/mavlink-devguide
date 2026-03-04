@@ -10,7 +10,7 @@ The _MAVLink 2.0_ C/C++ and Python libraries are backwards compatible with MAVLi
 
 ::: info
 _MAVLink v0.9_ is a pre-release version that is no longer supported.
-The associated message set deleted in August 2018.
+The associated message set was deleted in August 2018.
 Legacy code may be present in generator and test code.
 :::
 
@@ -50,7 +50,7 @@ This is reasonable because the majority of systems and communication links now r
 Most flight stacks assume communication links are transparent.
 Possible causes of links not being transparent are:
 
-- Routing, which can can change or reserialize MAVLink packets (for example, there might be an intermediate router that converts between versions).
+- Routing, which can change or reserialize MAVLink packets (for example, there might be an intermediate router that converts between versions).
 - Wireless links that rely on fixed length packetization may distort or truncate variable-length MAVLink 2 frames.
   For example, older SiK Radios may consume MAVLink 2 messages.
 
