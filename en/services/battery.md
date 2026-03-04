@@ -8,7 +8,7 @@ MAVLink provides a number of messages for providing battery information:
   - Some batteries may provide [fault](#MAV_BATTERY_FAULT) and [mode](#MAV_BATTERY_MODE) information in this message.
 
   ::: info
-  `BATTERY_STATUS` is expected to be superseded by [BATTERY_STATUS_V2](../messages/development.html#BATTERY_STATUS_V2).
+  `BATTERY_STATUS` is expected to be superseded by [BATTERY_STATUS_V2](../messages/development.md#BATTERY_STATUS_V2).
   For more information see [RFC 0018 - Improved Battery Status Reporting](https://github.com/mavlink/rfcs/pull/19).
   :::
 

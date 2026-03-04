@@ -48,7 +48,7 @@ Parameters names/ids are set in the `param_id` field of messages where they are 
 The `param_id` string can store up to 16 characters.
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
 
-## Parameter Encoding
+## Parameter Encoding {#parameter_encoding}
 
 Parameter values are encoded in the `param_value` field, an IEE754 single-precision, 4 byte, floating point value (see [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE)).
 The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data, so that it can be decoded by the recipient.
@@ -58,7 +58,7 @@ Two encoding approaches are supported:
 
 - **Byte-wise encoding:** The parameter's bytes are copied directly into the bytes used for the field.
   A 32-bit integer is sent as 32 bits of data.
-- **C-style cast:** The parameter value is converted to a `float`. This may result in some loss of precision as a `float` can represent an integer with up to 24 bits of pecision.
+- **C-style cast:** The parameter value is converted to a `float`. This may result in some loss of precision as a `float` can represent an integer with up to 24 bits of precision.
 
 Byte wise encoding is recommended as it allows very large integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
 

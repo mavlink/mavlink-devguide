@@ -4,7 +4,7 @@ MAVLink services that need to use a Cyclic Redundancy Check (CRC) should choose 
 
 ::: info
 Using the same CRC implementation for all cases means that only one implementation is required.
-Do not introduce another unless there without a compelling technical reason.
+Do not introduce another unless there is a compelling technical reason.
 :::
 
 ::: info

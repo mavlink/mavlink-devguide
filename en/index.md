@@ -31,7 +31,7 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Language/Generator List {#supported_languages}
 
-The sections below lists MAVLink generators and their associated programming languages.
+The sections below list MAVLink generators and their associated programming languages.
 
 ### MAVLink Project Generators/Languages
 

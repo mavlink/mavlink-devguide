@@ -12,7 +12,7 @@ The protocol can be used to control cameras attached to autopilot outputs or sta
 
 ## Standalone MAVLink cameras
 
-A standalone MAVLink camera that needs to interact with a ground station must be able to send and recieve MAVLink messages from the ground station.
+A standalone MAVLink camera that needs to interact with a ground station must be able to send and receive MAVLink messages from the ground station.
 If the GCS and Camera are connected to the flight stack on different MAVLink channels then the flight stack will need to forward messages between them.
 
 If the MAVLink camera does not emit the [CAMERA_TRIGGER](#CAMERA_TRIGGER) message on image capture then the flight stack may need to do this on its behalf.
@@ -31,7 +31,7 @@ A GCS should address the commands to the autopilot component, which will need to
 The flight stack will also need to trigger the camera when the commands are found in a mission.
 
 Note that a flight stack implementation can generally trigger attached cameras and emit a MAVLink command in missions.
-If a connected camera and MAVLink camera are connected, both with be triggered.
+If a connected camera and MAVLink camera are connected, both will be triggered.
 
 ## Message/Command Summary
 

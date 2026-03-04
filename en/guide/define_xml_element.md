@@ -171,7 +171,7 @@ Messages must be declared between the `<messages></messages>` tags in either **c
 Each message is defined using `<message id="" name="LIBRARY_UNIQUE_NAME"> ... </message>` tags (with unique `id` and `name` attributes).
 
 ::: tip
-The only only difference between messages defined in **common.xml** or _dialect_ files is they they must use different `id` ranges in order to ensure that the `ids` are unique. See [Message Id Ranges](#message_id_ranges) for more information.
+The only difference between messages defined in **common.xml** or _dialect_ files is they they must use different `id` ranges in order to ensure that the `ids` are unique. See [Message Id Ranges](#message_id_ranges) for more information.
 :::
 
 The main rules for messages are:
@@ -250,7 +250,7 @@ For a message in **common.xml** either change requires the agreement of major st
 - Create a PR and discuss in the MAVLink developer meeting.
 
   ::: tip
-  Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+  Before proposing changes to **common.xml** check the codebase of major stakeholders to confirm impact.
   :::
 
 It is possible to change the message and field descriptions without breaking binary compatibility.
@@ -406,7 +406,7 @@ If an enum needs to be changed then there are several options:
 For either case, all users of the enum will need to be updated with new generated libraries.
 
 ::: tip
-Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+Before proposing changes to **common.xml** check the codebase of major stakeholders to confirm impact.
 :::
 
 For an enum in **common.xml** either change requires the agreement of major stakeholders
@@ -473,7 +473,7 @@ If you are creating a new public dialect, [create an issue](https://github.com/m
 :::
 
 There are a number of common and ArduPilot commands that are outside the ranges (e.g. 16, 200, etc.).
-Generally you would only use these these ranges in order to give a new command an id that is close to related to that of related commands.
+Generally you would only use these ranges in order to give a new command an id that is close to related to that of related commands.
 This can be done provided that the command id value is not used by any other XML file in the _mavlink/mavlink_ repo.
 
 ### Entry Names {#command_names}
@@ -524,7 +524,7 @@ If the param is reused the original default value must still mean "no action", s
 
 ::: info
 Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
-The default value cannot later be changed from `NaN` to `0` (or visa versa) without potential compatibility issues.
+The default value cannot later be changed from `NaN` to `0` (or vice versa) without potential compatibility issues.
 :::
 
 To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.

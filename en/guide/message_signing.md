@@ -13,15 +13,15 @@ More detailed information for developers using existing MAVLink libraries can be
 
 ## Frame Format
 
-For a signed packet the **0x01** bit of the [incompatibility flag field](../guide/mavlink_2.md#incompat_flags) is set true and an additional 13 bytes of "signature" data appended to the packet.
+For a signed packet the **0x01** bit of the [incompatibility flag field](../guide/serialization.md#incompat_flags) is set true and an additional 13 bytes of "signature" data appended to the packet.
 The signed packet format is shown below.
 
 ![MAVLink 2 Signed](../../assets/packets/packet_mavlink_v2_signing.png)
 
 ::: info
-The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
+The [incompatibility flags](../guide/serialization.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
 In other words, a MAVLink library that does not support signing must drop signed packets.
-The C library uses [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
+The C library uses [MAVLINK_IFLAG_SIGNED](../guide/serialization.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
 :::
 
 The 13 bytes of the signature are:
@@ -29,7 +29,7 @@ The 13 bytes of the signature are:
 | Data                               | Description                                                                                                                                                                                                                                                                                 |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [linkID](#link_ids) (8&nbsp;bits)  | ID of link on which packet is sent. Normally this is the same as the _channel_.                                                                                                                                                                                                             |
-| [timestamp](#timestamps) (48 bits) | Timestamp in 10 microsecond units since 1st January 2015 GMT time. This _must_ monotonically increase for every message on a particular [link](#link_ids). Note that means the timestamp may get ahead of the actual time if the packet rate averages more than 100,000 packets per second. |
+| [timestamp](#timestamp) (48 bits) | Timestamp in 10 microsecond units since 1st January 2015 GMT time. This _must_ monotonically increase for every message on a particular [link](#link_ids). Note that means the timestamp may get ahead of the actual time if the packet rate averages more than 100,000 packets per second. |
 | [signature](#signature) (48 bits)  | A 48 bit signature for the packet, based on the complete packet, timestamp, and secret key.                                                                                                                                                                                                 |
 
 See below for more information about the fields.
@@ -154,7 +154,7 @@ The secret key may be shared to other devices using the [SETUP_SIGNING](../messa
 The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`.
 The receiving system must be set up to process the message and store the received secret key to the appropriate permanent storage.
 
-The same secure method can be used to both _set_ and _reset_ a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
+The same secure method can be used to both _set_ and _reset_ a system's key (resetting a key does not have to be "more secure" than setting it in the first place).
 
 The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels.
 This is to avoid the case where a key received over a secure link (e.g. USB) is automatically forwarded to another system over an insecure link (e.g. Wifi).
@@ -170,7 +170,7 @@ The receiving system may be configured to ignore message signatures on the secur
 
 In order to avoid leaking the secret key used for signing, systems should omit [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) messages from logs (or replace the secret with 32 0xFF bytes in the logged message).
 
-Similarly, signed packets should have the signature [incompatibility bit](../guide/mavlink_2.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files.
+Similarly, signed packets should have the signature [incompatibility bit](../guide/serialization.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files.
 This makes it harder for potential attacker to collect large amounts of signature data with which to attack the system.
 
 ## Further Information
