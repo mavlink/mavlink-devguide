@@ -4560,9 +4560,9 @@ Value | Name | Description
 --- | --- | ---
 <a id='PARAM_READ_PERSISTENT'></a>0 | [PARAM_READ_PERSISTENT](#PARAM_READ_PERSISTENT) | Read all parameters from persistent storage. Replaces values in volatile storage. 
 <a id='PARAM_WRITE_PERSISTENT'></a>1 | [PARAM_WRITE_PERSISTENT](#PARAM_WRITE_PERSISTENT) | Write all parameter values to persistent storage (flash/EEPROM) 
-<a id='PARAM_RESET_CONFIG_DEFAULT'></a>2 | [PARAM_RESET_CONFIG_DEFAULT](#PARAM_RESET_CONFIG_DEFAULT) | Reset all user configurable parameters to their default value (including airframe selection, sensor calibration data, safety settings, and so on). Does not reset values that contain operation counters and vehicle computed statistics. 
+<a id='PARAM_RESET_FACTORY_DEFAULT'></a>2 | [PARAM_RESET_FACTORY_DEFAULT](#PARAM_RESET_FACTORY_DEFAULT) | Reset parameters to default values (such as sensor calibration, safety settings, and so on). Note that a flight stack may choose not to reset some parameters at their own discretion (such as those that are locked or expected to persist for the vehicle lifetime). 
 <a id='PARAM_RESET_SENSOR_DEFAULT'></a>3 | [PARAM_RESET_SENSOR_DEFAULT](#PARAM_RESET_SENSOR_DEFAULT) | Reset only sensor calibration parameters to factory defaults (or firmware default if not available) 
-<a id='PARAM_RESET_ALL_DEFAULT'></a>4 | [PARAM_RESET_ALL_DEFAULT](#PARAM_RESET_ALL_DEFAULT) | Reset all parameters, including operation counters, to default values 
+<a id='PARAM_RESET_ALL_DEFAULT'></a>4 | [PARAM_RESET_ALL_DEFAULT](#PARAM_RESET_ALL_DEFAULT) | Reset all parameters to default values. 
 
 ### PREFLIGHT_STORAGE_MISSION_ACTION {#PREFLIGHT_STORAGE_MISSION_ACTION}
 
