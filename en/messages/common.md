@@ -4109,6 +4109,7 @@ Value | Name | Description
 Value | Name | Description
 --- | --- | ---
 <a id='MAV_SYS_STATUS_RECOVERY_SYSTEM'></a>1 | [MAV_SYS_STATUS_RECOVERY_SYSTEM](#MAV_SYS_STATUS_RECOVERY_SYSTEM) | 0x01 Recovery system (parachute, balloon, retracts etc) 
+<a id='MAV_SYS_STATUS_SENSOR_LEAK'></a>2 | [MAV_SYS_STATUS_SENSOR_LEAK](#MAV_SYS_STATUS_SENSOR_LEAK) | 0x02 Leak detection 
 
 ### MAV_FRAME {#MAV_FRAME}
 
