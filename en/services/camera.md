@@ -33,7 +33,7 @@ These cameras have inbuilt support for MAVLink (but not necessarily camera proto
 
 MAVLink cameras are identified and addressed by their system and component id.
 
-Components that have non-MAVLink cameras attached, such as companion computers, are expected expose each of them as a separate MAVLink camera component with its own `HEARTBEAT`.
+Components that have non-MAVLink cameras attached, such as companion computers, are expected to expose each of them as a separate MAVLink camera component with its own `HEARTBEAT`.
 
 The exception is the _autopilot_ component, which can "proxy" up to 6 attached non-MAVLink cameras: these are identified by a `camera_device_id` field in messages and `Target Camera ID` label in commands.
 
@@ -235,7 +235,7 @@ For formatting (or erasing depending on your implementation), the GCS will send 
 
 ### Camera Capture Status
 
-In addition to querying about storage status, the GCS should also stream the _Camera Capture Status_ in order to provide the user with proper UI indicators.
+In addition to querying about storage status, the GCS should also request a stream of _Camera Capture Status_ in order to provide the user with proper UI indicators.
 
 This can be done by sending a [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) command asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
 The command it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) should be streamed at the specified rate.
@@ -282,7 +282,7 @@ The message sequence for _interactive user-initiated image capture_ through a GU
 In this case the GCS should:
 
 - Confirm that the camera is _ready_ to take images before allowing the user to request image capture.
-  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - It does this by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
 - Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
@@ -456,7 +456,7 @@ Other components like a GCS will typically only use the camera `BATTERY_STATUS.b
 | <a id="VIDEO_STREAM_STATUS"></a>[VIDEO_STREAM_STATUS](../messages/common.md#VIDEO_STREAM_STATUS)                            | Information updating a video stream configuration. <!-- TBD? -->                                                                                                                                                                                                                                                                                               |
 | <a id="storage_information"></a>[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION)                            | Storage information (e.g. number and type of storage devices, total/used/available capacity, read/write speeds).                                                                                                                                                                                                                                               |
 | <a id="CAMERA_CAPTURE_STATUS"></a>[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS)                      | Camera capture status, including current capture type (if any), capture interval, available capacity.                                                                                                                                                                                                                                                          |
-| <a id="CAMERA_IMAGE_CAPTURED"></a>[CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED)                      | Information about image captured (returned to GPS every time an image is captured).                                                                                                                                                                                                                                                                            |
+| <a id="CAMERA_IMAGE_CAPTURED"></a>[CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED)                      | Information about image captured (returned to GCS every time an image is captured).                                                                                                                                                                                                                                                                            |
 | <a id="CAMERA_FOV_STATUS"></a>[CAMERA_FOV_STATUS](../messages/common.md#CAMERA_FOV_STATUS)                                  | Information about the field of view of a camera. Requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).                                                                                                                                                                                                                                          |
 | <a id="CAMERA_TRACKING_IMAGE_STATUS"></a>[CAMERA_TRACKING_IMAGE_STATUS](../messages/common.md#CAMERA_TRACKING_IMAGE_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval.                                                                                                                                                                                      |
 | <a id="CAMERA_TRACKING_GEO_STATUS"></a>[CAMERA_TRACKING_GEO_STATUS](../messages/common.md#CAMERA_TRACKING_GEO_STATUS)       | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval.                                                                                                                                                                                      |
@@ -516,4 +516,4 @@ The transition works like this:
 
 1. Cameras need to handle both approaches for now (i.e. support both new generic and old specific commands).
 2. Ground stations will move from using the old specific commands to using both. They can try the new one and if they don't get an answer within a timeout they need to fall back to the previous command.
-3. After the new commands have been established in server and ground stations, the old specific commands may be removed from the implementations.
+3. After the new commands have been established in servers and ground stations, the old specific commands may be removed from the implementations.
