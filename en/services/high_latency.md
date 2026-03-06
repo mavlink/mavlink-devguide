@@ -66,7 +66,7 @@ A typical flight sequence might therefore look like:
   - While low latency link is active the mission and parameter protocols can be used.
   - While high latency link is active the vehicle provide telemetry updates but parameters and missions should not be updated.
 
-When the low latency link is lost, the GCS sends [MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY) to the vehicle over the high latency channel to turn the high latency link on on (causing the vehicle to start emitting [HIGH_LATENCY2](#HIGH_LATENCY2) messages).
+When the low latency link is lost, the GCS sends [MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY) to the vehicle over the high latency channel to turn the high latency link on (causing the vehicle to start emitting [HIGH_LATENCY2](#HIGH_LATENCY2) messages).
 When the low latency link is regained the GCS sends [MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY) to stop the vehicle from broadcasting [HIGH_LATENCY2](#HIGH_LATENCY2) messages (usually this would be sent over the low latency link).
 
 The diagram below shows a GCS switching from a higher-latency primary link to a lower latency secondary link when one becomes available, and then back to the higher latency link when the primary link drops out.
@@ -80,4 +80,4 @@ A ground station may also support a handover model, where the high latency link 
 This approach allows the GCS to verify that the high latency link is available before losing the low latency connection.
 
 If using this model the GCS and autopilot should be able to work with a mixed regime of low and high latency links.
-Specifically, this means that they should be able to handle the case where the same message is sent over different both channels.
+Specifically, this means that they should be able to handle the case where the same message is sent over both channels.
