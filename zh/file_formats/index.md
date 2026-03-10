@@ -16,7 +16,7 @@ _QGroundControl_ and many other GCS support an older plain-text format for missi
 这不是MAVLink的正式组成部分，也不允许提供集会点或地理围栏信息。
 
 格式如下。
-第一行包含文件格式和版本信息，后面行为任务项目。
+The first line contains the file format and version information, while subsequent line(s) are mission items.
 
 ```
 QGC WPL <VERSION>

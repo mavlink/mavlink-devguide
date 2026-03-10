@@ -16,7 +16,7 @@ _QGroundControl_ and many other GCS support an older plain-text format for missi
 This is not officially part of MAVLink and does not allow rally point or geofence information to be provided.
 
 The format is shown below.
-The first line contains the file format and version information, while subsequent the line(s) are mission items.
+The first line contains the file format and version information, while subsequent line(s) are mission items.
 
 ```
 QGC WPL <VERSION>

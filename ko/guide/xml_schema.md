@@ -103,7 +103,7 @@ The values are defined in nested [`<entry>`](#entry) elements.
 Attributes:
 
 - `name` (required): The name of the enum. This is a string of capitalized, underscore-separated words.
-- `bitmask` (optional): Set to `true` for enums that defines entries with values that increase by a power of 2, such as flags.
+- `bitmask` (optional): Set to `true` for enums that define entries with values that increase by a power of 2, such as flags.
 
 Nested elements:
 
@@ -292,7 +292,13 @@ Nested elements:
   The field value is its name/text string used in GUI documentation (but not sent over the wire).
   Every message must have at least one field.
 - `<extensions />` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only.
-  - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2.
+
+### `<extensions />` element {#extensions}
+
+A self-closing tag that indicates that subsequent fields apply to MAVLink 2 only.
+
+This should only be used if a message needs new fields after it is already published.
+New messages are preferred as extensions are not part of the CRC check, and can hence lead to undetectable incompatibilities.
 
 ### `<field>` element {#field}
 
@@ -303,7 +309,7 @@ The field inner content text string is used in GUI documentation (but not sent o
 Attributes:
 
 - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type.
-  - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers.
+  - Fields can be signed/unsigned integers of size 8, 16, 32, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers.
     They can also be arrays of the other types - e.g. `uint16_t[10]`.
 
 - `name`: Name of the field (used in code).
@@ -331,13 +337,13 @@ Attributes:
 - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
 
   ::: info
-  This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+  This field allows a recipient to automatically associate messages for a particular sensor and plot them in the same series.
   :::
 
 - `invalid`: Specifies a value that can be set on a field to indicate that the data is _invalid_: the recipient should ignore the field if it has this value.
   For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied _current_ should set `BATTERY_STATUS.current_battery` to `-1`.
 
-  Where possible the value that indicates the field is invalid should be selected to outside the expected/valid range of the eld (`0` is preferred if it is not an acceptable value for the field).
+  Where possible the value that indicates the field is invalid should be selected to outside the expected/valid range of the field (`0` is preferred if it is not an acceptable value for the field).
   For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`).
   For floats we usually select `invalid="NaN"`.
 
@@ -371,7 +377,7 @@ They should not be included in release builds.
 The generator toolchain can be configured to conditionally build messages omitting the `<wip>` entries.
 
 Generally new elements should be defined in `development.xml`, and any definitions in that file are considered WIP by default.
-The `wip` element is intended primiarly for indicating WIP additions to `common.xml` that for whatever reason could not be added to `development.xml`.
+The `wip` element is intended primarily for indicating WIP additions to `common.xml` that for whatever reason could not be added to `development.xml`.
 
 Once the associated definition has been tested, it may be accepted into `common.xml` and the `<wip>` tag removed.
 
@@ -386,7 +392,7 @@ Attributes:
 
 - `since` (optional): A datestamp indicating when the corresponding element was proposed.
   This should be formatted as such as `YYYYMM`
-  This hints to the maintainter team when WIP elements should be reviewed for addition or removal.
+  This hints to the maintainer team when WIP elements should be reviewed for addition or removal.
 
 Nested elements
 
@@ -409,7 +415,7 @@ Attributes:
 
 - `since` (required): A datestamp indicating when the new element was accepted into files managed by the MAVLink team.
   This should be formatted as such as `YYYY-MM`.
-- `replaced_by` (required): The name of the definition that supersedes this elements.
+- `replaced_by` (required): The name of the definition that supersedes this element.
 
 Nested elements
 
@@ -418,7 +424,7 @@ Nested elements
 ### `<deprecated>` element {#deprecated}
 
 The `<deprecated>` element is used to indicate when an element should not be used because it is on the path for removal from the standard.
-Often by the time and element is deprecated it has already been removed from current releases of the main flight stacks.
+Often by the time an element is deprecated it has already been removed from current releases of the main flight stacks.
 
 The attributes indicates the time of deprecation and the replacement element, and may also include the intended date of removal.
 The content of the element may (optionally) contain a string with additional information about the planned removal and alternative definitions.

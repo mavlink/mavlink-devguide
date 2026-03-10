@@ -28,7 +28,7 @@ The sections below explain how to contribute to each category and how to raise a
 Changes to the [mavgen](../getting_started/generate_libraries.md#mavgen) generator must be added as pull requests through the [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink) project.
 
 Changes to existing generator code (e.g. bug fixes) are automatically tested by continuous integration (github actions).
-Once you have made against your PR pass, the changes will be reviewed by a project team member.
+Once you have made your PR pass, the changes will be reviewed by a project team member.
 
 More significant changes to the generator, such as the addition of a new programming language, will require:
 
@@ -47,14 +47,14 @@ Ideally:
 
 ## How to Contribute Stand Alone Generators
 
-We would prefer that new languages are supported via [mavgen](../getting_started/generate_libraries.md#mavgen) rather than "standalone generators", as this provides a consistent inteface for end users, and ensures that source files are parsed and handled consistently.
+We would prefer that new languages are supported via [mavgen](../getting_started/generate_libraries.md#mavgen) rather than "standalone generators", as this provides a consistent interface for end users, and ensures that source files are parsed and handled consistently.
 
 That said will consider moving stand-alone generators into the MAVLink project under the same conditions as for new mavgen generator code (see section above).
 Primarily this means that the team developing the generator must provide sufficient validation that the generator works and commitment to support it.
 
 ## How to Open a Pull Request
 
-1. First [fork and clone](https://help.github.com/articles/fork-a-repo) the project project.
+1. First [fork and clone](https://help.github.com/articles/fork-a-repo) the project.
 
 2. 在主服务器上创建要素分支
 
