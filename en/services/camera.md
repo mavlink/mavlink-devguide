@@ -424,7 +424,39 @@ The GCS should already have identified all connected cameras by their heartbeat 
 
 The sequence for tracking a point is shown below (tracking a rectangle is the same sequence but a different tracking command).
 
-[![Mermaid Sequence: tracking info](https://mermaid.ink/img/pako:eNqlVGFvmzAQ_SuWP6USi5ZKWyW2RLIIYWgBIkz7CQm54CTWgs2M2VRV_e8zmCyobaImAQkd9t299853foa5KCi0YU1_N5TndM7IRpLyW8qBfioiFctZRbgCnoPfLjqkpJKY9VAoCsQfKltXy-zYwF8ABwVujDIHrbLFEnk4-4FwlsTI-emHXraK_DD5_ihnjO89_XARxQFK_Cgcr3dkU7fboFYaGChJ8l-Mb0AlGFcGWeN9ms32iAF6yJxgnvXJOiCDMgIp7MIA42shS6KY4CkENyaNSaAz6XwmTezi-2WSIcdxV4k7b91Sbt43im2AqdIkJSVly08SRVveQxqtXj9AnpvhBCX3-BR97CZZ4GLcemvubvyAliNde1JOprd3X6zOvJ1OPhvrbjo5R8YHyIPXzD036nm3ukZ1U1VCnwirAanrpqRgSyW9uVzT16s0vVZlQqwuwNi9vvrQQ4M2AJpHrbcE2LDykezeBT51lmA0-VDMoYqHCPBe4Hg8Pjcfv4B1G3OqdvqjCyeqQdkILwa98ndLOdA_xdOxsxpMI06i1X8mx0p2tGevmpRLB-WqVj4fFFpQe5SEFfpafu6uHKi2tKQptLVZ0DVpdiqFKX_Rrk1V6FF1C6aEhPaa7GpqQdIogZ94Dm0lG7p36q_23uvlH-Jn1w4?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqlVGFvmzAQ_SuWP6USi5ZKWyW2RLIIYWgBIkz7CQm54CTWgs2M2VRV_e8zmCyobaImAQkd9t299853foa5KCi0YU1_N5TndM7IRpLyW8qBfioiFctZRbgCnoPfLjqkpJKY9VAoCsQfKltXy-zYwF8ABwVujDIHrbLFEnk4-4FwlsTI-emHXraK_DD5_ihnjO89_XARxQFK_Cgcr3dkU7fboFYaGChJ8l-Mb0AlGFcGWeN9ms32iAF6yJxgnvXJOiCDMgIp7MIA42shS6KY4CkENyaNSaAz6XwmTezi-2WSIcdxV4k7b91Sbt43im2AqdIkJSVly08SRVveQxqtXj9AnpvhBCX3-BR97CZZ4GLcemvubvyAliNde1JOprd3X6zOvJ1OPhvrbjo5R8YHyIPXzD036nm3ukZ1U1VCnwirAanrpqRgSyW9uVzT16s0vVZlQqwuwNi9vvrQQ4M2AJpHrbcE2LDykezeBT51lmA0-VDMoYqHCPBe4Hg8Pjcfv4B1G3OqdvqjCyeqQdkILwa98ndLOdA_xdOxsxpMI06i1X8mx0p2tGevmpRLB-WqVj4fFFpQe5SEFfpafu6uHKi2tKQptLVZ0DVpdiqFKX_Rrk1V6FF1C6aEhPaa7GpqQdIogZ94Dm0lG7p36q_23uvlH-Jn1w4)
+[![Mermaid Sequence: tracking info](https://mermaid.ink/img/pako:eNqlVNuOmzAQ_RXLT1mJImDJhtAmEiIkRc1Ngd2HKhLyBoegDTY1Zts0yr_XQG5Kd6NceEBjz5w5Z8Zjr-GMhhiaMMO_ckxmuBOjiKHk65QA8aWI8XgWp4hw0LO9_zdtlGCGqv0h5RjQd8yKUKnymMDtAtsaOBMrsK1x0O1bPS_4bnmBP7HsH-6wF4xH7tD_9sraMdlFusPuaDKwfHc0lOdLFGWFG2RcEAPO0OwtJhFIaUx4xSz4vrTbO8aB9RLYg06wTVYSVSw1MIUlDMRkTlmCeEzJFIKHKk2VQGQS-ao0E8d77vuBZdvO2Hc6RdgHtZrAw1zIYxglhTKGOC4UHwsoKnUHVs8JPN_yn71zwj3HDwaO5xXRQrUzebH6NdF1lKgtrVGXSlNrqUplNVrqNQVcIB6cKu85o63uoq5alqcpFWcRZwBlWZ5gsMAMP9xe09NdNZ1WVUGkElDZ2_qyw_QcDQAQOjLhoiCKk1e0_JD43FmCmnoR5tDFAwJ8BJRl-dp85AbVBeZc78RPNI6mR21DJDyald8LTIBYhKsL7qHnj8Z7JZ-17NOZveum3HpR7hrl60mhBCMWh9DkLMcSFNEJKpZwXT48kC9wgqfQFGaI2NsUTslGYMRD_JPSZAdjNI8W0JyjZSZWeRqKC7191U92nTDmlO03Uc6ptyKzfSJMQsxsmhMOTU0tiaC5hn-gqat1uanrj7pqNBRD14xHCa6gqepN2ag3Na1hNA1dUfSNBP-W0hS5UVd0Q6sLr6Krivq0-QcBRvlk?type=png)](https://mermaid.live/edit#pako:eNqlVNuOmzAQ_RXLT1mJImDJhtAmEiIkRc1Ngd2HKhLyBoegDTY1Zts0yr_XQG5Kd6NceEBjz5w5Z8Zjr-GMhhiaMMO_ckxmuBOjiKHk65QA8aWI8XgWp4hw0LO9_zdtlGCGqv0h5RjQd8yKUKnymMDtAtsaOBMrsK1x0O1bPS_4bnmBP7HsH-6wF4xH7tD_9sraMdlFusPuaDKwfHc0lOdLFGWFG2RcEAPO0OwtJhFIaUx4xSz4vrTbO8aB9RLYg06wTVYSVSw1MIUlDMRkTlmCeEzJFIKHKk2VQGQS-ao0E8d77vuBZdvO2Hc6RdgHtZrAw1zIYxglhTKGOC4UHwsoKnUHVs8JPN_yn71zwj3HDwaO5xXRQrUzebH6NdF1lKgtrVGXSlNrqUplNVrqNQVcIB6cKu85o63uoq5alqcpFWcRZwBlWZ5gsMAMP9xe09NdNZ1WVUGkElDZ2_qyw_QcDQAQOjLhoiCKk1e0_JD43FmCmnoR5tDFAwJ8BJRl-dp85AbVBeZc78RPNI6mR21DJDyald8LTIBYhKsL7qHnj8Z7JZ-17NOZveum3HpR7hrl60mhBCMWh9DkLMcSFNEJKpZwXT48kC9wgqfQFGaI2NsUTslGYMRD_JPSZAdjNI8W0JyjZSZWeRqKC7191U92nTDmlO03Uc6ptyKzfSJMQsxsmhMOTU0tiaC5hn-gqat1uanrj7pqNBRD14xHCa6gqepN2ag3Na1hNA1dUfSNBP-W0hS5UVd0Q6sLr6Krivq0-QcBRvlk)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    Note over GCS,Camera: IF CAMERA_CAP_FLAGS_HAS_TRACKING_POINT<br>in CAMERA_INFORMATION.flags<br> start tracking point
+    GCS->>Camera: MAV_CMD_CAMERA_TRACK_POINT( "point information" )
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+
+    Note over GCS: Set streaming rate<br>CAMERA_TRACKING_IMAGE_STATUS
+    GCS->>Camera: MAV_CMD_SET_MESSAGE_INTERVAL(param1=275,param2=10,param7=1)
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    Note over GCS: Set streaming rate CAMERA_TRACKING_GEO_STATUS<br>(support is assume here)
+    GCS->>Camera: MAV_CMD_SET_MESSAGE_INTERVAL(param1=276,param2=10,param7=1)
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+
+    Note over Camera,GCS: Camera streams tracking information (pass to gimbal)
+    Camera->>GCS: CAMERA_TRACKING_IMAGE_STATUS (1)
+    Camera->>GCS: CAMERA_TRACKING_GEO_STATUS (1)
+
+    Camera->>GCS: ...
+    Camera->>GCS: CAMERA_TRACKING_GEO_STATUS (n)
+    Camera->>GCS: CAMERA_TRACKING_IMAGE_STATUS (n)
+
+    Note over Camera,GCS: GCS stops tracking and streaming when ready
+    GCS->>Camera: MAV_CMD_CAMERA_STOP_TRACKING (1)
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    GCS->>Camera: MAV_CMD_SET_MESSAGE_INTERVAL(param1=275,param2=0,param7=1)
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    GCS->>Camera: MAV_CMD_SET_MESSAGE_INTERVAL(param1=276,param2=0,param7=1)
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+-->
 
 The steps are:
 
