@@ -19,25 +19,25 @@ All axis values are normalised to the range -1000 to 1000.
 
 The typical axis assignments for a thrust- and rotation-controlled vehicle (e.g. planes, multicopters) are listed below.
 
-| field | motion axis | +ve direction     | -ve direction    |
-| ----- | ----------- | ----------------- | ---------------- |
-| `x`   | pitch       | forward/nose-down | backward/nose-up |
-| `y`   | roll        | right-down        | left-down        |
-| `z`   | thrust      | positive          | negative         |
-| `r`   | yaw         | counter-clockwise | clockwise        |
+| field | motion axis | +ve direction     | -ve direction     |
+| ----- | ----------- | ----------------- | ----------------- |
+| `x`   | pitch       | forward/nose-down | backward/nose-up  |
+| `y`   | roll        | right-down        | left-down         |
+| `z`   | thrust      | positive          | negative          |
+| `r`   | yaw         | clockwise         | counter-clockwise |
 
 ### Directional Control
 
 Vehicles with direct control over vehicle translation directions (multicopters) typically use the following mappings.
 
-| field | motion axis | +ve direction     | -ve direction    |
-| ----- | ----------- | ----------------- | ---------------- |
-| `x`   | forward     | forward           | backward         |
-| `y`   | lateral     | right             | left             |
-| `z`   | vertical    | up                | down             |
-| `r`   | yaw         | counter-clockwise | clockwise        |
-| `s`   | pitch       | forward/nose-down | backward/nose-up |
-| `t`   | roll        | right-down        | left-down        |
+| field | motion axis | +ve direction     | -ve direction     |
+| ----- | ----------- | ----------------- | ----------------- |
+| `x`   | forward     | forward           | backward          |
+| `y`   | lateral     | right             | left              |
+| `z`   | vertical    | up                | down              |
+| `r`   | yaw         | clockwise         | counter-clockwise |
+| `s`   | pitch       | forward/nose-down | backward/nose-up  |
+| `t`   | roll        | right-down        | left-down         |
 
 ## Mapping Buttons
 
