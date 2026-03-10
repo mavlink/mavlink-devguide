@@ -194,8 +194,11 @@ where:
   - `tcpin`: Listen for a TCP connection on the specified `address` and `port`.
   - `udpin`: Listen for a UDP connection on the specified `address` and `port`.
   - `udpout`: Initiate a UDP connection on the specified `address` and `port`.
-  - `udp`: By default, same as `udpin`. Set `mavlink_connection` parameter `input=False` to make same as `udpout`.
   - `udpbcast`: Broadcast UDP address and port. This is the same as `udp` with `mavlink_connection()` parameters `input=False` and `broadcast=True`.
+
+  For legacy purposes we accept the following syntax and let the caller to specify direction:
+  - `udp`: By default, same as `udpin`. Set `mavlink_connection` parameter `input=False` to make same as `udpout`.
+
 - `address`: IP address, serial port name, or file name
 - `port`: IP port (only if address is an IP address)
 
