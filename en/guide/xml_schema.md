@@ -42,7 +42,7 @@ The main tags are listed below (all are optional):
   - You can include multiple files using separate tags.
   - The path to included files can be relative to your dialect file.
     Note however that the project tests only cover the case where dialects are in the same folder.
-  - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
+  - Nested `include` of files are supported.
   - When building, generator toolchains will merge/append enums in all files, and report duplicate enum entries and messages.
 
 - `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.
