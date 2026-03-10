@@ -235,7 +235,7 @@ For formatting (or erasing depending on your implementation), the GCS will send 
 
 ### Camera Capture Status
 
-In addition to querying about storage status, the GCS should also request a stream of _Camera Capture Status_ in order to provide the user with proper UI indicators.
+In addition to querying about storage status, the GCS should also request a stream of `CAMERA_CAPTURE_STATUS` messages in order to provide the user with proper UI indicators.
 
 This can be done by sending a [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) command asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
 The command it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) should be streamed at the specified rate.
