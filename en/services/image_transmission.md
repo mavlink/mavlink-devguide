@@ -63,7 +63,7 @@ sequenceDiagram;
    The sequence number starts at 0 for every new image of the stream.
    :::
 
-1. To stop an image stream a GSC must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet, with all 0 values.
+1. To stop an image stream a GCS must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet, with all 0 values.
    The MAVLink node will acknowledge this by sending back `DATA_TRANSMISSION_HANDSHAKE` also containing 0 values.
 
 ## Usage / Configuration

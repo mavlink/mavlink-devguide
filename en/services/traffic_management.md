@@ -11,7 +11,7 @@ The approaches used to handle potential collisions depend on the flight stack, a
 There are two main traffic management systems supported by MAVLink:
 
 - [Unmanned Aircraft System Traffic Management (UTM)](https://www.faa.gov/uas/research_development/traffic_management/) - an avoidance system focussing on UAVs.
-- [Automatic Dependent Surveillance–Broadcast (ADS-B](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast) - an avoidance system developed for manned aircraft and extended to UAVs.
+- [Automatic Dependent Surveillance–Broadcast (ADS-B)](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast) - an avoidance system developed for manned aircraft and extended to UAVs.
 
   ::: info
   FLARM is a transponder-based system that integrates with MAVLink using the ADS-B messages.
