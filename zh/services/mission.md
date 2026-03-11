@@ -546,4 +546,4 @@ The following behaviour is not defined by the specification (but is still of int
 
 #### Geofence & Rally Point Plans
 
-QGroundControl is the reference implementation for mission / rally point plans.
+QGroundControl is the reference implementation for geofence / rally point plans.
