@@ -42,7 +42,7 @@ If you're creating a custom dialect file your file structure should be similar t
   - 可以使用单独的标记包含多个文件。
   - 包含文件的路径可以相对于您的语支文件。
     包含文件的路径可以相对于您的语支文件。 但是请注意, 项目测试仅涵盖语支位于同一文件夹中的情况。
-  - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
+  - Nested `include` of files are supported (mavgen permits up to 5 levels of nesting).
   - 构建时，在生成器工具链中合并/追加发送所有文件中的枚举，并报告重复的枚举条目和消息。
 
 - `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.

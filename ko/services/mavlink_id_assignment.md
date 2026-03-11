@@ -21,7 +21,7 @@ Instead you must use the [MAV_TYPE](../messages/common.md#MAV_TYPE) defined in t
 
 Any id in the range of 1-255 may be used for a system ID or for its component ids.
 
-By convention autopilots typically have a default system ID of `1`, GSC typically use a default system ID up around 255, and MAVLink SDKs typically use an ID in the middle of the range.
+By convention autopilots typically have a default system ID of `1`, GCS typically use a default system ID up around 255, and MAVLink SDKs typically use an ID in the middle of the range.
 This ensures that simple networks with just one vehicle and ground station are unlikely to have clashing system ids.
 If you have multiple vehicles, ground stations, or other systems on the same network, you will need to ensure they are each allocated their own ID.
 
