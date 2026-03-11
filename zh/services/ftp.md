@@ -208,7 +208,7 @@ The sequence of operations is:
 6. GCS sends [TerminateSession](#TerminateSession) to close the file.
    The drone should send an ACK/NAK, but this may (generally speaking) be ignored by the GCS.
 
-The GSC should create a timeout after `OpenFileRO` and `ReadFile` commands are sent and resend the messages as needed (and [described above](#timeouts)).
+The GCS should create a timeout after `OpenFileRO` and `ReadFile` commands are sent and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
 ### Reading a File (`BurstReadFile`)
@@ -318,7 +318,7 @@ The sequence of operations is:
 6. GCS sends [TerminateSession](#TerminateSession) to close the file.
    The drone should send an ACK/NAK, but this may (generally speaking) be ignored by the GCS.
 
-The GSC should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
+The GCS should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
 :::warning
@@ -358,7 +358,7 @@ The sequence of operations is:
    - NAK on failure, with [error information](#error_codes).
    - The drone must clean up any resources associated with the request after sending the response.
 
-The GSC should create a timeout after the `RemoveFile` command is sent and resend the message as needed (and [described above](#timeouts)).
+The GCS should create a timeout after the `RemoveFile` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 ### Truncate File
 
@@ -390,7 +390,7 @@ The sequence of operations is:
      - The request should fail if the offset is 0 (truncate whole file) and for normal file system errors.
    - The drone must clean up any resources associated with the request after sending the response.
 
-The GSC should create a timeout after the `TruncateFile` command is sent and resend the message as needed (and [described above](#timeouts)).
+The GCS should create a timeout after the `TruncateFile` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 ### List Directory {#list_directory}
 
@@ -443,7 +443,7 @@ The sequence of operations is:
 4. The operation completes when the GCS requests an entry index (`offset`) greater than or equal to the number of entries.
    In this case the drone responds with a [NAK](#error_codes) containing [EOF](#EOF) (end of file).
 
-The GSC should create a timeout after the `ListDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
+The GCS should create a timeout after the `ListDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 The drone may also [NAK](#error_codes) with an unexpected error.
 Generally errors are unrecoverable, and the drone must clean up all resources (i.e. close file handles) associated with the request after sending the NAK.
@@ -472,7 +472,7 @@ The sequence of operations is:
    - NAK on failure, with [error information](#error_codes).
    - The drone must clean up any resources associated with the request after sending the response.
 
-The GSC should not create timeouts or handle the NAK case (other than to report an error to the user).
+The GCS should not create timeouts or handle the NAK case (other than to report an error to the user).
 
 ### Remove Directory
 
@@ -503,7 +503,7 @@ The sequence of operations is:
    - NAK on failure, with [error information](#error_codes).
    - The drone must clean up any resources associated with the request after sending the response.
 
-The GSC should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
+The GCS should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 ## Virtual Directory Entries (Directory Alias)
 
