@@ -37,7 +37,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 11      | 234      |
+| [Messages](#messages)      | 12      | 234      |
 | [Enums](#enumerated-types) | 12      | 155      |
 | [Commands](#mav_commands)  | 177     | 0        |
 
@@ -174,6 +174,21 @@ Note: The RC channels fields are extensions to ensure that they are located at t
 | flags                                                                              | `uint16_t`    |       | [RADIO_RC_CHANNELS_FLAGS](#RADIO_RC_CHANNELS_FLAGS) | Radio RC channels status flags.                                                                                                                                                                                                                                                                                               |
 | count                                                                              | `uint8_t`     |       |                                                                                                                    | Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message.                                                                                                                                                            |
 | <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a>           | `int16_t[32]` |       | min:-4096 max:4096                                                                 | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x \* 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. |
+
+### RC_CHANNELS_OVERRIDE_V2 (421) — [WIP] {#RC_CHANNELS_OVERRIDE_V2}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Highly bandwidth-efficient RC override message for professional networked operations (LTE, Zigbee, GCP).
+Supersedes [RC_CHANNELS_OVERRIDE](#RC_CHANNELS_OVERRIDE) by adding 32-channel support and a bitmask for multi-master conflict avoidance.
+Uses centered-at-zero values and extension-field placement to maximize MAVLink 2 trailing-zero truncation.
+
+| Field Name                                                               | Type          | Description                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| target_system                                       | `uint8_t`     | System ID.                                                                                                                                                                                                                                                                                                           |
+| target_component                                    | `uint8_t`     | Component ID.                                                                                                                                                                                                                                                                                                        |
+| active_mask                                         | `uint32_t`    | Bitmap of included channels (bit 0 = CH1). 1: Valid/Override, 0: Ignore.                                                                                                                                                                          |
+| <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` | RC channels in centered 13-bit format. Range: -4096 to 4096, Center: 0.<br>Conversion to PWM: (x \* 5/32) + 1500.<br>Unused channels must be set to 0 to enable MAVLink 2 trailing-zero trimming. |
 
 ### GNSS_INTEGRITY (441) — [WIP] {#GNSS_INTEGRITY}
 
