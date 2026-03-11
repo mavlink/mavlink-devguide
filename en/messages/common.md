@@ -2840,6 +2840,7 @@ pitch_max | `float` | rad | invalid:NaN | Maximum hardware pitch angle (positive
 yaw_min | `float` | rad | invalid:NaN | Minimum hardware yaw angle (positive: to the right, negative: to the left). NAN if unknown. 
 yaw_max | `float` | rad | invalid:NaN | Maximum hardware yaw angle (positive: to the right, negative: to the left). NAN if unknown. 
 <span class='ext'>gimbal_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | This field is to be used if the gimbal manager and the gimbal device are the same component and hence have the same component ID. This field is then set to a number between 1-6. If the component ID is separate, this field is not required and must be set to 0. 
+<span class='ext'>cap_flags2</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | | invalid:0 [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS) | Extended bitmap of gimbal capability flags (32 bit). For backwards compatibility, the lower 16 bits should also be set in cap_flags. Ground stations should prefer this field if non-zero. 
 
 
 ### GIMBAL_DEVICE_SET_ATTITUDE (284) {#GIMBAL_DEVICE_SET_ATTITUDE}
@@ -4235,10 +4236,12 @@ Value | Name | Description
 <a id='GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW'></a>2048 | [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW) | Gimbal device supports yawing/panning infinitely (e.g. using slip disk). 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME'></a>4096 | [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME) | Gimbal device supports yaw angles and angular velocities relative to North (earth frame). This usually requires support by an autopilot via [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE). Support can go on and off during runtime, which is reported by the flag [GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_IN_EARTH_FRAME). 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS'></a>8192 | [GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS](#GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS) | Gimbal device supports radio control inputs as an alternative input for controlling the gimbal orientation. 
+<a id='GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL'></a>65536 | [GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL](#GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL) | Gimbal device supports to point to a local position. 
+<a id='GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL'></a>131072 | [GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL](#GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL) | Gimbal device supports to point to a global latitude, longitude, altitude position. 
 
 ### GIMBAL_MANAGER_CAP_FLAGS {#GIMBAL_MANAGER_CAP_FLAGS}
 
-(Bitmask) Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS). However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.
+(Bitmask) Gimbal manager high level capability flags (bitmap). The flags are identical to the [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS). However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.
 
 Value | Name | Description
 --- | --- | ---
@@ -4256,8 +4259,8 @@ Value | Name | Description
 <a id='GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW'></a>2048 | [GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW](#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW) | Based on [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW). 
 <a id='GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME'></a>4096 | [GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME](#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME) | Based on [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME). 
 <a id='GIMBAL_MANAGER_CAP_FLAGS_HAS_RC_INPUTS'></a>8192 | [GIMBAL_MANAGER_CAP_FLAGS_HAS_RC_INPUTS](#GIMBAL_MANAGER_CAP_FLAGS_HAS_RC_INPUTS) | Based on [GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS](#GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS). 
-<a id='GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL'></a>65536 | [GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL](#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL) | Gimbal manager supports to point to a local position. 
-<a id='GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL'></a>131072 | [GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL](#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL) | Gimbal manager supports to point to a global latitude, longitude, altitude position. 
+<a id='GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL'></a>65536 | [GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL](#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL) | Based on [GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL](#GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL). 
+<a id='GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL'></a>131072 | [GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL](#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL) | Based on [GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL](#GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL). 
 
 ### GIMBAL_DEVICE_FLAGS {#GIMBAL_DEVICE_FLAGS}
 
