@@ -175,7 +175,7 @@ The sequence of operations is:
    - Broadcast addresses may be used.
      All targeted components should respond with parameters (or ignore the request if they have none).
    - The GCS is expected to accumulate parameters from all responding systems.
-   - The timeout/retry behaviour is GSC dependent.
+   - The timeout/retry behaviour is GCS dependent.
 2. The targeted component(s) should respond, sending all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
    - Allow breaks between each message in order to avoid saturating the link.
    - Components with no parameters should ignore the request.
@@ -186,7 +186,7 @@ Notes:
 - The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains the total number of params and index of current param).
 - Handling of missing params is GCS-dependent.
   _QGroundControl_, for example, [individually requests](#read_single) each missing parameter by index.
-- If a component does not any parameters then it will ignore a `PARAM_REQUEST_LIST` request.
+- If a component does not have any parameters then it will ignore a `PARAM_REQUEST_LIST` request.
   The sender should simply timeout (after resends) if no `PARAM_VALUE` is received.
 
 ### Read Single Parameter {#read_single}
