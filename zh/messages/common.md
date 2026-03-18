@@ -39,7 +39,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 231     | 3        |
-| [Enums](#enumerated-types) | 148     | 9        |
+| [Enums](#enumerated-types) | 149     | 9        |
 | [Commands](#mav_commands)  | 166     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -4390,6 +4390,14 @@ Action for the accelerometer (param5) of [MAV_CMD_PREFLIGHT_CALIBRATION](#MAV_CM
 | <a id='PREFLIGHT_CALIBRATION_ACCELEROMETER_SIMPLE'></a>4      | [PREFLIGHT_CALIBRATION_ACCELEROMETER_SIMPLE](#PREFLIGHT_CALIBRATION_ACCELEROMETER_SIMPLE)                              | Simple accelerometer calibration.                                                                                                                                            |
 | <a id='PREFLIGHT_CALIBRATION_ACCELEROMETER_FORCE_SAVE'></a>76 | [PREFLIGHT_CALIBRATION_ACCELEROMETER_FORCE_SAVE](#PREFLIGHT_CALIBRATION_ACCELEROMETER_FORCE_SAVE) | Force-accept the existing accelerometer calibration as valid without re-running it. Useful after a parameter reload that cleared calibration validity flags. |
 
+### NAV_TAKEOFF_FLAGS {#NAV_TAKEOFF_FLAGS}
+
+(Bitmask)
+
+| 值                                                                | Name                                                                                                                                                                                                                                    | 描述                                                                                                                                                                                    |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED'></a>1 | [NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED](#NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED) | Accept the command even if the autopilot does not have control over its horizontal position (note that it might not have altitude control either). |
+
 ### MAV_DATA_STREAM {#MAV_DATA_STREAM}
 
 A data stream is not a fixed set of messages, but rather a
@@ -6401,15 +6409,15 @@ Land at location.
 
 Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.
 
-| Param (Label) | 描述                                                                                                                                                                                                                                                                                           | Units |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| 1 (Pitch)     | Minimum pitch (if airspeed sensor present), desired pitch without sensor                                                                                                                                                                                                  | 度     |
-| 2                                | Empty                                                                                                                                                                                                                                                                                        |       |
-| 3                                | Empty                                                                                                                                                                                                                                                                                        |       |
-| 4 (Yaw)       | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). | 度     |
-| 5 (Latitude)  | Latitude                                                                                                                                                                                                                                                                                     |       |
-| 6 (Longitude) | Longitude                                                                                                                                                                                                                                                                                    |       |
-| 7 (Altitude)  | Altitude                                                                                                                                                                                                                                                                                     | m     |
+| Param (Label) | 描述                                                                                                                                                                                                                                                                                           | 值                                                                                 | Units |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ----- |
+| 1 (Pitch)     | Minimum pitch (if airspeed sensor present), desired pitch without sensor                                                                                                                                                                                                  |                                                                                   | 度     |
+| 2                                | Empty                                                                                                                                                                                                                                                                                        |                                                                                   |       |
+| 3 (Flags)     | Bitmask of options flags.                                                                                                                                                                                                                                                    | [NAV_TAKEOFF_FLAGS](#NAV_TAKEOFF_FLAGS) |       |
+| 4 (Yaw)       | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |                                                                                   | 度     |
+| 5 (Latitude)  | Latitude                                                                                                                                                                                                                                                                                     |                                                                                   |       |
+| 6 (Longitude) | Longitude                                                                                                                                                                                                                                                                                    |                                                                                   |       |
+| 7 (Altitude)  | Altitude                                                                                                                                                                                                                                                                                     |                                                                                   | m     |
 
 ### MAV_CMD_NAV_LAND_LOCAL (23) {#MAV_CMD_NAV_LAND_LOCAL}
 
