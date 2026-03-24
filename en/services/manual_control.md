@@ -88,8 +88,12 @@ ArduPilot Implementations:
 
 - [ArduCopter/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/GCS_Mavlink.cpp) (in `handleMessage` method)
 - [ArduPlane/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduPlane/GCS_Mavlink.cpp) (in `handleMessage` method)
-- [ArduRover/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduRover/GCS_Mavlink.cpp) (in `handle_manual_control` method)
 - [ArduSub/joystick.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduSub/joystick.cpp) (in `transform_manual_control_to_rc_override` method)
+- [ArduRover/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduRover/GCS_Mavlink.cpp) (in `handle_manual_control` method)
+
+  ::: info
+  ArduRover maps `y` as yaw instead of `r` (see [`handle_manual_control_axes`](https://github.com/ArduPilot/ardupilot/blob/0655825bb428db2218866fff14f0a5129302f6d6/Rover/GCS_MAVLink_Rover.cpp#L626-L627)).
+  :::
 
 ## Future Extensions
 
