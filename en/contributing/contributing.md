@@ -14,13 +14,13 @@ The sections below explain how to contribute to each category and how to raise a
 ## How to Contribute Simple Changes
 
 - Open a pull request against the specification repository: [https://github.com/mavlink/mavlink](https://github.com/mavlink/mavlink)
-- Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
+- Reach out to the community on [Discord](https://discord.com/channels/1022170275984457759/1022185868317966458) and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 - Address concerns by pushing more commits to the pull request
 
 ## How to Contribute Complex Changes
 
 - Open a pull request against the RFC repository containing a new RFC number [https://github.com/mavlink/rfcs](https://github.com/mavlink/rfcs) and use the template in the 0000 RFC.
-- Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
+- Reach out to the community on [Discord](https://discord.com/channels/1022170275984457759/1022185868317966458) and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 - Address concerns by pushing more commits to the pull request
 
 ## How to Contribute to Mavgen
