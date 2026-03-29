@@ -3577,10 +3577,11 @@ See https://mavlink.io/en/services/standard_modes.html
 
 ### AVAILABLE_MODES_MONITOR (437) {#AVAILABLE_MODES_MONITOR}
 
-A change to the sequence number indicates that the set of [AVAILABLE_MODES](#AVAILABLE_MODES) has changed.
+A change to the sequence number indicates that the set of [AVAILABLE_MODES](#AVAILABLE_MODES) has changed, and that the receiver should re-request all available modes.
 
-A receiver must re-request all available modes whenever the sequence number changes.
-This is only emitted after the first change and should then be broadcast at low rate (nominally 0.3 Hz) and on change.
+The message is optional, and is only needed when the set of modes can change dynamically after boot.
+It should be emitted whenever the set of modes change.
+It should be streamed at low rate (nominally 0.3 Hz).
 See https://mavlink.io/en/services/standard_modes.html
 
 | Field Name | Type      | 描述                                                                                                                                                                                                                                                                        |
