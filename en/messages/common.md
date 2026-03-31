@@ -5393,6 +5393,8 @@ Value | Name | Description
 
 ### MAV_ARM_AUTH_DENIED_REASON {#MAV_ARM_AUTH_DENIED_REASON}
 
+Reasons for denying an authorization request made with [MAV_CMD_ARM_AUTHORIZATION_REQUEST](#MAV_CMD_ARM_AUTHORIZATION_REQUEST). If the [COMMAND_ACK](#COMMAND_ACK) result is [MAV_RESULT_DENIED](#MAV_RESULT_DENIED), this is used to set the reason in the result_param2 field.
+
 Value | Name | Description
 --- | --- | ---
 <a id='MAV_ARM_AUTH_DENIED_REASON_GENERIC'></a>0 | [MAV_ARM_AUTH_DENIED_REASON_GENERIC](#MAV_ARM_AUTH_DENIED_REASON_GENERIC) | Not a specific reason 
@@ -8474,7 +8476,7 @@ Param (Label) | Description | Values
 Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.
 
 If approved the [COMMAND_ACK](#COMMAND_ACK) message progress field should be set with period of time that this authorization is valid in seconds.
-If the authorization is denied [COMMAND_ACK](#COMMAND_ACK).result_param2 should be set with one of the reasons in [ARM_AUTH_DENIED_REASON](#ARM_AUTH_DENIED_REASON).
+If the authorization is denied [COMMAND_ACK](#COMMAND_ACK).result_param2 should be set with one of the reasons in [MAV_ARM_AUTH_DENIED_REASON](#MAV_ARM_AUTH_DENIED_REASON).
 
 Param (Label) | Description | Values
 --- | --- | ---
