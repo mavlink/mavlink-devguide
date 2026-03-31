@@ -37,8 +37,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 12      | 234      |
-| [Enums](#enumerated-types) | 12      | 158      |
+| [Messages](#messages)      | 13      | 234      |
+| [Enums](#enumerated-types) | 14      | 158      |
 | [Commands](#mav_commands)  | 177     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -264,6 +264,32 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 | sysid_in_control | `uint8_t` |                                                                                                                      | System ID of GCS MAVLink component in control (0: no GCS in control).                                                              |
 | flags                                                      | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover is allowed, and whether this message instance defines the default controlling GCS for the whole system. |
 
+### RANGING_BEACON (513) — [WIP] {#RANGING_BEACON}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Range information from a radio beacon for trilateration-based positioning.
+
+This message is telemetry intended for consumption by an autopilot (MAVLink does not define the mechanism used to determine the range).
+
+| Field Name                            | Type       | Units | Values                                                                                                                   | Description                                                                                                                                                                                                                                                                                  |
+| ------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time_usec        | `uint64_t` | us    |                                                                                                                          | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+| target_system    | `uint8_t`  |       |                                                                                                                          | System ID.                                                                                                                                                                                                                                                                   |
+| target_component | `uint8_t`  |       |                                                                                                                          | Component ID.                                                                                                                                                                                                                                                                |
+| beacon_id        | `uint16_t` |       |                                                                                                                          | ID of the ranging beacon/station.<br>Messages with same value are from the same source (instance).                                                                                                                                        |
+| range                                 | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Range measurement between a beacon and a vehicle.                                                                                                                                                                                                                            |
+| lat                                   | `int32_t`  | degE7 | invalid:INT32_MAX                                                                   | Beacon latitude (WGS84).                                                                                                                                                                                                                                  |
+| lon                                   | `int32_t`  | degE7 | invalid:INT32_MAX                                                                   | Beacon longitude (WGS84).                                                                                                                                                                                                                                 |
+| alt                                   | `float`    | m     | invalid:NaN                                                                                              | Beacon altitude (frame defined in alt_type).                                                                                                                                                                                         |
+| alt_type         | `uint8_t`  |       | [RANGING_BEACON_ALT_TYPE](#RANGING_BEACON_ALT_TYPE)       | Altitude frame for alt field. [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) (0) preferred.                                          |
+| hacc_est         | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Beacon 1-sigma horizontal accuracy estimate.                                                                                                                                                                                                                                 |
+| vacc_est         | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Beacon 1-sigma vertical accuracy estimate.                                                                                                                                                                                                                                   |
+| carrier_freq     | `uint16_t` | MHz   | invalid:UINT16_MIN                                                                  | Ranging carrier frequency                                                                                                                                                                                                                                                                    |
+| range_accuracy   | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Estimated 1-sigma range measurement accuracy.                                                                                                                                                                                                                                |
+| sequence                              | `uint8_t`  |       |                                                                                                                          | Measurement sequence number.                                                                                                                                                                                                                                                 |
+| status                                | `uint8_t`  |       | [RANGING_BEACON_STATUS_FLAG](#RANGING_BEACON_STATUS_FLAG) | Ranging beacon status.                                                                                                                                                                                                                                                       |
+
 ## Enumerated Types
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
@@ -439,6 +465,27 @@ ESC firmware type identifier.
 | <a id='ESC_FIRMWARE_AM32'></a>1     | [ESC_FIRMWARE_AM32](#ESC_FIRMWARE_AM32)         | AM32 open source ESC firmware.    |
 | <a id='ESC_FIRMWARE_BLUEJAY'></a>2  | [ESC_FIRMWARE_BLUEJAY](#ESC_FIRMWARE_BLUEJAY)   | Bluejay open source ESC firmware. |
 | <a id='ESC_FIRMWARE_BLHELI32'></a>3 | [ESC_FIRMWARE_BLHELI32](#ESC_FIRMWARE_BLHELI32) | BLHeli32 ESC firmware.            |
+
+### RANGING_BEACON_ALT_TYPE — [WIP] {#RANGING_BEACON_ALT_TYPE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Altitude reference for [RANGING_BEACON](#RANGING_BEACON) alt field.
+
+| Value                                       | Name                                                                                                                                                | Description                                                              |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| <a id='RANGING_BEACON_ALT_TYPE_WGS84'></a>0 | [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) | Altitude above WGS84 ellipsoid.                          |
+| <a id='RANGING_BEACON_ALT_TYPE_MSL'></a>1   | [RANGING_BEACON_ALT_TYPE_MSL](#RANGING_BEACON_ALT_TYPE_MSL)     | Altitude above Mean Sea Level (AMSL). |
+
+### RANGING_BEACON_STATUS_FLAG — [WIP] {#RANGING_BEACON_STATUS_FLAG}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+(Bitmask) Status flags for a [RANGING_BEACON](#RANGING_BEACON).
+
+| Value                                                        | Name                                                                                                                                                                                                                            | Description                                                                                                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR'></a>1 | [RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR](#RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR) | Station signal is poor. This might indicate channel fading, interference, or other signal quality issues. |
 
 ## Commands (MAV_CMD) {#mav_commands}
 
