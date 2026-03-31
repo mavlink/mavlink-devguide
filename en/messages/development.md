@@ -36,9 +36,9 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 13 | 234
-[Enums](#enumerated-types) | 14 | 158
-[Commands](#mav_commands) | 177 | 0
+[Messages](#messages) | 14 | 234
+[Enums](#enumerated-types) | 15 | 158
+[Commands](#mav_commands) | 178 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -302,6 +302,19 @@ sequence | `uint8_t` | | | Measurement sequence number.
 status | `uint8_t` | | [RANGING_BEACON_STATUS_FLAG](#RANGING_BEACON_STATUS_FLAG) | Ranging beacon status. 
 
 
+### ESTIMATOR_SENSOR_FUSION_STATUS (514) — [WIP] {#ESTIMATOR_SENSOR_FUSION_STATUS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) - 1. Each element is a per-instance bitmask (bit 0 = instance 0, etc.). For single-instance sources only bit 0 is used. For multi-instance sources like AGP, multiple bits may be set.
+
+Field Name | Type | Description
+--- | --- | ---
+intended | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator intends to fuse (reflects CTRL params with runtime overrides via [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE)). 
+active | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator is actively fusing. 
+test_ratio | `float[9]` | Per-source normalized innovation test ratio. NaN if not available. 
+
+
 ## Enumerated Types
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
@@ -498,6 +511,24 @@ Value | Name | Description
 Value | Name | Description
 --- | --- | ---
 <a id='RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR'></a>1 | [RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR](#RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR) | Station signal is poor. This might indicate channel fading, interference, or other signal quality issues. 
+
+### ESTIMATOR_SENSOR_FUSION_SOURCE — [WIP] {#ESTIMATOR_SENSOR_FUSION_SOURCE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Estimator sensor fusion source types. Used in [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE) and as array index in [ESTIMATOR_SENSOR_FUSION_STATUS](#ESTIMATOR_SENSOR_FUSION_STATUS).
+
+Value | Name | Description
+--- | --- | ---
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_GPS'></a>0 | [ESTIMATOR_SENSOR_FUSION_SOURCE_GPS](#ESTIMATOR_SENSOR_FUSION_SOURCE_GPS) | GNSS 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_OF'></a>1 | [ESTIMATOR_SENSOR_FUSION_SOURCE_OF](#ESTIMATOR_SENSOR_FUSION_SOURCE_OF) | Optical Flow 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_EV'></a>2 | [ESTIMATOR_SENSOR_FUSION_SOURCE_EV](#ESTIMATOR_SENSOR_FUSION_SOURCE_EV) | External Vision 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_AGP'></a>3 | [ESTIMATOR_SENSOR_FUSION_SOURCE_AGP](#ESTIMATOR_SENSOR_FUSION_SOURCE_AGP) | Auxiliary Global Position 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_BARO'></a>4 | [ESTIMATOR_SENSOR_FUSION_SOURCE_BARO](#ESTIMATOR_SENSOR_FUSION_SOURCE_BARO) | Barometer 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RNG'></a>5 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RNG](#ESTIMATOR_SENSOR_FUSION_SOURCE_RNG) | Range Finder 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_MAG'></a>6 | [ESTIMATOR_SENSOR_FUSION_SOURCE_MAG](#ESTIMATOR_SENSOR_FUSION_SOURCE_MAG) | Magnetometer 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD'></a>7 | [ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD](#ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD) | Airspeed 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON'></a>8 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON](#ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON) | Ranging Beacon 
 
 ## Commands (MAV_CMD) {#mav_commands}
 
@@ -722,5 +753,24 @@ Param (Label) | Description | Values | Units
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
+
+
+### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Enable or disable a specific estimator sensor fusion source at runtime.
+
+This allows a GCS or companion computer to dynamically control which sensors the estimator fuses without changing parameters.
+
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Source) | Sensor fusion source type. | [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) 
+2 (Instance) | Sensor instance (0-based, for multi-instance). | min: 0 inc: 1 
+3 (Enable) | Enable (1) or Disable (0) the source. | [MAV_BOOL](#MAV_BOOL) 
+4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1 
+5 | Empty |   
+6 | Empty |   
+7 | Empty |   
 
 
