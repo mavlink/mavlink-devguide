@@ -40,7 +40,7 @@ span.warning {
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 231     | 3        |
 | [Enums](#enumerated-types) | 149     | 9        |
-| [Commands](#mav_commands)  | 166     | 0        |
+| [Commands](#mav_commands)  | 167     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -6552,6 +6552,20 @@ Yaw and other degrees of freedom are not specified, and will be flight-stack spe
 | 5 (Latitude/X)   | Center point latitude/X coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle position, or current center if already loitering.                                                                         |       |
 | 6 (Longitude/Y)  | Center point longitude/Y coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle position, or current center if already loitering.                                                                        |       |
 | 7 (Altitude/Z)   | Center point altitude MSL/Z coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle altitude.                                                                                                             |       |
+
+### MAV_CMD_NAV_ARC_WAYPOINT (36) {#MAV_CMD_NAV_ARC_WAYPOINT}
+
+Circular arc path waypoint.
+
+This defines the end/exit point and angle (param1) of an arc path from the previous waypoint. A position is required before this command to define the start of the arc (e.g. current position, a [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT), or a [MAV_CMD_NAV_ARC_WAYPOINT](#MAV_CMD_NAV_ARC_WAYPOINT)).
+The resulting path is a circular arc in the NE frame, with the difference in height being defined by the difference in waypoint altitudes.
+
+| Param (Label) | 描述                                                                                                                                                                                             | 值                                                                         | Units |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
+| 1 (Arc Angle) | The angle in degrees from the starting position to the exit position of the arc in the NE frame. Positive values are CW arcs and negative values are CCW arcs. | min: -359 max: 359 inc: 1 | 度     |
+| 5 (Latitude)  | Latitude                                                                                                                                                                                       |                                                                           |       |
+| 6 (Longitude) | Longitude                                                                                                                                                                                      |                                                                           |       |
+| 7 (Altitude)  | Altitude                                                                                                                                                                                       |                                                                           | m     |
 
 ### MAV_CMD_NAV_ROI (80) {#MAV_CMD_NAV_ROI}
 
