@@ -37,9 +37,9 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 12      | 234      |
-| [Enums](#enumerated-types) | 12      | 158      |
-| [Commands](#mav_commands)  | 177     | 0        |
+| [Messages](#messages)      | 14      | 234      |
+| [Enums](#enumerated-types) | 15      | 158      |
+| [Commands](#mav_commands)  | 179     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -264,6 +264,44 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 | sysid_in_control | `uint8_t` |                                                                                                                      | System ID of GCS MAVLink component in control (0: no GCS in control).                                                              |
 | flags                                                      | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover is allowed, and whether this message instance defines the default controlling GCS for the whole system. |
 
+### RANGING_BEACON (513) — [WIP] {#RANGING_BEACON}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Range information from a radio beacon for trilateration-based positioning.
+
+This message is telemetry intended for consumption by an autopilot (MAVLink does not define the mechanism used to determine the range).
+
+| Field Name                            | Type       | Units | Values                                                                                                                   | Description                                                                                                                                                                                                                                                                                  |
+| ------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time_usec        | `uint64_t` | us    |                                                                                                                          | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+| target_system    | `uint8_t`  |       |                                                                                                                          | System ID.                                                                                                                                                                                                                                                                   |
+| target_component | `uint8_t`  |       |                                                                                                                          | Component ID.                                                                                                                                                                                                                                                                |
+| beacon_id        | `uint16_t` |       |                                                                                                                          | ID of the ranging beacon/station.<br>Messages with same value are from the same source (instance).                                                                                                                                        |
+| range                                 | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Range measurement between a beacon and a vehicle.                                                                                                                                                                                                                            |
+| lat                                   | `int32_t`  | degE7 | invalid:INT32_MAX                                                                   | Beacon latitude (WGS84).                                                                                                                                                                                                                                  |
+| lon                                   | `int32_t`  | degE7 | invalid:INT32_MAX                                                                   | Beacon longitude (WGS84).                                                                                                                                                                                                                                 |
+| alt                                   | `float`    | m     | invalid:NaN                                                                                              | Beacon altitude (frame defined in alt_type).                                                                                                                                                                                         |
+| alt_type         | `uint8_t`  |       | [RANGING_BEACON_ALT_TYPE](#RANGING_BEACON_ALT_TYPE)       | Altitude frame for alt field. [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) (0) preferred.                                          |
+| hacc_est         | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Beacon 1-sigma horizontal accuracy estimate.                                                                                                                                                                                                                                 |
+| vacc_est         | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Beacon 1-sigma vertical accuracy estimate.                                                                                                                                                                                                                                   |
+| carrier_freq     | `uint16_t` | MHz   | invalid:UINT16_MIN                                                                  | Ranging carrier frequency                                                                                                                                                                                                                                                                    |
+| range_accuracy   | `uint32_t` | mm    | invalid:UINT32_MAX                                                                  | Estimated 1-sigma range measurement accuracy.                                                                                                                                                                                                                                |
+| sequence                              | `uint8_t`  |       |                                                                                                                          | Measurement sequence number.                                                                                                                                                                                                                                                 |
+| status                                | `uint8_t`  |       | [RANGING_BEACON_STATUS_FLAG](#RANGING_BEACON_STATUS_FLAG) | Ranging beacon status.                                                                                                                                                                                                                                                       |
+
+### ESTIMATOR_SENSOR_FUSION_STATUS (514) — [WIP] {#ESTIMATOR_SENSOR_FUSION_STATUS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) - 1. Each element is a per-instance bitmask (bit 0 = instance 0, etc.). For single-instance sources only bit 0 is used. For multi-instance sources like AGP, multiple bits may be set.
+
+| Field Name                      | Type         | Description                                                                                                                                                                                                                                                                                                        |
+| ------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| intended                        | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator intends to fuse (reflects CTRL params with runtime overrides via [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE)). |
+| active                          | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator is actively fusing.                                                                                                                                                                                                                           |
+| test_ratio | `float[9]`   | Per-source normalized innovation test ratio. NaN if not available.                                                                                                                                                                                                                 |
+
 ## Enumerated Types
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
@@ -287,7 +325,6 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 | <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT'></a>1024                         | [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT)                                                                  | One or more cells are below their minimum voltage rating.<br>A battery that had deep-discharged might be irrepairably damaged, and set both [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT) and [MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY](#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY).                                                                                                                                                                                                                                                                                    |
 | <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE'></a>2048                   | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE)                                                      | Over-temperature fault.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE'></a>4096                  | [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE)                                                    | Under-temperature fault.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION'></a>5005                           | [MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION](#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION)                                                                      | Circular fence area centered on home. The vehicle must stay inside this area. If home is moved, the fence moves.<br><span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT'></a>8192                       | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT)                                                              | Over-current fault.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT'></a>16384                     | [MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT](#MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT)                                                            | Short circuit event detected.<br>The battery may or may not be safe to use (check other flags).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE'></a>32768              | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE)                                              | Voltage not compatible with power rail voltage (batteries on same power rail should have similar voltage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -440,23 +477,46 @@ ESC firmware type identifier.
 | <a id='ESC_FIRMWARE_BLUEJAY'></a>2  | [ESC_FIRMWARE_BLUEJAY](#ESC_FIRMWARE_BLUEJAY)   | Bluejay open source ESC firmware. |
 | <a id='ESC_FIRMWARE_BLHELI32'></a>3 | [ESC_FIRMWARE_BLHELI32](#ESC_FIRMWARE_BLHELI32) | BLHeli32 ESC firmware.            |
 
-## Commands (MAV_CMD) {#mav_commands}
-
-### MAV_CMD_NAV_ARC_WAYPOINT (36) — [WIP] {#MAV_CMD_NAV_ARC_WAYPOINT}
+### RANGING_BEACON_ALT_TYPE — [WIP] {#RANGING_BEACON_ALT_TYPE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
-Circular arc path waypoint.
+Altitude reference for [RANGING_BEACON](#RANGING_BEACON) alt field.
 
-This defines the end/exit point and angle (param1) of an arc path from the previous waypoint. A position is required before this command to define the start of the arc (e.g. current position, a [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT), or a [MAV_CMD_NAV_ARC_WAYPOINT](#MAV_CMD_NAV_ARC_WAYPOINT)).
-The resulting path is a circular arc in the NE frame, with the difference in height being defined by the difference in waypoint altitudes.
+| Value                                       | Name                                                                                                                                                | Description                                                              |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| <a id='RANGING_BEACON_ALT_TYPE_WGS84'></a>0 | [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) | Altitude above WGS84 ellipsoid.                          |
+| <a id='RANGING_BEACON_ALT_TYPE_MSL'></a>1   | [RANGING_BEACON_ALT_TYPE_MSL](#RANGING_BEACON_ALT_TYPE_MSL)     | Altitude above Mean Sea Level (AMSL). |
 
-| Param (Label) | Description                                                                                                                                                                                    | Values                                                                    | Units |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
-| 1 (Arc Angle) | The angle in degrees from the starting position to the exit position of the arc in the NE frame. Positive values are CW arcs and negative values are CCW arcs. | min: -359 max: 359 inc: 1 | deg   |
-| 5 (Latitude)  | Latitude                                                                                                                                                                                       |                                                                           |       |
-| 6 (Longitude) | Longitude                                                                                                                                                                                      |                                                                           |       |
-| 7 (Altitude)  | Altitude                                                                                                                                                                                       |                                                                           | m     |
+### RANGING_BEACON_STATUS_FLAG — [WIP] {#RANGING_BEACON_STATUS_FLAG}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+(Bitmask) Status flags for a [RANGING_BEACON](#RANGING_BEACON).
+
+| Value                                                        | Name                                                                                                                                                                                                                            | Description                                                                                                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR'></a>1 | [RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR](#RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR) | Station signal is poor. This might indicate channel fading, interference, or other signal quality issues. |
+
+### ESTIMATOR_SENSOR_FUSION_SOURCE — [WIP] {#ESTIMATOR_SENSOR_FUSION_SOURCE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Estimator sensor fusion source types. Used in [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE) and as array index in [ESTIMATOR_SENSOR_FUSION_STATUS](#ESTIMATOR_SENSOR_FUSION_STATUS).
+
+| Value                                                       | Name                                                                                                                                                                                                     | Description               |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_GPS'></a>0            | [ESTIMATOR_SENSOR_FUSION_SOURCE_GPS](#ESTIMATOR_SENSOR_FUSION_SOURCE_GPS)                                            | GNSS                      |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_OF'></a>1             | [ESTIMATOR_SENSOR_FUSION_SOURCE_OF](#ESTIMATOR_SENSOR_FUSION_SOURCE_OF)                                              | Optical Flow              |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_EV'></a>2             | [ESTIMATOR_SENSOR_FUSION_SOURCE_EV](#ESTIMATOR_SENSOR_FUSION_SOURCE_EV)                                              | External Vision           |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_AGP'></a>3            | [ESTIMATOR_SENSOR_FUSION_SOURCE_AGP](#ESTIMATOR_SENSOR_FUSION_SOURCE_AGP)                                            | Auxiliary Global Position |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_BARO'></a>4           | [ESTIMATOR_SENSOR_FUSION_SOURCE_BARO](#ESTIMATOR_SENSOR_FUSION_SOURCE_BARO)                                          | Barometer                 |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RNG'></a>5            | [ESTIMATOR_SENSOR_FUSION_SOURCE_RNG](#ESTIMATOR_SENSOR_FUSION_SOURCE_RNG)                                            | Range Finder              |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_MAG'></a>6            | [ESTIMATOR_SENSOR_FUSION_SOURCE_MAG](#ESTIMATOR_SENSOR_FUSION_SOURCE_MAG)                                            | Magnetometer              |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD'></a>7           | [ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD](#ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD)                                          | Airspeed                  |
+| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON'></a>8 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON](#ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON) | Ranging Beacon            |
+
+## Commands (MAV_CMD) {#mav_commands}
 
 ### MAV_CMD_DO_UPGRADE (247) — [WIP] {#MAV_CMD_DO_UPGRADE}
 
@@ -570,6 +630,17 @@ Disable Moving Target Indicators (MTI) on streamed video.
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
+### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Circular fence area centered on home. The vehicle must stay inside this area. If home is moved, the fence moves.
+
+| Param (Label)       | Description                                                                                                                                                              | Values                                        | Units |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | ----- |
+| 1 (Radius)          | Radius.                                                                                                                                                  |                                               | m     |
+| 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |       |
+
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -652,5 +723,23 @@ This might be used to provide an initial wind estimate to the estimator (EKF) in
 | 5                                          | Empty                                                                                                |                                                 |       |
 | 6                                          | Empty                                                                                                |                                                 |       |
 | 7                                          | Empty                                                                                                |                                                 |       |
+
+### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Enable or disable a specific estimator sensor fusion source at runtime.
+
+This allows a GCS or companion computer to dynamically control which sensors the estimator fuses without changing parameters.
+
+| Param (Label)          | Description                                                                                            | Values                                                                                                                           |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| 1 (Source)             | Sensor fusion source type.                                                             | [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) |
+| 2 (Instance)           | Sensor instance (0-based, for multi-instance).                      | min: 0 inc: 1                                                                                    |
+| 3 (Enable)             | Enable (1) or Disable (0) the source.            | [MAV_BOOL](#MAV_BOOL)                                                                                       |
+| 4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1                                                                                    |
+| 5                                         | Empty                                                                                                  |                                                                                                                                  |
+| 6                                         | Empty                                                                                                  |                                                                                                                                  |
+| 7                                         | Empty                                                                                                  |                                                                                                                                  |
 
 
