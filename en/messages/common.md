@@ -2339,16 +2339,16 @@ The location and information of an ADSB vehicle
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 ICAO_address | `uint32_t` | | | ICAO address 
-lat | `int32_t` | degE7 | | Latitude 
-lon | `int32_t` | degE7 | | Longitude 
+lat | `int32_t` | degE7 | invalid:INT32_MAX | Latitude 
+lon | `int32_t` | degE7 | invalid:INT32_MAX | Longitude 
 altitude_type | `uint8_t` | | [ADSB_ALTITUDE_TYPE](#ADSB_ALTITUDE_TYPE) | ADSB altitude type. 
-altitude | `int32_t` | mm | | Altitude(ASL) 
-heading | `uint16_t` | cdeg | | Course over ground 
-hor_velocity | `uint16_t` | cm/s | | The horizontal velocity 
-ver_velocity | `int16_t` | cm/s | | The vertical velocity. Positive is up 
+altitude | `int32_t` | mm | invalid:INT32_MAX | Altitude (ASL) 
+heading | `uint16_t` | cdeg | invalid:UINT16_MAX | Course over ground 
+hor_velocity | `uint16_t` | cm/s | invalid:UINT16_MAX | The horizontal velocity 
+ver_velocity | `int16_t` | cm/s | invalid:INT16_MAX | The vertical velocity. Positive is up 
 callsign | `char[9]` | | | The callsign, 8+null 
 emitter_type | `uint8_t` | | [ADSB_EMITTER_TYPE](#ADSB_EMITTER_TYPE) | ADSB emitter type. 
-tslc | `uint8_t` | s | | Time since last communication in seconds 
+tslc | `uint8_t` | s | | Time since last communication from the remote vehicle, in seconds. 
 flags | `uint16_t` | | [ADSB_FLAGS](#ADSB_FLAGS) | Bitmap to indicate various statuses including valid data fields 
 squawk | `uint16_t` | | | Squawk code. Note that the code is in decimal: e.g. 7700 (general emergency) is encoded as binary 0b0001_1110_0001_0100, not(!) as 0b0000_111_111_000_000 
 
@@ -3060,21 +3060,21 @@ The location and information of an AIS vessel
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 MMSI | `uint32_t` | | | Mobile Marine Service Identifier, 9 decimal digits 
-lat | `int32_t` | degE7 | | Latitude 
-lon | `int32_t` | degE7 | | Longitude 
-COG | `uint16_t` | cdeg | | Course over ground 
-heading | `uint16_t` | cdeg | | True heading 
-velocity | `uint16_t` | cm/s | | Speed over ground 
-turn_rate | `int8_t` | ddeg/s | | Turn rate, 0.1 degrees per second 
+lat | `int32_t` | degE7 | invalid:INT32_MAX | Latitude 
+lon | `int32_t` | degE7 | invalid:INT32_MAX | Longitude 
+COG | `uint16_t` | cdeg | invalid:UINT16_MAX | Course over ground 
+heading | `uint16_t` | cdeg | invalid:UINT16_MAX | True heading 
+velocity | `uint16_t` | cm/s | invalid:UINT16_MAX | Speed over ground 
+turn_rate | `int8_t` | ddeg/s | invalid:INT8_MAX | Turn rate, 0.1 degrees per second 
 navigational_status | `uint8_t` | | [AIS_NAV_STATUS](#AIS_NAV_STATUS) | Navigational status 
 type | `uint8_t` | | [AIS_TYPE](#AIS_TYPE) | Type of vessels 
-dimension_bow | `uint16_t` | m | | Distance from lat/lon location to bow 
-dimension_stern | `uint16_t` | m | | Distance from lat/lon location to stern 
-dimension_port | `uint8_t` | m | | Distance from lat/lon location to port side 
-dimension_starboard | `uint8_t` | m | | Distance from lat/lon location to starboard side 
-callsign | `char[7]` | | | The vessel callsign 
-name | `char[20]` | | | The vessel name 
-tslc | `uint16_t` | s | | Time since last communication in seconds 
+dimension_bow | `uint16_t` | m | invalid:UINT16_MAX | Distance from lat/lon location to bow 
+dimension_stern | `uint16_t` | m | invalid:UINT16_MAX | Distance from lat/lon location to stern 
+dimension_port | `uint8_t` | m | invalid:UINT8_MAX | Distance from lat/lon location to port side 
+dimension_starboard | `uint8_t` | m | invalid:UINT8_MAX | Distance from lat/lon location to starboard side 
+callsign | `char[7]` | | | The vessel callsign. Characters are encoded as 7-bit ASCII, but only characters in the [AIS 6-bit ASCII subset](https://en.wikipedia.org/wiki/Six-bit_character_code#AIS_SixBit_ASCII) are permitted. Also set [AIS_FLAGS_VALID_CALLSIGN](#AIS_FLAGS_VALID_CALLSIGN) if valid. The string is NULL-terminated if it is shorter than the array length. 
+name | `char[20]` | | | The vessel name. Characters are encoded as 7-bit ASCII, but only characters in the [AIS 6-bit ASCII subset](https://en.wikipedia.org/wiki/Six-bit_character_code#AIS_SixBit_ASCII) are permitted. Also set [AIS_FLAGS_VALID_NAME](#AIS_FLAGS_VALID_NAME) if valid. The string is NULL-terminated if it is shorter than the array length. 
+tslc | `uint16_t` | s | | Time since last communication from the vessel, in seconds 
 flags | `uint16_t` | | [AIS_FLAGS](#AIS_FLAGS) | Bitmask to indicate various statuses including valid data fields 
 
 
@@ -5895,19 +5895,19 @@ Value | Name | Description
 
 Value | Name | Description
 --- | --- | ---
-<a id='AIS_FLAGS_POSITION_ACCURACY'></a>1 | [AIS_FLAGS_POSITION_ACCURACY](#AIS_FLAGS_POSITION_ACCURACY) | 1 = Position accuracy less than 10m, 0 = position accuracy greater than 10m. 
-<a id='AIS_FLAGS_VALID_COG'></a>2 | [AIS_FLAGS_VALID_COG](#AIS_FLAGS_VALID_COG) |  
-<a id='AIS_FLAGS_VALID_VELOCITY'></a>4 | [AIS_FLAGS_VALID_VELOCITY](#AIS_FLAGS_VALID_VELOCITY) |  
+<a id='AIS_FLAGS_POSITION_ACCURACY'></a>1 | [AIS_FLAGS_POSITION_ACCURACY](#AIS_FLAGS_POSITION_ACCURACY) | 1 = High (Position accuracy less than or equal to 10m), 0 = Low (position accuracy greater than 10m). 
+<a id='AIS_FLAGS_VALID_COG'></a>2 | [AIS_FLAGS_VALID_COG](#AIS_FLAGS_VALID_COG) | The COG field contains valid data 
+<a id='AIS_FLAGS_VALID_VELOCITY'></a>4 | [AIS_FLAGS_VALID_VELOCITY](#AIS_FLAGS_VALID_VELOCITY) | The velocity field contains valid data 
 <a id='AIS_FLAGS_HIGH_VELOCITY'></a>8 | [AIS_FLAGS_HIGH_VELOCITY](#AIS_FLAGS_HIGH_VELOCITY) | 1 = Velocity over 52.5765m/s (102.2 knots) 
-<a id='AIS_FLAGS_VALID_TURN_RATE'></a>16 | [AIS_FLAGS_VALID_TURN_RATE](#AIS_FLAGS_VALID_TURN_RATE) |  
-<a id='AIS_FLAGS_TURN_RATE_SIGN_ONLY'></a>32 | [AIS_FLAGS_TURN_RATE_SIGN_ONLY](#AIS_FLAGS_TURN_RATE_SIGN_ONLY) | Only the sign of the returned turn rate value is valid, either greater than 5deg/30s or less than -5deg/30s 
+<a id='AIS_FLAGS_VALID_TURN_RATE'></a>16 | [AIS_FLAGS_VALID_TURN_RATE](#AIS_FLAGS_VALID_TURN_RATE) | The turn_rate field contains valid data 
+<a id='AIS_FLAGS_TURN_RATE_SIGN_ONLY'></a>32 | [AIS_FLAGS_TURN_RATE_SIGN_ONLY](#AIS_FLAGS_TURN_RATE_SIGN_ONLY) | Only the sign of the returned turn_rate value is valid. The actual turn rate is either greater than 5deg/30s or less than -5deg/30s. 
 <a id='AIS_FLAGS_VALID_DIMENSIONS'></a>64 | [AIS_FLAGS_VALID_DIMENSIONS](#AIS_FLAGS_VALID_DIMENSIONS) |  
-<a id='AIS_FLAGS_LARGE_BOW_DIMENSION'></a>128 | [AIS_FLAGS_LARGE_BOW_DIMENSION](#AIS_FLAGS_LARGE_BOW_DIMENSION) | Distance to bow is larger than 511m 
-<a id='AIS_FLAGS_LARGE_STERN_DIMENSION'></a>256 | [AIS_FLAGS_LARGE_STERN_DIMENSION](#AIS_FLAGS_LARGE_STERN_DIMENSION) | Distance to stern is larger than 511m 
-<a id='AIS_FLAGS_LARGE_PORT_DIMENSION'></a>512 | [AIS_FLAGS_LARGE_PORT_DIMENSION](#AIS_FLAGS_LARGE_PORT_DIMENSION) | Distance to port side is larger than 63m 
-<a id='AIS_FLAGS_LARGE_STARBOARD_DIMENSION'></a>1024 | [AIS_FLAGS_LARGE_STARBOARD_DIMENSION](#AIS_FLAGS_LARGE_STARBOARD_DIMENSION) | Distance to starboard side is larger than 63m 
-<a id='AIS_FLAGS_VALID_CALLSIGN'></a>2048 | [AIS_FLAGS_VALID_CALLSIGN](#AIS_FLAGS_VALID_CALLSIGN) |  
-<a id='AIS_FLAGS_VALID_NAME'></a>4096 | [AIS_FLAGS_VALID_NAME](#AIS_FLAGS_VALID_NAME) |  
+<a id='AIS_FLAGS_LARGE_BOW_DIMENSION'></a>128 | [AIS_FLAGS_LARGE_BOW_DIMENSION](#AIS_FLAGS_LARGE_BOW_DIMENSION) | Distance to bow is greater than or equal to 511m 
+<a id='AIS_FLAGS_LARGE_STERN_DIMENSION'></a>256 | [AIS_FLAGS_LARGE_STERN_DIMENSION](#AIS_FLAGS_LARGE_STERN_DIMENSION) | Distance to stern is greater than or equal to 511m 
+<a id='AIS_FLAGS_LARGE_PORT_DIMENSION'></a>512 | [AIS_FLAGS_LARGE_PORT_DIMENSION](#AIS_FLAGS_LARGE_PORT_DIMENSION) | Distance to port side is greater than or equal to 63m 
+<a id='AIS_FLAGS_LARGE_STARBOARD_DIMENSION'></a>1024 | [AIS_FLAGS_LARGE_STARBOARD_DIMENSION](#AIS_FLAGS_LARGE_STARBOARD_DIMENSION) | Distance to starboard side is greater than or equal to 63m 
+<a id='AIS_FLAGS_VALID_CALLSIGN'></a>2048 | [AIS_FLAGS_VALID_CALLSIGN](#AIS_FLAGS_VALID_CALLSIGN) | The callsign field contains valid data 
+<a id='AIS_FLAGS_VALID_NAME'></a>4096 | [AIS_FLAGS_VALID_NAME](#AIS_FLAGS_VALID_NAME) | The name field contains valid data 
 
 ### FAILURE_UNIT {#FAILURE_UNIT}
 
