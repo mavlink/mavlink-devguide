@@ -5951,8 +5951,8 @@ Value | Name | Description
 Value | Name | Description
 --- | --- | ---
 <a id='NAV_VTOL_LAND_OPTIONS_DEFAULT'></a>0 | [NAV_VTOL_LAND_OPTIONS_DEFAULT](#NAV_VTOL_LAND_OPTIONS_DEFAULT) | Default autopilot landing behaviour. 
-<a id='NAV_VTOL_LAND_OPTIONS_FW_DESCENT'></a>1 | [NAV_VTOL_LAND_OPTIONS_FW_DESCENT](#NAV_VTOL_LAND_OPTIONS_FW_DESCENT) | Descend in fixed wing mode, transitioning to multicopter mode for vertical landing when close to the ground.<br>The fixed wing descent pattern is at the discretion of the vehicle (e.g. transition altitude, loiter direction, radius, and speed, etc.). 
-<a id='NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT'></a>2 | [NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT](#NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT) | Land in multicopter mode on reaching the landing coordinates (the whole landing is by "hover descent"). 
+<a id='NAV_VTOL_LAND_OPTIONS_FW_SPIRAL_APPROACH'></a>1 | [NAV_VTOL_LAND_OPTIONS_FW_SPIRAL_APPROACH](#NAV_VTOL_LAND_OPTIONS_FW_SPIRAL_APPROACH) | Use a fixed wing spiral desent approach before landing. 
+<a id='NAV_VTOL_LAND_OPTIONS_FW_APPROACH'></a>2 | [NAV_VTOL_LAND_OPTIONS_FW_APPROACH](#NAV_VTOL_LAND_OPTIONS_FW_APPROACH) | Use a fixed wing approach before detransitioning and landing vertically. 
 
 ### MAV_WINCH_STATUS_FLAG {#MAV_WINCH_STATUS_FLAG}
 
