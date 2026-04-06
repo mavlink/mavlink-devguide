@@ -1,6 +1,6 @@
 # Contributing to MAVLink
 
-We follow [GitHub flow](https://guides.github.com/introduction/flow/) development model.
+We follow the [GitHub flow](https://guides.github.com/introduction/flow/) development model.
 
 Contributions are divided into several categories:
 
