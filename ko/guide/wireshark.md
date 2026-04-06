@@ -58,7 +58,7 @@ This might be necessary, for example, in order to monitor traffic recorded on th
 To import the plugin into _Wireshark_:
 
 1. Copy the plugin file into the wireshark plugins directory.
-   - On Linux systems this might be: `~/.local/lib/wireshark/plugins` (or `~/.wireshark/plugins` for older versions of Wireshark).
+   - On Linux systems this might be: `/usr/lib/x86_64-linux-gnu/wireshark/plugins` (`~/.wireshark/plugins` or `~/.local/lib/wireshark/plugins` for older versions of Wireshark).
      Note that users will need to be added to the `wireshark` group to use the tool.)
    - On Windows this might be: `Program Files/Wireshark/plugins`.
 2. Open _Wireshark_ and follow the menu: **Help > About Wireshark > Plugins**
