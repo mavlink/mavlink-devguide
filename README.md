@@ -9,3 +9,4 @@ MAVLink follows a modern hybrid publish-subscribe and point-to-point design patt
 MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
 
 The content of this book is CC-BY 4.0 licensed.
+<!-- updated -->
