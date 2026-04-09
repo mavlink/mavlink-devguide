@@ -438,7 +438,7 @@ Superseded by [ACTUATOR_OUTPUT_STATUS](#ACTUATOR_OUTPUT_STATUS). The RAW values 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint32_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-port | `uint8_t` | | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX. 
+port | `uint8_t` | | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.<br>Messages with same value are from the same source (instance). 
 servo1_raw | `uint16_t` | us | Servo output 1 value 
 servo2_raw | `uint16_t` | us | Servo output 2 value 
 servo3_raw | `uint16_t` | us | Servo output 3 value 
@@ -2811,7 +2811,7 @@ Field Name | Type | Units | Values | Description
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use. 
-gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). 
+gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
 q | `float[4]` | | | Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag [GIMBAL_MANAGER_FLAGS_YAW_LOCK](#GIMBAL_MANAGER_FLAGS_YAW_LOCK) is set) 
 angular_velocity_x | `float` | rad/s | invalid:NaN | X component of angular velocity, positive is rolling to the right, NaN to be ignored. 
 angular_velocity_y | `float` | rad/s | invalid:NaN | Y component of angular velocity, positive is pitching up, NaN to be ignored. 
@@ -2935,7 +2935,7 @@ Field Name | Type | Units | Values | Description
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use. 
-gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). 
+gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
 pitch | `float` | rad | invalid:NaN | Pitch angle (positive: up, negative: down, NaN to be ignored). 
 yaw | `float` | rad | invalid:NaN | Yaw angle (positive: to the right, negative: to the left, NaN to be ignored). 
 pitch_rate | `float` | rad/s | invalid:NaN | Pitch angular rate (positive: up, negative: down, NaN to be ignored). 
@@ -2951,7 +2951,7 @@ Field Name | Type | Values | Description
 target_system | `uint8_t` | | System ID 
 target_component | `uint8_t` | | Component ID 
 flags | `uint32_t` | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags. 
-gimbal_device_id | `uint8_t` | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). 
+gimbal_device_id | `uint8_t` | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
 pitch | `float` | invalid:NaN | Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored). 
 yaw | `float` | invalid:NaN | Yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored). 
 pitch_rate | `float` | invalid:NaN | Pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored). 
@@ -8933,7 +8933,7 @@ Param (Label) | Description
 
 ### MAV_CMD_CAN_FORWARD (32000) {#MAV_CMD_CAN_FORWARD}
 
-Request forwarding of CAN packets from the given CAN bus to this component. CAN Frames are sent using [CAN_FRAME](#CAN_FRAME) and [CANFD_FRAME](#CANFD_FRAME) messages
+Request forwarding of CAN packets from the given CAN bus to this component via this MAVLink channel. CAN Frames are sent using [CAN_FRAME](#CAN_FRAME) and [CANFD_FRAME](#CANFD_FRAME) messages
 
 Param (Label) | Description
 --- | ---
