@@ -38,7 +38,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 14 | 234
 [Enums](#enumerated-types) | 15 | 158
-[Commands](#mav_commands) | 179 | 0
+[Commands](#mav_commands) | 178 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -542,27 +542,6 @@ Value | Name | Description
 <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON'></a>8 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON](#ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON) | Ranging Beacon 
 
 ## Commands (MAV_CMD) {#mav_commands}
-
-### MAV_CMD_DO_UPGRADE (247) — [WIP] {#MAV_CMD_DO_UPGRADE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Request a target system to start an upgrade of one (or all) of its components.
-
-For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller.
-The system doing the upgrade will report progress using the normal command protocol sequence for a long running operation.
-Command protocol information: https://mavlink.io/en/services/command.html.
-
-Param (Label) | Description | Values
---- | --- | ---
-1 (Component ID) | Component id of the component to be upgraded. If set to 0, all components should be upgraded. | [MAV_COMPONENT](#MAV_COMPONENT) 
-2 (Reboot) | 0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed. | min: 0 max: 1 inc: 1 
-3 | Reserved |   
-4 | Reserved |   
-5 | Reserved |   
-6 | Reserved |   
-7 | WIP: upgrade progress report rate (can be used for more granular control). |   
-
 
 ### MAV_CMD_ACTUATOR_GROUP_TEST (309) — [WIP] {#MAV_CMD_ACTUATOR_GROUP_TEST}
 
