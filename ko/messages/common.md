@@ -96,7 +96,9 @@ If precise time synchronization is needed then use TIMESYNC instead.
 | time_unix_usec | `uint64_t` | us    | Timestamp (UNIX epoch time).        |
 | time_boot_ms   | `uint32_t` | ms    | Timestamp (time since system boot). |
 
-### PING (4) {#PING}
+### PING (4) — [SUP] {#PING}
+
+<span class="warning">**SUPERSEDED:** Replaced By TIMESYNC (2011-08) — To be removed / merged with TIMESYNC)</span>
 
 A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html
 
@@ -156,7 +158,9 @@ Status generated in each node in the communication chain and injected into MAVLi
 | messages_received                 | `uint32_t` |         | Messages received (estimated from counting seq)                                                |
 | messages_lost                     | `uint32_t` |         | Messages lost (estimated from counting seq)                                                    |
 
-### SET_MODE (11) {#SET_MODE}
+### SET_MODE (11) — [SUP] {#SET_MODE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) (2015-12) — Use [COMMAND_LONG](#COMMAND_LONG) with [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) instead)</span>
 
 Set the system mode, as defined by enum [MAV_MODE](#MAV_MODE). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
 
@@ -496,7 +500,9 @@ Request the information of the mission item with the sequence number seq. The re
 | seq                                                                                               | `uint16_t` |                                                                                 | Sequence                      |
 | <span class='ext'>mission_type</span> <a href='#mav2_extension_field'>++</a> | `uint8_t`  | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE) | Mission type. |
 
-### MISSION_SET_CURRENT (41) {#MISSION_SET_CURRENT}
+### MISSION_SET_CURRENT (41) — [SUP] {#MISSION_SET_CURRENT}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) (2022-08)</span>
 
 Set the mission item with sequence number seq as the current item and emit [MISSION_CURRENT](#MISSION_CURRENT) (whether or not the mission number changed).
 If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.
@@ -580,7 +586,9 @@ Acknowledgment message during waypoint handling. The type field states if this m
 | <span class='ext'>mission_type</span> <a href='#mav2_extension_field'>++</a> | `uint8_t`  | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE)     | Mission type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | <span class='ext'>opaque_id</span> <a href='#mav2_extension_field'>++</a>    | `uint32_t` | invalid:0                                                           | Id of new on-vehicle mission, fence, or rally point plan (on upload to vehicle).<br>The id is calculated and returned by a vehicle when a new plan is uploaded by a GCS.<br>The only requirement on the id is that it must change when there is any change to the on-vehicle plan type (there is no requirement that the id be globally unique).<br>0 on download from the vehicle to the GCS (on download the ID is set in [MISSION_COUNT](#MISSION_COUNT)).<br>0 if plan ids are not supported.<br>The current on-vehicle plan ids are streamed in `[MISSION_CURRENT](#MISSION_CURRENT)`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded. |
 
-### SET_GPS_GLOBAL_ORIGIN (48) {#SET_GPS_GLOBAL_ORIGIN}
+### SET_GPS_GLOBAL_ORIGIN (48) — [SUP] {#SET_GPS_GLOBAL_ORIGIN}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_GLOBAL_ORIGIN](#MAV_CMD_DO_SET_GLOBAL_ORIGIN) (2025-04)</span>
 
 Sets the GPS coordinates of the vehicle local origin (0,0,0) position. Vehicle should emit [GPS_GLOBAL_ORIGIN](#GPS_GLOBAL_ORIGIN) irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.
 
@@ -752,7 +760,9 @@ The PPM values of the RC channels received. The standard PPM modulation is as fo
 | chan18_raw                        | `uint16_t` | us    | RC channel 18 value.                                                                                                                                                                                                                         |
 | rssi                                                   | `uint8_t`  |       | Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.     |
 
-### REQUEST_DATA_STREAM (66) {#REQUEST_DATA_STREAM}
+### REQUEST_DATA_STREAM (66) — [SUP] {#REQUEST_DATA_STREAM}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL)  (2015-08)</span>
 
 Request a data stream.
 
@@ -764,7 +774,9 @@ Request a data stream.
 | req_message_rate | `uint16_t` | Hz    |                                                                               | The requested message rate                                       |
 | start_stop                            | `uint8_t`  |       |                                                                               | 1 to start sending, 0 to stop sending.           |
 
-### DATA_STREAM (67) {#DATA_STREAM}
+### DATA_STREAM (67) — [SUP] {#DATA_STREAM}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) (2015-08)</span>
 
 Data stream status information.
 
@@ -1073,7 +1085,9 @@ The offset in X, Y, Z and yaw between the [LOCAL_POSITION_NED](#LOCAL_POSITION_N
 | pitch                                                  | `float`    | rad   | Pitch                                                                  |
 | yaw                                                    | `float`    | rad   | Yaw                                                                    |
 
-### HIL_STATE (90) {#HIL_STATE}
+### HIL_STATE (90) — [SUP] {#HIL_STATE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [HIL_STATE_QUATERNION](#HIL_STATE_QUATERNION) (2013-07) — Suffers from missing airspeed fields and singularities due to Euler angles)</span>
 
 Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.
 
@@ -1524,7 +1538,9 @@ Stop log transfer and resume normal logging
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
 
-### GPS_INJECT_DATA (123) {#GPS_INJECT_DATA}
+### GPS_INJECT_DATA (123) — [SUP] {#GPS_INJECT_DATA}
+
+<span class="warning">**SUPERSEDED:** Replaced By [GPS_RTCM_DATA](#GPS_RTCM_DATA) (2022-05)</span>
 
 Data for injecting into the onboard GPS (used for DGPS)
 
@@ -2051,7 +2067,9 @@ RTCM message for injecting into the onboard GPS (used for DGPS)
 | len        | `uint8_t`      | bytes | data length                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | data       | `uint8_t[180]` |       | RTCM message (may be fragmented)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-### HIGH_LATENCY (234) {#HIGH_LATENCY}
+### HIGH_LATENCY (234) — [SUP] {#HIGH_LATENCY}
+
+<span class="warning">**SUPERSEDED:** Replaced By [HIGH_LATENCY2](#HIGH_LATENCY2) (2020-10)</span>
 
 Message appropriate for high latency connections like Iridium
 
@@ -2154,7 +2172,9 @@ Note: this message can be requested by sending the [MAV_CMD_REQUEST_MESSAGE](#MA
 | approach_z                                                                | `float`    | m     | Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone. |
 | <span class='ext'>time_usec</span> <a href='#mav2_extension_field'>++</a> | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                                                       |
 
-### SET_HOME_POSITION (243) {#SET_HOME_POSITION}
+### SET_HOME_POSITION (243) — [SUP] {#SET_HOME_POSITION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_HOME](#MAV_CMD_DO_SET_HOME) (2022-02) — The command protocol version ([MAV_CMD_DO_SET_HOME](#MAV_CMD_DO_SET_HOME)) allows a GCS to detect when setting the home position has failed.)</span>
 
 Sets the home position.
 The home position is the default position that the system will return to and land on.
@@ -2331,7 +2351,9 @@ Report button state change.
 | last_change_ms | `uint32_t` | ms    | Time of last change of button state.                   |
 | state                                                    | `uint8_t`  |       | Bitmap for state of buttons.                           |
 
-### PLAY_TUNE (258) {#PLAY_TUNE}
+### PLAY_TUNE (258) — [SUP] {#PLAY_TUNE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [PLAY_TUNE_V2](#PLAY_TUNE_V2) (2019-10) — New version explicitly defines format. More interoperable.)</span>
 
 Control vehicle tone generation (buzzer).
 
@@ -2452,7 +2474,9 @@ Note, some fields are misnamed - timestamps are from boot (not UTC) and the flig
 | flight_uuid                                                                  | `uint64_t` |       | Flight number. Note, field is misnamed UUID.                                                                                                                    |
 | <span class='ext'>landing_time</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | ms    | Timestamp at landing (in ms since system boot). Set to 0 at boot and on arming.                                                              |
 
-### MOUNT_ORIENTATION (265) {#MOUNT_ORIENTATION}
+### MOUNT_ORIENTATION (265) — [SUP] {#MOUNT_ORIENTATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is being superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW). The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Orientation of a mount
 
@@ -3201,7 +3225,9 @@ This may typically send at low rates: of the order of 2Hz.
 | y                                 | `int32_t`  |       |                                              | Y coordinate of center point. Coordinate system depends on frame field.                                                                                                                                                                                      |
 | z                                 | `float`    | m     |                                              | Altitude of center point. Coordinate system depends on frame field.                                                                                                                                                                                          |
 
-### SMART_BATTERY_INFO (370) {#SMART_BATTERY_INFO}
+### SMART_BATTERY_INFO (370) — [SUP] {#SMART_BATTERY_INFO}
+
+<span class="warning">**SUPERSEDED:** Replaced By [BATTERY_INFO](#BATTERY_INFO) (2024-02) — The [BATTERY_INFO](#BATTERY_INFO) message is better aligned with UAVCAN messages, and in any case is useful even if a battery is not "smart".)</span>
 
 Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use [BATTERY_STATUS](#BATTERY_STATUS) for the frequent battery updates.
 
@@ -3899,30 +3925,30 @@ Local frames use the following naming conventions:
 
 Some deprecated frames do not follow these conventions (e.g. [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED) and [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED)).
 
-| Value                                           | Name                                                                                                                                                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='MAV_FRAME_GLOBAL'></a>0                  | [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL)                                                                                                  | Global (WGS84) coordinate frame + altitude relative to mean sea level (MSL).                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| <a id='MAV_FRAME_LOCAL_NED'></a>1               | [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)                                                                       | NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.                                                                                                                                                                                                                                                                                                                                                                        |
-| <a id='MAV_FRAME_MISSION'></a>2                 | [MAV_FRAME_MISSION](#MAV_FRAME_MISSION)                                                                                                | NOT a coordinate frame, indicates a mission command.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| <a id='MAV_FRAME_GLOBAL_RELATIVE_ALT'></a>3     | [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT)                              | Global (WGS84) coordinate frame + altitude relative to the home position.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| <a id='MAV_FRAME_LOCAL_ENU'></a>4               | [MAV_FRAME_LOCAL_ENU](#MAV_FRAME_LOCAL_ENU)                                                                       | ENU local tangent frame (x: East, y: North, z: Up) with origin fixed relative to earth.                                                                                                                                                                                                                                                                                                                                                                          |
-| <a id='MAV_FRAME_GLOBAL_INT'></a>5              | [MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT)                                                                     | Global (WGS84) coordinate frame (scaled) + altitude relative to mean sea level (MSL).                                                                                                                                                                                                                                                                                                                                                                                      |
-| <a id='MAV_FRAME_GLOBAL_RELATIVE_ALT_INT'></a>6 | [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT) | Global (WGS84) coordinate frame (scaled) + altitude relative to the home position.                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id='MAV_FRAME_LOCAL_OFFSET_NED'></a>7        | [MAV_FRAME_LOCAL_OFFSET_NED](#MAV_FRAME_LOCAL_OFFSET_NED)                                    | NED local tangent frame (x: North, y: East, z: Down) with origin that travels with the vehicle.                                                                                                                                                                                                                                                                                                                                                                  |
-| <a id='MAV_FRAME_BODY_NED'></a>8                | [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED)                                                                         | Same as [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED) when used to represent position values. Same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) when used with velocity/acceleration values.                                                                                                                                                                                            |
-| <a id='MAV_FRAME_BODY_OFFSET_NED'></a>9         | [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED)                                      | This is the same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD).                                                                                                                                                                                                                                                                                                                                                                                                       |
-| <a id='MAV_FRAME_GLOBAL_TERRAIN_ALT'></a>10     | [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT)                                | Global (WGS84) coordinate frame with AGL altitude (altitude at ground level).                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| <a id='MAV_FRAME_GLOBAL_TERRAIN_ALT_INT'></a>11 | [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT)   | Global (WGS84) coordinate frame (scaled) with AGL altitude (altitude at ground level).                                                                                                                                                                                                                                                                                                                                                                                     |
-| <a id='MAV_FRAME_BODY_FRD'></a>12               | [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD)                                                                         | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle.                                                                                                                                                                                                                                                                                                                                      |
-| <a id='MAV_FRAME_RESERVED_13'></a>13            | [MAV_FRAME_RESERVED_13](#MAV_FRAME_RESERVED_13)                                                                   | [MAV_FRAME_BODY_FLU](#MAV_FRAME_BODY_FLU) - Body fixed frame of reference, Z-up (x: Forward, y: Left, z: Up).<br><span class="warning">**DEPRECATED:**(2019-04)</span>                                                                                                                                                                                         |
-| <a id='MAV_FRAME_RESERVED_14'></a>14            | [MAV_FRAME_RESERVED_14](#MAV_FRAME_RESERVED_14)                                                                   | [MAV_FRAME_MOCAP_NED](#MAV_FRAME_MOCAP_NED) - Odometry local coordinate frame of data given by a motion capture system, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span>                  |
-| <a id='MAV_FRAME_RESERVED_15'></a>15            | [MAV_FRAME_RESERVED_15](#MAV_FRAME_RESERVED_15)                                                                   | [MAV_FRAME_MOCAP_ENU](#MAV_FRAME_MOCAP_ENU) - Odometry local coordinate frame of data given by a motion capture system, Z-up (x: East, y: North, z: Up).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU) (2019-04)</span>                      |
-| <a id='MAV_FRAME_RESERVED_16'></a>16            | [MAV_FRAME_RESERVED_16](#MAV_FRAME_RESERVED_16)                                                                   | [MAV_FRAME_VISION_NED](#MAV_FRAME_VISION_NED) - Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span>             |
-| <a id='MAV_FRAME_RESERVED_17'></a>17            | [MAV_FRAME_RESERVED_17](#MAV_FRAME_RESERVED_17)                                                                   | [MAV_FRAME_VISION_ENU](#MAV_FRAME_VISION_ENU) - Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: East, y: North, z: Up).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU) (2019-04)</span>                 |
-| <a id='MAV_FRAME_RESERVED_18'></a>18            | [MAV_FRAME_RESERVED_18](#MAV_FRAME_RESERVED_18)                                                                   | [MAV_FRAME_ESTIM_NED](#MAV_FRAME_ESTIM_NED) - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span> |
-| <a id='MAV_FRAME_RESERVED_19'></a>19            | [MAV_FRAME_RESERVED_19](#MAV_FRAME_RESERVED_19)                                                                   | [MAV_FRAME_ESTIM_ENU](#MAV_FRAME_ESTIM_ENU) - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-up (x: East, y: North, z: Up).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU) (2019-04)</span>     |
-| <a id='MAV_FRAME_LOCAL_FRD'></a>20              | [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD)                                                                       | FRD local tangent frame (x: Forward, y: Right, z: Down) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.                                                                                                                                                                                                                                                                    |
-| <a id='MAV_FRAME_LOCAL_FLU'></a>21              | [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU)                                                                       | FLU local tangent frame (x: Forward, y: Left, z: Up) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.                                                                                                                                                                                                                                                                       |
+| Value                                           | Name                                                                                                                                                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='MAV_FRAME_GLOBAL'></a>0                  | [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL)                                                                                                  | Global (WGS84) coordinate frame + altitude relative to mean sea level (MSL).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <a id='MAV_FRAME_LOCAL_NED'></a>1               | [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)                                                                       | NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id='MAV_FRAME_MISSION'></a>2                 | [MAV_FRAME_MISSION](#MAV_FRAME_MISSION)                                                                                                | NOT a coordinate frame, indicates a mission command.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| <a id='MAV_FRAME_GLOBAL_RELATIVE_ALT'></a>3     | [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT)                              | Global (WGS84) coordinate frame + altitude relative to the home position.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id='MAV_FRAME_LOCAL_ENU'></a>4               | [MAV_FRAME_LOCAL_ENU](#MAV_FRAME_LOCAL_ENU)                                                                       | ENU local tangent frame (x: East, y: North, z: Up) with origin fixed relative to earth.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| <a id='MAV_FRAME_GLOBAL_INT'></a>5              | [MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT)                                                                     | Global (WGS84) coordinate frame (scaled) + altitude relative to mean sea level (MSL).<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) (2024-03) — Use [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) in [COMMAND_INT](#COMMAND_INT) (and elsewhere) as a synonymous replacement.)</span>                                                                                                                                      |
+| <a id='MAV_FRAME_GLOBAL_RELATIVE_ALT_INT'></a>6 | [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT) | Global (WGS84) coordinate frame (scaled) + altitude relative to the home position.<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) (2024-03) — Use [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) in [COMMAND_INT](#COMMAND_INT) (and elsewhere) as a synonymous replacement.)</span>                    |
+| <a id='MAV_FRAME_LOCAL_OFFSET_NED'></a>7        | [MAV_FRAME_LOCAL_OFFSET_NED](#MAV_FRAME_LOCAL_OFFSET_NED)                                    | NED local tangent frame (x: North, y: East, z: Down) with origin that travels with the vehicle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <a id='MAV_FRAME_BODY_NED'></a>8                | [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED)                                                                         | Same as [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED) when used to represent position values. Same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) when used with velocity/acceleration values.<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) (2019-08)</span>                                                                                                                                              |
+| <a id='MAV_FRAME_BODY_OFFSET_NED'></a>9         | [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED)                                      | This is the same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD).<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) (2019-08)</span>                                                                                                                                                                                                                                                                                                                                                         |
+| <a id='MAV_FRAME_GLOBAL_TERRAIN_ALT'></a>10     | [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT)                                | Global (WGS84) coordinate frame with AGL altitude (altitude at ground level).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <a id='MAV_FRAME_GLOBAL_TERRAIN_ALT_INT'></a>11 | [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT)   | Global (WGS84) coordinate frame (scaled) with AGL altitude (altitude at ground level).<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) (2024-03) — Use [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) in [COMMAND_INT](#COMMAND_INT) (and elsewhere) as a synonymous replacement.)</span> |
+| <a id='MAV_FRAME_BODY_FRD'></a>12               | [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD)                                                                         | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| <a id='MAV_FRAME_RESERVED_13'></a>13            | [MAV_FRAME_RESERVED_13](#MAV_FRAME_RESERVED_13)                                                                   | [MAV_FRAME_BODY_FLU](#MAV_FRAME_BODY_FLU) - Body fixed frame of reference, Z-up (x: Forward, y: Left, z: Up).<br><span class="warning">**DEPRECATED:**(2019-04)</span>                                                                                                                                                                                                                                                                                                                                                             |
+| <a id='MAV_FRAME_RESERVED_14'></a>14            | [MAV_FRAME_RESERVED_14](#MAV_FRAME_RESERVED_14)                                                                   | [MAV_FRAME_MOCAP_NED](#MAV_FRAME_MOCAP_NED) - Odometry local coordinate frame of data given by a motion capture system, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span>                                                                                                                                                                                      |
+| <a id='MAV_FRAME_RESERVED_15'></a>15            | [MAV_FRAME_RESERVED_15](#MAV_FRAME_RESERVED_15)                                                                   | [MAV_FRAME_MOCAP_ENU](#MAV_FRAME_MOCAP_ENU) - Odometry local coordinate frame of data given by a motion capture system, Z-up (x: East, y: North, z: Up).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU) (2019-04)</span>                                                                                                                                                                                          |
+| <a id='MAV_FRAME_RESERVED_16'></a>16            | [MAV_FRAME_RESERVED_16](#MAV_FRAME_RESERVED_16)                                                                   | [MAV_FRAME_VISION_NED](#MAV_FRAME_VISION_NED) - Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span>                                                                                                                                                                                 |
+| <a id='MAV_FRAME_RESERVED_17'></a>17            | [MAV_FRAME_RESERVED_17](#MAV_FRAME_RESERVED_17)                                                                   | [MAV_FRAME_VISION_ENU](#MAV_FRAME_VISION_ENU) - Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: East, y: North, z: Up).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU) (2019-04)</span>                                                                                                                                                                                     |
+| <a id='MAV_FRAME_RESERVED_18'></a>18            | [MAV_FRAME_RESERVED_18](#MAV_FRAME_RESERVED_18)                                                                   | [MAV_FRAME_ESTIM_NED](#MAV_FRAME_ESTIM_NED) - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span>                                                                                                                                                                     |
+| <a id='MAV_FRAME_RESERVED_19'></a>19            | [MAV_FRAME_RESERVED_19](#MAV_FRAME_RESERVED_19)                                                                   | [MAV_FRAME_ESTIM_ENU](#MAV_FRAME_ESTIM_ENU) - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-up (x: East, y: North, z: Up).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU) (2019-04)</span>                                                                                                                                                                         |
+| <a id='MAV_FRAME_LOCAL_FRD'></a>20              | [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD)                                                                       | FRD local tangent frame (x: Forward, y: Right, z: Down) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| <a id='MAV_FRAME_LOCAL_FLU'></a>21              | [MAV_FRAME_LOCAL_FLU](#MAV_FRAME_LOCAL_FLU)                                                                       | FLU local tangent frame (x: Forward, y: Left, z: Up) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ### MAVLINK_DATA_STREAM_TYPE {#MAVLINK_DATA_STREAM_TYPE}
 
@@ -4399,7 +4425,9 @@ Action for the accelerometer (param5) of [MAV_CMD_PREFLIGHT_CALIBRATION](#MAV_CM
 | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED'></a>1 | [NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED](#NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED) | Accept the command even if the autopilot does not have control over its horizontal position (note that it might not have altitude control either). |
 
-### MAV_DATA_STREAM {#MAV_DATA_STREAM}
+### MAV_DATA_STREAM — [SUP] {#MAV_DATA_STREAM}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) (2015-06)</span>
 
 A data stream is not a fixed set of messages, but rather a
 
@@ -4418,7 +4446,9 @@ the recommended messages.
 | <a id='MAV_DATA_STREAM_EXTRA2'></a>11         | [MAV_DATA_STREAM_EXTRA2](#MAV_DATA_STREAM_EXTRA2)                                        | Dependent on the autopilot                                                                                                                                                                                                                                                                                                  |
 | <a id='MAV_DATA_STREAM_EXTRA3'></a>12         | [MAV_DATA_STREAM_EXTRA3](#MAV_DATA_STREAM_EXTRA3)                                        | Dependent on the autopilot                                                                                                                                                                                                                                                                                                  |
 
-### MAV_ROI {#MAV_ROI}
+### MAV_ROI — [SUP] {#MAV_ROI}
+
+<span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 The ROI (region of interest) for the vehicle. This can be
 
@@ -6567,7 +6597,9 @@ The resulting path is a circular arc in the NE frame, with the difference in hei
 | 6 (Longitude) | Longitude                                                                                                                                                                                      |                                                                           |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                                                       |                                                                           | m     |
 
-### MAV_CMD_NAV_ROI (80) {#MAV_CMD_NAV_ROI}
+### MAV_CMD_NAV_ROI (80) — [SUP] {#MAV_CMD_NAV_ROI}
+
+<span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -7125,7 +7157,9 @@ Control onboard camera system.
 | 6                                   | Empty                                                                                                                            |                                                                      |       |
 | 7                                   | Empty                                                                                                                            |                                                                      |       |
 
-### MAV_CMD_DO_SET_ROI (201) {#MAV_CMD_DO_SET_ROI}
+### MAV_CMD_DO_SET_ROI (201) — [SUP] {#MAV_CMD_DO_SET_ROI}
+
+<span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -7167,7 +7201,9 @@ Control digital camera. This is a fallback message for systems that have not yet
 | 6 (Command Identity) | Command Identity                                                                                                                              |
 | 7 (Shot ID)          | Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count. |
 
-### MAV_CMD_DO_MOUNT_CONFIGURE (204) {#MAV_CMD_DO_MOUNT_CONFIGURE}
+### MAV_CMD_DO_MOUNT_CONFIGURE (204) — [SUP] {#MAV_CMD_DO_MOUNT_CONFIGURE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) (2020-01) — The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Mission command to configure a camera or antenna mount
 
@@ -7181,7 +7217,9 @@ Mission command to configure a camera or antenna mount
 | 6 (Pitch Input Mode) | Pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)                                                                     |                                                                             |
 | 7 (Yaw Input Mode)   | Yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)                                                                       |                                                                             |
 
-### MAV_CMD_DO_MOUNT_CONTROL (205) {#MAV_CMD_DO_MOUNT_CONTROL}
+### MAV_CMD_DO_MOUNT_CONTROL (205) — [SUP] {#MAV_CMD_DO_MOUNT_CONTROL}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is ambiguous and inconsistent. It has been superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) and `MAV_CMD_DO_SET_ROI_*` variants. The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Mission command to control a camera or antenna mount
 
@@ -7325,7 +7363,9 @@ Mission command to set camera trigger interval for this flight. If triggering is
 | 6                                          | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                        |       |
 | 7                                          | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                        |       |
 
-### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
+### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) — [SUP] {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01)</span>
 
 Mission command to control a camera or antenna mount, using a quaternion as reference.
 
@@ -7613,7 +7653,9 @@ Configures illuminator settings. An illuminator is a light source that is used f
 | 3 (Strobe Period) | Strobe period in seconds where 0 means strobing is not used                             | min: 0                                     | s     |
 | 4 (Strobe Duty)   | Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used | min: 0 max: 100            | %     |
 
-### MAV_CMD_GET_HOME_POSITION (410) {#MAV_CMD_GET_HOME_POSITION}
+### MAV_CMD_GET_HOME_POSITION (410) — [SUP] {#MAV_CMD_GET_HOME_POSITION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2022-04)</span>
 
 Request the home position from the vehicle.
 
@@ -7648,7 +7690,9 @@ Starts receiver pairing.
 | 1 (RC Type)     | RC type.     | [RC_TYPE](#RC_TYPE)                              |
 | 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) |
 
-### MAV_CMD_GET_MESSAGE_INTERVAL (510) {#MAV_CMD_GET_MESSAGE_INTERVAL}
+### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [SUP] {#MAV_CMD_GET_MESSAGE_INTERVAL}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2022-04)</span>
 
 Request the interval between messages for a particular MAVLink message ID.
 The receiver should ACK the command and then emit its response in a [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) message.
@@ -7696,7 +7740,9 @@ Request MAVLink protocol version compatibility. All receivers should ACK the com
 | 1 (Protocol)  | Request supported protocol versions by all nodes on the network (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                | Reserved (all remaining params)                                                                                                                                                                    |                                            |
 
-### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
+### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) — [SUP] {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request autopilot capabilities. The receiver should ACK the command and then emit its capabilities in an [AUTOPILOT_VERSION](#AUTOPILOT_VERSION) message
 
@@ -7705,7 +7751,9 @@ Request autopilot capabilities. The receiver should ACK the command and then emi
 | 1 (Version)   | Request autopilot version (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                | Reserved (all remaining params)                                                                                                                              |                                            |
 
-### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
+### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) — [SUP] {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 
@@ -7714,7 +7762,9 @@ Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 | 1 (Capabilities) | Request camera capabilities (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                   | Reserved (all remaining params)                                                                                                                                |                                            |
 
-### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
+### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) — [SUP] {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 
@@ -7723,7 +7773,9 @@ Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 | 1 (Settings)  | Request camera settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                | Reserved (all remaining params)                                                                                                                            |                                            |
 
-### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
+### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) — [SUP] {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use the command's target_component to target a specific component's storage.
 
@@ -7744,7 +7796,9 @@ Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORA
 | 3 (Reset Image Log) | Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL)    |
 | 4                                      | Reserved (all remaining params)                                                                                                                                                                                                                                                                                                                                                                     |                                               |
 
-### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
+### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) — [SUP] {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 
@@ -7753,7 +7807,9 @@ Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 | 1 (Capture Status) | Request camera capture status (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                     | Reserved (all remaining params)                                                                                                                                  |                                            |
 
-### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
+### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) — [SUP] {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 
@@ -7923,7 +7979,9 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 | 6                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 | 7                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 
-### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
+### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) — [SUP] {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 
@@ -8025,7 +8083,9 @@ Stop the given video stream
 | 1 (Stream ID)        | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)                                                                                                                                                                                                                                                                                                                                                              | min: 0 inc: 1                          |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
+### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [SUP] {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION))
 
@@ -8033,7 +8093,9 @@ Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFOR
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 |
 
-### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
+### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) — [SUP] {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 
@@ -8292,7 +8354,9 @@ Trigger the start of an ADSB-out IDENT. This should only be used when requested 
 | 6                                | Reserved (set to 0) |
 | 7                                | Reserved (set to 0) |
 
-### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
+### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [SUP] {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
+
+<span class="warning">**SUPERSEDED:**(2021-06)</span>
 
 Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.
 
@@ -8306,7 +8370,9 @@ Deploy payload on a Lat / Lon / Alt position. This includes the navigation to re
 | 6 (Longitude)          | Longitude.                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                      | degE7 |
 | 7 (Altitude)           | Altitude (MSL)                                                                                                                                                                                                                                                                                                                                                                                                 |                                                                      | m     |
 
-### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
+### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) — [SUP] {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
+
+<span class="warning">**SUPERSEDED:**(2021-06)</span>
 
 Control the payload deployment.
 
