@@ -558,7 +558,7 @@ Reports progress of compass calibration.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-compass_id | `uint8_t` | | | Compass being calibrated.<br>Messages with same value are from the same source (instance). 
+compass_id | `uint8_t` | | | Compass being calibrated.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 cal_mask | `uint8_t` | | | Bitmask of compasses being calibrated. 
 cal_status | `uint8_t` | | [MAG_CAL_STATUS](#MAG_CAL_STATUS) | Calibration Status. 
 attempt | `uint8_t` | | | Attempt number. 
@@ -590,7 +590,7 @@ PID tuning information.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-axis | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>Messages with same value are from the same source (instance). 
+axis | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 desired | `float` | | Desired rate. 
 achieved | `float` | | Achieved rate. 
 FF | `float` | | FF component. 
@@ -825,7 +825,7 @@ Adaptive Controller tuning information.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-axis | `uint8_t` | | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>Messages with same value are from the same source (instance). 
+axis | `uint8_t` | | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 desired | `float` | deg/s | | Desired rate. 
 achieved | `float` | deg/s | | Achieved rate. 
 error | `float` | | | Error between model and vehicle. 
@@ -971,7 +971,7 @@ Field Name | Type | Units | Values | Description
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 sensor_type | `uint8_t` | | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Class id of the distance sensor type. 
 frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | Coordinate frame of reference. 
-obstacle_id | `uint16_t` | | | Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.<br>Messages with same value are from the same source (instance). 
+obstacle_id | `uint16_t` | | | Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 x | `float` | m | | X position of the obstacle. 
 y | `float` | m | | Y position of the obstacle. 
 z | `float` | m | | Z position of the obstacle. 
@@ -986,7 +986,7 @@ Water depth
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot) 
-id | `uint8_t` | | Onboard ID of the sensor<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | Onboard ID of the sensor<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 healthy | `uint8_t` | | Sensor data healthy (0=unhealthy, 1=healthy) 
 lat | `int32_t` | degE7 | Latitude 
 lng | `int32_t` | degE7 | Longitude 
@@ -1004,7 +1004,7 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-id | `uint8_t` | | MCU instance<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | MCU instance<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 MCU_temperature | `int16_t` | cdegC | MCU Internal temperature 
 MCU_voltage | `uint16_t` | mV | MCU voltage 
 MCU_voltage_min | `uint16_t` | mV | MCU voltage minimum 
@@ -1088,7 +1088,7 @@ Send a key-value pair as string. The use of this message is discouraged for norm
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 value | `char[64]` | | Value of the debug variable 
 
 

@@ -117,7 +117,7 @@ Power monitors would not set this bit, indicating that capacity_consumed is rela
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature of the whole battery pack (not internal electronics). INT16_MAX field not provided. 
 voltage | `float` | V | invalid:NaN | Battery voltage (total). NaN: field not provided. 
 current | `float` | A | invalid:NaN | Battery current (through all cells/loads). Positive value when discharging and negative if charging. NaN: field not provided. 
@@ -205,7 +205,7 @@ Information about key components of GNSS receivers, like signal authentication, 
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | GNSS receiver id. Must match instance ids of other messages from same receiver.<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | GNSS receiver id. Must match instance ids of other messages from same receiver.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 system_errors | `uint32_t` | | [GPS_SYSTEM_ERROR_FLAGS](#GPS_SYSTEM_ERROR_FLAGS) | Errors in the GPS system. 
 authentication_state | `uint8_t` | | [GPS_AUTHENTICATION_STATE](#GPS_AUTHENTICATION_STATE) | Signal authentication state of the GPS system. 
 jamming_state | `uint8_t` | | [GPS_JAMMING_STATE](#GPS_JAMMING_STATE) | Signal jamming state of the GPS system. 
@@ -251,7 +251,7 @@ The location of a target measured by MAV's onboard sensors.
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 timestamp | `uint64_t` | us | | Timestamp (UNIX epoch time) 
-id | `uint8_t` | | | The ID of the target if multiple targets are present<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | The ID of the target if multiple targets are present<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 frame | `uint8_t` | | [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) | Coordinate frame used for following fields. 
 x | `float` | m | | X Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
 y | `float` | m | | Y Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
@@ -300,7 +300,7 @@ Field Name | Type | Units | Values | Description
 time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 target_system | `uint8_t` | | | System ID. 
 target_component | `uint8_t` | | | Component ID. 
-beacon_id | `uint16_t` | | | ID of the ranging beacon/station.<br>Messages with same value are from the same source (instance). 
+beacon_id | `uint16_t` | | | ID of the ranging beacon/station.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 range | `uint32_t` | mm | invalid:UINT32_MAX | Range measurement between a beacon and a vehicle. 
 lat | `int32_t` | degE7 | invalid:INT32_MAX | Beacon latitude (WGS84). 
 lon | `int32_t` | degE7 | invalid:INT32_MAX | Beacon longitude (WGS84). 

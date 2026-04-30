@@ -146,7 +146,7 @@ Data for tracking of pilot eye gaze. This is the primary message for [MARSH_TYPE
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint64_t` | us | Timestamp (time since system boot). 
-sensor_id | `uint8_t` | | Sensor ID, used for identifying the device and/or person tracked. Set to zero if unknown/unused.<br>Messages with same value are from the same source (instance). 
+sensor_id | `uint8_t` | | Sensor ID, used for identifying the device and/or person tracked. Set to zero if unknown/unused.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 gaze_origin_x | `float` | m | X axis of gaze origin point, NaN if unknown. The reference system depends on specific application. 
 gaze_origin_y | `float` | m | Y axis of gaze origin point, NaN if unknown. The reference system depends on specific application. 
 gaze_origin_z | `float` | m | Z axis of gaze origin point, NaN if unknown. The reference system depends on specific application. 

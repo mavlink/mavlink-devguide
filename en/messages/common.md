@@ -303,7 +303,7 @@ zgyro | `int16_t` | | Angular speed around Z axis (raw)
 xmag | `int16_t` | | X Magnetic field (raw) 
 ymag | `int16_t` | | Y Magnetic field (raw) 
 zmag | `int16_t` | | Z Magnetic field (raw) 
-<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>Messages with same value are from the same source (instance). 
+<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 <span class='ext'>temperature</span> <a href='#mav2_extension_field'>++</a> | `int16_t` | cdegC | Temperature, 0: IMU does not provide temperature values. If the IMU is at 0C it must send 1 (0.01C). 
 
 
@@ -442,7 +442,7 @@ Superseded by [ACTUATOR_OUTPUT_STATUS](#ACTUATOR_OUTPUT_STATUS). The RAW values 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint32_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-port | `uint8_t` | | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.<br>Messages with same value are from the same source (instance). 
+port | `uint8_t` | | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 servo1_raw | `uint16_t` | us | Servo output 1 value 
 servo2_raw | `uint16_t` | us | Servo output 2 value 
 servo3_raw | `uint16_t` | us | Servo output 3 value 
@@ -1332,7 +1332,7 @@ diff_pressure | `float` | hPa | | Differential pressure
 pressure_alt | `float` | | | Altitude calculated from pressure 
 temperature | `float` | degC | | Temperature 
 fields_updated | `uint16_t` | | [HIGHRES_IMU_UPDATED_FLAGS](#HIGHRES_IMU_UPDATED_FLAGS) | Bitmap for fields that have updated since last message 
-<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>Messages with same value are from the same source (instance). 
+<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 
 
 ### OPTICAL_FLOW_RAD (106) {#OPTICAL_FLOW_RAD}
@@ -1342,7 +1342,7 @@ Optical flow from an angular rate flow sensor (e.g. PX4FLOW or mouse sensor)
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-sensor_id | `uint8_t` | | Sensor ID<br>Messages with same value are from the same source (instance). 
+sensor_id | `uint8_t` | | Sensor ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 integration_time_us | `uint32_t` | us | Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the. 
 integrated_x | `float` | rad | Flow around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.) 
 integrated_y | `float` | rad | Flow around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.) 
@@ -1794,7 +1794,7 @@ min_distance | `uint16_t` | cm | | Minimum distance the sensor can measure
 max_distance | `uint16_t` | cm | | Maximum distance the sensor can measure 
 current_distance | `uint16_t` | cm | | Current distance reading 
 type | `uint8_t` | | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Type of distance sensor. 
-id | `uint8_t` | | | Onboard ID of the sensor<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Onboard ID of the sensor<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 orientation | `uint8_t` | | [MAV_SENSOR_ORIENTATION](#MAV_SENSOR_ORIENTATION) | Direction the sensor faces. downward-facing: [ROTATION_PITCH_270](#ROTATION_PITCH_270), upward-facing: [ROTATION_PITCH_90](#ROTATION_PITCH_90), backward-facing: [ROTATION_PITCH_180](#ROTATION_PITCH_180), forward-facing: [ROTATION_NONE](#ROTATION_NONE), left-facing: [ROTATION_YAW_90](#ROTATION_YAW_90), right-facing: [ROTATION_YAW_270](#ROTATION_YAW_270) 
 covariance | `uint8_t` | cm^2 | invalid:UINT8_MAX | Measurement variance. Max standard deviation is 6cm. UINT8_MAX if unknown. 
 <span class='ext'>horizontal_fov</span> <a href='#mav2_extension_field'>++</a> | `float` | rad | invalid:0 | Horizontal Field of View (angle) where the distance measurement is valid and the field of view is known. Otherwise this is set to 0. 
@@ -1995,7 +1995,7 @@ Battery information. Updates GCS with flight controller battery status. Smart ba
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery 
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery 
 temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature of the battery. INT16_MAX for unknown temperature. 
@@ -2072,7 +2072,7 @@ Reports results of completed compass calibration. Sent until [MAG_CAL_ACK](#MAG_
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-compass_id | `uint8_t` | | | Compass being calibrated.<br>Messages with same value are from the same source (instance). 
+compass_id | `uint8_t` | | | Compass being calibrated.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 cal_mask | `uint8_t` | | | Bitmask of compasses being calibrated. 
 cal_status | `uint8_t` | | [MAG_CAL_STATUS](#MAG_CAL_STATUS) | Calibration Status. 
 autosaved | `uint8_t` | | | 0=requires a [MAV_CMD_DO_ACCEPT_MAG_CAL](#MAV_CMD_DO_ACCEPT_MAG_CAL), 1=saved to parameters. 
@@ -2161,7 +2161,7 @@ GPS sensor input message.  This is a raw sensor value sent by the GPS. This is N
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-gps_id | `uint8_t` | | | ID of the GPS for multiple GPS inputs<br>Messages with same value are from the same source (instance). 
+gps_id | `uint8_t` | | | ID of the GPS for multiple GPS inputs<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 ignore_flags | `uint16_t` | | [GPS_INPUT_IGNORE_FLAGS](#GPS_INPUT_IGNORE_FLAGS) | Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided. 
 time_week_ms | `uint32_t` | ms | | GPS time (from start of GPS week) 
 time_week | `uint16_t` | | | GPS week number 
@@ -2419,7 +2419,7 @@ To debug something using a named 3D vector.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-name | `char[10]` | | Name<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 x | `float` | | x 
 y | `float` | | y 
@@ -2433,7 +2433,7 @@ Send a key-value pair as float. The use of this message is discouraged for norma
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 value | `float` | | Floating point value 
 
 
@@ -2444,7 +2444,7 @@ Send a key-value pair as integer. The use of this message is discouraged for nor
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 value | `int32_t` | | Signed integer value 
 
 
@@ -2551,7 +2551,7 @@ Information about a storage medium. This message is sent in response to a reques
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
-storage_id | `uint8_t` | | | Storage ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+storage_id | `uint8_t` | | | Storage ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 storage_count | `uint8_t` | | | Number of storage devices 
 status | `uint8_t` | | [STORAGE_STATUS](#STORAGE_STATUS) | Status of storage 
 total_capacity | `float` | MiB | | Total capacity. If storage is not ready ([STORAGE_STATUS_READY](#STORAGE_STATUS_READY)) value will be ignored. 
@@ -2684,7 +2684,7 @@ Information about video stream. It may be requested using [MAV_CMD_REQUEST_MESSA
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 count | `uint8_t` | | | Number of streams available. 
 type | `uint8_t` | | [VIDEO_STREAM_TYPE](#VIDEO_STREAM_TYPE) | Type of stream. 
 flags | `uint16_t` | | [VIDEO_STREAM_STATUS_FLAGS](#VIDEO_STREAM_STATUS_FLAGS) | Bitmap of stream status flags. 
@@ -2706,7 +2706,7 @@ Information about the status of a video stream. It may be requested using [MAV_C
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 flags | `uint16_t` | | [VIDEO_STREAM_STATUS_FLAGS](#VIDEO_STREAM_STATUS_FLAGS) | Bitmap of stream status flags 
 framerate | `float` | Hz | | Frame rate 
 resolution_h | `uint16_t` | pix | | Horizontal resolution 
@@ -2784,7 +2784,7 @@ Camera absolute thermal range. This can be streamed when the associated [VIDEO_S
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-stream_id | `uint8_t` | | Video Stream ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+stream_id | `uint8_t` | | Video Stream ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 camera_device_id | `uint8_t` | | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 max | `float` | degC | Temperature max. 
 max_point_x | `float` | | Temperature max point x value (normalized 0..1, 0 is left, 1 is right), NAN if unknown. 
@@ -2802,7 +2802,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 cap_flags | `uint32_t` | | [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS) | Bitmap of gimbal capability flags. 
-gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 roll_min | `float` | rad | | Minimum hardware roll angle (positive: rolling to the right, negative: rolling to the left) 
 roll_max | `float` | rad | | Maximum hardware roll angle (positive: rolling to the right, negative: rolling to the left) 
 pitch_min | `float` | rad | | Minimum pitch angle (positive: up, negative: down) 
@@ -2819,7 +2819,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags currently applied. 
-gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 primary_control_sysid | `uint8_t` | | | System ID of MAVLink component with primary control, 0 for none. 
 primary_control_compid | `uint8_t` | | | Component ID of MAVLink component with primary control, 0 for none. 
 secondary_control_sysid | `uint8_t` | | | System ID of MAVLink component with secondary control, 0 for none. 
@@ -2835,7 +2835,7 @@ Field Name | Type | Units | Values | Description
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use. 
-gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 q | `float[4]` | | | Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag [GIMBAL_MANAGER_FLAGS_YAW_LOCK](#GIMBAL_MANAGER_FLAGS_YAW_LOCK) is set) 
 angular_velocity_x | `float` | rad/s | invalid:NaN | X component of angular velocity, positive is rolling to the right, NaN to be ignored. 
 angular_velocity_y | `float` | rad/s | invalid:NaN | Y component of angular velocity, positive is pitching up, NaN to be ignored. 
@@ -2959,7 +2959,7 @@ Field Name | Type | Units | Values | Description
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use. 
-gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 pitch | `float` | rad | invalid:NaN | Pitch angle (positive: up, negative: down, NaN to be ignored). 
 yaw | `float` | rad | invalid:NaN | Yaw angle (positive: to the right, negative: to the left, NaN to be ignored). 
 pitch_rate | `float` | rad/s | invalid:NaN | Pitch angular rate (positive: up, negative: down, NaN to be ignored). 
@@ -2975,7 +2975,7 @@ Field Name | Type | Values | Description
 target_system | `uint8_t` | | System ID 
 target_component | `uint8_t` | | Component ID 
 flags | `uint32_t` | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags. 
-gimbal_device_id | `uint8_t` | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 pitch | `float` | invalid:NaN | Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored). 
 yaw | `float` | invalid:NaN | Yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored). 
 pitch_rate | `float` | invalid:NaN | Pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored). 
@@ -2990,7 +2990,7 @@ ESC information for lower rate streaming. Recommended streaming rate 1Hz. See [E
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-index | `uint8_t` | | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>Messages with same value are from the same source (instance). 
+index | `uint8_t` | | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
 counter | `uint16_t` | | | Counter of data packets received. 
 count | `uint8_t` | | | Total number of ESCs in all messages of this type. Message fields with an index higher than this should be ignored because they contain invalid data. 
@@ -3009,7 +3009,7 @@ ESC information for higher rate streaming. Recommended streaming rate is ~10 Hz.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-index | `uint8_t` | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>Messages with same value are from the same source (instance). 
+index | `uint8_t` | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
 rpm | `int32_t[4]` | rpm | Reported motor RPM from each ESC (negative for reverse rotation). 
 voltage | `float[4]` | V | Voltage measured from each ESC. 
@@ -3022,7 +3022,7 @@ Airspeed information from a sensor.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Sensor ID.<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Sensor ID.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 airspeed | `float` | m/s | | Calibrated airspeed (CAS). 
 temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature. 
 raw_press | `float` | hPa | invalid:NaN | Raw differential pressure. 
@@ -3037,7 +3037,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 target_system | `uint8_t` | | default:0 | System ID (ID of target system, normally autopilot and ground station). 
 target_component | `uint8_t` | | default:0 | Component ID (normally 0 for broadcast). 
-id | `uint8_t` | | | Sensor ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Sensor ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | | Timestamp of message transmission (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 processing_time | `uint32_t` | us | | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. This is the time between measurement (e.g. camera exposure time) and transmission of this message. Set to NaN if not known. 
 source | `uint8_t` | | [GLOBAL_POSITION_SRC](#GLOBAL_POSITION_SRC) | Source of position/estimate (such as GNSS, estimator, etc.) 
@@ -3386,7 +3386,7 @@ Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 name | `char[10]` | | Name, for human-friendly display in a Ground Control Station 
-array_id | `uint16_t` | | Unique ID used to discriminate between arrays<br>Messages with same value are from the same source (instance). 
+array_id | `uint16_t` | | Unique ID used to discriminate between arrays<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 <span class='ext'>data</span> <a href='#mav2_extension_field'>++</a> | `float[58]` | | data 
 
 
@@ -3429,7 +3429,7 @@ Smart Battery information (static/infrequent update). Use for updates from: smar
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery 
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery 
 capacity_full_specification | `int32_t` | mAh | invalid:-1 | Capacity when full according to manufacturer, -1: field not provided. 
@@ -3467,7 +3467,7 @@ This should be streamed (nominally at 0.1 Hz).
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 maximum_fuel | `float` | | | Capacity when full. Must be provided. 
 consumed_fuel | `float` | | invalid:NaN | Consumed fuel (measured). This value should not be inferred: if not measured set to NaN. NaN: field not provided. 
 remaining_fuel | `float` | | invalid:NaN | Remaining fuel until empty (measured). The value should not be inferred: if not measured set to NaN. NaN: field not provided. 
@@ -3487,7 +3487,7 @@ This message should requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_M
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery. 
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery. 
 state_of_health | `uint8_t` | % | invalid:UINT8_MAX | State of Health (SOH) estimate. Typically 100% at the time of manufacture and will decrease over time and use. -1: field not provided. 
@@ -4033,7 +4033,7 @@ Temperature and humidity from hygrometer.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-id | `uint8_t` | | Hygrometer ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | Hygrometer ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 temperature | `int16_t` | cdegC | Temperature 
 humidity | `uint16_t` | c% | Humidity 
 
