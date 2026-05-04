@@ -157,6 +157,15 @@
   display: inline; /* block by default set by vitepress */
 }
 
+/* Fix deep-link anchor offset under fixed navbar.
+   Also guards against Firefox layout-shift drift on huge pages (e.g. common.html). */
+html {
+  scroll-padding-top: calc(var(--vp-nav-height, 64px) + 16px);
+}
+:target {
+  scroll-margin-top: calc(var(--vp-nav-height, 64px) + 16px);
+}
+
 /* Make content area a little wider to improve tables */
 .content-container {
   max-width: 100% !important;
