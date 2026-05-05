@@ -6242,6 +6242,7 @@ Value | Name | Description
 <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4 | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN) | Terrain referenced navigation. 
 <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5 | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC) | Magnetic positioning. 
 <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6 | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR) | Estimated position based on various sensors (eg. a Kalman Filter). 
+<a id='GLOBAL_POSITION_SRC_LEO'></a>7 | [GLOBAL_POSITION_SRC_LEO](#GLOBAL_POSITION_SRC_LEO) | Low Earth Orbit satellite-based positioning (e.g.: Starlink, Xona PULSAR). 
 
 ### GLOBAL_POSITION_FLAGS {#GLOBAL_POSITION_FLAGS}
 
