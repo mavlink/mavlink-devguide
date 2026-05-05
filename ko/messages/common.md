@@ -5999,15 +5999,16 @@ See https://mavlink.io/en/services/standard_modes.html
 
 Source for [GLOBAL_POSITION](#GLOBAL_POSITION) measurement or estimate.
 
-| Value                                         | Name                                                                                                                               | Description                                                                                                                                                  |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id='GLOBAL_POSITION_SRC_UNKNOWN'></a>0     | [GLOBAL_POSITION_SRC_UNKNOWN](#GLOBAL_POSITION_SRC_UNKNOWN)         | Source is unknown or not one of the listed types.                                                                                            |
-| <a id='GLOBAL_POSITION_SRC_GNSS'></a>1        | [GLOBAL_POSITION_SRC_GNSS](#GLOBAL_POSITION_SRC_GNSS)               | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou). |
-| <a id='GLOBAL_POSITION_SRC_VISION'></a>2      | [GLOBAL_POSITION_SRC_VISION](#GLOBAL_POSITION_SRC_VISION)           | Vision system (e.g.: map matching).                                       |
-| <a id='GLOBAL_POSITION_SRC_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_SRC_PSEUDOLITES](#GLOBAL_POSITION_SRC_PSEUDOLITES) | A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning.                                                        |
-| <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4     | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN)         | Terrain referenced navigation.                                                                                                               |
-| <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5    | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC)       | Magnetic positioning.                                                                                                                        |
-| <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6   | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR)     | Estimated position based on various sensors (eg. a Kalman Filter).                                        |
+| Value                                         | Name                                                                                                                               | Description                                                                                                                                                   |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='GLOBAL_POSITION_SRC_UNKNOWN'></a>0     | [GLOBAL_POSITION_SRC_UNKNOWN](#GLOBAL_POSITION_SRC_UNKNOWN)         | Source is unknown or not one of the listed types.                                                                                             |
+| <a id='GLOBAL_POSITION_SRC_GNSS'></a>1        | [GLOBAL_POSITION_SRC_GNSS](#GLOBAL_POSITION_SRC_GNSS)               | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou).  |
+| <a id='GLOBAL_POSITION_SRC_VISION'></a>2      | [GLOBAL_POSITION_SRC_VISION](#GLOBAL_POSITION_SRC_VISION)           | Vision system (e.g.: map matching).                                        |
+| <a id='GLOBAL_POSITION_SRC_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_SRC_PSEUDOLITES](#GLOBAL_POSITION_SRC_PSEUDOLITES) | A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning.                                                         |
+| <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4     | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN)         | Terrain referenced navigation.                                                                                                                |
+| <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5    | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC)       | Magnetic positioning.                                                                                                                         |
+| <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6   | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR)     | Estimated position based on various sensors (eg. a Kalman Filter).                                         |
+| <a id='GLOBAL_POSITION_SRC_LEO'></a>7         | [GLOBAL_POSITION_SRC_LEO](#GLOBAL_POSITION_SRC_LEO)                 | Low Earth Orbit satellite-based positioning (e.g.: Starlink, Xona PULSAR). |
 
 ### GLOBAL_POSITION_FLAGS {#GLOBAL_POSITION_FLAGS}
 
