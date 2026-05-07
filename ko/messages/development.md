@@ -469,12 +469,15 @@ State of RAIM processing.
 
 Actuator groups to test in [MAV_CMD_ACTUATOR_GROUP_TEST](#MAV_CMD_ACTUATOR_GROUP_TEST).
 
-| Value                                             | Name                                                                                                                                                            | Description                                                |
-| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| <a id='ACTUATOR_TEST_GROUP_ROLL_TORQUE'></a>0     | [ACTUATOR_TEST_GROUP_ROLL_TORQUE](#ACTUATOR_TEST_GROUP_ROLL_TORQUE)         | Actuators that contribute to roll torque.  |
-| <a id='ACTUATOR_TEST_GROUP_PITCH_TORQUE'></a>1    | [ACTUATOR_TEST_GROUP_PITCH_TORQUE](#ACTUATOR_TEST_GROUP_PITCH_TORQUE)       | Actuators that contribute to pitch torque. |
-| <a id='ACTUATOR_TEST_GROUP_YAW_TORQUE'></a>2      | [ACTUATOR_TEST_GROUP_YAW_TORQUE](#ACTUATOR_TEST_GROUP_YAW_TORQUE)           | Actuators that contribute to yaw torque.   |
-| <a id='ACTUATOR_TEST_GROUP_COLLECTIVE_TILT'></a>3 | [ACTUATOR_TEST_GROUP_COLLECTIVE_TILT](#ACTUATOR_TEST_GROUP_COLLECTIVE_TILT) | Actuators that affect collective tilt.     |
+| Value                                             | Name                                                                                                                                                            | Description                                                                                                  |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| <a id='ACTUATOR_TEST_GROUP_ROLL_TORQUE'></a>0     | [ACTUATOR_TEST_GROUP_ROLL_TORQUE](#ACTUATOR_TEST_GROUP_ROLL_TORQUE)         | Actuators that contribute to roll torque.                                                    |
+| <a id='ACTUATOR_TEST_GROUP_PITCH_TORQUE'></a>1    | [ACTUATOR_TEST_GROUP_PITCH_TORQUE](#ACTUATOR_TEST_GROUP_PITCH_TORQUE)       | Actuators that contribute to pitch torque.                                                   |
+| <a id='ACTUATOR_TEST_GROUP_YAW_TORQUE'></a>2      | [ACTUATOR_TEST_GROUP_YAW_TORQUE](#ACTUATOR_TEST_GROUP_YAW_TORQUE)           | Actuators that contribute to yaw torque.                                                     |
+| <a id='ACTUATOR_TEST_GROUP_COLLECTIVE_TILT'></a>3 | [ACTUATOR_TEST_GROUP_COLLECTIVE_TILT](#ACTUATOR_TEST_GROUP_COLLECTIVE_TILT) | Actuators that affect collective tilt.                                                       |
+| <a id='ACTUATOR_TEST_GROUP_X_THRUST'></a>4        | [ACTUATOR_TEST_GROUP_X_THRUST](#ACTUATOR_TEST_GROUP_X_THRUST)               | Actuators that contribute to x (longitudinal, positive = forward) thrust. |
+| <a id='ACTUATOR_TEST_GROUP_Y_THRUST'></a>5        | [ACTUATOR_TEST_GROUP_Y_THRUST](#ACTUATOR_TEST_GROUP_Y_THRUST)               | Actuators that contribute to y (lateral, positive = right) thrust.        |
+| <a id='ACTUATOR_TEST_GROUP_Z_THRUST'></a>6        | [ACTUATOR_TEST_GROUP_Z_THRUST](#ACTUATOR_TEST_GROUP_Z_THRUST)               | Actuators that contribute to z (vertical, positive = down) thrust.        |
 
 ### ESC_FIRMWARE — [WIP] {#ESC_FIRMWARE}
 
