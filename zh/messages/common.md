@@ -2156,7 +2156,7 @@ The position must be set automatically by the system during the takeoff, and may
 The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface.
 Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach.
 The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.
-Note: this message can be requested by sending the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242 (or the deprecated [MAV_CMD_GET_HOME_POSITION](#MAV_CMD_GET_HOME_POSITION) command).
+Note: this message can be requested by sending the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242.
 
 | Field Name                                                                                     | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------------------------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2203,7 +2203,6 @@ Note: the current home position may be emitted in a [HOME_POSITION](#HOME_POSITI
 
 The interval between messages for a particular MAVLink message ID.
 This message is sent in response to the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command with param1=244 (this message) and param2=message_id (the id of the message for which the interval is required).
-It may also be sent in response to [MAV_CMD_GET_MESSAGE_INTERVAL](#MAV_CMD_GET_MESSAGE_INTERVAL).
 This interface replaces [DATA_STREAM](#DATA_STREAM).
 
 | Field Name                       | Type       | Units | 描述                                                                                                                                                                                                   |
@@ -2941,7 +2940,13 @@ General status information of an UAVCAN node. Please refer to the definition of 
 
 ### UAVCAN_NODE_INFO (311) {#UAVCAN_NODE_INFO}
 
-General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see [MAV_CMD_UAVCAN_GET_NODE_INFO](#MAV_CMD_UAVCAN_GET_NODE_INFO)). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org.
+General information describing a particular UAVCAN node.
+
+Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information.
+This message should be emitted by the system whenever a new node appears online, or an existing node reboots.
+The message may also be explicitly requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+It is also not prohibited to emit this message unconditionally at a low frequency.
+The DroneCAN specification is available at https://dronecan.github.io/Specification/1._Introduction/.
 
 | Field Name                                                 | Type          | Units | 描述                                                                                                                                                                                                                                                                                           |
 | ---------------------------------------------------------- | ------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5999,15 +6004,16 @@ See https://mavlink.io/en/services/standard_modes.html
 
 Source for [GLOBAL_POSITION](#GLOBAL_POSITION) measurement or estimate.
 
-| 值                                             | Name                                                                                                                               | 描述                                                                                                                                                           |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id='GLOBAL_POSITION_SRC_UNKNOWN'></a>0     | [GLOBAL_POSITION_SRC_UNKNOWN](#GLOBAL_POSITION_SRC_UNKNOWN)         | Source is unknown or not one of the listed types.                                                                                            |
-| <a id='GLOBAL_POSITION_SRC_GNSS'></a>1        | [GLOBAL_POSITION_SRC_GNSS](#GLOBAL_POSITION_SRC_GNSS)               | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou). |
-| <a id='GLOBAL_POSITION_SRC_VISION'></a>2      | [GLOBAL_POSITION_SRC_VISION](#GLOBAL_POSITION_SRC_VISION)           | Vision system (e.g.: map matching).                                       |
-| <a id='GLOBAL_POSITION_SRC_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_SRC_PSEUDOLITES](#GLOBAL_POSITION_SRC_PSEUDOLITES) | A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning.                                                        |
-| <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4     | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN)         | Terrain referenced navigation.                                                                                                               |
-| <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5    | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC)       | Magnetic positioning.                                                                                                                        |
-| <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6   | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR)     | Estimated position based on various sensors (eg. a Kalman Filter).                                        |
+| 值                                             | Name                                                                                                                               | 描述                                                                                                                                                            |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='GLOBAL_POSITION_SRC_UNKNOWN'></a>0     | [GLOBAL_POSITION_SRC_UNKNOWN](#GLOBAL_POSITION_SRC_UNKNOWN)         | Source is unknown or not one of the listed types.                                                                                             |
+| <a id='GLOBAL_POSITION_SRC_GNSS'></a>1        | [GLOBAL_POSITION_SRC_GNSS](#GLOBAL_POSITION_SRC_GNSS)               | Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou).  |
+| <a id='GLOBAL_POSITION_SRC_VISION'></a>2      | [GLOBAL_POSITION_SRC_VISION](#GLOBAL_POSITION_SRC_VISION)           | Vision system (e.g.: map matching).                                        |
+| <a id='GLOBAL_POSITION_SRC_PSEUDOLITES'></a>3 | [GLOBAL_POSITION_SRC_PSEUDOLITES](#GLOBAL_POSITION_SRC_PSEUDOLITES) | A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning.                                                         |
+| <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4     | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN)         | Terrain referenced navigation.                                                                                                                |
+| <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5    | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC)       | Magnetic positioning.                                                                                                                         |
+| <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6   | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR)     | Estimated position based on various sensors (eg. a Kalman Filter).                                         |
+| <a id='GLOBAL_POSITION_SRC_LEO'></a>7         | [GLOBAL_POSITION_SRC_LEO](#GLOBAL_POSITION_SRC_LEO)                 | Low Earth Orbit satellite-based positioning (e.g.: Starlink, Xona PULSAR). |
 
 ### GLOBAL_POSITION_FLAGS {#GLOBAL_POSITION_FLAGS}
 
@@ -8312,7 +8318,9 @@ Rally point. You can have multiple rally points defined.
 | 6 (Longitude) | Longitude |       |
 | 7 (Altitude)  | Altitude  | m     |
 
-### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) {#MAV_CMD_UAVCAN_GET_NODE_INFO}
+### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) — [SUP] {#MAV_CMD_UAVCAN_GET_NODE_INFO}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2026-05)</span>
 
 Commands the vehicle to respond with a sequence of messages [UAVCAN_NODE_INFO](#UAVCAN_NODE_INFO), one message per every UAVCAN node that is online. Note that some of the response messages can be lost, which the receiver can detect easily by checking whether every received [UAVCAN_NODE_STATUS](#UAVCAN_NODE_STATUS) has a matching message [UAVCAN_NODE_INFO](#UAVCAN_NODE_INFO) received earlier; if not, this command should be sent again in order to request re-transmission of the node information messages.
 
