@@ -7254,8 +7254,8 @@ Param (Label) | Description | Values
 2 (Actuator 2) | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
 3 (Actuator 3) | Actuator 3 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
 4 (Actuator 4) | Actuator 4 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
-5 (Actuator 5) | Actuator 5 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
-6 (Actuator 6) | Actuator 6 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+5 (Actuator 5) | Actuator 5 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |   
+6 (Actuator 6) | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |   
 7 (Index) | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7) | min: 0 inc: 1 
 
 
