@@ -91,6 +91,7 @@ The opcodes that may be sent by the GCS (client) to the drone (server) are enume
 | <a id="Rename"></a> 13          | Rename                                         | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a id="CalcFileCRC32"></a> 14   | CalcFileCRC32                                  | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | <a id="BurstReadFile"></a> 15   | [BurstReadFile](#reading-a-file-burstreadfile) | Burst-read parts of a file. Messages in the burst are streamed (without ACK) until the burst is complete (as indicated by the field `burst_complete` being set to `1`). Parts of a burst that are dropped may be fetched using [ReadFile](#ReadFile).                                                                                                                                                                                                                                                                                                                                                                                                   |
+| <a id="ListDirectoryWithTime"></a> 16 | [ListDirectoryWithTime](#list_directory_with_time)          | List directory entry information as for [ListDirectory](#ListDirectory), but with each entry additionally including its last-modification time. Lets a GCS fetch timestamps without downloading file contents.<br>- A server that does not implement this command NAKs with [UnknownCommand](#UnknownCommand); clients should then fall back to [ListDirectory](#ListDirectory).                                                                                                          |
 
 The drone (server) will respond with/send the following opcodes for any of the above messages (ACK response on success or a NAK in the event of an error).
 
@@ -450,6 +451,41 @@ The GCS should create a timeout after the `ListDirectory` command is sent and re
 
 The drone may also [NAK](#error_codes) with an unexpected error.
 Generally errors are unrecoverable, and the drone must clean up all resources (i.e. close file handles) associated with the request after sending the NAK.
+
+### List Directory with Timestamps {#list_directory_with_time}
+
+[ListDirectoryWithTime](#ListDirectoryWithTime) works exactly like [ListDirectory](#list_directory), but each returned entry additionally includes its last-modification time.
+This allows a GCS to display or compare timestamps (e.g. to show the most recent log, or to detect which files have changed) without having to download file contents.
+
+::: info
+This is a separate opcode rather than a change to [ListDirectory](#list_directory) so that existing clients and servers keep working.
+A client that needs timestamps uses `ListDirectoryWithTime`, and falls back to [ListDirectory](#ListDirectory) if the server NAKs with [UnknownCommand](#UnknownCommand).
+:::
+
+The sequence of operations, offset-based paging, and [EOF](#EOF) termination are identical to [List Directory](#list_directory).
+The only difference is the per-entry format returned in the ACK payload `data`.
+
+Each entry is separated with a null terminator (`\0`), and has the following format (where `type` is one of the letters **F**(ile), **D**(irectory), **S**(kip)):
+
+```txt
+<type><file_or_folder_name>\t<file_size_in_bytes>\t<modification_time>\0
+```
+
+The `modification_time` is the entry's last-modification time as a decimal ASCII string, in **seconds since the UNIX epoch (UTC)**.
+If the modification time is not known — for example the file system does not store it, or the component has no real-time clock — the server must send `0`.
+
+For example, given five files named _TestFile1.xml_ to _TestFile5.xml_, the entries returned at offset 2 might look like:
+
+`FTestFile3.xml\t223\t1747459200\0FTestFile4.xml\t755568\t1746940800\0FTestFile5.xml\t11111\t0\0`
+
+(here the modification time of _TestFile5.xml_ is unknown).
+
+::: info
+Only modification time is reported (not creation time).
+POSIX `struct stat` — the interface exposed by most flight-stack file systems (e.g. NuttX) — has no portable creation-time field, so modification time is the only timestamp that can be reliably provided across backends.
+:::
+
+The GCS should create a timeout after the `ListDirectoryWithTime` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 ### Create Directory
 
