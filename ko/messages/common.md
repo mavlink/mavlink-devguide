@@ -39,8 +39,8 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 231     | 3        |
-| [Enums](#enumerated-types) | 149     | 9        |
-| [Commands](#mav_commands)  | 167     | 0        |
+| [Enums](#enumerated-types) | 150     | 9        |
+| [Commands](#mav_commands)  | 168     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -4914,6 +4914,16 @@ Speed setpoint types used in [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)
 | <a id='SPEED_TYPE_CLIMB_SPEED'></a>2   | [SPEED_TYPE_CLIMB_SPEED](#SPEED_TYPE_CLIMB_SPEED)     | Climb speed   |
 | <a id='SPEED_TYPE_DESCENT_SPEED'></a>3 | [SPEED_TYPE_DESCENT_SPEED](#SPEED_TYPE_DESCENT_SPEED) | Descent speed |
 
+### HEADING_TYPE {#HEADING_TYPE}
+
+Heading setpoint types used in [MAV_CMD_GUIDED_CHANGE_HEADING](#MAV_CMD_GUIDED_CHANGE_HEADING)
+
+| Value                                         | Name                                                                                                                                                    | Description                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) | Course over ground.  |
+| <a id='HEADING_TYPE_HEADING'></a>1            | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                                                                 | Raw vehicle heading. |
+| <a id='HEADING_TYPE_DEFAULT'></a>2            | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT)                                                                 | Default heading.     |
+
 ### ESTIMATOR_STATUS_FLAGS {#ESTIMATOR_STATUS_FLAGS}
 
 (Bitmask) Flags in [ESTIMATOR_STATUS](#ESTIMATOR_STATUS) message
@@ -8646,6 +8656,16 @@ Command to operate winch.
 | 5                                | Empty.                                                           |                                                      |       |
 | 6                                | Empty.                                                           |                                                      |       |
 | 7                                | Empty.                                                           |                                                      |       |
+
+### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
+
+Change to target direction at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between its previous heading and the new one.
+
+| Param (Label)              | Description                                                                                                               | Values                                                             | Units |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----- |
+| 1 (Heading Type)           | Course-over-ground or raw vehicle heading.                                                                | [HEADING_TYPE](#HEADING_TYPE)                 |       |
+| 2 (Heading Target)         | Target heading.                                                                                           | min: 0 max: 359.99 | deg   |
+| 3 (Heading Rate of Change) | Maximum centripetal acceleration, i.e. rate of change toward new heading. |                                                                    | deg/s |
 
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
 
