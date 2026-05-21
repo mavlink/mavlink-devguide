@@ -45,7 +45,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 73      | 252      |
-| [Enums](#enumerated-types) | 46      | 174      |
+| [Enums](#enumerated-types) | 45      | 175      |
 | [Commands](#mav_commands)  | 200     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -1035,14 +1035,6 @@ Send a key-value pair as string. The use of this message is discouraged for norm
 | <a id='ACCELCAL_VEHICLE_POS_SUCCESS'></a>16777215 | [ACCELCAL_VEHICLE_POS_SUCCESS](#ACCELCAL_VEHICLE_POS_SUCCESS)   |    |
 | <a id='ACCELCAL_VEHICLE_POS_FAILED'></a>16777216  | [ACCELCAL_VEHICLE_POS_FAILED](#ACCELCAL_VEHICLE_POS_FAILED)     |    |
 
-### HEADING_TYPE {#HEADING_TYPE}
-
-| 值                                             | Name                                                                                                                                                    | 描述 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
-| <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) |    |
-| <a id='HEADING_TYPE_HEADING'></a>1            | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                                                                 |    |
-| <a id='HEADING_TYPE_DEFAULT'></a>2            | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT)                                                                 |    |
-
 ### SCRIPTING_CMD {#SCRIPTING_CMD}
 
 | 值                                            | Name                                                                                                                                                  | 描述                                                     |
@@ -2016,20 +2008,6 @@ Change target altitude at a given rate. This slews the vehicle at a controllable
 | 5                                         | Empty                                                                                                                                                                                               |                        |       |
 | 6                                         | Empty                                                                                                                                                                                               |                        |       |
 | 7 (target alt)         | Target Altitude                                                                                                                                                                                     |                        | m     |
-
-### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
-
-Change to target heading at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between it's previous heading and the new one. (affects GUIDED only. Exiting GUIDED returns aircraft to normal behaviour defined elsewhere. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
-
-| Param (Label)              | 描述                                                                                         | 值                                                                  | Units |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ----- |
-| 1 (heading type)           | course-over-ground or raw vehicle heading.                                 | [HEADING_TYPE](#HEADING_TYPE)                 |       |
-| 2 (heading target)         | Target heading.                                                            | min: 0 max: 359.99 | 度     |
-| 3 (heading rate-of-change) | Maximum centripetal accelearation, ie rate of change,  toward new heading. |                                                                    | m/s/s |
-| 4                                             | Empty                                                                                      |                                                                    |       |
-| 5                                             | Empty                                                                                      |                                                                    |       |
-| 6                                             | Empty                                                                                      |                                                                    |       |
-| 7                                             | Empty                                                                                      |                                                                    |       |
 
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
 
