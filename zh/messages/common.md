@@ -39,8 +39,8 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 231     | 3        |
-| [Enums](#enumerated-types) | 149     | 9        |
-| [Commands](#mav_commands)  | 167     | 0        |
+| [Enums](#enumerated-types) | 150     | 9        |
+| [Commands](#mav_commands)  | 168     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -3097,17 +3097,33 @@ Describe a trajectory using an array of up-to 5 bezier control points in the loc
 
 ### CELLULAR_STATUS (334) {#CELLULAR_STATUS}
 
-Report current used cellular network status
+Cellular network status as reported by a particular modem.
 
-| Field Name                          | Type       | 值                                                                                                                                | 描述                                                                                                                                                          |
-| ----------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status                              | `uint8_t`  | [CELLULAR_STATUS_FLAG](#CELLULAR_STATUS_FLAG)                                          | Cellular modem status                                                                                                                                       |
-| failure_reason | `uint8_t`  | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status in in [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED) |
-| type                                | `uint8_t`  | [CELLULAR_NETWORK_RADIO_TYPE](#CELLULAR_NETWORK_RADIO_TYPE)       | Cellular network radio type: gsm, cdma, lte...                                              |
-| quality                             | `uint8_t`  | invalid:UINT8_MAX                                                                           | Signal quality in percent. If unknown, set to UINT8_MAX                                                                |
-| mcc                                 | `uint16_t` | invalid:UINT16_MAX                                                                          | Mobile country code. If unknown, set to UINT16_MAX                                                                     |
-| mnc                                 | `uint16_t` | invalid:UINT16_MAX                                                                          | Mobile network code. If unknown, set to UINT16_MAX                                                                     |
-| lac                                 | `uint16_t` | invalid:0                                                                                                        | Location area code. If unknown, set to 0                                                                                                    |
+This is primarily intended for logging, but a GCS may choose to display link_tx_rate and link_rx_rate.
+
+Note that a value of 0 in the id field indicates that the sender does not support reporting of multiple modems.
+Message data should be from a single modem, but that is not guaranteed.
+
+| Field Name                                                                                                              | Type       | Units | 值                                                                                                                                | 描述                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status                                                                                                                  | `uint8_t`  |       | [CELLULAR_STATUS_FLAG](#CELLULAR_STATUS_FLAG)                                          | Cellular modem status                                                                                                                                                                                                                                                                                 |
+| failure_reason                                                                                     | `uint8_t`  |       | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status in in [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED)                                                                                                                                           |
+| type                                                                                                                    | `uint8_t`  |       | [CELLULAR_NETWORK_RADIO_TYPE](#CELLULAR_NETWORK_RADIO_TYPE)       | Cellular network radio type: gsm, cdma, lte...                                                                                                                                                                                        |
+| quality                                                                                                                 | `uint8_t`  |       | invalid:UINT8_MAX                                                                           | Signal quality in percent. If unknown, set to UINT8_MAX                                                                                                                                                                                                          |
+| mcc                                                                                                                     | `uint16_t` |       | invalid:UINT16_MAX                                                                          | Mobile country code. If unknown, set to UINT16_MAX                                                                                                                                                                                                               |
+| mnc                                                                                                                     | `uint16_t` |       | invalid:UINT16_MAX                                                                          | Mobile network code. If unknown, set to UINT16_MAX                                                                                                                                                                                                               |
+| lac                                                                                                                     | `uint16_t` |       | invalid:0                                                                                                        | Location area code. If unknown, set to 0                                                                                                                                                                                                                                              |
+| <span class='ext'>id</span> <a href='#mav2_extension_field'>++</a>                                                      | `uint8_t`  |       | min:1                                                                                                            | Cellular modem instance number. Indexed from 1.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component.                   |
+| <span class='ext'>link_tx_rate</span> <a href='#mav2_extension_field'>++</a>  | `uint32_t` | KiB/s | invalid:0                                                                                                        | Download rate.                                                                                                                                                                                                                                                                        |
+| <span class='ext'>link_rx_rate</span> <a href='#mav2_extension_field'>++</a>  | `uint32_t` | KiB/s | invalid:0                                                                                                        | Upload rate.                                                                                                                                                                                                                                                                          |
+| <span class='ext'>cell_tower_id</span> <a href='#mav2_extension_field'>++</a> | `char[9]`  |       | invalid:0                                                                                                        | ID of the currently connected cell tower. This must be NULL terminated if the length is less than 9 human-readable chars, and without the null termination (NULL) byte if the length is exactly 9 chars.                                           |
+| <span class='ext'>band_number</span> <a href='#mav2_extension_field'>++</a>                        | `uint8_t`  |       | invalid:0                                                                                                        | LTE frequency band number.                                                                                                                                                                                                                                                            |
+| <span class='ext'>band_frequency</span> <a href='#mav2_extension_field'>++</a>                     | `float`    | MHz   | invalid:0                                                                                                        | LTE radio frequency.                                                                                                                                                                                                                                                                  |
+| <span class='ext'>channel_number</span> <a href='#mav2_extension_field'>++</a>                     | `uint32_t` |       | invalid:0                                                                                                        | The channel number (CN). Absolute radio-frequency (ARFCN) / E-UTRA (EARFCN) / UTRA (UARFCN) / New radio ([NR_CH](#NR_CH)).                        |
+| <span class='ext'>rx_level</span> <a href='#mav2_extension_field'>++</a>                           | `float`    | dBm   | invalid:0                                                                                                        | On 3G is Received Signal Code Power (RSCP). On LTE is Reference Signal Received Power (RSRP). On 5G is New Radio Reference Signal Received Power ([NR_RSRP](#NR_RSRP)). |
+| <span class='ext'>tx_level</span> <a href='#mav2_extension_field'>++</a>                           | `float`    | dBm   | invalid:0                                                                                                        | Transmitter (modem) signal absolute power level.                                                                                                                                                                                                                   |
+| <span class='ext'>rx_quality</span> <a href='#mav2_extension_field'>++</a>                         | `float`    | dBm   | invalid:0                                                                                                        | On 3G is Receiver Quality (RxQual). On LTE is Reference Signal Received Quality (RSRQ). On 5G is New Radio Reference Signal Received Quality ([NR_RSRQ](#NR_RSRQ)).     |
+| <span class='ext'>sinr</span> <a href='#mav2_extension_field'>++</a>                                                    | `float`    | dB    | invalid:0                                                                                                        | Signal to interference plus noise ratio (SINR).                                                                                                                                                                                                                    |
 
 ### ISBD_LINK_STATUS (335) {#ISBD_LINK_STATUS}
 
@@ -4914,6 +4930,16 @@ Speed setpoint types used in [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)
 | <a id='SPEED_TYPE_CLIMB_SPEED'></a>2   | [SPEED_TYPE_CLIMB_SPEED](#SPEED_TYPE_CLIMB_SPEED)     | Climb speed   |
 | <a id='SPEED_TYPE_DESCENT_SPEED'></a>3 | [SPEED_TYPE_DESCENT_SPEED](#SPEED_TYPE_DESCENT_SPEED) | Descent speed |
 
+### HEADING_TYPE {#HEADING_TYPE}
+
+Heading setpoint types used in [MAV_CMD_GUIDED_CHANGE_HEADING](#MAV_CMD_GUIDED_CHANGE_HEADING)
+
+| 值                                             | Name                                                                                                                                                    | 描述                                   |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) | Course over ground.  |
+| <a id='HEADING_TYPE_HEADING'></a>1            | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                                                                 | Raw vehicle heading. |
+| <a id='HEADING_TYPE_DEFAULT'></a>2            | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT)                                                                 | Default heading.     |
+
 ### ESTIMATOR_STATUS_FLAGS {#ESTIMATOR_STATUS_FLAGS}
 
 (Bitmask) Flags in [ESTIMATOR_STATUS](#ESTIMATOR_STATUS) message
@@ -5091,6 +5117,7 @@ Video stream types
 | <a id='VIDEO_STREAM_TYPE_RTPUDP'></a>1   | [VIDEO_STREAM_TYPE_RTPUDP](#VIDEO_STREAM_TYPE_RTPUDP)                          | Stream is RTP UDP (URI gives the port number) |
 | <a id='VIDEO_STREAM_TYPE_TCP_MPEG'></a>2 | [VIDEO_STREAM_TYPE_TCP_MPEG](#VIDEO_STREAM_TYPE_TCP_MPEG) | Stream is MPEG on TCP                                            |
 | <a id='VIDEO_STREAM_TYPE_MPEG_TS'></a>3  | [VIDEO_STREAM_TYPE_MPEG_TS](#VIDEO_STREAM_TYPE_MPEG_TS)   | Stream is MPEG TS (URI gives the port number) |
+| <a id='VIDEO_STREAM_TYPE_WHEP'></a>4     | [VIDEO_STREAM_TYPE_WHEP](#VIDEO_STREAM_TYPE_WHEP)                              | Stream is WHEP (WebRTC-HTTP Egress Protocol)  |
 
 ### VIDEO_STREAM_ENCODING {#VIDEO_STREAM_ENCODING}
 
@@ -8645,6 +8672,16 @@ Command to operate winch.
 | 5                                | Empty.                                                           |                                                      |       |
 | 6                                | Empty.                                                           |                                                      |       |
 | 7                                | Empty.                                                           |                                                      |       |
+
+### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
+
+Change to target direction at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between its previous heading and the new one.
+
+| Param (Label)              | 描述                                                                                                                        | 值                                                                  | Units |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----- |
+| 1 (Heading Type)           | Course-over-ground or raw vehicle heading.                                                                | [HEADING_TYPE](#HEADING_TYPE)                 |       |
+| 2 (Heading Target)         | Target heading.                                                                                           | min: 0 max: 359.99 | 度     |
+| 3 (Heading Rate of Change) | Maximum centripetal acceleration, i.e. rate of change toward new heading. |                                                                    | deg/s |
 
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
 
