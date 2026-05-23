@@ -6156,6 +6156,7 @@ Value | Name | Description
 <a id='MAV_FTP_OPCODE_RENAME'></a>13 | [MAV_FTP_OPCODE_RENAME](#MAV_FTP_OPCODE_RENAME) | Rename: Rename path1 to path2 
 <a id='MAV_FTP_OPCODE_CALCFILECRC'></a>14 | [MAV_FTP_OPCODE_CALCFILECRC](#MAV_FTP_OPCODE_CALCFILECRC) | CalcFileCRC32: Calculate CRC32 for file at path 
 <a id='MAV_FTP_OPCODE_BURSTREADFILE'></a>15 | [MAV_FTP_OPCODE_BURSTREADFILE](#MAV_FTP_OPCODE_BURSTREADFILE) | BurstReadFile: Burst download session file 
+<a id='MAV_FTP_OPCODE_LISTDIRECTORYWITHTIME'></a>16 | [MAV_FTP_OPCODE_LISTDIRECTORYWITHTIME](#MAV_FTP_OPCODE_LISTDIRECTORYWITHTIME) | ListDirectoryWithTime: List files and directories, along with last-modification timestamps, in path from offset. This is the same as ListDirectory except for the addition of timestamps. Servers that do not support this opcode respond with a NAK ([MAV_FTP_ERR_UNKNOWNCOMMAND](#MAV_FTP_ERR_UNKNOWNCOMMAND)). 
 <a id='MAV_FTP_OPCODE_ACK'></a>128 | [MAV_FTP_OPCODE_ACK](#MAV_FTP_OPCODE_ACK) | ACK: ACK response 
 <a id='MAV_FTP_OPCODE_NAK'></a>129 | [MAV_FTP_OPCODE_NAK](#MAV_FTP_OPCODE_NAK) | NAK: NAK response 
 
