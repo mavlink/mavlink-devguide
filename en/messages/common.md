@@ -169,12 +169,12 @@ messages_lost | `uint32_t` | | Messages lost (estimated from counting seq)
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) (2015-12) — Use [COMMAND_LONG](#COMMAND_LONG) with [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) instead)</span>
 
-Set the system mode, as defined by enum [MAV_MODE](#MAV_MODE). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
+Set the system mode, as defined by enum [MAV_MODE_FLAG](#MAV_MODE_FLAG). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
 target_system | `uint8_t` | | The system setting the mode 
-base_mode | `uint8_t` | [MAV_MODE](#MAV_MODE) | The new base mode. 
+base_mode | `uint8_t` | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | The new base mode. 
 custom_mode | `uint32_t` | | The new autopilot-specific mode. This field can be ignored by an autopilot. 
 
 
