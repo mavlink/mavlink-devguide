@@ -2946,7 +2946,7 @@ v_estimated_delay_us | `uint32_t` | us | invalid:0 | Estimated delay of the spee
 feed_forward_angular_velocity_z | `float` | rad/s | invalid:NaN | Feed forward Z component of angular velocity (positive: yawing to the right). NaN to be ignored. This is to indicate if the autopilot is actively yawing. 
 estimator_status | `uint16_t` | | [ESTIMATOR_STATUS_FLAGS](#ESTIMATOR_STATUS_FLAGS) | Bitmap indicating which estimator outputs are valid. 
 landed_state | `uint8_t` | | invalid:MAV_LANDED_STATE_UNDEFINED [MAV_LANDED_STATE](#MAV_LANDED_STATE) | The landed state. Is set to [MAV_LANDED_STATE_UNDEFINED](#MAV_LANDED_STATE_UNDEFINED) if landed state is unknown. 
-<span class='ext'>angular_velocity_z</span> <a href='#mav2_extension_field'>++</a> | `float` | rad/s | invalid:NaN | Z component of angular velocity in NED (North, East, Down). NaN if unknown. 
+<span class='ext'>angular_velocity_z</span> <a href='#mav2_extension_field'>++</a> | `float` | rad/s | invalid:0 | Z component of angular velocity in NED (North, East, Down). 0 if unknown. Use 0.00001 to represent a measured value of zero. 
 
 
 ### GIMBAL_MANAGER_SET_PITCHYAW (287) {#GIMBAL_MANAGER_SET_PITCHYAW}
