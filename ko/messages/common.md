@@ -162,13 +162,13 @@ Status generated in each node in the communication chain and injected into MAVLi
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) (2015-12) — Use [COMMAND_LONG](#COMMAND_LONG) with [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) instead)</span>
 
-Set the system mode, as defined by enum [MAV_MODE](#MAV_MODE). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
+Set the system mode, as defined by enum [MAV_MODE_FLAG](#MAV_MODE_FLAG). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
 
-| Field Name                         | Type       | Values                                     | Description                                                                                                 |
-| ---------------------------------- | ---------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| target_system | `uint8_t`  |                                            | The system setting the mode                                                                                 |
-| base_mode     | `uint8_t`  | [MAV_MODE](#MAV_MODE) | The new base mode.                                                                          |
-| custom_mode   | `uint32_t` |                                            | The new autopilot-specific mode. This field can be ignored by an autopilot. |
+| Field Name                         | Type       | Values                                                                    | Description                                                                                                 |
+| ---------------------------------- | ---------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| target_system | `uint8_t`  |                                                                           | The system setting the mode                                                                                 |
+| base_mode     | `uint8_t`  | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | The new base mode.                                                                          |
+| custom_mode   | `uint32_t` |                                                                           | The new autopilot-specific mode. This field can be ignored by an autopilot. |
 
 ### PARAM_REQUEST_READ (20) {#PARAM_REQUEST_READ}
 
@@ -2780,7 +2780,7 @@ Low level message containing autopilot state relevant for a gimbal device. This 
 | feed_forward_angular_velocity_z          | `float`    | rad/s | invalid:NaN                                                                                                                                                                       | Feed forward Z component of angular velocity (positive: yawing to the right). NaN to be ignored. This is to indicate if the autopilot is actively yawing. |
 | estimator_status                                                                                        | `uint16_t` |       | [ESTIMATOR_STATUS_FLAGS](#ESTIMATOR_STATUS_FLAGS)                                                                                                       | Bitmap indicating which estimator outputs are valid.                                                                                                                                                                         |
 | landed_state                                                                                            | `uint8_t`  |       | invalid:MAV_LANDED_STATE_UNDEFINED [MAV_LANDED_STATE](#MAV_LANDED_STATE) | The landed state. Is set to [MAV_LANDED_STATE_UNDEFINED](#MAV_LANDED_STATE_UNDEFINED) if landed state is unknown.                             |
-| <span class='ext'>angular_velocity_z</span> <a href='#mav2_extension_field'>++</a> | `float`    | rad/s | invalid:NaN                                                                                                                                                                       | Z component of angular velocity in NED (North, East, Down). NaN if unknown.                                                                                                               |
+| <span class='ext'>angular_velocity_z</span> <a href='#mav2_extension_field'>++</a> | `float`    | rad/s | invalid:0                                                                                                                                                                         | Z component of angular velocity in NED (North, East, Down). 0 if unknown. Use 0.00001 to represent a measured value of zero.                              |
 
 ### GIMBAL_MANAGER_SET_PITCHYAW (287) {#GIMBAL_MANAGER_SET_PITCHYAW}
 
