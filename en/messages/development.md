@@ -123,7 +123,7 @@ voltage | `float` | V | invalid:NaN | Battery voltage (total). NaN: field not pr
 current | `float` | A | invalid:NaN | Battery current (through all cells/loads). Positive value when discharging and negative if charging. NaN: field not provided. 
 capacity_consumed | `float` | Ah | invalid:NaN | Consumed charge. NaN: field not provided. This is either the consumption since power-on or since the battery was full, depending on the value of [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL). 
 capacity_remaining | `float` | Ah | invalid:NaN | Remaining charge (until empty). NaN: field not provided. Note: If [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) is unset, this value is based on the assumption the battery was full when the system was powered. 
-percent_remaining | `uint8_t` | % | invalid:UINT8_MAX | Remaining battery energy. Values: [0-100], UINT8_MAX: field not provided. 
+state_of_charge | `float` | % | invalid:NaN | State of Charge (SoC). Remaining capacity relative to current fully-charged capacity as a percentage. Values: [0-100], NaN: field not provided. Note that the value may be calculated from design_capacity if current full_charge_capacity is not known (see [BATTERY_INFO](#BATTERY_INFO)). 
 status_flags | `uint32_t` | | [MAV_BATTERY_STATUS_FLAGS](#MAV_BATTERY_STATUS_FLAGS) | Fault, health, readiness, and other status indications. 
 
 
