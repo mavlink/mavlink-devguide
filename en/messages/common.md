@@ -6663,7 +6663,7 @@ Param (Label) | Description | Values | Units
 1 (Turns) | Number of turns. | min: 0 |   
 2 (Heading Required) | Leave loiter circle only when track heads towards the next waypoint (MAV_BOOL_FALSE: Leave when turns complete). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise |   | m 
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6678,7 +6678,7 @@ Param (Label) | Description | Values | Units
 1 (Time) | Loiter time (only starts once Lat, Lon and Alt is reached). | min: 0 | s 
 2 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_FALSE: Leave on time expiry). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise. |   | m 
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6798,7 +6798,7 @@ Param (Label) | Description | Values | Units
 1 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_FALSE: Leave when altitude reached). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 2 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter. |   | m 
 3 | Empty |   |   
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
