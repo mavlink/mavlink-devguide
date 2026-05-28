@@ -4030,6 +4030,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 | <a id='MAV_MOUNT_MODE_GPS_POINT'></a>4         | [MAV_MOUNT_MODE_GPS_POINT](#MAV_MOUNT_MODE_GPS_POINT)                 | Load neutral position and start to point to Lat,Lon,Alt                                                      |
 | <a id='MAV_MOUNT_MODE_SYSID_TARGET'></a>5      | [MAV_MOUNT_MODE_SYSID_TARGET](#MAV_MOUNT_MODE_SYSID_TARGET)           | Gimbal tracks system with specified system ID                                                                |
 | <a id='MAV_MOUNT_MODE_HOME_LOCATION'></a>6     | [MAV_MOUNT_MODE_HOME_LOCATION](#MAV_MOUNT_MODE_HOME_LOCATION)         | Gimbal tracks home position                                                                                  |
+| <a id='MAV_MOUNT_MODE_WPNEXT_OFFSET'></a>7     | [MAV_MOUNT_MODE_WPNEXT_OFFSET](#MAV_MOUNT_MODE_WPNEXT_OFFSET)         | Gimbal tracks next waypoint location with offset                                                             |
 
 ### GIMBAL_DEVICE_CAP_FLAGS {#GIMBAL_DEVICE_CAP_FLAGS}
 
