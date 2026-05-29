@@ -561,7 +561,6 @@ Recipients must reject command addressed to broadcast system ID.
 | 1 (System ID)    | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 max: 255 inc: 1 |
 | 2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change).                      | min: 0 max: 255 inc: 1 |
 | 3 (Reboot)       | Reboot components after ID change. Any non-zero value triggers the reboot.                                                                                   |                                                                        |
-| 4                                   |                                                                                                                                                                                              |                                                                        |
 
 ### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) — [WIP] {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
 
@@ -576,10 +575,6 @@ Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GL
 
 | Param (Label) | Description | Units |
 | -------------------------------- | ----------- | ----- |
-| 1                                | Empty       |       |
-| 2                                | Empty       |       |
-| 3                                | Empty       |       |
-| 4                                | Empty       |       |
 | 5 (Latitude)  | Latitude    |       |
 | 6 (Longitude) | Longitude   |       |
 | 7 (Altitude)  | Altitude    | m     |
@@ -598,8 +593,6 @@ This might be used to provide an initial attitude (especially heading) estimate 
 | 2 (Pitch)         | Pitch angle. Set to NaN if unknown.                                                   | min: 0 max: 360 | deg   |
 | 3 (Yaw)           | Yaw/heading (relative to true north) angle. Set to NaN if unknown. | min: 0 max: 360 | deg   |
 | 4 (Tilt accuracy) | Estimated 1 sigma accuracy of roll and pitch angles. Set to NaN if unknown.           |                                                 | deg   |
-| 5                                    | Empty                                                                                                                 |                                                 |       |
-| 6                                    | Empty                                                                                                                 |                                                 |       |
 | 7 (Yaw accuracy)  | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown.                       |                                                 | deg   |
 
 ### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
@@ -648,12 +641,6 @@ See https://mavlink.io/en/services/opendroneid.html for more information.
 | Param (Label) | Description                                                          | Values                                        |
 | -------------------------------- | -------------------------------------------------------------------- | --------------------------------------------- |
 | 1 (Number)    | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 |
-| 2                                |                                                                      |                                               |
-| 3                                |                                                                      |                                               |
-| 4                                | Empty                                                                |                                               |
-| 5                                | Empty                                                                |                                               |
-| 6                                | Empty                                                                |                                               |
-| 7                                | Empty                                                                |                                               |
 
 ### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
 
@@ -707,8 +694,6 @@ The flow is otherwise the same as for requesting control over the whole system.
 | 3 (Request timeout)                            | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control.                                                       | min: 3 max: 60 | s     |
 | 4 (GCS Sysid)                                  | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range).                                                              |                                                |       |
 | 5 (GCS Sysid (upper range)) | Upper range of controlling GCS system IDs. 0 for single-GCS control. If non-zero the sender system ID may be anywhere in the range).                                                                             |                                                |       |
-| 6                                                                 | Empty                                                                                                                                                                                                                                                            |                                                |       |
-| 7                                                                 | Empty                                                                                                                                                                                                                                                            |                                                |       |
 
 ### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
 
@@ -724,9 +709,6 @@ This might be used to provide an initial wind estimate to the estimator (EKF) in
 | 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown.     |                                                 | m/s   |
 | 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.  | min: 0 max: 360 | deg   |
 | 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                                                 | deg   |
-| 5                                          | Empty                                                                                                |                                                 |       |
-| 6                                          | Empty                                                                                                |                                                 |       |
-| 7                                          | Empty                                                                                                |                                                 |       |
 
 ### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
 
@@ -742,8 +724,5 @@ This allows a GCS or companion computer to dynamically control which sensors the
 | 2 (Instance)           | Sensor instance (0-based, for multi-instance).                      | min: 0 inc: 1                                                                                    |
 | 3 (Enable)             | Enable (1) or Disable (0) the source.            | [MAV_BOOL](#MAV_BOOL)                                                                                       |
 | 4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1                                                                                    |
-| 5                                         | Empty                                                                                                  |                                                                                                                                  |
-| 6                                         | Empty                                                                                                  |                                                                                                                                  |
-| 7                                         | Empty                                                                                                  |                                                                                                                                  |
 
 
