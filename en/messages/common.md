@@ -3727,7 +3727,7 @@ uri | `char[100]` | | MAVLink FTP URI for the general metadata file ([COMP_METAD
 
 ### PLAY_TUNE_V2 (400) {#PLAY_TUNE_V2}
 
-Play vehicle tone/tune (buzzer). Supersedes message [PLAY_TUNE](#PLAY_TUNE).
+Play vehicle tone/tune (buzzer). Supported tunes can be determined using [SUPPORTED_TUNES](#SUPPORTED_TUNES). Supersedes message [PLAY_TUNE](#PLAY_TUNE).
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -3739,7 +3739,7 @@ tune | `char[248]` | | Tune definition as a NULL-terminated string.
 
 ### SUPPORTED_TUNES (401) {#SUPPORTED_TUNES}
 
-Tune formats supported by vehicle. This should be emitted as response to [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+Tune formats supported by vehicle, i.e. via [PLAY_TUNE_V2](#PLAY_TUNE_V2). This should be emitted as response to [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
