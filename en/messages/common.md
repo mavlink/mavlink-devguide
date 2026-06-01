@@ -69,9 +69,9 @@ onboard_control_sensors_present | `uint32_t` | | [MAV_SYS_STATUS_SENSOR](#MAV_SY
 onboard_control_sensors_enabled | `uint32_t` | | [MAV_SYS_STATUS_SENSOR](#MAV_SYS_STATUS_SENSOR) | Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. 
 onboard_control_sensors_health | `uint32_t` | | [MAV_SYS_STATUS_SENSOR](#MAV_SYS_STATUS_SENSOR) | Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy. 
 load | `uint16_t` | d% | | Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000 
-voltage_battery | `uint16_t` | mV | invalid:UINT16_MAX | Battery voltage, UINT16_MAX: Voltage not sent by autopilot 
-current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: Current not sent by autopilot 
-battery_remaining | `int8_t` | % | invalid:-1 | Battery energy remaining, -1: Battery remaining energy not sent by autopilot 
+voltage_battery | `uint16_t` | mV | invalid:UINT16_MAX | Battery voltage, UINT16_MAX: Voltage not sent by autopilot. Value is ambiguous on multi-battery systems. [BATTERY_STATUS](#BATTERY_STATUS) is a recommended alternative. 
+current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: Current not sent by autopilot. Value may overflow/rollover for very high currents (> 327.67A). Value is ambiguous on multi-battery systems. [BATTERY_STATUS](#BATTERY_STATUS) is a recommended alternative. 
+battery_remaining | `int8_t` | % | invalid:-1 | Battery energy remaining, -1: Battery remaining energy not sent by autopilot. Value is ambiguous on multi-battery systems. [BATTERY_STATUS](#BATTERY_STATUS) is a recommended alternative. 
 drop_rate_comm | `uint16_t` | c% | | Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV) 
 errors_comm | `uint16_t` | | | Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV) 
 errors_count1 | `uint16_t` | | | Autopilot-specific errors 
@@ -2000,7 +2000,7 @@ battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) |
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery 
 temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature of the battery. INT16_MAX for unknown temperature. 
 voltages | `uint16_t[10]` | mV | invalid:[UINT16_MAX] | Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1). 
-current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: autopilot does not measure the current 
+current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: autopilot does not measure the current. Value may overflow/rollover for very high currents (> 327.67A) 
 current_consumed | `int32_t` | mAh | invalid:-1 | Consumed charge, -1: autopilot does not provide consumption estimate 
 energy_consumed | `int32_t` | hJ | invalid:-1 | Consumed energy, -1: autopilot does not provide energy consumption estimate 
 battery_remaining | `int8_t` | % | invalid:-1 | Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery. 
