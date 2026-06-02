@@ -6049,8 +6049,11 @@ Value | Name | Description
 <a id='MAG_CAL_RUNNING_STEP_TWO'></a>3 | [MAG_CAL_RUNNING_STEP_TWO](#MAG_CAL_RUNNING_STEP_TWO) |  
 <a id='MAG_CAL_SUCCESS'></a>4 | [MAG_CAL_SUCCESS](#MAG_CAL_SUCCESS) |  
 <a id='MAG_CAL_FAILED'></a>5 | [MAG_CAL_FAILED](#MAG_CAL_FAILED) |  
-<a id='MAG_CAL_BAD_ORIENTATION'></a>6 | [MAG_CAL_BAD_ORIENTATION](#MAG_CAL_BAD_ORIENTATION) |  
-<a id='MAG_CAL_BAD_RADIUS'></a>7 | [MAG_CAL_BAD_RADIUS](#MAG_CAL_BAD_RADIUS) |  
+<a id='MAG_CAL_FAILED_ORIENTATION'></a>6 | [MAG_CAL_FAILED_ORIENTATION](#MAG_CAL_FAILED_ORIENTATION) | Compass calibration failed: the vehicle orientation is outside the required tolerance. 
+<a id='MAG_CAL_FAILED_RADIUS'></a>7 | [MAG_CAL_FAILED_RADIUS](#MAG_CAL_FAILED_RADIUS) | Compass calibration failed: the radius of the fitted sphere is unrealistically small or large. 
+<a id='MAG_CAL_FAILED_OFFSETS'></a>8 | [MAG_CAL_FAILED_OFFSETS](#MAG_CAL_FAILED_OFFSETS) | Compass calibration failed: offset magnitude too large. 
+<a id='MAG_CAL_FAILED_DIAG_SCALING'></a>9 | [MAG_CAL_FAILED_DIAG_SCALING](#MAG_CAL_FAILED_DIAG_SCALING) | Compass calibration failed: diagonal or off-diagonal scaling values out of valid range. 
+<a id='MAG_CAL_FAILED_RESIDUALS_HIGH'></a>10 | [MAG_CAL_FAILED_RESIDUALS_HIGH](#MAG_CAL_FAILED_RESIDUALS_HIGH) | Compass calibration failed: fitness (RMS residual) exceeds tolerance. 
 
 ### MAV_EVENT_ERROR_REASON {#MAV_EVENT_ERROR_REASON}
 
