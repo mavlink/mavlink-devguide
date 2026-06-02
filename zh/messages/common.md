@@ -7010,9 +7010,7 @@ Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped
 | 6 (Actuator 6) | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                                                |
 | 7 (Index)      | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)                                                                                                                                                                                                                                                                                                                                                             | min: 0 inc: 1  |
 
-### MAV_CMD_DO_RETURN_PATH_START (188) — [WIP] {#MAV_CMD_DO_RETURN_PATH_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_CMD_DO_RETURN_PATH_START (188) {#MAV_CMD_DO_RETURN_PATH_START}
 
 Mission item to specify the start of a failsafe/landing return-path segment (the end of the segment is the next [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) item).
 
