@@ -7289,9 +7289,7 @@ Param (Label) | Description | Values
 7 (Index) | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7) | min: 0 inc: 1 
 
 
-### MAV_CMD_DO_RETURN_PATH_START (188) — [WIP] {#MAV_CMD_DO_RETURN_PATH_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_CMD_DO_RETURN_PATH_START (188) {#MAV_CMD_DO_RETURN_PATH_START}
 
 Mission item to specify the start of a failsafe/landing return-path segment (the end of the segment is the next [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) item).
 
