@@ -239,7 +239,9 @@ Status of simulation environment, if used.
 | lat        | `int32_t` | degE7 | Latitude.                    |
 | lng        | `int32_t` | degE7 | Longitude.                   |
 
-### HWSTATUS (165) {#HWSTATUS}
+### HWSTATUS (165) — [DEP] {#HWSTATUS}
+
+<span class="warning">**DEPRECATED:** Replaced By [POWER_STATUS](#POWER_STATUS) (2022-09) — POWER_STATUS+SYS_STATUS form a superset of the fields in this message.)</span>
 
 Status of key hardware.
 
@@ -1399,14 +1401,24 @@ Flags in [RALLY_POINT](#RALLY_POINT) message.
 
 ### PID_TUNING_AXIS {#PID_TUNING_AXIS}
 
-| 值                                | Name                                                                                | 描述 |
-| -------------------------------- | ----------------------------------------------------------------------------------- | -- |
-| <a id='PID_TUNING_ROLL'></a>1    | [PID_TUNING_ROLL](#PID_TUNING_ROLL)       |    |
-| <a id='PID_TUNING_PITCH'></a>2   | [PID_TUNING_PITCH](#PID_TUNING_PITCH)     |    |
-| <a id='PID_TUNING_YAW'></a>3     | [PID_TUNING_YAW](#PID_TUNING_YAW)         |    |
-| <a id='PID_TUNING_ACCZ'></a>4    | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ)       |    |
-| <a id='PID_TUNING_STEER'></a>5   | [PID_TUNING_STEER](#PID_TUNING_STEER)     |    |
-| <a id='PID_TUNING_LANDING'></a>6 | [PID_TUNING_LANDING](#PID_TUNING_LANDING) |    |
+| 值                                    | Name                                                                                                             | 描述                                         |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| <a id='PID_TUNING_ROLL'></a>1        | [PID_TUNING_ROLL](#PID_TUNING_ROLL)                                    |                                            |
+| <a id='PID_TUNING_PITCH'></a>2       | [PID_TUNING_PITCH](#PID_TUNING_PITCH)                                  |                                            |
+| <a id='PID_TUNING_YAW'></a>3         | [PID_TUNING_YAW](#PID_TUNING_YAW)                                      |                                            |
+| <a id='PID_TUNING_ACCZ'></a>4        | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ)                                    |                                            |
+| <a id='PID_TUNING_STEER'></a>5       | [PID_TUNING_STEER](#PID_TUNING_STEER)                                  |                                            |
+| <a id='PID_TUNING_LANDING'></a>6     | [PID_TUNING_LANDING](#PID_TUNING_LANDING)                              |                                            |
+| <a id='PID_TUNING_WHEEL_LEFT'></a>7  | [PID_TUNING_WHEEL_LEFT](#PID_TUNING_WHEEL_LEFT)   | Left wheel rate.           |
+| <a id='PID_TUNING_WHEEL_RIGHT'></a>8 | [PID_TUNING_WHEEL_RIGHT](#PID_TUNING_WHEEL_RIGHT) | Right wheel rate.          |
+| <a id='PID_TUNING_SAIL_HEEL'></a>9   | [PID_TUNING_SAIL_HEEL](#PID_TUNING_SAIL_HEEL)     | Sailboat heel to mainsail. |
+| <a id='PID_TUNING_VEL_NORTH'></a>10  | [PID_TUNING_VEL_NORTH](#PID_TUNING_VEL_NORTH)     | Velocity north.            |
+| <a id='PID_TUNING_VEL_EAST'></a>11   | [PID_TUNING_VEL_EAST](#PID_TUNING_VEL_EAST)       | Velocity east.             |
+| <a id='PID_TUNING_VEL_DOWN'></a>12   | [PID_TUNING_VEL_DOWN](#PID_TUNING_VEL_DOWN)       | Velocity down.             |
+| <a id='PID_TUNING_POS_NORTH'></a>13  | [PID_TUNING_POS_NORTH](#PID_TUNING_POS_NORTH)     | Position north.            |
+| <a id='PID_TUNING_POS_EAST'></a>14   | [PID_TUNING_POS_EAST](#PID_TUNING_POS_EAST)       | Position east.             |
+| <a id='PID_TUNING_POS_DOWN'></a>15   | [PID_TUNING_POS_DOWN](#PID_TUNING_POS_DOWN)       | Position down.             |
+| <a id='PID_TUNING_YAW_ANGLE'></a>16  | [PID_TUNING_YAW_ANGLE](#PID_TUNING_YAW_ANGLE)     | Yaw angle.                 |
 
 ### MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS {#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS}
 
