@@ -5806,16 +5806,19 @@ List of possible failure type to inject.
 
 ### MAG_CAL_STATUS {#MAG_CAL_STATUS}
 
-| Value                                  | Name                                                                                                                                      | Description |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='MAG_CAL_NOT_STARTED'></a>0      | [MAG_CAL_NOT_STARTED](#MAG_CAL_NOT_STARTED)                                |             |
-| <a id='MAG_CAL_WAITING_TO_START'></a>1 | [MAG_CAL_WAITING_TO_START](#MAG_CAL_WAITING_TO_START) |             |
-| <a id='MAG_CAL_RUNNING_STEP_ONE'></a>2 | [MAG_CAL_RUNNING_STEP_ONE](#MAG_CAL_RUNNING_STEP_ONE) |             |
-| <a id='MAG_CAL_RUNNING_STEP_TWO'></a>3 | [MAG_CAL_RUNNING_STEP_TWO](#MAG_CAL_RUNNING_STEP_TWO) |             |
-| <a id='MAG_CAL_SUCCESS'></a>4          | [MAG_CAL_SUCCESS](#MAG_CAL_SUCCESS)                                                             |             |
-| <a id='MAG_CAL_FAILED'></a>5           | [MAG_CAL_FAILED](#MAG_CAL_FAILED)                                                               |             |
-| <a id='MAG_CAL_BAD_ORIENTATION'></a>6  | [MAG_CAL_BAD_ORIENTATION](#MAG_CAL_BAD_ORIENTATION)                        |             |
-| <a id='MAG_CAL_BAD_RADIUS'></a>7       | [MAG_CAL_BAD_RADIUS](#MAG_CAL_BAD_RADIUS)                                  |             |
+| Value                                        | Name                                                                                                                                                | Description                                                                                                                    |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| <a id='MAG_CAL_NOT_STARTED'></a>0            | [MAG_CAL_NOT_STARTED](#MAG_CAL_NOT_STARTED)                                          |                                                                                                                                |
+| <a id='MAG_CAL_WAITING_TO_START'></a>1       | [MAG_CAL_WAITING_TO_START](#MAG_CAL_WAITING_TO_START)           |                                                                                                                                |
+| <a id='MAG_CAL_RUNNING_STEP_ONE'></a>2       | [MAG_CAL_RUNNING_STEP_ONE](#MAG_CAL_RUNNING_STEP_ONE)           |                                                                                                                                |
+| <a id='MAG_CAL_RUNNING_STEP_TWO'></a>3       | [MAG_CAL_RUNNING_STEP_TWO](#MAG_CAL_RUNNING_STEP_TWO)           |                                                                                                                                |
+| <a id='MAG_CAL_SUCCESS'></a>4                | [MAG_CAL_SUCCESS](#MAG_CAL_SUCCESS)                                                                       |                                                                                                                                |
+| <a id='MAG_CAL_FAILED'></a>5                 | [MAG_CAL_FAILED](#MAG_CAL_FAILED)                                                                         |                                                                                                                                |
+| <a id='MAG_CAL_FAILED_ORIENTATION'></a>6     | [MAG_CAL_FAILED_ORIENTATION](#MAG_CAL_FAILED_ORIENTATION)                            | Compass calibration failed: the vehicle orientation is outside the required tolerance.         |
+| <a id='MAG_CAL_FAILED_RADIUS'></a>7          | [MAG_CAL_FAILED_RADIUS](#MAG_CAL_FAILED_RADIUS)                                      | Compass calibration failed: the radius of the fitted sphere is unrealistically small or large. |
+| <a id='MAG_CAL_FAILED_OFFSETS'></a>8         | [MAG_CAL_FAILED_OFFSETS](#MAG_CAL_FAILED_OFFSETS)                                    | Compass calibration failed: offset magnitude too large.                                        |
+| <a id='MAG_CAL_FAILED_DIAG_SCALING'></a>9    | [MAG_CAL_FAILED_DIAG_SCALING](#MAG_CAL_FAILED_DIAG_SCALING)     | Compass calibration failed: diagonal or off-diagonal scaling values out of valid range.        |
+| <a id='MAG_CAL_FAILED_RESIDUALS_HIGH'></a>10 | [MAG_CAL_FAILED_RESIDUALS_HIGH](#MAG_CAL_FAILED_RESIDUALS_HIGH) | Compass calibration failed: fitness (RMS residual) exceeds tolerance.       |
 
 ### MAV_EVENT_ERROR_REASON {#MAV_EVENT_ERROR_REASON}
 
@@ -7010,9 +7013,7 @@ Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped
 | 6 (Actuator 6) | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                                                |
 | 7 (Index)      | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)                                                                                                                                                                                                                                                                                                                                                             | min: 0 inc: 1  |
 
-### MAV_CMD_DO_RETURN_PATH_START (188) — [WIP] {#MAV_CMD_DO_RETURN_PATH_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_CMD_DO_RETURN_PATH_START (188) {#MAV_CMD_DO_RETURN_PATH_START}
 
 Mission item to specify the start of a failsafe/landing return-path segment (the end of the segment is the next [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) item).
 
