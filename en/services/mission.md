@@ -27,7 +27,7 @@ The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_
 MAVLink 1 supports only flight-plan missions (this is implied/not explicitly set).
 :::
 
-## Plan Items (MAVLink Commands) {#mavlink_commands}
+## Plan Items (MAV_CMD) {#mavlink_commands}
 
 Mission items (or more generically "Plan items") for all the [plan types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
@@ -47,6 +47,12 @@ The items for the different types of plan are usually identified using a simple 
   - Prefixed with `MAV_CMD_NAV_FENCE_` (e.g. [MAV_CMD_NAV_FENCE_RETURN_POINT](../messages/common.md#MAV_CMD_NAV_FENCE_RETURN_POINT)).
 - _Rally point plan_:
   - Rally points are defined using [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
+
+    ::: info
+    [MAV_CMD_NAV_LOITER_TO_ALT](../messages/common.md#MAV_CMD_NAV_LOITER_TO_ALT) items declared immediately after `MAV_CMD_NAV_RALLY_POINT` may be used as VTOL approach loiter waypoints.
+    VTOL can use these points in a fixed-wing return to define the location and radius of VTOL loiter-descent, and heading, prior to traveling to the final rally point.
+    If multiple loiter waypoints are specified, selection is autopilot-specific.
+    :::
 
 ## Plan Payload Message
 
