@@ -5,7 +5,7 @@ The offboard control interface allows an external controller to send low-level a
 This is commonly used to provide external control of a real-time flight stack from a companion/mission computer, for example, in order to implement features such as obstacle avoidance or collision prevention.
 
 Generally setpoints are only obeyed in a specific flight-stack mode.
-The flight stack requires the setpoints to be recieved for some time before it will allow the mode to be enabled, and will switch out of the mode if setpoints are no longer received.
+The flight stack requires the setpoints to be received for some time before it will allow the mode to be enabled, and will switch out of the mode if setpoints are no longer received.
 
 The particular types of setpoints that are supported, if any, depend on the vehicle type and flight stack.
 

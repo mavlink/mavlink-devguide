@@ -131,7 +131,7 @@ In summary:
 1. The component will ACK the command and immediately send the requested `COMPONENT_METADATA` message (populated with URI and CRC for the general metadata file).
    - A `CMD_ACK` of anything other than `MAV_RESULT_ACCEPTED` indicates the protocol is not supported (sequence completes).
 1. GCS waits for the `COMPONENT_METADATA` message
-   - If not recieved the GCS should resend the request (typically in the application level).
+   - If not received the GCS should resend the request (typically in the application level).
    - Once information is received:
      - the GCS checks if `COMPONENT_METADATA.file_crc` matches its cached CRC value.
        If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
