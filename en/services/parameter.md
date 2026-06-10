@@ -141,7 +141,7 @@ If working with a non-compliant component, the risk of problems when working wit
 
 A GCS (or other component) that wants to [cache parameters](#parameter_caching) with a component and keep them synchronised, should first get all parameters, and then track any new parameter changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
 
-This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved.
+This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not received.
 This approach may fail for components that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
 
 A component may mitigate this risk by, for example, sending the `PARAM_VALUE` multiple times after a parameter is changed.
