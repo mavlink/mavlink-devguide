@@ -71,7 +71,7 @@
 - [Dialects & Tests](messages/dialects.md)
   - [ardupilotmega.xml](messages/ardupilotmega.md)
   - [ASLUAV.xml](messages/ASLUAV.md)
-  - [AVSSUAS.xml](messages/AVSSUAS.md)  
+  - [AVSSUAS.xml](messages/AVSSUAS.md)
   - [csAirLink.xml](messages/csAirLink.md)
   - [cubepilot.xml](messages/cubepilot.md)
   - [icarous.xml](messages/icarous.md)

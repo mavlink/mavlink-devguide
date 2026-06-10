@@ -25,6 +25,7 @@ To install the MAVLink toolchain:
 
    - **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
    - **Ubuntu Linux** Make sure Python and Pip are both installed:
+
      ```
      sudo apt install python3 python3-pip
      ```
@@ -36,7 +37,7 @@ To install the MAVLink toolchain:
    cd mavlink
    ```
 
-2. Install the required packages:
+1. Install the required packages:
 
    ```
    python3 -m pip install -r pymavlink/requirements.txt

@@ -44,7 +44,7 @@ If you generate your own headers, you will have to add their output location to 
 When compiling the project, make sure to add the include directory:
 
 ```sh
-$ gcc ... -I generated/include ...
+gcc ... -I generated/include ...
 ```
 
 ## Adding Library to Cmake Project

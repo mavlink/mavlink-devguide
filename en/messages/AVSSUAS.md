@@ -26,6 +26,7 @@ span.warning {
     color: red;
   }
 </style>
+
 **Protocol dialect:** 1
 
 **Protocol version:** 2
@@ -36,11 +37,11 @@ span.warning {
 
 ## Summary
 
-Type | Defined | Included
---- | --- | ---
-[Messages](#messages) | 4 | 234
-[Enums](#enumerated-types) | 3 | 159
-[Commands](#mav_commands) | 175 | 0
+| Type                       | Defined | Included |
+| -------------------------- | ------- | -------- |
+| [Messages](#messages)      | 4       | 234      |
+| [Enums](#enumerated-types) | 3       | 159      |
+| [Commands](#mav_commands)  | 175     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -50,97 +51,93 @@ The following sections list all entities in the dialect (both included and defin
 
 AVSS PRS system status.
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-time_boot_ms | `uint32_t` | ms | Timestamp (time since PRS boot). 
-error_status | `uint32_t` | | PRS error statuses 
-battery_status | `uint32_t` | | Estimated battery run-time without a remote connection and PRS battery voltage 
-arm_status | `uint8_t` | | PRS arm statuses 
-charge_status | `uint8_t` | | PRS battery charge statuses 
-
+| Field Name     | Type       | Units | Description                                                                    |
+| -------------- | ---------- | ----- | ------------------------------------------------------------------------------ |
+| time_boot_ms   | `uint32_t` | ms    | Timestamp (time since PRS boot).                                               |
+| error_status   | `uint32_t` |       | PRS error statuses                                                             |
+| battery_status | `uint32_t` |       | Estimated battery run-time without a remote connection and PRS battery voltage |
+| arm_status     | `uint8_t`  |       | PRS arm statuses                                                               |
+| charge_status  | `uint8_t`  |       | PRS battery charge statuses                                                    |
 
 ### AVSS_DRONE_POSITION (60051) {#AVSS_DRONE_POSITION}
 
 Drone position.
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-time_boot_ms | `uint32_t` | ms | Timestamp (time since FC boot). 
-lat | `int32_t` | degE7 | Latitude, expressed 
-lon | `int32_t` | degE7 | Longitude, expressed 
-alt | `int32_t` | mm | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL. 
-ground_alt | `float` | m | Altitude above ground, This altitude is measured by a ultrasound, Laser rangefinder or millimeter-wave radar 
-barometer_alt | `float` | m | This altitude is measured by a barometer 
-
+| Field Name    | Type       | Units | Description                                                                                                  |
+| ------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------ |
+| time_boot_ms  | `uint32_t` | ms    | Timestamp (time since FC boot).                                                                              |
+| lat           | `int32_t`  | degE7 | Latitude, expressed                                                                                          |
+| lon           | `int32_t`  | degE7 | Longitude, expressed                                                                                         |
+| alt           | `int32_t`  | mm    | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.                              |
+| ground_alt    | `float`    | m     | Altitude above ground, This altitude is measured by a ultrasound, Laser rangefinder or millimeter-wave radar |
+| barometer_alt | `float`    | m     | This altitude is measured by a barometer                                                                     |
 
 ### AVSS_DRONE_IMU (60052) {#AVSS_DRONE_IMU}
 
 Drone IMU data. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-time_boot_ms | `uint32_t` | ms | Timestamp (time since FC boot). 
-q1 | `float` | | Quaternion component 1, w (1 in null-rotation) 
-q2 | `float` | | Quaternion component 2, x (0 in null-rotation) 
-q3 | `float` | | Quaternion component 3, y (0 in null-rotation) 
-q4 | `float` | | Quaternion component 4, z (0 in null-rotation) 
-xacc | `float` | m/s/s | X acceleration 
-yacc | `float` | m/s/s | Y acceleration 
-zacc | `float` | m/s/s | Z acceleration 
-xgyro | `float` | rad/s | Angular speed around X axis 
-ygyro | `float` | rad/s | Angular speed around Y axis 
-zgyro | `float` | rad/s | Angular speed around Z axis 
-
+| Field Name   | Type       | Units | Description                                    |
+| ------------ | ---------- | ----- | ---------------------------------------------- |
+| time_boot_ms | `uint32_t` | ms    | Timestamp (time since FC boot).                |
+| q1           | `float`    |       | Quaternion component 1, w (1 in null-rotation) |
+| q2           | `float`    |       | Quaternion component 2, x (0 in null-rotation) |
+| q3           | `float`    |       | Quaternion component 3, y (0 in null-rotation) |
+| q4           | `float`    |       | Quaternion component 4, z (0 in null-rotation) |
+| xacc         | `float`    | m/s/s | X acceleration                                 |
+| yacc         | `float`    | m/s/s | Y acceleration                                 |
+| zacc         | `float`    | m/s/s | Z acceleration                                 |
+| xgyro        | `float`    | rad/s | Angular speed around X axis                    |
+| ygyro        | `float`    | rad/s | Angular speed around Y axis                    |
+| zgyro        | `float`    | rad/s | Angular speed around Z axis                    |
 
 ### AVSS_DRONE_OPERATION_MODE (60053) {#AVSS_DRONE_OPERATION_MODE}
 
 Drone operation mode.
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-time_boot_ms | `uint32_t` | ms | Timestamp (time since FC boot). 
-M300_operation_mode | `uint8_t` | | DJI M300 operation mode 
-horsefly_operation_mode | `uint8_t` | | horsefly operation mode 
-
+| Field Name              | Type       | Units | Description                     |
+| ----------------------- | ---------- | ----- | ------------------------------- |
+| time_boot_ms            | `uint32_t` | ms    | Timestamp (time since FC boot). |
+| M300_operation_mode     | `uint8_t`  |       | DJI M300 operation mode         |
+| horsefly_operation_mode | `uint8_t`  |       | horsefly operation mode         |
 
 ## Enumerated Types
 
 ### MAV_AVSS_COMMAND_FAILURE_REASON {#MAV_AVSS_COMMAND_FAILURE_REASON}
 
-Value | Name | Description
---- | --- | ---
-<a id='PRS_NOT_STEADY'></a>1 | [PRS_NOT_STEADY](#PRS_NOT_STEADY) | AVSS defined command failure reason. PRS not steady. 
-<a id='PRS_DTM_NOT_ARMED'></a>2 | [PRS_DTM_NOT_ARMED](#PRS_DTM_NOT_ARMED) | AVSS defined command failure reason. PRS DTM not armed. 
-<a id='PRS_OTM_NOT_ARMED'></a>3 | [PRS_OTM_NOT_ARMED](#PRS_OTM_NOT_ARMED) | AVSS defined command failure reason. PRS OTM not armed. 
+| Value                           | Name                                    | Description                                             |
+| ------------------------------- | --------------------------------------- | ------------------------------------------------------- |
+| <a id='PRS_NOT_STEADY'></a>1    | [PRS_NOT_STEADY](#PRS_NOT_STEADY)       | AVSS defined command failure reason. PRS not steady.    |
+| <a id='PRS_DTM_NOT_ARMED'></a>2 | [PRS_DTM_NOT_ARMED](#PRS_DTM_NOT_ARMED) | AVSS defined command failure reason. PRS DTM not armed. |
+| <a id='PRS_OTM_NOT_ARMED'></a>3 | [PRS_OTM_NOT_ARMED](#PRS_OTM_NOT_ARMED) | AVSS defined command failure reason. PRS OTM not armed. |
 
 ### AVSS_M300_OPERATION_MODE {#AVSS_M300_OPERATION_MODE}
 
-Value | Name | Description
---- | --- | ---
-<a id='MODE_M300_MANUAL_CTRL'></a>0 | [MODE_M300_MANUAL_CTRL](#MODE_M300_MANUAL_CTRL) | In manual control mode 
-<a id='MODE_M300_ATTITUDE'></a>1 | [MODE_M300_ATTITUDE](#MODE_M300_ATTITUDE) | In attitude mode 
-<a id='MODE_M300_P_GPS'></a>6 | [MODE_M300_P_GPS](#MODE_M300_P_GPS) | In GPS mode 
-<a id='MODE_M300_HOTPOINT_MODE'></a>9 | [MODE_M300_HOTPOINT_MODE](#MODE_M300_HOTPOINT_MODE) | In hotpoint mode 
-<a id='MODE_M300_ASSISTED_TAKEOFF'></a>10 | [MODE_M300_ASSISTED_TAKEOFF](#MODE_M300_ASSISTED_TAKEOFF) | In assisted takeoff mode 
-<a id='MODE_M300_AUTO_TAKEOFF'></a>11 | [MODE_M300_AUTO_TAKEOFF](#MODE_M300_AUTO_TAKEOFF) | In auto takeoff mode 
-<a id='MODE_M300_AUTO_LANDING'></a>12 | [MODE_M300_AUTO_LANDING](#MODE_M300_AUTO_LANDING) | In auto landing mode 
-<a id='MODE_M300_NAVI_GO_HOME'></a>15 | [MODE_M300_NAVI_GO_HOME](#MODE_M300_NAVI_GO_HOME) | In go home mode 
-<a id='MODE_M300_NAVI_SDK_CTRL'></a>17 | [MODE_M300_NAVI_SDK_CTRL](#MODE_M300_NAVI_SDK_CTRL) | In sdk control mode 
-<a id='MODE_M300_S_SPORT'></a>31 | [MODE_M300_S_SPORT](#MODE_M300_S_SPORT) | In sport mode 
-<a id='MODE_M300_FORCE_AUTO_LANDING'></a>33 | [MODE_M300_FORCE_AUTO_LANDING](#MODE_M300_FORCE_AUTO_LANDING) | In force auto landing mode 
-<a id='MODE_M300_T_TRIPOD'></a>38 | [MODE_M300_T_TRIPOD](#MODE_M300_T_TRIPOD) | In tripod mode 
-<a id='MODE_M300_SEARCH_MODE'></a>40 | [MODE_M300_SEARCH_MODE](#MODE_M300_SEARCH_MODE) | In search mode 
-<a id='MODE_M300_ENGINE_START'></a>41 | [MODE_M300_ENGINE_START](#MODE_M300_ENGINE_START) | In engine mode 
+| Value                                       | Name                                                          | Description                |
+| ------------------------------------------- | ------------------------------------------------------------- | -------------------------- |
+| <a id='MODE_M300_MANUAL_CTRL'></a>0         | [MODE_M300_MANUAL_CTRL](#MODE_M300_MANUAL_CTRL)               | In manual control mode     |
+| <a id='MODE_M300_ATTITUDE'></a>1            | [MODE_M300_ATTITUDE](#MODE_M300_ATTITUDE)                     | In attitude mode           |
+| <a id='MODE_M300_P_GPS'></a>6               | [MODE_M300_P_GPS](#MODE_M300_P_GPS)                           | In GPS mode                |
+| <a id='MODE_M300_HOTPOINT_MODE'></a>9       | [MODE_M300_HOTPOINT_MODE](#MODE_M300_HOTPOINT_MODE)           | In hotpoint mode           |
+| <a id='MODE_M300_ASSISTED_TAKEOFF'></a>10   | [MODE_M300_ASSISTED_TAKEOFF](#MODE_M300_ASSISTED_TAKEOFF)     | In assisted takeoff mode   |
+| <a id='MODE_M300_AUTO_TAKEOFF'></a>11       | [MODE_M300_AUTO_TAKEOFF](#MODE_M300_AUTO_TAKEOFF)             | In auto takeoff mode       |
+| <a id='MODE_M300_AUTO_LANDING'></a>12       | [MODE_M300_AUTO_LANDING](#MODE_M300_AUTO_LANDING)             | In auto landing mode       |
+| <a id='MODE_M300_NAVI_GO_HOME'></a>15       | [MODE_M300_NAVI_GO_HOME](#MODE_M300_NAVI_GO_HOME)             | In go home mode            |
+| <a id='MODE_M300_NAVI_SDK_CTRL'></a>17      | [MODE_M300_NAVI_SDK_CTRL](#MODE_M300_NAVI_SDK_CTRL)           | In sdk control mode        |
+| <a id='MODE_M300_S_SPORT'></a>31            | [MODE_M300_S_SPORT](#MODE_M300_S_SPORT)                       | In sport mode              |
+| <a id='MODE_M300_FORCE_AUTO_LANDING'></a>33 | [MODE_M300_FORCE_AUTO_LANDING](#MODE_M300_FORCE_AUTO_LANDING) | In force auto landing mode |
+| <a id='MODE_M300_T_TRIPOD'></a>38           | [MODE_M300_T_TRIPOD](#MODE_M300_T_TRIPOD)                     | In tripod mode             |
+| <a id='MODE_M300_SEARCH_MODE'></a>40        | [MODE_M300_SEARCH_MODE](#MODE_M300_SEARCH_MODE)               | In search mode             |
+| <a id='MODE_M300_ENGINE_START'></a>41       | [MODE_M300_ENGINE_START](#MODE_M300_ENGINE_START)             | In engine mode             |
 
 ### AVSS_HORSEFLY_OPERATION_MODE {#AVSS_HORSEFLY_OPERATION_MODE}
 
-Value | Name | Description
---- | --- | ---
-<a id='MODE_HORSEFLY_MANUAL_CTRL'></a>0 | [MODE_HORSEFLY_MANUAL_CTRL](#MODE_HORSEFLY_MANUAL_CTRL) | In manual control mode 
-<a id='MODE_HORSEFLY_AUTO_TAKEOFF'></a>1 | [MODE_HORSEFLY_AUTO_TAKEOFF](#MODE_HORSEFLY_AUTO_TAKEOFF) | In auto takeoff mode 
-<a id='MODE_HORSEFLY_AUTO_LANDING'></a>2 | [MODE_HORSEFLY_AUTO_LANDING](#MODE_HORSEFLY_AUTO_LANDING) | In auto landing mode 
-<a id='MODE_HORSEFLY_NAVI_GO_HOME'></a>3 | [MODE_HORSEFLY_NAVI_GO_HOME](#MODE_HORSEFLY_NAVI_GO_HOME) | In go home mode 
-<a id='MODE_HORSEFLY_DROP'></a>4 | [MODE_HORSEFLY_DROP](#MODE_HORSEFLY_DROP) | In drop mode 
+| Value                                    | Name                                                      | Description            |
+| ---------------------------------------- | --------------------------------------------------------- | ---------------------- |
+| <a id='MODE_HORSEFLY_MANUAL_CTRL'></a>0  | [MODE_HORSEFLY_MANUAL_CTRL](#MODE_HORSEFLY_MANUAL_CTRL)   | In manual control mode |
+| <a id='MODE_HORSEFLY_AUTO_TAKEOFF'></a>1 | [MODE_HORSEFLY_AUTO_TAKEOFF](#MODE_HORSEFLY_AUTO_TAKEOFF) | In auto takeoff mode   |
+| <a id='MODE_HORSEFLY_AUTO_LANDING'></a>2 | [MODE_HORSEFLY_AUTO_LANDING](#MODE_HORSEFLY_AUTO_LANDING) | In auto landing mode   |
+| <a id='MODE_HORSEFLY_NAVI_GO_HOME'></a>3 | [MODE_HORSEFLY_NAVI_GO_HOME](#MODE_HORSEFLY_NAVI_GO_HOME) | In go home mode        |
+| <a id='MODE_HORSEFLY_DROP'></a>4         | [MODE_HORSEFLY_DROP](#MODE_HORSEFLY_DROP)                 | In drop mode           |
 
 ## Commands (MAV_CMD) {#mav_commands}
 
@@ -148,104 +145,96 @@ Value | Name | Description
 
 AVSS defined command. Set PRS arm statuses.
 
-Param (Label) | Description
---- | ---
-1 (ARM status) | PRS arm statuses 
-2 | User defined 
-3 | User defined 
-4 | User defined 
-5 | User defined 
-6 | User defined 
-7 | User defined 
-
+| Param (Label)  | Description      |
+| -------------- | ---------------- |
+| 1 (ARM status) | PRS arm statuses |
+| 2              | User defined     |
+| 3              | User defined     |
+| 4              | User defined     |
+| 5              | User defined     |
+| 6              | User defined     |
+| 7              | User defined     |
 
 ### MAV_CMD_PRS_GET_ARM (60051) {#MAV_CMD_PRS_GET_ARM}
 
 AVSS defined command. Gets PRS arm statuses
 
-Param (Label) | Description
---- | ---
-1 | User defined 
-2 | User defined 
-3 | User defined 
-4 | User defined 
-5 | User defined 
-6 | User defined 
-7 | User defined 
-
+| Param (Label) | Description  |
+| ------------- | ------------ |
+| 1             | User defined |
+| 2             | User defined |
+| 3             | User defined |
+| 4             | User defined |
+| 5             | User defined |
+| 6             | User defined |
+| 7             | User defined |
 
 ### MAV_CMD_PRS_GET_BATTERY (60052) {#MAV_CMD_PRS_GET_BATTERY}
 
-AVSS defined command.  Get the PRS battery voltage in millivolts
+AVSS defined command. Get the PRS battery voltage in millivolts
 
-Param (Label) | Description
---- | ---
-1 | User defined 
-2 | User defined 
-3 | User defined 
-4 | User defined 
-5 | User defined 
-6 | User defined 
-7 | User defined 
-
+| Param (Label) | Description  |
+| ------------- | ------------ |
+| 1             | User defined |
+| 2             | User defined |
+| 3             | User defined |
+| 4             | User defined |
+| 5             | User defined |
+| 6             | User defined |
+| 7             | User defined |
 
 ### MAV_CMD_PRS_GET_ERR (60053) {#MAV_CMD_PRS_GET_ERR}
 
 AVSS defined command. Get the PRS error statuses.
 
-Param (Label) | Description
---- | ---
-1 | User defined 
-2 | User defined 
-3 | User defined 
-4 | User defined 
-5 | User defined 
-6 | User defined 
-7 | User defined 
-
+| Param (Label) | Description  |
+| ------------- | ------------ |
+| 1             | User defined |
+| 2             | User defined |
+| 3             | User defined |
+| 4             | User defined |
+| 5             | User defined |
+| 6             | User defined |
+| 7             | User defined |
 
 ### MAV_CMD_PRS_SET_ARM_ALTI (60070) {#MAV_CMD_PRS_SET_ARM_ALTI}
 
 AVSS defined command. Set the ATS arming altitude in meters.
 
-Param (Label) | Description | Units
---- | --- | ---
-1 (Altitude) | ATS arming altitude | m 
-2 | User defined |   
-3 | User defined |   
-4 | User defined |   
-5 | User defined |   
-6 | User defined |   
-7 | User defined |   
-
+| Param (Label) | Description         | Units |
+| ------------- | ------------------- | ----- |
+| 1 (Altitude)  | ATS arming altitude | m     |
+| 2             | User defined        |
+| 3             | User defined        |
+| 4             | User defined        |
+| 5             | User defined        |
+| 6             | User defined        |
+| 7             | User defined        |
 
 ### MAV_CMD_PRS_GET_ARM_ALTI (60071) {#MAV_CMD_PRS_GET_ARM_ALTI}
 
 AVSS defined command. Get the ATS arming altitude in meters.
 
-Param (Label) | Description
---- | ---
-1 | User defined 
-2 | User defined 
-3 | User defined 
-4 | User defined 
-5 | User defined 
-6 | User defined 
-7 | User defined 
-
+| Param (Label) | Description  |
+| ------------- | ------------ |
+| 1             | User defined |
+| 2             | User defined |
+| 3             | User defined |
+| 4             | User defined |
+| 5             | User defined |
+| 6             | User defined |
+| 7             | User defined |
 
 ### MAV_CMD_PRS_SHUTDOWN (60072) {#MAV_CMD_PRS_SHUTDOWN}
 
 AVSS defined command. Shuts down the PRS system.
 
-Param (Label) | Description
---- | ---
-1 | User defined 
-2 | User defined 
-3 | User defined 
-4 | User defined 
-5 | User defined 
-6 | User defined 
-7 | User defined 
-
-
+| Param (Label) | Description  |
+| ------------- | ------------ |
+| 1             | User defined |
+| 2             | User defined |
+| 3             | User defined |
+| 4             | User defined |
+| 5             | User defined |
+| 6             | User defined |
+| 7             | User defined |
