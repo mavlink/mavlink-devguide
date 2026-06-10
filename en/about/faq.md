@@ -21,8 +21,8 @@
   </dd>
   
   <dt>What version of MAVLink should I use?</dt>
-  <dd>You should use the <a href="../guide/mavlink_2.md">MAVLink 2</a> protocol where at all possible (it fixes a number of limitations of earlier versions). 
-  The <em>MAVLink 2</em> libraries also support <em>MAVLink 1</em>, so you can use them to communicate with legacy systems if needed. 
+  <dd>You should use the <a href="../guide/mavlink_2.md">MAVLink 2</a> protocol where at all possible (it fixes a number of limitations of earlier versions).
+  The <em>MAVLink 2</em> libraries also support <em>MAVLink 1</em>, so you can use them to communicate with legacy systems if needed.
   </dd>
   
  <dt>How often is MAVLink updated/released?</dt>
@@ -58,15 +58,15 @@
   <dd>MAVLink is part of the safety critical components of an unmanned air system. A bad communication link dropping many packets can endanger the flight safety of the aircraft and has to be monitored. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
   
   <dt>Why is CRC_EXTRA needed in the packet checksum?</dt>
-  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
+  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message
   (required because as a lightweight protocol, the message structure isn't included in the payload).
   <br><br>
-  In MAVLink 0.9 the CRC was not used (although there was a length check). 
-  There were a small number of cases where XML describing a message changed without changing the message length, 
+  In MAVLink 0.9 the CRC was not used (although there was a length check).
+  There were a small number of cases where XML describing a message changed without changing the message length,
   leading to badly corrupted fields when messages were read.</dd>
 
   <dt>I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?</dt>
-  <dd>Yes, but only very, very carefully with safety testing. 
+  <dd>Yes, but only very, very carefully with safety testing.
   <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. Please suggest new features on the MAVLink <a href="../index.md#support">support channels</a>.</dd>
 
   <dt>How can I further reduce the generated C library size?</dt>

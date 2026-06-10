@@ -13,7 +13,17 @@
     "docs:gen_alt_sidebar_ubuntu": "python3 ./scripts/gen_alt_sidebar.py",
     "docs:get_alt_sidebar_windows": "python ./scripts/gen_alt_sidebar.py",
     "start": "yarn docs:dev",
-    "linkcheck": "markdown_link_checker_sc -d en -i assets -toc SUMMARY.md"
+    "linkcheck": "markdown_link_checker_sc -d en -i assets -toc SUMMARY.md",
+    "lint": "markdownlint-cli2 'en/**/*.md' && prettier --check 'en/**/*.md' && cspell 'en/**/*.md' '!en/messages/**'",
+    "format": "prettier --write 'en/**/*.md' && markdownlint-cli2 --fix 'en/**/*.md'",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "en/**/*.md": [
+      "markdownlint-cli2 --fix",
+      "prettier --write",
+      "cspell --no-summary --no-progress"
+    ]
   },
   "dependencies": {
     "@red-asuka/vitepress-plugin-tabs": "^0.0.3",
@@ -23,5 +33,12 @@
     "open-editor": "^5.0.0",
     "vitepress": "^1.6.4",
     "vue3-tabs-component": "^1.3.7"
+  },
+  "devDependencies": {
+    "cspell": "^8.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "markdownlint-cli2": "^0.17.0",
+    "prettier": "^3.0.0"
   }
 }

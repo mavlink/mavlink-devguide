@@ -1,0 +1,38 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - "en/**"
+
+jobs:
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-markdownlint@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          markdownlint_flags: "en/**/*.md --ignore en/messages"
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci
+      - run: npx prettier --check "en/**/*.md"
+
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: streetsidesoftware/cspell-action@v6
+        with:
+          files: "en/**/*.md"
+          config: cspell.json
+          incremental_files_only: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}

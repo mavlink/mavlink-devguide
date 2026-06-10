@@ -49,4 +49,3 @@ The following definitions are used for testing and dialect validation:
 - [MAVLink-Standard Definitions](index.md)
 - [XSD schema](../guide/xml_schema.md)
 - [mavlink/message_definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/) - Source of all XML definition files
-

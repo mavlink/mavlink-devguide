@@ -26,11 +26,11 @@ The C library uses [MAVLINK_IFLAG_SIGNED](../guide/serialization.md#MAVLINK_IFLA
 
 The 13 bytes of the signature are:
 
-| Data                               | Description                                                                                                                                                                                                                                                                                 |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [linkID](#link_ids) (8&nbsp;bits)  | ID of link on which packet is sent. Normally this is the same as the _channel_.                                                                                                                                                                                                             |
+| Data                              | Description                                                                                                                                                                                                                                                                                 |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [linkID](#link_ids) (8&nbsp;bits) | ID of link on which packet is sent. Normally this is the same as the _channel_.                                                                                                                                                                                                             |
 | [timestamp](#timestamp) (48 bits) | Timestamp in 10 microsecond units since 1st January 2015 GMT time. This _must_ monotonically increase for every message on a particular [link](#link_ids). Note that means the timestamp may get ahead of the actual time if the packet rate averages more than 100,000 packets per second. |
-| [signature](#signature) (48 bits)  | A 48 bit signature for the packet, based on the complete packet, timestamp, and secret key.                                                                                                                                                                                                 |
+| [signature](#signature) (48 bits) | A 48 bit signature for the packet, based on the complete packet, timestamp, and secret key.                                                                                                                                                                                                 |
 
 See below for more information about the fields.
 

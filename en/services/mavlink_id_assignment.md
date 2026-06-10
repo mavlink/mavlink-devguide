@@ -31,7 +31,7 @@ Using these IDs may reduce the risk of component ID clashes in simple systems.
 Note however that it does not guarantee that there won't be clashes, and integrators should confirm that each ID is unique in the system.
 
 In a more complex MAVLink networks you may have multiple vehicles, so you will need to assign each vehicle a unique system id.
-Any components in the system will share that same  system ID, so you will need a way to change the associated components to match that same ID.
+Any components in the system will share that same system ID, so you will need a way to change the associated components to match that same ID.
 
 In a single system you may also have multiple components of the same type.
 In this case you will need to ensure that each has a unique component id.
