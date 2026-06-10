@@ -68,7 +68,7 @@ Information about a gimbal manager. This message should be requested by a ground
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-gimbal_id | `uint8_t` | | | Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.<br>Messages with same value are from the same source (instance). 
+gimbal_id | `uint8_t` | | | Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 device_cap_flags | `uint32_t` | | [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS) | Gimbal device capability flags. Same flags as reported by [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION). The flag is only 16 bit wide, but stored in 32 bit, for backwards compatibility (high word is zero). 
 manager_cap_flags | `uint32_t` | | [MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS](#MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS) | Gimbal manager capability flags. 
 roll_min | `float` | rad | invalid:NaN | Hardware minimum roll angle (positive: roll to the right). NaN if unknown. 
@@ -85,7 +85,7 @@ Message reporting the current status of a gimbal manager. This message should be
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-gimbal_id | `uint8_t` | | Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.<br>Messages with same value are from the same source (instance). 
+gimbal_id | `uint8_t` | | Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 supervisor | `uint8_t` | [MAV_STORM32_GIMBAL_MANAGER_CLIENT](#MAV_STORM32_GIMBAL_MANAGER_CLIENT) | Client who is currently supervisor (0 = none). 
 device_flags | `uint16_t` | [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS) | Gimbal device flags currently applied. Same flags as reported by [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS). 
 manager_flags | `uint16_t` | [MAV_STORM32_GIMBAL_MANAGER_FLAGS](#MAV_STORM32_GIMBAL_MANAGER_FLAGS) | Gimbal manager flags currently applied. 
@@ -100,7 +100,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
-gimbal_id | `uint8_t` | | | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.<br>Messages with same value are from the same source (instance). 
+gimbal_id | `uint8_t` | | | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 client | `uint8_t` | | [MAV_STORM32_GIMBAL_MANAGER_CLIENT](#MAV_STORM32_GIMBAL_MANAGER_CLIENT) | Client which is contacting the gimbal manager (must be set). 
 device_flags | `uint16_t` | | invalid:UINT16_MAX [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS) | Gimbal device flags to be applied (UINT16_MAX to be ignored). Same flags as used in [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE). 
 manager_flags | `uint16_t` | | invalid:0 [MAV_STORM32_GIMBAL_MANAGER_FLAGS](#MAV_STORM32_GIMBAL_MANAGER_FLAGS) | Gimbal manager flags to be applied (0 to be ignored). 
@@ -118,7 +118,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
-gimbal_id | `uint8_t` | | | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.<br>Messages with same value are from the same source (instance). 
+gimbal_id | `uint8_t` | | | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 client | `uint8_t` | | [MAV_STORM32_GIMBAL_MANAGER_CLIENT](#MAV_STORM32_GIMBAL_MANAGER_CLIENT) | Client which is contacting the gimbal manager (must be set). 
 device_flags | `uint16_t` | | invalid:UINT16_MAX [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS) | Gimbal device flags to be applied (UINT16_MAX to be ignored). Same flags as used in [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE). 
 manager_flags | `uint16_t` | | invalid:0 [MAV_STORM32_GIMBAL_MANAGER_FLAGS](#MAV_STORM32_GIMBAL_MANAGER_FLAGS) | Gimbal manager flags to be applied (0 to be ignored). 
@@ -136,7 +136,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
-gimbal_id | `uint8_t` | | | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.<br>Messages with same value are from the same source (instance). 
+gimbal_id | `uint8_t` | | | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 client | `uint8_t` | | [MAV_STORM32_GIMBAL_MANAGER_CLIENT](#MAV_STORM32_GIMBAL_MANAGER_CLIENT) | Client which is contacting the gimbal manager (must be set). 
 roll | `float` | rad | | Roll angle (positive to roll to the right). 
 

@@ -68,7 +68,7 @@ efi_mat | `float` | degC | Manifold Air Temperature.
 efi_clt | `float` | degC | Cylinder Head Temperature. 
 efi_tps | `float` | % | Throttle Position. 
 efi_exhaust_gas_temperature | `float` | degC | Exhaust gas temperature. 
-efi_index | `uint8_t` | | EFI index.<br>Messages with same value are from the same source (instance). 
+efi_index | `uint8_t` | | EFI index.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 generator_status | `uint16_t` | | Generator status. 
 efi_status | `uint16_t` | | EFI status. 
 

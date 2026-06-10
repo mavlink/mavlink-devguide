@@ -44,7 +44,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 73 | 252
-[Enums](#enumerated-types) | 46 | 174
+[Enums](#enumerated-types) | 45 | 175
 [Commands](#mav_commands) | 200 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -251,7 +251,9 @@ lat | `int32_t` | degE7 | Latitude.
 lng | `int32_t` | degE7 | Longitude. 
 
 
-### HWSTATUS (165) {#HWSTATUS}
+### HWSTATUS (165) — [DEP] {#HWSTATUS}
+
+<span class="warning">**DEPRECATED:** Replaced By [POWER_STATUS](#POWER_STATUS) (2022-09) — POWER_STATUS+SYS_STATUS form a superset of the fields in this message.)</span>
 
 Status of key hardware.
 
@@ -558,7 +560,7 @@ Reports progress of compass calibration.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-compass_id | `uint8_t` | | | Compass being calibrated.<br>Messages with same value are from the same source (instance). 
+compass_id | `uint8_t` | | | Compass being calibrated.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 cal_mask | `uint8_t` | | | Bitmask of compasses being calibrated. 
 cal_status | `uint8_t` | | [MAG_CAL_STATUS](#MAG_CAL_STATUS) | Calibration Status. 
 attempt | `uint8_t` | | | Attempt number. 
@@ -590,7 +592,7 @@ PID tuning information.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-axis | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>Messages with same value are from the same source (instance). 
+axis | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 desired | `float` | | Desired rate. 
 achieved | `float` | | Achieved rate. 
 FF | `float` | | FF component. 
@@ -825,7 +827,7 @@ Adaptive Controller tuning information.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-axis | `uint8_t` | | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>Messages with same value are from the same source (instance). 
+axis | `uint8_t` | | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 desired | `float` | deg/s | | Desired rate. 
 achieved | `float` | deg/s | | Achieved rate. 
 error | `float` | | | Error between model and vehicle. 
@@ -971,7 +973,7 @@ Field Name | Type | Units | Values | Description
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 sensor_type | `uint8_t` | | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Class id of the distance sensor type. 
 frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | Coordinate frame of reference. 
-obstacle_id | `uint16_t` | | | Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.<br>Messages with same value are from the same source (instance). 
+obstacle_id | `uint16_t` | | | Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 x | `float` | m | | X position of the obstacle. 
 y | `float` | m | | Y position of the obstacle. 
 z | `float` | m | | Z position of the obstacle. 
@@ -986,7 +988,7 @@ Water depth
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot) 
-id | `uint8_t` | | Onboard ID of the sensor<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | Onboard ID of the sensor<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 healthy | `uint8_t` | | Sensor data healthy (0=unhealthy, 1=healthy) 
 lat | `int32_t` | degE7 | Latitude 
 lng | `int32_t` | degE7 | Longitude 
@@ -1004,7 +1006,7 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-id | `uint8_t` | | MCU instance<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | MCU instance<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 MCU_temperature | `int16_t` | cdegC | MCU Internal temperature 
 MCU_voltage | `uint16_t` | mV | MCU voltage 
 MCU_voltage_min | `uint16_t` | mV | MCU voltage minimum 
@@ -1088,7 +1090,7 @@ Send a key-value pair as string. The use of this message is discouraged for norm
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 value | `char[64]` | | Value of the debug variable 
 
 
@@ -1106,14 +1108,6 @@ Value | Name | Description
 <a id='ACCELCAL_VEHICLE_POS_BACK'></a>6 | [ACCELCAL_VEHICLE_POS_BACK](#ACCELCAL_VEHICLE_POS_BACK) |  
 <a id='ACCELCAL_VEHICLE_POS_SUCCESS'></a>16777215 | [ACCELCAL_VEHICLE_POS_SUCCESS](#ACCELCAL_VEHICLE_POS_SUCCESS) |  
 <a id='ACCELCAL_VEHICLE_POS_FAILED'></a>16777216 | [ACCELCAL_VEHICLE_POS_FAILED](#ACCELCAL_VEHICLE_POS_FAILED) |  
-
-### HEADING_TYPE {#HEADING_TYPE}
-
-Value | Name | Description
---- | --- | ---
-<a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) |  
-<a id='HEADING_TYPE_HEADING'></a>1 | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING) |  
-<a id='HEADING_TYPE_DEFAULT'></a>2 | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT) |  
 
 ### SCRIPTING_CMD {#SCRIPTING_CMD}
 
@@ -1487,6 +1481,16 @@ Value | Name | Description
 <a id='PID_TUNING_ACCZ'></a>4 | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ) |  
 <a id='PID_TUNING_STEER'></a>5 | [PID_TUNING_STEER](#PID_TUNING_STEER) |  
 <a id='PID_TUNING_LANDING'></a>6 | [PID_TUNING_LANDING](#PID_TUNING_LANDING) |  
+<a id='PID_TUNING_WHEEL_LEFT'></a>7 | [PID_TUNING_WHEEL_LEFT](#PID_TUNING_WHEEL_LEFT) | Left wheel rate. 
+<a id='PID_TUNING_WHEEL_RIGHT'></a>8 | [PID_TUNING_WHEEL_RIGHT](#PID_TUNING_WHEEL_RIGHT) | Right wheel rate. 
+<a id='PID_TUNING_SAIL_HEEL'></a>9 | [PID_TUNING_SAIL_HEEL](#PID_TUNING_SAIL_HEEL) | Sailboat heel to mainsail. 
+<a id='PID_TUNING_VEL_NORTH'></a>10 | [PID_TUNING_VEL_NORTH](#PID_TUNING_VEL_NORTH) | Velocity north. 
+<a id='PID_TUNING_VEL_EAST'></a>11 | [PID_TUNING_VEL_EAST](#PID_TUNING_VEL_EAST) | Velocity east. 
+<a id='PID_TUNING_VEL_DOWN'></a>12 | [PID_TUNING_VEL_DOWN](#PID_TUNING_VEL_DOWN) | Velocity down. 
+<a id='PID_TUNING_POS_NORTH'></a>13 | [PID_TUNING_POS_NORTH](#PID_TUNING_POS_NORTH) | Position north. 
+<a id='PID_TUNING_POS_EAST'></a>14 | [PID_TUNING_POS_EAST](#PID_TUNING_POS_EAST) | Position east. 
+<a id='PID_TUNING_POS_DOWN'></a>15 | [PID_TUNING_POS_DOWN](#PID_TUNING_POS_DOWN) | Position down. 
+<a id='PID_TUNING_YAW_ANGLE'></a>16 | [PID_TUNING_YAW_ANGLE](#PID_TUNING_YAW_ANGLE) | Yaw angle. 
 
 ### MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS {#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS}
 
@@ -2117,21 +2121,6 @@ Param (Label) | Description | Values | Units
 5 | Empty |   |   
 6 | Empty |   |   
 7 (target alt) | Target Altitude |   | m 
-
-
-### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
-
-Change to target heading at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between it's previous heading and the new one. (affects GUIDED only. Exiting GUIDED returns aircraft to normal behaviour defined elsewhere. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
-
-Param (Label) | Description | Values | Units
---- | --- | --- | ---
-1 (heading type) | course-over-ground or raw vehicle heading. | [HEADING_TYPE](#HEADING_TYPE) |   
-2 (heading target) | Target heading. | min: 0 max: 359.99 | deg 
-3 (heading rate-of-change) | Maximum centripetal accelearation, ie rate of change,  toward new heading. |   | m/s/s 
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
 
 
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}

@@ -45,7 +45,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 73      | 252      |
-| [Enums](#enumerated-types) | 46      | 174      |
+| [Enums](#enumerated-types) | 45      | 175      |
 | [Commands](#mav_commands)  | 200     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -239,7 +239,9 @@ Status of simulation environment, if used.
 | lat        | `int32_t` | degE7 | Latitude.                    |
 | lng        | `int32_t` | degE7 | Longitude.                   |
 
-### HWSTATUS (165) {#HWSTATUS}
+### HWSTATUS (165) — [DEP] {#HWSTATUS}
+
+<span class="warning">**DEPRECATED:** Replaced By [POWER_STATUS](#POWER_STATUS) (2022-09) — POWER_STATUS+SYS_STATUS form a superset of the fields in this message.)</span>
 
 Status of key hardware.
 
@@ -522,17 +524,17 @@ Control vehicle LEDs.
 
 Reports progress of compass calibration.
 
-| Field Name                           | Type          | Units | 值                                                                           | 描述                                                                                                                                                                                   |
-| ------------------------------------ | ------------- | ----- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| compass_id      | `uint8_t`     |       |                                                                             | Compass being calibrated.<br>Messages with same value are from the same source (instance).                                        |
-| cal_mask        | `uint8_t`     |       |                                                                             | Bitmask of compasses being calibrated.                                                                                                                               |
-| cal_status      | `uint8_t`     |       | [MAG_CAL_STATUS](#MAG_CAL_STATUS) | Calibration Status.                                                                                                                                                  |
-| attempt                              | `uint8_t`     |       |                                                                             | Attempt number.                                                                                                                                                      |
-| completion_pct  | `uint8_t`     | %     |                                                                             | Completion percentage.                                                                                                                                               |
-| completion_mask | `uint8_t[10]` |       |                                                                             | Bitmask of sphere sections (see http://en.wikipedia.org/wiki/Geodesic_grid). |
-| direction_x     | `float`       |       |                                                                             | Body frame direction vector for display.                                                                                                                             |
-| direction_y     | `float`       |       |                                                                             | Body frame direction vector for display.                                                                                                                             |
-| direction_z     | `float`       |       |                                                                             | Body frame direction vector for display.                                                                                                                             |
+| Field Name                           | Type          | Units | 值                                                                           | 描述                                                                                                                                                                                                                                            |
+| ------------------------------------ | ------------- | ----- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| compass_id      | `uint8_t`     |       |                                                                             | Compass being calibrated.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| cal_mask        | `uint8_t`     |       |                                                                             | Bitmask of compasses being calibrated.                                                                                                                                                                                        |
+| cal_status      | `uint8_t`     |       | [MAG_CAL_STATUS](#MAG_CAL_STATUS) | Calibration Status.                                                                                                                                                                                                           |
+| attempt                              | `uint8_t`     |       |                                                                             | Attempt number.                                                                                                                                                                                                               |
+| completion_pct  | `uint8_t`     | %     |                                                                             | Completion percentage.                                                                                                                                                                                                        |
+| completion_mask | `uint8_t[10]` |       |                                                                             | Bitmask of sphere sections (see http://en.wikipedia.org/wiki/Geodesic_grid).                                                          |
+| direction_x     | `float`       |       |                                                                             | Body frame direction vector for display.                                                                                                                                                                                      |
+| direction_y     | `float`       |       |                                                                             | Body frame direction vector for display.                                                                                                                                                                                      |
+| direction_z     | `float`       |       |                                                                             | Body frame direction vector for display.                                                                                                                                                                                      |
 
 ### EKF_STATUS_REPORT (193) {#EKF_STATUS_REPORT}
 
@@ -552,17 +554,17 @@ EKF Status message including flags and variances.
 
 PID tuning information.
 
-| Field Name                                                            | Type      | 值                                                                             | 描述                                                                                                                        |
-| --------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| axis                                                                  | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>Messages with same value are from the same source (instance). |
-| desired                                                               | `float`   |                                                                               | Desired rate.                                                                                             |
-| achieved                                                              | `float`   |                                                                               | Achieved rate.                                                                                            |
-| FF                                                                    | `float`   |                                                                               | FF component.                                                                                             |
-| P                                                                     | `float`   |                                                                               | P component.                                                                                              |
-| I                                                                     | `float`   |                                                                               | I component.                                                                                              |
-| D                                                                     | `float`   |                                                                               | D component.                                                                                              |
-| <span class='ext'>SRate</span> <a href='#mav2_extension_field'>++</a> | `float`   |                                                                               | Slew rate.                                                                                                |
-| <span class='ext'>PDmod</span> <a href='#mav2_extension_field'>++</a> | `float`   |                                                                               | P/D oscillation modifier.                                                                                 |
+| Field Name                                                            | Type      | 值                                                                             | 描述                                                                                                                                                                                                                        |
+| --------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| axis                                                                  | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| desired                                                               | `float`   |                                                                               | Desired rate.                                                                                                                                                                                             |
+| achieved                                                              | `float`   |                                                                               | Achieved rate.                                                                                                                                                                                            |
+| FF                                                                    | `float`   |                                                                               | FF component.                                                                                                                                                                                             |
+| P                                                                     | `float`   |                                                                               | P component.                                                                                                                                                                                              |
+| I                                                                     | `float`   |                                                                               | I component.                                                                                                                                                                                              |
+| D                                                                     | `float`   |                                                                               | D component.                                                                                                                                                                                              |
+| <span class='ext'>SRate</span> <a href='#mav2_extension_field'>++</a> | `float`   |                                                                               | Slew rate.                                                                                                                                                                                                |
+| <span class='ext'>PDmod</span> <a href='#mav2_extension_field'>++</a> | `float`   |                                                                               | P/D oscillation modifier.                                                                                                                                                                                 |
 
 ### DEEPSTALL (195) {#DEEPSTALL}
 
@@ -770,21 +772,21 @@ Reply from secure command.
 
 Adaptive Controller tuning information.
 
-| Field Name                     | Type      | Units | 值                                                                             | 描述                                                                                                                        |
-| ------------------------------ | --------- | ----- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| axis                           | `uint8_t` |       | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>Messages with same value are from the same source (instance). |
-| desired                        | `float`   | deg/s |                                                                               | Desired rate.                                                                                             |
-| achieved                       | `float`   | deg/s |                                                                               | Achieved rate.                                                                                            |
-| error                          | `float`   |       |                                                                               | Error between model and vehicle.                                                                          |
-| theta                          | `float`   |       |                                                                               | Theta estimated state predictor.                                                                          |
-| omega                          | `float`   |       |                                                                               | Omega estimated state predictor.                                                                          |
-| sigma                          | `float`   |       |                                                                               | Sigma estimated state predictor.                                                                          |
-| theta_dot | `float`   |       |                                                                               | Theta derivative.                                                                                         |
-| omega_dot | `float`   |       |                                                                               | Omega derivative.                                                                                         |
-| sigma_dot | `float`   |       |                                                                               | Sigma derivative.                                                                                         |
-| f                              | `float`   |       |                                                                               | Projection operator value.                                                                                |
-| f_dot     | `float`   |       |                                                                               | Projection operator derivative.                                                                           |
-| u                              | `float`   |       |                                                                               | u adaptive controlled output command.                                                                     |
+| Field Name                     | Type      | Units | 值                                                                             | 描述                                                                                                                                                                                                                        |
+| ------------------------------ | --------- | ----- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| axis                           | `uint8_t` |       | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| desired                        | `float`   | deg/s |                                                                               | Desired rate.                                                                                                                                                                                             |
+| achieved                       | `float`   | deg/s |                                                                               | Achieved rate.                                                                                                                                                                                            |
+| error                          | `float`   |       |                                                                               | Error between model and vehicle.                                                                                                                                                                          |
+| theta                          | `float`   |       |                                                                               | Theta estimated state predictor.                                                                                                                                                                          |
+| omega                          | `float`   |       |                                                                               | Omega estimated state predictor.                                                                                                                                                                          |
+| sigma                          | `float`   |       |                                                                               | Sigma estimated state predictor.                                                                                                                                                                          |
+| theta_dot | `float`   |       |                                                                               | Theta derivative.                                                                                                                                                                                         |
+| omega_dot | `float`   |       |                                                                               | Omega derivative.                                                                                                                                                                                         |
+| sigma_dot | `float`   |       |                                                                               | Sigma derivative.                                                                                                                                                                                         |
+| f                              | `float`   |       |                                                                               | Projection operator value.                                                                                                                                                                                |
+| f_dot     | `float`   |       |                                                                               | Projection operator derivative.                                                                                                                                                                           |
+| u                              | `float`   |       |                                                                               | u adaptive controlled output command.                                                                                                                                                                     |
 
 ### VISION_POSITION_DELTA (11011) {#VISION_POSITION_DELTA}
 
@@ -903,47 +905,47 @@ Read configured OSD parameter reply.
 
 Obstacle located as a 3D vector.
 
-| Field Name                                             | Type       | Units | 值                                                                                     | 描述                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| time_boot_ms | `uint32_t` | ms    |                                                                                       | Timestamp (time since system boot).                                                                                                                                                                                                                         |
-| sensor_type                       | `uint8_t`  |       | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Class id of the distance sensor type.                                                                                                                                                                                                                                          |
-| frame                                                  | `uint8_t`  |       | [MAV_FRAME](#MAV_FRAME)                                          | Coordinate frame of reference.                                                                                                                                                                                                                                                 |
-| obstacle_id                       | `uint16_t` |       |                                                                                       | Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.<br>Messages with same value are from the same source (instance). |
-| x                                                      | `float`    | m     |                                                                                       | X position of the obstacle.                                                                                                                                                                                                                                                    |
-| y                                                      | `float`    | m     |                                                                                       | Y position of the obstacle.                                                                                                                                                                                                                                                    |
-| z                                                      | `float`    | m     |                                                                                       | Z position of the obstacle.                                                                                                                                                                                                                                                    |
-| min_distance                      | `float`    | m     |                                                                                       | Minimum distance the sensor can measure.                                                                                                                                                                                                                                       |
-| max_distance                      | `float`    | m     |                                                                                       | Maximum distance the sensor can measure.                                                                                                                                                                                                                                       |
+| Field Name                                             | Type       | Units | 值                                                                                     | 描述                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time_boot_ms | `uint32_t` | ms    |                                                                                       | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                         |
+| sensor_type                       | `uint8_t`  |       | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Class id of the distance sensor type.                                                                                                                                                                                                                                                                                                                                          |
+| frame                                                  | `uint8_t`  |       | [MAV_FRAME](#MAV_FRAME)                                          | Coordinate frame of reference.                                                                                                                                                                                                                                                                                                                                                 |
+| obstacle_id                       | `uint16_t` |       |                                                                                       | Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| x                                                      | `float`    | m     |                                                                                       | X position of the obstacle.                                                                                                                                                                                                                                                                                                                                                    |
+| y                                                      | `float`    | m     |                                                                                       | Y position of the obstacle.                                                                                                                                                                                                                                                                                                                                                    |
+| z                                                      | `float`    | m     |                                                                                       | Z position of the obstacle.                                                                                                                                                                                                                                                                                                                                                    |
+| min_distance                      | `float`    | m     |                                                                                       | Minimum distance the sensor can measure.                                                                                                                                                                                                                                                                                                                                       |
+| max_distance                      | `float`    | m     |                                                                                       | Maximum distance the sensor can measure.                                                                                                                                                                                                                                                                                                                                       |
 
 ### WATER_DEPTH (11038) {#WATER_DEPTH}
 
 Water depth
 
-| Field Name                                             | Type       | Units | 描述                                                                                                                           |
-| ------------------------------------------------------ | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------- |
-| time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot)                                                                        |
-| id                                                     | `uint8_t`  |       | Onboard ID of the sensor<br>Messages with same value are from the same source (instance). |
-| healthy                                                | `uint8_t`  |       | Sensor data healthy (0=unhealthy, 1=healthy)                                                              |
-| lat                                                    | `int32_t`  | degE7 | Latitude                                                                                                                     |
-| lng                                                    | `int32_t`  | degE7 | Longitude                                                                                                                    |
-| alt                                                    | `float`    | m     | Altitude (MSL) of vehicle                                                                                 |
-| roll                                                   | `float`    | rad   | Roll angle                                                                                                                   |
-| 俯仰角                                                    | `float`    | rad   | Pitch angle                                                                                                                  |
-| yaw                                                    | `float`    | rad   | Yaw angle                                                                                                                    |
-| distance                                               | `float`    | m     | Distance (uncorrected)                                                                                    |
-| temperature                                            | `float`    | degC  | Water temperature                                                                                                            |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                                                           |
+| ------------------------------------------------------ | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot)                                                                                                                                                                        |
+| id                                                     | `uint8_t`  |       | Onboard ID of the sensor<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| healthy                                                | `uint8_t`  |       | Sensor data healthy (0=unhealthy, 1=healthy)                                                                                                                                                              |
+| lat                                                    | `int32_t`  | degE7 | Latitude                                                                                                                                                                                                                     |
+| lng                                                    | `int32_t`  | degE7 | Longitude                                                                                                                                                                                                                    |
+| alt                                                    | `float`    | m     | Altitude (MSL) of vehicle                                                                                                                                                                                 |
+| roll                                                   | `float`    | rad   | Roll angle                                                                                                                                                                                                                   |
+| 俯仰角                                                    | `float`    | rad   | Pitch angle                                                                                                                                                                                                                  |
+| yaw                                                    | `float`    | rad   | Yaw angle                                                                                                                                                                                                                    |
+| distance                                               | `float`    | m     | Distance (uncorrected)                                                                                                                                                                                    |
+| temperature                                            | `float`    | degC  | Water temperature                                                                                                                                                                                                            |
 
 ### MCU_STATUS (11039) {#MCU_STATUS}
 
 The MCU status, giving MCU temperature and voltage. The min and max voltages are to allow for detecting power supply instability.
 
-| Field Name                                                | Type       | Units | 描述                                                                                                               |
-| --------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------- |
-| id                                                        | `uint8_t`  |       | MCU instance<br>Messages with same value are from the same source (instance). |
-| MCU_temperature                      | `int16_t`  | cdegC | MCU Internal temperature                                                                                         |
-| MCU_voltage                          | `uint16_t` | mV    | MCU voltage                                                                                                      |
-| MCU_voltage_min | `uint16_t` | mV    | MCU voltage minimum                                                                                              |
-| MCU_voltage_max | `uint16_t` | mV    | MCU voltage maximum                                                                                              |
+| Field Name                                                | Type       | Units | 描述                                                                                                                                                                                                               |
+| --------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                                                        | `uint8_t`  |       | MCU instance<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| MCU_temperature                      | `int16_t`  | cdegC | MCU Internal temperature                                                                                                                                                                                         |
+| MCU_voltage                          | `uint16_t` | mV    | MCU voltage                                                                                                                                                                                                      |
+| MCU_voltage_min | `uint16_t` | mV    | MCU voltage minimum                                                                                                                                                                                              |
+| MCU_voltage_max | `uint16_t` | mV    | MCU voltage maximum                                                                                                                                                                                              |
 
 ### ESC_TELEMETRY_13_TO_16 (11040) {#ESC_TELEMETRY_13_TO_16}
 
@@ -1014,11 +1016,11 @@ ESC Telemetry Data for ESCs 29 to 32, matching data sent by BLHeli ESCs.
 
 Send a key-value pair as string. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.
 
-| Field Name                                             | Type        | Units | 描述                                                                                                                             |
-| ------------------------------------------------------ | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------ |
-| time_boot_ms | `uint32_t`  | ms    | Timestamp (time since system boot).                                                         |
-| name                                                   | `charr[10]` |       | Name of the debug variable<br>Messages with same value are from the same source (instance). |
-| value                                                  | `char[64]`  |       | Value of the debug variable                                                                                                    |
+| Field Name                                             | Type        | Units | 描述                                                                                                                                                                                                                             |
+| ------------------------------------------------------ | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| time_boot_ms | `uint32_t`  | ms    | Timestamp (time since system boot).                                                                                                                                                         |
+| name                                                   | `charr[10]` |       | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| value                                                  | `char[64]`  |       | Value of the debug variable                                                                                                                                                                                                    |
 
 ## Enumerated Types
 
@@ -1034,14 +1036,6 @@ Send a key-value pair as string. The use of this message is discouraged for norm
 | <a id='ACCELCAL_VEHICLE_POS_BACK'></a>6           | [ACCELCAL_VEHICLE_POS_BACK](#ACCELCAL_VEHICLE_POS_BACK)         |    |
 | <a id='ACCELCAL_VEHICLE_POS_SUCCESS'></a>16777215 | [ACCELCAL_VEHICLE_POS_SUCCESS](#ACCELCAL_VEHICLE_POS_SUCCESS)   |    |
 | <a id='ACCELCAL_VEHICLE_POS_FAILED'></a>16777216  | [ACCELCAL_VEHICLE_POS_FAILED](#ACCELCAL_VEHICLE_POS_FAILED)     |    |
-
-### HEADING_TYPE {#HEADING_TYPE}
-
-| 值                                             | Name                                                                                                                                                    | 描述 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
-| <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) |    |
-| <a id='HEADING_TYPE_HEADING'></a>1            | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                                                                 |    |
-| <a id='HEADING_TYPE_DEFAULT'></a>2            | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT)                                                                 |    |
 
 ### SCRIPTING_CMD {#SCRIPTING_CMD}
 
@@ -1407,14 +1401,24 @@ Flags in [RALLY_POINT](#RALLY_POINT) message.
 
 ### PID_TUNING_AXIS {#PID_TUNING_AXIS}
 
-| 值                                | Name                                                                                | 描述 |
-| -------------------------------- | ----------------------------------------------------------------------------------- | -- |
-| <a id='PID_TUNING_ROLL'></a>1    | [PID_TUNING_ROLL](#PID_TUNING_ROLL)       |    |
-| <a id='PID_TUNING_PITCH'></a>2   | [PID_TUNING_PITCH](#PID_TUNING_PITCH)     |    |
-| <a id='PID_TUNING_YAW'></a>3     | [PID_TUNING_YAW](#PID_TUNING_YAW)         |    |
-| <a id='PID_TUNING_ACCZ'></a>4    | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ)       |    |
-| <a id='PID_TUNING_STEER'></a>5   | [PID_TUNING_STEER](#PID_TUNING_STEER)     |    |
-| <a id='PID_TUNING_LANDING'></a>6 | [PID_TUNING_LANDING](#PID_TUNING_LANDING) |    |
+| 值                                    | Name                                                                                                             | 描述                                         |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| <a id='PID_TUNING_ROLL'></a>1        | [PID_TUNING_ROLL](#PID_TUNING_ROLL)                                    |                                            |
+| <a id='PID_TUNING_PITCH'></a>2       | [PID_TUNING_PITCH](#PID_TUNING_PITCH)                                  |                                            |
+| <a id='PID_TUNING_YAW'></a>3         | [PID_TUNING_YAW](#PID_TUNING_YAW)                                      |                                            |
+| <a id='PID_TUNING_ACCZ'></a>4        | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ)                                    |                                            |
+| <a id='PID_TUNING_STEER'></a>5       | [PID_TUNING_STEER](#PID_TUNING_STEER)                                  |                                            |
+| <a id='PID_TUNING_LANDING'></a>6     | [PID_TUNING_LANDING](#PID_TUNING_LANDING)                              |                                            |
+| <a id='PID_TUNING_WHEEL_LEFT'></a>7  | [PID_TUNING_WHEEL_LEFT](#PID_TUNING_WHEEL_LEFT)   | Left wheel rate.           |
+| <a id='PID_TUNING_WHEEL_RIGHT'></a>8 | [PID_TUNING_WHEEL_RIGHT](#PID_TUNING_WHEEL_RIGHT) | Right wheel rate.          |
+| <a id='PID_TUNING_SAIL_HEEL'></a>9   | [PID_TUNING_SAIL_HEEL](#PID_TUNING_SAIL_HEEL)     | Sailboat heel to mainsail. |
+| <a id='PID_TUNING_VEL_NORTH'></a>10  | [PID_TUNING_VEL_NORTH](#PID_TUNING_VEL_NORTH)     | Velocity north.            |
+| <a id='PID_TUNING_VEL_EAST'></a>11   | [PID_TUNING_VEL_EAST](#PID_TUNING_VEL_EAST)       | Velocity east.             |
+| <a id='PID_TUNING_VEL_DOWN'></a>12   | [PID_TUNING_VEL_DOWN](#PID_TUNING_VEL_DOWN)       | Velocity down.             |
+| <a id='PID_TUNING_POS_NORTH'></a>13  | [PID_TUNING_POS_NORTH](#PID_TUNING_POS_NORTH)     | Position north.            |
+| <a id='PID_TUNING_POS_EAST'></a>14   | [PID_TUNING_POS_EAST](#PID_TUNING_POS_EAST)       | Position east.             |
+| <a id='PID_TUNING_POS_DOWN'></a>15   | [PID_TUNING_POS_DOWN](#PID_TUNING_POS_DOWN)       | Position down.             |
+| <a id='PID_TUNING_YAW_ANGLE'></a>16  | [PID_TUNING_YAW_ANGLE](#PID_TUNING_YAW_ANGLE)     | Yaw angle.                 |
 
 ### MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS {#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS}
 
@@ -2016,20 +2020,6 @@ Change target altitude at a given rate. This slews the vehicle at a controllable
 | 5                                         | Empty                                                                                                                                                                                               |                        |       |
 | 6                                         | Empty                                                                                                                                                                                               |                        |       |
 | 7 (target alt)         | Target Altitude                                                                                                                                                                                     |                        | m     |
-
-### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
-
-Change to target heading at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between it's previous heading and the new one. (affects GUIDED only. Exiting GUIDED returns aircraft to normal behaviour defined elsewhere. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
-
-| Param (Label)              | 描述                                                                                         | 值                                                                  | Units |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ----- |
-| 1 (heading type)           | course-over-ground or raw vehicle heading.                                 | [HEADING_TYPE](#HEADING_TYPE)                 |       |
-| 2 (heading target)         | Target heading.                                                            | min: 0 max: 359.99 | 度     |
-| 3 (heading rate-of-change) | Maximum centripetal accelearation, ie rate of change,  toward new heading. |                                                                    | m/s/s |
-| 4                                             | Empty                                                                                      |                                                                    |       |
-| 5                                             | Empty                                                                                      |                                                                    |       |
-| 6                                             | Empty                                                                                      |                                                                    |       |
-| 7                                             | Empty                                                                                      |                                                                    |       |
 
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
 

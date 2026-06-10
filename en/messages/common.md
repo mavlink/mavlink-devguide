@@ -38,8 +38,8 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 231 | 3
-[Enums](#enumerated-types) | 149 | 9
-[Commands](#mav_commands) | 167 | 0
+[Enums](#enumerated-types) | 150 | 9
+[Commands](#mav_commands) | 168 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -69,9 +69,9 @@ onboard_control_sensors_present | `uint32_t` | | [MAV_SYS_STATUS_SENSOR](#MAV_SY
 onboard_control_sensors_enabled | `uint32_t` | | [MAV_SYS_STATUS_SENSOR](#MAV_SYS_STATUS_SENSOR) | Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. 
 onboard_control_sensors_health | `uint32_t` | | [MAV_SYS_STATUS_SENSOR](#MAV_SYS_STATUS_SENSOR) | Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy. 
 load | `uint16_t` | d% | | Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000 
-voltage_battery | `uint16_t` | mV | invalid:UINT16_MAX | Battery voltage, UINT16_MAX: Voltage not sent by autopilot 
-current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: Current not sent by autopilot 
-battery_remaining | `int8_t` | % | invalid:-1 | Battery energy remaining, -1: Battery remaining energy not sent by autopilot 
+voltage_battery | `uint16_t` | mV | invalid:UINT16_MAX | Battery voltage, UINT16_MAX: Voltage not sent by autopilot. Value is ambiguous on multi-battery systems. [BATTERY_STATUS](#BATTERY_STATUS) is a recommended alternative. 
+current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: Current not sent by autopilot. Value may overflow/rollover for very high currents (> 327.67A). Value is ambiguous on multi-battery systems. [BATTERY_STATUS](#BATTERY_STATUS) is a recommended alternative. 
+battery_remaining | `int8_t` | % | invalid:-1 | Battery energy remaining, -1: Battery remaining energy not sent by autopilot. Value is ambiguous on multi-battery systems. [BATTERY_STATUS](#BATTERY_STATUS) is a recommended alternative. 
 drop_rate_comm | `uint16_t` | c% | | Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV) 
 errors_comm | `uint16_t` | | | Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV) 
 errors_count1 | `uint16_t` | | | Autopilot-specific errors 
@@ -98,7 +98,9 @@ time_unix_usec | `uint64_t` | us | Timestamp (UNIX epoch time).
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
 
 
-### PING (4) {#PING}
+### PING (4) — [SUP] {#PING}
+
+<span class="warning">**SUPERSEDED:** Replaced By TIMESYNC (2011-08) — To be removed / merged with TIMESYNC)</span>
 
 A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html
 
@@ -163,14 +165,16 @@ messages_received | `uint32_t` | | Messages received (estimated from counting se
 messages_lost | `uint32_t` | | Messages lost (estimated from counting seq) 
 
 
-### SET_MODE (11) {#SET_MODE}
+### SET_MODE (11) — [SUP] {#SET_MODE}
 
-Set the system mode, as defined by enum [MAV_MODE](#MAV_MODE). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) (2015-12) — Use [COMMAND_LONG](#COMMAND_LONG) with [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) instead)</span>
+
+Set the system mode, as defined by enum [MAV_MODE_FLAG](#MAV_MODE_FLAG). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
 target_system | `uint8_t` | | The system setting the mode 
-base_mode | `uint8_t` | [MAV_MODE](#MAV_MODE) | The new base mode. 
+base_mode | `uint8_t` | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | The new base mode. 
 custom_mode | `uint32_t` | | The new autopilot-specific mode. This field can be ignored by an autopilot. 
 
 
@@ -299,7 +303,7 @@ zgyro | `int16_t` | | Angular speed around Z axis (raw)
 xmag | `int16_t` | | X Magnetic field (raw) 
 ymag | `int16_t` | | Y Magnetic field (raw) 
 zmag | `int16_t` | | Z Magnetic field (raw) 
-<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>Messages with same value are from the same source (instance). 
+<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 <span class='ext'>temperature</span> <a href='#mav2_extension_field'>++</a> | `int16_t` | cdegC | Temperature, 0: IMU does not provide temperature values. If the IMU is at 0C it must send 1 (0.01C). 
 
 
@@ -438,7 +442,7 @@ Superseded by [ACTUATOR_OUTPUT_STATUS](#ACTUATOR_OUTPUT_STATUS). The RAW values 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint32_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-port | `uint8_t` | | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.<br>Messages with same value are from the same source (instance). 
+port | `uint8_t` | | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 servo1_raw | `uint16_t` | us | Servo output 1 value 
 servo2_raw | `uint16_t` | us | Servo output 2 value 
 servo3_raw | `uint16_t` | us | Servo output 3 value 
@@ -525,7 +529,9 @@ seq | `uint16_t` | | Sequence
 <span class='ext'>mission_type</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE) | Mission type. 
 
 
-### MISSION_SET_CURRENT (41) {#MISSION_SET_CURRENT}
+### MISSION_SET_CURRENT (41) — [SUP] {#MISSION_SET_CURRENT}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) (2022-08)</span>
 
 Set the mission item with sequence number seq as the current item and emit [MISSION_CURRENT](#MISSION_CURRENT) (whether or not the mission number changed).
 If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.
@@ -616,7 +622,9 @@ type | `uint8_t` | [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) | Mission result.
 <span class='ext'>opaque_id</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | invalid:0 | Id of new on-vehicle mission, fence, or rally point plan (on upload to vehicle).<br>The id is calculated and returned by a vehicle when a new plan is uploaded by a GCS.<br>The only requirement on the id is that it must change when there is any change to the on-vehicle plan type (there is no requirement that the id be globally unique).<br>0 on download from the vehicle to the GCS (on download the ID is set in [MISSION_COUNT](#MISSION_COUNT)).<br>0 if plan ids are not supported.<br>The current on-vehicle plan ids are streamed in `[MISSION_CURRENT](#MISSION_CURRENT)`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded. 
 
 
-### SET_GPS_GLOBAL_ORIGIN (48) {#SET_GPS_GLOBAL_ORIGIN}
+### SET_GPS_GLOBAL_ORIGIN (48) — [SUP] {#SET_GPS_GLOBAL_ORIGIN}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_GLOBAL_ORIGIN](#MAV_CMD_DO_SET_GLOBAL_ORIGIN) (2025-04)</span>
 
 Sets the GPS coordinates of the vehicle local origin (0,0,0) position. Vehicle should emit [GPS_GLOBAL_ORIGIN](#GPS_GLOBAL_ORIGIN) irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.
 
@@ -799,7 +807,9 @@ chan18_raw | `uint16_t` | us | RC channel 18 value.
 rssi | `uint8_t` | | Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown. 
 
 
-### REQUEST_DATA_STREAM (66) {#REQUEST_DATA_STREAM}
+### REQUEST_DATA_STREAM (66) — [SUP] {#REQUEST_DATA_STREAM}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL)  (2015-08)</span>
 
 Request a data stream.
 
@@ -812,7 +822,9 @@ req_message_rate | `uint16_t` | Hz | | The requested message rate
 start_stop | `uint8_t` | | | 1 to start sending, 0 to stop sending. 
 
 
-### DATA_STREAM (67) {#DATA_STREAM}
+### DATA_STREAM (67) — [SUP] {#DATA_STREAM}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) (2015-08)</span>
 
 Data stream status information.
 
@@ -1138,7 +1150,9 @@ pitch | `float` | rad | Pitch
 yaw | `float` | rad | Yaw 
 
 
-### HIL_STATE (90) {#HIL_STATE}
+### HIL_STATE (90) — [SUP] {#HIL_STATE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [HIL_STATE_QUATERNION](#HIL_STATE_QUATERNION) (2013-07) — Suffers from missing airspeed fields and singularities due to Euler angles)</span>
 
 Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.
 
@@ -1318,7 +1332,7 @@ diff_pressure | `float` | hPa | | Differential pressure
 pressure_alt | `float` | | | Altitude calculated from pressure 
 temperature | `float` | degC | | Temperature 
 fields_updated | `uint16_t` | | [HIGHRES_IMU_UPDATED_FLAGS](#HIGHRES_IMU_UPDATED_FLAGS) | Bitmap for fields that have updated since last message 
-<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>Messages with same value are from the same source (instance). 
+<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | | Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 
 
 ### OPTICAL_FLOW_RAD (106) {#OPTICAL_FLOW_RAD}
@@ -1328,7 +1342,7 @@ Optical flow from an angular rate flow sensor (e.g. PX4FLOW or mouse sensor)
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-sensor_id | `uint8_t` | | Sensor ID<br>Messages with same value are from the same source (instance). 
+sensor_id | `uint8_t` | | Sensor ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 integration_time_us | `uint32_t` | us | Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the. 
 integrated_x | `float` | rad | Flow around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.) 
 integrated_y | `float` | rad | Flow around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.) 
@@ -1616,7 +1630,9 @@ target_system | `uint8_t` | System ID
 target_component | `uint8_t` | Component ID 
 
 
-### GPS_INJECT_DATA (123) {#GPS_INJECT_DATA}
+### GPS_INJECT_DATA (123) — [SUP] {#GPS_INJECT_DATA}
+
+<span class="warning">**SUPERSEDED:** Replaced By [GPS_RTCM_DATA](#GPS_RTCM_DATA) (2022-05)</span>
 
 Data for injecting into the onboard GPS (used for DGPS)
 
@@ -1778,7 +1794,7 @@ min_distance | `uint16_t` | cm | | Minimum distance the sensor can measure
 max_distance | `uint16_t` | cm | | Maximum distance the sensor can measure 
 current_distance | `uint16_t` | cm | | Current distance reading 
 type | `uint8_t` | | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Type of distance sensor. 
-id | `uint8_t` | | | Onboard ID of the sensor<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Onboard ID of the sensor<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 orientation | `uint8_t` | | [MAV_SENSOR_ORIENTATION](#MAV_SENSOR_ORIENTATION) | Direction the sensor faces. downward-facing: [ROTATION_PITCH_270](#ROTATION_PITCH_270), upward-facing: [ROTATION_PITCH_90](#ROTATION_PITCH_90), backward-facing: [ROTATION_PITCH_180](#ROTATION_PITCH_180), forward-facing: [ROTATION_NONE](#ROTATION_NONE), left-facing: [ROTATION_YAW_90](#ROTATION_YAW_90), right-facing: [ROTATION_YAW_270](#ROTATION_YAW_270) 
 covariance | `uint8_t` | cm^2 | invalid:UINT8_MAX | Measurement variance. Max standard deviation is 6cm. UINT8_MAX if unknown. 
 <span class='ext'>horizontal_fov</span> <a href='#mav2_extension_field'>++</a> | `float` | rad | invalid:0 | Horizontal Field of View (angle) where the distance measurement is valid and the field of view is known. Otherwise this is set to 0. 
@@ -1979,12 +1995,12 @@ Battery information. Updates GCS with flight controller battery status. Smart ba
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery 
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery 
 temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature of the battery. INT16_MAX for unknown temperature. 
 voltages | `uint16_t[10]` | mV | invalid:[UINT16_MAX] | Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1). 
-current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: autopilot does not measure the current 
+current_battery | `int16_t` | cA | invalid:-1 | Battery current, -1: autopilot does not measure the current. Value may overflow/rollover for very high currents (> 327.67A) 
 current_consumed | `int32_t` | mAh | invalid:-1 | Consumed charge, -1: autopilot does not provide consumption estimate 
 energy_consumed | `int32_t` | hJ | invalid:-1 | Consumed energy, -1: autopilot does not provide energy consumption estimate 
 battery_remaining | `int8_t` | % | invalid:-1 | Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery. 
@@ -2056,7 +2072,7 @@ Reports results of completed compass calibration. Sent until [MAG_CAL_ACK](#MAG_
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-compass_id | `uint8_t` | | | Compass being calibrated.<br>Messages with same value are from the same source (instance). 
+compass_id | `uint8_t` | | | Compass being calibrated.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 cal_mask | `uint8_t` | | | Bitmask of compasses being calibrated. 
 cal_status | `uint8_t` | | [MAG_CAL_STATUS](#MAG_CAL_STATUS) | Calibration Status. 
 autosaved | `uint8_t` | | | 0=requires a [MAV_CMD_DO_ACCEPT_MAG_CAL](#MAV_CMD_DO_ACCEPT_MAG_CAL), 1=saved to parameters. 
@@ -2145,7 +2161,7 @@ GPS sensor input message.  This is a raw sensor value sent by the GPS. This is N
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-gps_id | `uint8_t` | | | ID of the GPS for multiple GPS inputs<br>Messages with same value are from the same source (instance). 
+gps_id | `uint8_t` | | | ID of the GPS for multiple GPS inputs<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 ignore_flags | `uint16_t` | | [GPS_INPUT_IGNORE_FLAGS](#GPS_INPUT_IGNORE_FLAGS) | Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided. 
 time_week_ms | `uint32_t` | ms | | GPS time (from start of GPS week) 
 time_week | `uint16_t` | | | GPS week number 
@@ -2176,7 +2192,9 @@ len | `uint8_t` | bytes | data length
 data | `uint8_t[180]` | | RTCM message (may be fragmented) 
 
 
-### HIGH_LATENCY (234) {#HIGH_LATENCY}
+### HIGH_LATENCY (234) — [SUP] {#HIGH_LATENCY}
+
+<span class="warning">**SUPERSEDED:** Replaced By [HIGH_LATENCY2](#HIGH_LATENCY2) (2020-10)</span>
 
 Message appropriate for high latency connections like Iridium
 
@@ -2266,7 +2284,7 @@ The position must be set automatically by the system during the takeoff, and may
 The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface.
 Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach.
 The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.
-Note: this message can be requested by sending the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242 (or the deprecated [MAV_CMD_GET_HOME_POSITION](#MAV_CMD_GET_HOME_POSITION) command).
+Note: this message can be requested by sending the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
@@ -2283,7 +2301,9 @@ approach_z | `float` | m | Local Z position of the end of the approach vector. M
 <span class='ext'>time_usec</span> <a href='#mav2_extension_field'>++</a> | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 
 
-### SET_HOME_POSITION (243) {#SET_HOME_POSITION}
+### SET_HOME_POSITION (243) — [SUP] {#SET_HOME_POSITION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_SET_HOME](#MAV_CMD_DO_SET_HOME) (2022-02) — The command protocol version ([MAV_CMD_DO_SET_HOME](#MAV_CMD_DO_SET_HOME)) allows a GCS to detect when setting the home position has failed.)</span>
 
 Sets the home position.
 The home position is the default position that the system will return to and land on.
@@ -2313,7 +2333,6 @@ approach_z | `float` | m | Local Z position of the end of the approach vector. M
 
 The interval between messages for a particular MAVLink message ID.
 This message is sent in response to the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command with param1=244 (this message) and param2=message_id (the id of the message for which the interval is required).
-It may also be sent in response to [MAV_CMD_GET_MESSAGE_INTERVAL](#MAV_CMD_GET_MESSAGE_INTERVAL).
 This interface replaces [DATA_STREAM](#DATA_STREAM).
 
 Field Name | Type | Units | Description
@@ -2399,7 +2418,7 @@ To debug something using a named 3D vector.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-name | `char[10]` | | Name<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 x | `float` | | x 
 y | `float` | | y 
@@ -2413,7 +2432,7 @@ Send a key-value pair as float. The use of this message is discouraged for norma
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 value | `float` | | Floating point value 
 
 
@@ -2424,7 +2443,7 @@ Send a key-value pair as integer. The use of this message is discouraged for nor
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-name | `char[10]` | | Name of the debug variable<br>Messages with same value are from the same source (instance). 
+name | `char[10]` | | Name of the debug variable<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 value | `int32_t` | | Signed integer value 
 
 
@@ -2474,7 +2493,9 @@ last_change_ms | `uint32_t` | ms | Time of last change of button state.
 state | `uint8_t` | | Bitmap for state of buttons. 
 
 
-### PLAY_TUNE (258) {#PLAY_TUNE}
+### PLAY_TUNE (258) — [SUP] {#PLAY_TUNE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [PLAY_TUNE_V2](#PLAY_TUNE_V2) (2019-10) — New version explicitly defines format. More interoperable.)</span>
 
 Control vehicle tone generation (buzzer).
 
@@ -2529,7 +2550,7 @@ Information about a storage medium. This message is sent in response to a reques
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
-storage_id | `uint8_t` | | | Storage ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+storage_id | `uint8_t` | | | Storage ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 storage_count | `uint8_t` | | | Number of storage devices 
 status | `uint8_t` | | [STORAGE_STATUS](#STORAGE_STATUS) | Status of storage 
 total_capacity | `float` | MiB | | Total capacity. If storage is not ready ([STORAGE_STATUS_READY](#STORAGE_STATUS_READY)) value will be ignored. 
@@ -2602,7 +2623,9 @@ flight_uuid | `uint64_t` | | Flight number. Note, field is misnamed UUID.
 <span class='ext'>landing_time</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | ms | Timestamp at landing (in ms since system boot). Set to 0 at boot and on arming. 
 
 
-### MOUNT_ORIENTATION (265) {#MOUNT_ORIENTATION}
+### MOUNT_ORIENTATION (265) — [SUP] {#MOUNT_ORIENTATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is being superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW). The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Orientation of a mount
 
@@ -2660,7 +2683,7 @@ Information about video stream. It may be requested using [MAV_CMD_REQUEST_MESSA
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 count | `uint8_t` | | | Number of streams available. 
 type | `uint8_t` | | [VIDEO_STREAM_TYPE](#VIDEO_STREAM_TYPE) | Type of stream. 
 flags | `uint16_t` | | [VIDEO_STREAM_STATUS_FLAGS](#VIDEO_STREAM_STATUS_FLAGS) | Bitmap of stream status flags. 
@@ -2682,7 +2705,7 @@ Information about the status of a video stream. It may be requested using [MAV_C
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+stream_id | `uint8_t` | | | Video Stream ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 flags | `uint16_t` | | [VIDEO_STREAM_STATUS_FLAGS](#VIDEO_STREAM_STATUS_FLAGS) | Bitmap of stream status flags 
 framerate | `float` | Hz | | Frame rate 
 resolution_h | `uint16_t` | pix | | Horizontal resolution 
@@ -2760,7 +2783,7 @@ Camera absolute thermal range. This can be streamed when the associated [VIDEO_S
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
-stream_id | `uint8_t` | | Video Stream ID (1 for first, 2 for second, etc.)<br>Messages with same value are from the same source (instance). 
+stream_id | `uint8_t` | | Video Stream ID (1 for first, 2 for second, etc.)<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 camera_device_id | `uint8_t` | | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 max | `float` | degC | Temperature max. 
 max_point_x | `float` | | Temperature max point x value (normalized 0..1, 0 is left, 1 is right), NAN if unknown. 
@@ -2778,7 +2801,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 cap_flags | `uint32_t` | | [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS) | Bitmap of gimbal capability flags. 
-gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 roll_min | `float` | rad | | Minimum hardware roll angle (positive: rolling to the right, negative: rolling to the left) 
 roll_max | `float` | rad | | Maximum hardware roll angle (positive: rolling to the right, negative: rolling to the left) 
 pitch_min | `float` | rad | | Minimum pitch angle (positive: up, negative: down) 
@@ -2795,7 +2818,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags currently applied. 
-gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 primary_control_sysid | `uint8_t` | | | System ID of MAVLink component with primary control, 0 for none. 
 primary_control_compid | `uint8_t` | | | Component ID of MAVLink component with primary control, 0 for none. 
 secondary_control_sysid | `uint8_t` | | | System ID of MAVLink component with secondary control, 0 for none. 
@@ -2811,7 +2834,7 @@ Field Name | Type | Units | Values | Description
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use. 
-gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 q | `float[4]` | | | Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag [GIMBAL_MANAGER_FLAGS_YAW_LOCK](#GIMBAL_MANAGER_FLAGS_YAW_LOCK) is set) 
 angular_velocity_x | `float` | rad/s | invalid:NaN | X component of angular velocity, positive is rolling to the right, NaN to be ignored. 
 angular_velocity_y | `float` | rad/s | invalid:NaN | Y component of angular velocity, positive is pitching up, NaN to be ignored. 
@@ -2923,7 +2946,7 @@ v_estimated_delay_us | `uint32_t` | us | invalid:0 | Estimated delay of the spee
 feed_forward_angular_velocity_z | `float` | rad/s | invalid:NaN | Feed forward Z component of angular velocity (positive: yawing to the right). NaN to be ignored. This is to indicate if the autopilot is actively yawing. 
 estimator_status | `uint16_t` | | [ESTIMATOR_STATUS_FLAGS](#ESTIMATOR_STATUS_FLAGS) | Bitmap indicating which estimator outputs are valid. 
 landed_state | `uint8_t` | | invalid:MAV_LANDED_STATE_UNDEFINED [MAV_LANDED_STATE](#MAV_LANDED_STATE) | The landed state. Is set to [MAV_LANDED_STATE_UNDEFINED](#MAV_LANDED_STATE_UNDEFINED) if landed state is unknown. 
-<span class='ext'>angular_velocity_z</span> <a href='#mav2_extension_field'>++</a> | `float` | rad/s | invalid:NaN | Z component of angular velocity in NED (North, East, Down). NaN if unknown. 
+<span class='ext'>angular_velocity_z</span> <a href='#mav2_extension_field'>++</a> | `float` | rad/s | invalid:0 | Z component of angular velocity in NED (North, East, Down). 0 if unknown. Use 0.00001 to represent a measured value of zero. 
 
 
 ### GIMBAL_MANAGER_SET_PITCHYAW (287) {#GIMBAL_MANAGER_SET_PITCHYAW}
@@ -2935,7 +2958,7 @@ Field Name | Type | Units | Values | Description
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
 flags | `uint32_t` | | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use. 
-gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 pitch | `float` | rad | invalid:NaN | Pitch angle (positive: up, negative: down, NaN to be ignored). 
 yaw | `float` | rad | invalid:NaN | Yaw angle (positive: to the right, negative: to the left, NaN to be ignored). 
 pitch_rate | `float` | rad/s | invalid:NaN | Pitch angular rate (positive: up, negative: down, NaN to be ignored). 
@@ -2951,7 +2974,7 @@ Field Name | Type | Values | Description
 target_system | `uint8_t` | | System ID 
 target_component | `uint8_t` | | Component ID 
 flags | `uint32_t` | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags. 
-gimbal_device_id | `uint8_t` | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>Messages with same value are from the same source (instance). 
+gimbal_device_id | `uint8_t` | | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 pitch | `float` | invalid:NaN | Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored). 
 yaw | `float` | invalid:NaN | Yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored). 
 pitch_rate | `float` | invalid:NaN | Pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored). 
@@ -2966,7 +2989,7 @@ ESC information for lower rate streaming. Recommended streaming rate 1Hz. See [E
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-index | `uint8_t` | | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>Messages with same value are from the same source (instance). 
+index | `uint8_t` | | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
 counter | `uint16_t` | | | Counter of data packets received. 
 count | `uint8_t` | | | Total number of ESCs in all messages of this type. Message fields with an index higher than this should be ignored because they contain invalid data. 
@@ -2985,7 +3008,7 @@ ESC information for higher rate streaming. Recommended streaming rate is ~10 Hz.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-index | `uint8_t` | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>Messages with same value are from the same source (instance). 
+index | `uint8_t` | | Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number. 
 rpm | `int32_t[4]` | rpm | Reported motor RPM from each ESC (negative for reverse rotation). 
 voltage | `float[4]` | V | Voltage measured from each ESC. 
@@ -2998,7 +3021,7 @@ Airspeed information from a sensor.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Sensor ID.<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Sensor ID.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 airspeed | `float` | m/s | | Calibrated airspeed (CAS). 
 temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature. 
 raw_press | `float` | hPa | invalid:NaN | Raw differential pressure. 
@@ -3013,7 +3036,7 @@ Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 target_system | `uint8_t` | | default:0 | System ID (ID of target system, normally autopilot and ground station). 
 target_component | `uint8_t` | | default:0 | Component ID (normally 0 for broadcast). 
-id | `uint8_t` | | | Sensor ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Sensor ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 time_usec | `uint64_t` | us | | Timestamp of message transmission (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 processing_time | `uint32_t` | us | | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. This is the time between measurement (e.g. camera exposure time) and transmission of this message. Set to NaN if not known. 
 source | `uint8_t` | | [GLOBAL_POSITION_SRC](#GLOBAL_POSITION_SRC) | Source of position/estimate (such as GNSS, estimator, etc.) 
@@ -3094,7 +3117,13 @@ vendor_specific_status_code | `uint16_t` | | | Vendor-specific status informatio
 
 ### UAVCAN_NODE_INFO (311) {#UAVCAN_NODE_INFO}
 
-General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see [MAV_CMD_UAVCAN_GET_NODE_INFO](#MAV_CMD_UAVCAN_GET_NODE_INFO)). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org.
+General information describing a particular UAVCAN node.
+
+Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information.
+This message should be emitted by the system whenever a new node appears online, or an existing node reboots.
+The message may also be explicitly requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+It is also not prohibited to emit this message unconditionally at a low frequency.
+The DroneCAN specification is available at https://dronecan.github.io/Specification/1._Introduction/.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
@@ -3255,17 +3284,34 @@ pos_yaw | `float[5]` | rad | Yaw. Set to NaN for unchanged
 
 ### CELLULAR_STATUS (334) {#CELLULAR_STATUS}
 
-Report current used cellular network status
+Cellular network status as reported by a particular modem.
 
-Field Name | Type | Values | Description
---- | --- | --- | ---
-status | `uint8_t` | [CELLULAR_STATUS_FLAG](#CELLULAR_STATUS_FLAG) | Cellular modem status 
-failure_reason | `uint8_t` | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status in in [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED) 
-type | `uint8_t` | [CELLULAR_NETWORK_RADIO_TYPE](#CELLULAR_NETWORK_RADIO_TYPE) | Cellular network radio type: gsm, cdma, lte... 
-quality | `uint8_t` | invalid:UINT8_MAX | Signal quality in percent. If unknown, set to UINT8_MAX 
-mcc | `uint16_t` | invalid:UINT16_MAX | Mobile country code. If unknown, set to UINT16_MAX 
-mnc | `uint16_t` | invalid:UINT16_MAX | Mobile network code. If unknown, set to UINT16_MAX 
-lac | `uint16_t` | invalid:0 | Location area code. If unknown, set to 0 
+
+This is primarily intended for logging, but a GCS may choose to display link_tx_rate and link_rx_rate.
+
+Note that a value of 0 in the id field indicates that the sender does not support reporting of multiple modems.
+Message data should be from a single modem, but that is not guaranteed.
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+status | `uint8_t` | | [CELLULAR_STATUS_FLAG](#CELLULAR_STATUS_FLAG) | Cellular modem status 
+failure_reason | `uint8_t` | | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status in in [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED) 
+type | `uint8_t` | | [CELLULAR_NETWORK_RADIO_TYPE](#CELLULAR_NETWORK_RADIO_TYPE) | Cellular network radio type: gsm, cdma, lte... 
+quality | `uint8_t` | | invalid:UINT8_MAX | Signal quality in percent. If unknown, set to UINT8_MAX 
+mcc | `uint16_t` | | invalid:UINT16_MAX | Mobile country code. If unknown, set to UINT16_MAX 
+mnc | `uint16_t` | | invalid:UINT16_MAX | Mobile network code. If unknown, set to UINT16_MAX 
+lac | `uint16_t` | | invalid:0 | Location area code. If unknown, set to 0 
+<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | min:1 | Cellular modem instance number. Indexed from 1.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
+<span class='ext'>link_tx_rate</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | KiB/s | invalid:0 | Download rate. 
+<span class='ext'>link_rx_rate</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | KiB/s | invalid:0 | Upload rate. 
+<span class='ext'>cell_tower_id</span> <a href='#mav2_extension_field'>++</a> | `char[9]` | | invalid:0 | ID of the currently connected cell tower. This must be NULL terminated if the length is less than 9 human-readable chars, and without the null termination (NULL) byte if the length is exactly 9 chars. 
+<span class='ext'>band_number</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | LTE frequency band number. 
+<span class='ext'>band_frequency</span> <a href='#mav2_extension_field'>++</a> | `float` | MHz | invalid:0 | LTE radio frequency. 
+<span class='ext'>channel_number</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | | invalid:0 | The channel number (CN). Absolute radio-frequency (ARFCN) / E-UTRA (EARFCN) / UTRA (UARFCN) / New radio ([NR_CH](#NR_CH)). 
+<span class='ext'>rx_level</span> <a href='#mav2_extension_field'>++</a> | `float` | dBm | invalid:0 | On 3G is Received Signal Code Power (RSCP). On LTE is Reference Signal Received Power (RSRP). On 5G is New Radio Reference Signal Received Power ([NR_RSRP](#NR_RSRP)). 
+<span class='ext'>tx_level</span> <a href='#mav2_extension_field'>++</a> | `float` | dBm | invalid:0 | Transmitter (modem) signal absolute power level. 
+<span class='ext'>rx_quality</span> <a href='#mav2_extension_field'>++</a> | `float` | dBm | invalid:0 | On 3G is Receiver Quality (RxQual). On LTE is Reference Signal Received Quality (RSRQ). On 5G is New Radio Reference Signal Received Quality ([NR_RSRQ](#NR_RSRQ)). 
+<span class='ext'>sinr</span> <a href='#mav2_extension_field'>++</a> | `float` | dB | invalid:0 | Signal to interference plus noise ratio (SINR). 
 
 
 ### ISBD_LINK_STATUS (335) {#ISBD_LINK_STATUS}
@@ -3362,7 +3408,7 @@ Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 name | `char[10]` | | Name, for human-friendly display in a Ground Control Station 
-array_id | `uint16_t` | | Unique ID used to discriminate between arrays<br>Messages with same value are from the same source (instance). 
+array_id | `uint16_t` | | Unique ID used to discriminate between arrays<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 <span class='ext'>data</span> <a href='#mav2_extension_field'>++</a> | `float[58]` | | data 
 
 
@@ -3397,13 +3443,15 @@ y | `int32_t` | | | Y coordinate of center point. Coordinate system depends on f
 z | `float` | m | | Altitude of center point. Coordinate system depends on frame field. 
 
 
-### SMART_BATTERY_INFO (370) {#SMART_BATTERY_INFO}
+### SMART_BATTERY_INFO (370) — [SUP] {#SMART_BATTERY_INFO}
+
+<span class="warning">**SUPERSEDED:** Replaced By [BATTERY_INFO](#BATTERY_INFO) (2024-02) — The [BATTERY_INFO](#BATTERY_INFO) message is better aligned with UAVCAN messages, and in any case is useful even if a battery is not "smart".)</span>
 
 Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use [BATTERY_STATUS](#BATTERY_STATUS) for the frequent battery updates.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery 
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery 
 capacity_full_specification | `int32_t` | mAh | invalid:-1 | Capacity when full according to manufacturer, -1: field not provided. 
@@ -3441,7 +3489,7 @@ This should be streamed (nominally at 0.1 Hz).
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 maximum_fuel | `float` | | | Capacity when full. Must be provided. 
 consumed_fuel | `float` | | invalid:NaN | Consumed fuel (measured). This value should not be inferred: if not measured set to NaN. NaN: field not provided. 
 remaining_fuel | `float` | | invalid:NaN | Remaining fuel until empty (measured). The value should not be inferred: if not measured set to NaN. NaN: field not provided. 
@@ -3461,7 +3509,7 @@ This message should requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_M
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
-id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery. 
 type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery. 
 state_of_health | `uint8_t` | % | invalid:UINT8_MAX | State of Health (SOH) estimate. Typically 100% at the time of manufacture and will decrease over time and use. -1: field not provided. 
@@ -3679,7 +3727,7 @@ uri | `char[100]` | | MAVLink FTP URI for the general metadata file ([COMP_METAD
 
 ### PLAY_TUNE_V2 (400) {#PLAY_TUNE_V2}
 
-Play vehicle tone/tune (buzzer). Supersedes message [PLAY_TUNE](#PLAY_TUNE).
+Play vehicle tone/tune (buzzer). Supported tunes can be determined using [SUPPORTED_TUNES](#SUPPORTED_TUNES). Supersedes message [PLAY_TUNE](#PLAY_TUNE).
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -3691,7 +3739,7 @@ tune | `char[248]` | | Tune definition as a NULL-terminated string.
 
 ### SUPPORTED_TUNES (401) {#SUPPORTED_TUNES}
 
-Tune formats supported by vehicle. This should be emitted as response to [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+Tune formats supported by vehicle, i.e. via [PLAY_TUNE_V2](#PLAY_TUNE_V2). This should be emitted as response to [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -4007,7 +4055,7 @@ Temperature and humidity from hygrometer.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
-id | `uint8_t` | | Hygrometer ID<br>Messages with same value are from the same source (instance). 
+id | `uint8_t` | | Hygrometer ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 temperature | `int16_t` | cdegC | Temperature 
 humidity | `uint16_t` | c% | Humidity 
 
@@ -4140,13 +4188,13 @@ Value | Name | Description
 <a id='MAV_FRAME_MISSION'></a>2 | [MAV_FRAME_MISSION](#MAV_FRAME_MISSION) | NOT a coordinate frame, indicates a mission command. 
 <a id='MAV_FRAME_GLOBAL_RELATIVE_ALT'></a>3 | [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) | Global (WGS84) coordinate frame + altitude relative to the home position. 
 <a id='MAV_FRAME_LOCAL_ENU'></a>4 | [MAV_FRAME_LOCAL_ENU](#MAV_FRAME_LOCAL_ENU) | ENU local tangent frame (x: East, y: North, z: Up) with origin fixed relative to earth. 
-<a id='MAV_FRAME_GLOBAL_INT'></a>5 | [MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT) | Global (WGS84) coordinate frame (scaled) + altitude relative to mean sea level (MSL). 
-<a id='MAV_FRAME_GLOBAL_RELATIVE_ALT_INT'></a>6 | [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT) | Global (WGS84) coordinate frame (scaled) + altitude relative to the home position. 
+<a id='MAV_FRAME_GLOBAL_INT'></a>5 | [MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT) | Global (WGS84) coordinate frame (scaled) + altitude relative to mean sea level (MSL).<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) (2024-03) — Use [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) in [COMMAND_INT](#COMMAND_INT) (and elsewhere) as a synonymous replacement.)</span> 
+<a id='MAV_FRAME_GLOBAL_RELATIVE_ALT_INT'></a>6 | [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT) | Global (WGS84) coordinate frame (scaled) + altitude relative to the home position.<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) (2024-03) — Use [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) in [COMMAND_INT](#COMMAND_INT) (and elsewhere) as a synonymous replacement.)</span> 
 <a id='MAV_FRAME_LOCAL_OFFSET_NED'></a>7 | [MAV_FRAME_LOCAL_OFFSET_NED](#MAV_FRAME_LOCAL_OFFSET_NED) | NED local tangent frame (x: North, y: East, z: Down) with origin that travels with the vehicle. 
-<a id='MAV_FRAME_BODY_NED'></a>8 | [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED) | Same as [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED) when used to represent position values. Same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) when used with velocity/acceleration values. 
-<a id='MAV_FRAME_BODY_OFFSET_NED'></a>9 | [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED) | This is the same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD). 
+<a id='MAV_FRAME_BODY_NED'></a>8 | [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED) | Same as [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED) when used to represent position values. Same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) when used with velocity/acceleration values.<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) (2019-08)</span> 
+<a id='MAV_FRAME_BODY_OFFSET_NED'></a>9 | [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED) | This is the same as [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD).<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) (2019-08)</span> 
 <a id='MAV_FRAME_GLOBAL_TERRAIN_ALT'></a>10 | [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) | Global (WGS84) coordinate frame with AGL altitude (altitude at ground level). 
-<a id='MAV_FRAME_GLOBAL_TERRAIN_ALT_INT'></a>11 | [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) | Global (WGS84) coordinate frame (scaled) with AGL altitude (altitude at ground level). 
+<a id='MAV_FRAME_GLOBAL_TERRAIN_ALT_INT'></a>11 | [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) | Global (WGS84) coordinate frame (scaled) with AGL altitude (altitude at ground level).<br><span class="warning">**SUPERSEDED:** Replaced By [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) (2024-03) — Use [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) in [COMMAND_INT](#COMMAND_INT) (and elsewhere) as a synonymous replacement.)</span> 
 <a id='MAV_FRAME_BODY_FRD'></a>12 | [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD) | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle. 
 <a id='MAV_FRAME_RESERVED_13'></a>13 | [MAV_FRAME_RESERVED_13](#MAV_FRAME_RESERVED_13) | [MAV_FRAME_BODY_FLU](#MAV_FRAME_BODY_FLU) - Body fixed frame of reference, Z-up (x: Forward, y: Left, z: Up).<br><span class="warning">**DEPRECATED:**(2019-04)</span> 
 <a id='MAV_FRAME_RESERVED_14'></a>14 | [MAV_FRAME_RESERVED_14](#MAV_FRAME_RESERVED_14) | [MAV_FRAME_MOCAP_NED](#MAV_FRAME_MOCAP_NED) - Odometry local coordinate frame of data given by a motion capture system, Z-down (x: North, y: East, z: Down).<br><span class="warning">**DEPRECATED:** Replaced By [MAV_FRAME_LOCAL_FRD](#MAV_FRAME_LOCAL_FRD) (2019-04)</span> 
@@ -4217,6 +4265,7 @@ Value | Name | Description
 <a id='MAV_MOUNT_MODE_GPS_POINT'></a>4 | [MAV_MOUNT_MODE_GPS_POINT](#MAV_MOUNT_MODE_GPS_POINT) | Load neutral position and start to point to Lat,Lon,Alt 
 <a id='MAV_MOUNT_MODE_SYSID_TARGET'></a>5 | [MAV_MOUNT_MODE_SYSID_TARGET](#MAV_MOUNT_MODE_SYSID_TARGET) | Gimbal tracks system with specified system ID 
 <a id='MAV_MOUNT_MODE_HOME_LOCATION'></a>6 | [MAV_MOUNT_MODE_HOME_LOCATION](#MAV_MOUNT_MODE_HOME_LOCATION) | Gimbal tracks home position 
+<a id='MAV_MOUNT_MODE_WPNEXT_OFFSET'></a>7 | [MAV_MOUNT_MODE_WPNEXT_OFFSET](#MAV_MOUNT_MODE_WPNEXT_OFFSET) | Gimbal tracks next waypoint location with offset 
 
 ### GIMBAL_DEVICE_CAP_FLAGS {#GIMBAL_DEVICE_CAP_FLAGS}
 
@@ -4633,7 +4682,9 @@ Value | Name | Description
 --- | --- | ---
 <a id='NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED'></a>1 | [NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED](#NAV_TAKEOFF_FLAGS_HORIZONTAL_POSITION_NOT_REQUIRED) | Accept the command even if the autopilot does not have control over its horizontal position (note that it might not have altitude control either). 
 
-### MAV_DATA_STREAM {#MAV_DATA_STREAM}
+### MAV_DATA_STREAM — [SUP] {#MAV_DATA_STREAM}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) (2015-06)</span>
 
 A data stream is not a fixed set of messages, but rather a
 
@@ -4652,7 +4703,9 @@ Value | Name | Description
 <a id='MAV_DATA_STREAM_EXTRA2'></a>11 | [MAV_DATA_STREAM_EXTRA2](#MAV_DATA_STREAM_EXTRA2) | Dependent on the autopilot 
 <a id='MAV_DATA_STREAM_EXTRA3'></a>12 | [MAV_DATA_STREAM_EXTRA3](#MAV_DATA_STREAM_EXTRA3) | Dependent on the autopilot 
 
-### MAV_ROI {#MAV_ROI}
+### MAV_ROI — [SUP] {#MAV_ROI}
+
+<span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 The ROI (region of interest) for the vehicle. This can be
 
@@ -5113,6 +5166,16 @@ Value | Name | Description
 <a id='SPEED_TYPE_CLIMB_SPEED'></a>2 | [SPEED_TYPE_CLIMB_SPEED](#SPEED_TYPE_CLIMB_SPEED) | Climb speed 
 <a id='SPEED_TYPE_DESCENT_SPEED'></a>3 | [SPEED_TYPE_DESCENT_SPEED](#SPEED_TYPE_DESCENT_SPEED) | Descent speed 
 
+### HEADING_TYPE {#HEADING_TYPE}
+
+Heading setpoint types used in [MAV_CMD_GUIDED_CHANGE_HEADING](#MAV_CMD_GUIDED_CHANGE_HEADING)
+
+Value | Name | Description
+--- | --- | ---
+<a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) | Course over ground. 
+<a id='HEADING_TYPE_HEADING'></a>1 | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING) | Raw vehicle heading. 
+<a id='HEADING_TYPE_DEFAULT'></a>2 | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT) | Default heading. 
+
 ### ESTIMATOR_STATUS_FLAGS {#ESTIMATOR_STATUS_FLAGS}
 
 (Bitmask) Flags in [ESTIMATOR_STATUS](#ESTIMATOR_STATUS) message
@@ -5290,6 +5353,7 @@ Value | Name | Description
 <a id='VIDEO_STREAM_TYPE_RTPUDP'></a>1 | [VIDEO_STREAM_TYPE_RTPUDP](#VIDEO_STREAM_TYPE_RTPUDP) | Stream is RTP UDP (URI gives the port number) 
 <a id='VIDEO_STREAM_TYPE_TCP_MPEG'></a>2 | [VIDEO_STREAM_TYPE_TCP_MPEG](#VIDEO_STREAM_TYPE_TCP_MPEG) | Stream is MPEG on TCP 
 <a id='VIDEO_STREAM_TYPE_MPEG_TS'></a>3 | [VIDEO_STREAM_TYPE_MPEG_TS](#VIDEO_STREAM_TYPE_MPEG_TS) | Stream is MPEG TS (URI gives the port number) 
+<a id='VIDEO_STREAM_TYPE_WHEP'></a>4 | [VIDEO_STREAM_TYPE_WHEP](#VIDEO_STREAM_TYPE_WHEP) | Stream is WHEP (WebRTC-HTTP Egress Protocol) 
 
 ### VIDEO_STREAM_ENCODING {#VIDEO_STREAM_ENCODING}
 
@@ -5985,8 +6049,11 @@ Value | Name | Description
 <a id='MAG_CAL_RUNNING_STEP_TWO'></a>3 | [MAG_CAL_RUNNING_STEP_TWO](#MAG_CAL_RUNNING_STEP_TWO) |  
 <a id='MAG_CAL_SUCCESS'></a>4 | [MAG_CAL_SUCCESS](#MAG_CAL_SUCCESS) |  
 <a id='MAG_CAL_FAILED'></a>5 | [MAG_CAL_FAILED](#MAG_CAL_FAILED) |  
-<a id='MAG_CAL_BAD_ORIENTATION'></a>6 | [MAG_CAL_BAD_ORIENTATION](#MAG_CAL_BAD_ORIENTATION) |  
-<a id='MAG_CAL_BAD_RADIUS'></a>7 | [MAG_CAL_BAD_RADIUS](#MAG_CAL_BAD_RADIUS) |  
+<a id='MAG_CAL_FAILED_ORIENTATION'></a>6 | [MAG_CAL_FAILED_ORIENTATION](#MAG_CAL_FAILED_ORIENTATION) | Compass calibration failed: the vehicle orientation is outside the required tolerance. 
+<a id='MAG_CAL_FAILED_RADIUS'></a>7 | [MAG_CAL_FAILED_RADIUS](#MAG_CAL_FAILED_RADIUS) | Compass calibration failed: the radius of the fitted sphere is unrealistically small or large. 
+<a id='MAG_CAL_FAILED_OFFSETS'></a>8 | [MAG_CAL_FAILED_OFFSETS](#MAG_CAL_FAILED_OFFSETS) | Compass calibration failed: offset magnitude too large. 
+<a id='MAG_CAL_FAILED_DIAG_SCALING'></a>9 | [MAG_CAL_FAILED_DIAG_SCALING](#MAG_CAL_FAILED_DIAG_SCALING) | Compass calibration failed: diagonal or off-diagonal scaling values out of valid range. 
+<a id='MAG_CAL_FAILED_RESIDUALS_HIGH'></a>10 | [MAG_CAL_FAILED_RESIDUALS_HIGH](#MAG_CAL_FAILED_RESIDUALS_HIGH) | Compass calibration failed: fitness (RMS residual) exceeds tolerance. 
 
 ### MAV_EVENT_ERROR_REASON {#MAV_EVENT_ERROR_REASON}
 
@@ -6093,6 +6160,7 @@ Value | Name | Description
 <a id='MAV_FTP_OPCODE_RENAME'></a>13 | [MAV_FTP_OPCODE_RENAME](#MAV_FTP_OPCODE_RENAME) | Rename: Rename path1 to path2 
 <a id='MAV_FTP_OPCODE_CALCFILECRC'></a>14 | [MAV_FTP_OPCODE_CALCFILECRC](#MAV_FTP_OPCODE_CALCFILECRC) | CalcFileCRC32: Calculate CRC32 for file at path 
 <a id='MAV_FTP_OPCODE_BURSTREADFILE'></a>15 | [MAV_FTP_OPCODE_BURSTREADFILE](#MAV_FTP_OPCODE_BURSTREADFILE) | BurstReadFile: Burst download session file 
+<a id='MAV_FTP_OPCODE_LISTDIRECTORYWITHTIME'></a>16 | [MAV_FTP_OPCODE_LISTDIRECTORYWITHTIME](#MAV_FTP_OPCODE_LISTDIRECTORYWITHTIME) | ListDirectoryWithTime: List files and directories, along with last-modification timestamps, in path from offset. This is the same as ListDirectory except for the addition of timestamps. Servers that do not support this opcode respond with a NAK ([MAV_FTP_ERR_UNKNOWNCOMMAND](#MAV_FTP_ERR_UNKNOWNCOMMAND)). 
 <a id='MAV_FTP_OPCODE_ACK'></a>128 | [MAV_FTP_OPCODE_ACK](#MAV_FTP_OPCODE_ACK) | ACK: ACK response 
 <a id='MAV_FTP_OPCODE_NAK'></a>129 | [MAV_FTP_OPCODE_NAK](#MAV_FTP_OPCODE_NAK) | NAK: NAK response 
 
@@ -6212,6 +6280,7 @@ Value | Name | Description
 <a id='GLOBAL_POSITION_SRC_TERRAIN'></a>4 | [GLOBAL_POSITION_SRC_TERRAIN](#GLOBAL_POSITION_SRC_TERRAIN) | Terrain referenced navigation. 
 <a id='GLOBAL_POSITION_SRC_MAGNETIC'></a>5 | [GLOBAL_POSITION_SRC_MAGNETIC](#GLOBAL_POSITION_SRC_MAGNETIC) | Magnetic positioning. 
 <a id='GLOBAL_POSITION_SRC_ESTIMATOR'></a>6 | [GLOBAL_POSITION_SRC_ESTIMATOR](#GLOBAL_POSITION_SRC_ESTIMATOR) | Estimated position based on various sensors (eg. a Kalman Filter). 
+<a id='GLOBAL_POSITION_SRC_LEO'></a>7 | [GLOBAL_POSITION_SRC_LEO](#GLOBAL_POSITION_SRC_LEO) | Low Earth Orbit satellite-based positioning (e.g.: Starlink, Xona PULSAR). 
 
 ### GLOBAL_POSITION_FLAGS {#GLOBAL_POSITION_FLAGS}
 
@@ -6598,7 +6667,7 @@ Param (Label) | Description | Values | Units
 1 (Turns) | Number of turns. | min: 0 |   
 2 (Heading Required) | Leave loiter circle only when track heads towards the next waypoint (MAV_BOOL_FALSE: Leave when turns complete). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise |   | m 
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6613,7 +6682,7 @@ Param (Label) | Description | Values | Units
 1 (Time) | Loiter time (only starts once Lat, Lon and Alt is reached). | min: 0 | s 
 2 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_FALSE: Leave on time expiry). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise. |   | m 
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6733,7 +6802,7 @@ Param (Label) | Description | Values | Units
 1 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_FALSE: Leave when altitude reached). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 2 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter. |   | m 
 3 | Empty |   |   
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6819,7 +6888,9 @@ Param (Label) | Description | Values | Units
 7 (Altitude) | Altitude |   | m 
 
 
-### MAV_CMD_NAV_ROI (80) {#MAV_CMD_NAV_ROI}
+### MAV_CMD_NAV_ROI (80) — [SUP] {#MAV_CMD_NAV_ROI}
+
+<span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -7216,14 +7287,12 @@ Param (Label) | Description | Values
 2 (Actuator 2) | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
 3 (Actuator 3) | Actuator 3 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
 4 (Actuator 4) | Actuator 4 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
-5 (Actuator 5) | Actuator 5 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
-6 (Actuator 6) | Actuator 6 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+5 (Actuator 5) | Actuator 5 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |   
+6 (Actuator 6) | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |   
 7 (Index) | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7) | min: 0 inc: 1 
 
 
-### MAV_CMD_DO_RETURN_PATH_START (188) — [WIP] {#MAV_CMD_DO_RETURN_PATH_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_CMD_DO_RETURN_PATH_START (188) {#MAV_CMD_DO_RETURN_PATH_START}
 
 Mission item to specify the start of a failsafe/landing return-path segment (the end of the segment is the next [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) item).
 
@@ -7416,7 +7485,9 @@ Param (Label) | Description | Values | Units
 7 | Empty |   |   
 
 
-### MAV_CMD_DO_SET_ROI (201) {#MAV_CMD_DO_SET_ROI}
+### MAV_CMD_DO_SET_ROI (201) — [SUP] {#MAV_CMD_DO_SET_ROI}
+
+<span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -7461,7 +7532,9 @@ Param (Label) | Description
 7 (Shot ID) | Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count. 
 
 
-### MAV_CMD_DO_MOUNT_CONFIGURE (204) {#MAV_CMD_DO_MOUNT_CONFIGURE}
+### MAV_CMD_DO_MOUNT_CONFIGURE (204) — [SUP] {#MAV_CMD_DO_MOUNT_CONFIGURE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) (2020-01) — The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Mission command to configure a camera or antenna mount
 
@@ -7476,7 +7549,9 @@ Param (Label) | Description | Values
 7 (Yaw Input Mode) | Yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
 
 
-### MAV_CMD_DO_MOUNT_CONTROL (205) {#MAV_CMD_DO_MOUNT_CONTROL}
+### MAV_CMD_DO_MOUNT_CONTROL (205) — [SUP] {#MAV_CMD_DO_MOUNT_CONTROL}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is ambiguous and inconsistent. It has been superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) and `MAV_CMD_DO_SET_ROI_*` variants. The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Mission command to control a camera or antenna mount
 
@@ -7630,7 +7705,9 @@ Param (Label) | Description | Values | Units
 7 | Empty |   |   
 
 
-### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
+### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) — [SUP] {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01)</span>
 
 Mission command to control a camera or antenna mount, using a quaternion as reference.
 
@@ -7939,7 +8016,9 @@ Param (Label) | Description | Values | Units
 4 (Strobe Duty) | Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used | min: 0 max: 100 | % 
 
 
-### MAV_CMD_GET_HOME_POSITION (410) {#MAV_CMD_GET_HOME_POSITION}
+### MAV_CMD_GET_HOME_POSITION (410) — [SUP] {#MAV_CMD_GET_HOME_POSITION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2022-04)</span>
 
 Request the home position from the vehicle.
 
@@ -7977,7 +8056,9 @@ Param (Label) | Description | Values
 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) 
 
 
-### MAV_CMD_GET_MESSAGE_INTERVAL (510) {#MAV_CMD_GET_MESSAGE_INTERVAL}
+### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [SUP] {#MAV_CMD_GET_MESSAGE_INTERVAL}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2022-04)</span>
 
 Request the interval between messages for a particular MAVLink message ID.
 The receiver should ACK the command and then emit its response in a [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) message.
@@ -8029,7 +8110,9 @@ Param (Label) | Description | Values
 2 | Reserved (all remaining params) |   
 
 
-### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
+### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) — [SUP] {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request autopilot capabilities. The receiver should ACK the command and then emit its capabilities in an [AUTOPILOT_VERSION](#AUTOPILOT_VERSION) message
 
@@ -8039,7 +8122,9 @@ Param (Label) | Description | Values
 2 | Reserved (all remaining params) |   
 
 
-### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
+### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) — [SUP] {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 
@@ -8049,7 +8134,9 @@ Param (Label) | Description | Values
 2 | Reserved (all remaining params) |   
 
 
-### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
+### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) — [SUP] {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 
@@ -8059,7 +8146,9 @@ Param (Label) | Description | Values
 2 | Reserved (all remaining params) |   
 
 
-### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
+### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) — [SUP] {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use the command's target_component to target a specific component's storage.
 
@@ -8082,7 +8171,9 @@ Param (Label) | Description | Values
 4 | Reserved (all remaining params) |   
 
 
-### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
+### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) — [SUP] {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 
@@ -8092,7 +8183,9 @@ Param (Label) | Description | Values
 2 | Reserved (all remaining params) |   
 
 
-### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
+### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) — [SUP] {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 
@@ -8277,7 +8370,9 @@ Param (Label) | Description | Values
 7 | |   
 
 
-### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
+### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) — [SUP] {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 
@@ -8388,7 +8483,9 @@ Param (Label) | Description | Values
 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
-### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
+### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [SUP] {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION))
 
@@ -8397,7 +8494,9 @@ Param (Label) | Description | Values
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 
 
-### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
+### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) — [SUP] {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
 Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 
@@ -8631,7 +8730,9 @@ Param (Label) | Description | Units
 7 (Altitude) | Altitude | m 
 
 
-### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) {#MAV_CMD_UAVCAN_GET_NODE_INFO}
+### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) — [SUP] {#MAV_CMD_UAVCAN_GET_NODE_INFO}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2026-05)</span>
 
 Commands the vehicle to respond with a sequence of messages [UAVCAN_NODE_INFO](#UAVCAN_NODE_INFO), one message per every UAVCAN node that is online. Note that some of the response messages can be lost, which the receiver can detect easily by checking whether every received [UAVCAN_NODE_STATUS](#UAVCAN_NODE_STATUS) has a matching message [UAVCAN_NODE_INFO](#UAVCAN_NODE_INFO) received earlier; if not, this command should be sent again in order to request re-transmission of the node information messages.
 
@@ -8676,7 +8777,9 @@ Param (Label) | Description
 7 | Reserved (set to 0) 
 
 
-### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
+### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [SUP] {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
+
+<span class="warning">**SUPERSEDED:**(2021-06)</span>
 
 Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.
 
@@ -8691,7 +8794,9 @@ Param (Label) | Description | Values | Units
 7 (Altitude) | Altitude (MSL) |   | m 
 
 
-### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
+### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) — [SUP] {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
+
+<span class="warning">**SUPERSEDED:**(2021-06)</span>
 
 Control the payload deployment.
 
@@ -8974,6 +9079,17 @@ Param (Label) | Description | Values | Units
 5 | Empty. |   |   
 6 | Empty. |   |   
 7 | Empty. |   |   
+
+
+### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
+
+Change to target direction at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between its previous heading and the new one.
+
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Heading Type) | Course-over-ground or raw vehicle heading. | [HEADING_TYPE](#HEADING_TYPE) |   
+2 (Heading Target) | Target heading. | min: 0 max: 359.99 | deg 
+3 (Heading Rate of Change) | Maximum centripetal acceleration, i.e. rate of change toward new heading. |   | deg/s 
 
 
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}

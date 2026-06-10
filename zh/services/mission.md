@@ -1,52 +1,57 @@
-# Mission Protocol
+# Mission (Plan) Protocol
 
-The mission sub-protocol allows a GCS or developer API to exchange _mission_ (flight plan), _geofence_ and _safe point_ information with a drone/component.
+The mission sub-protocol allows a GCS or developer API to exchange separate plans containing _mission_ (flight plan), _geofence_ and _safe point_ information with a drone/component.
 
 The protocol covers:
 
-- Operations to upload, download and clear missions, set/get the current mission item number, and get notification when the current mission item has changed.
-- Message type(s) and enumerations for exchanging mission items.
-- Mission Items ("MAVLink commands") that are common to most systems.
+- Operations to upload, download and clear a plan.
+- Message type(s) and enumerations for exchanging plan items.
+- Plan items ("MAV_CMD") that can be used in the various types of plans.
+- Messages to notify of current mission plan state
+- Commands to start missions, set the current mission item number, and so on.
 
 The protocol supports re-request of messages that have not arrived, which allows missions to be reliably transferred over a lossy link.
 
-## Mission Types {#mission_types}
+## Plan Types {#mission_types}
 
-MAVLink 2 supports three types of "missions": flight plans, geofences and rally/safe points.
-The protocol uses the same sequence of operations for all types (albeit with different types of [Mission Items](#mavlink_commands)).
+The protocols supports the uploading and downloading of three types of plan: flight plans ("missions"), geofence plans, and rally/safe points plans.
+
+The same sequence of operations is used for exchanging all types (albeit containing different allowed [MAV_CMD](#mavlink_commands) payloads).
 The mission types must be stored and handled separately/independently.
 
-Mission protocol messages include the type of associated mission in the `mission_type` field (a MAVLink 2 message extension).
+Messages used by this protocol include the type of associated mission in the `mission_type` field (a MAVLink 2 message extension).
 The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) enum values:
 [MAV_MISSION_TYPE_MISSION](../messages/common.md#MAV_MISSION_TYPE_MISSION), [MAV_MISSION_TYPE_FENCE](../messages/common.md#MAV_MISSION_TYPE_FENCE), [MAV_MISSION_TYPE_RALLY](../messages/common.md#MAV_MISSION_TYPE_RALLY).
 
 :::info
-MAVLink 1 supports only "regular" flight-plan missions (this is implied/not explicitly set).
+MAVLink 1 supports only flight-plan missions (this is implied/not explicitly set).
 :::
 
-## Mission Items (MAVLink Commands) {#mavlink_commands}
+## Plan Items (MAVLink Commands) {#mavlink_commands}
 
-Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+Mission items (or more generically "Plan items") for all the [plan types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 :::info
-[MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)).
+[MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in plans ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)).
 Some `MAV_CMD` can be used with both mission and command protocols.
-Not all commands/mission items are supported on all systems (or for all flight modes).
+Not all commands/plan items are supported on all systems (or for all flight modes).
 :::
 
-The items for the different types of mission are identified using a simple name prefix convention:
+The items for the different types of plan are usually identified using a simple name prefix convention:
 
 - _Flight plans_:
   - NAV commands (`MAV_CMD_NAV_*`) for navigation/movement (e.g. [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT), [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND))
   - DO commands (`MAV_CMD_DO_*`) for immediate actions like changing speed or activating a servo (e.g. [MAV_CMD_DO_CHANGE_SPEED](../messages/common.md#MAV_CMD_DO_CHANGE_SPEED)).
   - CONDITION commands (`MAV_CMD_CONDITION_*`) for changing the execution of the mission based on a condition - e.g. pausing the mission for a time before executing next command ([MAV_CMD_CONDITION_DELAY](../messages/common.md#MAV_CMD_CONDITION_DELAY)).
-- _Geofence mission items_:
+- _Geofence plan_:
   - Prefixed with `MAV_CMD_NAV_FENCE_` (e.g. [MAV_CMD_NAV_FENCE_RETURN_POINT](../messages/common.md#MAV_CMD_NAV_FENCE_RETURN_POINT)).
-- _Rally point mission items_:
-  - There is just one rally point `MAV_CMD`: [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
+- _Rally point plan_:
+  - Rally points are defined using [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
 
-Mission items (`MAV_CMD`) are transmitted/encoded in [MISSION_ITEM_INT](#MISSION_ITEM_INT) messages.
-This message includes fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
+## Plan Payload Message
+
+Plan items (`MAV_CMD`) are transmitted/encoded in [MISSION_ITEM_INT](#MISSION_ITEM_INT) messages.
+This message includes fields to identify the particular plan item (command id) and up to 7 command-specific optional parameters.
 
 | Field Name                    | Type                          | 值                                                                  | 描述                                                                                                                                                                                        |
 | ----------------------------- | ----------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,7 +67,7 @@ This message includes fields to identify the particular mission item (command id
 The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#mav_commands).
 The last three parameters (x, y, z) are used for positional information in `MAV_CMD_NAV_*` commands, but can be used for any purpose in other commands.
 
-The remaining message fields are used for addressing, defining the mission type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
+The remaining message fields are used for addressing, defining the plan type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
 
 | Field Name                            | Type                          | 值                                                                               | 描述                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -80,15 +85,15 @@ The following messages and enums are used by the service.
 
 | 消息                                                                                                                                            | 描述                                                                                                                                                                                                                                                                                                                                                                                                  |
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id="MISSION_REQUEST_LIST"></a>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.                                                                                                                                                                                                                                                                               |
+| <a id="MISSION_REQUEST_LIST"></a>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of plan items.                                                                                                                                                                                                                                                                                  |
 | <a id="MISSION_COUNT"></a>[MISSION_COUNT](../messages/common.md#MISSION_COUNT)                                           | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).                                                                                                   |
-| <a id="MISSION_REQUEST_INT"></a>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT)    | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                                                                 |
-| <a id="MISSION_ITEM_INT"></a>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT)             | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                                                                                                           |
+| <a id="MISSION_REQUEST_INT"></a>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT)    | Request plan item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for plan [upload](#uploading_mission) and [download](#download_mission).                                                                                                       |
+| <a id="MISSION_ITEM_INT"></a>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT)             | Message encoding a [plan item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for plan [upload](#uploading_mission) and [download](#download_mission).                                                                                                                                                 |
 | <a id="MISSION_ACK"></a>[MISSION_ACK](../messages/common.md#MISSION_ACK)                                                 | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure. |
 | <a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT)                                     | Message containing the current mission item sequence number. This is streamed and also emitted when the [current mission item is set/changed](#current_mission_item).                                                                                                                                                                                               |
 | <a id="MISSION_SET_CURRENT"></a>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT)    | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).                                                                                                                                                                                                                                           |
 | <a id="STATUSTEXT"></a>[STATUSTEXT](../messages/common.md#STATUSTEXT)                                                                         | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.                                                                                                                                                                                                                                                                               |
-| <a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)          | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.                                                                                                                                                                                                                                                                                                |
+| <a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)          | Message sent to [clear/delete all plan items of a particular type](#clear_mission) stored on a system.                                                                                                                                                                                                                                                                              |
 | <a id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                                                                                                                                                        |
 
 | Command                                                                                                                                                                                                                                    | 描述                                                                                                                                                                                               |
@@ -100,7 +105,7 @@ The following messages and enums are used by the service.
 | <a id="MAV_MISSION_TYPE"></a>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE)       | [Mission type](#mission_types) for message (mission, geofence, rallypoints).                                                                                                                                                   |
 | <a id="MAV_MISSION_RESULT"></a>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK). |
 | <a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME)                                                 | Co-ordinate frame for position/velocity/acceleration data in the message.                                                                                                                                                                         |
-| <a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands)                                                  | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).                                                                             |
+| <a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands)                                                  | [Plan Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).                                                                                |
 
 ## Deprecated Types: MISSION_ITEM {#command_message_type}
 
@@ -123,7 +128,7 @@ The table below shows that the positional parameters can be local (x, y, z), glo
 The co-ordinate frame of positional parameters is defined in the `MISSION_ITEM_INT.frame` field using a [MAV_FRAME](#MAV_FRAME) value.
 
 The global frames are prefixed with `MAV_FRAME_GLOBAL_*`.
-Mission items should use frame variants that have the suffix `_INT`: e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT_INT`, `MAV_FRAME_GLOBAL_INT`, `MAV_FRAME_GLOBAL_TERRAIN_ALT_INT`.
+Plan items should use frame variants that have the suffix `_INT`: e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT_INT`, `MAV_FRAME_GLOBAL_INT`, `MAV_FRAME_GLOBAL_TERRAIN_ALT_INT`.
 When using these frames, latitude and longitude values must be encoded by multiplying the degrees by 1E7 (e.g. the latitude 69.69000000 would be sent as 69.69000000x1E7 = 696900000).
 Using int32 of degrees \* 10^7 has higher resolution than could be achieved with single floating point.
 
@@ -154,16 +159,17 @@ Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for missi
 `Param5`, `param6`, `param7` may also be used for non-positional information.
 In this case the [MISSION_ITEM_INT.frame](#MISSION_ITEM_INT) should be set to [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) (this is equivalent to say "the frame data is irrelevant").
 
-As param5 and param6 are sent in _integer_ fields, generally you should design mission items/MAV_CMDs such that these only include integer data (and are sent as-is/unscaled).
-If these must be used for real numbers and scaling is required, then this must be noted in the mission item itself.
+As `param5` and `param6` are sent in _integer_ fields, generally you should design mission items/MAV_CMDs such that these only include integer data (and are sent as-is/unscaled).
+If these must be used for real numbers and scaling is required, then this must be noted in the plan item itself.
 
 ## Operations {#operations}
 
-This section defines all the protocol operations.
+This section defines the operations for detecting changes to the plan, upload and download, and clearing the plan.
+It is common to all plan types.
 
-### Detecting Mission/Plan Changes
+### Detecting Plan Changes
 
-Mission upload and download can be expensive operations, in particular for large missions.
+Plan upload and download can be expensive operations, in particular for large missions.
 A GCS can avoid unnecessary uploads and downloads by first checking whether it has a matching id(s) for the corresponding plan on the vehicle.
 
 The current id for different parts of the plan are streamed in [MISSION_CURRENT](#MISSION_CURRENT) message, using the appropriately named fields: `mission_id`, `fence_id`, `rally_points_id`.
@@ -177,9 +183,9 @@ On upload, the generated ID is sent to the GCS in the final part of the upload s
 On download, the stored ID is sent to the GCS in the [MISSION_COUNT.opaque_id](#MISSION_COUNT) field.
 
 The GCS should store the value of the ID from the flight stack as the "current id" for whatever part of the plan was uploaded/downloaded.
-It can then monitor `MISSION_CURRENT`, and check its cached values against the current plan ids to determine whether it has a matching mission, or needs to download the mission from the vehicle.
+It can then monitor `MISSION_CURRENT`, and check its cached values against the current plan ids to determine whether it has a matching plan, or needs to download the plan from the vehicle.
 
-### Upload a Mission to the Vehicle {#uploading_mission}
+### Upload a Plan to the Vehicle {#uploading_mission}
 
 The diagram below shows the communication sequence to upload a mission to a drone (assuming all operations succeed).
 
@@ -193,7 +199,7 @@ Mission upload/download can be bandwidth intensive and time consuming.
 [Check for plan changes](#detecting-missionplan-changes) before uploading (or downloading) a mission.
 :::
 
-[![Mission Upload Sequence](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+[![Plan Upload Sequence](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
 <!-- Original sequence diagram
 sequenceDiagram;
@@ -213,13 +219,13 @@ sequenceDiagram;
 
 In more detail, the sequence of operations is:
 
-1. GCS sends [MISSION_COUNT](../messages/common.md#MISSION_COUNT) including the number of mission items to be uploaded (`count`).
+1. GCS sends [MISSION_COUNT](../messages/common.md#MISSION_COUNT) including the number of plan items (`MISSION_ITEM_INT`) to be uploaded (`count`).
    - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`).
-2. Drone receives message and responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==0`).
+2. Drone receives message and responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first plan item (`seq==0`).
    - A [timeout](#timeout) must be started for the Drone to wait on the `MISSION_ITEM_INT` response from GCS.
-3. GCS receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
+3. GCS receives `MISSION_REQUEST_INT` and responds with the requested item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
 4. Drone and GCS repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until all items are uploaded (`seq==count-1`).
-5. After receiving the last mission item the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission upload completion/success.
+5. After receiving the last plan item the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission upload completion/success.
    - The drone should set the new mission to be the current mission, discarding the original data.
    - The drone considers the upload complete.
 6. GCS receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED` to indicate the operation is complete.
@@ -229,25 +235,25 @@ Notes:
 
 - A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
   If the timeout expires without a response being received then the request must be resent.
-- Mission items must be received in order.
+- Plan items must be received in order.
   If an item is received out-of-sequence the expected item should be re-requested by the vehicle (the out-of-sequence item is dropped).
 - An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
   This must cancel the operation and restore the mission to its previous state.
   For example, the drone might respond to the [MISSION_COUNT](../messages/common.md#MISSION_COUNT) request with a [MAV_MISSION_NO_SPACE](../messages/common.md#MAV_MISSION_NO_SPACE) if there isn't enough space to upload the mission.
-- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
+- The sequence above shows the [plan items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
   Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
 - Uploading an empty mission ([MISSION_COUNT](../messages/common.md#MISSION_COUNT) is 0) has the same effect as [clearing the mission](#clear_mission).
 
-### Download a Mission from the Vehicle {#download_mission}
+### Download a Plan from the Vehicle {#download_mission}
 
 :::info
-Mission upload/download can also be bandwidth intensive and time consuming.
+Plan upload/download can be bandwidth intensive and time consuming.
 [Check for plan changes](#detecting-missionplan-changes) before downloading (or uploading) a mission.
 :::
 
 The diagram below shows the communication sequence to download a mission from a drone (assuming all operations succeed).
 
-[![Sequence: Download mission](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+[![Sequence: Download plan](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
 <!-- original sequence
 sequenceDiagram;
@@ -266,9 +272,9 @@ sequenceDiagram;
     GCS->>Drone: MISSION_ACK
 -->
 
-The sequence is similar to that for [uploading a mission](#uploading_mission).
+The sequence is similar to that for [uploading a plan](#uploading_mission).
 The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items ([MISSION_COUNT](#MISSION_COUNT)).
-This starts a cycle where the GCS requests mission items, and the drone supplies them.
+This starts a cycle where the GCS requests plan items, and the drone supplies them.
 
 Note:
 
@@ -283,9 +289,81 @@ Note:
 - The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
   Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
 
+### Clear Plan {#clear_mission}
+
+The diagram below shows the communication sequence to clear a plan from a drone (assuming all operations succeed).
+
+[![Mermaid Diagram: Clear Missions](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ0xFQVJfQUxMXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ0xFQVJfQUxMXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!--
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_CLEAR_ALL
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_ACK
+-->
+
+In more detail, the sequence of operations is:
+
+1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
+   - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
+2. Drone receives the message, and clears the specified plan type from storage.
+3. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating success.
+4. GCS receives `MISSION_ACK` and clears its own stored information about the mission.
+   The operation is now complete.
+
+Note:
+
+- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_CLEAR_ALL`).
+  If the timeout expires without a response being received then the request must be resent.
+- An [error](#errors) can be signaled in response to any request (in this case, just `MISSION_CLEAR_ALL`) using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
+  This must cancel the operation.
+  The GCS record of the mission (if any) should be retained.
+
+### Canceling Operations {#cancel}
+
+The above mission operations may be canceled by responding to any request (e.g. `MISSION_REQUEST_INT`) with a `MISSION_ACK` message containing the `MAV_MISSION_OPERATION_CANCELLED` error.
+
+Both systems should then return themselves to the idle state (if the system does not receive the cancellation message it will resend the request; the recipient will then be in the idle state and may respond with an appropriate error for that state).
+
+### Operation Exceptions
+
+#### Timeouts and Retries {#timeout}
+
+A timeout should be set for all messages that require a response.
+If the expected response is not received before the timeout then the message must be resent.
+If no response is received after a number of retries then the client must cancel the operation and return to an idle state.
+
+The recommended timeout values before resending, and the number of retries are:
+
+- Timeout (default): 1500 ms
+- Timeout (plan items): 250 ms.
+- Retries (max): 5
+
+#### Errors/Completion {#errors}
+
+All operations complete with a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing the result of the operation ([MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT)) in the `type` field.
+
+On successful completion, the message must contain `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED); this is sent by the system that is receiving the command/data (e.g. the drone for mission upload or the GCS for mission download).
+
+An operation may also complete with an error - `MISSION_ACK.type` set to [MAV_MISSION_ERROR](../messages/common.md#MAV_MISSION_ERROR) or some other error code in [MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT).
+This can occur in response to any message/anywhere in the sequence.
+
+Errors are considered unrecoverable.
+If an error is sent, both ends of the system should reset themselves to the idle state and the current state of the mission on the vehicle should be unaltered.
+
+Note:
+
+- [timeouts](#timeout) are not considered errors.
+- Out-of-sequence messages in mission upload/download are recoverable, and are not treated as errors.
+
+## Mission Management Operations {#mission_management}
+
 ### Set Current Mission Item {#current_mission_item}
 
 The diagram below shows the communication sequence to set the current mission item.
+Note that here we mean "mission" not plan, since rally points and geofences are not executed sequentially.
 
 [![Mermaid Diagram: Set mission item](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -319,75 +397,6 @@ GCS/developer API can monitor progress by handling the appropriate messages sent
 - The vehicle must broadcast a [MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) message whenever a new mission item is reached.
   The message contains the `seq` number of the current mission item.
 - The vehicle must also broadcast a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message if the [current mission item](#current_mission_item) is changed.
-
-### Clear Missions {#clear_mission}
-
-The diagram below shows the communication sequence to clear the mission from a drone (assuming all operations succeed).
-
-[![Mermaid Diagram: Clear Missions](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ0xFQVJfQUxMXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ0xFQVJfQUxMXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
-
-<!--
-sequenceDiagram;
-    participant GCS
-    participant Drone
-    GCS->>Drone: MISSION_CLEAR_ALL
-    GCS->>GCS: Start timeout
-    Drone-- >>GCS: MISSION_ACK
--->
-
-In more detail, the sequence of operations is:
-
-1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
-   - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
-2. Drone receives the message, and clears the mission from storage.
-3. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating success.
-4. GCS receives `MISSION_ACK` and clears its own stored information about the mission.
-   The operation is now complete.
-
-Note:
-
-- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_CLEAR_ALL`).
-  If the timeout expires without a response being received then the request must be resent.
-- An [error](#errors) can be signaled in response to any request (in this case, just `MISSION_CLEAR_ALL`) using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
-  This must cancel the operation.
-  The GCS record of the mission (if any) should be retained.
-
-### Canceling Operations {#cancel}
-
-The above mission operations may be canceled by responding to any request (e.g. `MISSION_REQUEST_INT`) with a `MISSION_ACK` message containing the `MAV_MISSION_OPERATION_CANCELLED` error.
-
-Both systems should then return themselves to the idle state (if the system does not receive the cancellation message it will resend the request; the recipient will then be in the idle state and may respond with an appropriate error for that state).
-
-### Operation Exceptions
-
-#### Timeouts and Retries {#timeout}
-
-A timeout should be set for all messages that require a response.
-If the expected response is not received before the timeout then the message must be resent.
-If no response is received after a number of retries then the client must cancel the operation and return to an idle state.
-
-The recommended timeout values before resending, and the number of retries are:
-
-- Timeout (default): 1500 ms
-- Timeout (mission items): 250 ms.
-- Retries (max): 5
-
-#### Errors/Completion {#errors}
-
-All operations complete with a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing the result of the operation ([MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT)) in the `type` field.
-
-On successful completion, the message must contain `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED); this is sent by the system that is receiving the command/data (e.g. the drone for mission upload or the GCS for mission download).
-
-An operation may also complete with an error - `MISSION_ACK.type` set to [MAV_MISSION_ERROR](../messages/common.md#MAV_MISSION_ERROR) or some other error code in [MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT).
-This can occur in response to any message/anywhere in the sequence.
-
-Errors are considered unrecoverable.
-If an error is sent, both ends of the system should reset themselves to the idle state and the current state of the mission on the vehicle should be unaltered.
-
-Note:
-
-- [timeouts](#timeout) are not considered errors.
-- Out-of-sequence messages in mission upload/download are recoverable, and are not treated as errors.
 
 ## Mission File Formats
 
@@ -429,10 +438,10 @@ The remaining parameters (xtrack and heading) apply only to forward flying aircr
 
 Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will _exit the loiter circle, and its path to the next waypoint_ (these apply only to `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`).
 
-| Param (:Label) | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Units                                                                   |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| 2: Heading Required               | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | min:0 max:1 increment:1 |
-| 4: Xtrack Location                | Sets xtrack path or exit location: 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |                                                                         |
+| Param (:Label) | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                         | Units                                                                   |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| 2: Heading Required               | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                             | min:0 max:1 increment:1 |
+| 4: Xtrack Location                | Sets xtrack path or exit location: `0` for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), `1` to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |                                                                         |
 
 The recommended values (and resulting paths) are those shown below.
 
@@ -457,12 +466,6 @@ The Xtrack parameter independently defines the path and exit location:
 - `xtrack=NaN`: Exit the loiter using "system specific default behaviour".
   - The vehicle must still respect the heading required param.
   - Usually this is synonymous with `xtrack=0`
-- `xtrack=any other value`: Exit the loiter when the vehicle heading (tangent) makes the specified angle in degrees to the center xtrack.
-  Converge to the center xtrack.
-  The vehicle must still respect the `heading required` param (some xtrack values may not be possible with this condition true).
-  This allows callers to specify how quickly the vehicle converges to the center xtrack. For example, the image below shows the vehicle exiting the loiter at 30 degrees.
-
-  ![Loiter angle](../../assets/protocols/mission_loiter/xtrack_30.png)
 
 ## Implementations
 
