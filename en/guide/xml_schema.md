@@ -367,7 +367,7 @@ The tag is usually applied like this (including the comment):
 Attributes:
 
 - `since` (optional): A datestamp indicating when the corresponding element was proposed.
-  This should be formatted as such as `YYYYMM`
+  This should be formatted as such as `YYYY-MM`
   This hints to the maintainer team when WIP elements should be reviewed for addition or removal.
 
 Nested elements
