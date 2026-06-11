@@ -118,7 +118,7 @@ Version and capability of autopilot software. This should be emitted in response
 
 ### FIRMWARE_VERSION_TYPE {#FIRMWARE_VERSION_TYPE}
 
-These values define the type of firmware release. These values indicate the first version or release of this type. For example the first alpha release would be 64, the second would be 65.
+These values define the type of firmware release.  These values indicate the first version or release of this type.  For example the first alpha release would be 64, the second would be 65.
 
 | 值                                              | Name                                                                                                                             | 描述                      |
 | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
@@ -127,3 +127,4 @@ These values define the type of firmware release. These values indicate the firs
 | <a id='FIRMWARE_VERSION_TYPE_BETA'></a>128     | [FIRMWARE_VERSION_TYPE_BETA](#FIRMWARE_VERSION_TYPE_BETA)         | beta release            |
 | <a id='FIRMWARE_VERSION_TYPE_RC'></a>192       | [FIRMWARE_VERSION_TYPE_RC](#FIRMWARE_VERSION_TYPE_RC)             | release candidate       |
 | <a id='FIRMWARE_VERSION_TYPE_OFFICIAL'></a>255 | [FIRMWARE_VERSION_TYPE_OFFICIAL](#FIRMWARE_VERSION_TYPE_OFFICIAL) | official stable release |
+
