@@ -326,3 +326,4 @@ State flags for ADS-B transponder status report
 | <a id='UAVIONIX_ADSB_OUT_STATUS_FAULT_MAINT_REQ'></a>128            | [UAVIONIX_ADSB_OUT_STATUS_FAULT_MAINT_REQ](#UAVIONIX_ADSB_OUT_STATUS_FAULT_MAINT_REQ)                                                |    |
 
 ## Commands (MAV_CMD) {#mav_commands}
+
