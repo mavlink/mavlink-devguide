@@ -27,7 +27,7 @@ The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_
 MAVLink 1 supports only flight-plan missions (this is implied/not explicitly set).
 :::
 
-## Plan Items (MAVLink Commands) {#mavlink_commands}
+## Plan Items (MAV_CMD) {#mavlink_commands}
 
 Mission items (or more generically "Plan items") for all the [plan types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
@@ -46,7 +46,7 @@ The items for the different types of plan are usually identified using a simple 
 - _Geofence plan_:
   - Prefixed with `MAV_CMD_NAV_FENCE_` (e.g. [MAV_CMD_NAV_FENCE_RETURN_POINT](../messages/common.md#MAV_CMD_NAV_FENCE_RETURN_POINT)).
 - _Rally point plan_:
-  - Rally points are defined using [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
+  - Rally points are defined using [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT) (only).
 
 ## Plan Payload Message
 
@@ -471,27 +471,36 @@ The Xtrack parameter independently defines the path and exit location:
 
 ### PX4
 
-The protocol has been implemented in C.
+The protocol has been implemented in C++.
 
 Source code:
 
-- [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
+- [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_mission.cpp)
 
 The implementation status is (at time of writing):
 
-- Flight plan missions:
+- Mission (flight) plans:
   - upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
-- Geofence missions" are supported as defined in this specification.
-- Rally point "missions" are not supported on PX4.
+- Geofence plans are supported as defined in this specification.
+- Rally point plans are supported.
 
-Mission operation cancellation works for mission download (sets system to idle).
-Mission operation cancellation does not work for mission uploading; PX4 resends `MISSION_REQUEST_INT` until the operation times out.
+  PX4 supports additionally supports the following non-standard behaviour:
+  - [MAV_CMD_NAV_LOITER_TO_ALT](../messages/common.md#MAV_CMD_NAV_LOITER_TO_ALT) items can also be added to the rally point plan.
+    Any of these declared immediately after `MAV_CMD_NAV_RALLY_POINT` may be used as [VTOL approach loiter waypoints](https://docs.px4.io/main/en/flight_modes_vtol/return#vtol-rally-point-approach-loiters).
+    VTOL can use these points in a fixed-wing return to define the location and radius of VTOL loiter-descent, and heading, prior to traveling to the final rally point.
+    If multiple loiter waypoints are specified, selection is autopilot-specific.
 
-<!-- https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp#L641 -->
+    ::: info
+    This is non-standard because it is only implemented by PX4 and broadly opposed by ArduPilot (limited initial discussion).
+    The argument is that rally points are not designed for this purpose, and that adding new allowed waypoints turns them into mini-missions.
+    These might be implemented in the mission plan.
+    :::
+
+Mission operation cancellation works for both mission upload and download (sets system to idle).
 
 Source code:
 
-- [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
+- [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_mission.cpp)
 
 ### QGroundControl
 
