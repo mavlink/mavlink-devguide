@@ -21,8 +21,8 @@
   </dd>
 
   <dt>MAVLink版本如何选择？</dt>
-  <dd>应该尽可能使用 <a href="../guide/mavlink_2.md">MAVLink 2</a> 协议(它修复了早期版本的一些限制)。 
-  <em>MAVLink 2</em> 库也支持 <em>MAVLink 1</em>，所以也可以在需要时使用它们与旧系统通信。 
+  <dd>应该尽可能使用 <a href="../guide/mavlink_2.md">MAVLink 2</a> 协议(它修复了早期版本的一些限制)。
+  <em>MAVLink 2</em> 库也支持 <em>MAVLink 1</em>，所以也可以在需要时使用它们与旧系统通信。
   </dd>
 
  <dt>MAVLink更新/发布周期？</dt>
@@ -57,13 +57,15 @@
   <dd>MAVLink 是无人飞行器中对安全至关重要的一部分。 较差的通信链路会丢失好多数据包，这会将所监视的飞机置于不安全的状态。 MAVLink 使用数据包头中的序列号来计算丢包率并将其反馈给另一方，使得飞行器或地面站能采取相应措施。</dd>
 
   <dt>为什么要在数据包的校验和中使用 CRC_EXTRA 呢？</dt>
-  <dd>CRC_EXTRA  CRC 用来验证发送者和接收者是否都对链路上的消息格式有同样地解释（对于轻量级协议时必须的，因为消息结构信息并不包含在有效载荷中）。
+  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message
+  (required because as a lightweight protocol, the message structure isn't included in the payload).
   <br><br>
-在 MAVLink 0.9 版中没有使用 CRC（尽管检查了数据包的长度）。 
-  如果 XML 所描述的消息内容偶尔被改变而长度没有改变，这样就会破坏消息中的数据域。</dd>
+在 MAVLink 0.9 版中没有使用 CRC（尽管检查了数据包的长度）。
+  There were a small number of cases where XML describing a message changed without changing the message length,
+  leading to badly corrupted fields when messages were read.</dd>
 
   <dt>我可以帮助编解码子程序或增加其它功能吗？ 我可以帮助编解码子程序或增加其它功能吗？ 可以更改 MAVLink 吗？</dt>
-  <dd>可以，在安全测试时必须十分小心。 
+  <dd>可以，在安全测试时必须十分小心。
   可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。 请在 MAVLink <a href="../index.md#support">支持频道</a> 上提新功能的建议。</dd>
 
   <dt>如何进一步减少生成的 C 库大小？</dt>
