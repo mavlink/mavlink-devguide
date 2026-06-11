@@ -45,7 +45,7 @@ The following sections list all entities in the dialect (both included and defin
 
 ### FLEXIFUNCTION_SET (150) {#FLEXIFUNCTION_SET}
 
-Depreciated but used as a compiler flag.  Do not remove
+Depreciated but used as a compiler flag. Do not remove
 
 | Field Name                            | Type      | Description  |
 | ------------------------------------- | --------- | ------------ |
@@ -314,7 +314,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F14: forma
 | sue_BOARD_TYPE                            | `uint8_t`  | Serial UDB Extra Type of UDB Hardware              |
 | sue_AIRFRAME                                                   | `uint8_t`  | Serial UDB Extra Type of Airframe                  |
 | sue_RCON                                                       | `int16_t`  | Serial UDB Extra Reboot Register of DSPIC          |
-| sue_TRAP_FLAGS                            | `int16_t`  | Serial UDB Extra  Last dspic Trap Flags            |
+| sue_TRAP_FLAGS                            | `int16_t`  | Serial UDB Extra Last dspic Trap Flags             |
 | sue_TRAP_SOURCE                           | `uint32_t` | Serial UDB Extra Type Program Address of Last Trap |
 | sue_osc_fail_count   | `int16_t`  | Serial UDB Extra Number of Ocillator Failures      |
 | sue_CLOCK_CONFIG                          | `uint8_t`  | Serial UDB Extra UDB Internal Clock Configuration  |
@@ -459,7 +459,7 @@ Action required when performing [CMD_PREFLIGHT_STORAGE](#CMD_PREFLIGHT_STORAGE)
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
 | <a id='MAV_PFS_CMD_READ_ALL'></a>0       | [MAV_PFS_CMD_READ_ALL](#MAV_PFS_CMD_READ_ALL)             | Read all parameters from storage      |
 | <a id='MAV_PFS_CMD_WRITE_ALL'></a>1      | [MAV_PFS_CMD_WRITE_ALL](#MAV_PFS_CMD_WRITE_ALL)           | Write all parameters to storage       |
-| <a id='MAV_PFS_CMD_CLEAR_ALL'></a>2      | [MAV_PFS_CMD_CLEAR_ALL](#MAV_PFS_CMD_CLEAR_ALL)           | Clear all  parameters in storage      |
+| <a id='MAV_PFS_CMD_CLEAR_ALL'></a>2      | [MAV_PFS_CMD_CLEAR_ALL](#MAV_PFS_CMD_CLEAR_ALL)           | Clear all parameters in storage       |
 | <a id='MAV_PFS_CMD_READ_SPECIFIC'></a>3  | [MAV_PFS_CMD_READ_SPECIFIC](#MAV_PFS_CMD_READ_SPECIFIC)   | Read specific parameters from storage |
 | <a id='MAV_PFS_CMD_WRITE_SPECIFIC'></a>4 | [MAV_PFS_CMD_WRITE_SPECIFIC](#MAV_PFS_CMD_WRITE_SPECIFIC) | Write specific parameters to storage  |
 | <a id='MAV_PFS_CMD_CLEAR_SPECIFIC'></a>5 | [MAV_PFS_CMD_CLEAR_SPECIFIC](#MAV_PFS_CMD_CLEAR_SPECIFIC) | Clear specific parameters in storage  |
@@ -480,5 +480,3 @@ Request storage of different parameter values and logs. This command will be onl
 | 5                                | Empty                                                                                                                                                                       |
 | 6                                | Empty                                                                                                                                                                       |
 | 7                                | Empty                                                                                                                                                                       |
-
-
