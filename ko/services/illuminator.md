@@ -48,7 +48,7 @@ These illuminators have built-in MAVLink support:
 Illuminators are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and send a constant flow of heartbeats (nominally at 1Hz).
 Illuminators are identified via their type [MAV\_TYPE\_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR).
 Individual illuminators are distinguished via their unique component ID, which by default should be [MAV\_COMP\_ID\_ILLUMINATOR](#MAV_COMP_ID_ILLUMINATOR) (though this is not mandated and any ID may be used).
-Once a heartbeat is received, the drone can then send a [MAV\_CMD\_REQUEST\_MESSAGE ][MAV_CMD_REQUEST_MESSAGE] command to the illuminator to receive information, set settings, or control the illuminator.
+Once a heartbeat is received, the drone can then send a [MAV\_CMD\_REQUEST\_MESSAGE][MAV_CMD_REQUEST_MESSAGE] command to the illuminator to receive information, set settings, or control the illuminator.
 An example below illustrates how a drone can request the status of the illuminator.
 
 <!-- Mermaid graph:
