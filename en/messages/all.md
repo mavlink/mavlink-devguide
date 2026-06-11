@@ -37,7 +37,6 @@ span.warning {
     color: red;
   }
 </style>
-
 ## MAVLink Include Files
 
 - [ardupilotmega.xml](../messages/ardupilotmega.md)
@@ -60,11 +59,11 @@ span.warning {
 
 ## Summary
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 0       | 391      |
-| [Enums](#enumerated-types) | 0       | 258      |
-| [Commands](#mav_commands)  | 224     | 0        |
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 0 | 391
+[Enums](#enumerated-types) | 0 | 258
+[Commands](#mav_commands) | 224 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -82,5 +81,7 @@ Dummy/temporary [MAV_CMD](#mav_commands) that causes all.xml to correctly import
 
 It not be used, and will be removed when the toolchain is fixed.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
+Param (Label) | Description
+--- | ---
+
+

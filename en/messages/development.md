@@ -24,7 +24,6 @@ span.warning {
     color: red;
   }
 </style>
-
 **Protocol dialect:** 0
 
 **Protocol version:** 0
@@ -35,11 +34,11 @@ span.warning {
 
 ## Summary
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 14      | 234      |
-| [Enums](#enumerated-types) | 15      | 159      |
-| [Commands](#mav_commands)  | 179     | 0        |
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 14 | 234
+[Enums](#enumerated-types) | 15 | 159
+[Commands](#mav_commands) | 179 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -61,17 +60,18 @@ A GCS is required to understand the format in order to create an appropriate UI 
 Note that for AM32 EEPROMs the data layout is defined in: https://github.com/am32-firmware/AM32/blob/main/Inc/eeprom.h (the second byte in the structure is the eeprom_version).
 The firmware field indicates which ESC firmware is in use, allowing the GCS to interpret the data correctly.
 
-| Field Name       | Type           | Values                        | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ---------------- | -------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| target_system    | `uint8_t`      |                               | System ID (ID of target system, normally flight controller).                                                                                                                                                                                                                                                                                                                                                   |
-| target_component | `uint8_t`      |                               | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                                                                                                                                                                       |
-| firmware         | `uint8_t`      | [ESC_FIRMWARE](#ESC_FIRMWARE) | ESC firmware type.                                                                                                                                                                                                                                                                                                                                                                                             |
-| msg_index        | `uint8_t`      |                               | Zero-indexed sequence number of this message when multiple messages are required to transfer the complete EEPROM data. The first message has index 0. For single-message transfers, set to 0.                                                                                                                                                                                                                  |
-| msg_count        | `uint8_t`      |                               | Total number of messages required to transfer the complete EEPROM data. For single-message transfers, set to 1. Receivers should collect all messages from index 0 to msg_count-1 before reconstructing the complete data.                                                                                                                                                                                     |
-| esc_index        | `uint8_t`      | max:254                       | Index of the ESC (0 = ESC1, 1 = ESC2, etc.).                                                                                                                                                                                                                                                                                                                                                                   |
-| write_mask       | `uint32_t[6]`  |                               | Bitmask indicating which bytes in the data array should be written. Each bit corresponds to a byte index in the data array (bit 0 of write_mask[0] = data[0], bit 31 of write_mask[0] = data[31], bit 0 of write_mask[1] = data[32], etc.). Set bits indicate bytes to write, cleared bits indicate bytes to skip. This allows precise updates of individual parameters without overwriting the entire EEPROM. |
-| length           | `uint8_t`      | max:222                       | Number of valid bytes in data array.                                                                                                                                                                                                                                                                                                                                                                           |
-| data             | `uint8_t[192]` |                               | Raw ESC EEPROM data. Unused bytes should be set to zero.                                                                                                                                                                                                                                                                                                                                                       |
+Field Name | Type | Values | Description
+--- | --- | --- | ---
+target_system | `uint8_t` | | System ID (ID of target system, normally flight controller). 
+target_component | `uint8_t` | | Component ID (normally 0 for broadcast). 
+firmware | `uint8_t` | [ESC_FIRMWARE](#ESC_FIRMWARE) | ESC firmware type. 
+msg_index | `uint8_t` | | Zero-indexed sequence number of this message when multiple messages are required to transfer the complete EEPROM data. The first message has index 0. For single-message transfers, set to 0. 
+msg_count | `uint8_t` | | Total number of messages required to transfer the complete EEPROM data. For single-message transfers, set to 1. Receivers should collect all messages from index 0 to msg_count-1 before reconstructing the complete data. 
+esc_index | `uint8_t` | max:254 | Index of the ESC (0 = ESC1, 1 = ESC2, etc.). 
+write_mask | `uint32_t[6]` | | Bitmask indicating which bytes in the data array should be written. Each bit corresponds to a byte index in the data array (bit 0 of write_mask[0] = data[0], bit 31 of write_mask[0] = data[31], bit 0 of write_mask[1] = data[32], etc.). Set bits indicate bytes to write, cleared bits indicate bytes to skip. This allows precise updates of individual parameters without overwriting the entire EEPROM. 
+length | `uint8_t` | max:222 | Number of valid bytes in data array. 
+data | `uint8_t[192]` | | Raw ESC EEPROM data. Unused bytes should be set to zero. 
+
 
 ### SET_VELOCITY_LIMITS (354) — [WIP] {#SET_VELOCITY_LIMITS}
 
@@ -82,13 +82,14 @@ Set temporary maximum limits for horizontal speed, vertical speed and yaw rate.
 The consumer must stream the current limits in [VELOCITY_LIMITS](#VELOCITY_LIMITS) at 1 Hz or more (when limits are being set).
 The consumer should latch the limits until a new limit is received or the mode is changed.
 
-| Field Name             | Type      | Units | Description                                                                                                |
-| ---------------------- | --------- | ----- | ---------------------------------------------------------------------------------------------------------- |
-| target_system          | `uint8_t` |       | System ID (0 for broadcast).                                                                               |
-| target_component       | `uint8_t` |       | Component ID (0 for broadcast).                                                                            |
-| horizontal_speed_limit | `float`   | m/s   | Limit for horizontal movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: Field not used (ignore) |
-| vertical_speed_limit   | `float`   | m/s   | Limit for vertical movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: Field not used (ignore)   |
-| yaw_rate_limit         | `float`   | rad/s | Limit for vehicle turn rate around its yaw axis. NaN: Field not used (ignore)                              |
+Field Name | Type | Units | Description
+--- | --- | --- | ---
+target_system | `uint8_t` | | System ID (0 for broadcast). 
+target_component | `uint8_t` | | Component ID (0 for broadcast). 
+horizontal_speed_limit | `float` | m/s | Limit for horizontal movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: Field not used (ignore) 
+vertical_speed_limit | `float` | m/s | Limit for vertical movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: Field not used (ignore) 
+yaw_rate_limit | `float` | rad/s | Limit for vehicle turn rate around its yaw axis. NaN: Field not used (ignore) 
+
 
 ### VELOCITY_LIMITS (355) — [WIP] {#VELOCITY_LIMITS}
 
@@ -96,11 +97,12 @@ The consumer should latch the limits until a new limit is received or the mode i
 
 Current limits for horizontal speed, vertical speed and yaw rate, as set by [SET_VELOCITY_LIMITS](#SET_VELOCITY_LIMITS).
 
-| Field Name             | Type    | Units | Description                                                                                         |
-| ---------------------- | ------- | ----- | --------------------------------------------------------------------------------------------------- |
-| horizontal_speed_limit | `float` | m/s   | Limit for horizontal movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied |
-| vertical_speed_limit   | `float` | m/s   | Limit for vertical movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied   |
-| yaw_rate_limit         | `float` | rad/s | Limit for vehicle turn rate around its yaw axis. NaN: No limit applied                              |
+Field Name | Type | Units | Description
+--- | --- | --- | ---
+horizontal_speed_limit | `float` | m/s | Limit for horizontal movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied 
+vertical_speed_limit | `float` | m/s | Limit for vertical movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied 
+yaw_rate_limit | `float` | rad/s | Limit for vehicle turn rate around its yaw axis. NaN: No limit applied 
+
 
 ### BATTERY_STATUS_V2 (369) — [WIP] {#BATTERY_STATUS_V2}
 
@@ -113,16 +115,17 @@ Static/invariant battery information is sent in [BATTERY_INFO](#BATTERY_INFO).
 Note that smart batteries should set the [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) bit to indicate that supplied capacity values are relative to a battery that is known to be full.
 Power monitors would not set this bit, indicating that capacity_consumed is relative to drone power-on, and that other values are estimated based on the assumption that the battery was full on power-on.
 
-| Field Name         | Type       | Units | Values                                                | Description                                                                                                                                                                                                                                                                                  |
-| ------------------ | ---------- | ----- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                 | `uint8_t`  |       |                                                       | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component.                                                                                                                                                                   |
-| temperature        | `int16_t`  | cdegC | invalid:INT16_MAX                                     | Temperature of the whole battery pack (not internal electronics). INT16_MAX field not provided.                                                                                                                                                                                              |
-| voltage            | `float`    | V     | invalid:NaN                                           | Battery voltage (total). NaN: field not provided.                                                                                                                                                                                                                                            |
-| current            | `float`    | A     | invalid:NaN                                           | Battery current (through all cells/loads). Positive value when discharging and negative if charging. NaN: field not provided.                                                                                                                                                                |
-| capacity_consumed  | `float`    | Ah    | invalid:NaN                                           | Consumed charge. NaN: field not provided. This is either the consumption since power-on or since the battery was full, depending on the value of [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL).                                  |
-| capacity_remaining | `float`    | Ah    | invalid:NaN                                           | Remaining charge (until empty). NaN: field not provided. Note: If [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) is unset, this value is based on the assumption the battery was full when the system was powered.                |
-| state_of_charge    | `float`    | %     | invalid:NaN                                           | State of Charge (SoC). Remaining capacity relative to current fully-charged capacity as a percentage. Values: [0-100], NaN: field not provided. Note that the value may be calculated from design_capacity if current full_charge_capacity is not known (see [BATTERY_INFO](#BATTERY_INFO)). |
-| status_flags       | `uint32_t` |       | [MAV_BATTERY_STATUS_FLAGS](#MAV_BATTERY_STATUS_FLAGS) | Fault, health, readiness, and other status indications.                                                                                                                                                                                                                                      |
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+id | `uint8_t` | | | Battery ID<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
+temperature | `int16_t` | cdegC | invalid:INT16_MAX | Temperature of the whole battery pack (not internal electronics). INT16_MAX field not provided. 
+voltage | `float` | V | invalid:NaN | Battery voltage (total). NaN: field not provided. 
+current | `float` | A | invalid:NaN | Battery current (through all cells/loads). Positive value when discharging and negative if charging. NaN: field not provided. 
+capacity_consumed | `float` | Ah | invalid:NaN | Consumed charge. NaN: field not provided. This is either the consumption since power-on or since the battery was full, depending on the value of [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL). 
+capacity_remaining | `float` | Ah | invalid:NaN | Remaining charge (until empty). NaN: field not provided. Note: If [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) is unset, this value is based on the assumption the battery was full when the system was powered. 
+state_of_charge | `float` | % | invalid:NaN | State of Charge (SoC). Remaining capacity relative to current fully-charged capacity as a percentage. Values: [0-100], NaN: field not provided. Note that the value may be calculated from design_capacity if current full_charge_capacity is not known (see [BATTERY_INFO](#BATTERY_INFO)). 
+status_flags | `uint32_t` | | [MAV_BATTERY_STATUS_FLAGS](#MAV_BATTERY_STATUS_FLAGS) | Fault, health, readiness, and other status indications. 
+
 
 ### GROUP_START (414) — [WIP] {#GROUP_START}
 
@@ -130,11 +133,12 @@ Power monitors would not set this bit, indicating that capacity_consumed is rela
 
 Emitted during mission execution when control reaches [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START).
 
-| Field Name       | Type       | Units | Description                                                                                                                                                                               |
-| ---------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| group_id         | `uint32_t` |       | Mission-unique group id (from [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START)).                                                                                                               |
-| mission_checksum | `uint32_t` |       | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message.                                            |
-| time_usec        | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+Field Name | Type | Units | Description
+--- | --- | --- | ---
+group_id | `uint32_t` | | Mission-unique group id (from [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START)). 
+mission_checksum | `uint32_t` | | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message. 
+time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
+
 
 ### GROUP_END (415) — [WIP] {#GROUP_END}
 
@@ -142,11 +146,12 @@ Emitted during mission execution when control reaches [MAV_CMD_GROUP_START](#MAV
 
 Emitted during mission execution when control reaches [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END).
 
-| Field Name       | Type       | Units | Description                                                                                                                                                                               |
-| ---------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| group_id         | `uint32_t` |       | Mission-unique group id (from [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END)).                                                                                                                   |
-| mission_checksum | `uint32_t` |       | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message.                                            |
-| time_usec        | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+Field Name | Type | Units | Description
+--- | --- | --- | ---
+group_id | `uint32_t` | | Mission-unique group id (from [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END)). 
+mission_checksum | `uint32_t` | | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message. 
+time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
+
 
 ### RADIO_RC_CHANNELS (420) — [WIP] {#RADIO_RC_CHANNELS}
 
@@ -166,14 +171,15 @@ In this case time_last_update_ms still contains the timestamp of the last valid 
 For instance, the channels data could contain failsafe values configured in the receiver; the default is to carry the last valid data.
 Note: The RC channels fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.
 
-| Field Name                                                               | Type          | Units | Values                                              | Description                                                                                                                                                                                                                                                   |
-| ------------------------------------------------------------------------ | ------------- | ----- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| target_system                                                            | `uint8_t`     |       |                                                     | System ID (ID of target system, normally flight controller).                                                                                                                                                                                                  |
-| target_component                                                         | `uint8_t`     |       |                                                     | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                      |
-| time_last_update_ms                                                      | `uint32_t`    | ms    |                                                     | Time when the data in the channels field were last updated (time since boot in the receiver's time domain).                                                                                                                                                   |
-| flags                                                                    | `uint16_t`    |       | [RADIO_RC_CHANNELS_FLAGS](#RADIO_RC_CHANNELS_FLAGS) | Radio RC channels status flags.                                                                                                                                                                                                                               |
-| count                                                                    | `uint8_t`     |       |                                                     | Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message.                                                                                                            |
-| <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` |       | min:-4096 max:4096                                  | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x \* 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. |
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+target_system | `uint8_t` | | | System ID (ID of target system, normally flight controller). 
+target_component | `uint8_t` | | | Component ID (normally 0 for broadcast). 
+time_last_update_ms | `uint32_t` | ms | | Time when the data in the channels field were last updated (time since boot in the receiver's time domain). 
+flags | `uint16_t` | | [RADIO_RC_CHANNELS_FLAGS](#RADIO_RC_CHANNELS_FLAGS) | Radio RC channels status flags. 
+count | `uint8_t` | | | Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message. 
+<span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` | | min:-4096 max:4096 | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x * 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. 
+
 
 ### RC_CHANNELS_OVERRIDE_V2 (421) — [WIP] {#RC_CHANNELS_OVERRIDE_V2}
 
@@ -183,12 +189,13 @@ Highly bandwidth-efficient RC override message for professional networked operat
 Supersedes [RC_CHANNELS_OVERRIDE](#RC_CHANNELS_OVERRIDE) by adding 32-channel support and a bitmask for multi-master conflict avoidance.
 Uses centered-at-zero values and extension-field placement to maximize MAVLink 2 trailing-zero truncation.
 
-| Field Name                                                               | Type          | Description                                                                                                                                                                                       |
-| ------------------------------------------------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| target_system                                                            | `uint8_t`     | System ID.                                                                                                                                                                                        |
-| target_component                                                         | `uint8_t`     | Component ID.                                                                                                                                                                                     |
-| active_mask                                                              | `uint32_t`    | Bitmap of included channels (bit 0 = CH1). 1: Valid/Override, 0: Ignore.                                                                                                                          |
-| <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` | RC channels in centered 13-bit format. Range: -4096 to 4096, Center: 0.<br>Conversion to PWM: (x \* 5/32) + 1500.<br>Unused channels must be set to 0 to enable MAVLink 2 trailing-zero trimming. |
+Field Name | Type | Description
+--- | --- | ---
+target_system | `uint8_t` | System ID. 
+target_component | `uint8_t` | Component ID. 
+active_mask | `uint32_t` | Bitmap of included channels (bit 0 = CH1). 1: Valid/Override, 0: Ignore. 
+<span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` | RC channels in centered 13-bit format. Range: -4096 to 4096, Center: 0.<br>Conversion to PWM: (x * 5/32) + 1500.<br>Unused channels must be set to 0 to enable MAVLink 2 trailing-zero trimming. 
+
 
 ### GNSS_INTEGRITY (441) — [WIP] {#GNSS_INTEGRITY}
 
@@ -196,20 +203,21 @@ Uses centered-at-zero values and extension-field placement to maximize MAVLink 2
 
 Information about key components of GNSS receivers, like signal authentication, interference and system errors.
 
-| Field Name              | Type       | Units | Values                                                | Description                                                                                                                                                                                     |
-| ----------------------- | ---------- | ----- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                      | `uint8_t`  |       |                                                       | GNSS receiver id. Must match instance ids of other messages from same receiver.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
-| system_errors           | `uint32_t` |       | [GPS_SYSTEM_ERROR_FLAGS](#GPS_SYSTEM_ERROR_FLAGS)     | Errors in the GPS system.                                                                                                                                                                       |
-| authentication_state    | `uint8_t`  |       | [GPS_AUTHENTICATION_STATE](#GPS_AUTHENTICATION_STATE) | Signal authentication state of the GPS system.                                                                                                                                                  |
-| jamming_state           | `uint8_t`  |       | [GPS_JAMMING_STATE](#GPS_JAMMING_STATE)               | Signal jamming state of the GPS system.                                                                                                                                                         |
-| spoofing_state          | `uint8_t`  |       | [GPS_SPOOFING_STATE](#GPS_SPOOFING_STATE)             | Signal spoofing state of the GPS system.                                                                                                                                                        |
-| raim_state              | `uint8_t`  |       | [GPS_RAIM_STATE](#GPS_RAIM_STATE)                     | The state of the RAIM processing.                                                                                                                                                               |
-| raim_hfom               | `uint16_t` | cm    | invalid:UINT16_MAX                                    | Horizontal expected accuracy using satellites successfully validated using RAIM.                                                                                                                |
-| raim_vfom               | `uint16_t` | cm    | invalid:UINT16_MAX                                    | Vertical expected accuracy using satellites successfully validated using RAIM.                                                                                                                  |
-| corrections_quality     | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                        | An abstract value representing the estimated quality of incoming corrections, or 255 if not available.                                                                                          |
-| system_status_summary   | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                        | An abstract value representing the overall status of the receiver, or 255 if not available.                                                                                                     |
-| gnss_signal_quality     | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                        | An abstract value representing the quality of incoming GNSS signals, or 255 if not available.                                                                                                   |
-| post_processing_quality | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                        | An abstract value representing the estimated PPK quality, or 255 if not available.                                                                                                              |
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+id | `uint8_t` | | | GNSS receiver id. Must match instance ids of other messages from same receiver.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
+system_errors | `uint32_t` | | [GPS_SYSTEM_ERROR_FLAGS](#GPS_SYSTEM_ERROR_FLAGS) | Errors in the GPS system. 
+authentication_state | `uint8_t` | | [GPS_AUTHENTICATION_STATE](#GPS_AUTHENTICATION_STATE) | Signal authentication state of the GPS system. 
+jamming_state | `uint8_t` | | [GPS_JAMMING_STATE](#GPS_JAMMING_STATE) | Signal jamming state of the GPS system. 
+spoofing_state | `uint8_t` | | [GPS_SPOOFING_STATE](#GPS_SPOOFING_STATE) | Signal spoofing state of the GPS system. 
+raim_state | `uint8_t` | | [GPS_RAIM_STATE](#GPS_RAIM_STATE) | The state of the RAIM processing. 
+raim_hfom | `uint16_t` | cm | invalid:UINT16_MAX | Horizontal expected accuracy using satellites successfully validated using RAIM. 
+raim_vfom | `uint16_t` | cm | invalid:UINT16_MAX | Vertical expected accuracy using satellites successfully validated using RAIM. 
+corrections_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the estimated quality of incoming corrections, or 255 if not available. 
+system_status_summary | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the overall status of the receiver, or 255 if not available. 
+gnss_signal_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the quality of incoming GNSS signals, or 255 if not available. 
+post_processing_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the estimated PPK quality, or 255 if not available. 
+
 
 ### TARGET_ABSOLUTE (510) — [WIP] {#TARGET_ABSOLUTE}
 
@@ -217,21 +225,22 @@ Information about key components of GNSS receivers, like signal authentication, 
 
 Current motion information from sensors on a target
 
-| Field Name          | Type       | Units | Values                                                                              | Description                                                                            |
-| ------------------- | ---------- | ----- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| timestamp           | `uint64_t` | us    |                                                                                     | Timestamp (UNIX epoch time).                                                           |
-| id                  | `uint8_t`  |       |                                                                                     | The ID of the target if multiple targets are present                                   |
-| sensor_capabilities | `uint8_t`  |       | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS) | Bitmap to indicate the sensor's reporting capabilities                                 |
-| lat                 | `int32_t`  | degE7 |                                                                                     | Target's latitude (WGS84)                                                              |
-| lon                 | `int32_t`  | degE7 |                                                                                     | Target's longitude (WGS84)                                                             |
-| alt                 | `float`    | m     |                                                                                     | Target's altitude (AMSL)                                                               |
-| vel                 | `float[3]` | m/s   | invalid:[0]                                                                         | Target's velocity in its body frame                                                    |
-| acc                 | `float[3]` | m/s/s | invalid:[0]                                                                         | Linear target's acceleration in its body frame                                         |
-| q_target            | `float[4]` |       | invalid:[0]                                                                         | Quaternion of the target's orientation from its body frame to the vehicle's NED frame. |
-| rates               | `float[3]` | rad/s | invalid:[0]                                                                         | Target's roll, pitch and yaw rates                                                     |
-| position_std        | `float[2]` | m     |                                                                                     | Standard deviation of horizontal (eph) and vertical (epv) position errors              |
-| vel_std             | `float[3]` | m/s   |                                                                                     | Standard deviation of the target's velocity in its body frame                          |
-| acc_std             | `float[3]` | m/s/s |                                                                                     | Standard deviation of the target's acceleration in its body frame                      |
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+timestamp | `uint64_t` | us | | Timestamp (UNIX epoch time). 
+id | `uint8_t` | | | The ID of the target if multiple targets are present 
+sensor_capabilities | `uint8_t` | | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS) | Bitmap to indicate the sensor's reporting capabilities 
+lat | `int32_t` | degE7 | | Target's latitude (WGS84) 
+lon | `int32_t` | degE7 | | Target's longitude (WGS84) 
+alt | `float` | m | | Target's altitude (AMSL) 
+vel | `float[3]` | m/s | invalid:[0] | Target's velocity in its body frame 
+acc | `float[3]` | m/s/s | invalid:[0] | Linear target's acceleration in its body frame 
+q_target | `float[4]` | | invalid:[0] | Quaternion of the target's orientation from its body frame to the vehicle's NED frame. 
+rates | `float[3]` | rad/s | invalid:[0] | Target's roll, pitch and yaw rates 
+position_std | `float[2]` | m | | Standard deviation of horizontal (eph) and vertical (epv) position errors 
+vel_std | `float[3]` | m/s | | Standard deviation of the target's velocity in its body frame 
+acc_std | `float[3]` | m/s/s | | Standard deviation of the target's acceleration in its body frame 
+
 
 ### TARGET_RELATIVE (511) — [WIP] {#TARGET_RELATIVE}
 
@@ -239,19 +248,20 @@ Current motion information from sensors on a target
 
 The location of a target measured by MAV's onboard sensors.
 
-| Field Name | Type       | Units | Values                                      | Description                                                                                                                                                                             |
-| ---------- | ---------- | ----- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| timestamp  | `uint64_t` | us    |                                             | Timestamp (UNIX epoch time)                                                                                                                                                             |
-| id         | `uint8_t`  |       |                                             | The ID of the target if multiple targets are present<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component.                    |
-| frame      | `uint8_t`  |       | [TARGET_OBS_FRAME](#TARGET_OBS_FRAME)       | Coordinate frame used for following fields.                                                                                                                                             |
-| x          | `float`    | m     |                                             | X Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME)                                                                                                                       |
-| y          | `float`    | m     |                                             | Y Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME)                                                                                                                       |
-| z          | `float`    | m     |                                             | Z Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME)                                                                                                                       |
-| pos_std    | `float[3]` | m     |                                             | Standard deviation of the target's position in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME)                                                                                                    |
-| yaw_std    | `float`    | rad   |                                             | Standard deviation of the target's orientation in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME)                                                                                                 |
-| q_target   | `float[4]` |       |                                             | Quaternion of the target's orientation from the target's frame to the [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) (w, x, y, z order, zero-rotation is 1, 0, 0, 0)                             |
-| q_sensor   | `float[4]` |       |                                             | Quaternion of the sensor's orientation from [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) to vehicle-carried NED. (Ignored if set to (0,0,0,0)) (w, x, y, z order, zero-rotation is 1, 0, 0, 0) |
-| type       | `uint8_t`  |       | [LANDING_TARGET_TYPE](#LANDING_TARGET_TYPE) | Type of target                                                                                                                                                                          |
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+timestamp | `uint64_t` | us | | Timestamp (UNIX epoch time) 
+id | `uint8_t` | | | The ID of the target if multiple targets are present<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
+frame | `uint8_t` | | [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) | Coordinate frame used for following fields. 
+x | `float` | m | | X Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
+y | `float` | m | | Y Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
+z | `float` | m | | Z Position of the target in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
+pos_std | `float[3]` | m | | Standard deviation of the target's position in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
+yaw_std | `float` | rad | | Standard deviation of the target's orientation in [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) 
+q_target | `float[4]` | | | Quaternion of the target's orientation from the target's frame to the [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
+q_sensor | `float[4]` | | | Quaternion of the sensor's orientation from [TARGET_OBS_FRAME](#TARGET_OBS_FRAME) to vehicle-carried NED. (Ignored if set to (0,0,0,0)) (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
+type | `uint8_t` | | [LANDING_TARGET_TYPE](#LANDING_TARGET_TYPE) | Type of target 
+
 
 ### CONTROL_STATUS (512) — [WIP] {#CONTROL_STATUS}
 
@@ -260,21 +270,22 @@ The location of a target measured by MAV's onboard sensors.
 Information about GCS(s) in control of this MAV.
 
 This should be broadcast at low rate (nominally 1 Hz) and emitted when ownership or takeover status change.
-Components in the system should only accept "state changing commands/messages" from any system id in `gcs_main` or `gcs_secondary`.
+Components in the system should only accept "state changing commands/messages" from any system id in `gcs_main` or  `gcs_secondary`.
 
 - In single-owner mode there is a single GCS that can send "state changing commands/messages" listed in `gcs_main` (`gcs_secondary` must be set to all-zero).
 - In multi-owner mode, all GCS with ids in `gcs_main` and `gcs_secondary` can send "state changing commands/messages".
-  However `gcs_main` is the only GCS that can perform "special controlled operations" such as manual control.
+However `gcs_main` is the only GCS that can perform "special controlled operations" such as manual control.
 - Control over ownership of the `gcs_main` role is requested using [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL).
 - GCS in `gcs_secondary` are set by the flight stack (cannot be set by this mechanism).
-  It should only include IDs for connected GCS.
-  If more than 11 GCS are in control and visible, the flight stack will at most be able to publish 11.
+It should only include IDs for connected GCS.
+If more than 11 GCS are in control and visible, the flight stack will at most be able to publish 11.
 
-| Field Name    | Type          | Values                                                | Description                                                                                                                                                                                            |
-| ------------- | ------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| flags         | `uint8_t`     | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover of the `gcs_main` role is allowed, and whether this [CONTROL_STATUS](#CONTROL_STATUS) instance defines the default controlling GCS for the whole system. |
-| gcs_main      | `uint8_t`     | invalid:0                                             | System ID of GCS in control. 0: no GCS in control.                                                                                                                                                     |
-| gcs_secondary | `uint8_t[10]` | invalid:[0,]                                          | System IDs from which the system can recieve state-changing commands/messages in multi-control mode. All values should be zero for single-ower mode.                                                   |
+Field Name | Type | Values | Description
+--- | --- | --- | ---
+flags | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover of the `gcs_main` role is allowed, and whether this [CONTROL_STATUS](#CONTROL_STATUS) instance defines the default controlling GCS for the whole system. 
+gcs_main | `uint8_t` | invalid:0 | System ID of GCS in control. 0: no GCS in control. 
+gcs_secondary | `uint8_t[10]` | invalid:[0,] | System IDs from which the system can recieve state-changing commands/messages in multi-control mode. All values should be zero for single-ower mode. 
+
 
 ### RANGING_BEACON (513) — [WIP] {#RANGING_BEACON}
 
@@ -284,23 +295,24 @@ Range information from a radio beacon for trilateration-based positioning.
 
 This message is telemetry intended for consumption by an autopilot (MAVLink does not define the mechanism used to determine the range).
 
-| Field Name       | Type       | Units | Values                                                    | Description                                                                                                                                                                            |
-| ---------------- | ---------- | ----- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| time_usec        | `uint64_t` | us    |                                                           | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
-| target_system    | `uint8_t`  |       |                                                           | System ID.                                                                                                                                                                             |
-| target_component | `uint8_t`  |       |                                                           | Component ID.                                                                                                                                                                          |
-| beacon_id        | `uint16_t` |       |                                                           | ID of the ranging beacon/station.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component.                                      |
-| range            | `uint32_t` | mm    | invalid:UINT32_MAX                                        | Range measurement between a beacon and a vehicle.                                                                                                                                      |
-| lat              | `int32_t`  | degE7 | invalid:INT32_MAX                                         | Beacon latitude (WGS84).                                                                                                                                                               |
-| lon              | `int32_t`  | degE7 | invalid:INT32_MAX                                         | Beacon longitude (WGS84).                                                                                                                                                              |
-| alt              | `float`    | m     | invalid:NaN                                               | Beacon altitude (frame defined in alt_type).                                                                                                                                           |
-| alt_type         | `uint8_t`  |       | [RANGING_BEACON_ALT_TYPE](#RANGING_BEACON_ALT_TYPE)       | Altitude frame for alt field. [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) (0) preferred.                                                                           |
-| hacc_est         | `uint32_t` | mm    | invalid:UINT32_MAX                                        | Beacon 1-sigma horizontal accuracy estimate.                                                                                                                                           |
-| vacc_est         | `uint32_t` | mm    | invalid:UINT32_MAX                                        | Beacon 1-sigma vertical accuracy estimate.                                                                                                                                             |
-| carrier_freq     | `uint16_t` | MHz   | invalid:UINT16_MIN                                        | Ranging carrier frequency                                                                                                                                                              |
-| range_accuracy   | `uint32_t` | mm    | invalid:UINT32_MAX                                        | Estimated 1-sigma range measurement accuracy.                                                                                                                                          |
-| sequence         | `uint8_t`  |       |                                                           | Measurement sequence number.                                                                                                                                                           |
-| status           | `uint8_t`  |       | [RANGING_BEACON_STATUS_FLAG](#RANGING_BEACON_STATUS_FLAG) | Ranging beacon status.                                                                                                                                                                 |
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
+target_system | `uint8_t` | | | System ID. 
+target_component | `uint8_t` | | | Component ID. 
+beacon_id | `uint16_t` | | | ID of the ranging beacon/station.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
+range | `uint32_t` | mm | invalid:UINT32_MAX | Range measurement between a beacon and a vehicle. 
+lat | `int32_t` | degE7 | invalid:INT32_MAX | Beacon latitude (WGS84). 
+lon | `int32_t` | degE7 | invalid:INT32_MAX | Beacon longitude (WGS84). 
+alt | `float` | m | invalid:NaN | Beacon altitude (frame defined in alt_type). 
+alt_type | `uint8_t` | | [RANGING_BEACON_ALT_TYPE](#RANGING_BEACON_ALT_TYPE) | Altitude frame for alt field. [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) (0) preferred. 
+hacc_est | `uint32_t` | mm | invalid:UINT32_MAX | Beacon 1-sigma horizontal accuracy estimate. 
+vacc_est | `uint32_t` | mm | invalid:UINT32_MAX | Beacon 1-sigma vertical accuracy estimate. 
+carrier_freq | `uint16_t` | MHz | invalid:UINT16_MIN | Ranging carrier frequency 
+range_accuracy | `uint32_t` | mm | invalid:UINT32_MAX | Estimated 1-sigma range measurement accuracy. 
+sequence | `uint8_t` | | | Measurement sequence number. 
+status | `uint8_t` | | [RANGING_BEACON_STATUS_FLAG](#RANGING_BEACON_STATUS_FLAG) | Ranging beacon status. 
+
 
 ### ESTIMATOR_SENSOR_FUSION_STATUS (514) — [WIP] {#ESTIMATOR_SENSOR_FUSION_STATUS}
 
@@ -308,11 +320,12 @@ This message is telemetry intended for consumption by an autopilot (MAVLink does
 
 Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) - 1. Each element is a per-instance bitmask (bit 0 = instance 0, etc.). For single-instance sources only bit 0 is used. For multi-instance sources like AGP, multiple bits may be set.
 
-| Field Name | Type         | Description                                                                                                                                                                                 |
-| ---------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| intended   | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator intends to fuse (reflects CTRL params with runtime overrides via [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE)). |
-| active     | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator is actively fusing.                                                                                                                    |
-| test_ratio | `float[9]`   | Per-source normalized innovation test ratio. NaN if not available.                                                                                                                          |
+Field Name | Type | Description
+--- | --- | ---
+intended | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator intends to fuse (reflects CTRL params with runtime overrides via [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE)). 
+active | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator is actively fusing. 
+test_ratio | `float[9]` | Per-source normalized innovation test ratio. NaN if not available. 
+
 
 ## Enumerated Types
 
@@ -322,28 +335,28 @@ Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_S
 
 (Bitmask) Battery status flags for fault, health and state indication.
 
-| Value                                                                              | Name                                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE'></a>1                            | [MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE)                                             | The battery is not ready to use (fly).<br>Set if the battery has faults or other conditions that make it unsafe to fly with.<br>Note: It will be the logical OR of other status bits (chosen by the manufacturer/integrator).                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| <a id='MAV_BATTERY_STATUS_FLAGS_CHARGING'></a>2                                    | [MAV_BATTERY_STATUS_FLAGS_CHARGING](#MAV_BATTERY_STATUS_FLAGS_CHARGING)                                                             | Battery is charging.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| <a id='MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING'></a>4                              | [MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING](#MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING)                                                 | Battery is cell balancing (during charging).<br>Not ready to use ([MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE) may be set).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE'></a>8                        | [MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE](#MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE)                                     | Battery cells are not balanced.<br>Not ready to use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| <a id='MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING'></a>16                           | [MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING](#MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING)                                             | Battery is auto discharging (towards storage level).<br>Not ready to use ([MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE) would be set).                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| <a id='MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE'></a>32                           | [MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE](#MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE)                                             | Battery requires service (not safe to fly).<br>This is set at vendor discretion.<br>It is likely to be set for most faults, and may also be set according to a maintenance schedule (such as age, or number of recharge cycles, etc.).                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY'></a>64                                | [MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY](#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY)                                                       | Battery is faulty and cannot be repaired (not safe to fly).<br>This is set at vendor discretion.<br>The battery should be disposed of safely.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| <a id='MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED'></a>128                       | [MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED](#MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED)                                       | Automatic battery protection monitoring is enabled.<br>When enabled, the system will monitor for certain kinds of faults, such as cells being over-voltage.<br>If a fault is triggered then and protections are enabled then a safety fault ([MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM](#MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM)) will be set and power from the battery will be stopped.<br>Note that battery protection monitoring should only be enabled when the vehicle is landed. Once the vehicle is armed, or starts moving, the protections should be disabled to prevent false positives from disabling the output.                |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM'></a>256                   | [MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM](#MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM)                               | The battery fault protection system had detected a fault and cut all power from the battery.<br>This will only trigger if [MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED](#MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED) is set.<br>Other faults like [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT) may also be set, indicating the cause of the protection fault.                                                                                                                                                                                                                                                      |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT'></a>512                           | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT)                                               | One or more cells are above their maximum voltage rating.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT'></a>1024                         | [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT)                                             | One or more cells are below their minimum voltage rating.<br>A battery that had deep-discharged might be irrepairably damaged, and set both [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT) and [MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY](#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY).                                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE'></a>2048                   | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE)                                 | Over-temperature fault.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE'></a>4096                  | [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE)                               | Under-temperature fault.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT'></a>8192                       | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT)                                         | Over-current fault.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT'></a>16384                     | [MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT](#MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT)                                       | Short circuit event detected.<br>The battery may or may not be safe to use (check other flags).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE'></a>32768              | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE)                         | Voltage not compatible with power rail voltage (batteries on same power rail should have similar voltage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE'></a>65536             | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE)                       | Battery firmware is not compatible with current autopilot firmware.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION'></a>131072 | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION) | Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| <a id='MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL'></a>262144              | [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL)                           | Battery capacity_consumed and capacity_remaining values are relative to a full battery (they sum to the total capacity of the battery).<br>This flag would be set for a smart battery that can accurately determine its remaining charge across vehicle reboots and discharge/recharge cycles.<br>If unset the capacity_consumed indicates the consumption since vehicle power-on, as measured using a power monitor. The capacity_remaining, if provided, indicates the estimated remaining capacity on the assumption that the battery was full on vehicle boot.<br>If unset a GCS is recommended to advise that users fully charge the battery on power on. |
-| <a id='MAV_BATTERY_STATUS_FLAGS_EXTENDED'></a>2147483648                           | [MAV_BATTERY_STATUS_FLAGS_EXTENDED](#MAV_BATTERY_STATUS_FLAGS_EXTENDED)                                                             | Reserved (not used). If set, this will indicate that an additional status field exists for higher status values.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE'></a>1 | [MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE) | The battery is not ready to use (fly).<br>Set if the battery has faults or other conditions that make it unsafe to fly with.<br>Note: It will be the logical OR of other status bits (chosen by the manufacturer/integrator). 
+<a id='MAV_BATTERY_STATUS_FLAGS_CHARGING'></a>2 | [MAV_BATTERY_STATUS_FLAGS_CHARGING](#MAV_BATTERY_STATUS_FLAGS_CHARGING) | Battery is charging. 
+<a id='MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING'></a>4 | [MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING](#MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING) | Battery is cell balancing (during charging).<br>Not ready to use ([MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE) may be set). 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE'></a>8 | [MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE](#MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE) | Battery cells are not balanced.<br>Not ready to use. 
+<a id='MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING'></a>16 | [MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING](#MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING) | Battery is auto discharging (towards storage level).<br>Not ready to use ([MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE) would be set). 
+<a id='MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE'></a>32 | [MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE](#MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE) | Battery requires service (not safe to fly).<br>This is set at vendor discretion.<br>It is likely to be set for most faults, and may also be set according to a maintenance schedule (such as age, or number of recharge cycles, etc.). 
+<a id='MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY'></a>64 | [MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY](#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY) | Battery is faulty and cannot be repaired (not safe to fly).<br>This is set at vendor discretion.<br>The battery should be disposed of safely. 
+<a id='MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED'></a>128 | [MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED](#MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED) | Automatic battery protection monitoring is enabled.<br>When enabled, the system will monitor for certain kinds of faults, such as cells being over-voltage.<br>If a fault is triggered then and protections are enabled then a safety fault ([MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM](#MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM)) will be set and power from the battery will be stopped.<br>Note that battery protection monitoring should only be enabled when the vehicle is landed. Once the vehicle is armed, or starts moving, the protections should be disabled to prevent false positives from disabling the output. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM'></a>256 | [MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM](#MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM) | The battery fault protection system had detected a fault and cut all power from the battery.<br>This will only trigger if [MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED](#MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED) is set.<br>Other faults like [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT) may also be set, indicating the cause of the protection fault. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT'></a>512 | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT) | One or more cells are above their maximum voltage rating. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT'></a>1024 | [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT) | One or more cells are below their minimum voltage rating.<br>A battery that had deep-discharged might be irrepairably damaged, and set both [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT) and [MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY](#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY). 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE'></a>2048 | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE) | Over-temperature fault. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE'></a>4096 | [MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE](#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE) | Under-temperature fault. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT'></a>8192 | [MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT](#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT) | Over-current fault. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT'></a>16384 | [MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT](#MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT) | Short circuit event detected.<br>The battery may or may not be safe to use (check other flags). 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE'></a>32768 | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE) | Voltage not compatible with power rail voltage (batteries on same power rail should have similar voltage). 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE'></a>65536 | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE) | Battery firmware is not compatible with current autopilot firmware. 
+<a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION'></a>131072 | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION) | Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s). 
+<a id='MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL'></a>262144 | [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) | Battery capacity_consumed and capacity_remaining values are relative to a full battery (they sum to the total capacity of the battery).<br>This flag would be set for a smart battery that can accurately determine its remaining charge across vehicle reboots and discharge/recharge cycles.<br>If unset the capacity_consumed indicates the consumption since vehicle power-on, as measured using a power monitor. The capacity_remaining, if provided, indicates the estimated remaining capacity on the assumption that the battery was full on vehicle boot.<br>If unset a GCS is recommended to advise that users fully charge the battery on power on. 
+<a id='MAV_BATTERY_STATUS_FLAGS_EXTENDED'></a>2147483648 | [MAV_BATTERY_STATUS_FLAGS_EXTENDED](#MAV_BATTERY_STATUS_FLAGS_EXTENDED) | Reserved (not used). If set, this will indicate that an additional status field exists for higher status values. 
 
 ### GCS_CONTROL_STATUS_FLAGS — [WIP] {#GCS_CONTROL_STATUS_FLAGS}
 
@@ -351,10 +364,10 @@ Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_S
 
 (Bitmask) [CONTROL_STATUS](#CONTROL_STATUS) flags.
 
-| Value                                                   | Name                                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER'></a>1   | [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER)     | If set, this [CONTROL_STATUS](#CONTROL_STATUS) publishes the controlling GCS(s) of the whole system.<br>If unset, the [CONTROL_STATUS](#CONTROL_STATUS) indicates the controlling GCS(s) for just the component emitting the message.<br>Note that to request control of the system a GCS should send [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the component emitting [CONTROL_STATUS](#CONTROL_STATUS) with this flag set. |
-| <a id='GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED'></a>2 | [GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED](#GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED) | Takeover allowed (requests for control will be granted). If not set requests for control will be rejected, but the controlling GCS will be notified (and may release control or allow takeover).                                                                                                                                                                                                                                                            |
+Value | Name | Description
+--- | --- | ---
+<a id='GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER'></a>1 | [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) | If set, this [CONTROL_STATUS](#CONTROL_STATUS) publishes the controlling GCS(s) of the whole system.<br>If unset, the [CONTROL_STATUS](#CONTROL_STATUS) indicates the controlling GCS(s) for just the component emitting the message.<br>Note that to request control of the system a GCS should send [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the component emitting [CONTROL_STATUS](#CONTROL_STATUS) with this flag set. 
+<a id='GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED'></a>2 | [GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED](#GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED) | Takeover allowed (requests for control will be granted). If not set requests for control will be rejected, but the controlling GCS will be notified (and may release control or allow takeover). 
 
 ### TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS — [WIP] {#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS}
 
@@ -362,13 +375,13 @@ Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_S
 
 (Bitmask) These flags indicate the sensor reporting capabilities for [TARGET_ABSOLUTE](#TARGET_ABSOLUTE).
 
-| Value                                                        | Name                                                                                              | Description |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION'></a>1     | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION)         |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY'></a>2     | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY)         |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION'></a>4 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION) |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE'></a>8     | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE)         |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES'></a>16       | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES)               |
+Value | Name | Description
+--- | --- | ---
+<a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION'></a>1 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION) |  
+<a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY'></a>2 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY) |  
+<a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION'></a>4 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION) |  
+<a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE'></a>8 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE) |  
+<a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES'></a>16 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES) |  
 
 ### TARGET_OBS_FRAME — [WIP] {#TARGET_OBS_FRAME}
 
@@ -376,12 +389,12 @@ Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_S
 
 The frame of a target observation from an onboard sensor.
 
-| Value                                           | Name                                                                    | Description                                                                                                                 |
-| ----------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| <a id='TARGET_OBS_FRAME_LOCAL_NED'></a>0        | [TARGET_OBS_FRAME_LOCAL_NED](#TARGET_OBS_FRAME_LOCAL_NED)               | NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.                                   |
-| <a id='TARGET_OBS_FRAME_BODY_FRD'></a>1         | [TARGET_OBS_FRAME_BODY_FRD](#TARGET_OBS_FRAME_BODY_FRD)                 | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle. |
-| <a id='TARGET_OBS_FRAME_LOCAL_OFFSET_NED'></a>2 | [TARGET_OBS_FRAME_LOCAL_OFFSET_NED](#TARGET_OBS_FRAME_LOCAL_OFFSET_NED) | NED local tangent frame (x: North, y: East, z: Down) with an origin that travels with vehicle.                              |
-| <a id='TARGET_OBS_FRAME_OTHER'></a>3            | [TARGET_OBS_FRAME_OTHER](#TARGET_OBS_FRAME_OTHER)                       | Other sensor frame for target observations neither in local NED nor in body FRD.                                            |
+Value | Name | Description
+--- | --- | ---
+<a id='TARGET_OBS_FRAME_LOCAL_NED'></a>0 | [TARGET_OBS_FRAME_LOCAL_NED](#TARGET_OBS_FRAME_LOCAL_NED) | NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth. 
+<a id='TARGET_OBS_FRAME_BODY_FRD'></a>1 | [TARGET_OBS_FRAME_BODY_FRD](#TARGET_OBS_FRAME_BODY_FRD) | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle. 
+<a id='TARGET_OBS_FRAME_LOCAL_OFFSET_NED'></a>2 | [TARGET_OBS_FRAME_LOCAL_OFFSET_NED](#TARGET_OBS_FRAME_LOCAL_OFFSET_NED) | NED local tangent frame (x: North, y: East, z: Down) with an origin that travels with vehicle. 
+<a id='TARGET_OBS_FRAME_OTHER'></a>3 | [TARGET_OBS_FRAME_OTHER](#TARGET_OBS_FRAME_OTHER) | Other sensor frame for target observations neither in local NED nor in body FRD. 
 
 ### RADIO_RC_CHANNELS_FLAGS — [WIP] {#RADIO_RC_CHANNELS_FLAGS}
 
@@ -389,10 +402,10 @@ The frame of a target observation from an onboard sensor.
 
 (Bitmask) [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) flags (bitmask).
 
-| Value                                          | Name                                                                  | Description                                                                                                                                                                       |
-| ---------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent.                                       |
-| <a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received. |
+Value | Name | Description
+--- | --- | ---
+<a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent. 
+<a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received. 
 
 ### GPS_SYSTEM_ERROR_FLAGS — [WIP] {#GPS_SYSTEM_ERROR_FLAGS}
 
@@ -400,15 +413,15 @@ The frame of a target observation from an onboard sensor.
 
 (Bitmask) Flags indicating errors in a GPS receiver.
 
-| Value                                               | Name                                                                            | Description                                                       |
-| --------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| <a id='GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS'></a>1 | [GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS](#GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS) | There are problems with incoming correction streams.              |
-| <a id='GPS_SYSTEM_ERROR_CONFIGURATION'></a>2        | [GPS_SYSTEM_ERROR_CONFIGURATION](#GPS_SYSTEM_ERROR_CONFIGURATION)               | There are problems with the configuration.                        |
-| <a id='GPS_SYSTEM_ERROR_SOFTWARE'></a>4             | [GPS_SYSTEM_ERROR_SOFTWARE](#GPS_SYSTEM_ERROR_SOFTWARE)                         | There are problems with the software on the GPS receiver.         |
-| <a id='GPS_SYSTEM_ERROR_ANTENNA'></a>8              | [GPS_SYSTEM_ERROR_ANTENNA](#GPS_SYSTEM_ERROR_ANTENNA)                           | There are problems with an antenna connected to the GPS receiver. |
-| <a id='GPS_SYSTEM_ERROR_EVENT_CONGESTION'></a>16    | [GPS_SYSTEM_ERROR_EVENT_CONGESTION](#GPS_SYSTEM_ERROR_EVENT_CONGESTION)         | There are problems handling all incoming events.                  |
-| <a id='GPS_SYSTEM_ERROR_CPU_OVERLOAD'></a>32        | [GPS_SYSTEM_ERROR_CPU_OVERLOAD](#GPS_SYSTEM_ERROR_CPU_OVERLOAD)                 | The GPS receiver CPU is overloaded.                               |
-| <a id='GPS_SYSTEM_ERROR_OUTPUT_CONGESTION'></a>64   | [GPS_SYSTEM_ERROR_OUTPUT_CONGESTION](#GPS_SYSTEM_ERROR_OUTPUT_CONGESTION)       | The GPS receiver is experiencing output congestion.               |
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS'></a>1 | [GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS](#GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS) | There are problems with incoming correction streams. 
+<a id='GPS_SYSTEM_ERROR_CONFIGURATION'></a>2 | [GPS_SYSTEM_ERROR_CONFIGURATION](#GPS_SYSTEM_ERROR_CONFIGURATION) | There are problems with the configuration. 
+<a id='GPS_SYSTEM_ERROR_SOFTWARE'></a>4 | [GPS_SYSTEM_ERROR_SOFTWARE](#GPS_SYSTEM_ERROR_SOFTWARE) | There are problems with the software on the GPS receiver. 
+<a id='GPS_SYSTEM_ERROR_ANTENNA'></a>8 | [GPS_SYSTEM_ERROR_ANTENNA](#GPS_SYSTEM_ERROR_ANTENNA) | There are problems with an antenna connected to the GPS receiver. 
+<a id='GPS_SYSTEM_ERROR_EVENT_CONGESTION'></a>16 | [GPS_SYSTEM_ERROR_EVENT_CONGESTION](#GPS_SYSTEM_ERROR_EVENT_CONGESTION) | There are problems handling all incoming events. 
+<a id='GPS_SYSTEM_ERROR_CPU_OVERLOAD'></a>32 | [GPS_SYSTEM_ERROR_CPU_OVERLOAD](#GPS_SYSTEM_ERROR_CPU_OVERLOAD) | The GPS receiver CPU is overloaded. 
+<a id='GPS_SYSTEM_ERROR_OUTPUT_CONGESTION'></a>64 | [GPS_SYSTEM_ERROR_OUTPUT_CONGESTION](#GPS_SYSTEM_ERROR_OUTPUT_CONGESTION) | The GPS receiver is experiencing output congestion. 
 
 ### GPS_AUTHENTICATION_STATE — [WIP] {#GPS_AUTHENTICATION_STATE}
 
@@ -416,13 +429,13 @@ The frame of a target observation from an onboard sensor.
 
 Signal authentication state in a GPS receiver.
 
-| Value                                               | Name                                                                            | Description                                                                     |
-| --------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| <a id='GPS_AUTHENTICATION_STATE_UNKNOWN'></a>0      | [GPS_AUTHENTICATION_STATE_UNKNOWN](#GPS_AUTHENTICATION_STATE_UNKNOWN)           | The GPS receiver does not provide GPS signal authentication info.               |
-| <a id='GPS_AUTHENTICATION_STATE_INITIALIZING'></a>1 | [GPS_AUTHENTICATION_STATE_INITIALIZING](#GPS_AUTHENTICATION_STATE_INITIALIZING) | The GPS receiver is initializing signal authentication.                         |
-| <a id='GPS_AUTHENTICATION_STATE_ERROR'></a>2        | [GPS_AUTHENTICATION_STATE_ERROR](#GPS_AUTHENTICATION_STATE_ERROR)               | The GPS receiver encountered an error while initializing signal authentication. |
-| <a id='GPS_AUTHENTICATION_STATE_OK'></a>3           | [GPS_AUTHENTICATION_STATE_OK](#GPS_AUTHENTICATION_STATE_OK)                     | The GPS receiver has correctly authenticated all signals.                       |
-| <a id='GPS_AUTHENTICATION_STATE_DISABLED'></a>4     | [GPS_AUTHENTICATION_STATE_DISABLED](#GPS_AUTHENTICATION_STATE_DISABLED)         | GPS signal authentication is disabled on the receiver.                          |
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_AUTHENTICATION_STATE_UNKNOWN'></a>0 | [GPS_AUTHENTICATION_STATE_UNKNOWN](#GPS_AUTHENTICATION_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal authentication info. 
+<a id='GPS_AUTHENTICATION_STATE_INITIALIZING'></a>1 | [GPS_AUTHENTICATION_STATE_INITIALIZING](#GPS_AUTHENTICATION_STATE_INITIALIZING) | The GPS receiver is initializing signal authentication. 
+<a id='GPS_AUTHENTICATION_STATE_ERROR'></a>2 | [GPS_AUTHENTICATION_STATE_ERROR](#GPS_AUTHENTICATION_STATE_ERROR) | The GPS receiver encountered an error while initializing signal authentication. 
+<a id='GPS_AUTHENTICATION_STATE_OK'></a>3 | [GPS_AUTHENTICATION_STATE_OK](#GPS_AUTHENTICATION_STATE_OK) | The GPS receiver has correctly authenticated all signals. 
+<a id='GPS_AUTHENTICATION_STATE_DISABLED'></a>4 | [GPS_AUTHENTICATION_STATE_DISABLED](#GPS_AUTHENTICATION_STATE_DISABLED) | GPS signal authentication is disabled on the receiver. 
 
 ### GPS_JAMMING_STATE — [WIP] {#GPS_JAMMING_STATE}
 
@@ -430,12 +443,12 @@ Signal authentication state in a GPS receiver.
 
 Signal jamming state in a GPS receiver.
 
-| Value                                      | Name                                                          | Description                                                |
-| ------------------------------------------ | ------------------------------------------------------------- | ---------------------------------------------------------- |
-| <a id='GPS_JAMMING_STATE_UNKNOWN'></a>0    | [GPS_JAMMING_STATE_UNKNOWN](#GPS_JAMMING_STATE_UNKNOWN)       | The GPS receiver does not provide GPS signal jamming info. |
-| <a id='GPS_JAMMING_STATE_NOT_JAMMED'></a>1 | [GPS_JAMMING_STATE_NOT_JAMMED](#GPS_JAMMING_STATE_NOT_JAMMED) | The GPS receiver detected no signal jamming.               |
-| <a id='GPS_JAMMING_STATE_MITIGATED'></a>2  | [GPS_JAMMING_STATE_MITIGATED](#GPS_JAMMING_STATE_MITIGATED)   | The GPS receiver detected and mitigated signal jamming.    |
-| <a id='GPS_JAMMING_STATE_DETECTED'></a>3   | [GPS_JAMMING_STATE_DETECTED](#GPS_JAMMING_STATE_DETECTED)     | The GPS receiver detected signal jamming.                  |
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_JAMMING_STATE_UNKNOWN'></a>0 | [GPS_JAMMING_STATE_UNKNOWN](#GPS_JAMMING_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal jamming info. 
+<a id='GPS_JAMMING_STATE_NOT_JAMMED'></a>1 | [GPS_JAMMING_STATE_NOT_JAMMED](#GPS_JAMMING_STATE_NOT_JAMMED) | The GPS receiver detected no signal jamming. 
+<a id='GPS_JAMMING_STATE_MITIGATED'></a>2 | [GPS_JAMMING_STATE_MITIGATED](#GPS_JAMMING_STATE_MITIGATED) | The GPS receiver detected and mitigated signal jamming. 
+<a id='GPS_JAMMING_STATE_DETECTED'></a>3 | [GPS_JAMMING_STATE_DETECTED](#GPS_JAMMING_STATE_DETECTED) | The GPS receiver detected signal jamming. 
 
 ### GPS_SPOOFING_STATE — [WIP] {#GPS_SPOOFING_STATE}
 
@@ -443,12 +456,12 @@ Signal jamming state in a GPS receiver.
 
 Signal spoofing state in a GPS receiver.
 
-| Value                                        | Name                                                              | Description                                                    |
-| -------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| <a id='GPS_SPOOFING_STATE_UNKNOWN'></a>0     | [GPS_SPOOFING_STATE_UNKNOWN](#GPS_SPOOFING_STATE_UNKNOWN)         | The GPS receiver does not provide GPS signal spoofing info.    |
-| <a id='GPS_SPOOFING_STATE_NOT_SPOOFED'></a>1 | [GPS_SPOOFING_STATE_NOT_SPOOFED](#GPS_SPOOFING_STATE_NOT_SPOOFED) | The GPS receiver detected no signal spoofing.                  |
-| <a id='GPS_SPOOFING_STATE_MITIGATED'></a>2   | [GPS_SPOOFING_STATE_MITIGATED](#GPS_SPOOFING_STATE_MITIGATED)     | The GPS receiver detected and mitigated signal spoofing.       |
-| <a id='GPS_SPOOFING_STATE_DETECTED'></a>3    | [GPS_SPOOFING_STATE_DETECTED](#GPS_SPOOFING_STATE_DETECTED)       | The GPS receiver detected signal spoofing but still has a fix. |
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_SPOOFING_STATE_UNKNOWN'></a>0 | [GPS_SPOOFING_STATE_UNKNOWN](#GPS_SPOOFING_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal spoofing info. 
+<a id='GPS_SPOOFING_STATE_NOT_SPOOFED'></a>1 | [GPS_SPOOFING_STATE_NOT_SPOOFED](#GPS_SPOOFING_STATE_NOT_SPOOFED) | The GPS receiver detected no signal spoofing. 
+<a id='GPS_SPOOFING_STATE_MITIGATED'></a>2 | [GPS_SPOOFING_STATE_MITIGATED](#GPS_SPOOFING_STATE_MITIGATED) | The GPS receiver detected and mitigated signal spoofing. 
+<a id='GPS_SPOOFING_STATE_DETECTED'></a>3 | [GPS_SPOOFING_STATE_DETECTED](#GPS_SPOOFING_STATE_DETECTED) | The GPS receiver detected signal spoofing but still has a fix. 
 
 ### GPS_RAIM_STATE — [WIP] {#GPS_RAIM_STATE}
 
@@ -456,12 +469,12 @@ Signal spoofing state in a GPS receiver.
 
 State of RAIM processing.
 
-| Value                                 | Name                                                | Description                          |
-| ------------------------------------- | --------------------------------------------------- | ------------------------------------ |
-| <a id='GPS_RAIM_STATE_UNKNOWN'></a>0  | [GPS_RAIM_STATE_UNKNOWN](#GPS_RAIM_STATE_UNKNOWN)   | RAIM capability is unknown.          |
-| <a id='GPS_RAIM_STATE_DISABLED'></a>1 | [GPS_RAIM_STATE_DISABLED](#GPS_RAIM_STATE_DISABLED) | RAIM is disabled.                    |
-| <a id='GPS_RAIM_STATE_OK'></a>2       | [GPS_RAIM_STATE_OK](#GPS_RAIM_STATE_OK)             | RAIM integrity check was successful. |
-| <a id='GPS_RAIM_STATE_FAILED'></a>3   | [GPS_RAIM_STATE_FAILED](#GPS_RAIM_STATE_FAILED)     | RAIM integrity check failed.         |
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_RAIM_STATE_UNKNOWN'></a>0 | [GPS_RAIM_STATE_UNKNOWN](#GPS_RAIM_STATE_UNKNOWN) | RAIM capability is unknown. 
+<a id='GPS_RAIM_STATE_DISABLED'></a>1 | [GPS_RAIM_STATE_DISABLED](#GPS_RAIM_STATE_DISABLED) | RAIM is disabled. 
+<a id='GPS_RAIM_STATE_OK'></a>2 | [GPS_RAIM_STATE_OK](#GPS_RAIM_STATE_OK) | RAIM integrity check was successful. 
+<a id='GPS_RAIM_STATE_FAILED'></a>3 | [GPS_RAIM_STATE_FAILED](#GPS_RAIM_STATE_FAILED) | RAIM integrity check failed. 
 
 ### ACTUATOR_TEST_GROUP — [WIP] {#ACTUATOR_TEST_GROUP}
 
@@ -469,15 +482,15 @@ State of RAIM processing.
 
 Actuator groups to test in [MAV_CMD_ACTUATOR_GROUP_TEST](#MAV_CMD_ACTUATOR_GROUP_TEST).
 
-| Value                                             | Name                                                                        | Description                                                               |
-| ------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| <a id='ACTUATOR_TEST_GROUP_ROLL_TORQUE'></a>0     | [ACTUATOR_TEST_GROUP_ROLL_TORQUE](#ACTUATOR_TEST_GROUP_ROLL_TORQUE)         | Actuators that contribute to roll torque.                                 |
-| <a id='ACTUATOR_TEST_GROUP_PITCH_TORQUE'></a>1    | [ACTUATOR_TEST_GROUP_PITCH_TORQUE](#ACTUATOR_TEST_GROUP_PITCH_TORQUE)       | Actuators that contribute to pitch torque.                                |
-| <a id='ACTUATOR_TEST_GROUP_YAW_TORQUE'></a>2      | [ACTUATOR_TEST_GROUP_YAW_TORQUE](#ACTUATOR_TEST_GROUP_YAW_TORQUE)           | Actuators that contribute to yaw torque.                                  |
-| <a id='ACTUATOR_TEST_GROUP_COLLECTIVE_TILT'></a>3 | [ACTUATOR_TEST_GROUP_COLLECTIVE_TILT](#ACTUATOR_TEST_GROUP_COLLECTIVE_TILT) | Actuators that affect collective tilt.                                    |
-| <a id='ACTUATOR_TEST_GROUP_X_THRUST'></a>4        | [ACTUATOR_TEST_GROUP_X_THRUST](#ACTUATOR_TEST_GROUP_X_THRUST)               | Actuators that contribute to x (longitudinal, positive = forward) thrust. |
-| <a id='ACTUATOR_TEST_GROUP_Y_THRUST'></a>5        | [ACTUATOR_TEST_GROUP_Y_THRUST](#ACTUATOR_TEST_GROUP_Y_THRUST)               | Actuators that contribute to y (lateral, positive = right) thrust.        |
-| <a id='ACTUATOR_TEST_GROUP_Z_THRUST'></a>6        | [ACTUATOR_TEST_GROUP_Z_THRUST](#ACTUATOR_TEST_GROUP_Z_THRUST)               | Actuators that contribute to z (vertical, positive = down) thrust.        |
+Value | Name | Description
+--- | --- | ---
+<a id='ACTUATOR_TEST_GROUP_ROLL_TORQUE'></a>0 | [ACTUATOR_TEST_GROUP_ROLL_TORQUE](#ACTUATOR_TEST_GROUP_ROLL_TORQUE) | Actuators that contribute to roll torque. 
+<a id='ACTUATOR_TEST_GROUP_PITCH_TORQUE'></a>1 | [ACTUATOR_TEST_GROUP_PITCH_TORQUE](#ACTUATOR_TEST_GROUP_PITCH_TORQUE) | Actuators that contribute to pitch torque. 
+<a id='ACTUATOR_TEST_GROUP_YAW_TORQUE'></a>2 | [ACTUATOR_TEST_GROUP_YAW_TORQUE](#ACTUATOR_TEST_GROUP_YAW_TORQUE) | Actuators that contribute to yaw torque. 
+<a id='ACTUATOR_TEST_GROUP_COLLECTIVE_TILT'></a>3 | [ACTUATOR_TEST_GROUP_COLLECTIVE_TILT](#ACTUATOR_TEST_GROUP_COLLECTIVE_TILT) | Actuators that affect collective tilt. 
+<a id='ACTUATOR_TEST_GROUP_X_THRUST'></a>4 | [ACTUATOR_TEST_GROUP_X_THRUST](#ACTUATOR_TEST_GROUP_X_THRUST) | Actuators that contribute to x (longitudinal, positive = forward) thrust. 
+<a id='ACTUATOR_TEST_GROUP_Y_THRUST'></a>5 | [ACTUATOR_TEST_GROUP_Y_THRUST](#ACTUATOR_TEST_GROUP_Y_THRUST) | Actuators that contribute to y (lateral, positive = right) thrust. 
+<a id='ACTUATOR_TEST_GROUP_Z_THRUST'></a>6 | [ACTUATOR_TEST_GROUP_Z_THRUST](#ACTUATOR_TEST_GROUP_Z_THRUST) | Actuators that contribute to z (vertical, positive = down) thrust. 
 
 ### ESC_FIRMWARE — [WIP] {#ESC_FIRMWARE}
 
@@ -485,12 +498,12 @@ Actuator groups to test in [MAV_CMD_ACTUATOR_GROUP_TEST](#MAV_CMD_ACTUATOR_GROUP
 
 ESC firmware type identifier.
 
-| Value                               | Name                                            | Description                       |
-| ----------------------------------- | ----------------------------------------------- | --------------------------------- |
-| <a id='ESC_FIRMWARE_UNKNOWN'></a>0  | [ESC_FIRMWARE_UNKNOWN](#ESC_FIRMWARE_UNKNOWN)   | Unknown firmware.                 |
-| <a id='ESC_FIRMWARE_AM32'></a>1     | [ESC_FIRMWARE_AM32](#ESC_FIRMWARE_AM32)         | AM32 open source ESC firmware.    |
-| <a id='ESC_FIRMWARE_BLUEJAY'></a>2  | [ESC_FIRMWARE_BLUEJAY](#ESC_FIRMWARE_BLUEJAY)   | Bluejay open source ESC firmware. |
-| <a id='ESC_FIRMWARE_BLHELI32'></a>3 | [ESC_FIRMWARE_BLHELI32](#ESC_FIRMWARE_BLHELI32) | BLHeli32 ESC firmware.            |
+Value | Name | Description
+--- | --- | ---
+<a id='ESC_FIRMWARE_UNKNOWN'></a>0 | [ESC_FIRMWARE_UNKNOWN](#ESC_FIRMWARE_UNKNOWN) | Unknown firmware. 
+<a id='ESC_FIRMWARE_AM32'></a>1 | [ESC_FIRMWARE_AM32](#ESC_FIRMWARE_AM32) | AM32 open source ESC firmware. 
+<a id='ESC_FIRMWARE_BLUEJAY'></a>2 | [ESC_FIRMWARE_BLUEJAY](#ESC_FIRMWARE_BLUEJAY) | Bluejay open source ESC firmware. 
+<a id='ESC_FIRMWARE_BLHELI32'></a>3 | [ESC_FIRMWARE_BLHELI32](#ESC_FIRMWARE_BLHELI32) | BLHeli32 ESC firmware. 
 
 ### RANGING_BEACON_ALT_TYPE — [WIP] {#RANGING_BEACON_ALT_TYPE}
 
@@ -498,10 +511,10 @@ ESC firmware type identifier.
 
 Altitude reference for [RANGING_BEACON](#RANGING_BEACON) alt field.
 
-| Value                                       | Name                                                            | Description                           |
-| ------------------------------------------- | --------------------------------------------------------------- | ------------------------------------- |
-| <a id='RANGING_BEACON_ALT_TYPE_WGS84'></a>0 | [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) | Altitude above WGS84 ellipsoid.       |
-| <a id='RANGING_BEACON_ALT_TYPE_MSL'></a>1   | [RANGING_BEACON_ALT_TYPE_MSL](#RANGING_BEACON_ALT_TYPE_MSL)     | Altitude above Mean Sea Level (AMSL). |
+Value | Name | Description
+--- | --- | ---
+<a id='RANGING_BEACON_ALT_TYPE_WGS84'></a>0 | [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) | Altitude above WGS84 ellipsoid. 
+<a id='RANGING_BEACON_ALT_TYPE_MSL'></a>1 | [RANGING_BEACON_ALT_TYPE_MSL](#RANGING_BEACON_ALT_TYPE_MSL) | Altitude above Mean Sea Level (AMSL). 
 
 ### RANGING_BEACON_STATUS_FLAG — [WIP] {#RANGING_BEACON_STATUS_FLAG}
 
@@ -509,9 +522,9 @@ Altitude reference for [RANGING_BEACON](#RANGING_BEACON) alt field.
 
 (Bitmask) Status flags for a [RANGING_BEACON](#RANGING_BEACON).
 
-| Value                                                        | Name                                                                                              | Description                                                                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| <a id='RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR'></a>1 | [RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR](#RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR) | Station signal is poor. This might indicate channel fading, interference, or other signal quality issues. |
+Value | Name | Description
+--- | --- | ---
+<a id='RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR'></a>1 | [RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR](#RANGING_BEACON_STATUS_FLAG_STATION_SIGNAL_POOR) | Station signal is poor. This might indicate channel fading, interference, or other signal quality issues. 
 
 ### ESTIMATOR_SENSOR_FUSION_SOURCE — [WIP] {#ESTIMATOR_SENSOR_FUSION_SOURCE}
 
@@ -519,17 +532,17 @@ Altitude reference for [RANGING_BEACON](#RANGING_BEACON) alt field.
 
 Estimator sensor fusion source types. Used in [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](#MAV_CMD_ESTIMATOR_SENSOR_ENABLE) and as array index in [ESTIMATOR_SENSOR_FUSION_STATUS](#ESTIMATOR_SENSOR_FUSION_STATUS).
 
-| Value                                                       | Name                                                                                            | Description               |
-| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------- |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_GPS'></a>0            | [ESTIMATOR_SENSOR_FUSION_SOURCE_GPS](#ESTIMATOR_SENSOR_FUSION_SOURCE_GPS)                       | GNSS                      |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_OF'></a>1             | [ESTIMATOR_SENSOR_FUSION_SOURCE_OF](#ESTIMATOR_SENSOR_FUSION_SOURCE_OF)                         | Optical Flow              |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_EV'></a>2             | [ESTIMATOR_SENSOR_FUSION_SOURCE_EV](#ESTIMATOR_SENSOR_FUSION_SOURCE_EV)                         | External Vision           |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_AGP'></a>3            | [ESTIMATOR_SENSOR_FUSION_SOURCE_AGP](#ESTIMATOR_SENSOR_FUSION_SOURCE_AGP)                       | Auxiliary Global Position |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_BARO'></a>4           | [ESTIMATOR_SENSOR_FUSION_SOURCE_BARO](#ESTIMATOR_SENSOR_FUSION_SOURCE_BARO)                     | Barometer                 |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RNG'></a>5            | [ESTIMATOR_SENSOR_FUSION_SOURCE_RNG](#ESTIMATOR_SENSOR_FUSION_SOURCE_RNG)                       | Range Finder              |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_MAG'></a>6            | [ESTIMATOR_SENSOR_FUSION_SOURCE_MAG](#ESTIMATOR_SENSOR_FUSION_SOURCE_MAG)                       | Magnetometer              |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD'></a>7           | [ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD](#ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD)                     | Airspeed                  |
-| <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON'></a>8 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON](#ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON) | Ranging Beacon            |
+Value | Name | Description
+--- | --- | ---
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_GPS'></a>0 | [ESTIMATOR_SENSOR_FUSION_SOURCE_GPS](#ESTIMATOR_SENSOR_FUSION_SOURCE_GPS) | GNSS 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_OF'></a>1 | [ESTIMATOR_SENSOR_FUSION_SOURCE_OF](#ESTIMATOR_SENSOR_FUSION_SOURCE_OF) | Optical Flow 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_EV'></a>2 | [ESTIMATOR_SENSOR_FUSION_SOURCE_EV](#ESTIMATOR_SENSOR_FUSION_SOURCE_EV) | External Vision 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_AGP'></a>3 | [ESTIMATOR_SENSOR_FUSION_SOURCE_AGP](#ESTIMATOR_SENSOR_FUSION_SOURCE_AGP) | Auxiliary Global Position 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_BARO'></a>4 | [ESTIMATOR_SENSOR_FUSION_SOURCE_BARO](#ESTIMATOR_SENSOR_FUSION_SOURCE_BARO) | Barometer 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RNG'></a>5 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RNG](#ESTIMATOR_SENSOR_FUSION_SOURCE_RNG) | Range Finder 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_MAG'></a>6 | [ESTIMATOR_SENSOR_FUSION_SOURCE_MAG](#ESTIMATOR_SENSOR_FUSION_SOURCE_MAG) | Magnetometer 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD'></a>7 | [ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD](#ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD) | Airspeed 
+<a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON'></a>8 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON](#ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON) | Ranging Beacon 
 
 ## Commands (MAV_CMD) {#mav_commands}
 
@@ -543,10 +556,11 @@ This might include groups such as the actuators that contribute to roll, pitch, 
 This is similar to [MAV_CMD_ACTUATOR_TEST](#MAV_CMD_ACTUATOR_TEST), except that multiple actuators may be affected.
 Different groups may also affect the same actuators (as in the case of controls that affect torque in different axes).
 
-| Param (Label) | Description                                                                                | Values                                      |
-| ------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------- |
-| 1 (Group)     | Actuator group to check, such as actuators related to roll torque.                         | [ACTUATOR_TEST_GROUP](#ACTUATOR_TEST_GROUP) |
-| 2 (Value)     | Value to set. This is a normalized value across the full range of the tested group [-1,1]. | min: -1 max: 1                              |
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Group) | Actuator group to check, such as actuators related to roll torque. | [ACTUATOR_TEST_GROUP](#ACTUATOR_TEST_GROUP) 
+2 (Value) | Value to set. This is a normalized value across the full range of the tested group [-1,1]. | min: -1 max: 1 
+
 
 ### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] {#MAV_CMD_DO_SET_SYS_CMP_ID}
 
@@ -556,11 +570,12 @@ Set system and component id.
 This allows moving of a system and all its components to a new system id, or moving a particular component to a new system/component id.
 Recipients must reject command addressed to broadcast system ID.
 
-| Param (Label)    | Description                                                                                            | Values                 |
-| ---------------- | ------------------------------------------------------------------------------------------------------ | ---------------------- |
-| 1 (System ID)    | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 max: 255 inc: 1 |
-| 2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change).                      | min: 0 max: 255 inc: 1 |
-| 3 (Reboot)       | Reboot components after ID change. Any non-zero value triggers the reboot.                             |
+Param (Label) | Description | Values
+--- | --- | ---
+1 (System ID) | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 max: 255 inc: 1 
+2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change). | min: 0 max: 255 inc: 1 
+3 (Reboot) | Reboot components after ID change. Any non-zero value triggers the reboot. |   
+
 
 ### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) — [WIP] {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
 
@@ -573,11 +588,12 @@ This enables transform between the local coordinate frame and the global (GNSS) 
 This command supersedes [SET_GPS_GLOBAL_ORIGIN](#SET_GPS_GLOBAL_ORIGIN).
 Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL), and this should be assumed when sent in [COMMAND_LONG](#COMMAND_LONG)).
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 5 (Latitude)  | Latitude    |
-| 6 (Longitude) | Longitude   |
-| 7 (Altitude)  | Altitude    | m     |
+Param (Label) | Description | Units
+--- | --- | ---
+5 (Latitude) | Latitude |   
+6 (Longitude) | Longitude |   
+7 (Altitude) | Altitude | m 
+
 
 ### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
 
@@ -587,13 +603,14 @@ Set an external estimate of vehicle attitude.
 
 This might be used to provide an initial attitude (especially heading) estimate to the estimator (EKF). Angles are defined in a 3-2-1 (yaw-pitch-roll) intrinsic Tait-Bryan sequence.
 
-| Param (Label)     | Description                                                                 | Values          | Units |
-| ----------------- | --------------------------------------------------------------------------- | --------------- | ----- |
-| 1 (Roll)          | Roll angle. Set to NaN if unknown.                                          | min: 0 max: 360 | deg   |
-| 2 (Pitch)         | Pitch angle. Set to NaN if unknown.                                         | min: 0 max: 360 | deg   |
-| 3 (Yaw)           | Yaw/heading (relative to true north) angle. Set to NaN if unknown.          | min: 0 max: 360 | deg   |
-| 4 (Tilt accuracy) | Estimated 1 sigma accuracy of roll and pitch angles. Set to NaN if unknown. |                 | deg   |
-| 7 (Yaw accuracy)  | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown.             |                 | deg   |
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Roll) | Roll angle. Set to NaN if unknown. | min: 0 max: 360 | deg 
+2 (Pitch) | Pitch angle. Set to NaN if unknown. | min: 0 max: 360 | deg 
+3 (Yaw) | Yaw/heading (relative to true north) angle. Set to NaN if unknown. | min: 0 max: 360 | deg 
+4 (Tilt accuracy) | Estimated 1 sigma accuracy of roll and pitch angles. Set to NaN if unknown. |   | deg 
+7 (Yaw accuracy) | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown. |   | deg 
+
 
 ### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
 
@@ -603,9 +620,10 @@ Enable Moving Target Indicators (MTI) on streamed video.
 
 Support for feature can be checked with [CAMERA_CAP_FLAGS_HAS_MTI](#CAMERA_CAP_FLAGS_HAS_MTI), and disabled with [MAV_CMD_CAMERA_STOP_MTI](#MAV_CMD_CAMERA_STOP_MTI).
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+
 
 ### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] {#MAV_CMD_CAMERA_STOP_MTI}
 
@@ -613,9 +631,10 @@ Support for feature can be checked with [CAMERA_CAP_FLAGS_HAS_MTI](#CAMERA_CAP_F
 
 Disable Moving Target Indicators (MTI) on streamed video.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+
 
 ### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
 
@@ -623,10 +642,11 @@ Disable Moving Target Indicators (MTI) on streamed video.
 
 Circular fence area centered on home. The vehicle must stay inside this area. If home is moved, the fence moves.
 
-| Param (Label)       | Description                                                                                                                              | Values        | Units |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----- |
-| 1 (Radius)          | Radius.                                                                                                                                  |               | m     |
-| 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Radius) | Radius. |   | m 
+2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |   
+
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
 
@@ -638,9 +658,10 @@ This is for compliance with MOC ASTM docs, specifically F358 section 7.7: "Emerg
 The requirement can also be satisfied by automatic setting of the emergency status by flight stack, and that approach is preferred.
 See https://mavlink.io/en/services/opendroneid.html for more information.
 
-| Param (Label) | Description                          | Values        |
-| ------------- | ------------------------------------ | ------------- |
-| 1 (Number)    | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 |
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Number) | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 
+
 
 ### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
 
@@ -648,11 +669,11 @@ See https://mavlink.io/en/services/opendroneid.html for more information.
 
 Request exclusive control of a system or special system feature by a GCS.
 
-The operator control protocol supports two modes:
 
+The operator control protocol supports two modes:
 - In single-owner mode there is a single GCS "owner" that can send state changing operations to the whole system, and this command can be used to request takeover of that ownership role.
 - In multi-owner mode the flight stack allows multiple GCS to be "owners" and send (most) state changing operations (which GCS those are is implementation-dependent, and not controlled by this protocol).
-  However only one GCS owner can control manual input of the vehicle: this command can be used to request takeover of that ownership role.
+However only one GCS owner can control manual input of the vehicle: this command can be used to request takeover of that ownership role.
 
 A controlled system should only accept MAVLink operations that change the state of the vehicle, such as commands and command-like messages, which are sent by its controlling GCS(s) (or from other components in its own system/with the same system id, such as a companion computer).
 Commands to control the vehicle from other systems should be rejected with [MAV_RESULT_NOT_IN_CONTROL](#MAV_RESULT_NOT_IN_CONTROL) (except for this command, which may be acknowledged with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED) if control is granted).
@@ -687,13 +708,14 @@ The component will then stream [CONTROL_STATUS](#CONTROL_STATUS) for its control
 The component should fall back to the system GCS (if any) when it is not directly controlled, and may stop emitting [CONTROL_STATUS](#CONTROL_STATUS).
 The flow is otherwise the same as for requesting control over the whole system.
 
-| Param (Label)               | Description                                                                                                                                                                   | Values         | Units |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ----- |
-| 1 (Action)                  | 0: Release control, 1: Request control.                                                                                                                                       |                |
-| 2 (Allow takeover)          | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. |                |
-| 3 (Request timeout)         | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control.    | min: 3 max: 60 | s     |
-| 4 (GCS Sysid)               | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range).                              |                |
-| 5 (GCS Sysid (upper range)) | Upper range of controlling GCS system IDs. 0 for single-GCS control. If non-zero the sender system ID may be anywhere in the range).                                          |                |
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Action) | 0: Release control, 1: Request control. |   |   
+2 (Allow takeover) | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. |   |   
+3 (Request timeout) | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control. | min: 3 max: 60 | s 
+4 (GCS Sysid) | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range). |   |   
+5 (GCS Sysid (upper range)) | Upper range of controlling GCS system IDs. 0 for single-GCS control. If non-zero the sender system ID may be anywhere in the range). |   |   
+
 
 ### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
 
@@ -703,12 +725,13 @@ Set an external estimate of wind direction and speed.
 
 This might be used to provide an initial wind estimate to the estimator (EKF) in the case where the vehicle is wind dead-reckoning, extending the time when operating without GPS before before position drift builds to an unsafe level. For this use case the command might reasonably be sent every few minutes when operating at altitude, and the value is cleared if the estimator resets itself.
 
-| Param (Label)           | Description                                                          | Values          | Units |
-| ----------------------- | -------------------------------------------------------------------- | --------------- | ----- |
-| 1 (Wind speed)          | Horizontal wind speed.                                               | min: 0          | m/s   |
-| 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown.     |                 | m/s   |
-| 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.     | min: 0 max: 360 | deg   |
-| 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                 | deg   |
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Wind speed) | Horizontal wind speed. | min: 0 | m/s 
+2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown. |   | m/s 
+3 (Direction) | Azimuth (relative to true north) from where the wind is blowing. | min: 0 max: 360 | deg 
+4 (Direction accuracy) | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |   | deg 
+
 
 ### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
 
@@ -718,9 +741,11 @@ Enable or disable a specific estimator sensor fusion source at runtime.
 
 This allows a GCS or companion computer to dynamically control which sensors the estimator fuses without changing parameters.
 
-| Param (Label)          | Description                                                         | Values                                                            |
-| ---------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| 1 (Source)             | Sensor fusion source type.                                          | [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) |
-| 2 (Instance)           | Sensor instance (0-based, for multi-instance).                      | min: 0 inc: 1                                                     |
-| 3 (Enable)             | Enable (1) or Disable (0) the source.                               | [MAV_BOOL](#MAV_BOOL)                                             |
-| 4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1                                                     |
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Source) | Sensor fusion source type. | [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) 
+2 (Instance) | Sensor instance (0-based, for multi-instance). | min: 0 inc: 1 
+3 (Enable) | Enable (1) or Disable (0) the source. | [MAV_BOOL](#MAV_BOOL) 
+4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1 
+
+
