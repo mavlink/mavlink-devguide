@@ -260,7 +260,7 @@ The location of a target measured by MAV's onboard sensors.
 Information about GCS(s) in control of this MAV.
 
 This should be broadcast at low rate (nominally 1 Hz) and emitted when ownership or takeover status change.
-Components in the system should only accept "state changing commands/messages" from any system id in `gcs_main` or `gcs_secondary`.
+Components in the system should only accept "state changing commands/messages" from any system id in `gcs_main` or  `gcs_secondary`.
 
 - In single-owner mode there is a single GCS that can send "state changing commands/messages" listed in `gcs_main` (`gcs_secondary` must be set to all-zero).
 - In multi-owner mode, all GCS with ids in `gcs_main` and `gcs_secondary` can send "state changing commands/messages".
@@ -724,3 +724,5 @@ This allows a GCS or companion computer to dynamically control which sensors the
 | 2 (Instance)           | Sensor instance (0-based, for multi-instance).                      | min: 0 inc: 1                                                                                    |
 | 3 (Enable)             | Enable (1) or Disable (0) the source.            | [MAV_BOOL](#MAV_BOOL)                                                                                       |
 | 4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1                                                                                    |
+
+
