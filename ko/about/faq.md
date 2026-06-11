@@ -21,8 +21,8 @@
   </dd>
 
   <dt>What version of MAVLink should I use?</dt>
-  <dd>You should use the <a href="../guide/mavlink_2.md">MAVLink 2</a> protocol where at all possible (it fixes a number of limitations of earlier versions). 
-  The <em>MAVLink 2</em> libraries also support <em>MAVLink 1</em>, so you can use them to communicate with legacy systems if needed. 
+  <dd>You should use the <a href="../guide/mavlink_2.md">MAVLink 2</a> protocol where at all possible (it fixes a number of limitations of earlier versions).
+  The <em>MAVLink 2</em> libraries also support <em>MAVLink 1</em>, so you can use them to communicate with legacy systems if needed.
   </dd>
 
  <dt>How often is MAVLink updated/released?</dt>
@@ -58,12 +58,14 @@
   <dd>MAVLink는 무인 항공 시스템의 안전에 중요한 구성 요소의 일부입니다. 많은 패킷을 버리는 나쁜 통신 링크는 비행체의 안전을 위협할 수 있고, 모니터링이 필요합니다. 헤더에 시퀀스를 가지는 것은 MAVLink가 패킷 손실률에 관한 피드백을 지속적으로 제공할 수 있도록 하여 비행체나 관제국이 조치를 취할수 있도록 합니다.</dd>
 
   <dt>왜 CRC_EXTRA가 패킷 무결성 체크섬에 필요한가요?</dt>
-  <dd>CRC_EXTRA의 CRC는 송수신자 각자가 지정 메시지의 유선 형식을 이해하는지 검증하는 용도로 활용합니다   (프로토콜 구조가 단순하여 메시지 구조에 페이로드가 들어있지 않기 때문에 필요함).
-  MAVLink 0.9에서는 CRC를 사용하지 않았습니다(다만 길이 검사는 진행했습니다). 
-  메시지를 설명하는 XML이 메시지 길이 변화 없이 변경되는 소수의 케이스가 있었는데, 이것은 메시지를 읽을 때 심각하게 손상된 필드로 이어졌습니다.</dd>
+  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message
+  (required because as a lightweight protocol, the message structure isn't included in the payload).
+  MAVLink 0.9에서는 CRC를 사용하지 않았습니다(다만 길이 검사는 진행했습니다).
+  There were a small number of cases where XML describing a message changed without changing the message length,
+  leading to badly corrupted fields when messages were read.</dd>
 
   <dt>디코딩/인코딩 루틴이나 다른 요소들을 개선하는데 도움을 주고 싶습니다. MAVLink가 바뀔 수도 있나요?</dt>
-  <dd>매우 엄밀한 안전 테스트를 거치는 경우에 그럴 수 있습니다. 
+  <dd>매우 엄밀한 안전 테스트를 거치는 경우에 그럴 수 있습니다.
   MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. Please suggest new features on the MAVLink <a href="../index.md#support">support channels</a>.</dd>
 
   <dt>How can I further reduce the generated C library size?</dt>
