@@ -96,4 +96,3 @@ How to configure LEDs. We can:
 | <a id='LED_CONFIG_MODE_CLEAR'></a>3              | [LED_CONFIG_MODE_CLEAR](#LED_CONFIG_MODE_CLEAR)                                                                     | Set all LEDs in the target strip to black (turn off).                                 |
 
 ## Commands (MAV_CMD) {#mav_commands}
-
