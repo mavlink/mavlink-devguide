@@ -1175,25 +1175,25 @@ Flags in [RALLY_POINT](#RALLY_POINT) message.
 
 ### GOPRO_COMMAND {#GOPRO_COMMAND}
 
-| 值                                                  | Name                                                                                                                                                            | 描述                                                                                                           |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| <a id='GOPRO_COMMAND_POWER'></a>0                  | [GOPRO_COMMAND_POWER](#GOPRO_COMMAND_POWER)                                                                           | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_CAPTURE_MODE'></a>1           | [GOPRO_COMMAND_CAPTURE_MODE](#GOPRO_COMMAND_CAPTURE_MODE)                                        | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_SHUTTER'></a>2                | [GOPRO_COMMAND_SHUTTER](#GOPRO_COMMAND_SHUTTER)                                                                       | (___/Set). |
-| <a id='GOPRO_COMMAND_BATTERY'></a>3                | [GOPRO_COMMAND_BATTERY](#GOPRO_COMMAND_BATTERY)                                                                       | (Get/___). |
-| <a id='GOPRO_COMMAND_MODEL'></a>4                  | [GOPRO_COMMAND_MODEL](#GOPRO_COMMAND_MODEL)                                                                           | (Get/___). |
-| <a id='GOPRO_COMMAND_VIDEO_SETTINGS'></a>5         | [GOPRO_COMMAND_VIDEO_SETTINGS](#GOPRO_COMMAND_VIDEO_SETTINGS)                                    | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_LOW_LIGHT'></a>6              | [GOPRO_COMMAND_LOW_LIGHT](#GOPRO_COMMAND_LOW_LIGHT)                                              | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_PHOTO_RESOLUTION'></a>7       | [GOPRO_COMMAND_PHOTO_RESOLUTION](#GOPRO_COMMAND_PHOTO_RESOLUTION)                                | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_PHOTO_BURST_RATE'></a>8       | [GOPRO_COMMAND_PHOTO_BURST_RATE](#GOPRO_COMMAND_PHOTO_BURST_RATE)           | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_PROTUNE'></a>9                | [GOPRO_COMMAND_PROTUNE](#GOPRO_COMMAND_PROTUNE)                                                                       | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_PROTUNE_WHITE_BALANCE'></a>10 | [GOPRO_COMMAND_PROTUNE_WHITE_BALANCE](#GOPRO_COMMAND_PROTUNE_WHITE_BALANCE) | (Get/Set) Hero 3+ Only.                                                   |
-| <a id='GOPRO_COMMAND_PROTUNE_COLOUR'></a>11        | [GOPRO_COMMAND_PROTUNE_COLOUR](#GOPRO_COMMAND_PROTUNE_COLOUR)                                    | (Get/Set) Hero 3+ Only.                                                   |
-| <a id='GOPRO_COMMAND_PROTUNE_GAIN'></a>12          | [GOPRO_COMMAND_PROTUNE_GAIN](#GOPRO_COMMAND_PROTUNE_GAIN)                                        | (Get/Set) Hero 3+ Only.                                                   |
-| <a id='GOPRO_COMMAND_PROTUNE_SHARPNESS'></a>13     | [GOPRO_COMMAND_PROTUNE_SHARPNESS](#GOPRO_COMMAND_PROTUNE_SHARPNESS)                              | (Get/Set) Hero 3+ Only.                                                   |
-| <a id='GOPRO_COMMAND_PROTUNE_EXPOSURE'></a>14      | [GOPRO_COMMAND_PROTUNE_EXPOSURE](#GOPRO_COMMAND_PROTUNE_EXPOSURE)                                | (Get/Set) Hero 3+ Only.                                                   |
-| <a id='GOPRO_COMMAND_TIME'></a>15                  | [GOPRO_COMMAND_TIME](#GOPRO_COMMAND_TIME)                                                                             | (Get/Set).                                                                |
-| <a id='GOPRO_COMMAND_CHARGING'></a>16              | [GOPRO_COMMAND_CHARGING](#GOPRO_COMMAND_CHARGING)                                                                     | (Get/Set).                                                                |
+| 值                                                  | Name                                                                                                                                                            | 描述                                                                       |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| <a id='GOPRO_COMMAND_POWER'></a>0                  | [GOPRO_COMMAND_POWER](#GOPRO_COMMAND_POWER)                                                                           | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_CAPTURE_MODE'></a>1           | [GOPRO_COMMAND_CAPTURE_MODE](#GOPRO_COMMAND_CAPTURE_MODE)                                        | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_SHUTTER'></a>2                | [GOPRO_COMMAND_SHUTTER](#GOPRO_COMMAND_SHUTTER)                                                                       | (\_\_\_/Set). |
+| <a id='GOPRO_COMMAND_BATTERY'></a>3                | [GOPRO_COMMAND_BATTERY](#GOPRO_COMMAND_BATTERY)                                                                       | (Get/\_\_\_). |
+| <a id='GOPRO_COMMAND_MODEL'></a>4                  | [GOPRO_COMMAND_MODEL](#GOPRO_COMMAND_MODEL)                                                                           | (Get/\_\_\_). |
+| <a id='GOPRO_COMMAND_VIDEO_SETTINGS'></a>5         | [GOPRO_COMMAND_VIDEO_SETTINGS](#GOPRO_COMMAND_VIDEO_SETTINGS)                                    | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_LOW_LIGHT'></a>6              | [GOPRO_COMMAND_LOW_LIGHT](#GOPRO_COMMAND_LOW_LIGHT)                                              | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_PHOTO_RESOLUTION'></a>7       | [GOPRO_COMMAND_PHOTO_RESOLUTION](#GOPRO_COMMAND_PHOTO_RESOLUTION)                                | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_PHOTO_BURST_RATE'></a>8       | [GOPRO_COMMAND_PHOTO_BURST_RATE](#GOPRO_COMMAND_PHOTO_BURST_RATE)           | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_PROTUNE'></a>9                | [GOPRO_COMMAND_PROTUNE](#GOPRO_COMMAND_PROTUNE)                                                                       | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_PROTUNE_WHITE_BALANCE'></a>10 | [GOPRO_COMMAND_PROTUNE_WHITE_BALANCE](#GOPRO_COMMAND_PROTUNE_WHITE_BALANCE) | (Get/Set) Hero 3+ Only.               |
+| <a id='GOPRO_COMMAND_PROTUNE_COLOUR'></a>11        | [GOPRO_COMMAND_PROTUNE_COLOUR](#GOPRO_COMMAND_PROTUNE_COLOUR)                                    | (Get/Set) Hero 3+ Only.               |
+| <a id='GOPRO_COMMAND_PROTUNE_GAIN'></a>12          | [GOPRO_COMMAND_PROTUNE_GAIN](#GOPRO_COMMAND_PROTUNE_GAIN)                                        | (Get/Set) Hero 3+ Only.               |
+| <a id='GOPRO_COMMAND_PROTUNE_SHARPNESS'></a>13     | [GOPRO_COMMAND_PROTUNE_SHARPNESS](#GOPRO_COMMAND_PROTUNE_SHARPNESS)                              | (Get/Set) Hero 3+ Only.               |
+| <a id='GOPRO_COMMAND_PROTUNE_EXPOSURE'></a>14      | [GOPRO_COMMAND_PROTUNE_EXPOSURE](#GOPRO_COMMAND_PROTUNE_EXPOSURE)                                | (Get/Set) Hero 3+ Only.               |
+| <a id='GOPRO_COMMAND_TIME'></a>15                  | [GOPRO_COMMAND_TIME](#GOPRO_COMMAND_TIME)                                                                             | (Get/Set).                            |
+| <a id='GOPRO_COMMAND_CHARGING'></a>16              | [GOPRO_COMMAND_CHARGING](#GOPRO_COMMAND_CHARGING)                                                                     | (Get/Set).                            |
 
 ### GOPRO_CAPTURE_MODE {#GOPRO_CAPTURE_MODE}
 
@@ -2034,5 +2034,3 @@ Provide a value for height above ground level. This can be used for things like 
 | 5                                | Empty                                                                                                                                        |       |
 | 6                                | Empty                                                                                                                                        |       |
 | 7                                | Empty                                                                                                                                        |       |
-
-
