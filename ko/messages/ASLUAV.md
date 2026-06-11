@@ -61,8 +61,8 @@ Message encoding a command with parameters as scaled integers and additional met
 | param2                                 | `float`    |                                               | PARAM2, see [MAV_CMD](#mav_commands) enum                                                                                                                 |
 | param3                                 | `float`    |                                               | PARAM3, see [MAV_CMD](#mav_commands) enum                                                                                                                 |
 | param4                                 | `float`    |                                               | PARAM4, see [MAV_CMD](#mav_commands) enum                                                                                                                 |
-| x                                      | `int32_t`  |                                               | PARAM5 / local: x position in meters _ 1e4, global: latitude in degrees _ 10^7                       |
-| y                                      | `int32_t`  |                                               | PARAM6 / local: y position in meters _ 1e4, global: longitude in degrees _ 10^7                      |
+| x                                      | `int32_t`  |                                               | PARAM5 / local: x position in meters \* 1e4, global: latitude in degrees \* 10^7                                                               |
+| y                                      | `int32_t`  |                                               | PARAM6 / local: y position in meters \* 1e4, global: longitude in degrees \* 10^7                                                              |
 | z                                      | `float`    |                                               | PARAM7 / z position: global: altitude in meters (MSL, WGS84, AGL or relative to home - depending on frame). |
 
 ### COMMAND_LONG_STAMPED (224) {#COMMAND_LONG_STAMPED}
@@ -393,3 +393,5 @@ Mission command to perform a power cycle on payload
 | 5                                | Empty                |
 | 6                                | Empty                |
 | 7                                | Empty                |
+
+
