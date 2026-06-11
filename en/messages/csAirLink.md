@@ -26,19 +26,20 @@ span.warning {
     color: red;
   }
 </style>
+
 **Protocol version:** 3
 
 ## MAVLink Include Files
 
- None
+None
 
 ## Summary
 
-Type | Defined | Included
---- | --- | ---
-[Messages](#messages) | 2 | 0
-[Enums](#enumerated-types) | 1 | 0
-Commands | 0 | 0
+| Type                       | Defined | Included |
+| -------------------------- | ------- | -------- |
+| [Messages](#messages)      | 2       | 0        |
+| [Enums](#enumerated-types) | 1       | 0        |
+| Commands                   | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -48,27 +49,24 @@ The following sections list all entities in the dialect (both included and defin
 
 Authorization package
 
-Field Name | Type | Description
---- | --- | ---
-login | `char[50]` | Login 
-password | `char[50]` | Password 
-
+| Field Name | Type       | Description |
+| ---------- | ---------- | ----------- |
+| login      | `char[50]` | Login       |
+| password   | `char[50]` | Password    |
 
 ### AIRLINK_AUTH_RESPONSE (52001) {#AIRLINK_AUTH_RESPONSE}
 
 Response to the authorization request
 
-Field Name | Type | Values | Description
---- | --- | --- | ---
-resp_type | `uint8_t` | [AIRLINK_AUTH_RESPONSE_TYPE](#AIRLINK_AUTH_RESPONSE_TYPE) | Response type 
-
+| Field Name | Type      | Values                                                    | Description   |
+| ---------- | --------- | --------------------------------------------------------- | ------------- |
+| resp_type  | `uint8_t` | [AIRLINK_AUTH_RESPONSE_TYPE](#AIRLINK_AUTH_RESPONSE_TYPE) | Response type |
 
 ## Enumerated Types
 
 ### AIRLINK_AUTH_RESPONSE_TYPE {#AIRLINK_AUTH_RESPONSE_TYPE}
 
-Value | Name | Description
---- | --- | ---
-<a id='AIRLINK_ERROR_LOGIN_OR_PASS'></a>0 | [AIRLINK_ERROR_LOGIN_OR_PASS](#AIRLINK_ERROR_LOGIN_OR_PASS) | Login or password error 
-<a id='AIRLINK_AUTH_OK'></a>1 | [AIRLINK_AUTH_OK](#AIRLINK_AUTH_OK) | Auth successful 
-
+| Value                                     | Name                                                        | Description             |
+| ----------------------------------------- | ----------------------------------------------------------- | ----------------------- |
+| <a id='AIRLINK_ERROR_LOGIN_OR_PASS'></a>0 | [AIRLINK_ERROR_LOGIN_OR_PASS](#AIRLINK_ERROR_LOGIN_OR_PASS) | Login or password error |
+| <a id='AIRLINK_AUTH_OK'></a>1             | [AIRLINK_AUTH_OK](#AIRLINK_AUTH_OK)                         | Auth successful         |

@@ -26,17 +26,18 @@ span.warning {
     color: red;
   }
 </style>
+
 ## MAVLink Include Files
 
 - [minimal.xml](../messages/minimal.md)
 
 ## Summary
 
-Type | Defined | Included
---- | --- | ---
-[Messages](#messages) | 1 | 1
-[Enums](#enumerated-types) | 0 | 6
-[Commands](#mav_commands) | 1 | 0
+| Type                       | Defined | Included |
+| -------------------------- | ------- | -------- |
+| [Messages](#messages)      | 1       | 1        |
+| [Enums](#enumerated-types) | 0       | 6        |
+| [Commands](#mav_commands)  | 1       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -44,34 +45,33 @@ The following sections list all entities in the dialect (both included and defin
 
 ### LOWEHEISER_GOV_EFI (10151) {#LOWEHEISER_GOV_EFI}
 
-Composite EFI and Governor data from Loweheiser equipment.  This message is created by the EFI unit based on its own data and data received from a governor attached to that EFI unit.
+Composite EFI and Governor data from Loweheiser equipment. This message is created by the EFI unit based on its own data and data received from a governor attached to that EFI unit.
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-volt_batt | `float` | V | Generator Battery voltage. 
-curr_batt | `float` | A | Generator Battery current. 
-curr_gen | `float` | A | Current being produced by generator. 
-curr_rot | `float` | A | Load current being consumed by the UAV (sum of curr_gen and curr_batt) 
-fuel_level | `float` | l | Generator fuel remaining in litres. 
-throttle | `float` | % | Throttle Output. 
-runtime | `uint32_t` | s | Seconds this generator has run since it was rebooted. 
-until_maintenance | `int32_t` | s | Seconds until this generator requires maintenance.  A negative value indicates maintenance is past due. 
-rectifier_temp | `float` | degC | The Temperature of the rectifier. 
-generator_temp | `float` | degC | The temperature of the mechanical motor, fuel cell core or generator. 
-efi_batt | `float` | V | EFI Supply Voltage. 
-efi_rpm | `float` | rpm | Motor RPM. 
-efi_pw | `float` | ms | Injector pulse-width in milliseconds. 
-efi_fuel_flow | `float` | | Fuel flow rate in litres/hour. 
-efi_fuel_consumed | `float` | l | Fuel consumed. 
-efi_baro | `float` | kPa | Atmospheric pressure. 
-efi_mat | `float` | degC | Manifold Air Temperature. 
-efi_clt | `float` | degC | Cylinder Head Temperature. 
-efi_tps | `float` | % | Throttle Position. 
-efi_exhaust_gas_temperature | `float` | degC | Exhaust gas temperature. 
-efi_index | `uint8_t` | | EFI index.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
-generator_status | `uint16_t` | | Generator status. 
-efi_status | `uint16_t` | | EFI status. 
-
+| Field Name                  | Type       | Units | Description                                                                                                                |
+| --------------------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------- |
+| volt_batt                   | `float`    | V     | Generator Battery voltage.                                                                                                 |
+| curr_batt                   | `float`    | A     | Generator Battery current.                                                                                                 |
+| curr_gen                    | `float`    | A     | Current being produced by generator.                                                                                       |
+| curr_rot                    | `float`    | A     | Load current being consumed by the UAV (sum of curr_gen and curr_batt)                                                     |
+| fuel_level                  | `float`    | l     | Generator fuel remaining in litres.                                                                                        |
+| throttle                    | `float`    | %     | Throttle Output.                                                                                                           |
+| runtime                     | `uint32_t` | s     | Seconds this generator has run since it was rebooted.                                                                      |
+| until_maintenance           | `int32_t`  | s     | Seconds until this generator requires maintenance. A negative value indicates maintenance is past due.                     |
+| rectifier_temp              | `float`    | degC  | The Temperature of the rectifier.                                                                                          |
+| generator_temp              | `float`    | degC  | The temperature of the mechanical motor, fuel cell core or generator.                                                      |
+| efi_batt                    | `float`    | V     | EFI Supply Voltage.                                                                                                        |
+| efi_rpm                     | `float`    | rpm   | Motor RPM.                                                                                                                 |
+| efi_pw                      | `float`    | ms    | Injector pulse-width in milliseconds.                                                                                      |
+| efi_fuel_flow               | `float`    |       | Fuel flow rate in litres/hour.                                                                                             |
+| efi_fuel_consumed           | `float`    | l     | Fuel consumed.                                                                                                             |
+| efi_baro                    | `float`    | kPa   | Atmospheric pressure.                                                                                                      |
+| efi_mat                     | `float`    | degC  | Manifold Air Temperature.                                                                                                  |
+| efi_clt                     | `float`    | degC  | Cylinder Head Temperature.                                                                                                 |
+| efi_tps                     | `float`    | %     | Throttle Position.                                                                                                         |
+| efi_exhaust_gas_temperature | `float`    | degC  | Exhaust gas temperature.                                                                                                   |
+| efi_index                   | `uint8_t`  |       | EFI index.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. |
+| generator_status            | `uint16_t` |       | Generator status.                                                                                                          |
+| efi_status                  | `uint16_t` |       | EFI status.                                                                                                                |
 
 ## Enumerated Types
 
@@ -81,14 +81,12 @@ efi_status | `uint16_t` | | EFI status.
 
 Set Loweheiser desired states
 
-Param (Label) | Description
---- | ---
-1 | EFI Index 
-2 | Desired Engine/EFI State (0: Power Off, 1:Running) 
-3 | Desired Governor State (0:manual throttle, 1:Governed throttle) 
-4 | Manual throttle level, 0% - 100% 
-5 | Electronic Start up (0:Off, 1:On) 
-6 | Empty 
-7 | Empty 
-
-
+| Param (Label) | Description                                                     |
+| ------------- | --------------------------------------------------------------- |
+| 1             | EFI Index                                                       |
+| 2             | Desired Engine/EFI State (0: Power Off, 1:Running)              |
+| 3             | Desired Governor State (0:manual throttle, 1:Governed throttle) |
+| 4             | Manual throttle level, 0% - 100%                                |
+| 5             | Electronic Start up (0:Off, 1:On)                               |
+| 6             | Empty                                                           |
+| 7             | Empty                                                           |

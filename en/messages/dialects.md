@@ -17,20 +17,20 @@ Dialects are not managed by this project!
 
 The dialect definitions are:
 
-- [csAirLink.xml](csAirLink.md)
+- [storm32.xml](storm32.md)
+- [matrixpilot.xml](matrixpilot.md)
+- [paparazzi.xml](paparazzi.md)
+- [stemstudios.xml](stemstudios.md)
+- [AVSSUAS.xml](AVSSUAS.md)
+- [uAvionix.xml](uAvionix.md)
 - [loweheiser.xml](loweheiser.md)
-- [cubepilot.xml](cubepilot.md)
 - [ASLUAV.xml](ASLUAV.md)
 - [ardupilotmega.xml](ardupilotmega.md)
-- [matrixpilot.xml](matrixpilot.md)
 - [marsh.xml](marsh.md)
-- [uAvionix.xml](uAvionix.md)
-- [AVSSUAS.xml](AVSSUAS.md)
-- [storm32.xml](storm32.md)
-- [ualberta.xml](ualberta.md)
-- [paparazzi.xml](paparazzi.md)
+- [csAirLink.xml](csAirLink.md)
 - [icarous.xml](icarous.md)
-- [stemstudios.xml](stemstudios.md)
+- [cubepilot.xml](cubepilot.md)
+- [ualberta.xml](ualberta.md)
 
 Note that dialects may `include` [MAVLink-Standard Definitions](index.md) or other dialects.
 Up to 5 levels of XML file nesting are allowed - see `MAXIMUM_INCLUDE_FILE_NESTING` in [mavgen.py](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavgen.py#L44).
@@ -49,4 +49,3 @@ The following definitions are used for testing and dialect validation:
 - [MAVLink-Standard Definitions](index.md)
 - [XSD schema](../guide/xml_schema.md)
 - [mavlink/message_definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/) - Source of all XML definition files
-
