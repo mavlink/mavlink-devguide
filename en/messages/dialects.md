@@ -22,7 +22,6 @@ The dialect definitions are:
 - [cubepilot.xml](cubepilot.md)
 - [ASLUAV.xml](ASLUAV.md)
 - [ardupilotmega.xml](ardupilotmega.md)
-- [matrixpilot.xml](matrixpilot.md)
 - [marsh.xml](marsh.md)
 - [uAvionix.xml](uAvionix.md)
 - [AVSSUAS.xml](AVSSUAS.md)
