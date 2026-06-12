@@ -455,15 +455,15 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F22 format
 
 Action required when performing [CMD_PREFLIGHT_STORAGE](#CMD_PREFLIGHT_STORAGE)
 
-| 值                                        | Name                                                                                                                                          | 描述         |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| <a id='MAV_PFS_CMD_READ_ALL'></a>0       | [MAV_PFS_CMD_READ_ALL](#MAV_PFS_CMD_READ_ALL)             | 从存储读取所有参数  |
-| <a id='MAV_PFS_CMD_WRITE_ALL'></a>1      | [MAV_PFS_CMD_WRITE_ALL](#MAV_PFS_CMD_WRITE_ALL)           | 将所有参数写入到存储 |
-| <a id='MAV_PFS_CMD_CLEAR_ALL'></a>2      | [MAV_PFS_CMD_CLEAR_ALL](#MAV_PFS_CMD_CLEAR_ALL)           | 清除存储中的所有参数 |
-| <a id='MAV_PFS_CMD_READ_SPECIFIC'></a>3  | [MAV_PFS_CMD_READ_SPECIFIC](#MAV_PFS_CMD_READ_SPECIFIC)   | 从存储读取特定参数  |
-| <a id='MAV_PFS_CMD_WRITE_SPECIFIC'></a>4 | [MAV_PFS_CMD_WRITE_SPECIFIC](#MAV_PFS_CMD_WRITE_SPECIFIC) | 将特定参数写入到存储 |
-| <a id='MAV_PFS_CMD_CLEAR_SPECIFIC'></a>5 | [MAV_PFS_CMD_CLEAR_SPECIFIC](#MAV_PFS_CMD_CLEAR_SPECIFIC) | 清除存储中的特定参数 |
-| <a id='MAV_PFS_CMD_DO_NOTHING'></a>6     | [MAV_PFS_CMD_DO_NOTHING](#MAV_PFS_CMD_DO_NOTHING)         | 不进行任何操作    |
+| 值                                        | Name                                                                                                                                          | 描述                               |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| <a id='MAV_PFS_CMD_READ_ALL'></a>0       | [MAV_PFS_CMD_READ_ALL](#MAV_PFS_CMD_READ_ALL)             | 从存储读取所有参数                        |
+| <a id='MAV_PFS_CMD_WRITE_ALL'></a>1      | [MAV_PFS_CMD_WRITE_ALL](#MAV_PFS_CMD_WRITE_ALL)           | 将所有参数写入到存储                       |
+| <a id='MAV_PFS_CMD_CLEAR_ALL'></a>2      | [MAV_PFS_CMD_CLEAR_ALL](#MAV_PFS_CMD_CLEAR_ALL)           | Clear all  parameters in storage |
+| <a id='MAV_PFS_CMD_READ_SPECIFIC'></a>3  | [MAV_PFS_CMD_READ_SPECIFIC](#MAV_PFS_CMD_READ_SPECIFIC)   | 从存储读取特定参数                        |
+| <a id='MAV_PFS_CMD_WRITE_SPECIFIC'></a>4 | [MAV_PFS_CMD_WRITE_SPECIFIC](#MAV_PFS_CMD_WRITE_SPECIFIC) | 将特定参数写入到存储                       |
+| <a id='MAV_PFS_CMD_CLEAR_SPECIFIC'></a>5 | [MAV_PFS_CMD_CLEAR_SPECIFIC](#MAV_PFS_CMD_CLEAR_SPECIFIC) | 清除存储中的特定参数                       |
+| <a id='MAV_PFS_CMD_DO_NOTHING'></a>6     | [MAV_PFS_CMD_DO_NOTHING](#MAV_PFS_CMD_DO_NOTHING)         | 不进行任何操作                          |
 
 ## Commands (MAV_CMD) {#mav_commands}
 

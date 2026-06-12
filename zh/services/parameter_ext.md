@@ -141,7 +141,7 @@ When requesting parameters from such a components, the risk of problems can be _
 
 - The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
 - [PARAM_EXT_VALUE.param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored.
-  If this changes the parameter set should be re-sychronised.
+  If this changes the parameter set should be re-synchronised.
 
 ### Parameter Synchronisation Can Fail {#monitoring_unreliable}
 
@@ -263,7 +263,7 @@ sequenceDiagram;
 The sequence of operations is:
 
 1. GCS (client) sends [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) specifying the param name to update and its new value (also target system/component and the param type).
-2. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) message).
+2. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) message).
 3. Drone (starts to) write parameter and responds by _broadcasting_ a `PARAM_EXT_ACK`.
    - If the write succeeded the `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_ACCEPTED` and the updated parameter value.
    - If the parameter was unknown or of an unsupported type `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_VALUE_UNSUPPORTED` and the current parameter value will be XXXXX.

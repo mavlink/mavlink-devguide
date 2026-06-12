@@ -4611,23 +4611,33 @@ Indicates the severity level, generally used for status messages to indicate the
 
 [SERIAL_CONTROL](#SERIAL_CONTROL) device types
 
-| 值                                       | Name                                                                                                                   | 描述                    |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| <a id='SERIAL_CONTROL_DEV_TELEM1'></a>0 | [SERIAL_CONTROL_DEV_TELEM1](#SERIAL_CONTROL_DEV_TELEM1) | First telemetry port  |
-| <a id='SERIAL_CONTROL_DEV_TELEM2'></a>1 | [SERIAL_CONTROL_DEV_TELEM2](#SERIAL_CONTROL_DEV_TELEM2) | Second telemetry port |
-| <a id='SERIAL_CONTROL_DEV_GPS1'></a>2   | [SERIAL_CONTROL_DEV_GPS1](#SERIAL_CONTROL_DEV_GPS1)     | First GPS port        |
-| <a id='SERIAL_CONTROL_DEV_GPS2'></a>3   | [SERIAL_CONTROL_DEV_GPS2](#SERIAL_CONTROL_DEV_GPS2)     | Second GPS port       |
-| <a id='SERIAL_CONTROL_DEV_SHELL'></a>10 | [SERIAL_CONTROL_DEV_SHELL](#SERIAL_CONTROL_DEV_SHELL)   | system shell          |
-| <a id='SERIAL_CONTROL_SERIAL0'></a>100  | [SERIAL_CONTROL_SERIAL0](#SERIAL_CONTROL_SERIAL0)                            | SERIAL0               |
-| <a id='SERIAL_CONTROL_SERIAL1'></a>101  | [SERIAL_CONTROL_SERIAL1](#SERIAL_CONTROL_SERIAL1)                            | SERIAL1               |
-| <a id='SERIAL_CONTROL_SERIAL2'></a>102  | [SERIAL_CONTROL_SERIAL2](#SERIAL_CONTROL_SERIAL2)                            | SERIAL2               |
-| <a id='SERIAL_CONTROL_SERIAL3'></a>103  | [SERIAL_CONTROL_SERIAL3](#SERIAL_CONTROL_SERIAL3)                            | SERIAL3               |
-| <a id='SERIAL_CONTROL_SERIAL4'></a>104  | [SERIAL_CONTROL_SERIAL4](#SERIAL_CONTROL_SERIAL4)                            | SERIAL4               |
-| <a id='SERIAL_CONTROL_SERIAL5'></a>105  | [SERIAL_CONTROL_SERIAL5](#SERIAL_CONTROL_SERIAL5)                            | SERIAL5               |
-| <a id='SERIAL_CONTROL_SERIAL6'></a>106  | [SERIAL_CONTROL_SERIAL6](#SERIAL_CONTROL_SERIAL6)                            | SERIAL6               |
-| <a id='SERIAL_CONTROL_SERIAL7'></a>107  | [SERIAL_CONTROL_SERIAL7](#SERIAL_CONTROL_SERIAL7)                            | SERIAL7               |
-| <a id='SERIAL_CONTROL_SERIAL8'></a>108  | [SERIAL_CONTROL_SERIAL8](#SERIAL_CONTROL_SERIAL8)                            | SERIAL8               |
-| <a id='SERIAL_CONTROL_SERIAL9'></a>109  | [SERIAL_CONTROL_SERIAL9](#SERIAL_CONTROL_SERIAL9)                            | SERIAL9               |
+| 值                                       | Name                                                                                                                   | 描述                            |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| <a id='SERIAL_CONTROL_DEV_TELEM1'></a>0 | [SERIAL_CONTROL_DEV_TELEM1](#SERIAL_CONTROL_DEV_TELEM1) | First telemetry port          |
+| <a id='SERIAL_CONTROL_DEV_TELEM2'></a>1 | [SERIAL_CONTROL_DEV_TELEM2](#SERIAL_CONTROL_DEV_TELEM2) | Second telemetry port         |
+| <a id='SERIAL_CONTROL_DEV_GPS1'></a>2   | [SERIAL_CONTROL_DEV_GPS1](#SERIAL_CONTROL_DEV_GPS1)     | First GPS port                |
+| <a id='SERIAL_CONTROL_DEV_GPS2'></a>3   | [SERIAL_CONTROL_DEV_GPS2](#SERIAL_CONTROL_DEV_GPS2)     | Second GPS port               |
+| <a id='SERIAL_CONTROL_DEV_TELEM3'></a>4 | [SERIAL_CONTROL_DEV_TELEM3](#SERIAL_CONTROL_DEV_TELEM3) | Third telemetry port          |
+| <a id='SERIAL_CONTROL_DEV_TELEM4'></a>5 | [SERIAL_CONTROL_DEV_TELEM4](#SERIAL_CONTROL_DEV_TELEM4) | Fourth telemetry port         |
+| <a id='SERIAL_CONTROL_DEV_SHELL'></a>10 | [SERIAL_CONTROL_DEV_SHELL](#SERIAL_CONTROL_DEV_SHELL)   | system shell                  |
+| <a id='SERIAL_CONTROL_DEV_ESC0'></a>20  | [SERIAL_CONTROL_DEV_ESC0](#SERIAL_CONTROL_DEV_ESC0)     | Electronic Speed Controller 0 |
+| <a id='SERIAL_CONTROL_DEV_ESC1'></a>21  | [SERIAL_CONTROL_DEV_ESC1](#SERIAL_CONTROL_DEV_ESC1)     | Electronic Speed Controller 1 |
+| <a id='SERIAL_CONTROL_DEV_ESC2'></a>22  | [SERIAL_CONTROL_DEV_ESC2](#SERIAL_CONTROL_DEV_ESC2)     | Electronic Speed Controller 2 |
+| <a id='SERIAL_CONTROL_DEV_ESC3'></a>23  | [SERIAL_CONTROL_DEV_ESC3](#SERIAL_CONTROL_DEV_ESC3)     | Electronic Speed Controller 3 |
+| <a id='SERIAL_CONTROL_DEV_ESC4'></a>24  | [SERIAL_CONTROL_DEV_ESC4](#SERIAL_CONTROL_DEV_ESC4)     | Electronic Speed Controller 4 |
+| <a id='SERIAL_CONTROL_DEV_ESC5'></a>25  | [SERIAL_CONTROL_DEV_ESC5](#SERIAL_CONTROL_DEV_ESC5)     | Electronic Speed Controller 5 |
+| <a id='SERIAL_CONTROL_DEV_ESC6'></a>26  | [SERIAL_CONTROL_DEV_ESC6](#SERIAL_CONTROL_DEV_ESC6)     | Electronic Speed Controller 6 |
+| <a id='SERIAL_CONTROL_DEV_ESC7'></a>27  | [SERIAL_CONTROL_DEV_ESC7](#SERIAL_CONTROL_DEV_ESC7)     | Electronic Speed Controller 7 |
+| <a id='SERIAL_CONTROL_SERIAL0'></a>100  | [SERIAL_CONTROL_SERIAL0](#SERIAL_CONTROL_SERIAL0)                            | SERIAL0                       |
+| <a id='SERIAL_CONTROL_SERIAL1'></a>101  | [SERIAL_CONTROL_SERIAL1](#SERIAL_CONTROL_SERIAL1)                            | SERIAL1                       |
+| <a id='SERIAL_CONTROL_SERIAL2'></a>102  | [SERIAL_CONTROL_SERIAL2](#SERIAL_CONTROL_SERIAL2)                            | SERIAL2                       |
+| <a id='SERIAL_CONTROL_SERIAL3'></a>103  | [SERIAL_CONTROL_SERIAL3](#SERIAL_CONTROL_SERIAL3)                            | SERIAL3                       |
+| <a id='SERIAL_CONTROL_SERIAL4'></a>104  | [SERIAL_CONTROL_SERIAL4](#SERIAL_CONTROL_SERIAL4)                            | SERIAL4                       |
+| <a id='SERIAL_CONTROL_SERIAL5'></a>105  | [SERIAL_CONTROL_SERIAL5](#SERIAL_CONTROL_SERIAL5)                            | SERIAL5                       |
+| <a id='SERIAL_CONTROL_SERIAL6'></a>106  | [SERIAL_CONTROL_SERIAL6](#SERIAL_CONTROL_SERIAL6)                            | SERIAL6                       |
+| <a id='SERIAL_CONTROL_SERIAL7'></a>107  | [SERIAL_CONTROL_SERIAL7](#SERIAL_CONTROL_SERIAL7)                            | SERIAL7                       |
+| <a id='SERIAL_CONTROL_SERIAL8'></a>108  | [SERIAL_CONTROL_SERIAL8](#SERIAL_CONTROL_SERIAL8)                            | SERIAL8                       |
+| <a id='SERIAL_CONTROL_SERIAL9'></a>109  | [SERIAL_CONTROL_SERIAL9](#SERIAL_CONTROL_SERIAL9)                            | SERIAL9                       |
 
 ### SERIAL_CONTROL_FLAG {#SERIAL_CONTROL_FLAG}
 

@@ -135,13 +135,13 @@ If a component can add parameters during (or after) initial synchronization the 
 If working with a non-compliant component, the risk of problems when working with parameters can be _reduced_ (but not removed) if:
 
 - The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter might change on systems where parameters can be added/removed).
-- [PARAM_VALUE.param_count](../messages/common.md#PARAM_VALUE) is monitored and the parameter set re-sychronised on change.
+- [PARAM_VALUE.param_count](../messages/common.md#PARAM_VALUE) is monitored and the parameter set re-synchronised on change.
 
 ### Parameter Synchronisation Can Fail {#monitoring_unreliable}
 
 A GCS (or other component) that wants to [cache parameters](#parameter_caching) with a component and keep them synchronised, should first get all parameters, and then track any new parameter changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
 
-This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved.
+This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not received.
 This approach may fail for components that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
 
 A component may mitigate this risk by, for example, sending the `PARAM_VALUE` multiple times after a parameter is changed.
@@ -242,7 +242,7 @@ The sequence of operations is:
 
 1. GCS (client) sends [PARAM_SET](../messages/common.md#PARAM_VALUE) specifying the param name to update and its new value (also target system/component and the param type).
 
-2. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
+2. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
 
 3. Drone writes parameter and responds by _broadcasting_ a `PARAM_VALUE` containing the updated parameter value to all components/systems.
 
