@@ -594,18 +594,32 @@ The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/
 
 Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
 
-```txt
-mftp://[;comp=<id>][/@<directory>]/<path>
+```url
+mftp://[comp=<id>:][@<alias>/]<path>
 ```
 
 Where:
 
-- `path`: the location of the resource on the target component and/or in the virtual directory.
+- `path`: the location of the resource, which may be a relative or absolute path.
 - `id`: target _component ID_ of the component hosting the resource.
-  The `;comp=<id>` part is optional (if omitted, the resource is downloaded from the current component).
+  The `comp=<id>:` part is optional (if omitted, the resource is downloaded from the current component).
   It should be specified if the request must be redirected
-- `directory`: A [virtual directory](#virtual-directory-entries-directory-alias) on the target source.
-  The `@<directory>` part is optional (if omitted, the resource is downloaded from the "normal" directory path).
+- `alias`: A [virtual directory](#virtual-directory-entries-directory-alias).
+  This `@<alias>` part is optional.
+  NOTE that ann absolute path (prefixed by `/`) cannot be used with a virtual directory; paths following an alias must be relative!
+
+The allowed paths look like this:
+
+```text
+mftp:///absolute/path
+mftp://relative/path
+
+mftp://comp=12:/absolute/path
+mftp://comp=12:relative/path
+
+mftp://@VIRTUALDIR/relative/path
+mftp://comp=12:@VIRTUALDIR/relative/path
+```
 
 For example:
 
@@ -620,12 +634,12 @@ For example:
 
   ```txt
   ## FTP resource '/info/version.json' from component with id 100
-  mftp://;comp=100/info/version.json
+  mftp://comp=100:/info/version.json
   ```
 
 - A GCS wanting to download a log might use
 
   ```txt
   ## FTP resource '2024.log' from @MAV_LOG virtual directory
-  mftp:///@MAV_LOG/2024.log
+  mftp://@MAV_LOG/2024.log
   ```
