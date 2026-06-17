@@ -14,7 +14,7 @@ export default defineConfig({
   base: "",
   lastUpdated: true,
   sitemap: {
-    hostname: "https://mavlink.io/",
+    hostname: "https://mavlink.io",
   },
   srcExclude: [
     "de/**/*.md",
