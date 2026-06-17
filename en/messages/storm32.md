@@ -57,7 +57,7 @@ Field Name | Type | Units | Description
 target_system | `uint8_t` | | System ID. 
 target_component | `uint8_t` | | Component ID. 
 time_boot_us | `uint64_t` | us | Timestamp (time since system boot). 
-wind_x | `float` | m/s | Wind X speed in NED (North,Est, Down). NAN if unknown. 
+wind_x | `float` | m/s | Wind X speed in NED (North, East, Down). NAN if unknown. 
 wind_y | `float` | m/s | Wind Y speed in NED (North, East, Down). NAN if unknown. 
 wind_correction_angle | `float` | rad | Correction angle due to wind. NaN if unknown. 
 
