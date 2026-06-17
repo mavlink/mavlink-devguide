@@ -39,7 +39,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 231 | 3
 [Enums](#enumerated-types) | 150 | 9
-[Commands](#mav_commands) | 168 | 0
+[Commands](#mav_commands) | 170 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -9089,6 +9089,27 @@ Param (Label) | Description | Values | Units
 5 | Empty. |   |   
 6 | Empty. |   |   
 7 | Empty. |   |   
+
+
+### MAV_CMD_GUIDED_CHANGE_SPEED (43000) {#MAV_CMD_GUIDED_CHANGE_SPEED}
+
+Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's previous speed and the new one.
+
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (speed type) | Airspeed or groundspeed. | [SPEED_TYPE](#SPEED_TYPE) |   
+2 (speed target) | Target Speed |   | m/s 
+3 (speed rate-of-change) | Acceleration rate, 0 to take effect instantly |   | m/s/s 
+
+
+### MAV_CMD_GUIDED_CHANGE_ALTITUDE (43001) {#MAV_CMD_GUIDED_CHANGE_ALTITUDE}
+
+Change target altitude at a given rate. This slews the vehicle at a controllable rate between it's previous altitude and the new one.
+
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+3 (alt rate-of-change) | Rate of change, toward new altitude. 0 for maximum rate change. Positive numbers only, as negative numbers will not converge on the new target alt. | min: 0 | m/s 
+7 (target alt) | Target Altitude |   | m 
 
 
 ### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
