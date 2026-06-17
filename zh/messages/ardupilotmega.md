@@ -1993,34 +1993,6 @@ Maintain an attitude for a specified time.
 | 6                                                      | Empty                                                                                       |       |
 | 7                                                      | Empty                                                                                       |       |
 
-### MAV_CMD_GUIDED_CHANGE_SPEED (43000) {#MAV_CMD_GUIDED_CHANGE_SPEED}
-
-Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's previous speed and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these commands. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
-
-| Param (Label)            | 描述                                            | 值                                              | Units |
-| ------------------------------------------- | --------------------------------------------- | ---------------------------------------------- | ----- |
-| 1 (speed type)           | Airspeed or groundspeed.      | [SPEED_TYPE](#SPEED_TYPE) |       |
-| 2 (speed target)         | Target Speed                                  |                                                | m/s   |
-| 3 (speed rate-of-change) | Acceleration rate, 0 to take effect instantly |                                                | m/s/s |
-| 4                                           | Empty                                         |                                                |       |
-| 5                                           | Empty                                         |                                                |       |
-| 6                                           | Empty                                         |                                                |       |
-| 7                                           | Empty                                         |                                                |       |
-
-### MAV_CMD_GUIDED_CHANGE_ALTITUDE (43001) {#MAV_CMD_GUIDED_CHANGE_ALTITUDE}
-
-Change target altitude at a given rate. This slews the vehicle at a controllable rate between it's previous altitude and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these commands. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
-
-| Param (Label)          | 描述                                                                                                                                                                                                  | 值                      | Units |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
-| 1                                         | Empty                                                                                                                                                                                               |                        |       |
-| 2                                         | Empty                                                                                                                                                                                               |                        |       |
-| 3 (alt rate-of-change) | Rate of change, toward new altitude. 0 for maximum rate change. Positive numbers only, as negative numbers will not converge on the new target alt. | min: 0 | m/s   |
-| 4                                         | Empty                                                                                                                                                                                               |                        |       |
-| 5                                         | Empty                                                                                                                                                                                               |                        |       |
-| 6                                         | Empty                                                                                                                                                                                               |                        |       |
-| 7 (target alt)         | Target Altitude                                                                                                                                                                                     |                        | m     |
-
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
 
 Provide a value for height above ground level. This can be used for things like fixed wing and VTOL landing.
