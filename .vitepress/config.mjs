@@ -12,6 +12,10 @@ export default defineConfig({
   description: "MAVLink Developer Guide",
   //base: process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME + "/" : "", //Build doesn't use branches!
   base: "",
+  lastUpdated: true,
+  sitemap: {
+    hostname: "https://mavlink.io",
+  },
   srcExclude: [
     "de/**/*.md",
     "ja/**/*.md",
@@ -115,8 +119,36 @@ export default defineConfig({
     },
   },
   //Logs every page loaded on build. Good way to catch errors not caught by other things.
+  //Also injects per-page SEO metadata (description, OpenGraph, canonical) into the
+  //server-rendered <head> so message pages are better crawled/snippeted by search engines.
   async transformPageData(pageData, { siteConfig }) {
     console.log(pageData.filePath);
+
+    const desc =
+      pageData.frontmatter.description ||
+      pageData.description ||
+      (pageData.title
+        ? `${pageData.title} — MAVLink message, enum and command reference.`
+        : "MAVLink Developer Guide");
+
+    // Set pageData.description so VitePress's own <meta name="description"> uses it
+    // (pushing a second description tag in head would be deduped in favour of the default).
+    pageData.description = desc;
+
+    const url =
+      "https://mavlink.io/" +
+      pageData.relativePath
+        .replace(/(^|\/)index\.md$/, "$1")
+        .replace(/\.md$/, ".html");
+
+    pageData.frontmatter.head ??= [];
+    pageData.frontmatter.head.push(
+      ["meta", { property: "og:title", content: pageData.title }],
+      ["meta", { property: "og:description", content: desc }],
+      ["meta", { property: "og:type", content: "article" }],
+      ["meta", { property: "og:url", content: url }],
+      ["link", { rel: "canonical", href: url }]
+    );
   },
 
   //
