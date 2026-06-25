@@ -2165,7 +2165,7 @@ gps_id | `uint8_t` | | | ID of the GPS for multiple GPS inputs<br>[Instance fiel
 ignore_flags | `uint16_t` | | [GPS_INPUT_IGNORE_FLAGS](#GPS_INPUT_IGNORE_FLAGS) | Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided. 
 time_week_ms | `uint32_t` | ms | | GPS time (from start of GPS week) 
 time_week | `uint16_t` | | | GPS week number 
-fix_type | `uint8_t` | | | 0-1: no fix, 2: 2D fix, 3: 3D fix. 4: 3D with DGPS. 5: 3D with RTK 
+fix_type | `uint8_t` | | [GPS_FIX_TYPE](#GPS_FIX_TYPE) | GNSS fix type 
 lat | `int32_t` | degE7 | | Latitude (WGS84) 
 lon | `int32_t` | degE7 | | Longitude (WGS84) 
 alt | `float` | m | | Altitude (MSL). Positive for up. 
@@ -2178,7 +2178,7 @@ speed_accuracy | `float` | m/s | | GPS speed accuracy
 horiz_accuracy | `float` | m | | GPS horizontal accuracy 
 vert_accuracy | `float` | m | | GPS vertical accuracy 
 satellites_visible | `uint8_t` | | | Number of satellites visible. 
-<span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | | Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
+<span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | invalid:0 | Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
 
 
 ### GPS_RTCM_DATA (233) {#GPS_RTCM_DATA}
