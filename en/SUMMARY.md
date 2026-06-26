@@ -25,6 +25,7 @@
   - [Redundancy/Message De-duplication](guide/redundancy_deduplication.md)
   - [Packet Loss Calculation](guide/packet_loss.md)
   - [General Telemetry](guide/general_telemetry.md)
+  - [Stream Rates](guide/stream_rates.md)
   - [File Formats](file_formats/index.md)
   - [UAVCAN Interaction](guide/uavcan_interaction.md)
   - [Scripts](guide/scripts.md)
