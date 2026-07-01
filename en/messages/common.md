@@ -5999,11 +5999,12 @@ Value | Name | Description
 <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7 | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR) |  
 <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8 | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED) |  
 <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100 | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY) |  
-<a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101 | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR) |  
+<a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101 | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR) | Interrupts the commanded output to the motor. 
 <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102 | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO) |  
 <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103 | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE) |  
 <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104 | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL) |  
 <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL) |  
+<a id='FAILURE_UNIT_SYSTEM_ESC'></a>106 | [FAILURE_UNIT_SYSTEM_ESC](#FAILURE_UNIT_SYSTEM_ESC) | Interrupts the telemetry reported by the ESC. 
 
 ### FAILURE_TYPE {#FAILURE_TYPE}
 
@@ -8053,7 +8054,8 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Failure unit) | The unit which is affected by the failure. | [FAILURE_UNIT](#FAILURE_UNIT) 
 2 (Failure type) | The type how the failure manifests itself. | [FAILURE_TYPE](#FAILURE_TYPE) 
-3 (Instance) | Instance affected by failure (0 to signal all). |   
+3 (Instance) | Instance affected by failure (0 to signal all). Takes precedence over Instance bitmask (param4) when not NaN. Set to NaN to use Instance bitmask instead. | min: 0 inc: 1 
+4 (Instance bitmask) | Bitmask of instances affected by the failure (bit 0 = first instance, bit 1 = second instance, etc.). Used only when Instance (param3) is NaN. | min: 0 
 
 
 ### MAV_CMD_START_RX_PAIR (500) {#MAV_CMD_START_RX_PAIR}
