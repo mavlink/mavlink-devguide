@@ -5752,23 +5752,24 @@ Navigational status of AIS vessel, enum duplicated from AIS standard, https://gp
 
 List of possible units where failures can be injected.
 
-| 值                                                  | Name                                                                                                                                                            | 描述 |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
-| <a id='FAILURE_UNIT_SENSOR_GYRO'></a>0             | [FAILURE_UNIT_SENSOR_GYRO](#FAILURE_UNIT_SENSOR_GYRO)                                            |    |
-| <a id='FAILURE_UNIT_SENSOR_ACCEL'></a>1            | [FAILURE_UNIT_SENSOR_ACCEL](#FAILURE_UNIT_SENSOR_ACCEL)                                          |    |
-| <a id='FAILURE_UNIT_SENSOR_MAG'></a>2              | [FAILURE_UNIT_SENSOR_MAG](#FAILURE_UNIT_SENSOR_MAG)                                              |    |
-| <a id='FAILURE_UNIT_SENSOR_BARO'></a>3             | [FAILURE_UNIT_SENSOR_BARO](#FAILURE_UNIT_SENSOR_BARO)                                            |    |
-| <a id='FAILURE_UNIT_SENSOR_GPS'></a>4              | [FAILURE_UNIT_SENSOR_GPS](#FAILURE_UNIT_SENSOR_GPS)                                              |    |
-| <a id='FAILURE_UNIT_SENSOR_OPTICAL_FLOW'></a>5     | [FAILURE_UNIT_SENSOR_OPTICAL_FLOW](#FAILURE_UNIT_SENSOR_OPTICAL_FLOW)       |    |
-| <a id='FAILURE_UNIT_SENSOR_VIO'></a>6              | [FAILURE_UNIT_SENSOR_VIO](#FAILURE_UNIT_SENSOR_VIO)                                              |    |
-| <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7  | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR) |    |
-| <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8         | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED)                                    |    |
-| <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100        | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY)                                      |    |
-| <a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101          | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR)                                          |    |
-| <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102          | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO)                                          |    |
-| <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103      | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE)                                  |    |
-| <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104      | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL)             |    |
-| <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL)   |    |
+| 值                                                  | Name                                                                                                                                                            | 描述                                                            |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| <a id='FAILURE_UNIT_SENSOR_GYRO'></a>0             | [FAILURE_UNIT_SENSOR_GYRO](#FAILURE_UNIT_SENSOR_GYRO)                                            |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_ACCEL'></a>1            | [FAILURE_UNIT_SENSOR_ACCEL](#FAILURE_UNIT_SENSOR_ACCEL)                                          |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_MAG'></a>2              | [FAILURE_UNIT_SENSOR_MAG](#FAILURE_UNIT_SENSOR_MAG)                                              |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_BARO'></a>3             | [FAILURE_UNIT_SENSOR_BARO](#FAILURE_UNIT_SENSOR_BARO)                                            |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_GPS'></a>4              | [FAILURE_UNIT_SENSOR_GPS](#FAILURE_UNIT_SENSOR_GPS)                                              |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_OPTICAL_FLOW'></a>5     | [FAILURE_UNIT_SENSOR_OPTICAL_FLOW](#FAILURE_UNIT_SENSOR_OPTICAL_FLOW)       |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_VIO'></a>6              | [FAILURE_UNIT_SENSOR_VIO](#FAILURE_UNIT_SENSOR_VIO)                                              |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7  | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR) |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8         | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED)                                    |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100        | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY)                                      |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101          | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR)                                          | Interrupts the commanded output to the motor. |
+| <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102          | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO)                                          |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103      | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE)                                  |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104      | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL)             |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL)   |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_ESC'></a>106            | [FAILURE_UNIT_SYSTEM_ESC](#FAILURE_UNIT_SYSTEM_ESC)                                              | Interrupts the telemetry reported by the ESC. |
 
 ### FAILURE_TYPE {#FAILURE_TYPE}
 
@@ -7721,11 +7722,12 @@ The vehicle will ACK the command and emit the [HOME_POSITION](#HOME_POSITION) me
 
 Inject artificial failure for testing purposes. Note that autopilots should implement an additional protection before accepting this command such as a specific param setting.
 
-| Param (Label)    | 描述                                                                                 | 值                                                  |
-| ----------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------- |
-| 1 (Failure unit) | The unit which is affected by the failure.                         | [FAILURE_UNIT](#FAILURE_UNIT) |
-| 2 (Failure type) | The type how the failure manifests itself.                         | [FAILURE_TYPE](#FAILURE_TYPE) |
-| 3 (Instance)     | Instance affected by failure (0 to signal all). |                                                    |
+| Param (Label)        | 描述                                                                                                                                                                                                                                              | 值                                                  |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| 1 (Failure unit)     | The unit which is affected by the failure.                                                                                                                                                                                      | [FAILURE_UNIT](#FAILURE_UNIT) |
+| 2 (Failure type)     | The type how the failure manifests itself.                                                                                                                                                                                      | [FAILURE_TYPE](#FAILURE_TYPE) |
+| 3 (Instance)         | Instance affected by failure (0 to signal all). Takes precedence over Instance bitmask (param4) when not NaN. Set to NaN to use Instance bitmask instead. | min: 0 inc: 1      |
+| 4 (Instance bitmask) | Bitmask of instances affected by the failure (bit 0 = first instance, bit 1 = second instance, etc.). Used only when Instance (param3) is NaN.            | min: 0                             |
 
 ### MAV_CMD_START_RX_PAIR (500) {#MAV_CMD_START_RX_PAIR}
 
