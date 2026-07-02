@@ -714,7 +714,6 @@ Param (Label) | Description | Values | Units
 2 (Allow takeover) | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. |   |   
 3 (Request timeout) | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control. | min: 3 max: 60 | s 
 4 (GCS Sysid) | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range). |   |   
-5 (GCS Sysid (upper range)) | Upper range of controlling GCS system IDs. 0 for single-GCS control. If non-zero the sender system ID may be anywhere in the range). |   |   
 
 
 ### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
