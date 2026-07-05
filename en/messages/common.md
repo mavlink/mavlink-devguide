@@ -39,7 +39,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 231 | 3
 [Enums](#enumerated-types) | 150 | 9
-[Commands](#mav_commands) | 170 | 0
+[Commands](#mav_commands) | 171 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -8297,6 +8297,22 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Tag) | Target tag to jump to. | min: 0 inc: 1 
 2 (Repeat) | Repeat count. | min: 0 inc: 1 
+
+
+### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
+
+Sets the GNSS coordinates of the vehicle local origin (0,0,0) position.
+
+Vehicle should emit [GPS_GLOBAL_ORIGIN](#GPS_GLOBAL_ORIGIN) irrespective of whether the origin is changed.
+This enables transform between the local coordinate frame and the global (GNSS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.
+This command supersedes [SET_GPS_GLOBAL_ORIGIN](#SET_GPS_GLOBAL_ORIGIN).
+Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL), and this should be assumed when sent in [COMMAND_LONG](#COMMAND_LONG)).
+
+Param (Label) | Description | Units
+--- | --- | ---
+5 (Latitude) | Latitude |   
+6 (Longitude) | Longitude |   
+7 (Altitude) | Altitude | m 
 
 
 ### MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (1000) {#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW}
