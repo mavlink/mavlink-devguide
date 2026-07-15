@@ -14,7 +14,7 @@
       - [UDP Example (C)](mavgen_c/example_c_udp.md)
   - [C++ 11 (mavgen)](mavgen_cpp/index.md)
     - [Examples](mavgen_cpp/examples.md)
-      - [UART Interface (C)](mavgen_cpp/example_c_uart.md)
+      - [UDP Example (C++)](mavgen_cpp/example_cpp_udp.md)
   - [Pymavlink (Python-mavgen)](mavgen_python/index.md)
     - [How to Request Messages/Set Message Rates](mavgen_python/howto_requestmessages.md)
     - [Message Signing](mavgen_python/message_signing.md)
