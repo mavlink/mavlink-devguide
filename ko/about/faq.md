@@ -4,7 +4,7 @@
 
 <dl>
   <dt>MAVLINK는 얼마나 효율적인가요?</dt>
-  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLink 1은 시작 부호와 패킷 손실 탐지 부분을 포함하여 패킷당 8바이트의 크기를 가집니다. Mavlink 2는 14 바이트(부호를 포함하는 경우, 27 바이트)의 오버헤드를 가지지만, 훨씬 더 확장성 있는 프로토콜입니다.</dd>
+  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLink 1은 시작 부호와 패킷 손실 탐지 부분을 포함하여 패킷당 8바이트의 크기를 가집니다. MAVLink 2 has just 12 bytes of overhead (25 if signing is used), but is now a much more extensible protocol.</dd>
 
   <dt>MAVLINK가 지원하는 기기 댓수는 몇대인가요?</dt>
   <dd>1부터 255까지의 범위(0은 유효한 ID가 아닙니다)의 시스템 ID를 가지는 총 255개의 기기를 지원합니다.
