@@ -16,7 +16,7 @@ MAVLink于2009年初由Lorenz Meier首次发布, 目前为止，已拥有[数量
 
 ## 主要特性
 
-- 高效性。 MAVLink 1每个数据包只有8个字节的开销, 包括起始标志和数据包丢弃检测。 MAVLink 2只有14个字节的开销 (但它是一个更安全且可扩展的协议)。 因为MAVLink不需要任何额外的帧, 所以它非常适合通信带宽非常有限的应用程序。
+- 高效性。 MAVLink 1每个数据包只有8个字节的开销, 包括起始标志和数据包丢弃检测。 MAVLink 2 has just 12 bytes of overhead (but is a much more secure and extensible protocol). 因为MAVLink不需要任何额外的帧, 所以它非常适合通信带宽非常有限的应用程序。
 - 可靠性。 自2009年以来, MAVLink一直被用于多种载具、地面站 (和其他节点) 之间的通信，而这些通信信道中，不乏各种挑战性(如高延迟、噪声) 。 同时，Mavlink也具备检测数据包丢失、损坏和数据包身份验证的功能。
 - [Many different programming languages](#supported_languages) can be used, running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
 - 单个网络上最多可容纳255个并行系统 (载具、地面站等)。
