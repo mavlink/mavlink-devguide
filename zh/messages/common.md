@@ -3921,10 +3921,14 @@ Predefined OR-combined [MAV_MODE_FLAG](#MAV_MODE_FLAG) values. These can simplif
 
 (Bitmask) These encode the sensors whose status is sent as part of the [SYS_STATUS](#SYS_STATUS) message in the extended fields.
 
-| 值                                            | Name                                                                                                                                                  | 描述                                                                         |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| <a id='MAV_SYS_STATUS_RECOVERY_SYSTEM'></a>1 | [MAV_SYS_STATUS_RECOVERY_SYSTEM](#MAV_SYS_STATUS_RECOVERY_SYSTEM) | 0x01 Recovery system (parachute, balloon, retracts etc) |
-| <a id='MAV_SYS_STATUS_SENSOR_LEAK'></a>2     | [MAV_SYS_STATUS_SENSOR_LEAK](#MAV_SYS_STATUS_SENSOR_LEAK)         | 0x02 Leak detection                                                        |
+| 值                                              | Name                                                                                                                                                                         | 描述                                                                         |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <a id='MAV_SYS_STATUS_RECOVERY_SYSTEM'></a>1   | [MAV_SYS_STATUS_RECOVERY_SYSTEM](#MAV_SYS_STATUS_RECOVERY_SYSTEM)                        | 0x01 Recovery system (parachute, balloon, retracts etc) |
+| <a id='MAV_SYS_STATUS_SENSOR_LEAK'></a>2       | [MAV_SYS_STATUS_SENSOR_LEAK](#MAV_SYS_STATUS_SENSOR_LEAK)                                | 0x02 Leak detection                                                        |
+| <a id='MAV_SYS_STATUS_SENSOR_3D_GYRO3'></a>4   | [MAV_SYS_STATUS_SENSOR_3D_GYRO3](#MAV_SYS_STATUS_SENSOR_3D_GYRO3)   | 0x04 3rd 3D gyro                                                           |
+| <a id='MAV_SYS_STATUS_SENSOR_3D_ACCEL3'></a>8  | [MAV_SYS_STATUS_SENSOR_3D_ACCEL3](#MAV_SYS_STATUS_SENSOR_3D_ACCEL3) | 0x08 3rd 3D accelerometer                                                  |
+| <a id='MAV_SYS_STATUS_SENSOR_3D_GYRO4'></a>16  | [MAV_SYS_STATUS_SENSOR_3D_GYRO4](#MAV_SYS_STATUS_SENSOR_3D_GYRO4)   | 0x10 4th 3D gyro                                                           |
+| <a id='MAV_SYS_STATUS_SENSOR_3D_ACCEL4'></a>32 | [MAV_SYS_STATUS_SENSOR_3D_ACCEL4](#MAV_SYS_STATUS_SENSOR_3D_ACCEL4) | 0x20 4th 3D accelerometer                                                  |
 
 ### MAV_FRAME {#MAV_FRAME}
 
@@ -5752,24 +5756,25 @@ Navigational status of AIS vessel, enum duplicated from AIS standard, https://gp
 
 List of possible units where failures can be injected.
 
-| 值                                                  | Name                                                                                                                                                            | 描述                                                            |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| <a id='FAILURE_UNIT_SENSOR_GYRO'></a>0             | [FAILURE_UNIT_SENSOR_GYRO](#FAILURE_UNIT_SENSOR_GYRO)                                            |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_ACCEL'></a>1            | [FAILURE_UNIT_SENSOR_ACCEL](#FAILURE_UNIT_SENSOR_ACCEL)                                          |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_MAG'></a>2              | [FAILURE_UNIT_SENSOR_MAG](#FAILURE_UNIT_SENSOR_MAG)                                              |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_BARO'></a>3             | [FAILURE_UNIT_SENSOR_BARO](#FAILURE_UNIT_SENSOR_BARO)                                            |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_GPS'></a>4              | [FAILURE_UNIT_SENSOR_GPS](#FAILURE_UNIT_SENSOR_GPS)                                              |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_OPTICAL_FLOW'></a>5     | [FAILURE_UNIT_SENSOR_OPTICAL_FLOW](#FAILURE_UNIT_SENSOR_OPTICAL_FLOW)       |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_VIO'></a>6              | [FAILURE_UNIT_SENSOR_VIO](#FAILURE_UNIT_SENSOR_VIO)                                              |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7  | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR) |                                                               |
-| <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8         | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED)                                    |                                                               |
-| <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100        | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY)                                      |                                                               |
-| <a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101          | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR)                                          | Interrupts the commanded output to the motor. |
-| <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102          | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO)                                          |                                                               |
-| <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103      | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE)                                  |                                                               |
-| <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104      | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL)             |                                                               |
-| <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL)   |                                                               |
-| <a id='FAILURE_UNIT_SYSTEM_ESC'></a>106            | [FAILURE_UNIT_SYSTEM_ESC](#FAILURE_UNIT_SYSTEM_ESC)                                              | Interrupts the telemetry reported by the ESC. |
+| 值                                                     | Name                                                                                                                                                                | 描述                                                            |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| <a id='FAILURE_UNIT_SENSOR_GYRO'></a>0                | [FAILURE_UNIT_SENSOR_GYRO](#FAILURE_UNIT_SENSOR_GYRO)                                                |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_ACCEL'></a>1               | [FAILURE_UNIT_SENSOR_ACCEL](#FAILURE_UNIT_SENSOR_ACCEL)                                              |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_MAG'></a>2                 | [FAILURE_UNIT_SENSOR_MAG](#FAILURE_UNIT_SENSOR_MAG)                                                  |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_BARO'></a>3                | [FAILURE_UNIT_SENSOR_BARO](#FAILURE_UNIT_SENSOR_BARO)                                                |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_GPS'></a>4                 | [FAILURE_UNIT_SENSOR_GPS](#FAILURE_UNIT_SENSOR_GPS)                                                  |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_OPTICAL_FLOW'></a>5        | [FAILURE_UNIT_SENSOR_OPTICAL_FLOW](#FAILURE_UNIT_SENSOR_OPTICAL_FLOW)           |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_VIO'></a>6                 | [FAILURE_UNIT_SENSOR_VIO](#FAILURE_UNIT_SENSOR_VIO)                                                  |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7     | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR)     |                                                               |
+| <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8            | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED)                                        |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100           | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY)                                          |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101             | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR)                                              | Interrupts the commanded output to the motor. |
+| <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102             | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO)                                              |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103         | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE)                                      |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104         | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL)                 |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105    | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL)       |                                                               |
+| <a id='FAILURE_UNIT_SYSTEM_ESC'></a>106               | [FAILURE_UNIT_SYSTEM_ESC](#FAILURE_UNIT_SYSTEM_ESC)                                                  | Interrupts the telemetry reported by the ESC. |
+| <a id='FAILURE_UNIT_SYSTEM_TRAFFIC_AVOIDANCE'></a>107 | [FAILURE_UNIT_SYSTEM_TRAFFIC_AVOIDANCE](#FAILURE_UNIT_SYSTEM_TRAFFIC_AVOIDANCE) | Traffic avoidance system like ADS-B or FLARM. |
 
 ### FAILURE_TYPE {#FAILURE_TYPE}
 
@@ -5785,6 +5790,7 @@ List of possible failure type to inject.
 | <a id='FAILURE_TYPE_SLOW'></a>5         | [FAILURE_TYPE_SLOW](#FAILURE_TYPE_SLOW)                 | Unit is slow, so e.g. reporting at slower than expected rate. |
 | <a id='FAILURE_TYPE_DELAYED'></a>6      | [FAILURE_TYPE_DELAYED](#FAILURE_TYPE_DELAYED)           | Data of unit is delayed in time.                                                              |
 | <a id='FAILURE_TYPE_INTERMITTENT'></a>7 | [FAILURE_TYPE_INTERMITTENT](#FAILURE_TYPE_INTERMITTENT) | Unit is sometimes working, sometimes not.                                                     |
+| <a id='FAILURE_TYPE_DRIFT'></a>8        | [FAILURE_TYPE_DRIFT](#FAILURE_TYPE_DRIFT)               | Unit is publishing plausible values but drifting away from true values.                       |
 
 ### NAV_VTOL_LAND_OPTIONS {#NAV_VTOL_LAND_OPTIONS}
 
