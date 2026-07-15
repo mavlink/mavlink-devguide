@@ -6009,6 +6009,7 @@ Value | Name | Description
 <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104 | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL) |  
 <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL) |  
 <a id='FAILURE_UNIT_SYSTEM_ESC'></a>106 | [FAILURE_UNIT_SYSTEM_ESC](#FAILURE_UNIT_SYSTEM_ESC) | Interrupts the telemetry reported by the ESC. 
+<a id='FAILURE_UNIT_SYSTEM_TRAFFIC_AVOIDANCE'></a>107 | [FAILURE_UNIT_SYSTEM_TRAFFIC_AVOIDANCE](#FAILURE_UNIT_SYSTEM_TRAFFIC_AVOIDANCE) | Traffic avoidance system like ADS-B or FLARM. 
 
 ### FAILURE_TYPE {#FAILURE_TYPE}
 
@@ -6024,6 +6025,7 @@ Value | Name | Description
 <a id='FAILURE_TYPE_SLOW'></a>5 | [FAILURE_TYPE_SLOW](#FAILURE_TYPE_SLOW) | Unit is slow, so e.g. reporting at slower than expected rate. 
 <a id='FAILURE_TYPE_DELAYED'></a>6 | [FAILURE_TYPE_DELAYED](#FAILURE_TYPE_DELAYED) | Data of unit is delayed in time. 
 <a id='FAILURE_TYPE_INTERMITTENT'></a>7 | [FAILURE_TYPE_INTERMITTENT](#FAILURE_TYPE_INTERMITTENT) | Unit is sometimes working, sometimes not. 
+<a id='FAILURE_TYPE_DRIFT'></a>8 | [FAILURE_TYPE_DRIFT](#FAILURE_TYPE_DRIFT) | Unit is publishing plausible values but drifting away from true values. 
 
 ### NAV_VTOL_LAND_OPTIONS {#NAV_VTOL_LAND_OPTIONS}
 
