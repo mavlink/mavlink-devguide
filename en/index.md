@@ -22,7 +22,7 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Key Features
 
-- Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol).
+- Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 12 bytes of overhead (but is a much more secure and extensible protocol).
   Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
 - Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
 - [Many different programming languages](#supported_languages) can be used, running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
