@@ -69,7 +69,7 @@ msg_index | `uint8_t` | | Zero-indexed sequence number of this message when mult
 msg_count | `uint8_t` | | Total number of messages required to transfer the complete EEPROM data. For single-message transfers, set to 1. Receivers should collect all messages from index 0 to msg_count-1 before reconstructing the complete data. 
 esc_index | `uint8_t` | max:254 | Index of the ESC (0 = ESC1, 1 = ESC2, etc.). 
 write_mask | `uint32_t[6]` | | Bitmask indicating which bytes in the data array should be written. Each bit corresponds to a byte index in the data array (bit 0 of write_mask[0] = data[0], bit 31 of write_mask[0] = data[31], bit 0 of write_mask[1] = data[32], etc.). Set bits indicate bytes to write, cleared bits indicate bytes to skip. This allows precise updates of individual parameters without overwriting the entire EEPROM. 
-length | `uint8_t` | max:222 | Number of valid bytes in data array. 
+length | `uint8_t` | max:192 | Number of valid bytes in data array. 
 data | `uint8_t[192]` | | Raw ESC EEPROM data. Unused bytes should be set to zero. 
 
 
