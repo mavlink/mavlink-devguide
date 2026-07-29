@@ -38,7 +38,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 231 | 3
-[Enums](#enumerated-types) | 150 | 9
+[Enums](#enumerated-types) | 149 | 9
 [Commands](#mav_commands) | 171 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -4623,17 +4623,6 @@ Value | Name | Description
 <a id='PARAM_RESET_SENSOR_DEFAULT'></a>3 | [PARAM_RESET_SENSOR_DEFAULT](#PARAM_RESET_SENSOR_DEFAULT) | Reset only sensor calibration parameters to factory defaults (or firmware default if not available) 
 <a id='PARAM_RESET_ALL_DEFAULT'></a>4 | [PARAM_RESET_ALL_DEFAULT](#PARAM_RESET_ALL_DEFAULT) | Reset all parameters to default values. 
 
-### PREFLIGHT_STORAGE_MISSION_ACTION {#PREFLIGHT_STORAGE_MISSION_ACTION}
-
-Actions for reading and writing plan information (mission, rally points, geofence) between persistent and volatile storage when using [MAV_CMD_PREFLIGHT_STORAGE](#MAV_CMD_PREFLIGHT_STORAGE).
-(Commonly missions are loaded from persistent storage (flash/EEPROM) into volatile storage (RAM) on startup and written back when they are changed.)
-
-Value | Name | Description
---- | --- | ---
-<a id='MISSION_READ_PERSISTENT'></a>0 | [MISSION_READ_PERSISTENT](#MISSION_READ_PERSISTENT) | Read current mission data from persistent storage 
-<a id='MISSION_WRITE_PERSISTENT'></a>1 | [MISSION_WRITE_PERSISTENT](#MISSION_WRITE_PERSISTENT) | Write current mission data to persistent storage 
-<a id='MISSION_RESET_DEFAULT'></a>2 | [MISSION_RESET_DEFAULT](#MISSION_RESET_DEFAULT) | Erase all mission data stored on the vehicle (both persistent and volatile storage) 
-
 ### REBOOT_SHUTDOWN_ACTION {#REBOOT_SHUTDOWN_ACTION}
 
 Reboot/shutdown action for selected component in [MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN](#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN).
@@ -7878,7 +7867,7 @@ Request storage of different parameter values and logs. This command will be onl
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Parameter Storage) | Action to perform on the persistent parameter storage | [PREFLIGHT_STORAGE_PARAMETER_ACTION](#PREFLIGHT_STORAGE_PARAMETER_ACTION) |   
-2 (Mission Storage) | Action to perform on the persistent mission storage | [PREFLIGHT_STORAGE_MISSION_ACTION](#PREFLIGHT_STORAGE_MISSION_ACTION) |   
+2 | Reserved |   |   
 3 (Logging Rate) | Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, > 1: logging rate (e.g. set to 1000 for 1000 Hz logging) | min: -1 inc: 1 | Hz 
 4 | Reserved |   |   
 5 | Empty |   |   
