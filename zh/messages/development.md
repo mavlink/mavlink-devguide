@@ -37,8 +37,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 14      | 234      |
-| [Enums](#enumerated-types) | 15      | 158      |
+| [Messages](#messages)      | 15      | 234      |
+| [Enums](#enumerated-types) | 16      | 158      |
 | [Commands](#mav_commands)  | 10      | 171      |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -314,6 +314,18 @@ Status of estimator sensor fusion sources. Each array is indexed by [ESTIMATOR_S
 | active                          | `uint8_t[9]` | Per-source instance bitmask of sensors the estimator is actively fusing.                                                                                                                                                                                                                           |
 | test_ratio | `float[9]`   | Per-source normalized innovation test ratio. NaN if not available.                                                                                                                                                                                                                 |
 
+### MANUAL_INPUT_STATUS (515) — [WIP] {#MANUAL_INPUT_STATUS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Status of the manual control input arbitration on the autopilot: which source is currently active and, when a MAVLink enabled input device is selected, which system/component is providing it. Emitted by the autopilot for ground stations to display the active manual control source.
+
+| Field Name                                                    | Type      | 值                                                                                                                  | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source                                                        | `uint8_t` | [MAV_MANUAL_INPUT_SOURCE](#MAV_MANUAL_INPUT_SOURCE) | Current manual control source active.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| sender_system_id    | `uint8_t` |                                                                                                                    | System ID of the MAVLink enabled input device currently providing manual control. Set whenever a MAVLink enabled input device is contributing, i.e. for both [MAV_MANUAL_INPUT_SOURCE_MAVLINK](#MAV_MANUAL_INPUT_SOURCE_MAVLINK) and [MAV_MANUAL_INPUT_SOURCE_MIXED](#MAV_MANUAL_INPUT_SOURCE_MIXED). 0 otherwise.    |
+| sender_component_id | `uint8_t` |                                                                                                                    | Component ID of the MAVLink enabled input device currently providing manual control. Set whenever a MAVLink enabled input device is contributing, i.e. for both [MAV_MANUAL_INPUT_SOURCE_MAVLINK](#MAV_MANUAL_INPUT_SOURCE_MAVLINK) and [MAV_MANUAL_INPUT_SOURCE_MIXED](#MAV_MANUAL_INPUT_SOURCE_MIXED). 0 otherwise. |
+
 ## Enumerated Types
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
@@ -530,6 +542,19 @@ Estimator sensor fusion source types. Used in [MAV_CMD_ESTIMATOR_SENSOR_ENABLE](
 | <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_MAG'></a>6            | [ESTIMATOR_SENSOR_FUSION_SOURCE_MAG](#ESTIMATOR_SENSOR_FUSION_SOURCE_MAG)                                            | Magnetometer              |
 | <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD'></a>7           | [ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD](#ESTIMATOR_SENSOR_FUSION_SOURCE_ASPD)                                          | Airspeed                  |
 | <a id='ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON'></a>8 | [ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON](#ESTIMATOR_SENSOR_FUSION_SOURCE_RANGING_BEACON) | Ranging Beacon            |
+
+### MAV_MANUAL_INPUT_SOURCE — [WIP] {#MAV_MANUAL_INPUT_SOURCE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Source of manual control input currently selected by the autopilot's manual control arbitration.
+
+| 值                                             | Name                                                                                                                                                    | 描述                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='MAV_MANUAL_INPUT_SOURCE_NONE'></a>0    | [MAV_MANUAL_INPUT_SOURCE_NONE](#MAV_MANUAL_INPUT_SOURCE_NONE)       | No manual input messages are currently being provided.                                                                                                                                                                                                                                                                                                                                                  |
+| <a id='MAV_MANUAL_INPUT_SOURCE_RC'></a>1      | [MAV_MANUAL_INPUT_SOURCE_RC](#MAV_MANUAL_INPUT_SOURCE_RC)           | Manual input messages are being provided by a radio control (RC) receiver.                                                                                                                                                                                                                                                                                                           |
+| <a id='MAV_MANUAL_INPUT_SOURCE_MAVLINK'></a>2 | [MAV_MANUAL_INPUT_SOURCE_MAVLINK](#MAV_MANUAL_INPUT_SOURCE_MAVLINK) | Manual input messages are being provided by a MAVLink enabled input device (e.g. via [MANUAL_CONTROL](#MANUAL_CONTROL) messages). The specific device is identified by the sender_system_id and sender_component_id fields. |
+| <a id='MAV_MANUAL_INPUT_SOURCE_MIXED'></a>3   | [MAV_MANUAL_INPUT_SOURCE_MIXED](#MAV_MANUAL_INPUT_SOURCE_MIXED)     | Manual input messages are being provided simultaneously by both a radio control (RC) receiver and a MAVLink enabled input device.                                                                                                                                                                                                                                                    |
 
 ## Commands (MAV_CMD) {#mav_commands}
 
