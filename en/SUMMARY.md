@@ -79,7 +79,6 @@
   - [cubepilot.xml](messages/cubepilot.md)
   - [icarous.xml](messages/icarous.md)
   - [loweheiser.xml](messages/loweheiser.md)
-  - [matrixpilot.xml](messages/matrixpilot.md)
   - [paparazzi.xml](messages/paparazzi.md)
   - [storm32.xml](messages/storm32.md)
   - [uAvionix.xml](messages/uAvionix.md)
