@@ -436,6 +436,12 @@ The sequence of operations is:
 
        For example, given five files named _TestFile1.xml_ to _TestFile5.xml_, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
 
+       ::: warning
+       The tab character (`\t`) is the field separator, so entry names must not contain tabs.
+       If a file or folder name contains a tab it cannot be represented: the drone should return it as a skip entry (`S`) instead, so that entry indexes (`offset`) stay consistent.
+       A GCS must ignore any entry it cannot parse rather than treating it as an error.
+       :::
+
      - `size` = The size of the `data`.
 
 1. The operation is then repeated at different offsets to download the whole directory listing.
@@ -462,7 +468,7 @@ This is a separate opcode rather than a change to [ListDirectory](#list_director
 A client that needs timestamps uses `ListDirectoryWithTime`, and falls back to [ListDirectory](#ListDirectory) if the server NAKs with [UnknownCommand](#UnknownCommand).
 :::
 
-The sequence of operations, offset-based paging, and [EOF](#EOF) termination are identical to [List Directory](#list_directory).
+The sequence of operations, offset-based paging, [EOF](#EOF) termination, and the handling of names that contain tab characters are identical to [List Directory](#list_directory).
 The only difference is the per-entry format returned in the ACK payload `data`.
 
 Each entry is separated with a null terminator (`\0`), and has the following format (where `type` is one of the letters **F**(ile), **D**(irectory), **S**(kip)):
