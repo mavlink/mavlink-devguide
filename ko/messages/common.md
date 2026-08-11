@@ -3929,6 +3929,8 @@ Predefined OR-combined [MAV_MODE_FLAG](#MAV_MODE_FLAG) values. These can simplif
 | <a id='MAV_SYS_STATUS_SENSOR_3D_ACCEL3'></a>8  | [MAV_SYS_STATUS_SENSOR_3D_ACCEL3](#MAV_SYS_STATUS_SENSOR_3D_ACCEL3) | 0x08 3rd 3D accelerometer                                                  |
 | <a id='MAV_SYS_STATUS_SENSOR_3D_GYRO4'></a>16  | [MAV_SYS_STATUS_SENSOR_3D_GYRO4](#MAV_SYS_STATUS_SENSOR_3D_GYRO4)   | 0x10 4th 3D gyro                                                           |
 | <a id='MAV_SYS_STATUS_SENSOR_3D_ACCEL4'></a>32 | [MAV_SYS_STATUS_SENSOR_3D_ACCEL4](#MAV_SYS_STATUS_SENSOR_3D_ACCEL4) | 0x20 4th 3D accelerometer                                                  |
+| <a id='MAV_SYS_STATUS_SENSOR_3D_MAG3'></a>64   | [MAV_SYS_STATUS_SENSOR_3D_MAG3](#MAV_SYS_STATUS_SENSOR_3D_MAG3)     | 0x40 3rd 3D magnetometer                                                   |
+| <a id='MAV_SYS_STATUS_SENSOR_3D_MAG4'></a>128  | [MAV_SYS_STATUS_SENSOR_3D_MAG4](#MAV_SYS_STATUS_SENSOR_3D_MAG4)     | 0x80 4th 3D magnetometer                                                   |
 
 ### MAV_FRAME {#MAV_FRAME}
 
