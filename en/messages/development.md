@@ -36,8 +36,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 15 | 234
-[Enums](#enumerated-types) | 16 | 158
+[Messages](#messages) | 16 | 234
+[Enums](#enumerated-types) | 17 | 158
 [Commands](#mav_commands) | 10 | 171
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -217,6 +217,36 @@ corrections_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract
 system_status_summary | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the overall status of the receiver, or 255 if not available. 
 gnss_signal_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the quality of incoming GNSS signals, or 255 if not available. 
 post_processing_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the estimated PPK quality, or 255 if not available. 
+
+
+### EFI_PERFORMANCE (442) — [WIP] {#EFI_PERFORMANCE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+EFI performance and health telemetry. Primarily intended for debugging EFI system faults to determine whether problems are within the engine, fuel pump, actuators, or the ECU. Nominal stream rate is 1 Hz. Core engine telemetry (RPM, temperatures, pressures, fuel flow) is carried in EFI_STATUS; this message carries the electrical/actuator/diagnostic data not present there.
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+ecu_index | `uint8_t` | | | Electronic Control Unit (ECU) index for systems with multiple EFI units. Set to 0 for the first (or only) ECU.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
+fuel_pump_duty_cycle | `uint8_t` | % | invalid:UINT8_MAX min:0 max:100 | Fuel pump power output, as a percentage of maximum. 0 = off, 100 = full power. 
+fuel_pump_voltage | `uint16_t` | mV | invalid:UINT16_MAX | Fuel pump supply voltage. 
+fuel_pump_current | `uint16_t` | cA | invalid:UINT16_MAX | Fuel pump current draw. 
+ecu_supply_voltage | `uint16_t` | mV | invalid:UINT16_MAX | ECU supply voltage. 
+ecu_current | `uint16_t` | cA | invalid:UINT16_MAX | ECU current draw. 
+ecu_temperature | `int16_t` | cdegC | invalid:INT16_MAX | ECU/electronics board temperature. 
+ecu_cpu_load | `uint8_t` | % | invalid:UINT8_MAX min:0 max:100 | ECU processor load. 
+servo_supply_voltage | `uint16_t` | mV | invalid:UINT16_MAX | Throttle-servo / actuator supply voltage. 
+servo_output_level | `uint8_t` | % | invalid:UINT8_MAX min:0 max:100 | Electronic-throttle / servo commanded output level. 
+water_pump_duty_cycle | `uint8_t` | % | invalid:UINT8_MAX min:0 max:100 | Coolant-pump power output, as a percentage of maximum. 
+injector_duty_cycle | `uint8_t` | % | invalid:UINT8_MAX min:0 max:100 | Primary injector duty cycle. 
+fuel_mass_rate | `float` | g/min | invalid:NaN | Instantaneous fuel consumption by mass. NaN if not provided. 
+commanded_rpm | `float` | rpm | invalid:NaN | Governor/target RPM setpoint. 
+engine_runtime | `uint32_t` | s | invalid:UINT32_MAX | Cumulative engine run time (hobbs). 
+error_memory_count | `uint8_t` | | invalid:UINT8_MAX | Number of faults currently stored in the ECU error memory. 
+boost_pressure | `float` | kPa | invalid:NaN | Forced-induction boost pressure. NaN if not provided. 
+coolant_pressure | `float` | kPa | invalid:NaN | Coolant-circuit pressure. NaN if not provided. 
+engine_torque | `int16_t` | % | invalid:INT16_MAX | Percent engine torque (signed; negative = motoring/braking). 
+status_flags | `uint64_t` | | [EFI_PERFORMANCE_STATUS_FLAGS](#EFI_PERFORMANCE_STATUS_FLAGS) | EFI status flags. 
 
 
 ### TARGET_ABSOLUTE (510) — [WIP] {#TARGET_ABSOLUTE}
@@ -569,6 +599,55 @@ Value | Name | Description
 <a id='MAV_MANUAL_INPUT_SOURCE_RC'></a>1 | [MAV_MANUAL_INPUT_SOURCE_RC](#MAV_MANUAL_INPUT_SOURCE_RC) | Manual input messages are being provided by a radio control (RC) receiver. 
 <a id='MAV_MANUAL_INPUT_SOURCE_MAVLINK'></a>2 | [MAV_MANUAL_INPUT_SOURCE_MAVLINK](#MAV_MANUAL_INPUT_SOURCE_MAVLINK) | Manual input messages are being provided by a MAVLink enabled input device (e.g. via [MANUAL_CONTROL](#MANUAL_CONTROL) messages). The specific device is identified by the sender_system_id and sender_component_id fields. 
 <a id='MAV_MANUAL_INPUT_SOURCE_MIXED'></a>3 | [MAV_MANUAL_INPUT_SOURCE_MIXED](#MAV_MANUAL_INPUT_SOURCE_MIXED) | Manual input messages are being provided simultaneously by both a radio control (RC) receiver and a MAVLink enabled input device. 
+
+### EFI_PERFORMANCE_STATUS_FLAGS — [WIP] {#EFI_PERFORMANCE_STATUS_FLAGS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+(Bitmask) Status flags for the EFI Electronic Control Unit (ECU). Reported in [EFI_PERFORMANCE](#EFI_PERFORMANCE). Each bit is an independent boolean condition. A flag that is 0 means either "not asserted" or "not supported by this ECU"; the two cannot be distinguished from the bitmask alone.
+
+Value | Name | Description
+--- | --- | ---
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_RUNNING'></a>1 | [EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_RUNNING](#EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_RUNNING) | Engine is running. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_STARTER_ACTIVE'></a>2 | [EFI_PERFORMANCE_STATUS_FLAGS_STARTER_ACTIVE](#EFI_PERFORMANCE_STATUS_FLAGS_STARTER_ACTIVE) | Starter motor is engaged / engine is cranking. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_SHUTTING_DOWN'></a>4 | [EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_SHUTTING_DOWN](#EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_SHUTTING_DOWN) | Controlled engine shutdown is in progress. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_EMERGENCY_STOP'></a>8 | [EFI_PERFORMANCE_STATUS_FLAGS_EMERGENCY_STOP](#EFI_PERFORMANCE_STATUS_FLAGS_EMERGENCY_STOP) | Emergency stop has been asserted. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_REV_LIMIT_EXCEEDED'></a>16 | [EFI_PERFORMANCE_STATUS_FLAGS_REV_LIMIT_EXCEEDED](#EFI_PERFORMANCE_STATUS_FLAGS_REV_LIMIT_EXCEEDED) | Engine rev limiter is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_FAULT'></a>32 | [EFI_PERFORMANCE_STATUS_FLAGS_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_FAULT) | An unclassified fault (check-engine) has been detected by the ECU. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_WARNING_LEVEL_1'></a>64 | [EFI_PERFORMANCE_STATUS_FLAGS_WARNING_LEVEL_1](#EFI_PERFORMANCE_STATUS_FLAGS_WARNING_LEVEL_1) | Severity level 1 warning is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_WARNING_LEVEL_2'></a>128 | [EFI_PERFORMANCE_STATUS_FLAGS_WARNING_LEVEL_2](#EFI_PERFORMANCE_STATUS_FLAGS_WARNING_LEVEL_2) | Severity level 2 warning is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_MAINTENANCE_REQUIRED'></a>256 | [EFI_PERFORMANCE_STATUS_FLAGS_MAINTENANCE_REQUIRED](#EFI_PERFORMANCE_STATUS_FLAGS_MAINTENANCE_REQUIRED) | ECU reports that maintenance/service is due. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_COMMS_ERROR'></a>512 | [EFI_PERFORMANCE_STATUS_FLAGS_COMMS_ERROR](#EFI_PERFORMANCE_STATUS_FLAGS_COMMS_ERROR) | ECU/engine internal communication error. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_POWER_REDUCTION_ACTIVE'></a>1024 | [EFI_PERFORMANCE_STATUS_FLAGS_POWER_REDUCTION_ACTIVE](#EFI_PERFORMANCE_STATUS_FLAGS_POWER_REDUCTION_ACTIVE) | ECU is limiting/reducing engine output power. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_CRANK_SENSOR_FAULT'></a>2048 | [EFI_PERFORMANCE_STATUS_FLAGS_CRANK_SENSOR_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_CRANK_SENSOR_FAULT) | Crankshaft / RPM sensor has faulted. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_THROTTLE_SENSOR_FAULT'></a>4096 | [EFI_PERFORMANCE_STATUS_FLAGS_THROTTLE_SENSOR_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_THROTTLE_SENSOR_FAULT) | Throttle-position sensor has faulted. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_SENSOR_FAULT'></a>8192 | [EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_SENSOR_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_SENSOR_FAULT) | Engine-temperature sensor has faulted. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_AIR_TEMP_SENSOR_FAULT'></a>16384 | [EFI_PERFORMANCE_STATUS_FLAGS_AIR_TEMP_SENSOR_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_AIR_TEMP_SENSOR_FAULT) | Intake-air-temperature sensor has faulted. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_AIR_PRESSURE_SENSOR_FAULT'></a>32768 | [EFI_PERFORMANCE_STATUS_FLAGS_AIR_PRESSURE_SENSOR_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_AIR_PRESSURE_SENSOR_FAULT) | Intake-air-pressure sensor has faulted. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ECU_OVER_TEMPERATURE'></a>65536 | [EFI_PERFORMANCE_STATUS_FLAGS_ECU_OVER_TEMPERATURE](#EFI_PERFORMANCE_STATUS_FLAGS_ECU_OVER_TEMPERATURE) | ECU temperature has exceeded the warning threshold. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_OVER_TEMPERATURE'></a>131072 | [EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_OVER_TEMPERATURE](#EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_OVER_TEMPERATURE) | Engine temperature has exceeded the fault threshold (overheating). 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_ABOVE_NOMINAL'></a>262144 | [EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_ABOVE_NOMINAL](#EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_ABOVE_NOMINAL) | Engine temperature is above nominal (warning). 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_BELOW_NOMINAL'></a>524288 | [EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_BELOW_NOMINAL](#EFI_PERFORMANCE_STATUS_FLAGS_ENGINE_TEMP_BELOW_NOMINAL) | Engine temperature is below nominal (not yet warmed up). 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_EGT_ABOVE_NOMINAL'></a>1048576 | [EFI_PERFORMANCE_STATUS_FLAGS_EGT_ABOVE_NOMINAL](#EFI_PERFORMANCE_STATUS_FLAGS_EGT_ABOVE_NOMINAL) | Exhaust-gas temperature is above nominal. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_LOW_COOLANT_LEVEL'></a>2097152 | [EFI_PERFORMANCE_STATUS_FLAGS_LOW_COOLANT_LEVEL](#EFI_PERFORMANCE_STATUS_FLAGS_LOW_COOLANT_LEVEL) | Coolant level is low. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_COOLANT_FLOW_FAULT'></a>4194304 | [EFI_PERFORMANCE_STATUS_FLAGS_COOLANT_FLOW_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_COOLANT_FLOW_FAULT) | Coolant water-flow fault. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_FUEL_PUMP_ACTIVE'></a>8388608 | [EFI_PERFORMANCE_STATUS_FLAGS_FUEL_PUMP_ACTIVE](#EFI_PERFORMANCE_STATUS_FLAGS_FUEL_PUMP_ACTIVE) | Fuel pump is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_LOW_FUEL_PRESSURE'></a>16777216 | [EFI_PERFORMANCE_STATUS_FLAGS_LOW_FUEL_PRESSURE](#EFI_PERFORMANCE_STATUS_FLAGS_LOW_FUEL_PRESSURE) | Fuel pressure is below the minimum operating threshold. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_HIGH_FUEL_PRESSURE'></a>33554432 | [EFI_PERFORMANCE_STATUS_FLAGS_HIGH_FUEL_PRESSURE](#EFI_PERFORMANCE_STATUS_FLAGS_HIGH_FUEL_PRESSURE) | Fuel pressure is above the maximum operating threshold. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_WATER_IN_FUEL'></a>67108864 | [EFI_PERFORMANCE_STATUS_FLAGS_WATER_IN_FUEL](#EFI_PERFORMANCE_STATUS_FLAGS_WATER_IN_FUEL) | Water has been detected in the fuel. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_LOW_OIL_PRESSURE'></a>134217728 | [EFI_PERFORMANCE_STATUS_FLAGS_LOW_OIL_PRESSURE](#EFI_PERFORMANCE_STATUS_FLAGS_LOW_OIL_PRESSURE) | Oil pressure is below the minimum operating threshold. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_HIGH_OIL_PRESSURE'></a>268435456 | [EFI_PERFORMANCE_STATUS_FLAGS_HIGH_OIL_PRESSURE](#EFI_PERFORMANCE_STATUS_FLAGS_HIGH_OIL_PRESSURE) | Oil pressure is above the maximum operating threshold. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_LOW_OIL_LEVEL'></a>536870912 | [EFI_PERFORMANCE_STATUS_FLAGS_LOW_OIL_LEVEL](#EFI_PERFORMANCE_STATUS_FLAGS_LOW_OIL_LEVEL) | Oil level is low. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_IGNITION_ACTIVE'></a>1073741824 | [EFI_PERFORMANCE_STATUS_FLAGS_IGNITION_ACTIVE](#EFI_PERFORMANCE_STATUS_FLAGS_IGNITION_ACTIVE) | Ignition system is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_IGNITION_REDUNDANCY_LOST'></a>2147483648 | [EFI_PERFORMANCE_STATUS_FLAGS_IGNITION_REDUNDANCY_LOST](#EFI_PERFORMANCE_STATUS_FLAGS_IGNITION_REDUNDANCY_LOST) | Redundant (dual) ignition degraded - only one spark source is firing. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_PREHEAT_ACTIVE'></a>4294967296 | [EFI_PERFORMANCE_STATUS_FLAGS_PREHEAT_ACTIVE](#EFI_PERFORMANCE_STATUS_FLAGS_PREHEAT_ACTIVE) | Glow/preheat is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_LOW_SUPPLY_VOLTAGE'></a>8589934592 | [EFI_PERFORMANCE_STATUS_FLAGS_LOW_SUPPLY_VOLTAGE](#EFI_PERFORMANCE_STATUS_FLAGS_LOW_SUPPLY_VOLTAGE) | ECU supply/system voltage is low. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_CHARGING_ACTIVE'></a>17179869184 | [EFI_PERFORMANCE_STATUS_FLAGS_CHARGING_ACTIVE](#EFI_PERFORMANCE_STATUS_FLAGS_CHARGING_ACTIVE) | Alternator/charging system is active. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_DETONATION_OBSERVED'></a>34359738368 | [EFI_PERFORMANCE_STATUS_FLAGS_DETONATION_OBSERVED](#EFI_PERFORMANCE_STATUS_FLAGS_DETONATION_OBSERVED) | Detonation/knock has been observed. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_MISFIRE_OBSERVED'></a>68719476736 | [EFI_PERFORMANCE_STATUS_FLAGS_MISFIRE_OBSERVED](#EFI_PERFORMANCE_STATUS_FLAGS_MISFIRE_OBSERVED) | Misfire has been observed. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_DEBRIS_DETECTED'></a>137438953472 | [EFI_PERFORMANCE_STATUS_FLAGS_DEBRIS_DETECTED](#EFI_PERFORMANCE_STATUS_FLAGS_DEBRIS_DETECTED) | Foreign debris has been detected. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_HIGH_BOOST_PRESSURE'></a>274877906944 | [EFI_PERFORMANCE_STATUS_FLAGS_HIGH_BOOST_PRESSURE](#EFI_PERFORMANCE_STATUS_FLAGS_HIGH_BOOST_PRESSURE) | Boost pressure is above threshold. 
+<a id='EFI_PERFORMANCE_STATUS_FLAGS_EGR_SYSTEM_FAULT'></a>549755813888 | [EFI_PERFORMANCE_STATUS_FLAGS_EGR_SYSTEM_FAULT](#EFI_PERFORMANCE_STATUS_FLAGS_EGR_SYSTEM_FAULT) | Exhaust-gas-recirculation (EGR) system fault. 
 
 ## Commands (MAV_CMD) {#mav_commands}
 
