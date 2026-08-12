@@ -3826,6 +3826,7 @@ standard_mode | `uint8_t` | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) | Standard m
 custom_mode | `uint32_t` | | A bitfield for use for autopilot-specific flags 
 properties | `uint32_t` | [MAV_MODE_PROPERTY](#MAV_MODE_PROPERTY) | Mode properties. 
 mode_name | `char[35]` | | Name of custom mode, with null termination character. Should be omitted for standard modes. 
+<span class='ext'>seq</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Sequence number. The value iterates sequentially whenever the set of [AVAILABLE_MODES](#AVAILABLE_MODES) changes and should match value of [AVAILABLE_MODES_MONITOR](#AVAILABLE_MODES_MONITOR). Note, a GCS must ignore 0 values, and should re-start the download if the value changes part-way through fetching modes. 
 
 
 ### CURRENT_MODE (436) {#CURRENT_MODE}
@@ -3855,7 +3856,7 @@ See https://mavlink.io/en/services/standard_modes.html
 
 Field Name | Type | Description
 --- | --- | ---
-seq | `uint8_t` | Sequence number. The value iterates sequentially whenever [AVAILABLE_MODES](#AVAILABLE_MODES) changes (e.g. support for a new mode is added/removed dynamically). 
+seq | `uint8_t` | Sequence number. Iterates sequentially whenever [AVAILABLE_MODES](#AVAILABLE_MODES) changes (e.g. support for a new mode is added/removed dynamically). 0 initially. 1 on first change of mode set. 
 
 
 ### ILLUMINATOR_STATUS (440) {#ILLUMINATOR_STATUS}
