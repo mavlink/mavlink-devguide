@@ -122,6 +122,15 @@ In addition to the fields for enumerating the available modes, `AVAILABLE_MODES`
   - The field must be human readable and autopilot-unique.
   - Generally does not have to be set for standard modes, where the ground station might be expected to already have metadata (but if it is, it will be used as a metadata key).
   - For more information see [Modes Metadata](#modes-metadata) below.
+- `seq` (extension field/may not be supported): The current sequence number, as provided by [AVAILABLE_MODES_MONITOR](#AVAILABLE_MODES_MONITOR).
+  - On first download of modes, a non-zero value of this field should be stored.
+    The stored value can subsequently be compared a new [AVAILABLE_MODES_MONITOR.seq](#AVAILABLE_MODES_MONITOR) to determine if modes must be re-requested.
+    Caching the sequence avoids the need to re-download `AVAILABLE_MODE` if the sequence is not know the first time `AVAILABLE_MODES_MONITOR` is received.
+
+    ::: tip
+    A value of 0 may indicate that the field is not supported.
+    For this reason, a value of 0 should not overwrite the sequence counter.
+    :::
 
 ### Setting Modes
 
@@ -151,11 +160,16 @@ Note that the current custom mode is also published in the [HEARTBEAT](../messag
 
 The [AVAILABLE_MODES_MONITOR](#AVAILABLE_MODES_MONITOR) is an optional part of the protocol that allows a MAVLink system to dynamically change the set of modes it supports at runtime (for example, using Lua or other onboard scripting languages, or offboard from a companion computer).
 
-The message sequence number field is iterated sequentially whenever the set of available modes change.
+The message sequence number field is initially 0 and is iterated sequentially whenever the set of available modes change.
 A GCS should monitor this field and re-request the set of [AVAILABLE_MODES](#AVAILABLE_MODES) when needed.
 
 The message should be emitted when the set of available modes changes.
 After the set of modes changes the first time, it should also be streamed at low rate (nominally 0.1 Hz).
+
+The same sequence number should also be populated to the [AVAILABLE_MODES.seq](#AVAILABLE_MODES) extension field (if supported by the implementation).
+A GCS can read this on first download of `AVAILABLE_MODES`, and should store a non-zero value for later comparison with `AVAILABLE_MODES_MONITOR.seq`.
+This allows a GCS to know the sequence number of modes it has downloaded, and avoids it having to redownload modes the first time it gets `AVAILABLE_MODES_MONITOR`.
+Note that if `AVAILABLE_MODES.seq=0` a GCS should not overwrite its stored value for the current sequence, as this may indicate the field is not supported in the implementation.
 
 ## Mode Metadata
 
@@ -181,14 +195,27 @@ Note that the `mode_name` must be human readable and unique for the autopilot.
 
 ## Implementations
 
+### PX4
+
 PX4 v1.15 and later supports this service, including the optional part (`AVAILABLE_MODES_MONITOR`) (this allows ROS2 modes added using the [PX4 ROS 2 Interface Library](https://docs.px4.io/main/en/ros2/px4_ros2_interface_lib.html) to be dynamically updated in a GCS).
 At time of writing it exposes the standard modes that are common to all vehicles as standard modes, such as takeoff and landing, and missions.
 It also supports the standard modes that are specific to multicopter and fixed-wing vehicles (these are not used for VTOL vehicles in the corresponding modes).
 
-ArduPilot partially supports this protocol.
-It allows enumeration of the `AVAILABLE_MODES` and streaming of the `CURRENT_MODE` in copter vehicles.
-At time of writing no standard modes are emitted, so `MAV_CMD_DO_SET_MODE` is either not supported or will always NACK that the set mode isn't supported.
-Note that while this does allow a GCS to discover available modes, without standard modes it will have little default information about the modes other than a name.
+PX4 main (planned for v2.0) adds support for `AVAILABLE_MODES.seq` in [PX4-Autopilot#28226](https://github.com/PX4/PX4-Autopilot/pull/28226).
+
+### ArduPilot
+
+ArduPilot partially supports this protocol: it allows enumeration of _custom_ modes, and notification of the current mode (`CURRENT_MODE`) and changes to the set of modes (`AVAILABLE_MODES_MONITOR`).
+
+At time of writing (ArduPilot 4.8)
+
+- Standard modes are not emitted (only custom modes), so `MAV_CMD_DO_SET_MODE` is either not supported or will always NACK that the set mode isn't supported.
+  Note that while this does allow a GCS to discover available modes, without standard modes it will have little default information about the modes other than a name.
+- `AVAILABLE_MODES.seq` is not set
+
+Support was added in ArduPilot v4.7.0 ([ardupilot#28566](https://github.com/ArduPilot/ardupilot/pull/28566)).
+
+### QGC
 
 QGC uses this service to build the mode display/setting UI, when supported by the autopilot.
 This feature is supported in daily builds (at time of writing).
