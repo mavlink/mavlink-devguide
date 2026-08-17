@@ -81,7 +81,7 @@ Version and capability of autopilot software. This should be emitted in response
 
 ### MAV_BOOL {#MAV_BOOL}
 
-(Bitmask) Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
+Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
 
 | 值                            | Name                                                                        | 描述                     |
 | ---------------------------- | --------------------------------------------------------------------------- | ---------------------- |
