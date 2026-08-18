@@ -6067,7 +6067,7 @@ Source for [GLOBAL_POSITION](#GLOBAL_POSITION) measurement or estimate.
 
 ### MAV_BOOL — \[from: [standard](../messages/standard.md#MAV_BOOL)\] {#MAV_BOOL}
 
-(Bitmask) Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
+Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
 
 | 值                            | Name                                                                        | 描述                     |
 | ---------------------------- | --------------------------------------------------------------------------- | ---------------------- |
