@@ -22,7 +22,6 @@ The dialect definitions are:
 - [AVSSUAS.xml](AVSSUAS.md)
 - [paparazzi.xml](paparazzi.md)
 - [ardupilotmega.xml](ardupilotmega.md)
-- [ualberta.xml](ualberta.md)
 - [storm32.xml](storm32.md)
 - [ASLUAV.xml](ASLUAV.md)
 - [stemstudios.xml](stemstudios.md)

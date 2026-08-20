@@ -48,7 +48,6 @@ span.warning {
 - [python_array_test.xml](../messages/python_array_test.md)
 - [standard.xml](../messages/standard.md)
 - [test.xml](../messages/test.md)
-- [ualberta.xml](../messages/ualberta.md)
 - [uAvionix.xml](../messages/uAvionix.md)
 - [storm32.xml](../messages/storm32.md)
 - [AVSSUAS.xml](../messages/AVSSUAS.md)
@@ -61,8 +60,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 0 | 393
-[Enums](#enumerated-types) | 0 | 259
+[Messages](#messages) | 0 | 390
+[Enums](#enumerated-types) | 0 | 256
 [Commands](#mav_commands) | 1 | 223
 
 The following sections list all entities in the dialect (both included and defined in this file).
