@@ -6453,7 +6453,7 @@ Value | Name | Description
 <a id='MAV_MODE_FLAG_STABILIZE_ENABLED'></a>16 | [MAV_MODE_FLAG_STABILIZE_ENABLED](#MAV_MODE_FLAG_STABILIZE_ENABLED) | 0b00010000 system stabilizes electronically its attitude (and optionally position). It needs however further control inputs to move around. 
 <a id='MAV_MODE_FLAG_HIL_ENABLED'></a>32 | [MAV_MODE_FLAG_HIL_ENABLED](#MAV_MODE_FLAG_HIL_ENABLED) | 0b00100000 hardware in the loop simulation. All motors / actuators are blocked, but internal software is full operational. 
 <a id='MAV_MODE_FLAG_MANUAL_INPUT_ENABLED'></a>64 | [MAV_MODE_FLAG_MANUAL_INPUT_ENABLED](#MAV_MODE_FLAG_MANUAL_INPUT_ENABLED) | 0b01000000 remote control input is enabled. 
-<a id='MAV_MODE_FLAG_SAFETY_ARMED'></a>128 | [MAV_MODE_FLAG_SAFETY_ARMED](#MAV_MODE_FLAG_SAFETY_ARMED) | 0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) and [MAV_CMD_COMPONENT_ARM_DISARM](#MAV_CMD_COMPONENT_ARM_DISARM) shall be used instead. The flag can still be used to report the armed state. 
+<a id='MAV_MODE_FLAG_SAFETY_ARMED'></a>128 | [MAV_MODE_FLAG_SAFETY_ARMED](#MAV_MODE_FLAG_SAFETY_ARMED) | 0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignored when sent in the command [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) and [MAV_CMD_COMPONENT_ARM_DISARM](#MAV_CMD_COMPONENT_ARM_DISARM) shall be used instead. The flag can still be used to report the armed state. 
 
 ### MAV_MODE_FLAG_DECODE_POSITION — \[from: [minimal](../messages/minimal.md#MAV_MODE_FLAG_DECODE_POSITION)\] {#MAV_MODE_FLAG_DECODE_POSITION}
 
