@@ -511,7 +511,6 @@ ArduPilot: 211, 212, 83, 42000-42005, 42424 (MAG_CAL) 42426, 42650
 ASLUAV : 40001,40002
 Autoquad 1,2,4
 Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 410, 500, 510, 530, 2000-2003, 2500, scattered up to 5000 then 30001-31014 (scattered
-matrixpilot : 0
 -->
 
 #### Reserved/Undefined Parameters {#reserved}
