@@ -11,7 +11,7 @@ MAVLink is a very efficient protocol. MAVLink 1 has just 8 bytes overhead per pa
 255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID).
 
 ::: info
-Strictly speaking MAVLink supports 255 concurrent *systems*, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.
+Strictly speaking MAVLink supports 255 concurrent _systems_, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.
 :::
 
 ### Where can I use MAVLink?
@@ -29,11 +29,11 @@ MAVLink provides [message signing](../guide/message_signing.md), which allows sy
 ### What version of MAVLink should I use?
 
 You should use the [MAVLink 2](../guide/mavlink_2.md) protocol where at all possible (it fixes a number of limitations of earlier versions).
-The *MAVLink 2* libraries also support *MAVLink 1*, so you can use them to communicate with legacy systems if needed.
+The _MAVLink 2_ libraries also support _MAVLink 1_, so you can use them to communicate with legacy systems if needed.
 
 ### How often is MAVLink updated/released?
 
-- The underlying over-the-wire format is rarely updated (we're only up to *MAVLink 2*, which was introduced in 2017).
+- The underlying over-the-wire format is rarely updated (we're only up to _MAVLink 2_, which was introduced in 2017).
 - New [messages](../messages/common.md)/[microservices](../services/index.md) are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.
 - Messages are rarely modified (or removed) such that they would become incompatible. If this is needed the project will update the MAVLink minor version number and notify users through the [mailing list](https://groups.google.com/forum/#!forum/mavlink) (users can also query the version in code).
 
@@ -41,7 +41,7 @@ The *MAVLink 2* libraries also support *MAVLink 1*, so you can use them to commu
 
 ### Can I use MAVLink in a closed source application without copyright issues?
 
-Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: [Introduction > License](../index.md#license)).
+Yes, without any limitations. The generated MAVLink library headers are made available under the _MIT license_ (for more information see: [Introduction > License](../index.md#license)).
 
 ### How does MAVLink detect and decode messages in the byte stream?
 
@@ -53,7 +53,7 @@ No. We use the CRC check to reliably determine whether a complete message has be
 
 ### What are the system and component IDs for?
 
-The system ID represents the identity of a particular *MAVLink system* (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.
+The system ID represents the identity of a particular _MAVLink system_ (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.
 
 ### Why is the sequence number in the MAVLink header needed?
 
