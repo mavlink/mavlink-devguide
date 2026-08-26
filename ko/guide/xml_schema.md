@@ -142,7 +142,7 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 ```xml
 <enum name="MAV_CMD">
 ....
-      <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" hasLocation="true" isDestination="true">
+      <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" isDestination="true">
         <description>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</description>
         <param index="1" label="Max Descent" units="m" minValue="0">Maximum distance to descend.</param>
         <param index="2">Empty</param>
@@ -161,13 +161,15 @@ Attributes:
 - `name` (mandatory): The name of the command.
   This is a string of capitalized, underscore-separated words, prefixed with `MAV_CMD_`.
 - `value` (mandatory): The command number.
-- `missionOnly`: A boolean (default true). Apply with value `true` if the MAV_COMMAND only "makes sense" in a mission.
+- `missionOnly`: A boolean (default `false`). Apply with value `true` if the MAV_COMMAND only "makes sense" in a mission.
   For example, the fence mission commands could not possibly be useful in a command.
 - One (but not both) of:
-  - `hasLocation`: A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path.
-    Apply for MAV_CMDs that contain lat/lon/alt location information in param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
-  - `isDestination`: A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path.
-    Apply for MAV_CMD that contain lat/lon/alt location information in their param 5, 6, and 7 values, and that set a path/destination (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
+  - `isDestination`: A boolean (default `false`) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path.
+    Apply for any MAV_CMDs that contain lat/lon/alt location information in params 5, 6, and 7, and that set a path/destination (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
+  - `hasLocation`: A boolean (default `false`) that provides a hint to a GCS that the entry contains a location that is not on the flight path, such as an ROI point.
+    Apply for MAV_CMDs that contain lat/lon/alt location information in params 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
+  - `hasAltitudeOnly`: A boolean (default `false`) that provides a hint to a GCS that the entry has an altitude but not position information (latitude or longitude).
+    Apply for MAV_CMD that contain altitude information in param 7 values but not latitude and longitude in params 5 and 6 (e.g.: [MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT](../messages/common.md#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT)).
 
 Nested elements:
 
@@ -438,7 +440,7 @@ An entity should be marked as deprecated only when the key MAVLink stakeholders 
 For example, where we show that `MAV_CMD_REQUEST_PROTOCOL_VERSION` is deprecated, but it's removal has not yet been planned.
 
 ```xml
-      <entry value="519" name="MAV_CMD_REQUEST_PROTOCOL_VERSION" hasLocation="false" isDestination="false">
+      <entry value="519" name="MAV_CMD_REQUEST_PROTOCOL_VERSION">
         <deprecated since="2025-11" replaced_by="MAV_CMD_REQUEST_MESSAGE"/>
 ```
 
