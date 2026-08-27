@@ -89,6 +89,7 @@ Value | Name | Description
 <a id='MAV_AUTOPILOT_SMARTAP'></a>18 | [MAV_AUTOPILOT_SMARTAP](#MAV_AUTOPILOT_SMARTAP) | SmartAP Autopilot - http://sky-drones.com 
 <a id='MAV_AUTOPILOT_AIRRAILS'></a>19 | [MAV_AUTOPILOT_AIRRAILS](#MAV_AUTOPILOT_AIRRAILS) | AirRails - http://uaventure.com 
 <a id='MAV_AUTOPILOT_REFLEX'></a>20 | [MAV_AUTOPILOT_REFLEX](#MAV_AUTOPILOT_REFLEX) | Fusion Reflex - https://fusion.engineering 
+<a id='MAV_AUTOPILOT_FLIX'></a>21 | [MAV_AUTOPILOT_FLIX](#MAV_AUTOPILOT_FLIX) | Flix quadcopter - https://quadcopter.dev 
 
 ### MAV_TYPE {#MAV_TYPE}
 
