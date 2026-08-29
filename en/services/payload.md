@@ -20,6 +20,33 @@ They should be used (where supported) in preference to [generic payload commands
 | <a id="MAV_CMD_DO_WINCH"></a>[MAV_CMD_DO_WINCH](../messages/common.md#MAV_CMD_DO_WINCH)                               | Command to operate a specified winch.                                                                                                                             |
 | <a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV_CMD_ILLUMINATOR_ON_OFF](../messages/common.md#MAV_CMD_ILLUMINATOR_ON_OFF) | Command to turn illuminators ON/OFF. An illuminator is a light source that for lighting up dark areas external to the system, such as a headlight or searchlight. |
 
+### Grippers
+
+A gripper is a device that can be used to grip and release a payload.
+
+MAVLink allows you to address up to 6 autopilot-attached grippers, and as many MAVLink grippers as you have unused component IDs within the system.
+Grippers have notional `Gripper ID`.
+Grippers attached to the autopilot are allocated IDs 1 to 6, while the ID of a MAVLink gripper is its component ID.
+MAVLink grippers must not be have component IDs in the range 1 to 6, and a MAVLink gripper may only have one associated "physical gripper" (unlike the autopilot).
+
+A ground station or autopilot can discover MAVLink grippers by checking [HEARTBEAT.type](../messages/common.html#HEARTBEAT) of new components for the value [MAV_TYPE_GRIPPER](../messages/common.html#MAV_TYPE_GRIPPER).
+Ground stations can determine if an autopilot has connected grippers (but not how many), by checking for the [MAV_PROTOCOL_CAPABILITY_GRIPPER](../messages/common.html#MAV_PROTOCOL_CAPABILITY_GRIPPER) bit.
+
+[MAV_CMD_DO_GRIPPER](#MAV_CMD_DO_GRIPPER) is used to command a gripper.
+`param1` is used to select a particular autopilot gripper, or any gripper when used in a mission.
+`param2` used to set the [GRIPPER_ACTIONS](../messages/common.html#GRIPPER_ACTIONS).
+
+When using the command protocol:
+
+- `MAV_CMD_DO_GRIPPER` is addressed to the target gripper component's system id/component id.
+- When sent to an autopilot connected gripper, `param1` should be set to the `Gripper ID` of the target gimbal (1-6) or `0` for all gimbals.
+- For a MAVLink gripper the value should be `0`.
+- The recipient should NACK the command if an invalid ID used.
+
+When using the mission protocol `param1` should be set to the `Gripper ID` of the target gimbal (1-6 for an autopilot-connected gimbal, or the component ID of a MAVLink gimbal).
+An autopilot should execute the command for grippers 1-6 (if connected) and resend `MAV_CMD_DO_GRIPPER` using the command protocol to the component ID that matches the mission item's `param1`.
+An autopilot should report the use of an invalid gimbal.
+
 ## Generic Payload Commands
 
 MAVLink has a number of commands for setting actuator outputs.
