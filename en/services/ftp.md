@@ -568,7 +568,8 @@ If the full path including virtual directory is not known, the recipient would N
 
 The following standard directory locations are defined:
 
-- `@MAV_LOG`- Log files
+- `@MAV_LOG` - Log files
+- `@PARAM` - Parameters. The file `@PARAM/param.pck` is a packed encoding of the component's whole parameter set, and is a much faster alternative to downloading parameters one message at a time. See [Parameters over MAVLink FTP](../services/parameter.md#ftp).
 
 ## Implementations
 
