@@ -38,7 +38,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 18      | 234      |
-| [Enums](#enumerated-types) | 17      | 158      |
+| [Enums](#enumerated-types) | 17      | 159      |
 | [Commands](#mav_commands)  | 10      | 171      |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -303,7 +303,7 @@ Components in the system should only accept "state changing commands/messages" f
 | ---------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | flags                              | `uint8_t`     | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover of the `gcs_main` role is allowed, and whether this [CONTROL_STATUS](#CONTROL_STATUS) instance defines the default controlling GCS for the whole system. |
 | gcs_main      | `uint8_t`     | invalid:0                                                                                            | System ID of GCS in control. 0: no GCS in control.                                                                                                                                                          |
-| gcs_secondary | `uint8_t[10]` | invalid:[0,]                                     | System IDs from which the system can recieve state-changing commands/messages in multi-control mode. All values should be zero for single-ower mode.                                                                        |
+| gcs_secondary | `uint8_t[10]` | invalid:[0,]                                     | System IDs from which the system can receive state-changing commands/messages in multi-control mode. All values should be zero for single-owner mode.                                                                       |
 
 ### RANGING_BEACON (513) — [WIP] {#RANGING_BEACON}
 
