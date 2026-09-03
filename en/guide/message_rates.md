@@ -10,7 +10,8 @@ The interval set by this command only applies to the link (connection) the comma
 
 To silence a message, set `param2` (interval in microseconds) to `-1`. To restore the default rate, set the interval to `0`.
 
-Supported on PX4 v1.11+ and ArduPilot v4.0+. Behavior on older versions of these two autopilots is undefined.
+Supported on PX4 v1.11+ and ArduPilot v4.0+.
+Behavior on older versions of these two autopilots is undefined.
 
 ### Example Configuration
 
