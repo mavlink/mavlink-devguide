@@ -6042,7 +6042,7 @@ Value | Name | Description
 <a id='MAV_WINCH_STATUS_HEALTHY'></a>1 | [MAV_WINCH_STATUS_HEALTHY](#MAV_WINCH_STATUS_HEALTHY) | Winch is healthy 
 <a id='MAV_WINCH_STATUS_FULLY_RETRACTED'></a>2 | [MAV_WINCH_STATUS_FULLY_RETRACTED](#MAV_WINCH_STATUS_FULLY_RETRACTED) | Winch line is fully retracted 
 <a id='MAV_WINCH_STATUS_MOVING'></a>4 | [MAV_WINCH_STATUS_MOVING](#MAV_WINCH_STATUS_MOVING) | Winch motor is moving 
-<a id='MAV_WINCH_STATUS_CLUTCH_ENGAGED'></a>8 | [MAV_WINCH_STATUS_CLUTCH_ENGAGED](#MAV_WINCH_STATUS_CLUTCH_ENGAGED) | Winch clutch is engaged allowing motor to move freely. 
+<a id='MAV_WINCH_STATUS_CLUTCH_DISENGAGED'></a>8 | [MAV_WINCH_STATUS_CLUTCH_DISENGAGED](#MAV_WINCH_STATUS_CLUTCH_DISENGAGED) | Winch clutch is disengaged. The motor is moving freely and not driving the winch. 
 <a id='MAV_WINCH_STATUS_LOCKED'></a>16 | [MAV_WINCH_STATUS_LOCKED](#MAV_WINCH_STATUS_LOCKED) | Winch is locked by locking mechanism. 
 <a id='MAV_WINCH_STATUS_DROPPING'></a>32 | [MAV_WINCH_STATUS_DROPPING](#MAV_WINCH_STATUS_DROPPING) | Winch is gravity dropping payload. 
 <a id='MAV_WINCH_STATUS_ARRESTING'></a>64 | [MAV_WINCH_STATUS_ARRESTING](#MAV_WINCH_STATUS_ARRESTING) | Winch is arresting payload descent. 
