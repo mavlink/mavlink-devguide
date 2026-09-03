@@ -26,7 +26,6 @@ The following autopilots are known to support MAVLink and are actively being dev
 - [Inexa Control](https://www.insitu.com/information-delivery/command-and-control/icomc2)
 - [Synturian Control](https://www.textronsystems.com/what-we-do/unmanned-systems/synturian)
 - [LOGOS](https://aerologos.by)
-- [Mavlink Joystick](https://github.com/goldarte/mavlink-joystick)
 
 ## MAVLink Wrapper/Developer APIs
 
