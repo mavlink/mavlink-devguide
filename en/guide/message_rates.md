@@ -24,7 +24,7 @@ Disable a pair of IMU sensor messages, and request `RAW_IMU` at 200 Hz:
 
 ## AutoPilot Input Messages
 
-Some messages, such as `VISION_POSITION_ESTIMATE`, are typically sent _to_ the flight controller from a companion computer. Their rate is generally managed by the sender, though the same `MAV_CMD_SET_MESSAGE_INTERVAL` mechanism could be used to request a particular rate from any MAVLink component.
+Some messages, such as `VISION_POSITION_ESTIMATE`, are typically sent _to_ the flight controller from a companion computer. Their rate is generally managed by the sender, though the same `MAV_CMD_SET_MESSAGE_INTERVAL` mechanism could be used to request a particular rate from any MAVLink component which understands the mechanism.
 
 For instance, you might send `VISION_POSITION_ESTIMATE` at 50-100 Hz from a companion computer.
 
