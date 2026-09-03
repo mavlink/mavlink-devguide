@@ -14,7 +14,7 @@ Supported on PX4 v1.11+ and ArduPilot v4.0+. Behavior on older versions is undef
 
 ### Example Configuration
 
-Disable several raw sensor messages, and request `RAW_IMU` at 200 Hz:
+Disable a pair of IMU sensor messages, and request `RAW_IMU` at 200 Hz:
 
 | Message                 | Interval (us) | Notes                |
 | ----------------------- | ------------- | -------------------- |
