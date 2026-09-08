@@ -39,4 +39,7 @@ When using predicatable links with a predictable endpoint, such as a companion c
 For example, `VISION_POSITION_ESTIMATE` would be can at a fixed rate because the link to the companion computer is usually a high speed serial/Ethernet link.
 
 
-> **Note:** `MAV_CMD_SET_MESSAGE_INTERVAL` can be used for QoS on any link — reducing or increasing the rate of telemetry messages as needed for your setup. On ArduPilot, these correspond to `MAVn_*` parameters. On PX4, equivalent rates are controlled via `MAV_*_RATE` parameters.
+::: info
+Flight stacks commonly use parameters to set default streaming rates, which are then overridden by  `MAV_CMD_SET_MESSAGE_INTERVAL`.
+On ArduPilot, these are `MAVn_*` parameters.
+On PX4 these are `MAV_*_RATE` parameters.
