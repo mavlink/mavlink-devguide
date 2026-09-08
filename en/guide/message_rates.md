@@ -27,6 +27,12 @@ Disable a pair of IMU sensor messages, and request `RAW_IMU` at 200 Hz:
 
 Some messages, such as `VISION_POSITION_ESTIMATE`, are typically sent _to_ the flight controller from a companion computer. Their rate is generally managed by the sender, though the same `MAV_CMD_SET_MESSAGE_INTERVAL` mechanism could be used to request a particular rate from any MAVLink component which understands the mechanism.
 
-For instance, you might send `VISION_POSITION_ESTIMATE` at 50-100 Hz from a companion computer.
+## Streaming to the Autopilot
+
+`MAV_CMD_SET_MESSAGE_INTERVAL` should be used to control streaming rates, if supported, when streaming unpredictable content over unreliable links.
+
+When using predicatable links with a predictable endpoint, such as a companion computer, it is more usual to hard code the streaming rates and messages sent.
+For example, `VISION_POSITION_ESTIMATE` would be can at a fixed rate because the link to the companion computer is usually a high speed serial/Ethernet link.
+
 
 > **Note:** `MAV_CMD_SET_MESSAGE_INTERVAL` can be used for QoS on any link — reducing or increasing the rate of telemetry messages as needed for your setup. On ArduPilot, these correspond to `MAVn_*` parameters. On PX4, equivalent rates are controlled via `MAV_*_RATE` parameters.
