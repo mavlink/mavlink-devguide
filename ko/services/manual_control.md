@@ -76,6 +76,11 @@ _MissionPlanner_ implementation:
 
 - [MainV2.cs](https://github.com/ArduPilot/MissionPlanner/blob/master/MainV2.cs) (in `joysticksend` method)
 
+_Mavlink Joystick_ implementation:
+
+- [MavlinkManager.android.kt](https://github.com/goldarte/mavlink-joystick/blob/master/shared/src/androidMain/kotlin/com/goldarte/mavlinkjoystick/mavlink/MavlinkManager.android.kt) (in `sendManualControl` method)
+- [MavlinkManager.ios.kt](https://github.com/goldarte/mavlink-joystick/blob/master/shared/src/iosMain/kotlin/com/goldarte/mavlinkjoystick/mavlink/MavlinkManager.ios.kt) (in `sendManualControl` method)
+
 ### Vehicle Firmwares
 
 The protocol has been implemented in PX4, and in the Copter, Plane, Rover, and Sub vehicle firmwares in ArduPilot.
