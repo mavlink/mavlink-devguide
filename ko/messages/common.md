@@ -8287,9 +8287,7 @@ This command sets submode circle when vehicle is in guided mode. Vehicle flies a
 | 5 (Latitude)  | Target latitude of center of circle in CIRCLE_MODE  | degE7 |
 | 6 (Longitude) | Target longitude of center of circle in CIRCLE_MODE | degE7 |
 
-### MAV_CMD_CONDITION_GATE (4501) — [WIP] {#MAV_CMD_CONDITION_GATE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_CMD_CONDITION_GATE (4501) {#MAV_CMD_CONDITION_GATE}
 
 Delay mission state machine until gate has been reached.
 
