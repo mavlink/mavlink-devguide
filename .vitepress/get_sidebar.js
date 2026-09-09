@@ -116,7 +116,7 @@ function parseGitbookSidebarToVuepress(sidebarContent, lang) {
       link_title = link_title.replace("\\_", "_");
 
       //set indent_divider level (easier to think in levels, numbers of zero prefixes)
-      if ((indent_divider == 0) & (indent_level > 0.0)) {
+      if ((indent_divider == 0) && (indent_level > 0.0)) {
         indent_divider = indent_level;
       }
       if (indent_divider > 0) {
