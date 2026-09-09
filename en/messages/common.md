@@ -186,7 +186,7 @@ Field Name | Type | Description
 --- | --- | ---
 target_system | `uint8_t` | System ID 
 target_component | `uint8_t` | Component ID 
-param_id | `char[16]` | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
+param_id | `char[16]` | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
 param_index | `int16_t` | Parameter index. Send -1 to use the param ID field as identifier (else the param id will be ignored) 
 
 
@@ -206,7 +206,7 @@ Emit the value of a onboard parameter. The inclusion of param_count and param_in
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-param_id | `char[16]` | | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
+param_id | `char[16]` | | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
 param_value | `float` | | Onboard parameter value 
 param_type | `uint8_t` | [MAV_PARAM_TYPE](#MAV_PARAM_TYPE) | Onboard parameter type. 
 param_count | `uint16_t` | | Total number of onboard parameters 
@@ -223,7 +223,7 @@ Field Name | Type | Values | Description
 --- | --- | --- | ---
 target_system | `uint8_t` | | System ID 
 target_component | `uint8_t` | | Component ID 
-param_id | `char[16]` | | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
+param_id | `char[16]` | | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
 param_value | `float` | | Onboard parameter value 
 param_type | `uint8_t` | [MAV_PARAM_TYPE](#MAV_PARAM_TYPE) | Onboard parameter type. 
 
@@ -657,7 +657,7 @@ Field Name | Type | Description
 --- | --- | ---
 target_system | `uint8_t` | System ID 
 target_component | `uint8_t` | Component ID 
-param_id | `char[16]` | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
+param_id | `char[16]` | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
 param_index | `int16_t` | Parameter index. Send -1 to use the param ID field as identifier (else the param id will be ignored), send -2 to disable any existing map for this rc_channel_index. 
 parameter_rc_channel_index | `uint8_t` | Index of parameter RC channel. Not equal to the RC channel id. Typically corresponds to a potentiometer-knob on the RC. 
 param_value0 | `float` | Initial parameter value 
@@ -3146,7 +3146,7 @@ Field Name | Type | Description
 --- | --- | ---
 target_system | `uint8_t` | System ID 
 target_component | `uint8_t` | Component ID 
-param_id | `char[16]` | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
+param_id | `char[16]` | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
 param_index | `int16_t` | Parameter index. Set to -1 to use the Parameter ID field as identifier (else param_id will be ignored) 
 
 
@@ -3166,8 +3166,8 @@ Emit the value of a parameter. The inclusion of param_count and param_index in t
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
-param_value | `char[128]` | | Parameter value 
+param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
+param_value | `char[128]` | | Parameter value. Raw bytes, interpreted according to param_type; not a text string. 
 param_type | `uint8_t` | [MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE) | Parameter type. 
 param_count | `uint16_t` | | Total number of parameters 
 param_index | `uint16_t` | | Index of this parameter 
@@ -3181,8 +3181,8 @@ Field Name | Type | Values | Description
 --- | --- | --- | ---
 target_system | `uint8_t` | | System ID 
 target_component | `uint8_t` | | Component ID 
-param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
-param_value | `char[128]` | | Parameter value 
+param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
+param_value | `char[128]` | | Parameter value. Raw bytes, interpreted according to param_type; not a text string. 
 param_type | `uint8_t` | [MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE) | Parameter type. 
 
 
@@ -3192,8 +3192,8 @@ Response from a [PARAM_EXT_SET](#PARAM_EXT_SET) message.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
-param_value | `char[128]` | | Parameter value (new value if [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED), current value otherwise) 
+param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
+param_value | `char[128]` | | Parameter value (new value if [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED), current value otherwise). Raw bytes, interpreted according to param_type; not a text string. 
 param_type | `uint8_t` | [MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE) | Parameter type. 
 param_result | `uint8_t` | [PARAM_ACK](#PARAM_ACK) | Result code. 
 
@@ -3395,7 +3395,7 @@ Field Name | Type | Values | Description
 --- | --- | --- | ---
 target_system | `uint8_t` | | System ID 
 target_component | `uint8_t` | | Component ID 
-param_id | `char[16]` | | Parameter id. Terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
+param_id | `char[16]` | | Parameter id. Terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string. Encoded as 7-bit ASCII. 
 param_index | `int16_t` | | Parameter index. Will be -1 if the param ID field should be used as an identifier (else the param id will be ignored) 
 error | `uint8_t` | [MAV_PARAM_ERROR](#MAV_PARAM_ERROR) | Error being returned to client. 
 
