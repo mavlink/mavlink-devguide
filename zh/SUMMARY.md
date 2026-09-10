@@ -83,7 +83,6 @@
   - [paparazzi.xml](messages/paparazzi.md)
   - [storm32.xml](messages/storm32.md)
   - [uAvionix.xml](messages/uAvionix.md)
-  - [ualberta.xml](messages/ualberta.md)
   - [all.xml](messages/all.md)
   - [python_array_test.xml](messages/python_array_test.md)
   - [test.xml](messages/test.md)
