@@ -28,6 +28,7 @@
   - [Redundancy/Message De-duplication](guide/redundancy_deduplication.md)
   - [Packet Loss Calculation](guide/packet_loss.md)
   - [通用遥测](guide/general_telemetry.md)
+  - [Message Rates](guide/message_rates.md)
   - [文件格式](file_formats/index.md)
   - [UAVCAN 介绍](guide/uavcan_interaction.md)
   - [脚本](guide/scripts.md)
