@@ -28,6 +28,7 @@
   - [Redundancy/Message De-duplication](guide/redundancy_deduplication.md)
   - [Packet Loss Calculation](guide/packet_loss.md)
   - [범용 텔레메트리](guide/general_telemetry.md)
+  - [Message Rates](guide/message_rates.md)
   - [파일 형식](file_formats/index.md)
   - [UAVCAN 통신](guide/uavcan_interaction.md)
   - [스크립트](guide/scripts.md)
