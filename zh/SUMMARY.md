@@ -45,6 +45,7 @@
   - [心跳/连接协议](services/heartbeat.md)
   - [Mission Protocol](services/mission.md)
   - [Parameter Protocol](services/parameter.md)
+  - [Parameters over MAVLink FTP](services/parameter_ftp.md)
   - [Extended Parameter Protocol](services/parameter_ext.md)
   - [命令协议](services/command.md)
   - [Manual Control (Joystick) Protocol](services/manual_control.md)
