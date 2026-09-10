@@ -13,6 +13,13 @@ The key/value pair has a number of important properties:
 - Adding a parameter only requires changes to the system with parameters.
   A GCS that loads the parameters, and the MAVLink communication libraries, should not require any changes.
 
+::: tip
+This protocol reads and writes each parameter in an individual MAVLink message, with ACKs and other procedural overhead.
+Components that support it for upload and/or download can send the parameter set as a single packed file instead, which is significantly faster and more robust on low-bandwidth links — see [Parameters over MAVLink FTP](../services/parameter_ftp.md).
+
+The parameter protocol should still be preferred for reading and writing individual parameters.
+:::
+
 ## Message/Enum Summary
 
 | Message                                                                                       | Description                                                                                                                                                                                                                                                    |
@@ -153,6 +160,7 @@ This section defines the state machine/message sequences for all parameter opera
 ### Read All Parameters {#read_all}
 
 The read-all operation is started by sending the [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) message.
+
 The target component must start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message.
 The drone should allow a pause after sending each parameter to ensure that the operation doesn't consume all of the available link bandwidth (30 - 50 percent of the bandwidth is reasonable).
 
