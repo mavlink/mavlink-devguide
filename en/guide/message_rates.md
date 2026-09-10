@@ -1,6 +1,6 @@
 # Message Rates
 
-`MAV_CMD_SET_MESSAGE_INTERVAL` can be used to dynamically set the message streaming rates of a MAVLink component, provided the protocol is supported at both ends.
+[MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) can be used to dynamically set the message streaming rates of a MAVLink component, provided the protocol is supported at both ends.
 This is mainly useful over unpredictable links, such as the telemetry link to a GCS, where the required message streams depend on the particular GCS in use, and channel quality depends on distance and the radio used.
 
 This section provides guidance on configuring MAVLink message rates using the `MAV_CMD_SET_MESSAGE_INTERVAL` command.
