@@ -13,6 +13,7 @@ The topics linked from the sidebar (and listed below):
 - [Redundancy/Message De-duplication](../guide/redundancy_deduplication.md)
 - [Packet Loss Calculation](../guide/packet_loss.md)
 - [General Telemetry](../guide/general_telemetry.md)
+- [Message Rates](../guide/message_rates.md)
 - [UAVCAN Interaction](../guide/uavcan_interaction.md)
 - [Scripts](../guide/scripts.md)
 - [Debugging with Wireshark](../guide/wireshark.md)
