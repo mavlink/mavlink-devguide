@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="255" viewBox="0 0 640 340" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="340" fill="#ffffff"/>
+
+  <text x="320" y="24" text-anchor="middle" font-size="12" fill="#6b7280">the gate can sit off the route — the crossing is where its line meets the path</text>
+
+  <!-- gate line: perpendicular to the path, anchored at the gate's own position -->
+  <line x1="340" y1="120" x2="352" y2="270" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <!-- flight path: straight from prev destination to next, unaffected by the gate -->
+  <path d="M80,260 L580,220" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow2)"/>
+
+  <!-- prev wp -->
+  <circle cx="80" cy="260" r="5" fill="#111827"/>
+  <text x="80" y="285" text-anchor="middle" font-size="13" fill="#111827">PREV WP</text>
+
+  <!-- next wp -->
+  <circle cx="580" cy="220" r="5" fill="#111827"/>
+  <text x="580" y="245" text-anchor="middle" font-size="13" fill="#111827">NEXT WP</text>
+
+  <!-- gate point: off the path; only anchors the line, it is not itself the trigger -->
+  <circle cx="340" cy="120" r="5" fill="#111827"/>
+  <text x="340" y="102" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">GATE</text>
+
+  <!-- reached: where the gate's line actually crosses the path -->
+  <circle cx="349.5" cy="238.4" r="9" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <circle cx="349.5" cy="238.4" r="4" fill="#dc2626"/>
+  <line x1="357" y1="245" x2="420" y2="280" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="425" y="278" font-size="13" fill="#dc2626" font-weight="bold">REACHED</text>
+  <text x="425" y="295" font-size="12" fill="#dc2626">crosses the line here</text>
+</svg>

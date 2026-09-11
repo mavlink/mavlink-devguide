@@ -43,6 +43,7 @@
 - [Microservices](services/index.md)
   - [Heartbeat/Connection Protocol](services/heartbeat.md)
   - [Mission Protocol](services/mission.md)
+    - [Mission Item Detail](services/mission_item_detail.md)
   - [Parameter Protocol](services/parameter.md)
   - [Extended Parameter Protocol](services/parameter_ext.md)
   - [Command Protocol](services/command.md)
