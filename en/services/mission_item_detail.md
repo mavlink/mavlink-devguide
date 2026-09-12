@@ -52,7 +52,8 @@ If you need an exact, turn-independent trigger point (for example a survey-edge 
 
 ArduPilot:
 
-- _Pass Radius_ (param3) implemented only on ArduPlane. It doesn't curve the flight path — it moves the acceptance point further out along the inbound course, so the corner is still flown straight, just cut sooner.
+- _Pass Radius_ (param3) implemented only on ArduPlane.
+  It doesn't curve the flight path — it moves the acceptance point further out along the inbound course, so the corner is still flown straight, just cut sooner.
   Other vehicle types ignore it.
 
 PX4:
@@ -61,7 +62,7 @@ PX4:
 
 ### MAV_CMD_NAV_LOITER_TIME {#MAV_CMD_NAV_LOITER_TIME}
 
-[MAV_CMD_NAV_LOITER_TIME](../messages/common.md#MAV_CMD_NAV_LOITER_TIME) - Loiter at specified location for a given amount of time after reaching the location.
+[MAV_CMD_NAV_LOITER_TIME](../messages/common.md#MAV_CMD_NAV_LOITER_TIME) causes a vehicle to loiter at specified location for a given amount of time after reaching the location.
 
 Multicopter vehicles stop at the specified point (within a _vehicle-specific_ acceptance radius that is not set by the mission item).
 Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified radius/direction.
@@ -110,12 +111,18 @@ The Xtrack parameter independently defines the path and exit location:
   - The vehicle must still respect the heading required param.
   - Usually this is synonymous with `xtrack=0`
 
+<!--
+#### Autopilot Support
+
+- Untested
+-->
+
 ### MAV_CMD_NAV_LOITER_TURNS {#MAV_CMD_NAV_LOITER_TURNS}
 
-[MAV_CMD_NAV_LOITER_TURNS](../messages/common.md#MAV_CMD_NAV_LOITER_TURNS) - Loiter at specified location for a given number of turns.
+[MAV_CMD_NAV_LOITER_TURNS](../messages/common.md#MAV_CMD_NAV_LOITER_TURNS) causes a vehicle to loiter at specified location for a given number of turns.
 
-Multicopter vehicles stop at the specified point (within a _vehicle-specific_ acceptance radius that is not set by the mission item).
 Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified radius/direction.
+Multicopter vehicles should similarly circle at the specified radius/direction.
 
 #### Params
 
@@ -131,22 +138,30 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 
 ### MAV_CMD_NAV_LOITER_TO_ALT {#MAV_CMD_NAV_LOITER_TO_ALT}
 
-[MAV_CMD_NAV_LOITER_TO_ALT](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LOITER_TO_ALT) - Loiter at specified location until desired altitude is reached.
+[MAV_CMD_NAV_LOITER_TO_ALT](../messages/common.md#MAV_CMD_NAV_LOITER_TO_ALT) causes the vehicle to loiter at specified location until desired altitude is reached.
 
-Multicopter vehicles stop at the specified point (within a _vehicle-specific_ acceptance radius that is not set by the mission item).
+Multicopter vehicles stop at the specified location and altitude (within a _vehicle-specific_ acceptance radius that is not set by the mission item).
 Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified radius/direction.
 
 #### Params
 
-| Param (:Label)      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               | Units                |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| 1: Heading Required | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE causes leaving when altitude is reached. Values not equal to 0 or 1 are invalid.                                                                                                                                                                                                                                                         |                      |
-| 2: Radius           | Radius around waypoint. If positive loiter clockwise, else counter-clockwise                                                                                                                                                                                                                                                                                                                                                                              | m                    |
-| 3                   | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                      |
-| 4: Xtrack Location  | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |
-| 5: Latitude         | Latitude                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                      |
-| 6: Longitude        | Longitude                                                                                                                                                                                                                                                                                                                                                                                                                                                 |                      |
-| 7: Altitude         | Altitude                                                                                                                                                                                                                                                                                                                                                                                                                                                  | m                    |
+NOTE: Param order differs from the other loiter commands here: Heading Required is param 1 and Radius is param 2, not param 2/3.
+
+| Param (:Label)      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Units                |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| 1: Heading Required | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE causes leaving when altitude is reached. Values not equal to 0 or 1 are invalid. See [Exit Conditions](#loiter_exit) above.                                                                                                                                                                                                                                                         |                      |
+| 2: Radius           | Radius around waypoint. If positive loiter clockwise, else counter-clockwise; `0` means no change to the standard loiter radius.                                                                                                                                                                                                                                                                                                                                                                     | m                    |
+| 3                   | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                      |
+| 4: Xtrack Location  | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. See [Exit Conditions](#loiter_exit) above. | min: 0 max: 1 inc: 1 |
+| 5: Latitude         | Latitude (`0` with Longitude `0` means loiter at the current position).                                                                                                                                                                                                                                                                                                                                                                                                                              |                      |
+| 6: Longitude        | Longitude (`0` with Latitude `0` means loiter at the current position).                                                                                                                                                                                                                                                                                                                                                                                                                              |                      |
+| 7: Altitude         | Target altitude — the loiter is not complete until this is reached.                                                                                                                                                                                                                                                                                                                                                                                                                                  | m                    |
+
+<!--
+#### Autopilot support
+
+- Untested
+-->
 
 ### MAV_CMD_NAV_LOITER_UNLIM {#MAV_CMD_NAV_LOITER_UNLIM}
 
