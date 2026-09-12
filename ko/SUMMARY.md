@@ -45,6 +45,7 @@
   - [주기 신호/연결 프로토콜](services/heartbeat.md)
   - [미션 프로토콜](services/mission.md)
   - [매개변수 프로토콜](services/parameter.md)
+  - [Parameters over MAVLink FTP](services/parameter_ftp.md)
   - [Extended Parameter Protocol](services/parameter_ext.md)
   - [Command Protocol](services/command.md)
   - [Manual Control (Joystick) Protocol](services/manual_control.md)

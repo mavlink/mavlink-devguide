@@ -14,6 +14,7 @@ The main microservices are shown in the sidebar (most are listed below):
 - [Heartbeat/Connection Protocol](../services/heartbeat.md)
 - [Mission Protocol](../services/mission.md)
 - [Parameter Protocol](../services/parameter.md)
+- [Parameters over MAVLink FTP](../services/parameter_ftp.md)
 - [Extended Parameter Protocol](../services/parameter_ext.md)
 - [Command Protocol](../services/command.md)
 - [Manual Control (Joystick) Protocol](../services/manual_control.md)
