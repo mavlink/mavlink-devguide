@@ -65,6 +65,14 @@ Files matching `**/_*.md` are excluded from the VitePress build (used as include
 - Internal links use relative paths to `.md` files (e.g., `../services/mission.md`)
 - The `EDITOR` environment variable enables "Open in your editor" links during local dev; omit it to get GitHub edit links instead
 
+## Documentation Accuracy Rules
+
+- Every claim about a `MAV_CMD`/message param — its existence, number, name, description, units, range — must agree with the corresponding entry in `en/messages/*.md` (mirrors the XML). If existing prose or a proposed change conflicts with the XML, don't silently override it — flag the conflict and propose fixing the XML (`mavlink/mavlink`) instead of the doc, if the XML is what's wrong.
+- Never state what a specific autopilot (ArduPilot, PX4, ...) actually does without a citable source: a file/line in that project's own repo, a linked test, or a linked issue/PR discussion. No citation → omit the claim, or mark it explicitly unverified rather than asserting it as fact.
+- Keep new prose as terse as the surrounding section; don't rewrite already-accepted wording for style alone.
+- A change that reorganizes or moves existing content must do so with zero wording changes; any wording change (correction, addition, clarification) belongs in its own separate, clearly-labeled commit.
+- See the `mavlink-command-review` Claude Code skill for the full checklist when reviewing or authoring pages about specific commands/messages (e.g. `en/services/mission_item_detail.md`).
+
 ## Translation Workflow
 
 - Crowdin config (`crowdin.yml`) maps `en/**/*.md` → `{lang}/**/{filename}.md`
