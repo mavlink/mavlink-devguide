@@ -3,17 +3,30 @@
     <marker id="arrow2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
       <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
     </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#6b7280"/>
+    </marker>
   </defs>
 
   <rect x="0" y="0" width="640" height="340" fill="#ffffff"/>
 
-  <text x="320" y="24" text-anchor="middle" font-size="12" fill="#6b7280">the gate can sit off the route — the crossing is where its line meets the path</text>
-
-  <!-- gate line: perpendicular to the path, anchored at the gate's own position -->
-  <line x1="340" y1="120" x2="352" y2="270" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="320" y="20" text-anchor="middle" font-size="12" fill="#6b7280">the trigger line passes through the gate, perpendicular to the GATE→NEXT WP direction —</text>
+  <text x="320" y="35" text-anchor="middle" font-size="12" fill="#6b7280">NOT perpendicular to the path itself</text>
 
   <!-- flight path: straight from prev destination to next, unaffected by the gate -->
   <path d="M80,260 L580,220" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow2)"/>
+
+  <!-- reference vector: gate -> next waypoint (this defines the trigger line's orientation) -->
+  <line x1="340" y1="120" x2="580" y2="220" stroke="#6b7280" stroke-width="2" stroke-dasharray="2 4" marker-end="url(#arrowGray)"/>
+  <text x="478" y="153" text-anchor="middle" font-size="12" fill="#6b7280" font-style="italic" transform="rotate(22 478 153)">gate → next wp</text>
+
+  <!-- trigger line: through the gate, perpendicular to gate->next wp (NOT to the path) -->
+  <line x1="355.4" y1="83.1" x2="272.7" y2="281.5" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="230" y="105" text-anchor="middle" font-size="12" fill="#b45309" font-weight="bold">trigger line</text>
+  <text x="230" y="120" text-anchor="middle" font-size="11" fill="#b45309">(⊥ to gate→next wp)</text>
+
+  <!-- right-angle marker at the gate, between the reference vector and the trigger line -->
+  <path d="M334.6,132.9 L347.5,138.3 L352.9,125.4" fill="none" stroke="#6b7280" stroke-width="1.5"/>
 
   <!-- prev wp -->
   <circle cx="80" cy="260" r="5" fill="#111827"/>
@@ -23,14 +36,14 @@
   <circle cx="580" cy="220" r="5" fill="#111827"/>
   <text x="580" y="245" text-anchor="middle" font-size="13" fill="#111827">NEXT WP</text>
 
-  <!-- gate point: off the path; only anchors the line, it is not itself the trigger -->
+  <!-- gate point: off the path; anchors the trigger line, is not itself the trigger -->
   <circle cx="340" cy="120" r="5" fill="#111827"/>
   <text x="340" y="102" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">GATE</text>
 
-  <!-- reached: where the gate's line actually crosses the path -->
-  <circle cx="349.5" cy="238.4" r="9" fill="none" stroke="#dc2626" stroke-width="2"/>
-  <circle cx="349.5" cy="238.4" r="4" fill="#dc2626"/>
-  <line x1="357" y1="245" x2="420" y2="280" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="425" y="278" font-size="13" fill="#dc2626" font-weight="bold">REACHED</text>
-  <text x="425" y="295" font-size="12" fill="#dc2626">crosses the line here</text>
+  <!-- reached: where the trigger line actually crosses the path -->
+  <circle cx="288.6" cy="243.3" r="9" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <circle cx="288.6" cy="243.3" r="4" fill="#dc2626"/>
+  <line x1="282" y1="251" x2="230" y2="285" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="225" y="298" text-anchor="end" font-size="13" fill="#dc2626" font-weight="bold">REACHED</text>
+  <text x="225" y="313" text-anchor="end" font-size="12" fill="#dc2626">crosses the trigger line here</text>
 </svg>

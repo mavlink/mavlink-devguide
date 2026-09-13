@@ -189,25 +189,26 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 
 ### MAV_CMD_CONDITION_GATE {#condition_gate}
 
-[MAV_CMD_CONDITION_GATE](../messages/common.md#MAV_CMD_CONDITION_GATE) (id 4501) marks an off-path location (not a destination) that indirectly defines where on the path to the _next_ waypoint the condition is accepted.
+[MAV_CMD_CONDITION_GATE](../messages/common.md#MAV_CMD_CONDITION_GATE) (id 4501) marks an off-path location (not a destination) that defines a trigger point somewhere along the path to the _next_ waypoint.
 
 When the gate is reached, the vehicle flies directly towards the _next_ mission item that is on the path (such as a waypoint).
-The mission state machine is blocked on the gate mission item until the vehicle reaches the point on the path that is perpendicular to the gate location.
+The mission state machine is blocked on the gate mission item until the vehicle crosses the **trigger line**: the line through the gate's own position, perpendicular to the direction _from the gate to the next waypoint_.
+Because that reference direction isn't the path direction, an off-path gate's actual trigger point is shifted from where a simple "project the gate straight onto the path" calculation would suggest — see the diagram.
 This can be used for triggering a `DO_*` action (camera, speed change, etc.) at a precise point along a leg, without affecting the route itself.
 
-![The vehicle flies straight from the previous destination to the next; the gate sits off that path, and the trigger fires where its line crosses the path](../../assets/protocols/mission_item_detail/gate_crossing.svg)
+![The vehicle flies straight from the previous destination to the next; the trigger line runs through the gate, perpendicular to the gate→next-waypoint direction, and fires where that line crosses the path](../../assets/protocols/mission_item_detail/gate_crossing.svg)
 
 #### Params
 
-| Param (:Label) | Description                                                                                    | Units |
-| -------------- | ---------------------------------------------------------------------------------------------- | ----- |
-| 1: Geometry    | Geometry of the gate test. `0`: line orthogonal to the path (no other values defined/allowed). |       |
-| 2: UseAltitude | [MAV_BOOL_TRUE](../messages/common.md#MAV_BOOL) if altitude is included in the crossing test.  |       |
-| 3              | -                                                                                              |       |
-| 4              | -                                                                                              |       |
-| 5: Latitude    | Latitude of the gate.                                                                          |       |
-| 6: Longitude   | Longitude of the gate.                                                                         |       |
-| 7: Altitude    | Altitude of the gate.                                                                          | m     |
+| Param (:Label) | Description                                                                                                                              | Units |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| 1: Geometry    | Geometry of the gate test. `0`: line through the gate, orthogonal to the gate→next-waypoint direction (no other values defined/allowed). |       |
+| 2: UseAltitude | [MAV_BOOL_TRUE](../messages/common.md#MAV_BOOL) if altitude is included in the crossing test.                                            |       |
+| 3              | -                                                                                                                                        |       |
+| 4              | -                                                                                                                                        |       |
+| 5: Latitude    | Latitude of the gate.                                                                                                                    |       |
+| 6: Longitude   | Longitude of the gate.                                                                                                                   |       |
+| 7: Altitude    | Altitude of the gate.                                                                                                                    | m     |
 
 #### Autopilot Support
 
