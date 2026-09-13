@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="210" viewBox="0 0 640 280" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow4g" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="280" fill="#ffffff"/>
+
+  <!-- straight-through path (radius = 0) -->
+  <path d="M80,60 L340,220 L580,60" fill="none" stroke="#9ca3af" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arrow4g)"/>
+  <text x="365" y="240" font-size="13" fill="#6b7280">0: straight through</text>
+
+  <!-- fillet path (+r, CW), cuts inside the corner via a rounding arc -->
+  <path d="M80,60 L280.4,183.3 Q340,220 398.2,181.1 L580,60" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow4)"/>
+  <text x="415" y="150" font-size="13" fill="#1d4ed8" font-weight="bold">+r, CW</text>
+
+  <!-- corner / waypoint marker -->
+  <circle cx="340" cy="220" r="5" fill="#111827"/>
+
+  <!-- prev / next -->
+  <circle cx="80" cy="60" r="5" fill="#111827"/>
+  <text x="80" y="42" text-anchor="middle" font-size="13" fill="#111827">PREV WP</text>
+  <circle cx="580" cy="60" r="5" fill="#111827"/>
+  <text x="580" y="42" text-anchor="middle" font-size="13" fill="#111827">NEXT WP</text>
+
+  <!-- radius annotation -->
+  <line x1="340" y1="220" x2="280.4" y2="183.3" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="280" y="215" text-anchor="end" font-size="12" fill="#dc2626">radius = |param 3|</text>
+  <text x="280" y="230" text-anchor="end" font-size="12" fill="#dc2626">sign picks CW / CCW</text>
+</svg>

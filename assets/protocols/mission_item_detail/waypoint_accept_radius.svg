@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="240" viewBox="0 -20 640 320" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="-20" width="640" height="320" fill="#ffffff"/>
+
+  <!-- accept radius circle -->
+  <circle cx="340" cy="80" r="85" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="340" y="185" text-anchor="middle" font-size="13" fill="#6b7280">r = Accept Radius (param 2)</text>
+
+  <!-- flight path: prev -> waypoint (as bezier apex) -> next -->
+  <path d="M80,260 Q340,80 580,220" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow1)"/>
+
+  <!-- waypoint marker -->
+  <circle cx="340" cy="80" r="5" fill="#111827"/>
+  <text x="340" y="60" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">WAYPOINT</text>
+
+  <!-- prev wp -->
+  <circle cx="80" cy="260" r="5" fill="#111827"/>
+  <text x="80" y="285" text-anchor="middle" font-size="13" fill="#111827">PREV WP</text>
+
+  <!-- next wp -->
+  <circle cx="580" cy="220" r="5" fill="#111827"/>
+  <text x="580" y="245" text-anchor="middle" font-size="13" fill="#111827">NEXT WP</text>
+
+  <!-- reached marker -->
+  <circle cx="315" cy="162" r="6" fill="#dc2626"/>
+  <line x1="315" y1="162" x2="230" y2="230" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="150" y="245" text-anchor="middle" font-size="13" fill="#dc2626" font-weight="bold">REACHED</text>
+  <text x="150" y="262" text-anchor="middle" font-size="12" fill="#dc2626">enters accept radius here</text>
+</svg>
