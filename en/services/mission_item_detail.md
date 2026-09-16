@@ -185,6 +185,38 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 | 6: Longitude   | Longitude                                                                                                              |       |
 | 7: Altitude    | Altitude                                                                                                               | m     |
 
+### MAV_CMD_NAV_TAKEOFF {#MAV_CMD_NAV_TAKEOFF}
+
+[MAV_CMD_NAV_TAKEOFF](../messages/common.md#MAV_CMD_NAV_TAKEOFF) causes a vehicle to take off and climb to the specified altitude.
+Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.
+
+#### Params
+
+| Param (:Label) | Description                                                                                                          | Units |
+| -------------- | -------------------------------------------------------------------------------------------------------------------- | ----- |
+| 1: Pitch       | Minimum pitch (if airspeed sensor present), desired pitch without sensor (fixed-wing only; ignored by multicopters). | deg   |
+| 2              | -                                                                                                                    |       |
+| 3: Flags       | Bitmask of options flags. See [NAV_TAKEOFF_FLAGS](../messages/common.md#NAV_TAKEOFF_FLAGS).                          |       |
+| 4: Yaw         | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode.   | deg   |
+| 5: Latitude    | Latitude.                                                                                                            |       |
+| 6: Longitude   | Longitude.                                                                                                           |       |
+| 7: Altitude    | Altitude to climb to (required).                                                                                     | m     |
+
+#### Autopilot Support
+
+PX4:
+
+- Pitch (param1) and Flags (param3) are not implemented — the internal mission-item representation has no field for either, so neither is ever stored, on any vehicle type.
+- Yaw (param4) is stored correctly (wrapped to `[0, 360)`), but is not applied at takeoff — the vehicle's heading is not commanded by this parameter.
+- Latitude/Longitude/Altitude are supported, including `INT32_MAX` ("use current position") and `NaN` altitude ("use default").
+
+ArduPilot:
+
+- Pitch (param1) is stored, and used as the climb-out pitch target on fixed-wing. Not read on multicopters.
+- Flags (param3) and Yaw (param4) are not implemented — neither is ever stored, on any vehicle type.
+- `NaN` for the unused param2 is rejected (the spec requires unused params to accept `NaN`).
+- `INT32_MAX` ("use current position") for Latitude/Longitude is rejected (the spec requires `hasLocation` commands to accept it).
+
 ## `CONDITION_` Items
 
 ### MAV_CMD_CONDITION_GATE {#condition_gate}

@@ -122,6 +122,7 @@
     "posx",
     "pymavlink",
     "PYTHONPATH",
+    "quadplane",
     "QUADROTOR",
     "rallypoints",
     "rawimage",
