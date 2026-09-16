@@ -3192,9 +3192,7 @@ The global position resulting from GPS and sensor fusion.
 | flight_state | `uint8_t`     |       | [UTM_FLIGHT_STATE](#UTM_FLIGHT_STATE)                              | Flight state                                                                                          |
 | flags                             | `uint8_t`     |       | [UTM_DATA_AVAIL_FLAGS](#UTM_DATA_AVAIL_FLAGS) | Bitwise OR combination of the data available flags.                                   |
 
-### PARAM_ERROR (345) — [WIP] {#PARAM_ERROR}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### PARAM_ERROR (345) {#PARAM_ERROR}
 
 Parameter set/get error. Returned from a MAVLink node in response to an error in the parameter protocol, for example failing to set a parameter because it does not exist.
 
@@ -4499,9 +4497,7 @@ Specifies the datatype of a MAVLink parameter.
 | <a id='MAV_PARAM_TYPE_REAL32'></a>9  | [MAV_PARAM_TYPE_REAL32](#MAV_PARAM_TYPE_REAL32) | 32-bit floating-point   |
 | <a id='MAV_PARAM_TYPE_REAL64'></a>10 | [MAV_PARAM_TYPE_REAL64](#MAV_PARAM_TYPE_REAL64) | 64-bit floating-point   |
 
-### MAV_PARAM_ERROR — [WIP] {#MAV_PARAM_ERROR}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_PARAM_ERROR {#MAV_PARAM_ERROR}
 
 Parameter protocol error types (see [PARAM_ERROR](#PARAM_ERROR)).
 
