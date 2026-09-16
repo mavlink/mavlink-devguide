@@ -185,6 +185,26 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 | 6: Longitude   | Longitude                                                                                                              |       |
 | 7: Altitude    | Altitude                                                                                                               | m     |
 
+### MAV_CMD_NAV_TAKEOFF {#MAV_CMD_NAV_TAKEOFF}
+
+Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.
+
+#### Params
+
+| Param (:Label) | Description                                                                                                                                                            | Units |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| 1: Pitch       | Minimum pitch (if airspeed sensor present), desired pitch without sensor                                                                                               | deg   |
+| 2              | -                                                                                                                                                                      |       |
+| 3: Flags       | Bitmask of options flags. See [NAV_TAKEOFF_FLAGS](../messages/common.md#NAV_TAKEOFF_FLAGS).                                                                            |       |
+| 4: Yaw         | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). | deg   |
+| 5: Latitude    | Latitude                                                                                                                                                               |       |
+| 6: Longitude   | Longitude                                                                                                                                                              |       |
+| 7: Altitude    | Altitude                                                                                                                                                               | m     |
+
+#### Autopilot Support
+
+Untested
+
 ## `CONDITION_` Items
 
 ### MAV_CMD_CONDITION_GATE {#condition_gate}
