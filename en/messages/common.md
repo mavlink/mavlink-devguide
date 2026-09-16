@@ -4290,7 +4290,7 @@ Value | Name | Description
 <a id='GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW'></a>512 | [GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW](#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW) | Gimbal device supports to follow a yaw angle relative to the vehicle (generally that's the default). 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK'></a>1024 | [GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK](#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK) | Gimbal device supports locking to an absolute heading, i.e., yaw angle relative to North (earth frame, often this is an option available). 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW'></a>2048 | [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW) | Gimbal device supports yawing/panning infinitely (e.g. using slip disk). 
-<a id='GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME'></a>4096 | [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME) | Gimbal device supports yaw angles and angular velocities relative to North (earth frame). This usually requires support by an autopilot via [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE). Support can go on and off during runtime, which is reported by the flag [GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_IN_EARTH_FRAME). 
+<a id='GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME'></a>4096 | [GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_YAW_IN_EARTH_FRAME) | Gimbal device supports yaw angles and angular velocities relative to North (earth frame). This usually requires support by an autopilot via [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE). Support can go on and off during runtime, which is reported by the flag [GIMBAL_DEVICE_FLAGS_ACCEPTS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_ACCEPTS_YAW_IN_EARTH_FRAME). 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS'></a>8192 | [GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS](#GIMBAL_DEVICE_CAP_FLAGS_HAS_RC_INPUTS) | Gimbal device supports radio control inputs as an alternative input for controlling the gimbal orientation. 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL'></a>65536 | [GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL](#GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL) | Gimbal device supports to point to a local position. 
 <a id='GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL'></a>131072 | [GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL](#GIMBAL_DEVICE_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL) | Gimbal device supports to point to a global latitude, longitude, altitude position. 
@@ -5024,7 +5024,7 @@ Value | Name | Description
 --- | --- | ---
 <a id='MAV_BATTERY_FAULT_DEEP_DISCHARGE'></a>1 | [MAV_BATTERY_FAULT_DEEP_DISCHARGE](#MAV_BATTERY_FAULT_DEEP_DISCHARGE) | Battery has deep discharged. 
 <a id='MAV_BATTERY_FAULT_SPIKES'></a>2 | [MAV_BATTERY_FAULT_SPIKES](#MAV_BATTERY_FAULT_SPIKES) | Voltage spikes. 
-<a id='MAV_BATTERY_FAULT_CELL_FAIL'></a>4 | [MAV_BATTERY_FAULT_CELL_FAIL](#MAV_BATTERY_FAULT_CELL_FAIL) | One or more cells have failed. Battery should also report [MAV_BATTERY_CHARGE_STATE_FAILE](#MAV_BATTERY_CHARGE_STATE_FAILE) (and should not be used). 
+<a id='MAV_BATTERY_FAULT_CELL_FAIL'></a>4 | [MAV_BATTERY_FAULT_CELL_FAIL](#MAV_BATTERY_FAULT_CELL_FAIL) | One or more cells have failed. Battery should also report [MAV_BATTERY_CHARGE_STATE_FAILED](#MAV_BATTERY_CHARGE_STATE_FAILED) (and should not be used). 
 <a id='MAV_BATTERY_FAULT_OVER_CURRENT'></a>8 | [MAV_BATTERY_FAULT_OVER_CURRENT](#MAV_BATTERY_FAULT_OVER_CURRENT) | Over-current fault. 
 <a id='MAV_BATTERY_FAULT_OVER_TEMPERATURE'></a>16 | [MAV_BATTERY_FAULT_OVER_TEMPERATURE](#MAV_BATTERY_FAULT_OVER_TEMPERATURE) | Over-temperature fault. 
 <a id='MAV_BATTERY_FAULT_UNDER_TEMPERATURE'></a>32 | [MAV_BATTERY_FAULT_UNDER_TEMPERATURE](#MAV_BATTERY_FAULT_UNDER_TEMPERATURE) | Under-temperature fault. 
@@ -7321,7 +7321,7 @@ Mission item to specify the start of a failsafe/landing return-path segment (the
 
 A vehicle that is using missions for landing (e.g. in a return mode) will join the mission on the closest path of the return-path segment (instead of [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) or the nearest waypoint).
 The main use case is to minimize the failsafe flight path in corridor missions, where the inbound/outbound paths are constrained (by geofences) to the same particular path.
-The [MAV_CMD_NAV_RETURN_PATH_START](#MAV_CMD_NAV_RETURN_PATH_START) would be placed at the start of the return path.
+The [MAV_CMD_DO_RETURN_PATH_START](#MAV_CMD_DO_RETURN_PATH_START) would be placed at the start of the return path.
 If a failsafe occurs on the outbound path the vehicle will move to the nearest point on the return path (which is parallel for this kind of mission), effectively turning round and following the shortest path to landing.
 If a failsafe occurs on the inbound path the vehicle is already on the return segment and will continue to landing.
 The Latitude/Longitude/Altitude are optional, and may be set to 0 if not needed.
