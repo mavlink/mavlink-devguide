@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
@@ -37,7 +37,7 @@ jobs:
           touch .vitepress/dist/.nojekyll
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: mavlink_devguide_docs_build
           path: .vitepress/dist/
@@ -50,7 +50,7 @@ jobs:
 
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: mavlink_devguide_docs_build
           path: ~/_book
