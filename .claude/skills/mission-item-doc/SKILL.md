@@ -27,7 +27,7 @@ If the argument isn't a valid `MAV_CMD_*` name, or doesn't exist in any dialect 
   ```
   Check `common.md` first; most mission-item MAV_CMDs live there. If not found there, check the dialect-specific files (`ardupilotmega.md`, `cubepilot.md`, etc.) — skip `all.md`, `index.md`, and `dialects.md`, which are indexes, not definitions. If the command is defined in more than one dialect with different text, flag this to the user before proceeding rather than picking one silently.
 - **Target doc**: `en/services/mission_item_detail.md`.
-- **Diagrams**: `assets/protocols/mission_item_detail/` (SVG) and `assets/protocols/mission_loiter/` (PNG, legacy). This skill does not generate diagrams. If the command needs one and none exists, say so and continue without it — don't invent a diagram or block the rest of the workflow on it.
+- **Diagrams**: `assets/protocols/mission_item_detail/` (SVG) and `assets/protocols/mission_loiter/` (PNG, legacy). The XML never contains diagrams, so if a command's behavior benefits from one, this skill creates a new inline SVG in `assets/protocols/mission_item_detail/` (see step 7 in Add). Its *design* may draw on wider knowledge of the command's behavior than the XML alone provides, but it must never contradict the XML — only illustrate/extend it. Use the existing SVGs in that directory (e.g. `gate_crossing.svg`, `waypoint_accept_radius.svg`) as the style template: same `viewBox`/font conventions, `#2563eb` for the primary path, `#6b7280` for secondary/reference elements.
 
 ## Add
 
@@ -63,8 +63,8 @@ If the argument isn't a valid `MAV_CMD_*` name, or doesn't exist in any dialect 
 7. **Revise the description.** Now rewrite the placeholder from step 3 into real docs prose, applying the Style rules below. In particular:
    - Open with a sentence of the form `[MAV_CMD_<NAME>](../messages/common.md#MAV_CMD_<NAME>) causes a vehicle to <effect>.` — link to the XML definition rather than restating it as freestanding prose.
    - Add any known frame-specific behavior (e.g. multicopter vs. fixed-wing differences), stated tersely (see Style).
-   - If a diagram exists for this command (see Sources of truth), use it as the basis for any expanded explanation — don't describe behavior the diagram doesn't support.
-   - **Must not contradict or semantically change** what the XML says — extend and clarify only.
+   - If the command's behavior is spatial/geometric (paths, trigger points, headings, radii — the kind of thing a picture clarifies faster than prose), create a new SVG diagram under `assets/protocols/mission_item_detail/` (see Diagrams in Sources of truth) and reference it with an `![alt](...)` line under the heading, above `#### Params`, following the existing sections' placement. Base the diagram's design on wider knowledge of how the command actually behaves, not just the XML text, but don't let it depict anything the XML contradicts. Skip the diagram if the command is simple enough that prose alone is clear (e.g. `MAV_CMD_NAV_RETURN_TO_LAUNCH`).
+   - **Must not contradict or semantically change** what the XML says — extend and clarify only. This applies to the diagram as much as the prose.
 
 8. **Autopilot Support.** Replace the `Untested` placeholder with real implementation notes only if you have a verified source for them (e.g. a linked issue, changelog, or code reference) — otherwise leave it as `Untested`. Follow the `CONDITION_GATE` section's format (a short bullet list per autopilot).
 
@@ -78,7 +78,7 @@ Read the existing `### MAV_CMD_<NAME>` section in `en/services/mission_item_deta
 
 - **No meaning change.** The section may extend the XML (add detail, examples, frame-specific behavior) but must never contradict it or narrow/widen what a param does.
 - **Params match.** Every param row's description and units are consistent with the XML — same semantics, not necessarily identical wording, but no dropped constraints (ranges, enum values, "ignored by X" caveats).
-- **Diagrams match.** Any referenced diagram must depict what the text and XML actually describe — flag anything the diagram shows that the text doesn't support, or vice versa.
+- **Diagrams match.** A diagram's content may go beyond the XML (it's necessarily drawn from wider knowledge, since the XML has no diagrams) but must not contradict it or the section text — flag anything the diagram shows that the XML rules out, or that the text doesn't support. Flag a missing diagram only when the command is clearly spatial/geometric and prose alone is hard to follow.
 - **Style — terse, no contrastive filler.** Prefer stating each case plainly over contrasting it against the other. For example:
   - Bad: "Multicopters fly to altitude X and hover — not to a specific parameter. Fixed wing vehicles ignore the param and ascend to a system-specified height: unlike multicopters."
   - Good: "Multicopters fly to altitude X and hover. Fixed wing fly to a parameter set height."
