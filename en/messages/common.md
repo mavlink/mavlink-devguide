@@ -39,7 +39,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 231 | 3
 [Enums](#enumerated-types) | 150 | 9
-[Commands](#mav_commands) | 171 | 0
+[Commands](#mav_commands) | 170 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -6784,21 +6784,6 @@ Param (Label) | Description | Units
 5 (Y Position) | Y-axis position | m 
 6 (X Position) | X-axis position | m 
 7 (Z Position) | Z-axis position | m 
-
-
-### MAV_CMD_NAV_FOLLOW (25) {#MAV_CMD_NAV_FOLLOW}
-
-Vehicle following, i.e. this waypoint represents the position of a moving vehicle
-
-Param (Label) | Description | Values | Units
---- | --- | --- | ---
-1 (Following) | Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation | inc: 1 |   
-2 (Ground Speed) | Ground speed of vehicle to be followed |   | m/s 
-3 (Radius) | Radius around waypoint. If positive loiter clockwise, else counter-clockwise |   | m 
-4 (Yaw) | Desired yaw angle. |   | deg 
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
 
 
 ### MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT (30) {#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT}
