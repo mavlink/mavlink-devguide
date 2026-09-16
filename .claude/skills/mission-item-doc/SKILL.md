@@ -60,7 +60,7 @@ If the argument isn't a valid `MAV_CMD_*` name, or doesn't exist in any dialect 
 
    Also run `npx cspell en/services/mission_item_detail.md` (scoped, not the full-tree command). New vocabulary the command introduces (a vehicle type, an acronym, a param name) may not be in the dictionary yet — the pre-commit hook runs cspell too and will otherwise block the commit in step 6. Add any missing word to `cspell.json`'s `words` array, alphabetically among entries of the same case convention, rather than working around the check.
 
-6. **Commit the structural addition.** Create a new branch off the current branch, named `<short-name>_mission_item_docs` where `<short-name>` is the command name lowercased with the `MAV_CMD_` prefix stripped (e.g. `MAV_CMD_NAV_TAKEOFF` → `nav_takeoff_mission_item_docs`). Commit with a message in this repo's established style: `Mission item detail: add MAV_CMD_<NAME> section`. Do not push — leave that to the user.
+6. **Commit the structural addition.** Create a new branch off the current branch, named `<short-name>_mission_item_docs` where `<short-name>` is the command name lowercased with the `MAV_CMD_` prefix stripped (e.g. `MAV_CMD_NAV_TAKEOFF` → `nav_takeoff_mission_item_docs`). Commit with the message `add(mission_items): MAV_CMD_<NAME> section from XML`. Do not push — leave that to the user.
 
 7. **Revise the description.** Now rewrite the placeholder from step 3 into real docs prose, applying the Style rules below. In particular:
    - Open with a sentence of the form `[MAV_CMD_<NAME>](../messages/common.md#MAV_CMD_<NAME>) causes a vehicle to <effect>.` — link to the XML definition rather than restating it as freestanding prose.
@@ -74,7 +74,7 @@ If the argument isn't a valid `MAV_CMD_*` name, or doesn't exist in any dialect 
 
 9. **Self-review.** Before finishing, re-read your own diff against the Review checklist below, as if reviewing someone else's PR.
 
-Commit steps 7–9 separately from step 6 (e.g. `Mission item detail: refine MAV_CMD_<NAME> description`), so the mechanical addition and the editorial pass are distinguishable in history.
+Commit steps 7–9 separately from step 6, with the message `add(mission_items): refine MAV_CMD_<NAME>`, so the mechanical addition and the editorial pass are distinguishable in history.
 
 ## Review
 
