@@ -191,7 +191,8 @@ Action items typically have the prefix `MAV_CMD_DO_`. They trigger an immediate 
 
 ### MAV_CMD_DO_SET_ACTUATOR {#MAV_CMD_DO_SET_ACTUATOR}
 
-[MAV_CMD_DO_SET_ACTUATOR](../messages/common.md#MAV_CMD_DO_SET_ACTUATOR) causes a vehicle to set up to six actuators (e.g. servos) to specified values.
+[MAV_CMD_DO_SET_ACTUATOR](../messages/common.md#MAV_CMD_DO_SET_ACTUATOR) sets up to six actuators at a tune(e.g. servos) to specified values.
+More than 6 actuators can be set using the index param (`param7`).
 
 Each actuator value is scaled `-1` to `1`; the sentinel value for a param (`NaN` in `COMMAND_LONG`, the field's max-value in `COMMAND_INT`/`MISSION_ITEM_INT`) leaves that actuator unchanged.
 Which physical output (e.g. a MAIN/AUX PWM channel, or a UAVCAN device) each actuator number drives is flight-stack-specific, set by a parameter outside this command.
@@ -208,17 +209,13 @@ Which physical output (e.g. a MAIN/AUX PWM channel, or a UAVCAN device) each act
 | 6: Actuator 6  | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                   |
 | 7: Index       | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)                                                                                                                   | min:0 increment:1 |
 
-#### Index (addressing more than six actuators) {#do_set_actuator_index}
-
-Param 7 (_Index_) selects an alternate actuator set: `0` addresses Actuator 1-6, `1` addresses what a flight stack labels Actuator 7-12, and so on.
-This lets a vehicle with more than six mapped outputs be fully addressed by sending the command more than once, each with a different _Index_.
-
 #### Autopilot Support
 
 PX4:
 
 - Params 1-4 (Actuator 1-4) supported.
-- Params 5/6 (Actuator 5/6) are not reliably set by a mission item or `COMMAND_INT` on any current release — the `int32` scaling those wire encodings require is not yet implemented (open, unmerged as of this writing: [PX4-Autopilot#28723](https://github.com/PX4/PX4-Autopilot/pull/28723)). `COMMAND_LONG` (a plain float, unaffected by this) works on all current releases.
+- Params 5/6 (Actuator 5/6) can only reliably be set using `COMMAND_LONG` in PX4 v1.18 and earlier.
+  This will be fixed in [PX4-Autopilot#28723](https://github.com/PX4/PX4-Autopilot/pull/28723)).
 - Only _Index_ `0` is implemented; other values have no effect ([`FunctionActuatorSet.hpp`](https://github.com/PX4/PX4-Autopilot/blob/main/src/lib/mixer_module/functions/FunctionActuatorSet.hpp)).
 
 ArduPilot:
