@@ -6655,6 +6655,11 @@ Value | Name | Description
 
 Navigate to waypoint. This is intended for use in missions (for guided commands outside of missions use [MAV_CMD_DO_REPOSITION](#MAV_CMD_DO_REPOSITION)).
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Hold) | Hold time. (ignored by fixed wing, time to stay at waypoint for rotary wing) | min: 0 | s 
@@ -6669,6 +6674,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_LOITER_UNLIM (17) {#MAV_CMD_NAV_LOITER_UNLIM}
 
 Loiter around this waypoint an unlimited amount of time
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -6685,6 +6695,11 @@ Param (Label) | Description | Units
 
 Loiter around this waypoint for X turns
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Turns) | Number of turns. | min: 0 |   
@@ -6699,6 +6714,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_LOITER_TIME (19) {#MAV_CMD_NAV_LOITER_TIME}
 
 Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -6730,6 +6750,11 @@ Param (Label) | Description
 
 Land at location.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Abort Alt) | Minimum target altitude if landing is aborted (0 = undefined/use system default). |   | m 
@@ -6744,6 +6769,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_TAKEOFF (22) {#MAV_CMD_NAV_TAKEOFF}
 
 Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -6760,6 +6790,11 @@ Param (Label) | Description | Values | Units
 
 Land at local position (local frame only)
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Target) | Landing target number (if available) | min: 0 inc: 1 |   
@@ -6774,6 +6809,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_TAKEOFF_LOCAL (24) {#MAV_CMD_NAV_TAKEOFF_LOCAL}
 
 Takeoff from local position (local frame only)
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -6804,6 +6844,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_LOITER_TO_ALT (31) {#MAV_CMD_NAV_LOITER_TO_ALT}
 
 Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -6850,6 +6895,11 @@ Param (Label) | Description | Units
 
 Start orbiting on the circumference of a circle defined by the parameters. Setting values to NaN/INT32_MAX (as appropriate) results in using defaults.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Radius) | Radius of the circle. Positive: orbit clockwise. Negative: orbit counter-clockwise. NaN: Use vehicle default radius, or current radius if already orbiting. |   | m 
@@ -6870,6 +6920,11 @@ The command is intended for fixed wing vehicles (and VTOL hybrids flying in fixe
 This command only defines the flight path. Speed should be set independently (use e.g. [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)).
 Yaw and other degrees of freedom are not specified, and will be flight-stack specific (on vehicles where they can be controlled independent of the heading).
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Major Radius) | Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.<br>NaN: The radius will be set to 2.5 times the minor radius and direction is clockwise.<br>Must be greater or equal to two times the minor radius for feasible values. | m 
@@ -6888,6 +6943,11 @@ Circular arc path waypoint.
 This defines the end/exit point and angle (param1) of an arc path from the previous waypoint. A position is required before this command to define the start of the arc (e.g. current position, a [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT), or a [MAV_CMD_NAV_ARC_WAYPOINT](#MAV_CMD_NAV_ARC_WAYPOINT)).
 The resulting path is a circular arc in the NE frame, with the difference in height being defined by the difference in waypoint altitudes.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Arc Angle) | The angle in degrees from the starting position to the exit position of the arc in the NE frame. Positive values are CW arcs and negative values are CCW arcs. | min: -359 max: 359 inc: 1 | deg 
@@ -6901,6 +6961,11 @@ Param (Label) | Description | Values | Units
 <span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values
 --- | --- | ---
@@ -6917,6 +6982,11 @@ Param (Label) | Description | Values
 
 Control autonomous path planning on the MAV.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Local Ctrl) | 0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning | min: 0 max: 2 inc: 1 |   
@@ -6931,6 +7001,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_SPLINE_WAYPOINT (82) {#MAV_CMD_NAV_SPLINE_WAYPOINT}
 
 Navigate to waypoint using a spline path.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -6947,6 +7022,11 @@ Param (Label) | Description | Values | Units
 
 Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight (multicopters, boats,etc.).
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 | Empty |   |   
@@ -6961,6 +7041,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_VTOL_LAND (85) {#MAV_CMD_NAV_VTOL_LAND}
 
 Land using VTOL mode
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -7006,6 +7091,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_PAYLOAD_PLACE (94) {#MAV_CMD_NAV_PAYLOAD_PLACE}
 
 Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -7160,6 +7250,11 @@ The home position is the default position that the system will return to and lan
 The position is set automatically by the system during the takeoff (and may also be set using this command).
 Note: the current home position may be emitted in a [HOME_POSITION](#HOME_POSITION) message on request (using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242).
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Use Current) | Use current location (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE uses the specified location. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
@@ -7313,6 +7408,11 @@ The Latitude/Longitude/Altitude are optional, and may be set to 0 if not needed.
 If specified, the item defines the waypoint at which the return segment starts.
 If sent using as a command, the vehicle will perform a mission landing (using the land segment if defined) or reject the command if mission landings are not supported, or no mission landing is defined. When used as a command any position information in the command is ignored.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 | Empty |   
@@ -7336,6 +7436,11 @@ If the marker item position has zero-values for latitude, longitude, and altitud
 
 When sent as a command it triggers a landing using a mission landing pattern.
 The location parameters are not used in this case, and should be set to 0.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -7382,6 +7487,11 @@ Param (Label) | Description | Units
 
 Reposition the vehicle to a specific WGS84 global position. This command is intended for guided commands (for missions use [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT) instead).
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Speed) | Ground speed, less than 0 (-1) for default | min: -1 | m/s 
@@ -7426,6 +7536,11 @@ Param (Label) | Description | Values
 ### MAV_CMD_DO_SET_ROI_LOCATION (195) {#MAV_CMD_DO_SET_ROI_LOCATION}
 
 Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -7498,6 +7613,11 @@ Param (Label) | Description | Values | Units
 <span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values
 --- | --- | ---
@@ -7895,6 +8015,11 @@ Param (Label) | Description | Values
 ### MAV_CMD_OVERRIDE_GOTO (252) {#MAV_CMD_OVERRIDE_GOTO}
 
 Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused ([MAV_GOTO_DO_HOLD](#MAV_GOTO_DO_HOLD)), param 2 defines whether it holds in place or moves to another position.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -8305,6 +8430,11 @@ This enables transform between the local coordinate frame and the global (GNSS) 
 This command supersedes [SET_GPS_GLOBAL_ORIGIN](#SET_GPS_GLOBAL_ORIGIN).
 Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL), and this should be assumed when sent in [COMMAND_LONG](#COMMAND_LONG)).
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 5 (Latitude) | Latitude |   
@@ -8634,6 +8764,11 @@ Param (Label) | Description
 
 This command sets submode circle when vehicle is in guided mode. Vehicle flies along a circle facing the center of the circle. The user can input the velocity along the circle and change the radius. If no input is given the vehicle will hold position.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Radius) | Radius of desired circle in CIRCLE_MODE | m 
@@ -8647,6 +8782,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_CONDITION_GATE (4501) {#MAV_CMD_CONDITION_GATE}
 
 Delay mission state machine until gate has been reached.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -8662,6 +8802,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_NAV_FENCE_RETURN_POINT (5000) {#MAV_CMD_NAV_FENCE_RETURN_POINT}
 
 Fence return point (there can only be one such point in a geofence definition). If rally points are supported they should be used instead.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -8680,6 +8825,11 @@ Fence vertex for an inclusion polygon (the polygon must not be self-intersecting
 
 The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 
@@ -8697,6 +8847,11 @@ Fence vertex for an exclusion polygon (the polygon must not be self-intersecting
 
 The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 
@@ -8711,6 +8866,11 @@ Param (Label) | Description | Values
 ### MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION (5003) {#MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION}
 
 Circular fence area. The vehicle must stay inside this area.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
@@ -8727,6 +8887,11 @@ Param (Label) | Description | Values | Units
 
 Circular fence area. The vehicle must stay outside this area.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Radius) | Radius. | m 
@@ -8741,6 +8906,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_NAV_RALLY_POINT (5100) {#MAV_CMD_NAV_RALLY_POINT}
 
 Rally point. You can have multiple rally points defined.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -8806,6 +8976,11 @@ Param (Label) | Description
 
 Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Operation Mode) | Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list. | min: 0 max: 2 inc: 1 |   
@@ -8838,6 +9013,11 @@ Param (Label) | Description | Values
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 | User defined |   
@@ -8852,6 +9032,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_WAYPOINT_USER_2 (31001) {#MAV_CMD_WAYPOINT_USER_2}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -8868,6 +9053,11 @@ Param (Label) | Description | Units
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 | User defined |   
@@ -8882,6 +9072,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_WAYPOINT_USER_4 (31003) {#MAV_CMD_WAYPOINT_USER_4}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -8898,6 +9093,11 @@ Param (Label) | Description | Units
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 | User defined |   
@@ -8912,6 +9112,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_SPATIAL_USER_1 (31005) {#MAV_CMD_SPATIAL_USER_1}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -8928,6 +9133,11 @@ Param (Label) | Description | Units
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 | User defined |   
@@ -8942,6 +9152,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_SPATIAL_USER_3 (31007) {#MAV_CMD_SPATIAL_USER_3}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -8958,6 +9173,11 @@ Param (Label) | Description | Units
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
+
 Param (Label) | Description | Units
 --- | --- | ---
 1 | User defined |   
@@ -8972,6 +9192,11 @@ Param (Label) | Description | Units
 ### MAV_CMD_SPATIAL_USER_5 (31009) {#MAV_CMD_SPATIAL_USER_5}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -9139,6 +9364,11 @@ Param (Label) | Description | Values | Units
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
 
 Provide an external position estimate for use when dead-reckoning. This is meant to be used for occasional position resets that may be provided by a external system such as a remote pilot using landmarks over a video link.
+
+::: tip
+Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
+:::
+
 
 Param (Label) | Description | Units
 --- | --- | ---
