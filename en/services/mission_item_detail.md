@@ -185,6 +185,30 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 | 6: Longitude   | Longitude                                                                                                              |       |
 | 7: Altitude    | Altitude                                                                                                               | m     |
 
+## `DO_` Items
+
+Action items typically have the prefix `MAV_CMD_DO_`. They trigger an immediate action (e.g. changing speed, activating a servo) rather than defining a position on the path.
+
+### MAV_CMD_DO_SET_ACTUATOR {#MAV_CMD_DO_SET_ACTUATOR}
+
+Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped to specific outputs (e.g. on any MAIN or AUX PWM or UAVCAN) using a flight-stack specific mechanism (i.e. a parameter).
+
+#### Params
+
+| Param (:Label) | Description                                                                                                                                                                              | Units             |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| 1: Actuator 1  | Actuator 1 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 2: Actuator 2  | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 3: Actuator 3  | Actuator 3 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 4: Actuator 4  | Actuator 4 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 5: Actuator 5  | Actuator 5 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                   |
+| 6: Actuator 6  | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                   |
+| 7: Index       | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)                                                                                                                   | min:0 increment:1 |
+
+#### Autopilot Support
+
+- Untested
+
 ## `CONDITION_` Items
 
 ### MAV_CMD_CONDITION_GATE {#condition_gate}
