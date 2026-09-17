@@ -2981,9 +2981,7 @@ pitch_rate | `float` | invalid:NaN | Pitch angular rate unitless (-1..1, positiv
 yaw_rate | `float` | invalid:NaN | Yaw angular rate unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored). 
 
 
-### ESC_INFO (290) — [WIP] {#ESC_INFO}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### ESC_INFO (290) {#ESC_INFO}
 
 ESC information for lower rate streaming. Recommended streaming rate 1Hz. See [ESC_STATUS](#ESC_STATUS) for higher-rate ESC data.
 
@@ -3000,9 +2998,7 @@ error_count | `uint32_t[4]` | | | Number of reported errors by each ESC since bo
 temperature | `int16_t[4]` | cdegC | invalid:[INT16_MAX] | Temperature of each ESC. INT16_MAX: if data not supplied by ESC. 
 
 
-### ESC_STATUS (291) — [WIP] {#ESC_STATUS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### ESC_STATUS (291) {#ESC_STATUS}
 
 ESC information for higher rate streaming. Recommended streaming rate is ~10 Hz. Information that changes more slowly is sent in [ESC_INFO](#ESC_INFO). It should typically only be streamed on high-bandwidth links (i.e. to a companion computer).
 
