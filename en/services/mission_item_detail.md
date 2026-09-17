@@ -197,7 +197,7 @@ More than 6 actuators can be set using the index param (`param7`).
 Each actuator value is scaled `-1` to `1`; the sentinel value for a param (`NaN` in `COMMAND_LONG`, the field's max-value in `COMMAND_INT`/`MISSION_ITEM_INT`) leaves that actuator unchanged.
 Which physical output (e.g. a MAIN/AUX PWM channel, or a UAVCAN device) each actuator number drives is flight-stack-specific (typically mapped by flight-stack parameters).
 
-Noet that changes to the outputs can be observed via [ACTUATOR_OUTPUT_STATUS](../messages/common.md#ACTUATOR_OUTPUT_STATUS).
+Note that changes to the outputs can be observed via [ACTUATOR_OUTPUT_STATUS](../messages/common.md#ACTUATOR_OUTPUT_STATUS).
 
 #### Params
 
