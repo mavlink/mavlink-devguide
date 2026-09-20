@@ -7149,7 +7149,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 ### MAV_CMD_DO_RALLY_LAND (190) {#MAV_CMD_DO_RALLY_LAND}
 
-Mission command to perform a landing from a rally point.
+Command to perform a landing from a rally point.
 
 | Param (Label) | 描述             | Units |
 | -------------------------------- | -------------- | ----- |
@@ -7163,7 +7163,7 @@ Mission command to perform a landing from a rally point.
 
 ### MAV_CMD_DO_GO_AROUND (191) {#MAV_CMD_DO_GO_AROUND}
 
-Mission command to safely abort an autonomous landing.
+Command to safely abort an autonomous landing.
 
 | Param (Label) | 描述       | Units |
 | -------------------------------- | -------- | ----- |
