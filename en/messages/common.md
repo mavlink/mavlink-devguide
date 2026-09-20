@@ -7451,7 +7451,7 @@ Param (Label) | Description | Units
 
 ### MAV_CMD_DO_RALLY_LAND (190) {#MAV_CMD_DO_RALLY_LAND}
 
-Mission command to perform a landing from a rally point.
+Command to perform a landing from a rally point.
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -7466,7 +7466,7 @@ Param (Label) | Description | Units
 
 ### MAV_CMD_DO_GO_AROUND (191) {#MAV_CMD_DO_GO_AROUND}
 
-Mission command to safely abort an autonomous landing.
+Command to safely abort an autonomous landing.
 
 Param (Label) | Description | Units
 --- | --- | ---
