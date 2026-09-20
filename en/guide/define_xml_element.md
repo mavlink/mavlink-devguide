@@ -134,7 +134,7 @@ To create a new dialect file:
      If it is not present in the file, then a `version` from an included file is used.
      :::
 
-1. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
+1. Update the `<dialect>8</dialect>` line to replace `8` with the next number after the largest used dialect number (i.e. *largest + 1*, based on the other files in the folder).
 1. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
 1. Add enums or messages as described in the following sections.
 1. Save the file, and create a PR to push it back to the **mavlink/mavlink** project repo.
@@ -210,14 +210,20 @@ It also means that messages can move from a dialect to common.xml without any co
 
 When creating a new message you should select the next unused id for your dialect (after the last one defined in your target dialect file).
 
-Allocated ranges are listed below (a more complete list is provided in the comments in [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml)):
+Allocated ranges are listed below (the most up to date list is provided in the comments in [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml)):
 
 | Dialect           | Range         |
 | ----------------- | ------------- |
-| Common.xml        | 300 - 10000   |
+| common.xml        | 300 - 10000   |
 | uAvionix.xml      | 10001-10999   |
-| ArduPilotMega.xml | 11000 - 11999 |
+| ardupilotmega.xml | 11000 - 11999 |
 | icarous.xml       | 42000 - 42999 |
+| cubepilot.xml     | 50000 - 50099 |
+| [ras_a.xml](https://github.com/Dronecode/air-iop-definitions/blob/master/message_definitions/v1.0/ras_a.xml) | 51000 - 51999 |
+| csAirLink.xml     | 52000 - 52099 |
+| marsh.xml         | 52500 - 52599 |
+| storm32.xml       | 60000 - 60049 |
+| AVSSUAS.xml       | 60050 - 60099 |
 
 ::: tip
 If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
