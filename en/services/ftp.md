@@ -71,7 +71,7 @@ Below is the over-the-wire format for the payload part of the [FILE_TRANSFER_PRO
 
 The opcodes that may be sent by the GCS (client) to the drone (server) are enumerated in [MAV_FTP_ERR](#MAV_FTP_ERR), and listed below for convenience.
 
-<!--  uint8_t enum Opcode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
+<!--  uint8_t enum Opcode: https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_ftp.h -->
 
 | Opcode                                | Name                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -122,7 +122,7 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 These are **errors**. Normally if the GCS receives an error it should not attempt to continue the FTP operation, but instead return to an idle state.
 :::
 
-<!--  uint8_t enum ErrorCode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
+<!--  uint8_t enum ErrorCode: https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_ftp.h -->
 
 | Error                             | Name                | Description                                                                                                                                    |
 | --------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -578,8 +578,8 @@ Those implementations can be used in your own code within the terms of their sof
 
 PX4 Implementation:
 
-- [src/modules/mavlink/mavlink_ftp.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.cpp)
-- [src/modules/mavlink/mavlink_ftp.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h)
+- [src/modules/mavlink/mavlink_ftp.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_ftp.cpp)
+- [src/modules/mavlink/mavlink_ftp.h](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_ftp.h)
 
 _QGroundControl_ implementation:
 
