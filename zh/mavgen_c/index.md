@@ -354,6 +354,6 @@ The following examples show the use of the API.
 
 In addition, the C library is used in numerous open source systems:
 
-- [PX4](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_receiver.cpp)
+- [PX4](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_receiver.cpp)
 - [ArduPilot](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Common.cpp)
 - [MAVSDK](https://github.com/mavlink/MAVSDK/blob/develop/src/core/mavlink_receiver.cpp#L28-L51)
