@@ -284,13 +284,13 @@ PX4 provides an addition off-spec mechanism that allows a GCS to _cache_ paramet
 This significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync.
 The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a _hash_ of the parameter set.
 
-This hash is calculated by computing the [MAVLink CRC32](../guide/crc.md) over all param names and values (see the `param_hash_check()` in source [here](https://github.com/PX4/Firmware/blob/v1.9.0-alpha/src/lib/parameters/parameters.cpp#L1329)).
+This hash is calculated by computing the [MAVLink CRC32](../guide/crc.md) over all param names and values (see the `param_hash_check()` in source [here](https://github.com/PX4/PX4-Autopilot/blob/v1.9.0-alpha/src/lib/parameters/parameters.cpp#L1329)).
 If the GCS has a matching hash value it can immediately start using its cached parameters (rather than having to wait while all the rest of the parameters upload).
 
 Source files:
 
-- [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.cpp)
-- [src/modules/mavlink/mavlink_parameters.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.h)
+- [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_parameters.cpp)
+- [src/modules/mavlink/mavlink_parameters.h](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/mavlink/mavlink_parameters.h)
 
 ### ArduPilot
 
