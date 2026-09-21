@@ -9,7 +9,7 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: reviewdog/action-markdownlint@v0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -19,8 +19,8 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: "20"
       - run: npm ci
@@ -29,8 +29,8 @@ jobs:
   spellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: streetsidesoftware/cspell-action@v6
+      - uses: actions/checkout@v7
+      - uses: streetsidesoftware/cspell-action@v9
         with:
           files: "en/**/*.md"
           config: cspell.json
