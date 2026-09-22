@@ -49,6 +49,7 @@ span.warning {
 - [standard.xml](../messages/standard.md)
 - [test.xml](../messages/test.md)
 - [uAvionix.xml](../messages/uAvionix.md)
+- [loweheiser.xml](../messages/loweheiser.md)
 - [storm32.xml](../messages/storm32.md)
 - [AVSSUAS.xml](../messages/AVSSUAS.md)
 - [cubepilot.xml](../messages/cubepilot.md)
