@@ -37,8 +37,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 18      | 234      |
-| [Enums](#enumerated-types) | 17      | 159      |
+| [Messages](#messages)      | 17      | 235      |
+| [Enums](#enumerated-types) | 16      | 160      |
 | [Commands](#mav_commands)  | 10      | 170      |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -147,33 +147,6 @@ Emitted during mission execution when control reaches [MAV_CMD_GROUP_END](#MAV_C
 | group_id         | `uint32_t` |       | Mission-unique group id (from [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END)).                                                                                                                       |
 | mission_checksum | `uint32_t` |       | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message.                              |
 | time_usec        | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
-
-### RADIO_RC_CHANNELS (420) — [WIP] {#RADIO_RC_CHANNELS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-RC channel outputs from a MAVLink RC receiver for input to a flight controller or other components (allows an RC receiver to connect via MAVLink instead of some other protocol such as PPM-Sum or S.BUS).
-
-Note that this is not intended to be an over-the-air format, and does not replace [RC_CHANNELS](#RC_CHANNELS) and similar messages reported by the flight controller.
-The target_system field should normally be set to the system id of the system to control, typically the flight controller.
-The target_component field can normally be set to 0, so that all components of the system can receive the message.
-The channels array field can publish up to 32 channels; the number of channel items used in the array is specified in the count field.
-The time_last_update_ms field contains the timestamp of the last received valid channels data in the receiver's time domain.
-The count field indicates the first index of the channel array that is not used for channel data (this and later indexes are zero-filled).
-The [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) flag is set by the receiver if the channels data is not up-to-date (for example, if new data from the transmitter could not be validated so the last valid data is resent).
-The [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) failsafe flag is set by the receiver if the receiver's failsafe condition is met (implementation dependent, e.g., connection to the RC radio is lost).
-In this case time_last_update_ms still contains the timestamp of the last valid channels data, but the content of the channels data is not defined by the protocol (it is up to the implementation of the receiver).
-For instance, the channels data could contain failsafe values configured in the receiver; the default is to carry the last valid data.
-Note: The RC channels fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.
-
-| Field Name                                                                         | Type          | Units | 值                                                                                                                  | 描述                                                                                                                                                                                                                                                                                                                                            |
-| ---------------------------------------------------------------------------------- | ------------- | ----- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| target_system                                                 | `uint8_t`     |       |                                                                                                                    | System ID (ID of target system, normally flight controller).                                                                                                                                                                                                                                               |
-| target_component                                              | `uint8_t`     |       |                                                                                                                    | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                                                                   |
-| time_last_update_ms | `uint32_t`    | ms    |                                                                                                                    | Time when the data in the channels field were last updated (time since boot in the receiver's time domain).                                                                                                                                                                                                |
-| flags                                                                              | `uint16_t`    |       | [RADIO_RC_CHANNELS_FLAGS](#RADIO_RC_CHANNELS_FLAGS) | Radio RC channels status flags.                                                                                                                                                                                                                                                                                               |
-| count                                                                              | `uint8_t`     |       |                                                                                                                    | Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message.                                                                                                                                                            |
-| <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a>           | `int16_t[32]` |       | min:-4096 max:4096                                                                 | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x \* 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. |
 
 ### RC_CHANNELS_OVERRIDE_V2 (421) — [WIP] {#RC_CHANNELS_OVERRIDE_V2}
 
@@ -455,17 +428,6 @@ The frame of a target observation from an onboard sensor.
 | <a id='TARGET_OBS_FRAME_BODY_FRD'></a>1         | [TARGET_OBS_FRAME_BODY_FRD](#TARGET_OBS_FRAME_BODY_FRD)                                      | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle. |
 | <a id='TARGET_OBS_FRAME_LOCAL_OFFSET_NED'></a>2 | [TARGET_OBS_FRAME_LOCAL_OFFSET_NED](#TARGET_OBS_FRAME_LOCAL_OFFSET_NED) | NED local tangent frame (x: North, y: East, z: Down) with an origin that travels with vehicle.                              |
 | <a id='TARGET_OBS_FRAME_OTHER'></a>3            | [TARGET_OBS_FRAME_OTHER](#TARGET_OBS_FRAME_OTHER)                                                                 | Other sensor frame for target observations neither in local NED nor in body FRD.                                                                                                               |
-
-### RADIO_RC_CHANNELS_FLAGS — [WIP] {#RADIO_RC_CHANNELS_FLAGS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-(Bitmask) [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) flags (bitmask).
-
-| 值                                              | Name                                                                                                                                                      | 描述                                                                                                                                                                                                                    |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent. |
-| <a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received.     |
 
 ### GPS_SYSTEM_ERROR_FLAGS — [WIP] {#GPS_SYSTEM_ERROR_FLAGS}
 
