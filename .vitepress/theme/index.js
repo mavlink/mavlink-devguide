@@ -20,6 +20,9 @@ if (inBrowser) {
 // Support redirect plugin
 import Redirect from "./components/Redirect.vue";
 
+// Filter for MAV_CMD sections in generated messages docs
+import MavCmdFilter from "./components/MavCmdFilter.vue";
+
 // Tabs: https://github.com/Red-Asuka/vitepress-plugin-tabs
 import { Tab, Tabs } from "vue3-tabs-component";
 import "@red-asuka/vitepress-plugin-tabs/dist/style.css";
@@ -34,6 +37,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     app.component("Redirect", Redirect); //Redirect plugin
+    app.component("MavCmdFilter", MavCmdFilter);
     //Tabs: https://github.com/Red-Asuka/vitepress-plugin-tabs
     app.component("Tab", Tab);
     app.component("Tabs", Tabs);

@@ -77,6 +77,10 @@ efi_status | `uint16_t` | | EFI status.
 
 ## Commands (MAV_CMD) {#mav_commands}
 
+<MavCmdFilter />
+
+<div class="mav-cmd">
+
 ### MAV_CMD_LOWEHEISER_SET_STATE (10151) {#MAV_CMD_LOWEHEISER_SET_STATE}
 
 Set Loweheiser desired states
@@ -89,6 +93,7 @@ Param (Label) | Description
 4 | Manual throttle level, 0% - 100% 
 5 | Electronic Start up (0:Off, 1:On) 
 6 | Empty 
-7 | Empty 
+7 | Empty
 
+</div>
 

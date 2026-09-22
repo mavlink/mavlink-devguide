@@ -685,7 +685,11 @@ Value | Name | Description
 
 ## Commands (MAV_CMD) {#mav_commands}
 
-### MAV_CMD_ACTUATOR_GROUP_TEST (309) — [WIP] {#MAV_CMD_ACTUATOR_GROUP_TEST}
+<MavCmdFilter />
+
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_ACTUATOR_GROUP_TEST (309) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ACTUATOR_GROUP_TEST}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -698,10 +702,13 @@ Different groups may also affect the same actuators (as in the case of controls 
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Group) | Actuator group to check, such as actuators related to roll torque. | [ACTUATOR_TEST_GROUP](#ACTUATOR_TEST_GROUP) 
-2 (Value) | Value to set. This is a normalized value across the full range of the tested group [-1,1]. | min: -1 max: 1 
+2 (Value) | Value to set. This is a normalized value across the full range of the tested group [-1,1]. | min: -1 max: 1
 
+</div>
 
-### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] {#MAV_CMD_DO_SET_SYS_CMP_ID}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_SYS_CMP_ID}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -713,10 +720,13 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (System ID) | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 max: 255 inc: 1 
 2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change). | min: 0 max: 255 inc: 1 
-3 (Reboot) | Reboot components after ID change. Any non-zero value triggers the reboot. |   
+3 (Reboot) | Reboot components after ID change. Any non-zero value triggers the reboot. |
 
+</div>
 
-### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -730,10 +740,13 @@ Param (Label) | Description | Values | Units
 2 (Pitch) | Pitch angle. Set to NaN if unknown. | min: 0 max: 360 | deg 
 3 (Yaw) | Yaw/heading (relative to true north) angle. Set to NaN if unknown. | min: 0 max: 360 | deg 
 4 (Tilt accuracy) | Estimated 1 sigma accuracy of roll and pitch angles. Set to NaN if unknown. |   | deg 
-7 (Yaw accuracy) | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown. |   | deg 
+7 (Yaw accuracy) | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown. |   | deg
 
+</div>
 
-### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_START_MTI}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -743,10 +756,13 @@ Support for feature can be checked with [CAMERA_CAP_FLAGS_HAS_MTI](#CAMERA_CAP_F
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1
 
+</div>
 
-### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] {#MAV_CMD_CAMERA_STOP_MTI}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_STOP_MTI}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -754,10 +770,13 @@ Disable Moving Target Indicators (MTI) on streamed video.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1
 
+</div>
 
-### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
+<div class="mav-cmd" data-fence>
+
+### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -766,10 +785,13 @@ Circular fence area centered on home. The vehicle must stay inside this area. If
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Radius) | Radius. |   | m 
-2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |   
+2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |
 
+</div>
 
-### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ODID_SET_EMERGENCY}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -781,10 +803,13 @@ See https://mavlink.io/en/services/opendroneid.html for more information.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Number) | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 
+1 (Number) | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1
 
+</div>
 
-### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -834,10 +859,13 @@ Param (Label) | Description | Values | Units
 1 (Action) | 0: Release control, 1: Request control. |   |   
 2 (Allow takeover) | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. |   |   
 3 (Request timeout) | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control. | min: 3 max: 60 | s 
-4 (GCS Sysid) | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range). |   |   
+4 (GCS Sysid) | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range). |   |
 
+</div>
 
-### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -850,10 +878,13 @@ Param (Label) | Description | Values | Units
 1 (Wind speed) | Horizontal wind speed. | min: 0 | m/s 
 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown. |   | m/s 
 3 (Direction) | Azimuth (relative to true north) from where the wind is blowing. | min: 0 max: 360 | deg 
-4 (Direction accuracy) | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |   | deg 
+4 (Direction accuracy) | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |   | deg
 
+</div>
 
-### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
+<div class="mav-cmd" data-command>
+
+### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -866,6 +897,7 @@ Param (Label) | Description | Values
 1 (Source) | Sensor fusion source type. | [ESTIMATOR_SENSOR_FUSION_SOURCE](#ESTIMATOR_SENSOR_FUSION_SOURCE) 
 2 (Instance) | Sensor instance (0-based, for multi-instance). | min: 0 inc: 1 
 3 (Enable) | Enable (1) or Disable (0) the source. | [MAV_BOOL](#MAV_BOOL) 
-4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1 
+4 (Estimator Instance) | Estimator instance (0-based, for systems with multiple estimators). | min: 0 inc: 1
 
+</div>
 

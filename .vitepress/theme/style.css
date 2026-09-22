@@ -215,3 +215,41 @@ html {
   }
 }
 */
+/* MAV_CMD usage filter (see components/MavCmdFilter.vue) */
+.mav-cmd-filter {
+  position: sticky;
+  top: var(--vp-nav-height);
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+}
+.mav-cmd-filter button {
+  padding: 2px 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
+  font-size: 13px;
+}
+.mav-cmd-filter button.active {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+.mav-cmd-filter-count {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+html[data-mav-cmd-filter="mission"] .mav-cmd:not([data-mission]),
+html[data-mav-cmd-filter="command"] .mav-cmd:not([data-command]),
+html[data-mav-cmd-filter="fence"] .mav-cmd:not([data-fence]),
+html[data-mav-cmd-filter="rally"] .mav-cmd:not([data-rally]) {
+  display: none;
+}

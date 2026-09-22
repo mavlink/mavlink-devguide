@@ -144,6 +144,10 @@ Value | Name | Description
 
 ## Commands (MAV_CMD) {#mav_commands}
 
+<MavCmdFilter />
+
+<div class="mav-cmd">
+
 ### MAV_CMD_PRS_SET_ARM (60050) {#MAV_CMD_PRS_SET_ARM}
 
 AVSS defined command. Set PRS arm statuses.
@@ -156,8 +160,11 @@ Param (Label) | Description
 4 | User defined 
 5 | User defined 
 6 | User defined 
-7 | User defined 
+7 | User defined
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PRS_GET_ARM (60051) {#MAV_CMD_PRS_GET_ARM}
 
@@ -171,8 +178,11 @@ Param (Label) | Description
 4 | User defined 
 5 | User defined 
 6 | User defined 
-7 | User defined 
+7 | User defined
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PRS_GET_BATTERY (60052) {#MAV_CMD_PRS_GET_BATTERY}
 
@@ -186,8 +196,11 @@ Param (Label) | Description
 4 | User defined 
 5 | User defined 
 6 | User defined 
-7 | User defined 
+7 | User defined
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PRS_GET_ERR (60053) {#MAV_CMD_PRS_GET_ERR}
 
@@ -201,8 +214,11 @@ Param (Label) | Description
 4 | User defined 
 5 | User defined 
 6 | User defined 
-7 | User defined 
+7 | User defined
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PRS_SET_ARM_ALTI (60070) {#MAV_CMD_PRS_SET_ARM_ALTI}
 
@@ -216,8 +232,11 @@ Param (Label) | Description | Units
 4 | User defined |   
 5 | User defined |   
 6 | User defined |   
-7 | User defined |   
+7 | User defined |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PRS_GET_ARM_ALTI (60071) {#MAV_CMD_PRS_GET_ARM_ALTI}
 
@@ -231,8 +250,11 @@ Param (Label) | Description
 4 | User defined 
 5 | User defined 
 6 | User defined 
-7 | User defined 
+7 | User defined
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PRS_SHUTDOWN (60072) {#MAV_CMD_PRS_SHUTDOWN}
 
@@ -246,6 +268,7 @@ Param (Label) | Description
 4 | User defined 
 5 | User defined 
 6 | User defined 
-7 | User defined 
+7 | User defined
 
+</div>
 

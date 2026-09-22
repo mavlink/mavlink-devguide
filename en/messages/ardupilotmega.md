@@ -1683,6 +1683,10 @@ Value | Name | Description
 
 ## Commands (MAV_CMD) {#mav_commands}
 
+<MavCmdFilter />
+
+<div class="mav-cmd">
+
 ### MAV_CMD_NAV_ALTITUDE_WAIT (83) {#MAV_CMD_NAV_ALTITUDE_WAIT}
 
 Mission command to wait for an altitude or downwards vertical speed. This is meant for high altitude balloon launches, allowing the aircraft to be idle until either an altitude is reached or a negative vertical speed is reached (indicating early balloon burst). The wiggle time is how often to wiggle the control surfaces to prevent them seizing up.
@@ -1695,8 +1699,11 @@ Param (Label) | Description | Units
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_SET_RESUME_REPEAT_DIST (215) {#MAV_CMD_DO_SET_RESUME_REPEAT_DIST}
 
@@ -1710,8 +1717,11 @@ Param (Label) | Description | Units
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_SPRAYER (216) {#MAV_CMD_DO_SPRAYER}
 
@@ -1725,8 +1735,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_SEND_SCRIPT_MESSAGE (217) {#MAV_CMD_DO_SEND_SCRIPT_MESSAGE}
 
@@ -1740,8 +1753,11 @@ Param (Label) | Description | Values
 4 (param 3) | float value to be passed to scripting |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_AUX_FUNCTION (218) {#MAV_CMD_DO_AUX_FUNCTION}
 
@@ -1755,8 +1771,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_POWER_OFF_INITIATED (42000) {#MAV_CMD_POWER_OFF_INITIATED}
 
@@ -1770,8 +1789,11 @@ Param (Label) | Description
 4 | Empty. 
 5 | Empty. 
 6 | Empty. 
-7 | Empty. 
+7 | Empty.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SOLO_BTN_FLY_CLICK (42001) {#MAV_CMD_SOLO_BTN_FLY_CLICK}
 
@@ -1785,8 +1807,11 @@ Param (Label) | Description
 4 | Empty. 
 5 | Empty. 
 6 | Empty. 
-7 | Empty. 
+7 | Empty.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SOLO_BTN_FLY_HOLD (42002) {#MAV_CMD_SOLO_BTN_FLY_HOLD}
 
@@ -1800,8 +1825,11 @@ Param (Label) | Description | Units
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SOLO_BTN_PAUSE_CLICK (42003) {#MAV_CMD_SOLO_BTN_PAUSE_CLICK}
 
@@ -1815,8 +1843,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_FIXED_MAG_CAL (42004) {#MAV_CMD_FIXED_MAG_CAL}
 
@@ -1832,8 +1863,11 @@ Param (Label) | Description | Units
 4 (Yaw) | Yaw. | deg 
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_FIXED_MAG_CAL_FIELD (42005) {#MAV_CMD_FIXED_MAG_CAL_FIELD}
 
@@ -1847,8 +1881,11 @@ Param (Label) | Description | Units
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SET_EKF_SOURCE_SET (42007) {#MAV_CMD_SET_EKF_SOURCE_SET}
 
@@ -1862,8 +1899,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_START_MAG_CAL (42424) {#MAV_CMD_DO_START_MAG_CAL}
 
@@ -1877,8 +1917,11 @@ Param (Label) | Description | Values | Units
 4 (Delay) | Delay. |   | s 
 5 (Autoreboot) | Autoreboot (0=user reboot, 1=autoreboot). | min: 0 max: 1 inc: 1 |   
 6 | Empty. |   |   
-7 | Empty. |   |   
+7 | Empty. |   |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_ACCEPT_MAG_CAL (42425) {#MAV_CMD_DO_ACCEPT_MAG_CAL}
 
@@ -1892,8 +1935,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_CANCEL_MAG_CAL (42426) {#MAV_CMD_DO_CANCEL_MAG_CAL}
 
@@ -1907,8 +1953,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SET_FACTORY_TEST_MODE (42427) {#MAV_CMD_SET_FACTORY_TEST_MODE}
 
@@ -1922,8 +1971,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DO_SEND_BANNER (42428) {#MAV_CMD_DO_SEND_BANNER}
 
@@ -1937,8 +1989,11 @@ Param (Label) | Description
 4 | Empty. 
 5 | Empty. 
 6 | Empty. 
-7 | Empty. 
+7 | Empty.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_ACCELCAL_VEHICLE_POS (42429) {#MAV_CMD_ACCELCAL_VEHICLE_POS}
 
@@ -1952,8 +2007,11 @@ Param (Label) | Description | Values
 4 | Empty. |   
 5 | Empty. |   
 6 | Empty. |   
-7 | Empty. |   
+7 | Empty. |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_GIMBAL_RESET (42501) {#MAV_CMD_GIMBAL_RESET}
 
@@ -1967,8 +2025,11 @@ Param (Label) | Description
 4 | Empty. 
 5 | Empty. 
 6 | Empty. 
-7 | Empty. 
+7 | Empty.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS (42502) {#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS}
 
@@ -1982,8 +2043,11 @@ Param (Label) | Description | Values | Units
 4 | Empty. |   |   
 5 | Empty. |   |   
 6 | Empty. |   |   
-7 | Empty. |   |   
+7 | Empty. |   |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION (42503) {#MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION}
 
@@ -1997,8 +2061,11 @@ Param (Label) | Description
 4 | Empty. 
 5 | Empty. 
 6 | Empty. 
-7 | Empty. 
+7 | Empty.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_GIMBAL_FULL_RESET (42505) {#MAV_CMD_GIMBAL_FULL_RESET}
 
@@ -2012,8 +2079,11 @@ Param (Label) | Description
 4 | Magic number. 
 5 | Magic number. 
 6 | Magic number. 
-7 | Magic number. 
+7 | Magic number.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_FLASH_BOOTLOADER (42650) {#MAV_CMD_FLASH_BOOTLOADER}
 
@@ -2027,8 +2097,11 @@ Param (Label) | Description | Values
 4 | Empty |   
 5 (Magic Number) | Magic number - set to 290876 to actually flash | inc: 1 
 6 | Empty |   
-7 | Empty |   
+7 | Empty |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_BATTERY_RESET (42651) {#MAV_CMD_BATTERY_RESET}
 
@@ -2037,8 +2110,11 @@ Reset battery capacity for batteries that accumulate consumed battery via integr
 Param (Label) | Description | Values
 --- | --- | ---
 1 (battery mask) | Bitmask of batteries to reset. Least significant bit is for the first battery. |   
-2 (percentage) | Battery percentage remaining to set. | min: 0 max: 100 inc: 1 
+2 (percentage) | Battery percentage remaining to set. | min: 0 max: 100 inc: 1
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_DEBUG_TRAP (42700) {#MAV_CMD_DEBUG_TRAP}
 
@@ -2052,8 +2128,11 @@ Param (Label) | Description
 4 | Empty. 
 5 | Empty. 
 6 | Empty. 
-7 | Empty. 
+7 | Empty.
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SCRIPTING (42701) {#MAV_CMD_SCRIPTING}
 
@@ -2061,8 +2140,11 @@ Control onboard scripting.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 | Scripting command to execute | [SCRIPTING_CMD](#SCRIPTING_CMD) 
+1 | Scripting command to execute | [SCRIPTING_CMD](#SCRIPTING_CMD)
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_NAV_SCRIPT_TIME (42702) {#MAV_CMD_NAV_SCRIPT_TIME}
 
@@ -2076,8 +2158,11 @@ Param (Label) | Description | Units
 4 (arg2) | argument2. |   
 5 (arg3) | argument3. |   
 6 (arg4) | argument4. |   
-7 | Empty |   
+7 | Empty |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_NAV_ATTITUDE_TIME (42703) {#MAV_CMD_NAV_ATTITUDE_TIME}
 
@@ -2091,8 +2176,11 @@ Param (Label) | Description | Units
 4 (yaw) | Yaw angle | deg 
 5 (climb_rate) | Climb rate | m/s 
 6 | Empty |   
-7 | Empty |   
+7 | Empty |
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
 
@@ -2106,6 +2194,7 @@ Param (Label) | Description | Units
 4 | Empty |   
 5 | Empty |   
 6 | Empty |   
-7 | Empty |   
+7 | Empty |
 
+</div>
 

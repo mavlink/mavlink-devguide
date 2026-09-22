@@ -382,6 +382,10 @@ Value | Name | Description
 
 ## Commands (MAV_CMD) {#mav_commands}
 
+<MavCmdFilter />
+
+<div class="mav-cmd">
+
 ### MAV_CMD_RESET_MPPT (40001) {#MAV_CMD_RESET_MPPT}
 
 Mission command to reset Maximum Power Point Tracker (MPPT)
@@ -394,8 +398,11 @@ Param (Label) | Description
 4 | Empty 
 5 | Empty 
 6 | Empty 
-7 | Empty 
+7 | Empty
 
+</div>
+
+<div class="mav-cmd">
 
 ### MAV_CMD_PAYLOAD_CONTROL (40002) {#MAV_CMD_PAYLOAD_CONTROL}
 
@@ -409,6 +416,7 @@ Param (Label) | Description
 4 | Empty 
 5 | Empty 
 6 | Empty 
-7 | Empty 
+7 | Empty
 
+</div>
 
