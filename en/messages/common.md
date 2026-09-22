@@ -144,9 +144,9 @@ Field Name | Type | Description
 key | `char[32]` | key 
 
 
-### LINK_NODE_STATUS (8) — [WIP] {#LINK_NODE_STATUS}
+### LINK_NODE_STATUS (8) — [DEP] {#LINK_NODE_STATUS}
 
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+<span class="warning">**DEPRECATED:** Replaced By Nothing (2026-09) — Partially implemented PX4 v1.15 to v1.18 but no consumers and not fit for purpose.)</span>
 
 Status generated in each node in the communication chain and injected into MAVLink stream.
 
