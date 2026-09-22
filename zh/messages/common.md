@@ -38,8 +38,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 231     | 3        |
-| [Enums](#enumerated-types) | 150     | 9        |
+| [Messages](#messages)      | 232     | 3        |
+| [Enums](#enumerated-types) | 151     | 9        |
 | [Commands](#mav_commands)  | 170     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -3528,9 +3528,7 @@ Tune formats supported by vehicle, i.e. via [PLAY_TUNE_V2](#PLAY_TUNE_V2). This 
 | target_component | `uint8_t`  |                                                  | Component ID                                        |
 | format                                | `uint32_t` | [TUNE_FORMAT](#TUNE_FORMAT) | Bitfield of supported tune formats. |
 
-### EVENT (410) — [WIP] {#EVENT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### EVENT (410) {#EVENT}
 
 Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component).
 
@@ -3544,9 +3542,7 @@ Event message. Each new event from a particular component gets a new sequence nu
 | log_levels                                                   | `uint8_t`     |       | Log levels: 4 bits MSB: internal (for logging purposes), 4 bits LSB: external. Levels: Emergency = 0, Alert = 1, Critical = 2, Error = 3, Warning = 4, Notice = 5, Info = 6, Debug = 7, Protocol = 8, Disabled = 9 |
 | arguments                                                                         | `uint8_t[40]` |       | Arguments (depend on event ID).                                                                                                                                                                                                                                                    |
 
-### CURRENT_EVENT_SEQUENCE (411) — [WIP] {#CURRENT_EVENT_SEQUENCE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### CURRENT_EVENT_SEQUENCE (411) {#CURRENT_EVENT_SEQUENCE}
 
 Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events.
 
@@ -3555,9 +3551,7 @@ Regular broadcast for the current latest event sequence number for a component. 
 | sequence   | `uint16_t` |                                                                                                                                                           | Sequence number. |
 | flags      | `uint8_t`  | [MAV_EVENT_CURRENT_SEQUENCE_FLAGS](#MAV_EVENT_CURRENT_SEQUENCE_FLAGS) | Flag bitset.     |
 
-### REQUEST_EVENT (412) — [WIP] {#REQUEST_EVENT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### REQUEST_EVENT (412) {#REQUEST_EVENT}
 
 Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or [EVENT_ERROR](#EVENT_ERROR) response.
 
@@ -3568,9 +3562,7 @@ Request one or more events to be (re-)sent. If first_sequence==last_sequence, on
 | first_sequence   | `uint16_t` | First sequence number of the requested event. |
 | last_sequence    | `uint16_t` | Last sequence number of the requested event.  |
 
-### RESPONSE_EVENT_ERROR (413) — [WIP] {#RESPONSE_EVENT_ERROR}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### RESPONSE_EVENT_ERROR (413) {#RESPONSE_EVENT_ERROR}
 
 Response to a [REQUEST_EVENT](#REQUEST_EVENT) in case of an error (e.g. the event is not available anymore).
 
@@ -3581,6 +3573,31 @@ Response to a [REQUEST_EVENT](#REQUEST_EVENT) in case of an error (e.g. the even
 | sequence                                                            | `uint16_t` |                                                                                                                  | Sequence number.                                                                                                               |
 | sequence_oldest_available | `uint16_t` |                                                                                                                  | Oldest Sequence number that is still available after the sequence set in [REQUEST_EVENT](#REQUEST_EVENT). |
 | reason                                                              | `uint8_t`  | [MAV_EVENT_ERROR_REASON](#MAV_EVENT_ERROR_REASON) | Error reason.                                                                                                                  |
+
+### RADIO_RC_CHANNELS (420) {#RADIO_RC_CHANNELS}
+
+RC channel outputs from a MAVLink RC receiver for input to a flight controller or other components (allows an RC receiver to connect via MAVLink instead of some other protocol such as PPM-Sum or S.BUS).
+
+Note that this is not intended to be an over-the-air format, and does not replace [RC_CHANNELS](#RC_CHANNELS) and similar messages reported by the flight controller.
+The target_system field should normally be set to the system id of the system to control, typically the flight controller.
+The target_component field can normally be set to 0, so that all components of the system can receive the message.
+The channels array field can publish up to 32 channels; the number of channel items used in the array is specified in the count field.
+The time_last_update_ms field contains the timestamp of the last received valid channels data in the receiver's time domain.
+The count field indicates the first index of the channel array that is not used for channel data (this and later indexes are zero-filled).
+The [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) flag is set by the receiver if the channels data is not up-to-date (for example, if new data from the transmitter could not be validated so the last valid data is resent).
+The [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) failsafe flag is set by the receiver if the receiver's failsafe condition is met (implementation dependent, e.g., connection to the RC radio is lost).
+In this case time_last_update_ms still contains the timestamp of the last valid channels data, but the content of the channels data is not defined by the protocol (it is up to the implementation of the receiver).
+For instance, the channels data could contain failsafe values configured in the receiver; the default is to carry the last valid data.
+Note: The RC channels fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.
+
+| Field Name                                                                         | Type          | Units | 值                                                                                                                  | 描述                                                                                                                                                                                                                                                                                                                                            |
+| ---------------------------------------------------------------------------------- | ------------- | ----- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target_system                                                 | `uint8_t`     |       |                                                                                                                    | System ID (ID of target system, normally flight controller).                                                                                                                                                                                                                                               |
+| target_component                                              | `uint8_t`     |       |                                                                                                                    | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                                                                   |
+| time_last_update_ms | `uint32_t`    | ms    |                                                                                                                    | Time when the data in the channels field were last updated (time since boot in the receiver's time domain).                                                                                                                                                                                                |
+| flags                                                                              | `uint16_t`    |       | [RADIO_RC_CHANNELS_FLAGS](#RADIO_RC_CHANNELS_FLAGS) | Radio RC channels status flags.                                                                                                                                                                                                                                                                                               |
+| count                                                                              | `uint8_t`     |       |                                                                                                                    | Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message.                                                                                                                                                            |
+| <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a>           | `int16_t[32]` |       | min:-4096 max:4096                                                                 | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x \* 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. |
 
 ### AVAILABLE_MODES (435) {#AVAILABLE_MODES}
 
@@ -5250,6 +5267,15 @@ RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_P
 | <a id='RC_SUB_TYPE_SPEKTRUM_DSM2'></a>0  | [RC_SUB_TYPE_SPEKTRUM_DSM2](#RC_SUB_TYPE_SPEKTRUM_DSM2)   | Spektrum DSM2  |
 | <a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1  | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX)   | Spektrum DSMX  |
 | <a id='RC_SUB_TYPE_SPEKTRUM_DSMX8'></a>2 | [RC_SUB_TYPE_SPEKTRUM_DSMX8](#RC_SUB_TYPE_SPEKTRUM_DSMX8) | Spektrum DSMX8 |
+
+### RADIO_RC_CHANNELS_FLAGS {#RADIO_RC_CHANNELS_FLAGS}
+
+(Bitmask) [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) flags (bitmask).
+
+| 值                                              | Name                                                                                                                                                      | 描述                                                                                                                                                                                                                    |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent. |
+| <a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received.     |
 
 ### ENGINE_CONTROL_OPTIONS {#ENGINE_CONTROL_OPTIONS}
 
@@ -7223,7 +7249,7 @@ Set moving direction to forward or reverse.
 
 ### MAV_CMD_DO_SET_ROI_LOCATION (195) {#MAV_CMD_DO_SET_ROI_LOCATION}
 
-Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.
+Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
 :::tip
 Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
@@ -7255,7 +7281,7 @@ Sets the region of interest (ROI) to be toward next waypoint, with optional pitc
 
 ### MAV_CMD_DO_SET_ROI_NONE (197) {#MAV_CMD_DO_SET_ROI_NONE}
 
-Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.
+Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.
 
 | Param (Label)        | 描述                                                                                                                                                                                                                                                              |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
