@@ -37,8 +37,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 231 | 3
-[Enums](#enumerated-types) | 150 | 9
+[Messages](#messages) | 232 | 3
+[Enums](#enumerated-types) | 151 | 9
 [Commands](#mav_commands) | 170 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -3792,6 +3792,32 @@ sequence_oldest_available | `uint16_t` | | Oldest Sequence number that is still 
 reason | `uint8_t` | [MAV_EVENT_ERROR_REASON](#MAV_EVENT_ERROR_REASON) | Error reason. 
 
 
+### RADIO_RC_CHANNELS (420) {#RADIO_RC_CHANNELS}
+
+RC channel outputs from a MAVLink RC receiver for input to a flight controller or other components (allows an RC receiver to connect via MAVLink instead of some other protocol such as PPM-Sum or S.BUS).
+
+Note that this is not intended to be an over-the-air format, and does not replace [RC_CHANNELS](#RC_CHANNELS) and similar messages reported by the flight controller.
+The target_system field should normally be set to the system id of the system to control, typically the flight controller.
+The target_component field can normally be set to 0, so that all components of the system can receive the message.
+The channels array field can publish up to 32 channels; the number of channel items used in the array is specified in the count field.
+The time_last_update_ms field contains the timestamp of the last received valid channels data in the receiver's time domain.
+The count field indicates the first index of the channel array that is not used for channel data (this and later indexes are zero-filled).
+The [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) flag is set by the receiver if the channels data is not up-to-date (for example, if new data from the transmitter could not be validated so the last valid data is resent).
+The [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) failsafe flag is set by the receiver if the receiver's failsafe condition is met (implementation dependent, e.g., connection to the RC radio is lost).
+In this case time_last_update_ms still contains the timestamp of the last valid channels data, but the content of the channels data is not defined by the protocol (it is up to the implementation of the receiver).
+For instance, the channels data could contain failsafe values configured in the receiver; the default is to carry the last valid data.
+Note: The RC channels fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+target_system | `uint8_t` | | | System ID (ID of target system, normally flight controller). 
+target_component | `uint8_t` | | | Component ID (normally 0 for broadcast). 
+time_last_update_ms | `uint32_t` | ms | | Time when the data in the channels field were last updated (time since boot in the receiver's time domain). 
+flags | `uint16_t` | | [RADIO_RC_CHANNELS_FLAGS](#RADIO_RC_CHANNELS_FLAGS) | Radio RC channels status flags. 
+count | `uint8_t` | | | Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message. 
+<span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` | | min:-4096 max:4096 | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x * 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. 
+
+
 ### AVAILABLE_MODES (435) {#AVAILABLE_MODES}
 
 Information about a flight mode.
@@ -5477,6 +5503,15 @@ Value | Name | Description
 <a id='RC_SUB_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_SUB_TYPE_SPEKTRUM_DSM2](#RC_SUB_TYPE_SPEKTRUM_DSM2) | Spektrum DSM2 
 <a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX) | Spektrum DSMX 
 <a id='RC_SUB_TYPE_SPEKTRUM_DSMX8'></a>2 | [RC_SUB_TYPE_SPEKTRUM_DSMX8](#RC_SUB_TYPE_SPEKTRUM_DSMX8) | Spektrum DSMX8 
+
+### RADIO_RC_CHANNELS_FLAGS {#RADIO_RC_CHANNELS_FLAGS}
+
+(Bitmask) [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) flags (bitmask).
+
+Value | Name | Description
+--- | --- | ---
+<a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent. 
+<a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received. 
 
 ### ENGINE_CONTROL_OPTIONS {#ENGINE_CONTROL_OPTIONS}
 
