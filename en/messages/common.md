@@ -3742,9 +3742,7 @@ target_component | `uint8_t` | | Component ID
 format | `uint32_t` | [TUNE_FORMAT](#TUNE_FORMAT) | Bitfield of supported tune formats. 
 
 
-### EVENT (410) — [WIP] {#EVENT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### EVENT (410) {#EVENT}
 
 Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component).
 
@@ -3759,9 +3757,7 @@ log_levels | `uint8_t` | | Log levels: 4 bits MSB: internal (for logging purpose
 arguments | `uint8_t[40]` | | Arguments (depend on event ID). 
 
 
-### CURRENT_EVENT_SEQUENCE (411) — [WIP] {#CURRENT_EVENT_SEQUENCE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### CURRENT_EVENT_SEQUENCE (411) {#CURRENT_EVENT_SEQUENCE}
 
 Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events.
 
@@ -3771,9 +3767,7 @@ sequence | `uint16_t` | | Sequence number.
 flags | `uint8_t` | [MAV_EVENT_CURRENT_SEQUENCE_FLAGS](#MAV_EVENT_CURRENT_SEQUENCE_FLAGS) | Flag bitset. 
 
 
-### REQUEST_EVENT (412) — [WIP] {#REQUEST_EVENT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### REQUEST_EVENT (412) {#REQUEST_EVENT}
 
 Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or [EVENT_ERROR](#EVENT_ERROR) response.
 
@@ -3785,9 +3779,7 @@ first_sequence | `uint16_t` | First sequence number of the requested event.
 last_sequence | `uint16_t` | Last sequence number of the requested event. 
 
 
-### RESPONSE_EVENT_ERROR (413) — [WIP] {#RESPONSE_EVENT_ERROR}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### RESPONSE_EVENT_ERROR (413) {#RESPONSE_EVENT_ERROR}
 
 Response to a [REQUEST_EVENT](#REQUEST_EVENT) in case of an error (e.g. the event is not available anymore).
 
