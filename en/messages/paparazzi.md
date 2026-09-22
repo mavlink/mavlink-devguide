@@ -101,3 +101,5 @@ seq | `uint16_t` | Active Sequence
 
 ## Commands (MAV_CMD) {#mav_commands}
 
+<MavCmdFilter />
+

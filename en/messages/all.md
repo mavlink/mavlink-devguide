@@ -72,6 +72,10 @@ The following sections list all entities in the dialect (both included and defin
 
 ## Commands (MAV_CMD) {#mav_commands}
 
+<MavCmdFilter />
+
+<div class="mav-cmd">
+
 ### MAV_CMD_DUMMY_ALL (393) — [WIP] {#MAV_CMD_DUMMY_ALL}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -83,4 +87,5 @@ It not be used, and will be removed when the toolchain is fixed.
 Param (Label) | Description
 --- | ---
 
+</div>
 
