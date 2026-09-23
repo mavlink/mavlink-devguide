@@ -2,16 +2,13 @@
 
 ::: info
 The Events Interface is implemented in PX4 and QGroundControl.
-
-The information below is just an overview.
-Full details of the interface are provided in the: [Events Interface Proposal](https://docs.google.com/document/d/18qdDgfML97lItom09MJhngYnFzAm1zFdmlCKG7TaBpg/edit)
 :::
 
 The _Events Interface_ is a generic and flexible mechanism that allows one component to reliably notify a GCS (or any other component) of sporadic events and state changes.
 For example, the interface might be used notifying of arming readiness, calibration completion, and reaching the target takeoff height.
 
 The interface provides for both common events that are shared by flight stacks or other components, and events that are specific to an implementation.
-MAVLink "common" events are defined in [mavlink/libevents/events/common.json](https://github.com/mavlink/libevents/blob/master/events/common.json).
+MAVLink "common" events are defined in [mavlink/libevents/events/common.json](https://github.com/mavlink/libevents/blob/main/events/common.json).
 
 ::: info
 The events interface is intended to replace the widespread use of [STATUSTEXT](../messages/common.md#STATUSTEXT) messages, which are not really fit for purpose.
@@ -44,7 +41,7 @@ The following key features are provided by the interface:
 | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="EVENT"></a>[EVENT](../messages/common.md#EVENT)                                                    | Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component). |
 | <a id="CURRENT_EVENT_SEQUENCE"></a>[CURRENT_EVENT_SEQUENCE](../messages/common.md#CURRENT_EVENT_SEQUENCE) | Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events.                                                                                                                                                                                                                                                                 |
-| <a id="REQUEST_EVENT"></a>[REQUEST_EVENT](../messages/common.md#REQUEST_EVENT)                            | Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or EVENT_ERROR response.                                                                                                            |
+| <a id="REQUEST_EVENT"></a>[REQUEST_EVENT](../messages/common.md#REQUEST_EVENT)                            | Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an [EVENT](#EVENT) or [RESPONSE_EVENT_ERROR](#RESPONSE_EVENT_ERROR) response.                                                                |
 | <a id="RESPONSE_EVENT_ERROR"></a>[RESPONSE_EVENT_ERROR](../messages/common.md#RESPONSE_EVENT_ERROR)       | Response to a [REQUEST_EVENT](#REQUEST_EVENT) if there is an error requesting an event, including the reason. The most common reason would be that the event is not longer available (has been discarded).                                                                                                                                                                                |
 
 | Enum                                                                                                                                    | Description                                                                                                                                                                          |
@@ -59,5 +56,5 @@ Implementation PRs and other information is listed below.
 - QGroundControl
   - PR: [Events interface (first iteration) #9217](https://github.com/mavlink/qgroundcontrol/pull/9217)
 - PX4:
-  - [Events Interface](http://docs.px4.io/master/en/concept/events_interface.html) (docs)
+  - [Events Interface](https://docs.px4.io/main/en/concept/events_interface.html) (docs)
   - PR: [Events interface #16293](https://github.com/PX4/PX4-Autopilot/pull/16293)
