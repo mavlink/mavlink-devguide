@@ -646,7 +646,7 @@ Value | Name | Description
 
 ## Commands (MAV_CMD) {#mav_commands}
 
-### MAV_CMD_ACTUATOR_GROUP_TEST (309) — [WIP] {#MAV_CMD_ACTUATOR_GROUP_TEST}
+### MAV_CMD_ACTUATOR_GROUP_TEST (309) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ACTUATOR_GROUP_TEST}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -662,7 +662,7 @@ Param (Label) | Description | Values
 2 (Value) | Value to set. This is a normalized value across the full range of the tested group [-1,1]. | min: -1 max: 1 
 
 
-### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] {#MAV_CMD_DO_SET_SYS_CMP_ID}
+### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_SYS_CMP_ID}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -677,7 +677,7 @@ Param (Label) | Description | Values
 3 (Reboot) | Reboot components after ID change. Any non-zero value triggers the reboot. |   
 
 
-### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
+### MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE (620) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_ATTITUDE_ESTIMATE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -694,7 +694,7 @@ Param (Label) | Description | Values | Units
 7 (Yaw accuracy) | Estimated 1 sigma accuracy of yaw angle. Set to NaN if unknown. |   | deg 
 
 
-### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] {#MAV_CMD_CAMERA_START_MTI}
+### MAV_CMD_CAMERA_START_MTI (2020) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_START_MTI}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -707,7 +707,7 @@ Param (Label) | Description | Values
 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
-### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] {#MAV_CMD_CAMERA_STOP_MTI}
+### MAV_CMD_CAMERA_STOP_MTI (2021) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_STOP_MTI}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -718,7 +718,7 @@ Param (Label) | Description | Values
 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
-### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
+### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -730,7 +730,7 @@ Param (Label) | Description | Values | Units
 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |   
 
 
-### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
+### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ODID_SET_EMERGENCY}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -745,7 +745,7 @@ Param (Label) | Description | Values
 1 (Number) | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 
 
 
-### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
+### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -798,7 +798,7 @@ Param (Label) | Description | Values | Units
 4 (GCS Sysid) | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range). |   |   
 
 
-### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
+### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -814,7 +814,7 @@ Param (Label) | Description | Values | Units
 4 (Direction accuracy) | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |   | deg 
 
 
-### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
+### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
