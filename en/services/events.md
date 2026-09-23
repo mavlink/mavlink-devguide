@@ -1,8 +1,7 @@
-# Events Interface (WIP)
+# Events Interface
 
-::: warning
-The Events Interface is a work in progress and may change.
-It has an initial implementation in PX4 and QGroundControl and is planned for ArduPilot.
+::: info
+The Events Interface is implemented in PX4 and QGroundControl.
 
 The information below is just an overview.
 Full details of the interface are provided in the: [Events Interface Proposal](https://docs.google.com/document/d/18qdDgfML97lItom09MJhngYnFzAm1zFdmlCKG7TaBpg/edit)
@@ -56,7 +55,6 @@ The following key features are provided by the interface:
 ## Implementations
 
 Implementation PRs and other information is listed below.
-All of these should be considered prototypes/WIP.
 
 - QGroundControl
   - PR: [Events interface (first iteration) #9217](https://github.com/mavlink/qgroundcontrol/pull/9217)

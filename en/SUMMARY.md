@@ -70,7 +70,7 @@
   - [MAVLink Id Assignment (sysid, compid)](services/mavlink_id_assignment.md)
   - [Payload Protocols](services/payload.md)
   - [Traffic Management (UTM/ADS-B)](services/traffic_management.md)
-  - [Events Interface (WIP)](services/events.md)
+  - [Events Interface](services/events.md)
   - [Standard Flight Modes](services/standard_modes.md)
   - [Time Synchronization](services/timesync.md)
 - [Dialects & Tests](messages/dialects.md)
