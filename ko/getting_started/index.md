@@ -1,6 +1,6 @@
 # 시작하기
 
-Download or Generate MAVLink source files for your [dialect](../messages/index.md#dialects):
+Download or Generate MAVLink source files for your [dialect](../messages/dialects.md#dialects):
 
 - **Download the [pre-built MAVLink source files](../index.md#prebuilt_libraries)** if you're working in a C/C++ project and using standard dialects.
 - **Generate the MAVLink source files** to use any other [supported language](../index.md#supported_languages), add/modify messages or dialects, or use the example scripts:
