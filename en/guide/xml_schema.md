@@ -139,7 +139,7 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 ```xml
 <enum name="MAV_CMD">
 ....
-      <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" hasLocation="true" isDestination="true">
+      <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" hasLocation="true" isDestination="true" mission="true" command="true">
         <description>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</description>
         <param index="1" label="Max Descent" units="m" minValue="0">Maximum distance to descend.</param>
         <param index="2">Empty</param>
@@ -164,6 +164,12 @@ Attributes:
   `hasLocation` should be applied if this is `true`.
 - `hasAltitudeOnly`: A boolean (default `false`) that indicates the entry has altitude information in param 7 but no position information params 5 and 6 (e.g. [MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT](../messages/common.md#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT)).
   Mutually exclusive with `hasLocation`.
+- `mission`: A boolean (default `false`) that indicates the entry can be used in a mission plan ([Mission Protocol](../services/mission.md)).
+- `fence`: A boolean (default `false`) that indicates the entry can be used in a geofence plan.
+- `rally`: A boolean (default `false`) that indicates the entry can be used in a rally point plan.
+- `command`: A boolean (default `false`) that indicates the entry can be sent using the [Command Protocol](../services/command.md).
+
+  Any combination of `mission`, `fence`, `rally` and `command` may be set (e.g. [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE) can be used in both missions and commands).
 
 Nested elements:
 
