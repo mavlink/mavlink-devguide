@@ -224,9 +224,9 @@ The sequence of operations is:
 The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not received within the timeout.
 
 ::: info
-There is no formal way for the drone to signal when an invalid parameter is requested (i.e. for a parameter name or id that does not exist).
-In this case the drone _should_ emit [STATUS_TEXT](../messages/common.md#STATUS_TEXT).
-The GCS may monitor for the specific notification, but will otherwise fail the request after any timeout/resend cycle completes.
+If an invalid parameter is requested (i.e. for a parameter name or id that does not exist) the drone should emit [PARAM_ERROR](../messages/common.md#PARAM_ERROR) with `error` set to [MAV_PARAM_ERROR_DOES_NOT_EXIST](../messages/common.md#MAV_PARAM_ERROR_DOES_NOT_EXIST).
+Older implementations may instead emit [STATUSTEXT](../messages/common.md#STATUSTEXT).
+The GCS may monitor for these notifications, but will otherwise fail the request after any timeout/resend cycle completes.
 :::
 
 ### Write Parameters {#write}
