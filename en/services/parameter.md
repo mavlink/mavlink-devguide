@@ -54,6 +54,7 @@ To use the protocol in this case, a connected system would need to have prior kn
 Parameters names/ids are set in the `param_id` field of messages where they are used.
 The `param_id` string can store up to 16 characters.
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
+The string is encoded as 7-bit ASCII.
 
 ## Parameter Encoding {#parameter_encoding}
 
