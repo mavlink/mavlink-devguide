@@ -40,8 +40,7 @@ If you're creating a custom dialect file your file structure should be similar t
 - `include`: This tag is used to specify any other XML files included in your dialect.
   - Typically dialect files will include _common.xml_ as shown above.
   - 可以使用单独的标记包含多个文件。
-  - 包含文件的路径可以相对于您的语支文件。
-    包含文件的路径可以相对于您的语支文件。 但是请注意, 项目测试仅涵盖语支位于同一文件夹中的情况。
+  - 包含文件的路径可以相对于您的语支文件。包含文件的路径可以相对于您的语支文件。 但是请注意, 项目测试仅涵盖语支位于同一文件夹中的情况。
   - Nested `include` of files are supported (mavgen permits up to 5 levels of nesting).
   - 构建时，在生成器工具链中合并/追加发送所有文件中的枚举，并报告重复的枚举条目和消息。
 
@@ -142,7 +141,7 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 ```xml
 <enum name="MAV_CMD">
 ....
-      <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" hasLocation="true" isDestination="true">
+      <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" hasLocation="true" isDestination="true" mission="true" command="true">
         <description>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</description>
         <param index="1" label="Max Descent" units="m" minValue="0">Maximum distance to descend.</param>
         <param index="2">Empty</param>
@@ -167,6 +166,12 @@ Attributes:
   `hasLocation` should be applied if this is `true`.
 - `hasAltitudeOnly`: A boolean (default `false`) that indicates the entry has altitude information in param 7 but no position information params 5 and 6 (e.g. [MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT](../messages/common.md#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT)).
   Mutually exclusive with `hasLocation`.
+- `mission`: A boolean (default `false`) that indicates the entry can be used in a mission plan ([Mission Protocol](../services/mission.md)).
+- `fence`: A boolean (default `false`) that indicates the entry can be used in a geofence plan.
+- `rally`: A boolean (default `false`) that indicates the entry can be used in a rally point plan.
+- `command`: A boolean (default `false`) that indicates the entry can be sent using the [Command Protocol](../services/command.md).
+
+  Any combination of `mission`, `fence`, `rally` and `command` may be set.
 
 Nested elements:
 
