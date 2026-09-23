@@ -66,7 +66,7 @@ The bridge node must emit the message `UAVCAN_NODE_INFO` in the following cases:
   (please read the UAVCAN specification for a more detailed description of the principles of bus monitoring):
   - A new node has appeared online.
   - A known node has restarted.
-- Reception of the MAVLink command `MAV_CMD_UAVCAN_GET_NODE_INFO`.
+- Reception of a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) requesting `UAVCAN_NODE_INFO`.
   In this case, the bridge node is required to emit `UAVCAN_NODE_INFO` once for every known node.
 - It is also allowed, but not required, to unconditionally emit messages `UAVCAN_NODE_INFO` at a very low rate,
   in order to guarantee that the remote equipment always has a valid model of the on-board UAVCAN bus.
