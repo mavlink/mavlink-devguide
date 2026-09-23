@@ -1,8 +1,7 @@
-# Events Interface (WIP)
+# Events Interface
 
-::: warning
-The Events Interface is a work in progress and may change.
-It has an initial implementation in PX4 and QGroundControl and is planned for ArduPilot.
+::: info
+The Events Interface is implemented in PX4 and QGroundControl.
 
 The information below is just an overview.
 Full details of the interface are provided in the: [Events Interface Proposal](https://docs.google.com/document/d/18qdDgfML97lItom09MJhngYnFzAm1zFdmlCKG7TaBpg/edit)
@@ -48,15 +47,14 @@ The following key features are provided by the interface:
 | <a id="REQUEST_EVENT"></a>[REQUEST_EVENT](../messages/common.md#REQUEST_EVENT)                            | Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or EVENT_ERROR response.                                                                                                            |
 | <a id="RESPONSE_EVENT_ERROR"></a>[RESPONSE_EVENT_ERROR](../messages/common.md#RESPONSE_EVENT_ERROR)       | Response to a [REQUEST_EVENT](#REQUEST_EVENT) if there is an error requesting an event, including the reason. The most common reason would be that the event is not longer available (has been discarded).                                                                                                                                                                                |
 
-| Enum                                                                                                                          | Description                                                                                                                                                                          |
-| ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS"></a>[MAV_EVENT_CURRENT_SEQUENCE_FLAGS](../messages/common.md#CURRENT_EVENT_SEQUENCE) | Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE). For example, to indicate when the sequence has reset.                                                                   |
-| <a id="MAV_EVENT_ERROR_REASON"></a>[MAV_EVENT_ERROR_REASON](../messages/common.md#MAV_EVENT_ERROR_REASON)                     | Reasons for an error, as provided in [RESPONSE_EVENT_ERROR](#RESPONSE_EVENT_ERROR). For example, common error would be that the event is not available (i.e. it has been discarded). |
+| Enum                                                                                                                                    | Description                                                                                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS"></a>[MAV_EVENT_CURRENT_SEQUENCE_FLAGS](../messages/common.md#MAV_EVENT_CURRENT_SEQUENCE_FLAGS) | Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE). For example, to indicate when the sequence has reset.                                                                   |
+| <a id="MAV_EVENT_ERROR_REASON"></a>[MAV_EVENT_ERROR_REASON](../messages/common.md#MAV_EVENT_ERROR_REASON)                               | Reasons for an error, as provided in [RESPONSE_EVENT_ERROR](#RESPONSE_EVENT_ERROR). For example, common error would be that the event is not available (i.e. it has been discarded). |
 
 ## Implementations
 
 Implementation PRs and other information is listed below.
-All of these should be considered prototypes/WIP.
 
 - QGroundControl
   - PR: [Events interface (first iteration) #9217](https://github.com/mavlink/qgroundcontrol/pull/9217)

@@ -215,7 +215,8 @@ Allocated ranges are listed below (a more complete list is provided in the comme
 | Dialect           | Range         |
 | ----------------- | ------------- |
 | Common.xml        | 300 - 10000   |
-| uAvionix.xml      | 10001-10999   |
+| uAvionix.xml      | 10001 - 10049 |
+| loweheiser.xml    | 10150 - 10199 |
 | ArduPilotMega.xml | 11000 - 11999 |
 | icarous.xml       | 42000 - 42999 |
 

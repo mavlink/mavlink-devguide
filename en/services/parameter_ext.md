@@ -32,12 +32,13 @@ At time of writing the protocol is supported by _QGroundControl_ for this purpos
 Parameters names/ids are set in the `param_id` field of messages where they are used.
 The `param_id` string can store up to 16 characters.
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
+The string is encoded as 7-bit ASCII.
 
 ::: info
 Names (as above) are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
 :::
 
-Values are byte-wise encoded _within_ the `param_value` field, which is a `char[128]`.
+Values are byte-wise encoded _within_ the `param_value` field, which is a `char[128]` (raw bytes, not a text string).
 The `param_type` ([MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient.
 Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, 32 and 64-bit floating point numbers, and a "custom type" which may used for e.g. strings.
 
