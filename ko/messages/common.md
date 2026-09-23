@@ -6437,7 +6437,7 @@ New code must not use component IDs to infer the component type, but instead che
 
 ## Commands (MAV_CMD) {#mav_commands}
 
-### MAV_CMD_NAV_WAYPOINT (16) {#MAV_CMD_NAV_WAYPOINT}
+### MAV_CMD_NAV_WAYPOINT (16) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_WAYPOINT}
 
 Navigate to waypoint. This is intended for use in missions (for guided commands outside of missions use [MAV_CMD_DO_REPOSITION](#MAV_CMD_DO_REPOSITION)).
 
@@ -6455,7 +6455,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)     | Longitude                                                                                                                                                                                                                                                              |                        |       |
 | 7 (Altitude)      | Altitude                                                                                                                                                                                                                                                               |                        | m     |
 
-### MAV_CMD_NAV_LOITER_UNLIM (17) {#MAV_CMD_NAV_LOITER_UNLIM}
+### MAV_CMD_NAV_LOITER_UNLIM (17) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LOITER_UNLIM}
 
 Loiter around this waypoint an unlimited amount of time
 
@@ -6473,7 +6473,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude                                                                                                                                                                                                                 |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                                                                                  | m     |
 
-### MAV_CMD_NAV_LOITER_TURNS (18) {#MAV_CMD_NAV_LOITER_TURNS}
+### MAV_CMD_NAV_LOITER_TURNS (18) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_LOITER_TURNS}
 
 Loiter around this waypoint for X turns
 
@@ -6491,7 +6491,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)        | Longitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                                            |       |
 | 7 (Altitude)         | Altitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                            | m     |
 
-### MAV_CMD_NAV_LOITER_TIME (19) {#MAV_CMD_NAV_LOITER_TIME}
+### MAV_CMD_NAV_LOITER_TIME (19) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_LOITER_TIME}
 
 Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.
 
@@ -6509,7 +6509,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)        | Longitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                                            |       |
 | 7 (Altitude)         | Altitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                            | m     |
 
-### MAV_CMD_NAV_RETURN_TO_LAUNCH (20) {#MAV_CMD_NAV_RETURN_TO_LAUNCH}
+### MAV_CMD_NAV_RETURN_TO_LAUNCH (20) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_RETURN_TO_LAUNCH}
 
 Return to launch location
 
@@ -6523,7 +6523,7 @@ Return to launch location
 | 6                                | Empty       |
 | 7                                | Empty       |
 
-### MAV_CMD_NAV_LAND (21) {#MAV_CMD_NAV_LAND}
+### MAV_CMD_NAV_LAND (21) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LAND}
 
 Land at location.
 
@@ -6541,7 +6541,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude.                                                                                                                                                                                                |                                                                                       |       |
 | 7 (Altitude)  | Landing altitude (ground level in current frame).                                                                                                                                      |                                                                                       | m     |
 
-### MAV_CMD_NAV_TAKEOFF (22) {#MAV_CMD_NAV_TAKEOFF}
+### MAV_CMD_NAV_TAKEOFF (22) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_TAKEOFF}
 
 Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.
 
@@ -6559,7 +6559,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude                                                                                                                                                                                                                                                                                    |                                                                                   |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                                                                                                                                                     |                                                                                   | m     |
 
-### MAV_CMD_NAV_LAND_LOCAL (23) {#MAV_CMD_NAV_LAND_LOCAL}
+### MAV_CMD_NAV_LAND_LOCAL (23) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LAND_LOCAL}
 
 Land at local position (local frame only)
 
@@ -6577,7 +6577,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (X Position)   | X-axis position                                                                                                                                                                                                                                                                                         |                                               | m     |
 | 7 (Z Position)   | Z-axis / ground level position                                                                                                                                                                                                                                                                          |                                               | m     |
 
-### MAV_CMD_NAV_TAKEOFF_LOCAL (24) {#MAV_CMD_NAV_TAKEOFF_LOCAL}
+### MAV_CMD_NAV_TAKEOFF_LOCAL (24) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_TAKEOFF_LOCAL}
 
 Takeoff from local position (local frame only)
 
@@ -6595,7 +6595,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (X Position)  | X-axis position                                                                                                       | m     |
 | 7 (Z Position)  | Z-axis position                                                                                                       | m     |
 
-### MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT (30) {#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT}
+### MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT (30) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT}
 
 Continue on the current course and climb/descend to specified altitude.  When the altitude is reached continue to the next command (i.e., don't proceed to the next command until the desired altitude is reached.
 
@@ -6609,7 +6609,7 @@ Continue on the current course and climb/descend to specified altitude.  When th
 | 6                                | Empty                                                                                                                                                                                                                                                                                |                                                                      |       |
 | 7 (Altitude)  | Desired altitude                                                                                                                                                                                                                                                                     |                                                                      | m     |
 
-### MAV_CMD_NAV_LOITER_TO_ALT (31) {#MAV_CMD_NAV_LOITER_TO_ALT}
+### MAV_CMD_NAV_LOITER_TO_ALT (31) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_LOITER_TO_ALT}
 
 Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.
 
@@ -6627,7 +6627,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)        | Longitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                                                                      |       |
 | 7 (Altitude)         | Altitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                      | m     |
 
-### MAV_CMD_DO_FOLLOW (32) {#MAV_CMD_DO_FOLLOW}
+### MAV_CMD_DO_FOLLOW (32) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FOLLOW}
 
 Begin following a target
 
@@ -6641,7 +6641,7 @@ Begin following a target
 | 6                                    | Reserved                                                                                                                                                                                              |                                                                        |       |
 | 7 (Time to Land)  | Time to land in which the MAV should go to the default position hold mode after a message RX timeout.                                                                                 | min: 0                                                 | s     |
 
-### MAV_CMD_DO_FOLLOW_REPOSITION (33) {#MAV_CMD_DO_FOLLOW_REPOSITION}
+### MAV_CMD_DO_FOLLOW_REPOSITION (33) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FOLLOW_REPOSITION}
 
 Reposition the MAV after a follow target command has been sent
 
@@ -6655,7 +6655,7 @@ Reposition the MAV after a follow target command has been sent
 | 6 (X Offset)        | X offset from target                                                                        | m     |
 | 7 (Y Offset)        | Y offset from target                                                                        | m     |
 
-### MAV_CMD_DO_ORBIT (34) {#MAV_CMD_DO_ORBIT}
+### MAV_CMD_DO_ORBIT (34) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ORBIT}
 
 Start orbiting on the circumference of a circle defined by the parameters. Setting values to NaN/INT32_MAX (as appropriate) results in using defaults.
 
@@ -6673,7 +6673,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude/Y)  | Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already orbiting. |                                                                                       |       |
 | 7 (Altitude/Z)   | Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle altitude.                                                                                                                                                               |                                                                                       |       |
 
-### MAV_CMD_DO_FIGURE_EIGHT (35) {#MAV_CMD_DO_FIGURE_EIGHT}
+### MAV_CMD_DO_FIGURE_EIGHT (35) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FIGURE_EIGHT}
 
 Fly a figure eight path as defined by the parameters.
 
@@ -6696,7 +6696,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude/Y)  | Center point longitude/Y coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |       |
 | 7 (Altitude/Z)   | Center point altitude MSL/Z coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle altitude.                                                                                                                                                   |       |
 
-### MAV_CMD_NAV_ARC_WAYPOINT (36) {#MAV_CMD_NAV_ARC_WAYPOINT}
+### MAV_CMD_NAV_ARC_WAYPOINT (36) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_ARC_WAYPOINT}
 
 Circular arc path waypoint.
 
@@ -6714,7 +6714,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude                                                                                                                                                                                      |                                                                           |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                                                       |                                                                           | m     |
 
-### MAV_CMD_NAV_ROI (80) — [SUP] {#MAV_CMD_NAV_ROI}
+### MAV_CMD_NAV_ROI (80) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_ROI}
 
 <span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
@@ -6734,7 +6734,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Y)         | y                                                                                                     |                                               |
 | 7 (Z)         | z                                                                                                     |                                               |
 
-### MAV_CMD_NAV_PATHPLANNING (81) {#MAV_CMD_NAV_PATHPLANNING}
+### MAV_CMD_NAV_PATHPLANNING (81) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_PATHPLANNING}
 
 Control autonomous path planning on the MAV.
 
@@ -6752,7 +6752,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude/Y) | Longitude/Y of goal                                                                                                                                                                                                                                    |                                                                      |       |
 | 7 (Altitude/Z)  | Altitude/Z of goal                                                                                                                                                                                                                                     |                                                                      |       |
 
-### MAV_CMD_NAV_SPLINE_WAYPOINT (82) {#MAV_CMD_NAV_SPLINE_WAYPOINT}
+### MAV_CMD_NAV_SPLINE_WAYPOINT (82) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_SPLINE_WAYPOINT}
 
 Navigate to waypoint using a spline path.
 
@@ -6770,7 +6770,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude/Y) | Longitude/Y of goal                                                                                             |                        |       |
 | 7 (Altitude/Z)  | Altitude/Z of goal                                                                                              |                        |       |
 
-### MAV_CMD_NAV_VTOL_TAKEOFF (84) {#MAV_CMD_NAV_VTOL_TAKEOFF}
+### MAV_CMD_NAV_VTOL_TAKEOFF (84) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_VTOL_TAKEOFF}
 
 Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight (multicopters, boats,etc.).
 
@@ -6788,7 +6788,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)          | Longitude                                                                                                                                                                                                         |                                                                                               |       |
 | 7 (Altitude)           | Altitude                                                                                                                                                                                                          |                                                                                               | m     |
 
-### MAV_CMD_NAV_VTOL_LAND (85) {#MAV_CMD_NAV_VTOL_LAND}
+### MAV_CMD_NAV_VTOL_LAND (85) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_VTOL_LAND}
 
 Land using VTOL mode
 
@@ -6806,7 +6806,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)         | Longitude                                                                                                                                                                                                         |                                                                                                                |       |
 | 7 (Ground Altitude)   | Altitude (ground level) relative to the current coordinate frame. NaN to use system default landing altitude (ignore value).                |                                                                                                                | m     |
 
-### MAV_CMD_NAV_GUIDED_ENABLE (92) {#MAV_CMD_NAV_GUIDED_ENABLE}
+### MAV_CMD_NAV_GUIDED_ENABLE (92) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_GUIDED_ENABLE}
 
 Hand control over to an external controller
 
@@ -6820,7 +6820,7 @@ Hand control over to an external controller
 | 6                                | Empty                                                                                                                                                                                                                                                                           |                                            |
 | 7                                | Empty                                                                                                                                                                                                                                                                           |                                            |
 
-### MAV_CMD_NAV_DELAY (93) {#MAV_CMD_NAV_DELAY}
+### MAV_CMD_NAV_DELAY (93) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_DELAY}
 
 Delay the next navigation command a number of seconds or until a specified time
 
@@ -6834,7 +6834,7 @@ Delay the next navigation command a number of seconds or until a specified time
 | 6                                | Empty                                                      |                                                                        |       |
 | 7                                | Empty                                                      |                                                                        |       |
 
-### MAV_CMD_NAV_PAYLOAD_PLACE (94) {#MAV_CMD_NAV_PAYLOAD_PLACE}
+### MAV_CMD_NAV_PAYLOAD_PLACE (94) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_PAYLOAD_PLACE}
 
 Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.
 
@@ -6866,7 +6866,7 @@ NOP - This command is only used to mark the upper limit of the NAV/ACTION comman
 | 6                                | Empty       |
 | 7                                | Empty       |
 
-### MAV_CMD_CONDITION_DELAY (112) {#MAV_CMD_CONDITION_DELAY}
+### MAV_CMD_CONDITION_DELAY (112) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_DELAY}
 
 Delay mission state machine.
 
@@ -6880,7 +6880,7 @@ Delay mission state machine.
 | 6                                | Empty       |                        |       |
 | 7                                | Empty       |                        |       |
 
-### MAV_CMD_CONDITION_CHANGE_ALT (113) {#MAV_CMD_CONDITION_CHANGE_ALT}
+### MAV_CMD_CONDITION_CHANGE_ALT (113) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_CHANGE_ALT}
 
 Ascend/descend to target altitude at specified rate. Delay mission state machine until desired altitude reached.
 
@@ -6894,7 +6894,7 @@ Ascend/descend to target altitude at specified rate. Delay mission state machine
 | 6                                | Empty                                  |       |
 | 7 (Altitude)  | Target Altitude                        | m     |
 
-### MAV_CMD_CONDITION_DISTANCE (114) {#MAV_CMD_CONDITION_DISTANCE}
+### MAV_CMD_CONDITION_DISTANCE (114) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_DISTANCE}
 
 Delay mission state machine until within desired distance of next NAV point.
 
@@ -6908,7 +6908,7 @@ Delay mission state machine until within desired distance of next NAV point.
 | 6                                | Empty                     |                        |       |
 | 7                                | Empty                     |                        |       |
 
-### MAV_CMD_CONDITION_YAW (115) {#MAV_CMD_CONDITION_YAW}
+### MAV_CMD_CONDITION_YAW (115) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CONDITION_YAW}
 
 Reach a certain target angle.
 
@@ -6936,7 +6936,7 @@ NOP - This command is only used to mark the upper limit of the CONDITION command
 | 6                                | Empty       |
 | 7                                | Empty       |
 
-### MAV_CMD_DO_SET_MODE (176) {#MAV_CMD_DO_SET_MODE}
+### MAV_CMD_DO_SET_MODE (176) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_MODE}
 
 Set system mode.
 
@@ -6950,7 +6950,7 @@ Set system mode.
 | 6                                     | Empty                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                           |
 | 7                                     | Empty                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                           |
 
-### MAV_CMD_DO_JUMP (177) {#MAV_CMD_DO_JUMP}
+### MAV_CMD_DO_JUMP (177) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_DO_JUMP}
 
 Jump to the desired command in the mission list.  Repeat this action only the specified number of times
 
@@ -6964,7 +6964,7 @@ Jump to the desired command in the mission list.  Repeat this action only the sp
 | 6                                | Empty           |                                               |
 | 7                                | Empty           |                                               |
 
-### MAV_CMD_DO_CHANGE_SPEED (178) {#MAV_CMD_DO_CHANGE_SPEED}
+### MAV_CMD_DO_CHANGE_SPEED (178) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_CHANGE_SPEED}
 
 Change speed and/or throttle set points. The value persists until it is overridden or there is a mode change
 
@@ -6978,7 +6978,7 @@ Change speed and/or throttle set points. The value persists until it is overridd
 | 6                                 |                                                                                                             |                                                |       |
 | 7                                 |                                                                                                             |                                                |       |
 
-### MAV_CMD_DO_SET_HOME (179) {#MAV_CMD_DO_SET_HOME}
+### MAV_CMD_DO_SET_HOME (179) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_HOME}
 
 Sets the home position to either to the current position or a specified position.
 The home position is the default position that the system will return to and land on.
@@ -6999,7 +6999,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)   | Longitude                                                                                                                                                                                                                                                                                   |                                                    |       |
 | 7 (Altitude)    | Altitude                                                                                                                                                                                                                                                                                    |                                                    | m     |
 
-### MAV_CMD_DO_SET_PARAMETER (180) — [DEP] {#MAV_CMD_DO_SET_PARAMETER}
+### MAV_CMD_DO_SET_PARAMETER (180) — [DEP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_PARAMETER}
 
 <span class="warning">**DEPRECATED:** Replaced By [PARAM_SET](#PARAM_SET) (2024-04)</span>
 
@@ -7015,7 +7015,7 @@ Set a system parameter.  Caution!  Use of this command requires knowledge of the
 | 6                                | Empty            |                                               |
 | 7                                | Empty            |                                               |
 
-### MAV_CMD_DO_SET_RELAY (181) {#MAV_CMD_DO_SET_RELAY}
+### MAV_CMD_DO_SET_RELAY (181) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_RELAY}
 
 Set a relay to a condition. The current value may optionally be reported using [RELAY_STATUS](#RELAY_STATUS).
 
@@ -7029,7 +7029,7 @@ Set a relay to a condition. The current value may optionally be reported using [
 | 6                                | Empty                                                                                                   |                                               |
 | 7                                | Empty                                                                                                   |                                               |
 
-### MAV_CMD_DO_REPEAT_RELAY (182) {#MAV_CMD_DO_REPEAT_RELAY}
+### MAV_CMD_DO_REPEAT_RELAY (182) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPEAT_RELAY}
 
 Cycle a relay on and off for a desired number of cycles with a desired period.
 
@@ -7043,7 +7043,7 @@ Cycle a relay on and off for a desired number of cycles with a desired period.
 | 6                                | Empty                                  |                                               |       |
 | 7                                | Empty                                  |                                               |       |
 
-### MAV_CMD_DO_SET_SERVO (183) {#MAV_CMD_DO_SET_SERVO}
+### MAV_CMD_DO_SET_SERVO (183) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_SERVO}
 
 Set a servo to a desired PWM value.
 
@@ -7057,7 +7057,7 @@ Set a servo to a desired PWM value.
 | 6                                | Empty                                   |                                               |       |
 | 7                                | Empty                                   |                                               |       |
 
-### MAV_CMD_DO_REPEAT_SERVO (184) {#MAV_CMD_DO_REPEAT_SERVO}
+### MAV_CMD_DO_REPEAT_SERVO (184) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPEAT_SERVO}
 
 Cycle a between its nominal setting and a desired PWM for a desired number of cycles with a desired period.
 
@@ -7071,7 +7071,7 @@ Cycle a between its nominal setting and a desired PWM for a desired number of cy
 | 6                                | Empty                                   |                                               |       |
 | 7                                | Empty                                   |                                               |       |
 
-### MAV_CMD_DO_FLIGHTTERMINATION (185) {#MAV_CMD_DO_FLIGHTTERMINATION}
+### MAV_CMD_DO_FLIGHTTERMINATION (185) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FLIGHTTERMINATION}
 
 Terminate flight immediately.
 
@@ -7092,7 +7092,7 @@ Support for this command can also be tested by sending the command with param1=0
 | 6                                | Empty                                                                                                                                                                                    |                                                                      |
 | 7                                | Empty                                                                                                                                                                                    |                                                                      |
 
-### MAV_CMD_DO_CHANGE_ALTITUDE (186) {#MAV_CMD_DO_CHANGE_ALTITUDE}
+### MAV_CMD_DO_CHANGE_ALTITUDE (186) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_CHANGE_ALTITUDE}
 
 Change altitude set point.
 
@@ -7106,7 +7106,7 @@ Change altitude set point.
 | 6                                | Empty                                  |                                              |       |
 | 7                                | Empty                                  |                                              |       |
 
-### MAV_CMD_DO_SET_ACTUATOR (187) {#MAV_CMD_DO_SET_ACTUATOR}
+### MAV_CMD_DO_SET_ACTUATOR (187) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ACTUATOR}
 
 Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped to specific outputs (e.g. on any MAIN or AUX PWM or UAVCAN) using a flight-stack specific mechanism (i.e. a parameter).
 
@@ -7120,7 +7120,7 @@ Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped
 | 6 (Actuator 6) | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                                                |
 | 7 (Index)      | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)                                                                                                                                                                                                                                                                                                                                                             | min: 0 inc: 1  |
 
-### MAV_CMD_DO_RETURN_PATH_START (188) {#MAV_CMD_DO_RETURN_PATH_START}
+### MAV_CMD_DO_RETURN_PATH_START (188) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_RETURN_PATH_START}
 
 Mission item to specify the start of a failsafe/landing return-path segment (the end of the segment is the next [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) item).
 
@@ -7147,7 +7147,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitudee. 0: not used. |       |
 | 7 (Altitude)  | Altitudee. 0: not used.  | m     |
 
-### MAV_CMD_DO_LAND_START (189) {#MAV_CMD_DO_LAND_START}
+### MAV_CMD_DO_LAND_START (189) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_LAND_START}
 
 Mission item to mark the start of a mission landing pattern, or a command to land with a mission landing pattern.
 
@@ -7173,7 +7173,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude for landing sequence selection, or 0 (see description). Ignored in commands (set 0). |       |
 | 7 (Altitude)  | Altitude for landing sequence selection, or 0 (see description). Ignored in commands (set 0).  | m     |
 
-### MAV_CMD_DO_RALLY_LAND (190) {#MAV_CMD_DO_RALLY_LAND}
+### MAV_CMD_DO_RALLY_LAND (190) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_RALLY_LAND}
 
 Command to perform a landing from a rally point.
 
@@ -7187,7 +7187,7 @@ Command to perform a landing from a rally point.
 | 6                                | Empty          |       |
 | 7                                | Empty          |       |
 
-### MAV_CMD_DO_GO_AROUND (191) {#MAV_CMD_DO_GO_AROUND}
+### MAV_CMD_DO_GO_AROUND (191) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GO_AROUND}
 
 Command to safely abort an autonomous landing.
 
@@ -7201,7 +7201,7 @@ Command to safely abort an autonomous landing.
 | 6                                | Empty       |       |
 | 7                                | Empty       |       |
 
-### MAV_CMD_DO_REPOSITION (192) {#MAV_CMD_DO_REPOSITION}
+### MAV_CMD_DO_REPOSITION (192) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPOSITION}
 
 Reposition the vehicle to a specific WGS84 global position. This command is intended for guided commands (for missions use [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT) instead).
 
@@ -7219,7 +7219,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude                                                                                                                                                                                                                                                                                                                                                                                                         |                                                                                                                    |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                                                                                                                                                                                                                                                                          |                                                                                                                    | m     |
 
-### MAV_CMD_DO_PAUSE_CONTINUE (193) {#MAV_CMD_DO_PAUSE_CONTINUE}
+### MAV_CMD_DO_PAUSE_CONTINUE (193) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_PAUSE_CONTINUE}
 
 If in a GPS controlled position mode, hold the current position or continue.
 
@@ -7233,7 +7233,7 @@ If in a GPS controlled position mode, hold the current position or continue.
 | 6                                | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                            |
 | 7                                | Reserved                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                            |
 
-### MAV_CMD_DO_SET_REVERSE (194) {#MAV_CMD_DO_SET_REVERSE}
+### MAV_CMD_DO_SET_REVERSE (194) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_REVERSE}
 
 Set moving direction to forward or reverse.
 
@@ -7247,7 +7247,7 @@ Set moving direction to forward or reverse.
 | 6                                | Empty                                                                                                                                                                                                                                                                                    |                                            |
 | 7                                | Empty                                                                                                                                                                                                                                                                                    |                                            |
 
-### MAV_CMD_DO_SET_ROI_LOCATION (195) {#MAV_CMD_DO_SET_ROI_LOCATION}
+### MAV_CMD_DO_SET_ROI_LOCATION (195) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI_LOCATION}
 
 Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -7265,7 +7265,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)        | Longitude of ROI location                                                                                                                                                                                                                                       |       |
 | 7 (Altitude)         | Altitude of ROI location                                                                                                                                                                                                                                        | m     |
 
-### MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET (196) {#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET}
+### MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET (196) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET}
 
 Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
 
@@ -7279,7 +7279,7 @@ Sets the region of interest (ROI) to be toward next waypoint, with optional pitc
 | 6 (Roll Offset)      | Roll offset from next waypoint, positive rolling to the right                                                                                                                                                                                                   | deg   |
 | 7 (Yaw Offset)       | Yaw offset from next waypoint, positive yawing to the right                                                                                                                                                                                                     | deg   |
 
-### MAV_CMD_DO_SET_ROI_NONE (197) {#MAV_CMD_DO_SET_ROI_NONE}
+### MAV_CMD_DO_SET_ROI_NONE (197) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI_NONE}
 
 Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.
 
@@ -7293,7 +7293,7 @@ Cancels any previous ROI command returning the vehicle/sensors to default flight
 | 6                                       | Empty                                                                                                                                                                                                                                                           |
 | 7                                       | Empty                                                                                                                                                                                                                                                           |
 
-### MAV_CMD_DO_SET_ROI_SYSID (198) {#MAV_CMD_DO_SET_ROI_SYSID}
+### MAV_CMD_DO_SET_ROI_SYSID (198) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI_SYSID}
 
 Mount tracks system with specified system ID. Determination of target vehicle position may be done with [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
 
@@ -7302,7 +7302,7 @@ Mount tracks system with specified system ID. Determination of target vehicle po
 | 1 (System ID)        | System ID                                                                                                                                                                                                                                                       | min: 1 max: 255 inc: 1 |
 | 2 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |                                                                        |
 
-### MAV_CMD_DO_CONTROL_VIDEO (200) {#MAV_CMD_DO_CONTROL_VIDEO}
+### MAV_CMD_DO_CONTROL_VIDEO (200) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_CONTROL_VIDEO}
 
 Control onboard camera system.
 
@@ -7316,7 +7316,7 @@ Control onboard camera system.
 | 6                                   | Empty                                                                                                                            |                                                                      |       |
 | 7                                   | Empty                                                                                                                            |                                                                      |       |
 
-### MAV_CMD_DO_SET_ROI (201) — [SUP] {#MAV_CMD_DO_SET_ROI}
+### MAV_CMD_DO_SET_ROI (201) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI}
 
 <span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
@@ -7336,7 +7336,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6                                | MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude |                                               |
 | 7                                | MAV_ROI_WPNEXT: yaw offset from next waypoint, MAV_ROI_LOCATION: altitude   |                                               |
 
-### MAV_CMD_DO_DIGICAM_CONFIGURE (202) {#MAV_CMD_DO_DIGICAM_CONFIGURE}
+### MAV_CMD_DO_DIGICAM_CONFIGURE (202) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_DIGICAM_CONFIGURE}
 
 Configure digital camera. This is a fallback message for systems that have not yet implemented [PARAM_EXT_XXX](#PARAM_EXT_XXX) messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).
 
@@ -7350,7 +7350,7 @@ Configure digital camera. This is a fallback message for systems that have not y
 | 6 (Command Identity) | Command Identity.                                                                       |                                               |       |
 | 7 (Engine Cut-off)   | Main engine cut-off time before camera trigger. (0 means no cut-off) | min: 0 inc: 1 | ds    |
 
-### MAV_CMD_DO_DIGICAM_CONTROL (203) {#MAV_CMD_DO_DIGICAM_CONTROL}
+### MAV_CMD_DO_DIGICAM_CONTROL (203) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_DIGICAM_CONTROL}
 
 Control digital camera. This is a fallback message for systems that have not yet implemented [PARAM_EXT_XXX](#PARAM_EXT_XXX) messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).
 
@@ -7364,7 +7364,7 @@ Control digital camera. This is a fallback message for systems that have not yet
 | 6 (Command Identity) | Command Identity                                                                                                                              |
 | 7 (Shot ID)          | Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count. |
 
-### MAV_CMD_DO_MOUNT_CONFIGURE (204) — [SUP] {#MAV_CMD_DO_MOUNT_CONFIGURE}
+### MAV_CMD_DO_MOUNT_CONFIGURE (204) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_MOUNT_CONFIGURE}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) (2020-01) — The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
@@ -7380,7 +7380,7 @@ Mission command to configure a camera or antenna mount
 | 6 (Pitch Input Mode) | Pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)                                                                     |                                                                             |
 | 7 (Yaw Input Mode)   | Yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)                                                                       |                                                                             |
 
-### MAV_CMD_DO_MOUNT_CONTROL (205) — [SUP] {#MAV_CMD_DO_MOUNT_CONTROL}
+### MAV_CMD_DO_MOUNT_CONTROL (205) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_MOUNT_CONTROL}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is ambiguous and inconsistent. It has been superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) and `MAV_CMD_DO_SET_ROI_*` variants. The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
@@ -7396,7 +7396,7 @@ Mission command to control a camera or antenna mount
 | 6 (Longitude) | longitude, set if appropriate mount mode.                                                              |                                                                             |       |
 | 7 (Mode)      | Mount mode.                                                                                            | [MAV_MOUNT_MODE](#MAV_MOUNT_MODE) |       |
 
-### MAV_CMD_DO_SET_CAM_TRIGG_DIST (206) {#MAV_CMD_DO_SET_CAM_TRIGG_DIST}
+### MAV_CMD_DO_SET_CAM_TRIGG_DIST (206) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_CAM_TRIGG_DIST}
 
 Mission command to set camera trigger distance for this flight. The camera is triggered each time this distance is exceeded. This command can also be used to set the shutter integration time for the camera.
 
@@ -7410,7 +7410,7 @@ Mission command to set camera trigger distance for this flight. The camera is tr
 | 6                                       | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                        |       |
 | 7                                       | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                        |       |
 
-### MAV_CMD_DO_FENCE_ENABLE (207) {#MAV_CMD_DO_FENCE_ENABLE}
+### MAV_CMD_DO_FENCE_ENABLE (207) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FENCE_ENABLE}
 
 Enable the geofence.
 This can be used in a mission or via the command protocol.
@@ -7428,7 +7428,7 @@ Flight stacks typically reset the setting to system defaults on reboot.
 | 6                                | Empty                                                                                                                                                                                                                                                        |                                                                      |
 | 7                                | Empty                                                                                                                                                                                                                                                        |                                                                      |
 
-### MAV_CMD_DO_PARACHUTE (208) {#MAV_CMD_DO_PARACHUTE}
+### MAV_CMD_DO_PARACHUTE (208) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_PARACHUTE}
 
 Mission item/command to release a parachute or enable/disable auto release.
 
@@ -7442,7 +7442,7 @@ Mission item/command to release a parachute or enable/disable auto release.
 | 6                                | Empty       |                                                            |
 | 7                                | Empty       |                                                            |
 
-### MAV_CMD_DO_MOTOR_TEST (209) {#MAV_CMD_DO_MOTOR_TEST}
+### MAV_CMD_DO_MOTOR_TEST (209) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_MOTOR_TEST}
 
 Command to perform motor test.
 
@@ -7456,7 +7456,7 @@ Command to perform motor test.
 | 6 (Test Order)    | Motor test order.                                                                                                                                                                                    | [MOTOR_TEST_ORDER](#MOTOR_TEST_ORDER)                                      |       |
 | 7                                    | Empty                                                                                                                                                                                                                |                                                                                                                      |       |
 
-### MAV_CMD_DO_INVERTED_FLIGHT (210) {#MAV_CMD_DO_INVERTED_FLIGHT}
+### MAV_CMD_DO_INVERTED_FLIGHT (210) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_INVERTED_FLIGHT}
 
 Change to/from inverted flight.
 
@@ -7470,7 +7470,7 @@ Change to/from inverted flight.
 | 6                                | Empty                                                                                                                                                                                                                                                                              |                                            |
 | 7                                | Empty                                                                                                                                                                                                                                                                              |                                            |
 
-### MAV_CMD_DO_GRIPPER (211) {#MAV_CMD_DO_GRIPPER}
+### MAV_CMD_DO_GRIPPER (211) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GRIPPER}
 
 Mission command to operate a gripper.
 
@@ -7484,7 +7484,7 @@ Mission command to operate a gripper.
 | 6                                 | Empty                                                                                                                                                                                                                                                       |                                                          |
 | 7                                 | Empty                                                                                                                                                                                                                                                       |                                                          |
 
-### MAV_CMD_DO_AUTOTUNE_ENABLE (212) {#MAV_CMD_DO_AUTOTUNE_ENABLE}
+### MAV_CMD_DO_AUTOTUNE_ENABLE (212) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_AUTOTUNE_ENABLE}
 
 Enable/disable autotune.
 
@@ -7498,7 +7498,7 @@ Enable/disable autotune.
 | 6                                | Empty.                                                                                                                                                                                                                                                          |                                                      |
 | 7                                | Empty.                                                                                                                                                                                                                                                          |                                                      |
 
-### MAV_CMD_NAV_SET_YAW_SPEED (213) {#MAV_CMD_NAV_SET_YAW_SPEED}
+### MAV_CMD_NAV_SET_YAW_SPEED (213) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_SET_YAW_SPEED}
 
 Sets a desired vehicle turn angle and speed change.
 
@@ -7512,7 +7512,7 @@ Sets a desired vehicle turn angle and speed change.
 | 6                                | Empty                                                                                                                                                                                                                                                                                       |                                            |       |
 | 7                                | Empty                                                                                                                                                                                                                                                                                       |                                            |       |
 
-### MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL (214) {#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL}
+### MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL (214) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL}
 
 Mission command to set camera trigger interval for this flight. If triggering is enabled, the camera is triggered each time this interval expires. This command can also be used to set the shutter integration time for the camera.
 
@@ -7526,7 +7526,7 @@ Mission command to set camera trigger interval for this flight. If triggering is
 | 6                                          | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                        |       |
 | 7                                          | Empty                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                                                                        |       |
 
-### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) — [SUP] {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
+### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01)</span>
 
@@ -7542,7 +7542,7 @@ Mission command to control a camera or antenna mount, using a quaternion as refe
 | 6                                | Empty                                                          |
 | 7                                | Empty                                                          |
 
-### MAV_CMD_DO_GUIDED_MASTER (221) {#MAV_CMD_DO_GUIDED_MASTER}
+### MAV_CMD_DO_GUIDED_MASTER (221) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GUIDED_MASTER}
 
 set id of master controller
 
@@ -7556,7 +7556,7 @@ set id of master controller
 | 6                                   | Empty        |                                                                        |
 | 7                                   | Empty        |                                                                        |
 
-### MAV_CMD_DO_GUIDED_LIMITS (222) {#MAV_CMD_DO_GUIDED_LIMITS}
+### MAV_CMD_DO_GUIDED_LIMITS (222) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GUIDED_LIMITS}
 
 Set limits for external control
 
@@ -7570,7 +7570,7 @@ Set limits for external control
 | 6                                                        | Empty                                                                                                                                                                                                                                                   |                        |       |
 | 7                                                        | Empty                                                                                                                                                                                                                                                   |                        |       |
 
-### MAV_CMD_DO_ENGINE_CONTROL (223) {#MAV_CMD_DO_ENGINE_CONTROL}
+### MAV_CMD_DO_ENGINE_CONTROL (223) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ENGINE_CONTROL}
 
 Control vehicle engine. This is interpreted by the vehicles engine controller to change the target engine state. It is intended for vehicles with internal combustion engines
 
@@ -7584,7 +7584,7 @@ Control vehicle engine. This is interpreted by the vehicles engine controller to
 | 6                                   | Empty                                                                                                                                                                                                                                                                                                                                      |                                                                                             |       |
 | 7                                   | Empty                                                                                                                                                                                                                                                                                                                                      |                                                                                             |       |
 
-### MAV_CMD_DO_SET_MISSION_CURRENT (224) {#MAV_CMD_DO_SET_MISSION_CURRENT}
+### MAV_CMD_DO_SET_MISSION_CURRENT (224) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_MISSION_CURRENT}
 
 Set the mission item with sequence number seq as the current item and emit [MISSION_CURRENT](#MISSION_CURRENT) (whether or not the mission number changed).
 If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.
@@ -7624,7 +7624,7 @@ NOP - This command is only used to mark the upper limit of the DO commands in th
 | 6                                | Empty       |
 | 7                                | Empty       |
 
-### MAV_CMD_PREFLIGHT_CALIBRATION (241) {#MAV_CMD_PREFLIGHT_CALIBRATION}
+### MAV_CMD_PREFLIGHT_CALIBRATION (241) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_CALIBRATION}
 
 Trigger calibration. This command will be only accepted if in pre-flight mode. Except for Temperature Calibration, only one sensor should be set in a single message and all others should be zero.
 
@@ -7638,7 +7638,7 @@ Trigger calibration. This command will be only accepted if in pre-flight mode. E
 | 6 (Compmot or Airspeed) | 1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration | min: 0 max: 2 inc: 1                                                  |
 | 7 (ESC or Baro)         | 1: ESC calibration, 3: barometer temperature calibration                                                                                                           | min: 0 max: 3 inc: 1                                                  |
 
-### MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS (242) {#MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS}
+### MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS (242) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS}
 
 Set sensor offsets. This command will be only accepted if in pre-flight mode.
 
@@ -7652,7 +7652,7 @@ Set sensor offsets. This command will be only accepted if in pre-flight mode.
 | 6 (5th Dimension) | Generic dimension 5, in the sensor's raw units                                                                                                                                                                                                                                              |                                                                      |
 | 7 (6th Dimension) | Generic dimension 6, in the sensor's raw units                                                                                                                                                                                                                                              |                                                                      |
 
-### MAV_CMD_PREFLIGHT_UAVCAN (243) {#MAV_CMD_PREFLIGHT_UAVCAN}
+### MAV_CMD_PREFLIGHT_UAVCAN (243) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_UAVCAN}
 
 Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Note that this maps to the legacy UAVCAN v0 function [UAVCAN_ENUMERATE](#UAVCAN_ENUMERATE), which is intended to be executed just once during initial vehicle configuration (it is not a normal pre-flight command and has been poorly named).
 
@@ -7666,7 +7666,7 @@ Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Not
 | 6                                  | Reserved                                                                                                                                    |
 | 7                                  | Reserved                                                                                                                                    |
 
-### MAV_CMD_PREFLIGHT_STORAGE (245) {#MAV_CMD_PREFLIGHT_STORAGE}
+### MAV_CMD_PREFLIGHT_STORAGE (245) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_STORAGE}
 
 Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.
 
@@ -7680,7 +7680,7 @@ Request storage of different parameter values and logs. This command will be onl
 | 6                                        | Empty                                                                                                                                                                                                                                                                    |                                                                                                                                          |       |
 | 7                                        | Empty                                                                                                                                                                                                                                                                    |                                                                                                                                          |       |
 
-### MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN (246) {#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN}
+### MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN (246) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN}
 
 Request the reboot or shutdown of system components.
 
@@ -7694,7 +7694,7 @@ Request the reboot or shutdown of system components.
 | 6 (Conditions)       | Conditions under which reboot/shutdown is allowed.                                         | [REBOOT_SHUTDOWN_CONDITIONS](#REBOOT_SHUTDOWN_CONDITIONS) |
 | 7                                       | WIP: ID (e.g. camera ID -1 for all IDs) |                                                                                                     |
 
-### MAV_CMD_OVERRIDE_GOTO (252) {#MAV_CMD_OVERRIDE_GOTO}
+### MAV_CMD_OVERRIDE_GOTO (252) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_OVERRIDE_GOTO}
 
 Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused ([MAV_GOTO_DO_HOLD](#MAV_GOTO_DO_HOLD)), param 2 defines whether it holds in place or moves to another position.
 
@@ -7712,7 +7712,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude/Y) | Longitude/Y position.                                                                                                                                                                                                                                                                                                                                                           |                                              |       |
 | 7 (Altitude/Z)  | Altitude/Z position.                                                                                                                                                                                                                                                                                                                                                            |                                              |       |
 
-### MAV_CMD_OBLIQUE_SURVEY (260) {#MAV_CMD_OBLIQUE_SURVEY}
+### MAV_CMD_OBLIQUE_SURVEY (260) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_OBLIQUE_SURVEY}
 
 Mission command to set a Camera Auto Mount Pivoting Oblique Survey (Replaces [CAM_TRIGG_DIST](#CAM_TRIGG_DIST) for this purpose). The camera is triggered each time this distance is exceeded, then the mount moves to the next position. Params 4~6 set-up the angle limits and number of positions for oblique survey, where mount-enabled vehicles automatically roll the camera between shots to emulate an oblique camera setup (providing an increased HFOV). This command can also be used to set the shutter integration time for the camera.
 
@@ -7726,7 +7726,7 @@ Mission command to set a Camera Auto Mount Pivoting Oblique Survey (Replaces [CA
 | 6 (Pitch Angle)  | Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis.                                                        | min: -180 max: 180                       | deg   |
 | 7                                   | Empty                                                                                                                                                                          |                                                                          |       |
 
-### MAV_CMD_DO_SET_STANDARD_MODE (262) {#MAV_CMD_DO_SET_STANDARD_MODE}
+### MAV_CMD_DO_SET_STANDARD_MODE (262) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_STANDARD_MODE}
 
 Enable the specified standard MAVLink mode.
 
@@ -7743,7 +7743,7 @@ See https://mavlink.io/en/services/standard_modes.html
 | 6                                    |                                  |                                                                                   |
 | 7                                    |                                  |                                                                                   |
 
-### MAV_CMD_MISSION_START (300) {#MAV_CMD_MISSION_START}
+### MAV_CMD_MISSION_START (300) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_MISSION_START}
 
 start running a mission
 
@@ -7752,7 +7752,7 @@ start running a mission
 | 1 (First Item) | first_item: the first mission item to run                                                              | min: 0 inc: 1 |
 | 2 (Last Item)  | last_item:  the last mission item to run (after this item is run, the mission ends) | min: 0 inc: 1 |
 
-### MAV_CMD_ACTUATOR_TEST (310) {#MAV_CMD_ACTUATOR_TEST}
+### MAV_CMD_ACTUATOR_TEST (310) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ACTUATOR_TEST}
 
 Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_MOTOR_TEST) but operates on the level of output functions, i.e. it is possible to test Motor1 independent from which output it is configured on. Autopilots must NACK this command with [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED) while armed.
 
@@ -7766,7 +7766,7 @@ Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO
 | 6                                      |                                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                                                 |       |
 | 7                                      |                                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                                                 |       |
 
-### MAV_CMD_CONFIGURE_ACTUATOR (311) {#MAV_CMD_CONFIGURE_ACTUATOR}
+### MAV_CMD_CONFIGURE_ACTUATOR (311) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CONFIGURE_ACTUATOR}
 
 Actuator configuration command.
 
@@ -7780,7 +7780,7 @@ Actuator configuration command.
 | 6                                      |                               |                                                                                                 |
 | 7                                      |                               |                                                                                                 |
 
-### MAV_CMD_COMPONENT_ARM_DISARM (400) {#MAV_CMD_COMPONENT_ARM_DISARM}
+### MAV_CMD_COMPONENT_ARM_DISARM (400) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_COMPONENT_ARM_DISARM}
 
 Arms / Disarms a component
 
@@ -7789,7 +7789,7 @@ Arms / Disarms a component
 | 1 (Arm)       | Arm (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE disarms. Values not equal to 0 or 1 are invalid.                                                           | [MAV_BOOL](#MAV_BOOL)                                   |
 | 2 (Force)     | 0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight) | min: 0 max: 21196 inc: 21196 |
 
-### MAV_CMD_RUN_PREARM_CHECKS (401) {#MAV_CMD_RUN_PREARM_CHECKS}
+### MAV_CMD_RUN_PREARM_CHECKS (401) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_RUN_PREARM_CHECKS}
 
 Instructs a target system to run pre-arm checks.
 
@@ -7801,7 +7801,7 @@ The command should return [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORAR
 | Param (Label) | Description |
 | -------------------------------- | ----------- |
 
-### MAV_CMD_ILLUMINATOR_ON_OFF (405) {#MAV_CMD_ILLUMINATOR_ON_OFF}
+### MAV_CMD_ILLUMINATOR_ON_OFF (405) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ILLUMINATOR_ON_OFF}
 
 Turns illuminators ON/OFF. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).
 
@@ -7809,7 +7809,7 @@ Turns illuminators ON/OFF. An illuminator is a light source that is used for lig
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | 1 (Enable)    | Illuminators on (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE turns illuminators off. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 
-### MAV_CMD_DO_ILLUMINATOR_CONFIGURE (406) {#MAV_CMD_DO_ILLUMINATOR_CONFIGURE}
+### MAV_CMD_DO_ILLUMINATOR_CONFIGURE (406) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ILLUMINATOR_CONFIGURE}
 
 Configures illuminator settings. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).
 
@@ -7820,7 +7820,7 @@ Configures illuminator settings. An illuminator is a light source that is used f
 | 3 (Strobe Period) | Strobe period in seconds where 0 means strobing is not used                             | min: 0                                     | s     |
 | 4 (Strobe Duty)   | Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used | min: 0 max: 100            | %     |
 
-### MAV_CMD_GET_HOME_POSITION (410) — [SUP] {#MAV_CMD_GET_HOME_POSITION}
+### MAV_CMD_GET_HOME_POSITION (410) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GET_HOME_POSITION}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2022-04)</span>
 
@@ -7838,7 +7838,7 @@ The vehicle will ACK the command and emit the [HOME_POSITION](#HOME_POSITION) me
 | 6                                | Reserved    |
 | 7                                | Reserved    |
 
-### MAV_CMD_INJECT_FAILURE (420) {#MAV_CMD_INJECT_FAILURE}
+### MAV_CMD_INJECT_FAILURE (420) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_INJECT_FAILURE}
 
 Inject artificial failure for testing purposes. Note that autopilots should implement an additional protection before accepting this command such as a specific param setting.
 
@@ -7849,7 +7849,7 @@ Inject artificial failure for testing purposes. Note that autopilots should impl
 | 3 (Instance)         | Instance affected by failure (0 to signal all). Takes precedence over Instance bitmask (param4) when not NaN. Set to NaN to use Instance bitmask instead. | min: 0 inc: 1      |
 | 4 (Instance bitmask) | Bitmask of instances affected by the failure (bit 0 = first instance, bit 1 = second instance, etc.). Used only when Instance (param3) is NaN.            | min: 0                             |
 
-### MAV_CMD_START_RX_PAIR (500) {#MAV_CMD_START_RX_PAIR}
+### MAV_CMD_START_RX_PAIR (500) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_START_RX_PAIR}
 
 Starts receiver pairing.
 
@@ -7858,7 +7858,7 @@ Starts receiver pairing.
 | 1 (RC Type)     | RC type.     | [RC_TYPE](#RC_TYPE)                              |
 | 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) |
 
-### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [SUP] {#MAV_CMD_GET_MESSAGE_INTERVAL}
+### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GET_MESSAGE_INTERVAL}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2022-04)</span>
 
@@ -7869,7 +7869,7 @@ The receiver should ACK the command and then emit its response in a [MESSAGE_INT
 | --------------------------------- | ---------------------- | --------------------------------------------------------------------------- |
 | 1 (Message ID) | The MAVLink message ID | min: 0 max: 16777215 inc: 1 |
 
-### MAV_CMD_SET_MESSAGE_INTERVAL (511) {#MAV_CMD_SET_MESSAGE_INTERVAL}
+### MAV_CMD_SET_MESSAGE_INTERVAL (511) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_MESSAGE_INTERVAL}
 
 Set the interval between messages for a particular MAVLink message ID. This interface replaces [REQUEST_DATA_STREAM](#REQUEST_DATA_STREAM).
 
@@ -7883,7 +7883,7 @@ Set the interval between messages for a particular MAVLink message ID. This inte
 | 6 (Req Param 6)     | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN).                                                                                                                                                                                                                                                                                                         |                                                                             |       |
 | 7 (Response Target) | Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requester, 2: broadcast.                                                                                                                                                                                                                     | min: 0 max: 2 inc: 1        |       |
 
-### MAV_CMD_REQUEST_MESSAGE (512) {#MAV_CMD_REQUEST_MESSAGE}
+### MAV_CMD_REQUEST_MESSAGE (512) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_MESSAGE}
 
 Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL)).
 
@@ -7897,7 +7897,7 @@ Request the target system(s) emit a single instance of a specified message (i.e.
 | 6 (Req Param 5)     | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).                                                            |                                                                             |
 | 7 (Response Target) | Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requester, 2: broadcast. | min: 0 max: 2 inc: 1        |
 
-### MAV_CMD_REQUEST_PROTOCOL_VERSION (519) — [DEP] {#MAV_CMD_REQUEST_PROTOCOL_VERSION}
+### MAV_CMD_REQUEST_PROTOCOL_VERSION (519) — [DEP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_PROTOCOL_VERSION}
 
 <span class="warning">**DEPRECATED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2025-11)</span>
 
@@ -7908,7 +7908,7 @@ Request MAVLink protocol version compatibility. All receivers should ACK the com
 | 1 (Protocol)  | Request supported protocol versions by all nodes on the network (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                | Reserved (all remaining params)                                                                                                                                                                    |                                            |
 
-### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) — [SUP] {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
+### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -7919,7 +7919,7 @@ Request autopilot capabilities. The receiver should ACK the command and then emi
 | 1 (Version)   | Request autopilot version (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                | Reserved (all remaining params)                                                                                                                              |                                            |
 
-### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) — [SUP] {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
+### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -7930,7 +7930,7 @@ Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 | 1 (Capabilities) | Request camera capabilities (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                   | Reserved (all remaining params)                                                                                                                                |                                            |
 
-### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) — [SUP] {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
+### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -7941,7 +7941,7 @@ Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 | 1 (Settings)  | Request camera settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                | Reserved (all remaining params)                                                                                                                            |                                            |
 
-### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) — [SUP] {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
+### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -7953,7 +7953,7 @@ Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use t
 | 2 (Information) | Request storage information (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL)    |
 | 3                                  | Reserved (all remaining params)                                                                                                                                |                                               |
 
-### MAV_CMD_STORAGE_FORMAT (526) {#MAV_CMD_STORAGE_FORMAT}
+### MAV_CMD_STORAGE_FORMAT (526) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_STORAGE_FORMAT}
 
 Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORAGE_INFORMATION) message is sent. Use the command's target_component to target a specific component's storage.
 
@@ -7964,7 +7964,7 @@ Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORA
 | 3 (Reset Image Log) | Reset Image Log (without formatting storage medium) (MAV_BOOL_TRUE). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL)    |
 | 4                                      | Reserved (all remaining params)                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                               |
 
-### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) — [SUP] {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
+### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -7975,7 +7975,7 @@ Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 | 1 (Capture Status) | Request camera capture status (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                     | Reserved (all remaining params)                                                                                                                                  |                                            |
 
-### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) — [SUP] {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
+### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -7986,7 +7986,7 @@ Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 | 1 (Flight Information) | Request flight information (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |
 | 2                                         | Reserved (all remaining params)                                                                                                                               |                                            |
 
-### MAV_CMD_RESET_CAMERA_SETTINGS (529) {#MAV_CMD_RESET_CAMERA_SETTINGS}
+### MAV_CMD_RESET_CAMERA_SETTINGS (529) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_RESET_CAMERA_SETTINGS}
 
 Reset all camera settings to Factory Default
 
@@ -7995,7 +7995,7 @@ Reset all camera settings to Factory Default
 | 1 (Reset)            | Reset all settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid.                                                                                                                                                                                                                                                                                             | [MAV_BOOL](#MAV_BOOL)                             |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_SET_CAMERA_MODE (530) {#MAV_CMD_SET_CAMERA_MODE}
+### MAV_CMD_SET_CAMERA_MODE (530) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_MODE}
 
 Set camera running mode. Use NaN for reserved values. GCS will send a [MAV_CMD_REQUEST_VIDEO_STREAM_STATUS](#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS) command after a mode change if the camera supports video streaming.
 
@@ -8007,7 +8007,7 @@ Set camera running mode. Use NaN for reserved values. GCS will send a [MAV_CMD_R
 | 4                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 | 7                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 
-### MAV_CMD_SET_CAMERA_ZOOM (531) {#MAV_CMD_SET_CAMERA_ZOOM}
+### MAV_CMD_SET_CAMERA_ZOOM (531) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_ZOOM}
 
 Set camera zoom. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS) message (on success).
 
@@ -8018,7 +8018,7 @@ Set camera zoom. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS) 
 | 3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1          |
 | 4                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                 |
 
-### MAV_CMD_SET_CAMERA_FOCUS (532) {#MAV_CMD_SET_CAMERA_FOCUS}
+### MAV_CMD_SET_CAMERA_FOCUS (532) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_FOCUS}
 
 Set camera focus. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS) message (on success).
 
@@ -8029,7 +8029,7 @@ Set camera focus. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS)
 | 3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1      |
 | 4                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                             |
 
-### MAV_CMD_SET_STORAGE_USAGE (533) {#MAV_CMD_SET_STORAGE_USAGE}
+### MAV_CMD_SET_STORAGE_USAGE (533) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_STORAGE_USAGE}
 
 Set that a particular storage is the preferred location for saving photos, videos, and/or other media (e.g. to set that an SD card is used for storing videos).
 
@@ -8043,7 +8043,7 @@ A target system can choose to not allow a particular storage to be set as prefer
 | 1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1                                       |
 | 2 (Usage)      | Usage flags                                                                     | [STORAGE_USAGE_FLAG](#STORAGE_USAGE_FLAG) |
 
-### MAV_CMD_SET_CAMERA_SOURCE (534) {#MAV_CMD_SET_CAMERA_SOURCE}
+### MAV_CMD_SET_CAMERA_SOURCE (534) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_SOURCE}
 
 Set camera source. Changes the camera's active sources on cameras with multiple image sensors.
 
@@ -8053,7 +8053,7 @@ Set camera source. Changes the camera's active sources on cameras with multiple 
 | 2 (primary source)   | Primary Source                                                                                                           | [CAMERA_SOURCE](#CAMERA_SOURCE) |
 | 3 (secondary source) | Secondary Source. If non-zero the second source will be displayed as picture-in-picture. | [CAMERA_SOURCE](#CAMERA_SOURCE) |
 
-### MAV_CMD_JUMP_TAG (600) {#MAV_CMD_JUMP_TAG}
+### MAV_CMD_JUMP_TAG (600) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_JUMP_TAG}
 
 Tagged jump target. Can be jumped to with [MAV_CMD_DO_JUMP_TAG](#MAV_CMD_DO_JUMP_TAG).
 
@@ -8061,7 +8061,7 @@ Tagged jump target. Can be jumped to with [MAV_CMD_DO_JUMP_TAG](#MAV_CMD_DO_JUMP
 | -------------------------------- | -------------------- | --------------------------------------------- |
 | 1 (Tag)       | Tag. | min: 0 inc: 1 |
 
-### MAV_CMD_DO_JUMP_TAG (601) {#MAV_CMD_DO_JUMP_TAG}
+### MAV_CMD_DO_JUMP_TAG (601) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_DO_JUMP_TAG}
 
 Jump to the matching tag in the mission list. Repeat this action for the specified number of times. A mission should contain a single matching tag for each jump. If this is not the case then a jump to a missing tag should complete the mission, and a jump where there are multiple matching tags should always select the one with the lowest mission sequence number.
 
@@ -8070,7 +8070,7 @@ Jump to the matching tag in the mission list. Repeat this action for the specifi
 | 1 (Tag)       | Target tag to jump to. | min: 0 inc: 1 |
 | 2 (Repeat)    | Repeat count.          | min: 0 inc: 1 |
 
-### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
+### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
 
 Sets the GNSS coordinates of the vehicle local origin (0,0,0) position.
 
@@ -8089,7 +8089,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude   |       |
 | 7 (Altitude)  | Altitude    | m     |
 
-### MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (1000) {#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW}
+### MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (1000) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW}
 
 Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: only the gimbal manager will react to this command - it will be ignored by a gimbal device. Use [GIMBAL_MANAGER_SET_PITCHYAW](#GIMBAL_MANAGER_SET_PITCHYAW) if you need to stream pitch/yaw setpoints at higher rate.
 
@@ -8102,7 +8102,7 @@ Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set
 | 5 (Gimbal manager flags) | Gimbal manager flags to use.                                                                                                                                                                                                                    | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) |       |
 | 7 (Gimbal device ID)     | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |                                                                                         |       |
 
-### MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE (1001) {#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE}
+### MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE (1001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE}
 
 Gimbal configuration to set which sysid/compid is in primary and secondary control.
 
@@ -8114,7 +8114,7 @@ Gimbal configuration to set which sysid/compid is in primary and secondary contr
 | 4 (compid secondary control) | Compid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control). |
 | 7 (Gimbal device ID)         | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).                                                            |
 
-### MAV_CMD_IMAGE_START_CAPTURE (2000) {#MAV_CMD_IMAGE_START_CAPTURE}
+### MAV_CMD_IMAGE_START_CAPTURE (2000) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_IMAGE_START_CAPTURE}
 
 Start image capture sequence. [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) must be emitted after each capture.
 
@@ -8140,7 +8140,7 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 | 6                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |       |
 | 7                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |       |
 
-### MAV_CMD_IMAGE_STOP_CAPTURE (2001) {#MAV_CMD_IMAGE_STOP_CAPTURE}
+### MAV_CMD_IMAGE_STOP_CAPTURE (2001) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_IMAGE_STOP_CAPTURE}
 
 Stop image capture sequence.
 
@@ -8166,7 +8166,7 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 | 6                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 | 7                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 
-### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) — [SUP] {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
+### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -8182,7 +8182,7 @@ Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 | 6                                |                                                                                                     |                                               |
 | 7                                |                                                                                                     |                                               |
 
-### MAV_CMD_DO_TRIGGER_CONTROL (2003) {#MAV_CMD_DO_TRIGGER_CONTROL}
+### MAV_CMD_DO_TRIGGER_CONTROL (2003) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_TRIGGER_CONTROL}
 
 Enable or disable on-board camera triggering system.
 
@@ -8193,7 +8193,7 @@ Enable or disable on-board camera triggering system.
 | 3 (Pause)            | 1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore                                                                                                                                                                                                                                                                                                                                                           | min: -1 max: 1 inc: 2  |
 | 4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_CAMERA_TRACK_POINT (2004) {#MAV_CMD_CAMERA_TRACK_POINT}
+### MAV_CMD_CAMERA_TRACK_POINT (2004) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_TRACK_POINT}
 
 If the camera supports point visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) is set), this command allows to initiate the tracking.
 
@@ -8204,7 +8204,7 @@ If the camera supports point visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_POI
 | 3 (Radius)           | Point radius (normalized 0..1, 0 is one pixel, 1 is full image width).                                                                                                                                                                                                                                                                                                                            | min: 0 max: 1                          |
 | 4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_CAMERA_TRACK_RECTANGLE (2005) {#MAV_CMD_CAMERA_TRACK_RECTANGLE}
+### MAV_CMD_CAMERA_TRACK_RECTANGLE (2005) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_TRACK_RECTANGLE}
 
 If the camera supports rectangle visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) is set), this command allows to initiate the tracking.
 
@@ -8216,7 +8216,7 @@ If the camera supports rectangle visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING
 | 4 (Bottom right corner y) | Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).                                                                                                                                                                                                                                                                                                                | min: 0 max: 1                          |
 | 5 (Target Camera ID)      | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_CAMERA_STOP_TRACKING (2010) {#MAV_CMD_CAMERA_STOP_TRACKING}
+### MAV_CMD_CAMERA_STOP_TRACKING (2010) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_STOP_TRACKING}
 
 Stops ongoing tracking.
 
@@ -8224,7 +8224,7 @@ Stops ongoing tracking.
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_VIDEO_START_CAPTURE (2500) {#MAV_CMD_VIDEO_START_CAPTURE}
+### MAV_CMD_VIDEO_START_CAPTURE (2500) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_START_CAPTURE}
 
 Starts video capture (recording).
 
@@ -8238,7 +8238,7 @@ Starts video capture (recording).
 | 6                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |       |
 | 7                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |       |
 
-### MAV_CMD_VIDEO_STOP_CAPTURE (2501) {#MAV_CMD_VIDEO_STOP_CAPTURE}
+### MAV_CMD_VIDEO_STOP_CAPTURE (2501) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_STOP_CAPTURE}
 
 Stop the current video capture (recording).
 
@@ -8252,7 +8252,7 @@ Stop the current video capture (recording).
 | 6                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 | 7                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                        |
 
-### MAV_CMD_VIDEO_START_STREAMING (2502) {#MAV_CMD_VIDEO_START_STREAMING}
+### MAV_CMD_VIDEO_START_STREAMING (2502) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_START_STREAMING}
 
 Start video streaming
 
@@ -8261,7 +8261,7 @@ Start video streaming
 | 1 (Stream ID)        | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)                                                                                                                                                                                                                                                                                                                                                              | min: 0 inc: 1                          |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_VIDEO_STOP_STREAMING (2503) {#MAV_CMD_VIDEO_STOP_STREAMING}
+### MAV_CMD_VIDEO_STOP_STREAMING (2503) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_STOP_STREAMING}
 
 Stop the given video stream
 
@@ -8270,7 +8270,7 @@ Stop the given video stream
 | 1 (Stream ID)        | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)                                                                                                                                                                                                                                                                                                                                                              | min: 0 inc: 1                          |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [SUP] {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
+### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -8280,7 +8280,7 @@ Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFOR
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 |
 
-### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) — [SUP] {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
+### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2019-08)</span>
 
@@ -8290,7 +8290,7 @@ Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 | -------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 |
 
-### MAV_CMD_LOGGING_START (2510) {#MAV_CMD_LOGGING_START}
+### MAV_CMD_LOGGING_START (2510) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_LOGGING_START}
 
 Request to start streaming logging data over MAVLink (see also [LOGGING_DATA](#LOGGING_DATA) message)
 
@@ -8304,7 +8304,7 @@ Request to start streaming logging data over MAVLink (see also [LOGGING_DATA](#L
 | 6                                | Reserved (set to 0)          |                                               |
 | 7                                | Reserved (set to 0)          |                                               |
 
-### MAV_CMD_LOGGING_STOP (2511) {#MAV_CMD_LOGGING_STOP}
+### MAV_CMD_LOGGING_STOP (2511) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_LOGGING_STOP}
 
 Request to stop streaming log data over MAVLink
 
@@ -8318,7 +8318,7 @@ Request to stop streaming log data over MAVLink
 | 6                                | Reserved (set to 0) |
 | 7                                | Reserved (set to 0) |
 
-### MAV_CMD_AIRFRAME_CONFIGURATION (2520) {#MAV_CMD_AIRFRAME_CONFIGURATION}
+### MAV_CMD_AIRFRAME_CONFIGURATION (2520) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_AIRFRAME_CONFIGURATION}
 
 | Param (Label)             | Description                                                                                                  | Values                                         |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
@@ -8330,7 +8330,7 @@ Request to stop streaming log data over MAVLink
 | 6                                            |                                                                                                              |                                                |
 | 7                                            |                                                                                                              |                                                |
 
-### MAV_CMD_CONTROL_HIGH_LATENCY (2600) {#MAV_CMD_CONTROL_HIGH_LATENCY}
+### MAV_CMD_CONTROL_HIGH_LATENCY (2600) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CONTROL_HIGH_LATENCY}
 
 Request to start/stop transmitting over the high latency telemetry
 
@@ -8344,7 +8344,7 @@ Request to start/stop transmitting over the high latency telemetry
 | 6                                | Empty                                                                                                                                                                                                                                                                                                        |                                            |
 | 7                                | Empty                                                                                                                                                                                                                                                                                                        |                                            |
 
-### MAV_CMD_PANORAMA_CREATE (2800) {#MAV_CMD_PANORAMA_CREATE}
+### MAV_CMD_PANORAMA_CREATE (2800) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PANORAMA_CREATE}
 
 Create a panorama at the current position
 
@@ -8355,7 +8355,7 @@ Create a panorama at the current position
 | 3 (Horizontal Speed) | Speed of the horizontal rotation.                                                    | deg/s |
 | 4 (Vertical Speed)   | Speed of the vertical rotation.                                                      | deg/s |
 
-### MAV_CMD_DO_VTOL_TRANSITION (3000) {#MAV_CMD_DO_VTOL_TRANSITION}
+### MAV_CMD_DO_VTOL_TRANSITION (3000) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_VTOL_TRANSITION}
 
 Request VTOL transition
 
@@ -8364,7 +8364,7 @@ Request VTOL transition
 | 1 (State)     | The target VTOL state. For normal transitions, only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.                                                                                                                                                          | [MAV_VTOL_STATE](#MAV_VTOL_STATE) |
 | 2 (Immediate) | Force immediate transition to the specified MAV_VTOL_STATE. 1: Force immediate, 0: normal transition. Can be used, for example, to trigger an emergency "Quadchute". Caution: Can be dangerous/damage vehicle, depending on autopilot implementation of this command. |                                                                             |
 
-### MAV_CMD_ARM_AUTHORIZATION_REQUEST (3001) {#MAV_CMD_ARM_AUTHORIZATION_REQUEST}
+### MAV_CMD_ARM_AUTHORIZATION_REQUEST (3001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ARM_AUTHORIZATION_REQUEST}
 
 Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.
 
@@ -8375,14 +8375,14 @@ If the authorization is denied [COMMAND_ACK](#COMMAND_ACK).result_param2 should 
 | -------------------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | 1 (System ID) | Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle | min: 0 max: 255 inc: 1 |
 
-### MAV_CMD_SET_GUIDED_SUBMODE_STANDARD (4000) {#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD}
+### MAV_CMD_SET_GUIDED_SUBMODE_STANDARD (4000) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD}
 
 This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.
 
 | Param (Label) | Description |
 | -------------------------------- | ----------- |
 
-### MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE (4001) {#MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE}
+### MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE (4001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE}
 
 This command sets submode circle when vehicle is in guided mode. Vehicle flies along a circle facing the center of the circle. The user can input the velocity along the circle and change the radius. If no input is given the vehicle will hold position.
 
@@ -8399,7 +8399,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 5 (Latitude)  | Target latitude of center of circle in CIRCLE_MODE  | degE7 |
 | 6 (Longitude) | Target longitude of center of circle in CIRCLE_MODE | degE7 |
 
-### MAV_CMD_CONDITION_GATE (4501) {#MAV_CMD_CONDITION_GATE}
+### MAV_CMD_CONDITION_GATE (4501) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_GATE}
 
 Delay mission state machine until gate has been reached.
 
@@ -8417,7 +8417,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)   | Longitude                                                                                                                                                                                                                                                                |                                               |       |
 | 7 (Altitude)    | Altitude                                                                                                                                                                                                                                                                 |                                               | m     |
 
-### MAV_CMD_NAV_FENCE_RETURN_POINT (5000) {#MAV_CMD_NAV_FENCE_RETURN_POINT}
+### MAV_CMD_NAV_FENCE_RETURN_POINT (5000) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_RETURN_POINT}
 
 Fence return point (there can only be one such point in a geofence definition). If rally points are supported they should be used instead.
 
@@ -8435,7 +8435,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude   |       |
 | 7 (Altitude)  | Altitude    | m     |
 
-### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION (5001) {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION}
+### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION (5001) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION}
 
 Fence vertex for an inclusion polygon (the polygon must not be self-intersecting). The vehicle must stay within this area. Minimum of 3 vertices required.
 
@@ -8455,7 +8455,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)       | Longitude                                                                                                                                                                |                                               |
 | 7                                      | Reserved                                                                                                                                                                 |                                               |
 
-### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION (5002) {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION}
+### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION (5002) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION}
 
 Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.
 
@@ -8475,7 +8475,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)    | Longitude                                                                                                                                                                |                                               |
 | 7                                   | Reserved                                                                                                                                                                 |                                               |
 
-### MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION (5003) {#MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION}
+### MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION (5003) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION}
 
 Circular fence area. The vehicle must stay inside this area.
 
@@ -8493,7 +8493,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)       | Longitude                                                                                               |                                               |       |
 | 7                                      | Reserved                                                                                                |                                               |       |
 
-### MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION (5004) {#MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION}
+### MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION (5004) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION}
 
 Circular fence area. The vehicle must stay outside this area.
 
@@ -8511,7 +8511,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude               |       |
 | 7                                | Reserved                |       |
 
-### MAV_CMD_NAV_RALLY_POINT (5100) {#MAV_CMD_NAV_RALLY_POINT}
+### MAV_CMD_NAV_RALLY_POINT (5100) <span class="VPBadge warning" title="Can be used in a rally point plan">Rally</span> {#MAV_CMD_NAV_RALLY_POINT}
 
 Rally point. You can have multiple rally points defined.
 
@@ -8529,7 +8529,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude   |       |
 | 7 (Altitude)  | Altitude    | m     |
 
-### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) — [SUP] {#MAV_CMD_UAVCAN_GET_NODE_INFO}
+### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_UAVCAN_GET_NODE_INFO}
 
 <span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) (2026-05)</span>
 
@@ -8545,7 +8545,7 @@ Commands the vehicle to respond with a sequence of messages [UAVCAN_NODE_INFO](#
 | 6                                | Reserved (set to 0) |
 | 7                                | Reserved (set to 0) |
 
-### MAV_CMD_DO_SET_SAFETY_SWITCH_STATE (5300) {#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE}
+### MAV_CMD_DO_SET_SAFETY_SWITCH_STATE (5300) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE}
 
 Change state of safety switch.
 
@@ -8559,7 +8559,7 @@ Change state of safety switch.
 | 6                                    | Empty.                   |                                                                                       |
 | 7                                    | Empty.                   |                                                                                       |
 
-### MAV_CMD_DO_ADSB_OUT_IDENT (10001) {#MAV_CMD_DO_ADSB_OUT_IDENT}
+### MAV_CMD_DO_ADSB_OUT_IDENT (10001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ADSB_OUT_IDENT}
 
 Trigger the start of an ADSB-out IDENT. This should only be used when requested to do so by an Air Traffic Controller in controlled airspace. This starts the IDENT which is then typically held for 18 seconds by the hardware per the Mode A, C, and S transponder spec.
 
@@ -8573,7 +8573,7 @@ Trigger the start of an ADSB-out IDENT. This should only be used when requested 
 | 6                                | Reserved (set to 0) |
 | 7                                | Reserved (set to 0) |
 
-### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [DEP] {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
+### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [DEP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
 
 <span class="warning">**DEPRECATED:**(2021-06) — Last implemented in PX4 v1.10.2. Removed PX4 v1.11.0. Never implemented in ArduPilot.)</span>
 
@@ -8593,7 +8593,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude)          | Longitude.                                                                                                                                                                                                                                                                                                                                                                                                        |                                                                      | degE7 |
 | 7 (Altitude)           | Altitude (MSL)                                                                                                                                                                                                                                                                                                                                                                                                 |                                                                      | m     |
 
-### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) — [DEP] {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
+### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) — [DEP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
 
 <span class="warning">**DEPRECATED:**(2021-06) — Last implemented in PX4 v1.10.2. Removed PX4 v1.11.0. Never implemented in ArduPilot.)</span>
 
@@ -8609,7 +8609,7 @@ Control the payload deployment.
 | 6                                     | Reserved                                                                                                                                                                                                                                                                                                                                       |                                                                        |
 | 7                                     | Reserved                                                                                                                                                                                                                                                                                                                                       |                                                                        |
 
-### MAV_CMD_WAYPOINT_USER_1 (31000) {#MAV_CMD_WAYPOINT_USER_1}
+### MAV_CMD_WAYPOINT_USER_1 (31000) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_WAYPOINT_USER_1}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
@@ -8627,7 +8627,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_WAYPOINT_USER_2 (31001) {#MAV_CMD_WAYPOINT_USER_2}
+### MAV_CMD_WAYPOINT_USER_2 (31001) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_WAYPOINT_USER_2}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
@@ -8645,7 +8645,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_WAYPOINT_USER_3 (31002) {#MAV_CMD_WAYPOINT_USER_3}
+### MAV_CMD_WAYPOINT_USER_3 (31002) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_WAYPOINT_USER_3}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
@@ -8663,7 +8663,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_WAYPOINT_USER_4 (31003) {#MAV_CMD_WAYPOINT_USER_4}
+### MAV_CMD_WAYPOINT_USER_4 (31003) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_WAYPOINT_USER_4}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
@@ -8681,7 +8681,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_WAYPOINT_USER_5 (31004) {#MAV_CMD_WAYPOINT_USER_5}
+### MAV_CMD_WAYPOINT_USER_5 (31004) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_WAYPOINT_USER_5}
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
@@ -8699,7 +8699,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_SPATIAL_USER_1 (31005) {#MAV_CMD_SPATIAL_USER_1}
+### MAV_CMD_SPATIAL_USER_1 (31005) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_SPATIAL_USER_1}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
@@ -8717,7 +8717,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_SPATIAL_USER_2 (31006) {#MAV_CMD_SPATIAL_USER_2}
+### MAV_CMD_SPATIAL_USER_2 (31006) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_SPATIAL_USER_2}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
@@ -8735,7 +8735,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_SPATIAL_USER_3 (31007) {#MAV_CMD_SPATIAL_USER_3}
+### MAV_CMD_SPATIAL_USER_3 (31007) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_SPATIAL_USER_3}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
@@ -8753,7 +8753,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_SPATIAL_USER_4 (31008) {#MAV_CMD_SPATIAL_USER_4}
+### MAV_CMD_SPATIAL_USER_4 (31008) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_SPATIAL_USER_4}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
@@ -8771,7 +8771,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_SPATIAL_USER_5 (31009) {#MAV_CMD_SPATIAL_USER_5}
+### MAV_CMD_SPATIAL_USER_5 (31009) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_SPATIAL_USER_5}
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
@@ -8789,7 +8789,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 6 (Longitude) | Longitude unscaled                |       |
 | 7 (Altitude)  | Altitude (MSL) | m     |
 
-### MAV_CMD_USER_1 (31010) {#MAV_CMD_USER_1}
+### MAV_CMD_USER_1 (31010) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_USER_1}
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
@@ -8803,7 +8803,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 | 6                                | User defined |
 | 7                                | User defined |
 
-### MAV_CMD_USER_2 (31011) {#MAV_CMD_USER_2}
+### MAV_CMD_USER_2 (31011) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_USER_2}
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
@@ -8817,7 +8817,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 | 6                                | User defined |
 | 7                                | User defined |
 
-### MAV_CMD_USER_3 (31012) {#MAV_CMD_USER_3}
+### MAV_CMD_USER_3 (31012) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_USER_3}
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
@@ -8831,7 +8831,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 | 6                                | User defined |
 | 7                                | User defined |
 
-### MAV_CMD_USER_4 (31013) {#MAV_CMD_USER_4}
+### MAV_CMD_USER_4 (31013) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_USER_4}
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
@@ -8845,7 +8845,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 | 6                                | User defined |
 | 7                                | User defined |
 
-### MAV_CMD_USER_5 (31014) {#MAV_CMD_USER_5}
+### MAV_CMD_USER_5 (31014) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_USER_5}
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
@@ -8859,7 +8859,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 | 6                                | User defined |
 | 7                                | User defined |
 
-### MAV_CMD_CAN_FORWARD (32000) {#MAV_CMD_CAN_FORWARD}
+### MAV_CMD_CAN_FORWARD (32000) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAN_FORWARD}
 
 Request forwarding of CAN packets from the given CAN bus to this component via this MAVLink channel. CAN Frames are sent using [CAN_FRAME](#CAN_FRAME) and [CANFD_FRAME](#CANFD_FRAME) messages
 
@@ -8873,7 +8873,7 @@ Request forwarding of CAN packets from the given CAN bus to this component via t
 | 6                                | Empty.                                                                                                  |
 | 7                                | Empty.                                                                                                  |
 
-### MAV_CMD_FIXED_MAG_CAL_YAW (42006) {#MAV_CMD_FIXED_MAG_CAL_YAW}
+### MAV_CMD_FIXED_MAG_CAL_YAW (42006) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_FIXED_MAG_CAL_YAW}
 
 Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.
 
@@ -8887,7 +8887,7 @@ Magnetometer calibration based on provided known yaw. This allows for fast calib
 | 6                                  | Empty.                         |       |
 | 7                                  | Empty.                         |       |
 
-### MAV_CMD_DO_WINCH (42600) {#MAV_CMD_DO_WINCH}
+### MAV_CMD_DO_WINCH (42600) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_WINCH}
 
 Command to operate winch.
 
@@ -8901,7 +8901,7 @@ Command to operate winch.
 | 6                                | Empty.                                                           |                                                      |       |
 | 7                                | Empty.                                                           |                                                      |       |
 
-### MAV_CMD_GUIDED_CHANGE_SPEED (43000) {#MAV_CMD_GUIDED_CHANGE_SPEED}
+### MAV_CMD_GUIDED_CHANGE_SPEED (43000) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GUIDED_CHANGE_SPEED}
 
 Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's previous speed and the new one.
 
@@ -8911,7 +8911,7 @@ Change flight speed at a given rate. This slews the vehicle at a controllable ra
 | 2 (speed target)         | Target Speed                                  |                                                | m/s   |
 | 3 (speed rate-of-change) | Acceleration rate, 0 to take effect instantly |                                                | m/s/s |
 
-### MAV_CMD_GUIDED_CHANGE_ALTITUDE (43001) {#MAV_CMD_GUIDED_CHANGE_ALTITUDE}
+### MAV_CMD_GUIDED_CHANGE_ALTITUDE (43001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GUIDED_CHANGE_ALTITUDE}
 
 Change target altitude at a given rate. This slews the vehicle at a controllable rate between it's previous altitude and the new one.
 
@@ -8920,7 +8920,7 @@ Change target altitude at a given rate. This slews the vehicle at a controllable
 | 3 (alt rate-of-change) | Rate of change, toward new altitude. 0 for maximum rate change. Positive numbers only, as negative numbers will not converge on the new target alt. | min: 0 | m/s   |
 | 7 (target alt)         | Target Altitude                                                                                                                                                                                     |                        | m     |
 
-### MAV_CMD_GUIDED_CHANGE_HEADING (43002) {#MAV_CMD_GUIDED_CHANGE_HEADING}
+### MAV_CMD_GUIDED_CHANGE_HEADING (43002) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GUIDED_CHANGE_HEADING}
 
 Change to target direction at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between its previous heading and the new one.
 
@@ -8930,7 +8930,7 @@ Change to target direction at a given rate, overriding previous heading/s. This 
 | 2 (Heading Target)         | Target heading.                                                                                           | min: 0 max: 359.99 | deg   |
 | 3 (Heading Rate of Change) | Maximum centripetal acceleration, i.e. rate of change toward new heading. |                                                                    | deg/s |
 
-### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
+### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
 
 Provide an external position estimate for use when dead-reckoning. This is meant to be used for occasional position resets that may be provided by a external system such as a remote pilot using landmarks over a video link.
 
