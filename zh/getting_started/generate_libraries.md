@@ -20,7 +20,7 @@ For more information see [Supported Languages](../index.md#supported_languages).
 ## 先决条件
 
 1. You must already have [Installed the MAVLink toolchain](../getting_started/installation.md), which includes the mavgenerate and mavgen tools used below as well as the [XML Message Definitions](../messages/index.md).
-2. If you are generating messages for a [custom dialect](../messages/dialects.md), copy the dialect [XML definition file(s)](../messages/index.md#xml-definition-files--dialects) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
+2. If you are generating messages for a [custom dialect](../messages/dialects.md), copy the dialect XML definition file(s) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
 
    ::: info
    _mavgen_ can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not.
