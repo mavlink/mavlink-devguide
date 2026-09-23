@@ -26,7 +26,7 @@ For custom dialects the library needs to be generated first.
 
 ### Get the Standard MAVLink Dialect
 
-If you need a [standard dialect](../messages/index.md#dialects) then you can install these (for both MAVLink 1 and 2) with _pymavlink_ using _pip_:
+If you need an XML definition file published in the MAVLink repository then you can install these (for both MAVLink 1 and 2) with _pymavlink_ using _pip_:
 
 ```sh
 pip install pymavlink
