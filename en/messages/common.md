@@ -8993,9 +8993,9 @@ Param (Label) | Description
 7 | Reserved (set to 0) 
 
 
-### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [SUP] {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
+### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [DEP] {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
 
-<span class="warning">**SUPERSEDED:**(2021-06)</span>
+<span class="warning">**DEPRECATED:**(2021-06) — Last implemented in PX4 v1.10.2. Removed PX4 v1.11.0. Never implemented in ArduPilot.)</span>
 
 Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.
 
@@ -9015,9 +9015,9 @@ Param (Label) | Description | Values | Units
 7 (Altitude) | Altitude (MSL) |   | m 
 
 
-### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) — [SUP] {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
+### MAV_CMD_PAYLOAD_CONTROL_DEPLOY (30002) — [DEP] {#MAV_CMD_PAYLOAD_CONTROL_DEPLOY}
 
-<span class="warning">**SUPERSEDED:**(2021-06)</span>
+<span class="warning">**DEPRECATED:**(2021-06) — Last implemented in PX4 v1.10.2. Removed PX4 v1.11.0. Never implemented in ArduPilot.)</span>
 
 Control the payload deployment.
 
