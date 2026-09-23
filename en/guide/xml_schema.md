@@ -169,7 +169,7 @@ Attributes:
 - `rally`: A boolean (default `false`) that indicates the entry can be used in a rally point plan.
 - `command`: A boolean (default `false`) that indicates the entry can be sent using the [Command Protocol](../services/command.md).
 
-  Any combination of `mission`, `fence`, `rally` and `command` may be set (e.g. [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE) can be used in both missions and commands).
+  Any combination of `mission`, `fence`, `rally` and `command` may be set.
 
 Nested elements:
 
