@@ -3769,7 +3769,7 @@ flags | `uint8_t` | [MAV_EVENT_CURRENT_SEQUENCE_FLAGS](#MAV_EVENT_CURRENT_SEQUEN
 
 ### REQUEST_EVENT (412) {#REQUEST_EVENT}
 
-Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or [EVENT_ERROR](#EVENT_ERROR) response.
+Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or [RESPONSE_EVENT_ERROR](#RESPONSE_EVENT_ERROR) response.
 
 Field Name | Type | Description
 --- | --- | ---
@@ -8144,7 +8144,7 @@ Instructs a target system to run pre-arm checks.
 
 This allows preflight checks to be run on demand, which may be useful on systems that normally run them at low rate, or which do not trigger checks when the armable state might have changed.
 This command should return [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED) if it will run the checks.
-The results of the checks are usually then reported in [SYS_STATUS](#SYS_STATUS) messages (this is system-specific).
+The results of the checks are usually then reported in [SYS_STATUS](#SYS_STATUS), EVENT, or STATUSTEXT messages (this is system-specific).
 The command should return [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED) if the system is already armed.
 
 Param (Label) | Description
