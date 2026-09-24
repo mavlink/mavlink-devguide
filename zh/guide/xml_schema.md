@@ -48,7 +48,7 @@ If you're creating a custom dialect file your file structure should be similar t
   - For dialects that `include` **common.xml** the tag should be removed so that the `version` from **common.xml** is used (`version` from top level file will be used if specified).
   - 对于私有语支, 您可以使用任何您喜欢的版本。
 
-- `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
+- `dialect`: Optional, and should be omitted. This is not used by the generator toolchain.
 
 - [enums](#enum-definition-enums): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 
