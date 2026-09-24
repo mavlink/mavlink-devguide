@@ -17,6 +17,7 @@ function getEntryArray(parent) {
     //This parent is an array, so return it (it is the sidebar top level)
     returnEntryArray = parent;
     //console.log("isArray");
+    return returnEntryArray;
   }
   parent.items = parent?.items ? parent.items : [];
   //console.log("isNotArray");
