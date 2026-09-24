@@ -48,7 +48,7 @@ The main tags are listed below (all are optional):
 - `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.
   - For dialects that `include` **common.xml** the tag should be removed so that the `version` from **common.xml** is used (`version` from top level file will be used if specified).
   - For private dialects you can use whatever version you like.
-- `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
+- `dialect`: Optional, and should be omitted. This is not used by the generator toolchain.
 - [enums](#enum-definition-enums): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 - [messages](#message-definition-messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 
