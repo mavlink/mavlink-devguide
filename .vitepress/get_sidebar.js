@@ -14,7 +14,7 @@ function getEntryArray(parent) {
   //}
 
   if (Array.isArray(parent)) {
-    //This parent is an array, so return it (it is the sidebar top level)
+    //Unexpected: callers always pass objects. If passed an array, return it as-is.
     returnEntryArray = parent;
     //console.log("isArray");
     return returnEntryArray;
