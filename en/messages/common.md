@@ -2586,7 +2586,7 @@ Information about a captured image. This is emitted every time a message is capt
 [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) can be used to (re)request this message for a specific sequence number or range of sequence numbers:
 [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).param2 indicates the sequence number the first image to send, or set to -1 to send the message for all sequence numbers.
 [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).param3 is used to specify a range of messages to send:
-set to 0 (default) to send just the the message for the sequence number in param 2,
+set to 0 (default) to send just the message for the sequence number in param 2,
 set to -1 to send the message for the sequence number in param 2 and all the following sequence numbers,
 set to the sequence number of the final message in the range.
 
@@ -3291,7 +3291,7 @@ Message data should be from a single modem, but that is not guaranteed.
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 status | `uint8_t` | | [CELLULAR_STATUS_FLAG](#CELLULAR_STATUS_FLAG) | Cellular modem status 
-failure_reason | `uint8_t` | | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status in in [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED) 
+failure_reason | `uint8_t` | | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status is [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED) 
 type | `uint8_t` | | [CELLULAR_NETWORK_RADIO_TYPE](#CELLULAR_NETWORK_RADIO_TYPE) | Cellular network radio type: gsm, cdma, lte... 
 quality | `uint8_t` | | invalid:UINT8_MAX | Signal quality in percent. If unknown, set to UINT8_MAX 
 mcc | `uint16_t` | | invalid:UINT16_MAX | Mobile country code. If unknown, set to UINT16_MAX 
@@ -4716,10 +4716,7 @@ Value | Name | Description
 
 <span class="warning">**SUPERSEDED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
-The ROI (region of interest) for the vehicle. This can be
-
-be used by the vehicle for camera/vehicle attitude alignment (see
-[MAV_CMD_NAV_ROI](#MAV_CMD_NAV_ROI)).
+The ROI (region of interest) for the vehicle. This can be used by the vehicle for camera/vehicle attitude alignment (see [MAV_CMD_NAV_ROI](#MAV_CMD_NAV_ROI)).
 
 Value | Name | Description
 --- | --- | ---
@@ -5460,7 +5457,7 @@ Value | Name | Description
 <a id='PARAM_ACK_ACCEPTED'></a>0 | [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED) | Parameter value ACCEPTED and SET 
 <a id='PARAM_ACK_VALUE_UNSUPPORTED'></a>1 | [PARAM_ACK_VALUE_UNSUPPORTED](#PARAM_ACK_VALUE_UNSUPPORTED) | Parameter value UNKNOWN/UNSUPPORTED 
 <a id='PARAM_ACK_FAILED'></a>2 | [PARAM_ACK_FAILED](#PARAM_ACK_FAILED) | Parameter failed to set 
-<a id='PARAM_ACK_IN_PROGRESS'></a>3 | [PARAM_ACK_IN_PROGRESS](#PARAM_ACK_IN_PROGRESS) | Parameter value received but not yet set/accepted. A subsequent [PARAM_EXT_ACK](#PARAM_EXT_ACK) with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating that the the parameter was received and does not need to be resent. 
+<a id='PARAM_ACK_IN_PROGRESS'></a>3 | [PARAM_ACK_IN_PROGRESS](#PARAM_ACK_IN_PROGRESS) | Parameter value received but not yet set/accepted. A subsequent [PARAM_EXT_ACK](#PARAM_EXT_ACK) with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating that the parameter was received and does not need to be resent. 
 
 ### CAMERA_MODE {#CAMERA_MODE}
 
@@ -6258,7 +6255,7 @@ Value | Name | Description
 <a id='MAV_STANDARD_MODE_ORBIT'></a>2 | [MAV_STANDARD_MODE_ORBIT](#MAV_STANDARD_MODE_ORBIT) | Orbit (manual).<br>Position-controlled and stabilized manual mode.<br>The vehicle circles around a fixed setpoint in the horizontal plane at a particular radius, altitude, and direction.<br>Flight stacks may further allow manual control over the setpoint position, radius, direction, speed, and/or altitude of the circle, but this is not mandated.<br>Flight stacks may support the [MAV_CMD_DO_ORBIT](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ORBIT) for changing the orbit parameters.<br>MC and FW vehicles may support this mode.<br>Hybrid MC/FW ("VTOL") vehicles may support this mode in MC/FW or both modes; if the mode is not supported by the current configuration the vehicle should transition to the supported configuration.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
 <a id='MAV_STANDARD_MODE_CRUISE'></a>3 | [MAV_STANDARD_MODE_CRUISE](#MAV_STANDARD_MODE_CRUISE) | Cruise mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold their original track against wind and external forces.<br>Fixed-wing (FW) vehicles level orientation and maintain current track and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to FW mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Multicopter (MC) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
 <a id='MAV_STANDARD_MODE_ALTITUDE_HOLD'></a>4 | [MAV_STANDARD_MODE_ALTITUDE_HOLD](#MAV_STANDARD_MODE_ALTITUDE_HOLD) | Altitude hold (manual).<br>Altitude-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold their altitude.<br>MC vehicles continue with existing momentum and may move with wind (or other external forces).<br>FW vehicles continue with current heading, but may be moved off-track by wind.<br>Hybrid MC/FW ("VTOL") vehicles behave according to their current configuration/mode (FW or MC).<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
-<a id='MAV_STANDARD_MODE_SAFE_RECOVERY'></a>5 | [MAV_STANDARD_MODE_SAFE_RECOVERY](#MAV_STANDARD_MODE_SAFE_RECOVERY) | Safe recovery mode (auto).<br>Automatic mode that takes vehicle to a predefined safe location via a safe flight path, and may also automatically land the vehicle.<br>This mode is more commonly referred to as RTL and/or or Smart RTL.<br>The precise return location, flight path, and landing behaviour depend on vehicle configuration and type.<br>For example, the vehicle might return to the home/launch location, a rally point, or the start of a mission landing, it might follow a direct path, mission path, or breadcrumb path, and land using a mission landing pattern or some other kind of descent. 
+<a id='MAV_STANDARD_MODE_SAFE_RECOVERY'></a>5 | [MAV_STANDARD_MODE_SAFE_RECOVERY](#MAV_STANDARD_MODE_SAFE_RECOVERY) | Safe recovery mode (auto).<br>Automatic mode that takes vehicle to a predefined safe location via a safe flight path, and may also automatically land the vehicle.<br>This mode is more commonly referred to as RTL and/or Smart RTL.<br>The precise return location, flight path, and landing behaviour depend on vehicle configuration and type.<br>For example, the vehicle might return to the home/launch location, a rally point, or the start of a mission landing, it might follow a direct path, mission path, or breadcrumb path, and land using a mission landing pattern or some other kind of descent. 
 <a id='MAV_STANDARD_MODE_MISSION'></a>6 | [MAV_STANDARD_MODE_MISSION](#MAV_STANDARD_MODE_MISSION) | Mission mode (automatic).<br>Automatic mode that executes MAVLink missions.<br>Missions are executed from the current waypoint as soon as the mode is enabled. 
 <a id='MAV_STANDARD_MODE_LAND'></a>7 | [MAV_STANDARD_MODE_LAND](#MAV_STANDARD_MODE_LAND) | Land mode (auto).<br>Automatic mode that lands the vehicle at the current location.<br>The precise landing behaviour depends on vehicle configuration and type. 
 <a id='MAV_STANDARD_MODE_TAKEOFF'></a>8 | [MAV_STANDARD_MODE_TAKEOFF](#MAV_STANDARD_MODE_TAKEOFF) | Takeoff mode (auto).<br>Automatic takeoff mode.<br>The precise takeoff behaviour depends on vehicle configuration and type. 
