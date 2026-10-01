@@ -519,7 +519,7 @@ A reserved `param` **should** always be sent with the value that indicates to th
 The values depend on the message in which they are sent:
 
 - `COMMAND_LONG`: Use `NaN` in all params.
-- `COMMAND_INT`: Use `NaN` in params 1-4 and 7, and `INT32MAX` for param 5, 6.
+- `COMMAND_INT`: Use `NaN` in params 1-4 and 7, and `INT32_MAX` for param 5, 6.
 
 If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
 
