@@ -207,7 +207,7 @@ A sub-protocol defines:
 
 - The event groups that it uses.
 - The meaning of particular event types within those groups (such as `summary`), and the order in which events are sent.
-- Any required event arguments, and any enums that a component must define in its events metadata.
+- Any required event arguments or constraints (for example enums that a component must define in its events metadata).
 
 A component indicates that it supports a sub-protocol by listing it in the `supported_protocols` of its events metadata.
 A receiver should only use a sub-protocol if the sender lists it, and can ignore events in the groups of sub-protocols that it does not implement.
@@ -272,13 +272,12 @@ A GCS displays the message of such an event followed by the current problems for
 - Event arguments cannot be strings, arrays, or `double` values.
 - A receiver cannot display an event for which it does not have metadata (only the event ID is known).
 - A sender does not know whether or when an event has been received.
-- The protocol does not work if more than one component with the same system ID and component ID sends events.
 
 ## Implementations
 
 Implementation PRs and other information is listed below.
 
-- [libevents](https://github.com/mavlink/libevents): C++ library for receiving events, parsing events with their metadata, and handling health and arming check reports.
+- [libevents](https://github.com/mavlink/libevents): C++ and Python library for receiving events, parsing events with their metadata, and handling health and arming check reports.
   It also contains the common event definitions and the metadata schema.
   - The libevents tooling limits event arguments to 25 bytes (to reduce sender buffer requirements), which is less than the 40 bytes allowed by `EVENT` ([config.ini](https://github.com/mavlink/libevents/blob/main/config.ini)).
   - [receive.h](https://github.com/mavlink/libevents/blob/main/libs/cpp/protocol/receive.h) implements the receiving side of the protocol.
@@ -297,3 +296,4 @@ Implementation PRs and other information is listed below.
   - PX4 sends a health and arming checks report when the results change and when it receives `MAV_CMD_RUN_PREARM_CHECKS` ([Commander.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/commander/Commander.cpp), [HealthAndArmingChecks/Common.cpp](https://github.com/PX4/PX4-Autopilot/blob/main/src/modules/commander/HealthAndArmingChecks/Common.cpp)).
   - PX4 also sends each event as a `STATUSTEXT` that ends with a tab character, for GCSs that do not support events.
     QGroundControl ignores these messages from PX4 ([Vehicle.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/Vehicle.cc)).
+  - MAVSDK [events plugin](https://github.com/mavlink/MAVSDK/tree/main/cpp/src/mavsdk/plugins/events)
