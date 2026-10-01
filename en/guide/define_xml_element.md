@@ -111,12 +111,10 @@ To create a new dialect file:
    ```
 
    The template assumes that your dialect:
-
    - imports **common.xml** (`<include>common.xml</include>`)
    - takes its version from **common.xml** (which is why the `version` tags are commented out).
 
 1. Update the `include`(s):
-
    - if the dialect is not based on **common.xml** remove the existing `include` line
    - Add additional `<include> </include>` elements to import additional files/dialects.
 
@@ -125,7 +123,6 @@ To create a new dialect file:
      :::
 
 1. Update the `version`:
-
    - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
    - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
 
@@ -369,7 +366,6 @@ The main rules for enums are:
 - Enums that define bitmasks (values that increase by a power of 2) should be marked with the attribute `bitmask="true"`.
   This allows users to render a checkbox UI for things that can be represented as flags.
 - Entries:
-
   - _must_ have a `name` attribute.
     - The `name` must be unique across all entries in the enum.
     - By _convention_, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
@@ -517,34 +513,33 @@ Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 
 #### Reserved/Undefined Parameters {#reserved}
 
 Many commands do not _need_ seven (or any) `param` values.
-These unused parameters can be treated as _reserved_, allowing them to be reused later if the command needs to be extended.
+These unused parameters must be treated as _reserved_, allowing them to be reused later if the command needs to be extended.
 
-A reserved `param` **must** always be sent with a (default) value of _either_ `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported").
+A reserved `param` **should** always be sent with the value that indicates to the recipient that the value has "no action" or is "not supported".
+The values depend on the message in which they are sent:
+
+- `COMMAND_LONG`: Use `NaN` in all params.
+- `COMMAND_INT`: Use `NaN` in params 1-4 and 7, and `INT32MAX` for param 5, 6.
+
 If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
 
-::: info
-Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
-The default value cannot later be changed from `NaN` to `0` (or vice versa) without potential compatibility issues.
-:::
-
-To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.
-
-```xml
-<param index="3" reserved="true" default="NaN" />
-```
-
 ::: warning
-Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
+Historically MAVLink has also allowed `0` as a sentinel value, and this is widely accepted in ArduPilot.
+New implementations and new commands are expected to use the above sentinel values.
+You should check your flight stack documentation and use the appropriate value.
 :::
 
-To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to:
+The following shows how you should declare unused command parameters for new commands:
 
 ```xml
-<param index="3" reserved="true" default="0" />
+<param index="1" reserved="true" default="NaN" />
+<param index="2" reserved="true" default="NaN" />
+<param index="3" reserved="true" default="NaN" />
+<param index="4" reserved="true" default="NaN" />
+<param index="5" reserved="true">Reserved. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG).</param>
+<param index="6" reserved="true">Reserved. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG).</param>
+<param index="7" reserved="true" default="NaN" />
 ```
-
-If you have just one unused `param` we recommend you simply don't declare it.
-If you have more than one, you may wish to explicitly define it with default of `NaN` so that you can extend your command later with either default.
 
 #### GUI Param Attributes
 
