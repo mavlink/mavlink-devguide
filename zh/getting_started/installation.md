@@ -3,7 +3,7 @@
 This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink). The toolchain includes the [XML message definitions](../messages/index.md) as well as the GUI/command line tools that use the definitions to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
 
 :::tip
-You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/index.md#dialects).
+You do not need to install or generate the source files if you are using the C programming language and [standard definitions](../messages/index.md) or a [dialect](../messages/dialects.md#dialects) published in the MAVLink repository.
 Just get the [prebuilt libraries](../index.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/index.md).
 :::
 
@@ -25,6 +25,7 @@ The requirements for using the _MAVLink generator_ are:
 
    - **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
    - **Ubuntu Linux** Make sure Python and Pip are both installed:
+
      ```
      sudo apt install python3-tk
      ```

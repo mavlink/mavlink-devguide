@@ -65,7 +65,7 @@ New code must not make any assumption about the type from the id used (type is d
 :::
 
 MAVLink recommends that _by default_ components use a type-appropriate component id from [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT), and provide an interface to change the component id if needed.
-For example, a camera component might use any of the [MAV_COMP_ID_CAMERA`n`](../messages/common.md#MAV_COMP_ID_GIMBAL) ids, and should not use `MAV_COMP_ID_GPS2`.
+For example, a camera component might use any of the [MAV_COMP_ID_CAMERA`n`](../messages/common.md#MAV_COMP_ID_CAMERA) ids, and should not use `MAV_COMP_ID_GPS2`.
 
 ::: tip
 Using type-specific component ids:

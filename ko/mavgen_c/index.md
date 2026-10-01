@@ -7,7 +7,7 @@ This topic explains how to get and use the library.
 
 ## Getting the C MAVLink Library {#get_libraries}
 
-If you are using a [standard dialect](../messages/index.md#dialects) then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
+If you are and XML definition file published in the MAVLink repository then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
 :::tip
 The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the _standard dialects_ whenever any of the definitions in the _mavlink/mavlink_ repo change.

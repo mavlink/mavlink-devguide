@@ -126,6 +126,7 @@ In addition to the fields for enumerating the available modes, `AVAILABLE_MODES`
   - On first download of modes, a non-zero value of this field should be stored.
     The stored value can subsequently be compared a new [AVAILABLE_MODES_MONITOR.seq](#AVAILABLE_MODES_MONITOR) to determine if modes must be re-requested.
     Caching the sequence avoids the need to re-download `AVAILABLE_MODE` if the sequence is not know the first time `AVAILABLE_MODES_MONITOR` is received.
+    If the value changes part-way through fetching modes, the download should be restarted.
 
     ::: tip
     A value of 0 may indicate that the field is not supported.

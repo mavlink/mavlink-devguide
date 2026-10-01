@@ -37,8 +37,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 5       | 234      |
-| [Enums](#enumerated-types) | 0       | 159      |
+| [Messages](#messages)      | 5       | 235      |
+| [Enums](#enumerated-types) | 0       | 160      |
 | [Commands](#mav_commands)  | 0       | 170      |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -47,7 +47,7 @@ The following sections list all entities in the dialect (both included and defin
 
 ### SCRIPT_ITEM (180) {#SCRIPT_ITEM}
 
-消息编码任务脚本项。 此消息在请求下一个脚本项时发出。
+消息编码任务脚本项。此消息在请求下一个脚本项时发出。
 
 | Field Name                            | Type       | 描述            |
 | ------------------------------------- | ---------- | ------------- |
@@ -58,7 +58,7 @@ The following sections list all entities in the dialect (both included and defin
 
 ### SCRIPT_REQUEST (181) {#SCRIPT_REQUEST}
 
-请求带序列号以下的脚本项。 系统对此消息的回应应该是 [SCRIPT_ITEM](#SCRIPT_ITEM)。
+请求带序列号以下的脚本项。系统对此消息的回应应该是 [SCRIPT_ITEM](#SCRIPT_ITEM)。
 
 | Field Name                            | Type       | 描述           |
 | ------------------------------------- | ---------- | ------------ |
