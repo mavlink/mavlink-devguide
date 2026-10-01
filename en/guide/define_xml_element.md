@@ -536,8 +536,8 @@ The following shows how you should declare unused command parameters for new com
 <param index="2" reserved="true" default="NaN" />
 <param index="3" reserved="true" default="NaN" />
 <param index="4" reserved="true" default="NaN" />
-<param index="5" reserved="true">Reserved. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG).</param>
-<param index="6" reserved="true">Reserved. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG).</param>
+<param index="5" reserved="true">Reserved. INT32_MAX (COMMAND_INT or MISSION_ITEM_INT) or NaN (COMMAND_LONG).</param>
+<param index="6" reserved="true">Reserved. INT32_MAX (COMMAND_INT or MISSION_ITEM_INT) or NaN (COMMAND_LONG).</param>
 <param index="7" reserved="true" default="NaN" />
 ```
 

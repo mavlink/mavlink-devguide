@@ -209,7 +209,7 @@ Attributes:
 
   For unused params in new commands the default ("sentinel") value should always be:
   - Params 1–4 and 7: `<param index="N" reserved="true" default="NaN"/>`
-  - Params 5 and 6: `<param index="5" reserved="true">Reserved. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG).</param>`
+  - Params 5 and 6: `<param index="5" reserved="true">Reserved. INT32_MAX (`COMMAND_INT` or `MISSION_ITEM_INT`) or NaN (COMMAND_LONG).</param>`
 
   ::: warning
   Some existing implementations use `0` as the default sentinel value for some or all existing params.
