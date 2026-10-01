@@ -209,15 +209,24 @@ Attributes:
 - `multiplier` (optional): Multiply by this value to get the unscaled original value.
   This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
 
-- `reserved` (optional): Boolean indicating whether param is reserved for future use.
-  If the attributes is not declared, then implicitly `reserved="False"`.
+- `reserved` (optional): Boolean indicating whether the param is reserved for future use.
+  All unused params are implicitly reserved whether or not this value is present.
 
   ::: tip
   See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
   :::
 
-- `default` - Default value for the `param`
-  (primarily used for `reserved` params, where the value is `0` or `NaN`).
+- `default` - Default value for the `param`.
+
+  For unused params in new commands the default ("sentinel") value should always be:
+
+  - Params 1–4 and 7: `<param index="N" reserved="true" default="NaN"/>`
+  - Params 5 and 6: `<param index="5" reserved="true">Reserved. INT32_MAX (`COMMAND_INT`or`MISSION_ITEM_INT`) or NaN (COMMAND_LONG).</param>`
+
+  ::: warning
+  Some existing implementations use `0` as the default sentinel value for some or all existing params.
+  New commands and implementations must use the values listed above.
+  :::
 
 Elements
 
