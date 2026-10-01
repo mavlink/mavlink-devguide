@@ -10,6 +10,7 @@ node_modules
 
 # Temp files
 *.bak
+*:Zone.Identifier
 
 
 # vitepress - user guide
