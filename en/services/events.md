@@ -127,7 +127,7 @@ A component that receives events tracks the latest received sequence number sepa
 All sequence number comparisons must handle wrap-around.
 
 A receiver that has not yet downloaded the metadata for a sender can only identify events by ID.
-It should either queue events until the metadata is available, or display them by ID.
+It should either queue events until the metadata is available, or discard them.
 
 ## Sequences
 
