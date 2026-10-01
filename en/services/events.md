@@ -202,7 +202,7 @@ sequenceDiagram;
 
 ## Events Sub-Protocols
 
-Sub-protocols can be layered over the events protocol in order manage how certain types of events are presented and handled.
+Sub-protocols can be layered over the events protocol in order to manage how certain types of events are presented and handled.
 A sub-protocol defines:
 
 - The event groups that it uses.
