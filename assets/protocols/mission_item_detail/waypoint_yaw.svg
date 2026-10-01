@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="210" viewBox="0 0 640 280" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowY1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowY2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ea580c"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="280" fill="#ffffff"/>
+
+  <!-- next wp + connector -->
+  <line x1="160" y1="200" x2="560" y2="70" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="560" cy="70" r="5" fill="#111827"/>
+  <text x="560" y="55" text-anchor="middle" font-size="13" fill="#111827">NEXT WP</text>
+
+  <!-- north reference -->
+  <line x1="160" y1="200" x2="160" y2="140" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="160" y="130" text-anchor="middle" font-size="12" fill="#9ca3af">N</text>
+
+  <!-- yaw = NaN, faces next waypoint -->
+  <line x1="160" y1="200" x2="369" y2="132" stroke="#ea580c" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arrowY2)"/>
+  <text x="390" y="120" font-size="13" fill="#c2410c" font-weight="bold">Yaw = NaN: faces next WP</text>
+
+  <!-- fixed yaw = 90 -->
+  <line x1="160" y1="200" x2="355" y2="200" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowY1)"/>
+
+  <!-- waypoint marker -->
+  <circle cx="160" cy="200" r="5" fill="#111827"/>
+
+  <!-- point labels, single row -->
+  <text x="160" y="225" text-anchor="middle" font-size="13" fill="#111827">WAYPOINT</text>
+  <text x="300" y="225" font-size="13" fill="#1d4ed8" font-weight="bold">Yaw = 90°: fixed heading</text>
+</svg>
