@@ -39,7 +39,7 @@ span.warning {
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 5       | 235      |
 | [Enums](#enumerated-types) | 6       | 160      |
-| [Commands](#mav_commands)  | 0       | 170      |
+| [Commands](#mav_commands)  | 0       | 171      |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
