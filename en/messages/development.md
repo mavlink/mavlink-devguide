@@ -38,7 +38,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 17 | 235
 [Enums](#enumerated-types) | 16 | 160
-[Commands](#mav_commands) | 10 | 170
+[Commands](#mav_commands) | 9 | 171
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -796,22 +796,6 @@ Param (Label) | Description | Values | Units
 2 (Allow takeover) | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. |   |   
 3 (Request timeout) | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control. | min: 3 max: 60 | s 
 4 (GCS Sysid) | System ID of GCS requesting control. For a range of GCS in control, this the minimum id (and the sender system ID may be anywhere in the range). |   |   
-
-
-### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Set an external estimate of wind direction and speed.
-
-This might be used to provide an initial wind estimate to the estimator (EKF) in the case where the vehicle is wind dead-reckoning, extending the time when operating without GPS before position drift builds to an unsafe level. For this use case the command might reasonably be sent every few minutes when operating at altitude, and the value is cleared if the estimator resets itself.
-
-Param (Label) | Description | Values | Units
---- | --- | --- | ---
-1 (Wind speed) | Horizontal wind speed. | min: 0 | m/s 
-2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown. |   | m/s 
-3 (Direction) | Azimuth (relative to true north) from where the wind is blowing. | min: 0 max: 360 | deg 
-4 (Direction accuracy) | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |   | deg 
 
 
 ### MAV_CMD_ESTIMATOR_SENSOR_ENABLE (43006) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ESTIMATOR_SENSOR_ENABLE}
