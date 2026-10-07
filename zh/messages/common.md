@@ -40,7 +40,7 @@ span.warning {
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 232     | 3        |
 | [Enums](#enumerated-types) | 151     | 9        |
-| [Commands](#mav_commands)  | 170     | 0        |
+| [Commands](#mav_commands)  | 171     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -8944,5 +8944,18 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 | 5 (Latitude)                               | Latitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |       |
 | 6 (Longitude)                              | Longitude                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |       |
 | 7 (Altitude)                               | Altitude, not used. Should be sent as NaN. May be supported in a future version of this message.                                                                                                                                                                                                                                                                                                                                                                                                                                                  | m     |
+
+### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
+
+Set an external estimate of wind direction and speed.
+
+This might be used to provide an initial wind estimate to the estimator (EKF) in the case where the vehicle is wind dead-reckoning, extending the time when operating without GPS before position drift builds to an unsafe level. For this use case the command might reasonably be sent every few minutes when operating at altitude, and the value is cleared if the estimator resets itself.
+
+| Param (Label)           | 描述                                                                                                   | 值                                               | Units |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----- |
+| 1 (Wind speed)          | Horizontal wind speed.                                                               | min: 0                          | m/s   |
+| 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown.     |                                                 | m/s   |
+| 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.  | min: 0 max: 360 | 度     |
+| 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                                                 | 度     |
 
 
