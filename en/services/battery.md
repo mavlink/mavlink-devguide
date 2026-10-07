@@ -1,4 +1,8 @@
-# Battery Protocol
+# Battery Protocol (v1)
+
+::: tip
+This protocol is expected to be superseded over time by the [Energy Systems Protocol](../services/energy_systems.md) (currently work in progress), which provides a system-level view across multiple batteries and fuel sources (rather than per-battery messages only), and can group them by function (e.g. propulsion, avionics).
+:::
 
 MAVLink provides a number of messages for providing battery information:
 
