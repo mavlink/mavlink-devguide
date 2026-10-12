@@ -365,12 +365,8 @@ Work in progress elements have been proposed for inclusion in the standard, but 
 They should not be included in release builds.
 The generator toolchain can be configured to conditionally build messages omitting the `<wip>` entries.
 
-New definitions should be added to `development.xml` by preference, and `common.xml` only if necessary.
+New definitions should be added to `development.xml` by preference, and `common.xml` only if necessary (such as for a new value for an enum already defined in `common.xml`).
 Everything in `development.xml` is unstable and may change, and each top level definition must be marked with a `<wip>` element.
-An entry added to an enum from another file (such as a new `MAV_CMD`) must also be marked; the entries of an enum that is itself marked `<wip>` do not need their own.
-
-A definition added to `common.xml` while it is still a work in progress must also be marked with `<wip>`.
-For example, a new value for an enum that is already defined in `common.xml`.
 
 Once the associated definition has been tested, it may be accepted into `common.xml` and the `<wip>` tag removed.
 

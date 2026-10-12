@@ -183,7 +183,7 @@ The main rules for messages are:
 - All other fields are optional.
 - There must be at least one field and no more than 64 fields.
 - The [`<wip>`](../guide/xml_schema.md#wip) tag marks messages that are still being tested.
-  Messages in `development.xml` must have one, with the date they were proposed and the standard comment after it.
+  Definitions in `development.xml` must have one, with the date they were proposed and the standard comment after it.
 - Fields:
   - must have unique `name`s within a message.
   - _should_ have a description.
