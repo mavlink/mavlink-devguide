@@ -2694,7 +2694,7 @@ bitrate | `uint32_t` | bits/s | | Bit rate.
 rotation | `uint16_t` | deg | | Video image rotation clockwise. 
 hfov | `uint16_t` | deg | | Horizontal Field of view. 
 name | `char[32]` | | | Stream name. 
-uri | `char[160]` | | | Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to). 
+uri | `char[160]` | | | Video stream URI (TCP, RTSP or SRT URI ground station should connect to) or port number (UDP port ground station should listen to). 
 <span class='ext'>encoding</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | [VIDEO_STREAM_ENCODING](#VIDEO_STREAM_ENCODING) | Encoding of stream. 
 <span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
@@ -5368,6 +5368,7 @@ Value | Name | Description
 <a id='VIDEO_STREAM_TYPE_TCP_MPEG'></a>2 | [VIDEO_STREAM_TYPE_TCP_MPEG](#VIDEO_STREAM_TYPE_TCP_MPEG) | Stream is MPEG on TCP 
 <a id='VIDEO_STREAM_TYPE_MPEG_TS'></a>3 | [VIDEO_STREAM_TYPE_MPEG_TS](#VIDEO_STREAM_TYPE_MPEG_TS) | Stream is MPEG TS (URI gives the port number) 
 <a id='VIDEO_STREAM_TYPE_WHEP'></a>4 | [VIDEO_STREAM_TYPE_WHEP](#VIDEO_STREAM_TYPE_WHEP) | Stream is WHEP (WebRTC-HTTP Egress Protocol) 
+<a id='VIDEO_STREAM_TYPE_SRT'></a>5 | [VIDEO_STREAM_TYPE_SRT](#VIDEO_STREAM_TYPE_SRT) | Stream is SRT (Secure Reliable Transport).<br>The payload is MPEG-TS (as for [VIDEO_STREAM_TYPE_MPEG_TS](#VIDEO_STREAM_TYPE_MPEG_TS)); streams other than video (e.g. KLV metadata, audio) may be ignored.<br>VIDEO_STREAM_INFORMATION.uri is a full URI with the prefix `srt://host:port` followed by query parameters.<br>Recognised parameters include: mode (caller, listener or rendezvous), latency (ms), streamid (opaque string, e.g. for hub access control).<br>Encryption passphrases should be exchanged out of band rather than in the URI, as MAVLink messages are not encrypted. 
 
 ### VIDEO_STREAM_ENCODING {#VIDEO_STREAM_ENCODING}
 
