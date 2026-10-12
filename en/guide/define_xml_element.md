@@ -182,7 +182,8 @@ The main rules for messages are:
 - The total payload size (for all fields) must not exceed 255 bytes.
 - All other fields are optional.
 - There must be at least one field and no more than 64 fields.
-- The `<wip/>` tag may be added to messages that are still being tested.
+- The [`<wip>`](../guide/xml_schema.md#wip) tag marks messages that are still being tested.
+  Definitions in `development.xml` must have one, with the date they were proposed and the standard comment after it.
 - Fields:
   - must have unique `name`s within a message.
   - _should_ have a description.
