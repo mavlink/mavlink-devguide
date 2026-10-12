@@ -365,23 +365,32 @@ Work in progress elements have been proposed for inclusion in the standard, but 
 They should not be included in release builds.
 The generator toolchain can be configured to conditionally build messages omitting the `<wip>` entries.
 
-Generally new elements should be defined in `development.xml`, and any definitions in that file are considered WIP by default.
-The `wip` element is intended primarily for indicating WIP additions to `common.xml` that for whatever reason could not be added to `development.xml`.
+New definitions should be added to `development.xml` by preference, and `common.xml` only if necessary.
+Everything in `development.xml` is unstable and may change, and each top level definition must be marked with a `<wip>` element.
+An entry added to an enum from another file (such as a new `MAV_CMD`) must also be marked; the entries of an enum that is itself marked `<wip>` do not need their own.
+
+A definition added to `common.xml` while it is still a work in progress must also be marked with `<wip>`.
+For example, a new value for an enum that is already defined in `common.xml`.
 
 Once the associated definition has been tested, it may be accepted into `common.xml` and the `<wip>` tag removed.
 
-The tag is usually applied like this (including the comment):
+The tag is applied like this, with the date that the definition was proposed, and followed by the comment:
 
 ```xml
-        <wip/>
+        <wip since="2026-03"/>
         <!-- This message is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
 ```
 
+The comment starts "This message", "This enum", "This command" (for a `MAV_CMD` entry) or "This entry" (for any other enum entry), to match what is marked.
+
 Attributes:
 
-- `since` (optional): A datestamp indicating when the corresponding element was proposed.
-  This should be formatted as such as `YYYY-MM`
+- `since`: A datestamp indicating when the corresponding element was proposed, formatted as `YYYY-MM`.
   This hints to the maintainer team when WIP elements should be reviewed for addition or removal.
+  - The attribute is optional in the MAVLink schema, so a dialect may use a bare `<wip/>`.
+  - It is required in the XML files managed by the MAVLink project (`minimal.xml`, `standard.xml`, `common.xml` and `development.xml`), and must not be a date in the future.
+
+In the files managed by the MAVLink project the date and the comment are checked in CI by `scripts/xml_consistency_check.py`.
 
 Nested elements
 
