@@ -408,7 +408,7 @@ The element is usually applied like this:
 Attributes:
 
 - `since` (required): A datestamp indicating when the new element was accepted into files managed by the MAVLink team.
-  This should be formatted as such as `YYYY-MM`.
+  This should be formatted as such as `YYYY-MM`, and must not be in the future.
 - `replaced_by` (required): The name of the definition that supersedes this element.
 
 Nested elements
@@ -439,7 +439,7 @@ For example, where we show that `MAV_CMD_REQUEST_PROTOCOL_VERSION` is deprecated
 Attributes:
 
 - `since` (required): A datestamp indicating when the element was deprecated.
-  This should be formatted as such as `YYYY-MM`.
+  This should be formatted as such as `YYYY-MM`, and must not be in the future.
 - `remove_on_date` (optional): The date at which the deprecated element is expected to be removed.
 - `replaced_by` (required): The name of the definition that replaces this element.
 
