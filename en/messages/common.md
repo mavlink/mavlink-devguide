@@ -2697,6 +2697,7 @@ name | `char[32]` | | | Stream name.
 uri | `char[160]` | | | Video stream URI (TCP, RTSP or SRT URI ground station should connect to) or port number (UDP port ground station should listen to). 
 <span class='ext'>encoding</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | [VIDEO_STREAM_ENCODING](#VIDEO_STREAM_ENCODING) | Encoding of stream. 
 <span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
+<span class='ext'>vfov</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | invalid:0 | Vertical field of view (0 if unknown). 
 
 
 ### VIDEO_STREAM_STATUS (270) {#VIDEO_STREAM_STATUS}
@@ -2714,11 +2715,12 @@ bitrate | `uint32_t` | bits/s | | Bit rate
 rotation | `uint16_t` | deg | | Video image rotation clockwise 
 hfov | `uint16_t` | deg | | Horizontal Field of view 
 <span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
+<span class='ext'>vfov</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | invalid:0 | Vertical field of view (0 if unknown). 
 
 
 ### CAMERA_FOV_STATUS (271) {#CAMERA_FOV_STATUS}
 
-Information about the field of view of a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command.
+Information about the field of view of a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command, where param2 indicates the video stream id: 0 for all streams, 1 for first, 2 for second, etc. A camera with multiple streams that have different fields of view should send one message per stream, with stream_id set.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
@@ -2733,6 +2735,7 @@ q | `float[4]` | | Quaternion of camera orientation (w, x, y, z order, zero-rota
 hfov | `float` | deg | Horizontal field of view (NaN if unknown). 
 vfov | `float` | deg | Vertical field of view (NaN if unknown). 
 <span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
+<span class='ext'>stream_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Video Stream ID (1 for first, 2 for second, etc.), as in [VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION). 0 if unknown or the field of view is not specific to a stream.<br>[Instance field]: Uniquely identifies a device/subcomponent within a single source/target MAVLink component. 
 
 
 ### CAMERA_TRACKING_IMAGE_STATUS (275) {#CAMERA_TRACKING_IMAGE_STATUS}
