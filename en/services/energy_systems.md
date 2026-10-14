@@ -166,6 +166,16 @@ If the GCS wants to let a user drill down into the batteries/fuel tanks behind a
 A GCS builds its UI by matching each source to its energy system(s) using the `energy_systems` bitmask (see [Energy Systems and Energy Sources](#energy-systems-and-energy-sources)).
 Selecting an energy system's icon can then open a detail view listing the matching sources.
 
+#### Sources on Other Components
+
+Sources reported by components other than the one the GCS ran the flow against (e.g. a smart battery) will not be included in the responses above.
+A GCS should discover them as follows:
+
+- When it receives a source status message (`BATTERY_STATUS_V2`, `FUEL_STATUS_V2`) from another component of the system, for which it has no `_INFO` message, it requests the `_INFO` message from that component (once).
+- When another component of the system sends a `HEARTBEAT` with `MAV_TYPE_BATTERY`, it requests `BATTERY_INFO` from that component (once).
+
+Such components should therefore either stream their status messages by default, or emit a `HEARTBEAT` with an appropriate `MAV_TYPE` (or both).
+
 ## Rejoin Flow
 
 A GCS may connect to a system that is already streaming some or all of the energy system and source status messages — for example because another GCS previously started the flow, or because the vehicle is configured to stream them by default.
