@@ -143,7 +143,8 @@ If the GCS wants to let a user drill down into the batteries/fuel tanks behind a
 1. If legacy `BATTERY_INFO`/`BATTERY_STATUS` is currently being streamed, the GCS may request it stop (`MAV_CMD_SET_MESSAGE_INTERVAL` with `interval=-1`), since the energy source messages now provide the equivalent information.
 2. GCS one-shot requests `BATTERY_INFO` and `FUEL_INFORMATION_V2` with `MAV_CMD_REQUEST_MESSAGE`.
    The drone acknowledges each and sends the corresponding `_INFO` message(s) — one per battery/fuel source it has.
-3. For each `_INFO` message received, the GCS requests the corresponding status stream (`BATTERY_STATUS_V2` for `BATTERY_INFO`, `FUEL_STATUS_V2` for `FUEL_INFORMATION_V2`), matched by `id`.
+3. Once it has received at least one `BATTERY_INFO` or `FUEL_INFORMATION_V2`, the GCS requests the corresponding status stream (`BATTERY_STATUS_V2`, and optionally `BATTERY_CELL_STATUS`, for batteries; `FUEL_STATUS_V2` for fuel tanks).
+   One request covers all instances; each status message is matched to its `_INFO` message by `id` (and component).
    A nominal rate of approximately 8 seconds (0.125 Hz) is suggested — around a quarter of the legacy `BATTERY_STATUS` rate, since this is now drill-down detail rather than the primary status indicator.
 4. Unlike step 1, a `MAV_RESULT_UNSUPPORTED` NACK for an individual source message does not end the overall flow — it just means that particular source (or source status) isn't available, and the GCS should fall back to whatever `_INFO`/status it did receive.
 
