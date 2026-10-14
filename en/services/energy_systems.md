@@ -187,4 +187,4 @@ The GCS should start populating the UI incrementally: as soon as it has both an 
 
 ## Relationship to the Legacy Battery Protocol
 
-A flight stack that supports both protocols may stream [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) and the energy systems messages simultaneously; a GCS that supports the energy systems protocol should prefer it, and only fall back to `BATTERY_STATUS` if [ENERGY_SYSTEM_INFO](#ENERGY_SYSTEM_INFO) is not supported (see [step 1 of the Connection Flow](#_1-discover-and-stream-energy-system-status)).
+A flight stack that supports both protocols may stream [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) and the energy systems messages simultaneously; a GCS that supports the energy systems protocol should prefer it, and only fall back to `BATTERY_STATUS` if [ENERGY_SYSTEM_INFO](#ENERGY_SYSTEM_INFO) is not supported (see [step 1 of the Connection Flow](#_1-discover-and-stream-energy-systems)).
