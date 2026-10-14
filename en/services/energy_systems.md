@@ -28,6 +28,18 @@ An energy system advertises the functional domain(s) it covers using the same bi
 A source belongs to an energy system if any bit is set in both bitmasks (a bitwise AND of the two values is non-zero).
 A single source may therefore belong to more than one energy system.
 
+Energy systems and sources may be reported by different components of the same system.
+For example, the autopilot might aggregate and report the energy systems, while a smart battery reports its own `BATTERY_INFO` and `BATTERY_STATUS_V2` from its own component (and no `ENERGY_SYSTEM_*` messages, since it is a source, not a system).
+Sources are matched to energy systems by their `energy_systems` masks, irrespective of the component that reports them.
+
+Instance ids (`index`/`id`) only need to be unique within a component: a smart battery and an autopilot power monitor might both report battery `id` 0.
+A GCS should therefore identify each energy system and source by both the component id and the instance id.
+
+::: info
+A battery or fuel source must set `energy_systems` in its `_INFO` message for a GCS to associate it with an energy system.
+Smart batteries and other MAVLink-capable sources will therefore need a way for the integrator to configure which energy systems they supply (e.g. a parameter).
+:::
+
 The system emitting the energy systems (typically the autopilot, but this is not mandated) decides how many energy systems to define, which sources contribute to each, and how the aggregate percentage/time remaining is calculated — the protocol does not mandate an algorithm.
 For example, a system might report the lowest level of its sources (worst case) or pool their capacity (e.g. parallel batteries on one bus); a GCS should display the values reported in `ENERGY_SYSTEM_STATUS` rather than recompute them from the sources.
 
