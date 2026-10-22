@@ -1098,7 +1098,7 @@ Field Name | Type | Units | Values | Description
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency. 
 target_system | `uint8_t` | | | System ID 
 target_component | `uint8_t` | | | Component ID 
-coordinate_frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | Valid options are: [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) = 0, [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) = 3, [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) = 10 ([MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) are allowed synonyms, but have been deprecated) 
+coordinate_frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | Valid options are: [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) = 0, [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) = 3, [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) = 10 ([MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) are allowed synonyms, but have been superseded) 
 type_mask | `uint16_t` | | [POSITION_TARGET_TYPEMASK](#POSITION_TARGET_TYPEMASK) | Bitmap to indicate which dimensions should be ignored by the vehicle. 
 lat_int | `int32_t` | degE7 | | Latitude in WGS84 frame 
 lon_int | `int32_t` | degE7 | | Longitude in WGS84 frame 
@@ -1120,7 +1120,7 @@ Reports the current commanded vehicle position, velocity, and acceleration as sp
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency. 
-coordinate_frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | Valid options are: [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) = 0, [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) = 3, [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) = 10 ([MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) are allowed synonyms, but have been deprecated) 
+coordinate_frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | Valid options are: [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) = 0, [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) = 3, [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) = 10 ([MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) are allowed synonyms, but have been superseded) 
 type_mask | `uint16_t` | | [POSITION_TARGET_TYPEMASK](#POSITION_TARGET_TYPEMASK) | Bitmap to indicate which dimensions should be ignored by the vehicle. 
 lat_int | `int32_t` | degE7 | | Latitude in WGS84 frame 
 lon_int | `int32_t` | degE7 | | Longitude in WGS84 frame 
