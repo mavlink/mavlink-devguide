@@ -7443,9 +7443,9 @@ Param (Label) | Description | Units
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
-5 (Latitude) | Latitudee. 0: not used. |   
-6 (Longitude) | Longitudee. 0: not used. |   
-7 (Altitude) | Altitudee. 0: not used. | m 
+5 (Latitude) | Latitude. 0: not used. |   
+6 (Longitude) | Longitude. 0: not used. |   
+7 (Altitude) | Altitude. 0: not used. | m 
 
 
 ### MAV_CMD_DO_LAND_START (189) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_LAND_START}
