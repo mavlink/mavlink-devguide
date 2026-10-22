@@ -7138,15 +7138,15 @@ If sent using as a command, the vehicle will perform a mission landing (using th
 Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
 :::
 
-| Param (Label) | 描述                                                                       | Units |
-| -------------------------------- | ------------------------------------------------------------------------ | ----- |
-| 1                                | Empty                                                                    |       |
-| 2                                | Empty                                                                    |       |
-| 3                                | Empty                                                                    |       |
-| 4                                | Empty                                                                    |       |
-| 5 (Latitude)  | Latitudee. 0: not used.  |       |
-| 6 (Longitude) | Longitudee. 0: not used. |       |
-| 7 (Altitude)  | Altitudee. 0: not used.  | m     |
+| Param (Label) | 描述                                                                      | Units |
+| -------------------------------- | ----------------------------------------------------------------------- | ----- |
+| 1                                | Empty                                                                   |       |
+| 2                                | Empty                                                                   |       |
+| 3                                | Empty                                                                   |       |
+| 4                                | Empty                                                                   |       |
+| 5 (Latitude)  | Latitude. 0: not used.  |       |
+| 6 (Longitude) | Longitude. 0: not used. |       |
+| 7 (Altitude)  | Altitude. 0: not used.  | m     |
 
 ### MAV_CMD_DO_LAND_START (189) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_LAND_START}
 
