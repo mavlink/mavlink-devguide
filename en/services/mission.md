@@ -128,25 +128,21 @@ The table below shows that the positional parameters can be local (x, y, z), glo
 The co-ordinate frame of positional parameters is defined in the `MISSION_ITEM_INT.frame` field using a [MAV_FRAME](#MAV_FRAME) value.
 
 The global frames are prefixed with `MAV_FRAME_GLOBAL_*`.
-Plan items should use frame variants that have the suffix `_INT`: e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT_INT`, `MAV_FRAME_GLOBAL_INT`, `MAV_FRAME_GLOBAL_TERRAIN_ALT_INT`.
-When using these frames, latitude and longitude values must be encoded by multiplying the degrees by 1E7 (e.g. the latitude 69.69000000 would be sent as 69.69000000x1E7 = 696900000).
+Plan items should use `MAV_FRAME_GLOBAL`, `MAV_FRAME_GLOBAL_RELATIVE_ALT`, or `MAV_FRAME_GLOBAL_TERRAIN_ALT`.
+
+Encoding is a property of the field, not of the frame.
+`MISSION_ITEM_INT.x` and `MISSION_ITEM_INT.y` are `int32_t` fields that hold latitude and longitude in degrees \* 10^7, so values must be encoded by multiplying the degrees by 1E7 (e.g. the latitude 69.69000000 would be sent as 69.69000000x1E7 = 696900000).
 Using int32 of degrees \* 10^7 has higher resolution than could be achieved with single floating point.
+The same frames used with a `float` positional field, e.g. `MISSION_ITEM` (deprecated) or `COMMAND_LONG`, carry degrees unscaled.
 
 A number of local frames are also specified.
 Local frame position values that are sent in integer field parameters must be encoded as _position in meters x 1E4_ (e.g. 5m would be encoded and sent as 50000).
 If sent in messages `float` parameter fields the value should be sent as-is.
 
 ::: info
-Don't use the non-INT _global frames_ in mission items (e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT`).
-These are intended to be used with messages that have `float` fields for positional information, e.g.: `MISSION_ITEM` (deprecated), `COMMAND_LONG`.
-If these frames are used, position values should be sent unencoded (i.e. no need to multiply by 1E7).
-:::
-
-::: info
-As above, in theory if a global _non-INT_ frame variant is set for a `MISSION_ITEM_INT` the position value should be sent as-is (not encoded).
-This will result in the value being rounded when it is sent in the integer value, which will make the value unusable.
-In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack.
-Better just to use the correct frames!
+The `_INT` frame variants — [MAV_FRAME_GLOBAL_INT](../messages/common.md#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](../messages/common.md#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](../messages/common.md#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) — are synonyms of the three frames above, and have been [superseded](../guide/xml_schema.md#superseded) by them since 2024-03.
+They are not planned for removal: implementations should keep accepting them on receive and treat them as identical to their non-`_INT` counterparts, but should not use them in new senders.
+An `_INT` frame does not imply that positional values are scaled, and a non-`_INT` frame does not imply that they are not — the field type determines that, as above.
 :::
 
 ::: warning
