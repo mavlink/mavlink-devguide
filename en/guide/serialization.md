@@ -89,13 +89,13 @@ Messages are encoded within the MAVLink packet:
 - The `msgid` (message id) field identifies the specific message encoded in the packet.
 - The `payload` field contains the message data.
   - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/index.md)).
-  - MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
+  - MAVLink 2 [truncates](#payload_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
 - The `len` field contains the length of the payload data.
 - A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum).
   A receiver can use this to confirm that it is compatible with the payload message format/definition.
 
   ::: tip
-  A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
+  A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../mavgen_c/index.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
   :::
 
 ### Field Reordering {#field_reordering}
