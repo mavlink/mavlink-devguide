@@ -130,6 +130,15 @@ The co-ordinate frame of positional parameters is defined in the `MISSION_ITEM_I
 The global frames are prefixed with `MAV_FRAME_GLOBAL_*`.
 Plan items should use `MAV_FRAME_GLOBAL`, `MAV_FRAME_GLOBAL_RELATIVE_ALT`, or `MAV_FRAME_GLOBAL_TERRAIN_ALT`.
 
+::: warning
+[MAV_FRAME_GLOBAL_INT](../messages/common.md#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](../messages/common.md#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), and [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](../messages/common.md#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) (the `_INT` frame variants) gave been [superseded](../guide/xml_schema.md#superseded) by the above frames since 2024-03:
+
+- Senders should not use these frames
+- Receivers should continue to accept and treat them as identical to their non-`_INT` counterparts,
+
+Note that an `_INT` frame does not imply that positional values are scaled, and a non-`_INT` frame does not imply that they are not — the field type determines that, as below.
+:::
+
 Encoding is a property of the field, not of the frame.
 `MISSION_ITEM_INT.x` and `MISSION_ITEM_INT.y` are `int32_t` fields that hold latitude and longitude in degrees \* 10^7, so values must be encoded by multiplying the degrees by 1E7 (e.g. the latitude 69.69000000 would be sent as 69.69000000x1E7 = 696900000).
 Using int32 of degrees \* 10^7 has higher resolution than could be achieved with single floating point.
@@ -138,12 +147,6 @@ The same frames used with a `float` positional field, e.g. `MISSION_ITEM` (depre
 A number of local frames are also specified.
 Local frame position values that are sent in integer field parameters must be encoded as _position in meters x 1E4_ (e.g. 5m would be encoded and sent as 50000).
 If sent in messages `float` parameter fields the value should be sent as-is.
-
-::: info
-The `_INT` frame variants — [MAV_FRAME_GLOBAL_INT](../messages/common.md#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](../messages/common.md#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](../messages/common.md#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) — are synonyms of the three frames above, and have been [superseded](../guide/xml_schema.md#superseded) by them since 2024-03.
-They are not planned for removal: implementations should keep accepting them on receive and treat them as identical to their non-`_INT` counterparts, but should not use them in new senders.
-An `_INT` frame does not imply that positional values are scaled, and a non-`_INT` frame does not imply that they are not — the field type determines that, as above.
-:::
 
 ::: warning
 Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for mission items that contain positional data; this does not correspond to any particular real frame, and so will be ambiguous.
