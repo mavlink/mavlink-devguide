@@ -26,7 +26,7 @@ The [example/mavtest.py](https://github.com/ArduPilot/pymavlink/blob/master/exam
 mav = mavlink.MAVLink(f)
 
 if signing:
-    mav.signing.secret_key = chr(42)*32
+    mav.signing.secret_key = b'*' * 32
     mav.signing.link_id = 0
     mav.signing.timestamp = 0
     mav.signing.sign_outgoing = True
@@ -85,7 +85,7 @@ def my_allow_unsigned_callback(self,msgId):
     return False
 
 # Pass the callback  to the connection (here we also pass an arbitrary secret key)
-secret_key = chr(42)*32
+secret_key = b'*' * 32
 the_connection.setup_signing(secret_key, sign_outgoing=True, allow_unsigned_callback=my_allow_unsigned_callback)
 ```
 
