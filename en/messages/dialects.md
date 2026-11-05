@@ -17,18 +17,18 @@ Dialects are not managed by this project!
 
 The dialect definitions are:
 
-- [icarous.xml](icarous.md)
-- [uAvionix.xml](uAvionix.md)
-- [storm32.xml](storm32.md)
-- [csAirLink.xml](csAirLink.md)
-- [stemstudios.xml](stemstudios.md)
 - [paparazzi.xml](paparazzi.md)
-- [ASLUAV.xml](ASLUAV.md)
-- [loweheiser.xml](loweheiser.md)
-- [cubepilot.xml](cubepilot.md)
-- [AVSSUAS.xml](AVSSUAS.md)
-- [marsh.xml](marsh.md)
+- [icarous.xml](icarous.md)
 - [ardupilotmega.xml](ardupilotmega.md)
+- [stemstudios.xml](stemstudios.md)
+- [uAvionix.xml](uAvionix.md)
+- [cubepilot.xml](cubepilot.md)
+- [loweheiser.xml](loweheiser.md)
+- [AVSSUAS.xml](AVSSUAS.md)
+- [csAirLink.xml](csAirLink.md)
+- [marsh.xml](marsh.md)
+- [ASLUAV.xml](ASLUAV.md)
+- [storm32.xml](storm32.md)
 
 Note that dialects may `include` [MAVLink-Standard Definitions](index.md) or other dialects.
 Up to 5 levels of XML file nesting are allowed - see `MAXIMUM_INCLUDE_FILE_NESTING` in [mavgen.py](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavgen.py#L44).
