@@ -5211,6 +5211,7 @@ Value | Name | Description
 <a id='ESTIMATOR_PRED_POS_HORIZ_ABS'></a>512 | [ESTIMATOR_PRED_POS_HORIZ_ABS](#ESTIMATOR_PRED_POS_HORIZ_ABS) | True if the EKF has sufficient data to enter a mode that will provide a (absolute) position estimate 
 <a id='ESTIMATOR_GPS_GLITCH'></a>1024 | [ESTIMATOR_GPS_GLITCH](#ESTIMATOR_GPS_GLITCH) | True if the EKF has detected a GPS glitch 
 <a id='ESTIMATOR_ACCEL_ERROR'></a>2048 | [ESTIMATOR_ACCEL_ERROR](#ESTIMATOR_ACCEL_ERROR) | True if the EKF has detected bad accelerometer data 
+<a id='ESTIMATOR_UNINITIALIZED'></a>4096 | [ESTIMATOR_UNINITIALIZED](#ESTIMATOR_UNINITIALIZED) | True if the estimator has not been healthy at any time since it started (for example, it is still aligning). Estimators that cannot report this leave it clear. 
 
 ### MOTOR_TEST_ORDER {#MOTOR_TEST_ORDER}
 
