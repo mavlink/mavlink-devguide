@@ -4,7 +4,7 @@ This MAVLink library also comes with supporting libraries and scripts for using,
 
 The scripts have the following requirements:
 
-- Python 2.7+ and 3.3+
+- Python 3.10+
 - `PYTHONPATH` specifies the directory path that contains the `mavlink` repository.
 - Write access to the entire **mavlink** folder.
 - Your XML definition file is in `message_definitions/*/`
