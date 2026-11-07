@@ -21,7 +21,7 @@ If you are creating new XML definitions you should also install lxml and libxml2
 
 To install the MAVLink toolchain:
 
-1. Install Python 3.7+:
+1. Install Python 3.10+:
 
    - **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
    - **Ubuntu Linux** Make sure Python and Pip are both installed:

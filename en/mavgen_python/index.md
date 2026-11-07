@@ -3,7 +3,7 @@
 Pymavlink is a _low level_ and _general purpose_ MAVLink message processing library, written in Python.
 It has been used to implement MAVLink communications in many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
 
-The library can be used with Python 3.5+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
+The library can be used with Python 3.10+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
 
 This topic explains how to get and use the _Pymavlink_ MAVLink Python libraries (generated using [mavgen](../getting_started/generate_libraries.md#mavgen)).
 
