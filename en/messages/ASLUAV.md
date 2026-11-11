@@ -389,12 +389,12 @@ Mission command to reset Maximum Power Point Tracker (MPPT)
 Param (Label) | Description
 --- | ---
 1 | MPPT number 
-2 | Empty 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_PAYLOAD_CONTROL (40002) {#MAV_CMD_PAYLOAD_CONTROL}
@@ -405,10 +405,10 @@ Param (Label) | Description
 --- | ---
 1 | Complete power cycle 
 2 | VISensor power cycle 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 

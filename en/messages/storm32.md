@@ -398,6 +398,11 @@ Command to configure a gimbal manager. A gimbal device is never to react to this
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Profile) | Gimbal manager profile (0 = default). | [MAV_STORM32_GIMBAL_MANAGER_PROFILE](#MAV_STORM32_GIMBAL_MANAGER_PROFILE) 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 7 (Gimbal ID) | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals. |   
 
 
@@ -411,5 +416,10 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Mode) | Set shot mode. | [MAV_QSHOT_MODE](#MAV_QSHOT_MODE) 
 2 (Shot state or command) | Set shot state or command. The allowed values are specific to the selected shot mode. |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 

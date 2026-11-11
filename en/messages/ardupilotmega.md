@@ -1692,10 +1692,10 @@ Param (Label) | Description | Units
 1 (Altitude) | Altitude. | m 
 2 (Descent Speed) | Descent speed. | m/s 
 3 (Wiggle Time) | How long to wiggle the control surfaces to prevent them seizing up. | s 
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SET_RESUME_REPEAT_DIST (215) {#MAV_CMD_DO_SET_RESUME_REPEAT_DIST}
@@ -1705,12 +1705,12 @@ Set the distance to be repeated on mission resume
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Distance) | Distance. | m 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SPRAYER (216) {#MAV_CMD_DO_SPRAYER}
@@ -1720,12 +1720,12 @@ Control attached liquid sprayer
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Sprayer Enable) | 0: disable sprayer. 1: enable sprayer. | min: 0 max: 1 inc: 1 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SEND_SCRIPT_MESSAGE (217) {#MAV_CMD_DO_SEND_SCRIPT_MESSAGE}
@@ -1738,9 +1738,9 @@ Param (Label) | Description | Values
 2 (param 1) | float value to be passed to scripting |   
 3 (param 2) | float value to be passed to scripting |   
 4 (param 3) | float value to be passed to scripting |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_AUX_FUNCTION (218) {#MAV_CMD_DO_AUX_FUNCTION}
@@ -1751,11 +1751,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (AuxiliaryFunction) | Auxiliary Function. |   
 2 (SwitchPosition) | Switch Level. | [MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL](#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL) 
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_POWER_OFF_INITIATED (42000) {#MAV_CMD_POWER_OFF_INITIATED}
@@ -1764,13 +1764,13 @@ A system wide power-off event has been initiated.
 
 Param (Label) | Description
 --- | ---
-1 | Empty. 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_SOLO_BTN_FLY_CLICK (42001) {#MAV_CMD_SOLO_BTN_FLY_CLICK}
@@ -1779,13 +1779,13 @@ FLY button has been clicked.
 
 Param (Label) | Description
 --- | ---
-1 | Empty. 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_SOLO_BTN_FLY_HOLD (42002) {#MAV_CMD_SOLO_BTN_FLY_HOLD}
@@ -1795,12 +1795,12 @@ FLY button has been held for 1.5 seconds.
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Takeoff Altitude) | Takeoff altitude. | m 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SOLO_BTN_PAUSE_CLICK (42003) {#MAV_CMD_SOLO_BTN_PAUSE_CLICK}
@@ -1810,12 +1810,12 @@ PAUSE button has been clicked.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Shot Mode) | 1 if Solo is in a shot mode, 0 otherwise. | min: 0 max: 1 inc: 1 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_FIXED_MAG_CAL (42004) {#MAV_CMD_FIXED_MAG_CAL}
@@ -1830,9 +1830,9 @@ Param (Label) | Description | Units
 2 (Inclination) | Magnetic inclination. | deg 
 3 (Intensity) | Magnetic intensity. | mgauss 
 4 (Yaw) | Yaw. | deg 
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_FIXED_MAG_CAL_FIELD (42005) {#MAV_CMD_FIXED_MAG_CAL_FIELD}
@@ -1844,10 +1844,10 @@ Param (Label) | Description | Units
 1 (Field X) | Field strength X. | mgauss 
 2 (Field Y) | Field strength Y. | mgauss 
 3 (Field Z) | Field strength Z. | mgauss 
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_EKF_SOURCE_SET (42007) {#MAV_CMD_SET_EKF_SOURCE_SET}
@@ -1857,12 +1857,12 @@ Set EKF sensor source set.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (SourceSetId) | Source Set Id. | min: 1 max: 3 inc: 1 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_START_MAG_CAL (42424) {#MAV_CMD_DO_START_MAG_CAL}
@@ -1876,8 +1876,8 @@ Param (Label) | Description | Values | Units
 3 (Autosave) | Save without user input (0=require input, 1=autosave). | min: 0 max: 1 inc: 1 |   
 4 (Delay) | Delay. |   | s 
 5 (Autoreboot) | Autoreboot (0=user reboot, 1=autoreboot). | min: 0 max: 1 inc: 1 |   
-6 | Empty. |   |   
-7 | Empty. |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_ACCEPT_MAG_CAL (42425) {#MAV_CMD_DO_ACCEPT_MAG_CAL}
@@ -1887,12 +1887,12 @@ Accept a magnetometer calibration.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Magnetometers Bitmask) | Bitmask of magnetometers that calibration is accepted (0 means all). | min: 0 max: 255 inc: 1 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_CANCEL_MAG_CAL (42426) {#MAV_CMD_DO_CANCEL_MAG_CAL}
@@ -1902,12 +1902,12 @@ Cancel a running magnetometer calibration.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Magnetometers Bitmask) | Bitmask of magnetometers to cancel a running calibration (0 means all). | min: 0 max: 255 inc: 1 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_FACTORY_TEST_MODE (42427) {#MAV_CMD_SET_FACTORY_TEST_MODE}
@@ -1917,12 +1917,12 @@ Command autopilot to get into factory test/diagnostic mode.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Test Mode) | 0: activate test mode, 1: exit test mode. | min: 0 max: 1 inc: 1 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SEND_BANNER (42428) {#MAV_CMD_DO_SEND_BANNER}
@@ -1931,13 +1931,13 @@ Reply with the version banner.
 
 Param (Label) | Description
 --- | ---
-1 | Empty. 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_ACCELCAL_VEHICLE_POS (42429) {#MAV_CMD_ACCELCAL_VEHICLE_POS}
@@ -1947,12 +1947,12 @@ Used when doing accelerometer calibration. When sent to the GCS tells it what po
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Position) | Position. | [ACCELCAL_VEHICLE_POS](#ACCELCAL_VEHICLE_POS) 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_GIMBAL_RESET (42501) {#MAV_CMD_GIMBAL_RESET}
@@ -1961,13 +1961,13 @@ Causes the gimbal to reset and boot as if it was just powered on.
 
 Param (Label) | Description
 --- | ---
-1 | Empty. 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS (42502) {#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS}
@@ -1979,10 +1979,10 @@ Param (Label) | Description | Values | Units
 1 (Axis) | Gimbal axis we're reporting calibration progress for. | [GIMBAL_AXIS](#GIMBAL_AXIS) |   
 2 (Progress) | Current calibration progress for this axis. | min: 0 max: 100 | % 
 3 (Status) | Status of the calibration. | [GIMBAL_AXIS_CALIBRATION_STATUS](#GIMBAL_AXIS_CALIBRATION_STATUS) |   
-4 | Empty. |   |   
-5 | Empty. |   |   
-6 | Empty. |   |   
-7 | Empty. |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION (42503) {#MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION}
@@ -1991,13 +1991,13 @@ Starts commutation calibration on the gimbal.
 
 Param (Label) | Description
 --- | ---
-1 | Empty. 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_GIMBAL_FULL_RESET (42505) {#MAV_CMD_GIMBAL_FULL_RESET}
@@ -2021,13 +2021,13 @@ Update the bootloader
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 | Empty |   
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Magic Number) | Magic number - set to 290876 to actually flash | inc: 1 
-6 | Empty |   
-7 | Empty |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_BATTERY_RESET (42651) {#MAV_CMD_BATTERY_RESET}
@@ -2038,6 +2038,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (battery mask) | Bitmask of batteries to reset. Least significant bit is for the first battery. |   
 2 (percentage) | Battery percentage remaining to set. | min: 0 max: 100 inc: 1 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DEBUG_TRAP (42700) {#MAV_CMD_DEBUG_TRAP}
@@ -2047,12 +2052,12 @@ Issue a trap signal to the autopilot process, presumably to enter the debugger.
 Param (Label) | Description
 --- | ---
 1 | Magic number - set to 32451 to actually trap. 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_SCRIPTING (42701) {#MAV_CMD_SCRIPTING}
@@ -2062,6 +2067,12 @@ Control onboard scripting.
 Param (Label) | Description | Values
 --- | --- | ---
 1 | Scripting command to execute | [SCRIPTING_CMD](#SCRIPTING_CMD) 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_SCRIPT_TIME (42702) {#MAV_CMD_NAV_SCRIPT_TIME}
@@ -2076,7 +2087,7 @@ Param (Label) | Description | Units
 4 (arg2) | argument2. |   
 5 (arg3) | argument3. |   
 6 (arg4) | argument4. |   
-7 | Empty |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_ATTITUDE_TIME (42703) {#MAV_CMD_NAV_ATTITUDE_TIME}
@@ -2090,8 +2101,8 @@ Param (Label) | Description | Units
 3 (pitch) | Pitch angle in degrees (positive is lean back, negative is lean forward) | deg 
 4 (yaw) | Yaw angle | deg 
 5 (climb_rate) | Climb rate | m/s 
-6 | Empty |   
-7 | Empty |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
@@ -2103,9 +2114,9 @@ Param (Label) | Description | Units
 1 (hagl) | Height above ground level. | m 
 2 (accuracy) | estimated one standard deviation accuracy of the measurement. Set to NaN if not known. | m 
 3 (timeout) | Timeout for this data. The flight controller should only consider this data valid within the timeout window. | s 
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 

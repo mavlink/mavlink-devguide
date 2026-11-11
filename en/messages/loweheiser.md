@@ -88,7 +88,7 @@ Param (Label) | Description
 3 | Desired Governor State (0:manual throttle, 1:Governed throttle) 
 4 | Manual throttle level, 0% - 100% 
 5 | Electronic Start up (0:Off, 1:On) 
-6 | Empty 
-7 | Empty 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 

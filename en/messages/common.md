@@ -6708,8 +6708,8 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Units
 --- | --- | ---
-1 | Empty |   
-2 | Empty |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise | m 
 4 (Yaw) | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). | deg 
 5 (Latitude) | Latitude |   
@@ -6763,13 +6763,13 @@ Return to launch location
 
 Param (Label) | Description
 --- | ---
-1 | Empty 
-2 | Empty 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_NAV_LAND (21) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LAND}
@@ -6785,7 +6785,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Abort Alt) | Minimum target altitude if landing is aborted (0 = undefined/use system default). |   | m 
 2 (Land Mode) | Precision land mode. | [PRECISION_LAND_MODE](#PRECISION_LAND_MODE) |   
-3 | Empty. |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Yaw Angle) | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
 5 (Latitude) | Latitude. |   |   
 6 (Longitude) | Longitude. |   |   
@@ -6804,7 +6804,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Pitch) | Minimum pitch (if airspeed sensor present), desired pitch without sensor |   | deg 
-2 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 (Flags) | Bitmask of options flags. | [NAV_TAKEOFF_FLAGS](#NAV_TAKEOFF_FLAGS) |   
 4 (Yaw) | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
 5 (Latitude) | Latitude |   |   
@@ -6844,7 +6844,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Pitch) | Minimum pitch (if airspeed sensor present), desired pitch without sensor | rad 
-2 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 3 (Ascend Rate) | Takeoff ascend rate | m/s 
 4 (Yaw) | Yaw angle (if magnetometer or another yaw estimation source present), ignored without one of these | rad 
 5 (Y Position) | Y-axis position | m 
@@ -6859,11 +6859,11 @@ Continue on the current course and climb/descend to specified altitude.  When th
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Action) | Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude. | min: 0 max: 2 inc: 1 |   
-2 | Empty |   |   
-3 | Empty |   |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 7 (Altitude) | Desired altitude |   | m 
 
 
@@ -6880,7 +6880,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE causes leaving when altitude is reached. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 2 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter. |   | m 
-3 | Empty |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
@@ -6894,11 +6894,11 @@ Begin following a target
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (System ID) | System ID (of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode. | min: 0 max: 255 inc: 1 |   
-2 | Reserved |   |   
-3 | Reserved |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Altitude Mode) | Altitude mode: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home. | min: 0 max: 2 inc: 1 |   
 5 (Altitude) | Altitude above home. (used if mode=2) |   | m 
-6 | Reserved |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 7 (Time to Land) | Time to land in which the MAV should go to the default position hold mode after a message RX timeout. | min: 0 | s 
 
 
@@ -6955,7 +6955,7 @@ Param (Label) | Description | Units
 --- | --- | ---
 1 (Major Radius) | Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.<br>NaN: The radius will be set to 2.5 times the minor radius and direction is clockwise.<br>Must be greater or equal to two times the minor radius for feasible values. | m 
 2 (Minor Radius) | Minor axis radius of the figure eight. Defines the radius of the two circles that make up the figure. Negative value has no effect.<br>NaN: The radius will be set to the default loiter radius. | m 
-3 | |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 4 (Orientation) | Orientation of the figure eight major axis with respect to true north (range: [-pi,pi]). NaN: use default orientation aligned to true north. | rad 
 5 (Latitude/X) | Center point latitude/X coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |   
 6 (Longitude/Y) | Center point longitude/Y coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |   
@@ -6977,6 +6977,9 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Arc Angle) | The angle in degrees from the starting position to the exit position of the arc in the NE frame. Positive values are CW arcs and negative values are CCW arcs. | min: -359 max: 359 inc: 1 | deg 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6998,7 +7001,7 @@ Param (Label) | Description | Values
 1 (ROI Mode) | Region of interest mode. | [MAV_ROI](#MAV_ROI) 
 2 (WP Index) | Waypoint index/ target ID. (see MAV_ROI enum) | min: 0 inc: 1 
 3 (ROI Index) | ROI index (allows a vehicle to manage multiple ROI's) | min: 0 inc: 1 
-4 | Empty |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (X) | x the location of the fixed ROI (see MAV_FRAME) |   
 6 (Y) | y |   
 7 (Z) | z |   
@@ -7017,7 +7020,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Local Ctrl) | 0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning | min: 0 max: 2 inc: 1 |   
 2 (Global Ctrl) | 0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid | min: 0 max: 3 inc: 1 |   
-3 | Empty |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Yaw) | Yaw angle at goal |   | deg 
 5 (Latitude/X) | Latitude/X of goal |   |   
 6 (Longitude/Y) | Longitude/Y of goal |   |   
@@ -7036,9 +7039,9 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Hold) | Hold time. (ignored by fixed wing, time to stay at waypoint for rotary wing) | min: 0 | s 
-2 | Empty |   |   
-3 | Empty |   |   
-4 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 5 (Latitude/X) | Latitude/X of goal |   |   
 6 (Longitude/Y) | Longitude/Y of goal |   |   
 7 (Altitude/Z) | Altitude/Z of goal |   |   
@@ -7055,9 +7058,9 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 | Empty |   |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 2 (Transition Heading) | Front transition heading. | [VTOL_TRANSITION_HEADING](#VTOL_TRANSITION_HEADING) |   
-3 | Empty |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Yaw Angle) | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
@@ -7076,7 +7079,7 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Land Options) | Landing behaviour. | [NAV_VTOL_LAND_OPTIONS](#NAV_VTOL_LAND_OPTIONS) |   
-2 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 (Approach Altitude) | Approach altitude (with the same reference as the Altitude field). NaN if unspecified. |   | m 
 4 (Yaw) | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
 5 (Latitude) | Latitude |   |   
@@ -7091,12 +7094,12 @@ Hand control over to an external controller
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | Guided mode on (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE turns guided mode off. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_DELAY (93) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_DELAY}
@@ -7109,9 +7112,9 @@ Param (Label) | Description | Values | Units
 2 (Hour) | hour (24h format, UTC, -1 to ignore) | min: -1 max: 23 inc: 1 |   
 3 (Minute) | minute (24h format, UTC, -1 to ignore) | min: -1 max: 59 inc: 1 |   
 4 (Second) | second (24h format, UTC, -1 to ignore) | min: -1 max: 59 inc: 1 |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_NAV_PAYLOAD_PLACE (94) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_PAYLOAD_PLACE}
@@ -7126,9 +7129,9 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Max Descent) | Maximum distance to descend. | min: 0 | m 
-2 | Empty |   |   
-3 | Empty |   |   
-4 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -7140,13 +7143,13 @@ NOP - This command is only used to mark the upper limit of the NAV/ACTION comman
 
 Param (Label) | Description
 --- | ---
-1 | Empty 
-2 | Empty 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_CONDITION_DELAY (112) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_DELAY}
@@ -7156,12 +7159,12 @@ Delay mission state machine.
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Delay) | Delay | min: 0 | s 
-2 | Empty |   |   
-3 | Empty |   |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_CONDITION_CHANGE_ALT (113) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_CHANGE_ALT}
@@ -7171,11 +7174,11 @@ Ascend/descend to target altitude at specified rate. Delay mission state machine
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Rate) | Descent / Ascend rate. | m/s 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 7 (Altitude) | Target Altitude | m 
 
 
@@ -7186,12 +7189,12 @@ Delay mission state machine until within desired distance of next NAV point.
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Distance) | Distance. | min: 0 | m 
-2 | Empty |   |   
-3 | Empty |   |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_CONDITION_YAW (115) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CONDITION_YAW}
@@ -7204,9 +7207,9 @@ Param (Label) | Description | Values | Units
 2 (Angular Speed) | angular speed | min: 0 | deg/s 
 3 (Direction) | direction: -1: counter clockwise, 0: shortest direction, 1: clockwise | min: -1 max: 1 inc: 1 |   
 4 (Relative) | Relative offset (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE specifies an absolute angle. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_CONDITION_LAST (159) {#MAV_CMD_CONDITION_LAST}
@@ -7215,13 +7218,13 @@ NOP - This command is only used to mark the upper limit of the CONDITION command
 
 Param (Label) | Description
 --- | ---
-1 | Empty 
-2 | Empty 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_DO_SET_MODE (176) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_MODE}
@@ -7233,10 +7236,10 @@ Param (Label) | Description | Values
 1 (Mode) | Mode flags. MAV_MODE values can be used to set some mode flag combinations. | [MAV_MODE_FLAG](#MAV_MODE_FLAG) 
 2 (Custom Mode) | Custom system-specific mode (see target autopilot specifications for mode information). If MAV_MODE_FLAG_CUSTOM_MODE_ENABLED is set in param1 (mode) this mode is used: otherwise the field is ignored. |   
 3 (Custom Submode) | Custom sub mode - this is system specific, please refer to the individual autopilot specifications for details. |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_JUMP (177) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_DO_JUMP}
@@ -7247,11 +7250,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Number) | Sequence number | min: 0 inc: 1 
 2 (Repeat) | Repeat count | min: 0 inc: 1 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_CHANGE_SPEED (178) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_CHANGE_SPEED}
@@ -7263,10 +7266,10 @@ Param (Label) | Description | Values | Units
 1 (Speed Type) | Speed type of value set in param2 (such as airspeed, ground speed, and so on) | [SPEED_TYPE](#SPEED_TYPE) |   
 2 (Speed) | Speed (-1 indicates no change, -2 indicates return to default vehicle speed) | min: -2 | m/s 
 3 (Throttle) | Throttle (-1 indicates no change, -2 indicates return to default vehicle throttle value) | min: -2 | % 
-4 | |   |   
-5 | |   |   
-6 | |   |   
-7 | |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_HOME (179) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_HOME}
@@ -7302,11 +7305,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Number) | Parameter number | min: 0 inc: 1 
 2 (Value) | Parameter value |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SET_RELAY (181) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_RELAY}
@@ -7317,11 +7320,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Instance) | Relay instance number. | min: 0 inc: 1 
 2 (Setting) | Setting. (1=on, 0=off, others possible depending on system hardware) | min: 0 inc: 1 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_REPEAT_RELAY (182) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPEAT_RELAY}
@@ -7333,10 +7336,10 @@ Param (Label) | Description | Values | Units
 1 (Instance) | Relay instance number. | min: 0 inc: 1 |   
 2 (Count) | Cycle count. | min: 1 inc: 1 |   
 3 (Time) | Cycle time. | min: 0 | s 
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_SERVO (183) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_SERVO}
@@ -7347,11 +7350,11 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Instance) | Servo instance number. | min: 0 inc: 1 |   
 2 (PWM) | Pulse Width Modulation. | min: 0 inc: 1 | us 
-3 | Empty |   |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_REPEAT_SERVO (184) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPEAT_SERVO}
@@ -7364,9 +7367,9 @@ Param (Label) | Description | Values | Units
 2 (PWM) | Pulse Width Modulation. | min: 0 inc: 1 | us 
 3 (Count) | Cycle count. | min: 1 inc: 1 |   
 4 (Time) | Cycle time. | min: 0 | s 
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_FLIGHTTERMINATION (185) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FLIGHTTERMINATION}
@@ -7383,12 +7386,12 @@ Support for this command can also be tested by sending the command with param1=0
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Terminate) | Flight termination activated if > 0.5. Otherwise not activated and ACK with MAV_RESULT_FAILED. | min: 0 max: 1 inc: 1 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_CHANGE_ALTITUDE (186) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_CHANGE_ALTITUDE}
@@ -7399,11 +7402,11 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Altitude) | Altitude. |   | m 
 2 (Frame) | Frame of new altitude. | [MAV_FRAME](#MAV_FRAME) |   
-3 | Empty |   |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_ACTUATOR (187) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ACTUATOR}
@@ -7441,10 +7444,10 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Units
 --- | --- | ---
-1 | Empty |   
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude. 0: not used. |   
 6 (Longitude) | Longitude. 0: not used. |   
 7 (Altitude) | Altitude. 0: not used. | m 
@@ -7470,10 +7473,10 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Units
 --- | --- | ---
-1 | Empty |   
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude for landing sequence selection, or 0 (see description). Ignored in commands (set 0). |   
 6 (Longitude) | Longitude for landing sequence selection, or 0 (see description). Ignored in commands (set 0). |   
 7 (Altitude) | Altitude for landing sequence selection, or 0 (see description). Ignored in commands (set 0). | m 
@@ -7487,11 +7490,11 @@ Param (Label) | Description | Units
 --- | --- | ---
 1 (Altitude) | Break altitude | m 
 2 (Speed) | Landing speed | m/s 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_GO_AROUND (191) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GO_AROUND}
@@ -7501,12 +7504,12 @@ Command to safely abort an autonomous landing.
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Altitude) | Altitude | m 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_REPOSITION (192) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPOSITION}
@@ -7536,12 +7539,12 @@ If in a GPS controlled position mode, hold the current position or continue.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Continue) | Continue mission (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE pauses the current mission or reposition command and holds current position (a VTOL capable vehicle should enter hover mode (multicopter and VTOL planes); a plane should loiter with the default loiter radius). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved |   
-3 | Reserved |   
-4 | Reserved |   
-5 | Reserved |   
-6 | Reserved |   
-7 | Reserved |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SET_REVERSE (194) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_REVERSE}
@@ -7551,12 +7554,12 @@ Set moving direction to forward or reverse.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Reverse) | Reverse direction (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE specifies forward direction. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SET_ROI_LOCATION (195) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI_LOCATION}
@@ -7571,9 +7574,9 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |   
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude of ROI location |   
 6 (Longitude) | Longitude of ROI location |   
 7 (Altitude) | Altitude of ROI location | m 
@@ -7586,9 +7589,9 @@ Sets the region of interest (ROI) to be toward next waypoint, with optional pitc
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |   
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Pitch Offset) | Pitch offset from next waypoint, positive pitching up | deg 
 6 (Roll Offset) | Roll offset from next waypoint, positive rolling to the right | deg 
 7 (Yaw Offset) | Yaw offset from next waypoint, positive yawing to the right | deg 
@@ -7601,12 +7604,12 @@ Cancels any previous ROI command returning the vehicle/sensors to default flight
 Param (Label) | Description
 --- | ---
 1 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). 
-2 | Empty 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_DO_SET_ROI_SYSID (198) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI_SYSID}
@@ -7617,6 +7620,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (System ID) | System ID | min: 1 max: 255 inc: 1 
 2 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_CONTROL_VIDEO (200) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_CONTROL_VIDEO}
@@ -7629,9 +7637,9 @@ Param (Label) | Description | Values | Units
 2 (Transmission) | Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw | min: 0 max: 2 inc: 1 |   
 3 (Interval) | Transmission mode: 0: video stream, >0: single images every n seconds | min: 0 | s 
 4 (Recording) | Recording: 0: disabled, 1: enabled compressed, 2: enabled raw | min: 0 max: 2 inc: 1 |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_ROI (201) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_ROI}
@@ -7650,7 +7658,7 @@ Param (Label) | Description | Values
 1 (ROI Mode) | Region of interest mode. | [MAV_ROI](#MAV_ROI) 
 2 (WP Index) | Waypoint index/ target ID (depends on param 1). | min: 0 inc: 1 
 3 (ROI Index) | Region of interest index. (allows a vehicle to manage multiple ROI's) | min: 0 inc: 1 
-4 | Empty |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 | MAV_ROI_WPNEXT: pitch offset from next waypoint, MAV_ROI_LOCATION: latitude |   
 6 | MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude |   
 7 | MAV_ROI_WPNEXT: yaw offset from next waypoint, MAV_ROI_LOCATION: altitude |   
@@ -7730,9 +7738,9 @@ Param (Label) | Description | Values | Units
 2 (Shutter) | Camera shutter integration time. -1 or 0 to ignore | min: -1 inc: 1 | ms 
 3 (Trigger) | Trigger camera once, immediately (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_FENCE_ENABLE (207) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FENCE_ENABLE}
@@ -7747,11 +7755,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | enable? (0=disable, 1=enable, 2=disable_floor_only) | min: 0 max: 2 inc: 1 
 2 (Types) | Fence types to enable or disable as a bitmask. 0: field is unused/all fences should be enabled or disabled (for compatibility reasons). Parameter is ignored if param1=2. | [FENCE_TYPE](#FENCE_TYPE) 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_PARACHUTE (208) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_PARACHUTE}
@@ -7761,12 +7769,12 @@ Mission item/command to release a parachute or enable/disable auto release.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Action) | Action | [PARACHUTE_ACTION](#PARACHUTE_ACTION) 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_MOTOR_TEST (209) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_MOTOR_TEST}
@@ -7781,7 +7789,7 @@ Param (Label) | Description | Values | Units
 4 (Timeout) | Timeout between tests that are run in sequence. | min: 0 | s 
 5 (Motor Count) | Motor count. Number of motors to test in sequence: 0/1=one motor, 2= two motors, etc. The Timeout (param4) is used between tests. | min: 0 inc: 1 |   
 6 (Test Order) | Motor test order. | [MOTOR_TEST_ORDER](#MOTOR_TEST_ORDER) |   
-7 | Empty |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_INVERTED_FLIGHT (210) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_INVERTED_FLIGHT}
@@ -7791,12 +7799,12 @@ Change to/from inverted flight.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Inverted) | Inverted flight (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE specifies normal flight. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_GRIPPER (211) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GRIPPER}
@@ -7807,11 +7815,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Gripper ID) | Gripper ID. 1-6 for an autopilot connected gripper. In missions this may be set to 1-6 for an autopilot gripper, or the gripper component id for a MAVLink gripper. 0 targets all grippers. | min: 0 inc: 1 
 2 (Action) | Gripper action to perform. | [GRIPPER_ACTIONS](#GRIPPER_ACTIONS) 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_AUTOTUNE_ENABLE (212) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_AUTOTUNE_ENABLE}
@@ -7822,11 +7830,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | Enable autotune (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE disables autotune. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 (Axis) | Specify axes for which autotuning is enabled/disabled. 0 indicates the field is unused (for compatibility reasons). If 0 the autopilot will follow its default behaviour, which is usually to tune all axes. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS) 
-3 | Empty. |   
-4 | Empty. |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_SET_YAW_SPEED (213) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_SET_YAW_SPEED}
@@ -7838,10 +7846,10 @@ Param (Label) | Description | Values | Units
 1 (Yaw) | Yaw angle to adjust steering by. |   | deg 
 2 (Speed) | Speed. |   | m/s 
 3 (Angle) | Relative final angle (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE specifies an absolute angle. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL (214) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL}
@@ -7853,10 +7861,10 @@ Param (Label) | Description | Values | Units
 1 (Trigger Cycle) | Camera trigger cycle time. -1 or 0 to ignore. | min: -1 inc: 1 | ms 
 2 (Shutter Integration) | Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore. | min: -1 inc: 1 | ms 
 3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
-4 | Empty |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_MOUNT_CONTROL_QUAT (220) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_MOUNT_CONTROL_QUAT}
@@ -7871,9 +7879,9 @@ Param (Label) | Description
 2 (Q2) | quaternion param q2, x (0 in null-rotation) 
 3 (Q3) | quaternion param q3, y (0 in null-rotation) 
 4 (Q4) | quaternion param q4, z (0 in null-rotation) 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_DO_GUIDED_MASTER (221) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GUIDED_MASTER}
@@ -7884,11 +7892,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (System ID) | System ID | min: 0 max: 255 inc: 1 
 2 (Component ID) | Component ID | min: 0 max: 255 inc: 1 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_GUIDED_LIMITS (222) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_GUIDED_LIMITS}
@@ -7901,9 +7909,9 @@ Param (Label) | Description | Values | Units
 2 (Min Altitude) | Altitude (MSL) min - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit. |   | m 
 3 (Max Altitude) | Altitude (MSL) max - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit. |   | m 
 4 (Horiz. Move Limit) | Horizontal move limit - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal move limit. | min: 0 | m 
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_ENGINE_CONTROL (223) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ENGINE_CONTROL}
@@ -7916,9 +7924,9 @@ Param (Label) | Description | Values | Units
 2 (Cold Start) | Cold start engine (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE performs a warm start. Controls use of choke where applicable. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Height Delay) | Height delay. This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay. | min: 0 | m 
 4 (Options) | A bitmask of options for engine control | [ENGINE_CONTROL_OPTIONS](#ENGINE_CONTROL_OPTIONS) |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_MISSION_CURRENT (224) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_MISSION_CURRENT}
@@ -7941,11 +7949,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Number) | Mission sequence value to set. -1 for the current mission item (use to reset mission without changing current mission item). | min: -1 inc: 1 
 2 (Reset Mission) | Reset mission. A value of MAV_BOOL_TRUE resets jump counters to initial values and changes mission state "completed" to be "active" or "paused". Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_LAST (240) {#MAV_CMD_DO_LAST}
@@ -7954,13 +7962,13 @@ NOP - This command is only used to mark the upper limit of the DO commands in th
 
 Param (Label) | Description
 --- | ---
-1 | Empty 
-2 | Empty 
-3 | Empty 
-4 | Empty 
-5 | Empty 
-6 | Empty 
-7 | Empty 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_PREFLIGHT_CALIBRATION (241) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_CALIBRATION}
@@ -8000,12 +8008,12 @@ Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Not
 Param (Label) | Description
 --- | ---
 1 (Actuator ID) | 1: Trigger actuator ID assignment and direction mapping. 0: Cancel command. 
-2 | Reserved 
-3 | Reserved 
-4 | Reserved 
-5 | Reserved 
-6 | Reserved 
-7 | Reserved 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_PREFLIGHT_STORAGE (245) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_STORAGE}
@@ -8015,12 +8023,12 @@ Request storage of different parameter values and logs. This command will be onl
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Parameter Storage) | Action to perform on the persistent parameter storage | [PREFLIGHT_STORAGE_PARAMETER_ACTION](#PREFLIGHT_STORAGE_PARAMETER_ACTION) |   
-2 | Reserved |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 (Logging Rate) | Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, > 1: logging rate (e.g. set to 1000 for 1000 Hz logging) | min: -1 inc: 1 | Hz 
-4 | Reserved |   |   
-5 | Empty |   |   
-6 | Empty |   |   
-7 | Empty |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN (246) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN}
@@ -8033,7 +8041,7 @@ Param (Label) | Description | Values
 2 (Companion) | Action to take for onboard computer. | [REBOOT_SHUTDOWN_ACTION](#REBOOT_SHUTDOWN_ACTION) 
 3 (Component Action) | Action to take for component specified in param4. | [REBOOT_SHUTDOWN_ACTION](#REBOOT_SHUTDOWN_ACTION) 
 4 (Component ID) | MAVLink Component ID targeted in param3 (0 for all components). | min: 0 max: 255 inc: 1 
-5 | Reserved (set to 0) |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 6 (Conditions) | Conditions under which reboot/shutdown is allowed. | [REBOOT_SHUTDOWN_CONDITIONS](#REBOOT_SHUTDOWN_CONDITIONS) 
 7 | WIP: ID (e.g. camera ID -1 for all IDs) |   
 
@@ -8070,7 +8078,7 @@ Param (Label) | Description | Values | Units
 4 (Positions) | Total number of roll positions at which the camera will capture photos (images captures spread evenly across the limits defined by param5). | min: 2 inc: 1 |   
 5 (Roll Angle) | Angle limits that the camera can be rolled to left and right of center. | min: 0 | deg 
 6 (Pitch Angle) | Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis. | min: -180 max: 180 | deg 
-7 | Empty |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_DO_SET_STANDARD_MODE (262) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_STANDARD_MODE}
@@ -8083,12 +8091,12 @@ See https://mavlink.io/en/services/standard_modes.html
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Standard Mode) | The mode to set. | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) 
-2 | |   
-3 | |   
-4 | |   
-5 | |   
-6 | |   
-7 | |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_MISSION_START (300) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_MISSION_START}
@@ -8099,6 +8107,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (First Item) | first_item: the first mission item to run | min: 0 inc: 1 
 2 (Last Item) | last_item:  the last mission item to run (after this item is run, the mission ends) | min: 0 inc: 1 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_ACTUATOR_TEST (310) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ACTUATOR_TEST}
@@ -8109,11 +8122,11 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Value) | Output value: 1 means maximum positive output, 0 to center servos or minimum motor thrust (expected to spin), -1 for maximum negative (if not supported by the motors, i.e. motor is not reversible, smaller than 0 maps to NaN). And NaN maps to disarmed (stop the motors). | min: -1 max: 1 |   
 2 (Timeout) | Timeout after which the test command expires and the output is restored to the previous value. A timeout has to be set for safety reasons. A timeout of 0 means to restore the previous value immediately. | min: 0 max: 3 | s 
-3 | |   |   
-4 | |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 5 (Output Function) | Actuator Output function | [ACTUATOR_OUTPUT_FUNCTION](#ACTUATOR_OUTPUT_FUNCTION) |   
-6 | |   |   
-7 | |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_CONFIGURE_ACTUATOR (311) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CONFIGURE_ACTUATOR}
@@ -8123,12 +8136,12 @@ Actuator configuration command.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Configuration) | Actuator configuration action | [ACTUATOR_CONFIGURATION](#ACTUATOR_CONFIGURATION) 
-2 | |   
-3 | |   
-4 | |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Output Function) | Actuator Output function | [ACTUATOR_OUTPUT_FUNCTION](#ACTUATOR_OUTPUT_FUNCTION) 
-6 | |   
-7 | |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_COMPONENT_ARM_DISARM (400) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_COMPONENT_ARM_DISARM}
@@ -8139,6 +8152,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Arm) | Arm (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE disarms. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 (Force) | 0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight) | min: 0 max: 21196 inc: 21196 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_RUN_PREARM_CHECKS (401) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_RUN_PREARM_CHECKS}
@@ -8152,6 +8170,13 @@ The command should return [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORAR
 
 Param (Label) | Description
 --- | ---
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_ILLUMINATOR_ON_OFF (405) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ILLUMINATOR_ON_OFF}
@@ -8161,6 +8186,12 @@ Turns illuminators ON/OFF. An illuminator is a light source that is used for lig
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | Illuminators on (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE turns illuminators off. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_ILLUMINATOR_CONFIGURE (406) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ILLUMINATOR_CONFIGURE}
@@ -8173,6 +8204,9 @@ Param (Label) | Description | Values | Units
 2 (Brightness) | 0%: Off, 100%: Max Brightness | min: 0 max: 100 | % 
 3 (Strobe Period) | Strobe period in seconds where 0 means strobing is not used | min: 0 | s 
 4 (Strobe Duty) | Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used | min: 0 max: 100 | % 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_GET_HOME_POSITION (410) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GET_HOME_POSITION}
@@ -8185,13 +8219,13 @@ The vehicle will ACK the command and emit the [HOME_POSITION](#HOME_POSITION) me
 
 Param (Label) | Description
 --- | ---
-1 | Reserved 
-2 | Reserved 
-3 | Reserved 
-4 | Reserved 
-5 | Reserved 
-6 | Reserved 
-7 | Reserved 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_INJECT_FAILURE (420) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_INJECT_FAILURE}
@@ -8204,6 +8238,9 @@ Param (Label) | Description | Values
 2 (Failure type) | The type how the failure manifests itself. | [FAILURE_TYPE](#FAILURE_TYPE) 
 3 (Instance) | Instance affected by failure (0 to signal all). Takes precedence over Instance bitmask (param4) when not NaN. Set to NaN to use Instance bitmask instead. | min: 0 inc: 1 
 4 (Instance bitmask) | Bitmask of instances affected by the failure (bit 0 = first instance, bit 1 = second instance, etc.). Used only when Instance (param3) is NaN. | min: 0 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_START_RX_PAIR (500) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_START_RX_PAIR}
@@ -8214,6 +8251,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (RC Type) | RC type. | [RC_TYPE](#RC_TYPE) 
 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GET_MESSAGE_INTERVAL}
@@ -8226,6 +8268,12 @@ The receiver should ACK the command and then emit its response in a [MESSAGE_INT
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Message ID) | The MAVLink message ID | min: 0 max: 16777215 inc: 1 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_MESSAGE_INTERVAL (511) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_MESSAGE_INTERVAL}
@@ -8267,7 +8315,12 @@ Request MAVLink protocol version compatibility. All receivers should ACK the com
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Protocol) | Request supported protocol versions by all nodes on the network (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved (all remaining params) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (520) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES}
@@ -8279,7 +8332,12 @@ Request autopilot capabilities. The receiver should ACK the command and then emi
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Version) | Request autopilot version (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved (all remaining params) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_CAMERA_INFORMATION (521) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_INFORMATION}
@@ -8291,7 +8349,12 @@ Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Capabilities) | Request camera capabilities (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved (all remaining params) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_CAMERA_SETTINGS (522) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_SETTINGS}
@@ -8303,7 +8366,12 @@ Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Settings) | Request camera settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved (all remaining params) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_STORAGE_INFORMATION (525) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_STORAGE_INFORMATION}
@@ -8316,7 +8384,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Storage ID) | Storage ID (0 for all, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 2 (Information) | Request storage information (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-3 | Reserved (all remaining params) |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_STORAGE_FORMAT (526) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_STORAGE_FORMAT}
@@ -8328,7 +8400,10 @@ Param (Label) | Description | Values
 1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1 
 2 (Format) | Format storage (and reset image log) (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 3 (Reset Image Log) | Reset Image Log (without formatting storage medium) (MAV_BOOL_TRUE). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-4 | Reserved (all remaining params) |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (527) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS}
@@ -8340,7 +8415,12 @@ Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Capture Status) | Request camera capture status (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved (all remaining params) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_FLIGHT_INFORMATION (528) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_FLIGHT_INFORMATION}
@@ -8352,7 +8432,12 @@ Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Flight Information) | Request flight information (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Reserved (all remaining params) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_RESET_CAMERA_SETTINGS (529) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_RESET_CAMERA_SETTINGS}
@@ -8363,6 +8448,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Reset) | Reset all settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_CAMERA_MODE (530) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_MODE}
@@ -8373,9 +8463,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 2 (Camera Mode) | Camera mode | [CAMERA_MODE](#CAMERA_MODE) 
-3 | |   
-4 | |   
-7 | |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_CAMERA_ZOOM (531) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_ZOOM}
@@ -8387,7 +8479,10 @@ Param (Label) | Description | Values
 1 (Zoom Type) | Zoom type | [CAMERA_ZOOM_TYPE](#CAMERA_ZOOM_TYPE) 
 2 (Zoom Value) | Zoom value. The range of valid values depend on the zoom type. |   
 3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
-4 | |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_CAMERA_FOCUS (532) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_FOCUS}
@@ -8399,7 +8494,10 @@ Param (Label) | Description | Values
 1 (Focus Type) | Focus type | [SET_FOCUS_TYPE](#SET_FOCUS_TYPE) 
 2 (Focus Value) | Focus value |   
 3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
-4 | |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_STORAGE_USAGE (533) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_STORAGE_USAGE}
@@ -8415,6 +8513,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1 
 2 (Usage) | Usage flags | [STORAGE_USAGE_FLAG](#STORAGE_USAGE_FLAG) 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_CAMERA_SOURCE (534) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_CAMERA_SOURCE}
@@ -8426,6 +8529,10 @@ Param (Label) | Description | Values
 1 (device id) | Component Id of camera to address or 1-6 for non-MAVLink cameras, 0 for all cameras. |   
 2 (primary source) | Primary Source | [CAMERA_SOURCE](#CAMERA_SOURCE) 
 3 (secondary source) | Secondary Source. If non-zero the second source will be displayed as picture-in-picture. | [CAMERA_SOURCE](#CAMERA_SOURCE) 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_JUMP_TAG (600) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_JUMP_TAG}
@@ -8435,6 +8542,12 @@ Tagged jump target. Can be jumped to with [MAV_CMD_DO_JUMP_TAG](#MAV_CMD_DO_JUMP
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Tag) | Tag. | min: 0 inc: 1 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_JUMP_TAG (601) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_DO_JUMP_TAG}
@@ -8445,6 +8558,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Tag) | Target tag to jump to. | min: 0 inc: 1 
 2 (Repeat) | Repeat count. | min: 0 inc: 1 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
@@ -8463,6 +8581,10 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Units
 --- | --- | ---
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
 7 (Altitude) | Altitude | m 
@@ -8479,6 +8601,7 @@ Param (Label) | Description | Values | Units
 3 (Pitch rate) | Pitch rate (positive to pitch up). |   | deg/s 
 4 (Yaw rate) | Yaw rate (positive to yaw to the right). |   | deg/s 
 5 (Gimbal manager flags) | Gimbal manager flags to use. | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 7 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |   |   
 
 
@@ -8492,6 +8615,8 @@ Param (Label) | Description
 2 (compid primary control) | Compid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control). 
 3 (sysid secondary control) | Sysid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control). 
 4 (compid secondary control) | Compid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 7 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). 
 
 
@@ -8518,9 +8643,9 @@ Param (Label) | Description | Values | Units
 2 (Interval) | Desired elapsed time between two consecutive pictures (in seconds). Minimum values depend on hardware (typically greater than 2 seconds). | min: 0 | s 
 3 (Total Images) | Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE. | min: 0 inc: 1 |   
 4 (Sequence Number) | Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1), otherwise set to 0. Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. | min: 1 inc: 1 |   
-5 | |   |   
-6 | |   |   
-7 | |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_IMAGE_STOP_CAPTURE (2001) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_IMAGE_STOP_CAPTURE}
@@ -8543,12 +8668,12 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
-2 | |   
-3 | |   
-4 | |   
-5 | |   
-6 | |   
-7 | |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE (2002) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE}
@@ -8560,12 +8685,12 @@ Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Number) | Sequence number for missing CAMERA_IMAGE_CAPTURED message | min: 0 inc: 1 
-2 | |   
-3 | |   
-4 | |   
-5 | |   
-6 | |   
-7 | |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_TRIGGER_CONTROL (2003) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_TRIGGER_CONTROL}
@@ -8578,6 +8703,9 @@ Param (Label) | Description | Values
 2 (Reset) | 1 to reset the trigger sequence, -1 or 0 to ignore | min: -1 max: 1 inc: 1 
 3 (Pause) | 1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore | min: -1 max: 1 inc: 2 
 4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_CAMERA_TRACK_POINT (2004) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_TRACK_POINT}
@@ -8590,6 +8718,9 @@ Param (Label) | Description | Values
 2 (Point y) | Point to track y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
 3 (Radius) | Point radius (normalized 0..1, 0 is one pixel, 1 is full image width). | min: 0 max: 1 
 4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_CAMERA_TRACK_RECTANGLE (2005) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_TRACK_RECTANGLE}
@@ -8603,6 +8734,8 @@ Param (Label) | Description | Values
 3 (Bottom right corner x) | Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right). | min: 0 max: 1 
 4 (Bottom right corner y) | Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
 5 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_CAMERA_STOP_TRACKING (2010) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CAMERA_STOP_TRACKING}
@@ -8612,6 +8745,12 @@ Stops ongoing tracking.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_VIDEO_START_CAPTURE (2500) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_START_CAPTURE}
@@ -8623,10 +8762,10 @@ Param (Label) | Description | Values | Units
 1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 inc: 1 |   
 2 (Status Frequency) | Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency) | min: 0 | Hz 
 3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
-4 | |   |   
-5 | |   |   
-6 | |   |   
-7 | |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_VIDEO_STOP_CAPTURE (2501) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_STOP_CAPTURE}
@@ -8637,11 +8776,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 inc: 1 
 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
-3 | |   
-4 | |   
-5 | |   
-6 | |   
-7 | |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_VIDEO_START_STREAMING (2502) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_START_STREAMING}
@@ -8652,6 +8791,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_VIDEO_STOP_STREAMING (2503) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_VIDEO_STOP_STREAMING}
@@ -8662,6 +8806,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
@@ -8673,6 +8822,12 @@ Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFOR
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) — [SUP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
@@ -8684,6 +8839,12 @@ Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_LOGGING_START (2510) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_LOGGING_START}
@@ -8693,12 +8854,12 @@ Request to start streaming logging data over MAVLink (see also [LOGGING_DATA](#L
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Format) | Format: 0: ULog | min: 0 inc: 1 
-2 | Reserved (set to 0) |   
-3 | Reserved (set to 0) |   
-4 | Reserved (set to 0) |   
-5 | Reserved (set to 0) |   
-6 | Reserved (set to 0) |   
-7 | Reserved (set to 0) |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_LOGGING_STOP (2511) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_LOGGING_STOP}
@@ -8707,13 +8868,13 @@ Request to stop streaming log data over MAVLink
 
 Param (Label) | Description
 --- | ---
-1 | Reserved (set to 0) 
-2 | Reserved (set to 0) 
-3 | Reserved (set to 0) 
-4 | Reserved (set to 0) 
-5 | Reserved (set to 0) 
-6 | Reserved (set to 0) 
-7 | Reserved (set to 0) 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_AIRFRAME_CONFIGURATION (2520) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_AIRFRAME_CONFIGURATION}
@@ -8722,11 +8883,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Landing Gear ID) | Landing gear ID (default: 0, -1 for all) | min: -1 inc: 1 
 2 (Landing Gear Position) | Landing gear position (Down: 0, Up: 1, NaN for no change) |   
-3 | |   
-4 | |   
-5 | |   
-6 | |   
-7 | |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_CONTROL_HIGH_LATENCY (2600) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_CONTROL_HIGH_LATENCY}
@@ -8736,12 +8897,12 @@ Request to start/stop transmitting over the high latency telemetry
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | Start transmission over high latency telemetry (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE stops transmission. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
-2 | Empty |   
-3 | Empty |   
-4 | Empty |   
-5 | Empty |   
-6 | Empty |   
-7 | Empty |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_PANORAMA_CREATE (2800) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PANORAMA_CREATE}
@@ -8754,6 +8915,9 @@ Param (Label) | Description | Units
 2 (Vertical Angle) | Viewing angle vertical of panorama. | deg 
 3 (Horizontal Speed) | Speed of the horizontal rotation. | deg/s 
 4 (Vertical Speed) | Speed of the vertical rotation. | deg/s 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_VTOL_TRANSITION (3000) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_VTOL_TRANSITION}
@@ -8764,6 +8928,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (State) | The target VTOL state. For normal transitions, only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used. | [MAV_VTOL_STATE](#MAV_VTOL_STATE) 
 2 (Immediate) | Force immediate transition to the specified MAV_VTOL_STATE. 1: Force immediate, 0: normal transition. Can be used, for example, to trigger an emergency "Quadchute". Caution: Can be dangerous/damage vehicle, depending on autopilot implementation of this command. |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_ARM_AUTHORIZATION_REQUEST (3001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ARM_AUTHORIZATION_REQUEST}
@@ -8776,6 +8945,12 @@ If the authorization is denied [COMMAND_ACK](#COMMAND_ACK).result_param2 should 
 Param (Label) | Description | Values
 --- | --- | ---
 1 (System ID) | Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle | min: 0 max: 255 inc: 1 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_SET_GUIDED_SUBMODE_STANDARD (4000) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD}
@@ -8784,6 +8959,13 @@ This command sets the submode to standard guided when vehicle is in guided mode.
 
 Param (Label) | Description
 --- | ---
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE (4001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE}
@@ -8803,6 +8985,7 @@ Param (Label) | Description | Units
 4 | User defined |   
 5 (Latitude) | Target latitude of center of circle in CIRCLE_MODE | degE7 
 6 (Longitude) | Target longitude of center of circle in CIRCLE_MODE | degE7 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_CONDITION_GATE (4501) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_CONDITION_GATE}
@@ -8818,8 +9001,8 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Geometry) | Geometry: 0: orthogonal to path between previous and next waypoint. | min: 0 inc: 1 |   
 2 (UseAltitude) | Use altitude (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE ignores altitude. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
-3 | Empty |   |   
-4 | Empty |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -8836,10 +9019,10 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Units
 --- | --- | ---
-1 | Reserved |   
-2 | Reserved |   
-3 | Reserved |   
-4 | Reserved |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
 7 (Altitude) | Altitude | m 
@@ -8860,11 +9043,11 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 
 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon | min: 0 inc: 1 
-3 | Reserved |   
-4 | Reserved |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
-7 | Reserved |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION (5002) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION}
@@ -8881,12 +9064,12 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 
-2 | Reserved |   
-3 | Reserved |   
-4 | Reserved |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
-7 | Reserved |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION (5003) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION}
@@ -8902,11 +9085,11 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Radius) | Radius. |   | m 
 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group | min: 0 inc: 1 |   
-3 | Reserved |   |   
-4 | Reserved |   |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
-7 | Reserved |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION (5004) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION}
@@ -8921,12 +9104,12 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 Param (Label) | Description | Units
 --- | --- | ---
 1 (Radius) | Radius. | m 
-2 | Reserved |   
-3 | Reserved |   
-4 | Reserved |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
-7 | Reserved |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_NAV_RALLY_POINT (5100) <span class="VPBadge warning" title="Can be used in a rally point plan">Rally</span> {#MAV_CMD_NAV_RALLY_POINT}
@@ -8940,10 +9123,10 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Units
 --- | --- | ---
-1 | Reserved |   
-2 | Reserved |   
-3 | Reserved |   
-4 | Reserved |   
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
 7 (Altitude) | Altitude | m 
@@ -8957,13 +9140,13 @@ Commands the vehicle to respond with a sequence of messages [UAVCAN_NODE_INFO](#
 
 Param (Label) | Description
 --- | ---
-1 | Reserved (set to 0) 
-2 | Reserved (set to 0) 
-3 | Reserved (set to 0) 
-4 | Reserved (set to 0) 
-5 | Reserved (set to 0) 
-6 | Reserved (set to 0) 
-7 | Reserved (set to 0) 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_DO_SET_SAFETY_SWITCH_STATE (5300) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE}
@@ -8973,12 +9156,12 @@ Change state of safety switch.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Desired State) | New safety switch state. | [SAFETY_SWITCH_STATE](#SAFETY_SWITCH_STATE) 
-2 | Empty. |   
-3 | Empty. |   
-4 | Empty |   
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_ADSB_OUT_IDENT (10001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_ADSB_OUT_IDENT}
@@ -8987,13 +9170,13 @@ Trigger the start of an ADSB-out IDENT. This should only be used when requested 
 
 Param (Label) | Description
 --- | ---
-1 | Reserved (set to 0) 
-2 | Reserved (set to 0) 
-3 | Reserved (set to 0) 
-4 | Reserved (set to 0) 
-5 | Reserved (set to 0) 
-6 | Reserved (set to 0) 
-7 | Reserved (set to 0) 
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_PAYLOAD_PREPARE_DEPLOY (30001) — [DEP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_PAYLOAD_PREPARE_DEPLOY}
@@ -9027,12 +9210,12 @@ Control the payload deployment.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Operation Mode) | Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests. | min: 0 max: 101 inc: 1 
-2 | Reserved |   
-3 | Reserved |   
-4 | Reserved |   
-5 | Reserved |   
-6 | Reserved |   
-7 | Reserved |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_WAYPOINT_USER_1 (31000) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_WAYPOINT_USER_1}
@@ -9317,12 +9500,12 @@ Request forwarding of CAN packets from the given CAN bus to this component via t
 Param (Label) | Description
 --- | ---
 1 (bus) | Bus number (0 to disable forwarding, 1 for first bus, 2 for 2nd bus, 3 for 3rd bus). 
-2 | Empty. 
-3 | Empty. 
-4 | Empty. 
-5 | Empty. 
-6 | Empty. 
-7 | Empty. 
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). 
 
 
 ### MAV_CMD_FIXED_MAG_CAL_YAW (42006) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_FIXED_MAG_CAL_YAW}
@@ -9335,9 +9518,9 @@ Param (Label) | Description | Units
 2 (CompassMask) | CompassMask, 0 for all. |   
 3 (Latitude) | Latitude. | deg 
 4 (Longitude) | Longitude. | deg 
-5 | Empty. |   
-6 | Empty. |   
-7 | Empty. |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 
 
 ### MAV_CMD_DO_WINCH (42600) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_WINCH}
@@ -9350,9 +9533,9 @@ Param (Label) | Description | Values | Units
 2 (Action) | Action to perform. | [WINCH_ACTIONS](#WINCH_ACTIONS) |   
 3 (Length) | Length of line to release (negative to wind). |   | m 
 4 (Rate) | Release rate (negative to wind). |   | m/s 
-5 | Empty. |   |   
-6 | Empty. |   |   
-7 | Empty. |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_GUIDED_CHANGE_SPEED (43000) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GUIDED_CHANGE_SPEED}
@@ -9364,6 +9547,10 @@ Param (Label) | Description | Values | Units
 1 (speed type) | Airspeed or groundspeed. | [SPEED_TYPE](#SPEED_TYPE) |   
 2 (speed target) | Target Speed |   | m/s 
 3 (speed rate-of-change) | Acceleration rate, 0 to take effect instantly |   | m/s/s 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_GUIDED_CHANGE_ALTITUDE (43001) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_GUIDED_CHANGE_ALTITUDE}
@@ -9372,7 +9559,12 @@ Change target altitude at a given rate. This slews the vehicle at a controllable
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
+1 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 (alt rate-of-change) | Rate of change, toward new altitude. 0 for maximum rate change. Positive numbers only, as negative numbers will not converge on the new target alt. | min: 0 | m/s 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 7 (target alt) | Target Altitude |   | m 
 
 
@@ -9385,6 +9577,10 @@ Param (Label) | Description | Values | Units
 1 (Heading Type) | Course-over-ground or raw vehicle heading. | [HEADING_TYPE](#HEADING_TYPE) |   
 2 (Heading Target) | Target heading. | min: 0 max: 359.99 | deg 
 3 (Heading Rate of Change) | Maximum centripetal acceleration, i.e. rate of change toward new heading. |   | deg/s 
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
@@ -9401,7 +9597,7 @@ Param (Label) | Description | Units
 1 (transmission_time) | Timestamp that this message was sent as a time in the transmitters time domain. The sender should wrap this time back to zero based on required timing accuracy for the application and the limitations of a 32 bit float. For example, wrapping at 10 hours would give approximately 1ms accuracy. Recipient must handle time wrap in any timing jitter correction applied to this field. Wrap rollover time should not be at not more than 250 seconds, which would give approximately 10 microsecond accuracy. | s 
 2 (processing_time) | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. Set to zero if not known. | s 
 3 (accuracy) | estimated one standard deviation accuracy of the measurement. Set to NaN if not known. |   
-4 | Empty |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
 7 (Altitude) | Altitude, not used. Should be sent as NaN. May be supported in a future version of this message. | m 
@@ -9419,5 +9615,8 @@ Param (Label) | Description | Values | Units
 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown. |   | m/s 
 3 (Direction) | Azimuth (relative to true north) from where the wind is blowing. | min: 0 max: 360 | deg 
 4 (Direction accuracy) | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |   | deg 
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
