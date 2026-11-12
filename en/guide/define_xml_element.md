@@ -513,33 +513,38 @@ Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 
 #### Reserved/Undefined Parameters {#reserved}
 
 Many commands do not _need_ seven (or any) `param` values.
-These unused parameters must be treated as _reserved_, allowing them to be reused later if the command needs to be extended.
+All params that a command does not use are _reserved_, and are not declared in the XML.
+This allows them to be reused later if the command needs to be extended.
 
 A reserved `param` **should** always be sent with the value that indicates to the recipient that the value has "no action" or is "not supported".
 The values depend on the message in which they are sent:
 
 - `COMMAND_LONG`: Use `NaN` in all params.
-- `COMMAND_INT`: Use `NaN` in params 1-4 and 7, and `INT32_MAX` for param 5, 6.
+- `COMMAND_INT`, `MISSION_ITEM_INT`: Use `NaN` in params 1-4 and 7, and `INT32_MAX` for param 5, 6.
 
 If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
 
 ::: warning
-Historically MAVLink has also allowed `0` as a sentinel value, and this is widely accepted in ArduPilot.
-New implementations and new commands are expected to use the above sentinel values.
-You should check your flight stack documentation and use the appropriate value.
+Historically MAVLink has also allowed `0` as a sentinel value.
+Implementations that currently accept `0` are planning to migrate to the above sentinel values: check your flight stack documentation and use the appropriate value.
 :::
 
-The following shows how you should declare unused command parameters for new commands:
+For example, [MAV_CMD_DO_JUMP](../messages/common.md#MAV_CMD_DO_JUMP) only uses params 1 and 2, so only those are declared:
 
 ```xml
-<param index="1" reserved="true" default="NaN" />
-<param index="2" reserved="true" default="NaN" />
-<param index="3" reserved="true" default="NaN" />
-<param index="4" reserved="true" default="NaN" />
-<param index="5" reserved="true">Reserved. INT32_MAX (COMMAND_INT or MISSION_ITEM_INT) or NaN (COMMAND_LONG).</param>
-<param index="6" reserved="true">Reserved. INT32_MAX (COMMAND_INT or MISSION_ITEM_INT) or NaN (COMMAND_LONG).</param>
-<param index="7" reserved="true" default="NaN" />
+<entry value="177" name="MAV_CMD_DO_JUMP" mission="true">
+  <description>Jump to the desired command in the mission list.  Repeat this action only the specified number of times</description>
+  <param index="1" label="Number" minValue="0" increment="1">Sequence number</param>
+  <param index="2" label="Repeat" minValue="0" increment="1">Repeat count</param>
+</entry>
 ```
+
+::: info
+The toolchain also treats a declared param as reserved if it has `reserved="true"`, has no description, or its description starts with "Reserved", "Empty", "Unused", "Not used", "N/A" or "Spare".
+The param's `default` and text are then ignored, and the standard reserved description is used.
+Any other declared param is treated as used, and is documented with its own description and default.
+Do not use this to give a reserved param a different sentinel value.
+:::
 
 #### GUI Param Attributes
 
