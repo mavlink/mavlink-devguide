@@ -142,12 +142,9 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
       <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE" hasLocation="true" isDestination="true" mission="true" command="true">
         <description>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</description>
         <param index="1" label="Max Descent" units="m" minValue="0">Maximum distance to descend.</param>
-        <param index="2">Empty</param>
-        <param index="3">Empty</param>
-        <param index="4">Empty</param>
-        <param index="5" label="Latitude">Latitude</param>
-        <param index="6" label="Longitude">Longitude</param>
-        <param index="7" label="Altitude" units="m">Altitude</param>
+        <param index="5" label="Latitude/X">Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME.</param>
+        <param index="6" label="Longitude/Y">Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME.</param>
+        <param index="7" label="Altitude/Z" units="m">Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME.</param>
       </entry>
 ...
 </enum>
