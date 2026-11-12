@@ -909,8 +909,8 @@ param2 | `float` | | PARAM2, see [MAV_CMD](#mav_commands) enum
 param3 | `float` | | PARAM3, see [MAV_CMD](#mav_commands) enum 
 param4 | `float` | | PARAM4, see [MAV_CMD](#mav_commands) enum 
 x | `int32_t` | | PARAM5 / local: x position in meters * 1e4, global: latitude in degrees * 10^7 
-y | `int32_t` | | PARAM6 / y position: local: x position in meters * 1e4, global: longitude in degrees *10^7 
-z | `float` | | PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame. 
+y | `int32_t` | | PARAM6 / local: y position in meters * 1e4, global: longitude in degrees * 10^7 
+z | `float` | | PARAM7 / local: z position in meters, global: altitude in meters (relative or absolute, depending on frame). 
 <span class='ext'>mission_type</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE) | Mission type. 
 
 
@@ -946,7 +946,7 @@ param3 | `float` | invalid:NaN | PARAM3, see [MAV_CMD](#mav_commands) enum
 param4 | `float` | invalid:NaN | PARAM4, see [MAV_CMD](#mav_commands) enum 
 x | `int32_t` | invalid:INT32_MAX | PARAM5 / local: x position in meters * 1e4, global: latitude in degrees * 10^7 
 y | `int32_t` | invalid:INT32_MAX | PARAM6 / local: y position in meters * 1e4, global: longitude in degrees * 10^7 
-z | `float` | invalid:NaN | PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame). 
+z | `float` | invalid:NaN | PARAM7 / local: z position in meters, global: altitude in meters (relative or absolute, depending on frame). 
 
 
 ### COMMAND_LONG (76) {#COMMAND_LONG}
@@ -3419,7 +3419,7 @@ time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system 
 radius | `float` | m | | Radius of the orbit circle. Positive values orbit clockwise, negative values orbit counter-clockwise. 
 frame | `uint8_t` | | [MAV_FRAME](#MAV_FRAME) | The coordinate system of the fields: x, y, z. 
 x | `int32_t` | | | X coordinate of center point. Coordinate system depends on frame field: local = x position in meters * 1e4, global = latitude in degrees * 1e7. 
-y | `int32_t` | | | Y coordinate of center point.  Coordinate system depends on frame field: local = x position in meters * 1e4, global = latitude in degrees * 1e7. 
+y | `int32_t` | | | Y coordinate of center point. Coordinate system depends on frame field: local = y position in meters * 1e4, global = longitude in degrees * 1e7. 
 z | `float` | m | | Altitude of center point. Coordinate system depends on frame field. 
 
 
@@ -6681,9 +6681,9 @@ Param (Label) | Description | Values | Units
 2 (Accept Radius) | Acceptance radius (if the sphere with this radius is hit, the waypoint counts as reached) | min: 0 | m 
 3 (Pass Radius) | 0 to pass through the WP, if > 0 radius to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control. |   | m 
 4 (Yaw) | Desired yaw angle at waypoint (rotary wing). NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_LOITER_UNLIM (17) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LOITER_UNLIM}
@@ -6701,9 +6701,9 @@ Param (Label) | Description | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise | m 
 4 (Yaw) | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). | deg 
-5 (Latitude) | Latitude |   
-6 (Longitude) | Longitude |   
-7 (Altitude) | Altitude | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. | m 
 
 
 ### MAV_CMD_NAV_LOITER_TURNS (18) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_LOITER_TURNS}
@@ -6721,14 +6721,14 @@ Param (Label) | Description | Values | Units
 2 (Heading Required) | Leave loiter circle only when track heads towards the next waypoint (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE causes leaving when turns complete. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise |   | m 
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |   |   
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_LOITER_TIME (19) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_LOITER_TIME}
 
-Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.
+Loiter at the specified position for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.
 
 ::: tip
 Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
@@ -6737,13 +6737,13 @@ Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_IT
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Time) | Loiter time (only starts once Lat, Lon and Alt is reached). | min: 0 | s 
+1 (Time) | Loiter time (only starts once the position is reached). | min: 0 | s 
 2 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_TRUE). A value of MAV_BOOL_FALSE causes leaving on time expiry. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise. |   | m 
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. |   |   
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_RETURN_TO_LAUNCH (20) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_RETURN_TO_LAUNCH}
@@ -6776,9 +6776,9 @@ Param (Label) | Description | Values | Units
 2 (Land Mode) | Precision land mode. | [PRECISION_LAND_MODE](#PRECISION_LAND_MODE) |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Yaw Angle) | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
-5 (Latitude) | Latitude. |   |   
-6 (Longitude) | Longitude. |   |   
-7 (Altitude) | Landing altitude (ground level in current frame). |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Landing altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_TAKEOFF (22) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_TAKEOFF}
@@ -6796,12 +6796,14 @@ Param (Label) | Description | Values | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 (Flags) | Bitmask of options flags. | [NAV_TAKEOFF_FLAGS](#NAV_TAKEOFF_FLAGS) |   
 4 (Yaw) | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
-### MAV_CMD_NAV_LAND_LOCAL (23) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LAND_LOCAL}
+### MAV_CMD_NAV_LAND_LOCAL (23) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_LAND_LOCAL}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_NAV_LAND](#MAV_CMD_NAV_LAND) (2026-11) — Use [MAV_CMD_NAV_LAND](#MAV_CMD_NAV_LAND) in [COMMAND_INT](#COMMAND_INT) or [MISSION_ITEM_INT](#MISSION_ITEM_INT) with a local [MAV_FRAME](#MAV_FRAME) (e.g. [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)). Note that its params 5/6 are X/Y (swapped relative to this command) and yaw is in degrees. Set descent rate with [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED) ([SPEED_TYPE_DESCENT_SPEED](#SPEED_TYPE_DESCENT_SPEED)). Landing target number and maximum offset have no equivalent.)</span>
 
 Land at local position (local frame only)
 
@@ -6821,7 +6823,9 @@ Param (Label) | Description | Values | Units
 7 (Z Position) | Z-axis / ground level position |   | m 
 
 
-### MAV_CMD_NAV_TAKEOFF_LOCAL (24) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_TAKEOFF_LOCAL}
+### MAV_CMD_NAV_TAKEOFF_LOCAL (24) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_TAKEOFF_LOCAL}
+
+<span class="warning">**SUPERSEDED:** Replaced By [MAV_CMD_NAV_TAKEOFF](#MAV_CMD_NAV_TAKEOFF) (2026-11) — Use [MAV_CMD_NAV_TAKEOFF](#MAV_CMD_NAV_TAKEOFF) in [COMMAND_INT](#COMMAND_INT) or [MISSION_ITEM_INT](#MISSION_ITEM_INT) with a local [MAV_FRAME](#MAV_FRAME) (e.g. [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)). Note that its params 5/6 are X/Y (swapped relative to this command) and pitch/yaw are in degrees. Set ascent rate with [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED) ([SPEED_TYPE_CLIMB_SPEED](#SPEED_TYPE_CLIMB_SPEED)).)</span>
 
 Takeoff from local position (local frame only)
 
@@ -6858,7 +6862,7 @@ Param (Label) | Description | Values | Units
 
 ### MAV_CMD_NAV_LOITER_TO_ALT (31) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_LOITER_TO_ALT}
 
-Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.
+Begin loiter at the specified position. If Lat=Lon=0 (global frame), then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.
 
 ::: tip
 Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
@@ -6871,9 +6875,9 @@ Param (Label) | Description | Values | Units
 2 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter. |   | m 
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_DO_FOLLOW (32) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FOLLOW}
@@ -6921,9 +6925,9 @@ Param (Label) | Description | Values | Units
 2 (Velocity) | Tangential Velocity. NaN: Use vehicle default velocity, or current velocity if already orbiting. |   | m/s 
 3 (Yaw Behavior) | Yaw behavior of the vehicle. | [ORBIT_YAW_BEHAVIOUR](#ORBIT_YAW_BEHAVIOUR) |   
 4 (Orbits) | Orbit around the centre point for this many radians (i.e. for a three-quarter orbit set 270*Pi/180). 0: Orbit forever. NaN: Use vehicle default, or current value if already orbiting. | min: 0 | rad 
-5 (Latitude/X) | Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already orbiting. |   |   
-6 (Longitude/Y) | Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already orbiting. |   |   
-7 (Altitude/Z) | Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle altitude. |   |   
+5 (Latitude/X) | Center point latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already orbiting. |   |   
+6 (Longitude/Y) | Center point longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed. INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already orbiting. |   |   
+7 (Altitude/Z) | Center point altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed. NaN: Use current vehicle altitude. |   |   
 
 
 ### MAV_CMD_DO_FIGURE_EIGHT (35) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_FIGURE_EIGHT}
@@ -6946,9 +6950,9 @@ Param (Label) | Description | Units
 2 (Minor Radius) | Minor axis radius of the figure eight. Defines the radius of the two circles that make up the figure. Negative value has no effect.<br>NaN: The radius will be set to the default loiter radius. | m 
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 4 (Orientation) | Orientation of the figure eight major axis with respect to true north (range: [-pi,pi]). NaN: use default orientation aligned to true north. | rad 
-5 (Latitude/X) | Center point latitude/X coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |   
-6 (Longitude/Y) | Center point longitude/Y coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |   
-7 (Altitude/Z) | Center point altitude MSL/Z coordinate according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle altitude. |   
+5 (Latitude/X) | Center point latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |   
+6 (Longitude/Y) | Center point longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX (COMMAND_INT) or NaN (COMMAND_LONG): Use current vehicle position, or current center if already loitering. |   
+7 (Altitude/Z) | Center point altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. If no MAV_FRAME specified, MAV_FRAME_GLOBAL is assumed.<br>INT32_MAX or NaN: Use current vehicle altitude. |   
 
 
 ### MAV_CMD_NAV_ARC_WAYPOINT (36) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_ARC_WAYPOINT}
@@ -6969,9 +6973,9 @@ Param (Label) | Description | Values | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_ROI (80) — [SUP] <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_ROI}
@@ -7011,9 +7015,9 @@ Param (Label) | Description | Values | Units
 2 (Global Ctrl) | 0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid | min: 0 max: 3 inc: 1 |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Yaw) | Yaw angle at goal |   | deg 
-5 (Latitude/X) | Latitude/X of goal |   |   
-6 (Longitude/Y) | Longitude/Y of goal |   |   
-7 (Altitude/Z) | Altitude/Z of goal |   |   
+5 (Latitude/X) | Goal latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Goal longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Goal altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   |   
 
 
 ### MAV_CMD_NAV_SPLINE_WAYPOINT (82) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_NAV_SPLINE_WAYPOINT}
@@ -7031,9 +7035,9 @@ Param (Label) | Description | Values | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-5 (Latitude/X) | Latitude/X of goal |   |   
-6 (Longitude/Y) | Longitude/Y of goal |   |   
-7 (Altitude/Z) | Altitude/Z of goal |   |   
+5 (Latitude/X) | Goal latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Goal longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Goal altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   |   
 
 
 ### MAV_CMD_NAV_VTOL_TAKEOFF (84) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_VTOL_TAKEOFF}
@@ -7051,9 +7055,9 @@ Param (Label) | Description | Values | Units
 2 (Transition Heading) | Front transition heading. | [VTOL_TRANSITION_HEADING](#VTOL_TRANSITION_HEADING) |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 (Yaw Angle) | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_VTOL_LAND (85) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_VTOL_LAND}
@@ -7071,9 +7075,9 @@ Param (Label) | Description | Values | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 (Approach Altitude) | Approach altitude (with the same reference as the Altitude field). NaN if unspecified. |   | m 
 4 (Yaw) | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |   | deg 
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Ground Altitude) | Altitude (ground level) relative to the current coordinate frame. NaN to use system default landing altitude (ignore value). |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Landing altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. NaN to use system default landing altitude (ignore value). |   | m 
 
 
 ### MAV_CMD_NAV_GUIDED_ENABLE (92) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_NAV_GUIDED_ENABLE}
@@ -7121,9 +7125,9 @@ Param (Label) | Description | Values | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_NAV_LAST (95) {#MAV_CMD_NAV_LAST}
@@ -7503,7 +7507,7 @@ Param (Label) | Description | Units
 
 ### MAV_CMD_DO_REPOSITION (192) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_REPOSITION}
 
-Reposition the vehicle to a specific WGS84 global position. This command is intended for guided commands (for missions use [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT) instead).
+Reposition the vehicle to a specific position. This command is intended for guided commands (for missions use [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT) instead).
 
 ::: tip
 Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
@@ -7516,9 +7520,9 @@ Param (Label) | Description | Values | Units
 2 (Bitmask) | Bitmask of option flags. | [MAV_DO_REPOSITION_FLAGS](#MAV_DO_REPOSITION_FLAGS) |   
 3 (Radius) | Loiter radius for planes. Positive values only, direction is controlled by Yaw value. A value of zero or NaN is ignored. |   | m 
 4 (Yaw) | Yaw heading (heading reference defined in Bitmask field). NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise) |   | rad 
-5 (Latitude) | Latitude |   |   
-6 (Longitude) | Longitude |   |   
-7 (Altitude) | Altitude |   | m 
+5 (Latitude/X) | Latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   |   
+6 (Longitude/Y) | Longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   |   
+7 (Altitude/Z) | Altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. |   | m 
 
 
 ### MAV_CMD_DO_PAUSE_CONTINUE (193) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_DO_PAUSE_CONTINUE}
@@ -7566,9 +7570,9 @@ Param (Label) | Description | Units
 2 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
-5 (Latitude) | Latitude of ROI location |   
-6 (Longitude) | Longitude of ROI location |   
-7 (Altitude) | Altitude of ROI location | m 
+5 (Latitude/X) | ROI latitude (global frame) or X coordinate (local frame), according to MAV_FRAME. |   
+6 (Longitude/Y) | ROI longitude (global frame) or Y coordinate (local frame), according to MAV_FRAME. |   
+7 (Altitude/Z) | ROI altitude (global frame) or Z coordinate (local frame), according to MAV_FRAME. | m 
 
 
 ### MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET (196) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> {#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET}
