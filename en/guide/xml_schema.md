@@ -182,6 +182,7 @@ Nested elements:
 
 Defines a single parameter for a [MAV_CMD](../messages/common.md#mav_commands) `<entry>`.
 Each entry value may have up to 7 params declared, with `index` values from 1-7.
+Params that the command does not use are reserved and must not be declared.
 
 The parameter inner content should contain a description of the parameter.
 
@@ -199,22 +200,13 @@ Attributes:
 - `multiplier` (optional): Multiply by this value to get the unscaled original value.
   This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
 - `reserved` (optional): Boolean indicating whether the param is reserved for future use.
-  All unused params are implicitly reserved whether or not this value is present.
+  Do not use: unused params are reserved and must not be declared.
 
   ::: tip
   See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
   :::
 
-- `default` - Default value for the `param`.
-
-  For unused params in new commands the default ("sentinel") value should always be:
-  - Params 1–4 and 7: `<param index="N" reserved="true" default="NaN"/>`
-  - Params 5 and 6: ``<param index="5" reserved="true">Reserved. INT32_MAX (`COMMAND_INT` or `MISSION_ITEM_INT`) or NaN (COMMAND_LONG).</param>``
-
-  ::: warning
-  Some existing implementations use `0` as the default sentinel value for some or all existing params.
-  New commands and implementations must use the values listed above.
-  :::
+- `default` - Unused/deprecated.
 
 Elements
 
