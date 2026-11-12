@@ -185,6 +185,45 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 | 6: Longitude   | Longitude                                                                                                              |       |
 | 7: Altitude    | Altitude                                                                                                               | m     |
 
+## `DO_` Items
+
+Action items typically have the prefix `MAV_CMD_DO_`. They trigger an immediate action (e.g. changing speed, activating a servo) rather than defining a position on the path.
+
+### MAV_CMD_DO_SET_ACTUATOR {#MAV_CMD_DO_SET_ACTUATOR}
+
+[MAV_CMD_DO_SET_ACTUATOR](../messages/common.md#MAV_CMD_DO_SET_ACTUATOR) sets up to six actuators at a tune(e.g. servos) to specified values.
+More than 6 actuators can be set using the index param (`param7`).
+
+Each actuator value is scaled `-1` to `1`; the sentinel value for a param (`NaN` in `COMMAND_LONG`, the field's max-value in `COMMAND_INT`/`MISSION_ITEM_INT`) leaves that actuator unchanged.
+Which physical output (e.g. a MAIN/AUX PWM channel, or a UAVCAN device) each actuator number drives is flight-stack-specific (typically mapped by flight-stack parameters).
+
+Note that changes to the outputs can be observed via [ACTUATOR_OUTPUT_STATUS](../messages/common.md#ACTUATOR_OUTPUT_STATUS).
+
+#### Params
+
+| Param (:Label) | Description                                                                                                                                                                              | Units             |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| 1: Actuator 1  | Actuator 1 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 2: Actuator 2  | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 3: Actuator 3  | Actuator 3 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 4: Actuator 4  | Actuator 4 value, scaled from [-1 to 1]. NaN to ignore.                                                                                                                                  | min:-1 max:1      |
+| 5: Actuator 5  | Actuator 5 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                   |
+| 6: Actuator 6  | Actuator 6 value.<br>If sent in COMMAND_LONG: value is scaled from [-1 to 1]. NaN to ignore.<br>If sent in COMMAND_INT or MISSION_ITEM_INT: value is scaled by 1e7. INT32_MAX to ignore. |                   |
+| 7: Index       | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)                                                                                                                   | min:0 increment:1 |
+
+#### Autopilot Support
+
+PX4:
+
+- Params 1-4 (Actuator 1-4) supported.
+- Params 5/6 (Actuator 5/6) can only reliably be set using `COMMAND_LONG` in PX4 v1.18 and earlier.
+  This will be fixed in [PX4-Autopilot#28723](https://github.com/PX4/PX4-Autopilot/pull/28723)).
+- Only _Index_ `0` is implemented; other values have no effect ([`FunctionActuatorSet.hpp`](https://github.com/PX4/PX4-Autopilot/blob/main/src/lib/mixer_module/functions/FunctionActuatorSet.hpp)).
+
+ArduPilot:
+
+- Untested
+
 ## `CONDITION_` Items
 
 ### MAV_CMD_CONDITION_GATE {#condition_gate}
