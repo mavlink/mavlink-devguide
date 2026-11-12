@@ -38,8 +38,8 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 232 | 3
-[Enums](#enumerated-types) | 151 | 9
-[Commands](#mav_commands) | 171 | 0
+[Enums](#enumerated-types) | 150 | 9
+[Commands](#mav_commands) | 170 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -4099,17 +4099,6 @@ Value | Name | Description
 <a id='HL_FAILURE_FLAG_ESTIMATOR'></a>4096 | [HL_FAILURE_FLAG_ESTIMATOR](#HL_FAILURE_FLAG_ESTIMATOR) | Estimator failure, for example measurement rejection or large variances. 
 <a id='HL_FAILURE_FLAG_MISSION'></a>8192 | [HL_FAILURE_FLAG_MISSION](#HL_FAILURE_FLAG_MISSION) | Mission failure. 
 
-### MAV_GOTO {#MAV_GOTO}
-
-Actions that may be specified in [MAV_CMD_OVERRIDE_GOTO](#MAV_CMD_OVERRIDE_GOTO) to override mission execution.
-
-Value | Name | Description
---- | --- | ---
-<a id='MAV_GOTO_DO_HOLD'></a>0 | [MAV_GOTO_DO_HOLD](#MAV_GOTO_DO_HOLD) | Hold at the current position. 
-<a id='MAV_GOTO_DO_CONTINUE'></a>1 | [MAV_GOTO_DO_CONTINUE](#MAV_GOTO_DO_CONTINUE) | Continue with the next item in mission execution. 
-<a id='MAV_GOTO_HOLD_AT_CURRENT_POSITION'></a>2 | [MAV_GOTO_HOLD_AT_CURRENT_POSITION](#MAV_GOTO_HOLD_AT_CURRENT_POSITION) | Hold at the current position of the system 
-<a id='MAV_GOTO_HOLD_AT_SPECIFIED_POSITION'></a>3 | [MAV_GOTO_HOLD_AT_SPECIFIED_POSITION](#MAV_GOTO_HOLD_AT_SPECIFIED_POSITION) | Hold at the position specified in the parameters of the [DO_HOLD](#DO_HOLD) action 
-
 ### MAV_MODE — [DEP] {#MAV_MODE}
 
 <span class="warning">**DEPRECATED:** Replaced By [MAV_MODE_FLAG](#MAV_MODE_FLAG) (2025-02) — Using [MAV_MODE](#MAV_MODE) to set modes is less predictable than using standard modes ([MAV_STANDARD_MODE](#MAV_STANDARD_MODE)) or custom modes ([MAV_MODE_FLAG_CUSTOM_MODE_ENABLED](#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED)).)</span>
@@ -8044,26 +8033,6 @@ Param (Label) | Description | Values
 5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 6 (Conditions) | Conditions under which reboot/shutdown is allowed. | [REBOOT_SHUTDOWN_CONDITIONS](#REBOOT_SHUTDOWN_CONDITIONS) 
 7 | WIP: ID (e.g. camera ID -1 for all IDs) |   
-
-
-### MAV_CMD_OVERRIDE_GOTO (252) <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_OVERRIDE_GOTO}
-
-Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused ([MAV_GOTO_DO_HOLD](#MAV_GOTO_DO_HOLD)), param 2 defines whether it holds in place or moves to another position.
-
-::: tip
-Use [COMMAND_INT](common.md#COMMAND_INT)/[MISSION_ITEM_INT](common.md#MISSION_ITEM_INT) by preference — these require latitude/longitude values scaled by `1E7` (for greater precision).
-:::
-
-
-Param (Label) | Description | Values | Units
---- | --- | --- | ---
-1 (Continue) | MAV_GOTO_DO_HOLD: pause mission and either hold or move to specified position (depending on param2), MAV_GOTO_DO_CONTINUE: resume mission. | [MAV_GOTO](#MAV_GOTO) |   
-2 (Position) | MAV_GOTO_HOLD_AT_CURRENT_POSITION: hold at current position, MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position. | [MAV_GOTO](#MAV_GOTO) |   
-3 (Frame) | Coordinate frame of hold point. | [MAV_FRAME](#MAV_FRAME) |   
-4 (Yaw) | Desired yaw angle. |   | deg 
-5 (Latitude/X) | Latitude/X position. |   |   
-6 (Longitude/Y) | Longitude/Y position. |   |   
-7 (Altitude/Z) | Altitude/Z position. |   |   
 
 
 ### MAV_CMD_OBLIQUE_SURVEY (260) <span class="VPBadge tip" title="Can be used as a mission item">Mission</span> <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_OBLIQUE_SURVEY}
