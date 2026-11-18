@@ -67,6 +67,8 @@ Example code for this conversion can be found in the project: [Open Drone ID Cor
 
 The [Open Drone ID Core C Library](https://github.com/opendroneid/opendroneid-core-c) contains code for decoding the MAVLink messages and "compressing" the data into data structures for broadcast over Bluetooth or Wi-Fi (or vice-versa for reception).
 
+The [remoteid](https://github.com/Mattbusel/remoteid) Rust crate decodes and encodes the broadcast byte format, including the encoded messages carried in the `messages` field of [OPEN_DRONE_ID_MESSAGE_PACK](#OPEN_DRONE_ID_MESSAGE_PACK).
+
 The standards do not impose any requirements for a drone to be capable of receiving drone ID messages, nor any requirements for reacting to their content (requirements from local legislation might be different).
 
 An example Android receiver implementation for Bluetooth/Wi-Fi drone ID is [available here](https://play.google.com/store/apps/details?id=org.opendroneid.android_osm) ([source codes](https://github.com/opendroneid/receiver-android)).
