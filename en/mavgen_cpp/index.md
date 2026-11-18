@@ -311,6 +311,11 @@ Enum fields (e.g. `MAV_TYPE`, `MAV_AUTOPILOT`) are C++ 11 scoped enums (`enum cl
 The signing mechanism is implemented in the shared C layer that the C++ 11 library builds on, so it works the same way as for the C library.
 The topic [C Message Signing](../mavgen_c/message_signing_c.md) explains the remaining code that a system must implement to enable signing (the API used is namespaced under `mavlink::` as elsewhere in this topic).
 
+## WIP/Deprecated/Superseded Diagnostics
+
+The generated headers can report compile-time diagnostics where your code uses WIP, deprecated, or superseded definitions.
+See [XML Lifecycle Management](../guide/xml_lifecycle.md#diagnostics).
+
 ## Connection/Heartbeat
 
 The sections above explain how you can send and receive messages.

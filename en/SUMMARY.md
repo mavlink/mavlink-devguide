@@ -34,6 +34,7 @@
   - [Scripts](guide/scripts.md)
   - [MAVLink XML Schema](guide/xml_schema.md)
   - [Defining XML Enums/Messages](guide/define_xml_element.md)
+  - [XML Lifecycle Management](guide/xml_lifecycle.md)
   - [MAVLink CRC](guide/crc.md)
   - [Debugging with Wireshark](guide/wireshark.md)
 - [Standard Messages/Commands](messages/index.md)

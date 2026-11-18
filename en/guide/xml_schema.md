@@ -345,6 +345,7 @@ Nested elements
 This section lists elements that are used to manage the lifecycle of [message](#message), [enum](#enum), and [entry](#entry) definitions (including commands). Only one of these tags should be applied to an element.
 
 The elements allow users and implementers to determine what messages are stable vs those that are still being developed or are planned for removal.
+C and C++ projects can get compile-time diagnostics when they use flagged definitions: see [XML Lifecycle Management](xml_lifecycle.md#diagnostics).
 
 ### `<wip>` (work-in-progress){#wip}
 
