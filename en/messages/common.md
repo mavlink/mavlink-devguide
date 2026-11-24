@@ -5836,7 +5836,7 @@ Value | Name | Description
 
 ### TUNE_FORMAT {#TUNE_FORMAT}
 
-Tune formats (used for vehicle buzzer/tone generation).
+(Bitmask) Tune formats (used for vehicle buzzer/tone generation).
 
 Value | Name | Description
 --- | --- | ---
