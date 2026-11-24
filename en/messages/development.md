@@ -310,7 +310,7 @@ alt | `float` | m | invalid:NaN | Beacon altitude (frame defined in alt_type).
 alt_type | `uint8_t` | | [RANGING_BEACON_ALT_TYPE](#RANGING_BEACON_ALT_TYPE) | Altitude frame for alt field. [RANGING_BEACON_ALT_TYPE_WGS84](#RANGING_BEACON_ALT_TYPE_WGS84) (0) preferred. 
 hacc_est | `uint32_t` | mm | invalid:UINT32_MAX | Beacon 1-sigma horizontal accuracy estimate. 
 vacc_est | `uint32_t` | mm | invalid:UINT32_MAX | Beacon 1-sigma vertical accuracy estimate. 
-carrier_freq | `uint16_t` | MHz | invalid:UINT16_MIN | Ranging carrier frequency 
+carrier_freq | `uint16_t` | MHz | invalid:UINT16_MIN | Ranging carrier frequency. 
 range_accuracy | `uint32_t` | mm | invalid:UINT32_MAX | Estimated 1-sigma range measurement accuracy. 
 sequence | `uint8_t` | | | Measurement sequence number. 
 status | `uint8_t` | | [RANGING_BEACON_STATUS_FLAG](#RANGING_BEACON_STATUS_FLAG) | Ranging beacon status. 
