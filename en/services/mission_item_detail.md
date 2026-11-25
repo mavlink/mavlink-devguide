@@ -204,4 +204,4 @@ PX4:
 
 - Supported from PX4 v1.11
 - `UseAltitude` field ignored (geometry test is 2D)
-- A gate within 5 cm of a neighboring waypoint is rejected as infeasible.
+- A gate on the following waypoint is not rejected and never triggers (the mission stalls).
