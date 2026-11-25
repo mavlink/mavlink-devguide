@@ -175,10 +175,10 @@ Forward-moving vehicles (e.g. fixed-wing) _circle_ the point with the specified 
 
 [MAV_CMD_CONDITION_GATE](../messages/common.md#MAV_CMD_CONDITION_GATE) (id 4501) marks an off-path location (not a destination) that defines a trigger point somewhere along the path to the _next_ waypoint.
 
-When the gate is reached, the vehicle flies directly towards the _next_ mission item that is on the path (such as a waypoint).
+The gate is not a destination and doesn't change the path: the vehicle flies from the previous destination directly towards the next mission item that has a position (such as a waypoint), as though the gate were not there.
 The mission state machine is blocked on the gate mission item until the vehicle crosses the **trigger line**: the line through the gate's own position, perpendicular to the direction _from the gate to the next waypoint_.
 Because that reference direction isn't the path direction, an off-path gate's actual trigger point is shifted from where a simple "project the gate straight onto the path" calculation would suggest — see the diagram.
-This can be used for triggering a `DO_*` action (camera, speed change, etc.) at a precise point along a leg, without affecting the route itself.
+This can be used to trigger a `DO_*` action (camera, speed change, etc.) at a precise point along a leg.
 
 ![The vehicle flies straight from the previous destination to the next; the trigger line runs through the gate, perpendicular to the gate→next-waypoint direction, and fires where that line crosses the path](../../assets/protocols/mission_item_detail/gate_crossing.svg)
 
