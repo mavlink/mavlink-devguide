@@ -13,7 +13,7 @@ These define positions that are destinations on the path.
 [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) represents a basic waypoint/destination in a mission.
 As a destination item, it always requires a position (params 5–7) to say where "this point" is.
 
-Multicopers consider the waypoint **reached** when the vehicle enters a sphere of radius _Accept Radius_ (param 2) around the point.
+Multicopters consider the waypoint **reached** when the vehicle enters a sphere of radius _Accept Radius_ (param 2) around the point.
 
 Fixed wing vehicles typically consider the waypoint reached when the vehicle enters a _cylinder_ of radius _Accept Radius_ (param 2) around the point. They may also have a separate check on the vertical distance from the waypoint, but this is usually an offset provided by a parameter, and not the value in `param2`.
 
