@@ -92,13 +92,12 @@ The following messages and enums are used by the service.
 | <a id="MISSION_ACK"></a>[MISSION_ACK](../messages/common.md#MISSION_ACK)                            | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure. |
 | <a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT)                | Message containing the current mission item sequence number, mission status, current mission ids, and other information. This is streamed and also emitted when the [current mission item is set/changed](#current_mission_item).                                      |
 | <a id="MISSION_SET_CURRENT"></a>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT)    | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).                                                                                                                                                 |
-| <a id="STATUSTEXT"></a>[STATUSTEXT](../messages/common.md#STATUSTEXT)                               | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.                                                                                                                                                                  |
 | <a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)          | Message sent to [clear/delete all plan items of a particular type](#clear_mission) stored on a system.                                                                                                                                                                 |
 | <a id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                                                           |
 
-| Command                                                                                                                           | Description                                                                                                            |
-| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| <a id="MAV_CMD_DO_SET_MISSION_CURRENT"></a>[MAV_CMD_DO_SET_MISSION_CURRENT](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) | Set current mission item and optionally reset mission counter. Supersedes [MISSION_SET_CURRENT](#MISSION_SET_CURRENT). |
+| Command                                                                                                                           | Description                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_CMD_DO_SET_MISSION_CURRENT"></a>[MAV_CMD_DO_SET_MISSION_CURRENT](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) | [Set the current mission item](#current_mission_item) and optionally reset mission counter. Supersedes [MISSION_SET_CURRENT](#MISSION_SET_CURRENT). |
 
 | Enum                                                                                          | Description                                                                                                                                               |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -364,30 +363,31 @@ Note:
 The diagram below shows the communication sequence to set the current mission item.
 Note that here we mean "mission" not plan, since rally points and geofences are not executed sequentially.
 
-[![Mermaid Diagram: Set mission item](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+[![Mermaid Diagram: Set mission item](https://mermaid.ink/img/pako:eNptkFFrwjAUhf9KuM-tpDWpbQYFSUVkVMG6PYxCCW2mZTbpYgI68b8PC_VBfLzfPefcw71CrRsJDE7y10lVy6wVeyO6t9KUCiGEemFsW7e9UBYtefEKZ0YrOS6WvPDTdEAM5fPPiudZlW2qYrGr8lVRrDbrin9st4v1brQMYt9P0yUvGOKbPJ-vs2rO318LnlLAg71pG2DWOOlBJ00n7iNc7-YS7EF2sgSGSjCycWe_EebHr_VRmxJKdQMPeqG-tO7GCKPd_gDsWxxP0gPXN8KOb3mii6a12jygcFYXF1U_gqRqpOHaKQssxMMhYFc4A5vG4SSIaYgjTCmJ8Szy4AIspGRCQ4wDkhCckCCZ3jz4G7rhSUSTEAc4pjSakRkht3-ITooe?type=png)](https://mermaid.live/edit#pako:eNptkFFrwjAUhf9KuM-tpDWpbQYFSUVkVMG6PYxCCU2mZTbpYgo68b8Py-qD7PF-95xzD_cKtZEKGJzUd690rbJG7K1oX0pbaoQQ6oR1Td10Qju05MV_OLNGq3Gx5IWfpgNiKJ-_VzzPqmxTFYtdla-KYrVZV_xtu12sd6NlEPs-StMlLxjimzyfr7Nqzl-fFH-CpxjwYG8bCczZXnnQKtuK-wjXu7kEd1CtKoGhEqyS_dmXwn75tTkaW0Kpb-BBJ_SHMe0YYU2_PwD7FMeT8qDvpHDjX57oQjbO2AcUvTPFRdePIKWlstz02gELouEQsCucgU3jcBLENMQRppTEeBZ5cAEWUjKhIcYBSQhOSJBMbx78DN3wJKJJiAMcUxrNyIyQ2y_de4pD)
 
 <!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: MISSION_SET_CURRENT
+    GCS->>Drone: MAV_CMD_DO_SET_MISSION_CURRENT
+    Drone-- >>GCS: COMMAND_ACK
     Drone-- >>GCS: MISSION_CURRENT
 -->
 
 In more detail, the sequence of operations is:
 
-1. GCS/App sends [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) (or [MISSION_SET_CURRENT](#MISSION_SET_CURRENT)), specifying the new sequence number (`seq`).
-1. Drone receives message and attempts to update the current mission sequence number.
-   - On success, the Drone must _broadcast_ a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`).
-   - On failure, the Drone must _broadcast_ a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
-     This may be displayed in the UI of receiving systems.
+1. GCS/App sends [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) specifying the new sequence number in `param1` and whether the mission counters are reset (`param2`).
+2. Drone attempts to update the current mission sequence number and ACKs the result.
+3. On success, the Drone must _broadcast_ a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number.
 
-Notes:
+::: tip
+[MISSION_SET_CURRENT](#MISSION_SET_CURRENT) can be used to set the mission counter on vehicles where `MAV_CMD_DO_SET_MISSION_CURRENT` is not supported.
 
-- There is no specific [timeout](#timeout) on `MISSION_SET_CURRENT` message.
-- The acknowledgment of the message is via broadcast of mission/system status, which is not associated with the original message.
-  This differs from [error handling](#errors) in other operations.
-  This approach is used because the success/failure is relevant to all mission-handling clients.
+The success path is the same: the drone emits [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number.
+
+On failure, the Drone should _broadcast_ a [STATUSTEXT](../messages/common.md#STATUSTEXT) or [EVENT](../messages/common.md#EVENT) indicating the fail reason.
+This may be displayed in the UI of receiving systems.
+:::
 
 ### Monitor Mission Progress {#monitor_progress}
 
