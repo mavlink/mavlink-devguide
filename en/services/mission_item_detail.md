@@ -36,6 +36,7 @@ Supported by all implementers who support missions.
 The following are (known) caveats.
 
 Acceptance:
+
 - PX4 MC acceptance uses `param2` for both the horizontal and vertical accepted checks (as specified)
 - PX4 FW acceptance uses `param2` for the horizontal check but the vertical acceptance distance is based on a parameter.
 - ArduPlane acceptance uses `param2` for the horizontal check but there is no vertical acceptance check.
