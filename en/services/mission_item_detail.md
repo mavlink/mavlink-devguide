@@ -30,7 +30,13 @@ The vehicle may "cut the corner" as shown below.
 | 6: Longitude     | Longitude of the waypoint (required).                                                                                                                             |       |
 | 7: Altitude      | Altitude of the waypoint (required).                                                                                                                              | m     |
 
-<!-- TBD: TO VERIFY — Neither flight stack validates altitude; an unset (`NaN`) value is copied into the navigation setpoint as-is, so it doesn't fail cleanly, it just doesn't do what you intended. Always send a real value. -->
+#### Implementations
+
+Acceptance:
+- PX4 MC acceptance uses `param2` for both the horizontal and vertical accepted checks (as specified)
+- PX4 FW acceptance uses `param2` for the horizontal check but the vertical acceptance distance is based on a parameter.
+- ArduPlane acceptance uses `param2` for the horizontal check but there is no vertical acceptance check.
+- ArduCopter acceptance ignores `param2` and uses the parameter `WPNAV_RADIUS` for both horizontal and vertical acceptance checks.
 
 #### Yaw (heading at the waypoint) {#yaw}
 
