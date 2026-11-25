@@ -39,7 +39,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 232 | 3
 [Enums](#enumerated-types) | 150 | 9
-[Commands](#mav_commands) | 170 | 0
+[Commands](#mav_commands) | 171 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -9086,6 +9086,21 @@ Param (Label) | Description | Units
 5 (Latitude) | Latitude |   
 6 (Longitude) | Longitude |   
 7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
+
+
+### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
+
+Circular fence area centered on home. The vehicle must stay inside this area. If home is moved, the fence moves.
+
+Param (Label) | Description | Values | Units
+--- | --- | --- | ---
+1 (Radius) | Radius. |   | m 
+2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. | min: 0 inc: 1 |   
+3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
+7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_NAV_RALLY_POINT (5100) <span class="VPBadge warning" title="Can be used in a rally point plan">Rally</span> {#MAV_CMD_NAV_RALLY_POINT}

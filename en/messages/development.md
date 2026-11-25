@@ -38,7 +38,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 17 | 235
 [Enums](#enumerated-types) | 16 | 159
-[Commands](#mav_commands) | 9 | 170
+[Commands](#mav_commands) | 8 | 171
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -739,23 +739,6 @@ Param (Label) | Description | Values
 5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
 7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   
-
-
-### MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION (5005) — [WIP] <span class="VPBadge warning" title="Can be used in a geofence plan">Fence</span> {#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Circular fence area centered on home. The vehicle must stay inside this area. If home is moved, the fence moves.
-
-Param (Label) | Description | Values | Units
---- | --- | --- | ---
-1 (Radius) | Radius. |   | m 
-2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group. Ignored when sent as a command. | min: 0 inc: 1 |   
-3 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-4 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-5 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-6 | Reserved. Default: INT32_MAX (COMMAND_INT/MISSION_ITEM_INT) or NaN (COMMAND_LONG). Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
-7 | Reserved. Default: NaN. Note: Implementations that currently accept 0 as the sentinel values are planning to migrate (check their documentation on the state). |   |   
 
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] <span class="VPBadge info" title="Can be sent as a command (COMMAND_INT/COMMAND_LONG)">Command</span> {#MAV_CMD_ODID_SET_EMERGENCY}
