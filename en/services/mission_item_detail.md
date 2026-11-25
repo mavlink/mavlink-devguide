@@ -218,6 +218,6 @@ ArduPilot:
 
 PX4:
 
-- Supported from PX4v1.11
+- Supported from PX4 v1.11
 - `UseAltitude` field ignored (geometry test is 2D)
 - A gate within 5 cm of a neighboring waypoint is rejected as infeasible.
