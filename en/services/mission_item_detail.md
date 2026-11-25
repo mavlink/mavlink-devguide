@@ -30,7 +30,10 @@ The vehicle may "cut the corner" as shown below.
 | 6: Longitude     | Longitude of the waypoint (required).                                                                                                                             |       |
 | 7: Altitude      | Altitude of the waypoint (required).                                                                                                                              | m     |
 
-#### Implementations
+#### Autopilot Support
+
+Supported by all implementers who support missions.
+The following are (known) caveats.
 
 Acceptance:
 - PX4 MC acceptance uses `param2` for both the horizontal and vertical accepted checks (as specified)
