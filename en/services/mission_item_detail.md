@@ -40,30 +40,6 @@ It only applies to rotary-wing vehicles.
 
 ![Yaw sets a fixed heading; NaN faces the next waypoint instead](../../assets/protocols/mission_item_detail/waypoint_yaw.svg)
 
-<!-- TBD: To verify - from Claude
-
-#### Pass Radius (Corner Shaping) {#pass_radius}
-
-Param 3 (_Pass Radius_) shapes the turn: `0` flies straight through the point; a non-zero value flies by, offset up to that radius, rounding the corner (sign selects clockwise/counter-clockwise).
-
-![Pass Radius shapes the corner; it does not move the accept-radius trigger](../../assets/protocols/mission_item_detail/pass_radius_fillet.svg)
-
-If you need an exact, turn-independent trigger point (for example a survey-edge camera trigger) use [MAV_CMD_CONDITION_GATE](#condition_gate).
-
-#### Autopilot Support
-
-ArduPilot:
-
-- _Pass Radius_ (param3) implemented only on ArduPlane.
-  It doesn't curve the flight path — it moves the acceptance point further out along the inbound course, so the corner is still flown straight, just cut sooner.
-  Other vehicle types ignore it.
-
-PX4:
-
-- _Pass Radius_ (param3) not implemented. A non-default value for param 3 is rejected.
-
--->
-
 ### MAV_CMD_NAV_LOITER_TIME {#MAV_CMD_NAV_LOITER_TIME}
 
 [MAV_CMD_NAV_LOITER_TIME](../messages/common.md#MAV_CMD_NAV_LOITER_TIME) causes a vehicle to loiter at specified location for a given amount of time after reaching the location.
