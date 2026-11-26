@@ -41,7 +41,7 @@ The following section suggests a process to allow MAVLink components to automati
 ## Component System ID Assignment
 
 First change the system ID of the autopilot component to match the selected ID for the current system.
-This is usually done with a flight-stack specific parameter such as [MAV_SYS_ID](https://docs.px4.io/main/en/advanced_config/parameter_reference.html#MAV_SYS_ID) (PX4) or [SYSID_THISMAV](https://ardupilot.org/copter/docs/parameters.html#sysid-thismav-mavlink-system-id-of-this-vehicle) (ArduCopter).
+This is usually done with a flight-stack specific parameter such as [MAV_SYS_ID](https://docs.px4.io/main/en/advanced_config/parameter_reference.html#MAV_SYS_ID) (PX4) or [MAV_SYSID](https://ardupilot.org/copter/docs/parameters.html#mav-sysid-mavlink-system-id-of-this-vehicle) (ArduCopter; `SYSID_THISMAV` before 4.7).
 
 ::: info
 [MAV_CMD_DO_SET_SYS_CMP_ID](../messages/development.md#MAV_CMD_DO_SET_SYS_CMP_ID) is a work-in-progress command for setting and changing system and command ids.
