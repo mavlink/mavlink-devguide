@@ -36,7 +36,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 17 | 235
+[Messages](#messages) | 15 | 235
 [Enums](#enumerated-types) | 16 | 159
 [Commands](#mav_commands) | 8 | 171
 
@@ -125,32 +125,6 @@ capacity_consumed | `float` | Ah | invalid:NaN | Consumed charge. NaN: field not
 capacity_remaining | `float` | Ah | invalid:NaN | Remaining charge (until empty). NaN: field not provided. Note: If [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) is unset, this value is based on the assumption the battery was full when the system was powered. 
 state_of_charge | `float` | % | invalid:NaN | State of Charge (SoC). Remaining capacity relative to current fully-charged capacity as a percentage. Values: [0-100], NaN: field not provided. Note that the value may be calculated from design_capacity if current full_charge_capacity is not known (see [BATTERY_INFO](#BATTERY_INFO)). 
 status_flags | `uint32_t` | | [MAV_BATTERY_STATUS_FLAGS](#MAV_BATTERY_STATUS_FLAGS) | Fault, health, readiness, and other status indications. 
-
-
-### GROUP_START (414) — [WIP] {#GROUP_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Emitted during mission execution when control reaches [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START).
-
-Field Name | Type | Units | Description
---- | --- | --- | ---
-group_id | `uint32_t` | | Mission-unique group id (from [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START)). 
-mission_checksum | `uint32_t` | | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message. 
-time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-
-
-### GROUP_END (415) — [WIP] {#GROUP_END}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Emitted during mission execution when control reaches [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END).
-
-Field Name | Type | Units | Description
---- | --- | --- | ---
-group_id | `uint32_t` | | Mission-unique group id (from [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END)). 
-mission_checksum | `uint32_t` | | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message. 
-time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot).<br>The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 
 
 ### RC_CHANNELS_OVERRIDE_V2 (421) — [WIP] {#RC_CHANNELS_OVERRIDE_V2}
