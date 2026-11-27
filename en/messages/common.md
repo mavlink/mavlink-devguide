@@ -712,15 +712,15 @@ p2z | `float` | m | | z position 2 / Altitude 2
 
 ### ATTITUDE_QUATERNION_COV (61) {#ATTITUDE_QUATERNION_COV}
 
-The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).
+The attitude of the vehicle body frame (right-handed, X-front, Y-right, Z-down), expressed as a Hamilton quaternion q (w, x, y, z order) that rotates vectors from the body frame to the NED (north-east-down) earth frame: v_NED = q * v_body * q^-1. A zero rotation (body axes aligned with NED) is expressed as (1 0 0 0).
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
 q | `float[4]` | | Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation) 
-rollspeed | `float` | rad/s | Roll angular speed 
-pitchspeed | `float` | rad/s | Pitch angular speed 
-yawspeed | `float` | rad/s | Yaw angular speed 
+rollspeed | `float` | rad/s | Roll angular speed (about the body frame X axis) 
+pitchspeed | `float` | rad/s | Pitch angular speed (about the body frame Y axis) 
+yawspeed | `float` | rad/s | Yaw angular speed (about the body frame Z axis) 
 covariance | `float[9]` | | Row-major representation of a 3x3 attitude covariance matrix (states: roll, pitch, yaw; first three entries are the first ROW, next three entries are the second row, etc.). If unknown, assign NaN value to first element in the array. 
 
 
