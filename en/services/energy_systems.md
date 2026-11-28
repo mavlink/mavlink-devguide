@@ -1,0 +1,190 @@
+# Energy Systems Protocol (WIP)
+
+::: warning
+The energy systems protocol is a work in progress and may change.
+
+The messages are marked `WIP` in [development.xml](../messages/development.md) and should not be used in stable production environments.
+For background and open discussion see [mavlink/mavlink#2526](https://github.com/mavlink/mavlink/pull/2526).
+:::
+
+The energy systems protocol provides a system-level view of vehicle energy supply and consumption, while still allowing a GCS to drill down into the individual batteries and fuel tanks that make it up.
+
+It is designed to (eventually) supersede [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) as the primary way that a GCS displays vehicle energy status: see [Battery Protocol (v1)](../services/battery.md) for the legacy protocol it replaces.
+
+## Energy Systems and Energy Sources
+
+An **energy system** represents the energy supply for one or more functional domains of the vehicle, such as propulsion, avionics, or payload.
+It is reported using [ENERGY_SYSTEM_INFO](#ENERGY_SYSTEM_INFO) (invariant/rarely-changing information) and [ENERGY_SYSTEM_STATUS](#ENERGY_SYSTEM_STATUS) (status information that changes frequently, such as percentage and time remaining).
+This is the primary information a GCS should show to a user: a single indicator per functional domain, with warning levels to indicate when supply for the domain is depleted.
+
+An **energy source** is a physical device that supplies energy, such as a battery or fuel tank.
+One or more energy sources contribute to each energy system, and the expectation is that a GCS might allow drill down to the set of sources that contribute to each system.
+
+- Batteries are reported using [BATTERY_INFO](#BATTERY_INFO) and [BATTERY_STATUS_V2](#BATTERY_STATUS_V2) (and optionally per-cell voltages in [BATTERY_CELL_STATUS](#BATTERY_CELL_STATUS)).
+- Fuel tanks are reported using [FUEL_INFORMATION_V2](#FUEL_INFORMATION_V2) and [FUEL_STATUS_V2](#FUEL_STATUS_V2).
+
+A source indicates the energy system(s) it contributes to using the [MAV_ENERGY_SYSTEM_FLAGS](#MAV_ENERGY_SYSTEM_FLAGS) bitmask in its `_INFO` message (`BATTERY_INFO.energy_systems`, `FUEL_INFORMATION_V2.energy_systems`).
+An energy system advertises the functional domain(s) it covers using the same bitmask in `ENERGY_SYSTEM_INFO.energy_systems`.
+A source belongs to an energy system if any bit is set in both bitmasks (a bitwise AND of the two values is non-zero).
+A single source may therefore belong to more than one energy system.
+
+Energy systems and sources may be reported by different components of the same system.
+For example, the autopilot might aggregate and report the energy systems, while a smart battery reports its own `BATTERY_INFO` and `BATTERY_STATUS_V2` from its own component (and no `ENERGY_SYSTEM_*` messages, since it is a source, not a system).
+Sources are matched to energy systems by their `energy_systems` masks, irrespective of the component that reports them.
+
+Instance ids (`index`/`id`) only need to be unique within a component: a smart battery and an autopilot power monitor might both report battery `id` 0.
+A GCS should therefore identify each energy system and source by both the component id and the instance id.
+
+::: info
+A battery or fuel source must set `energy_systems` in its `_INFO` message for a GCS to associate it with an energy system.
+Smart batteries and other MAVLink-capable sources will therefore need a way for the integrator to configure which energy systems they supply (e.g. a parameter).
+:::
+
+The system emitting the energy systems (typically the autopilot, but this is not mandated) decides how many energy systems to define, which sources contribute to each, and how the aggregate percentage/time remaining is calculated — the protocol does not mandate an algorithm.
+For example, a system might report the lowest level of its sources (worst case) or pool their capacity (e.g. parallel batteries on one bus); a GCS should display the values reported in `ENERGY_SYSTEM_STATUS` rather than recompute them from the sources.
+
+### Message Relationships
+
+The diagram below shows how the messages are linked.
+Each `_INFO` message is paired with its status message by a matching instance field (`index` for energy systems, `id` for batteries and fuel tanks) from the same component, and `BATTERY_CELL_STATUS` uses the same `id` as its battery.
+Sources are linked to energy systems through their `_INFO` messages, by a bitwise AND of the `energy_systems` fields: there is no direct link between a source status message and an energy system.
+Only the fields used for linking and a few key fields are shown.
+
+[![Mermaid class diagram: energy systems message relationships](https://mermaid.ink/img/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVORVJHWV9TWVNURU1fSU5GTyB7XG4gICAgICAgIHVpbnQ4X3QgaW5kZXhcbiAgICAgICAgTUFWX0VORVJHWV9TWVNURU1fRkxBR1MgZW5lcmd5X3N5c3RlbXNcbiAgICAgICAgY2hhciBlbmVyZ3lfc3lzdGVtX25hbWVcbiAgICB9XG4gICAgY2xhc3MgRU5FUkdZX1NZU1RFTV9TVEFUVVMge1xuICAgICAgICB1aW50OF90IGluZGV4XG4gICAgICAgIGZsb2F0IHJlbWFpbmluZ19jYXBhY2l0eVxuICAgICAgICBmbG9hdCByZW1haW5pbmdfdGltZVxuICAgICAgICBNQVZfRU5FUkdZX1NUQVRVU19GTEFHUyBzdGF0dXNfZmxhZ3NcbiAgICB9XG4gICAgY2xhc3MgQkFUVEVSWV9JTkZPIHtcbiAgICAgICAgdWludDhfdCBpZFxuICAgICAgICBNQVZfRU5FUkdZX1NZU1RFTV9GTEFHUyBlbmVyZ3lfc3lzdGVtc1xuICAgICAgICBNQVZfQkFUVEVSWV9GVU5DVElPTiBiYXR0ZXJ5X2Z1bmN0aW9uXG4gICAgICAgIHVpbnQ4X3QgY2VsbHNfaW5fc2VyaWVzXG4gICAgICAgIFx1MjAyNlxuICAgIH1cbiAgICBjbGFzcyBCQVRURVJZX1NUQVRVU19WMiB7XG4gICAgICAgIHVpbnQ4X3QgaWRcbiAgICAgICAgdWludDE2X3Qgc3RhdGVfb2ZfY2hhcmdlXG4gICAgICAgIE1BVl9CQVRURVJZX1NUQVRVU19GTEFHUyBzdGF0dXNfZmxhZ3NcbiAgICB9XG4gICAgY2xhc3MgQkFUVEVSWV9DRUxMX1NUQVRVUyB7XG4gICAgICAgIHVpbnQ4X3QgaWRcbiAgICAgICAgdWludDhfdCBjZWxsc19pbnN0YW5jZVxuICAgICAgICB1aW50MTZfdCB2b2x0YWdlc1xuICAgIH1cbiAgICBjbGFzcyBGVUVMX0lORk9STUFUSU9OX1YyIHtcbiAgICAgICAgdWludDhfdCBpZFxuICAgICAgICBNQVZfRU5FUkdZX1NZU1RFTV9GTEFHUyBlbmVyZ3lfc3lzdGVtc1xuICAgICAgICBNQVZfRlVFTF9UWVBFIGZ1ZWxfdHlwZVxuICAgICAgICBmbG9hdCBtYXhpbXVtX2Z1ZWxcbiAgICB9XG4gICAgY2xhc3MgRlVFTF9TVEFUVVNfVjIge1xuICAgICAgICB1aW50OF90IGlkXG4gICAgICAgIHVpbnQxNl90IHBlcmNlbnRfcmVtYWluaW5nXG4gICAgICAgIE1BVl9GVUVMX1NUQVRVU19GTEFHUyBzdGF0dXNfZmxhZ3NcbiAgICB9XG4gICAgRU5FUkdZX1NZU1RFTV9JTkZPIFwiMVwiIC0tIFwiMVwiIEVORVJHWV9TWVNURU1fU1RBVFVTIDogaW5kZXhcbiAgICBFTkVSR1lfU1lTVEVNX0lORk8gXCIwLi4qXCIgLS0gXCIwLi4qXCIgQkFUVEVSWV9JTkZPIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvIChzaGFyZWQgZW5lcmd5X3N5c3RlbXMgYml0KVxuICAgIEVORVJHWV9TWVNURU1fSU5GTyBcIjAuLipcIiAtLSBcIjAuLipcIiBGVUVMX0lORk9STUFUSU9OX1YyIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvIChzaGFyZWQgZW5lcmd5X3N5c3RlbXMgYml0KVxuICAgIEJBVFRFUllfSU5GTyBcIjFcIiAtLSBcIjFcIiBCQVRURVJZX1NUQVRVU19WMiA6IGlkXG4gICAgQkFUVEVSWV9JTkZPIFwiMVwiIC0tIFwiMC4uKlwiIEJBVFRFUllfQ0VMTF9TVEFUVVMgOiBpZFxuICAgIEZVRUxfSU5GT1JNQVRJT05fVjIgXCIxXCIgLS0gXCIxXCIgRlVFTF9TVEFUVVNfVjIgOiBpZFxuIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgInVwZGF0ZUVkaXRvciI6IGZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVORVJHWV9TWVNURU1fSU5GTyB7XG4gICAgICAgIHVpbnQ4X3QgaW5kZXhcbiAgICAgICAgTUFWX0VORVJHWV9TWVNURU1fRkxBR1MgZW5lcmd5X3N5c3RlbXNcbiAgICAgICAgY2hhciBlbmVyZ3lfc3lzdGVtX25hbWVcbiAgICB9XG4gICAgY2xhc3MgRU5FUkdZX1NZU1RFTV9TVEFUVVMge1xuICAgICAgICB1aW50OF90IGluZGV4XG4gICAgICAgIGZsb2F0IHJlbWFpbmluZ19jYXBhY2l0eVxuICAgICAgICBmbG9hdCByZW1haW5pbmdfdGltZVxuICAgICAgICBNQVZfRU5FUkdZX1NUQVRVU19GTEFHUyBzdGF0dXNfZmxhZ3NcbiAgICB9XG4gICAgY2xhc3MgQkFUVEVSWV9JTkZPIHtcbiAgICAgICAgdWludDhfdCBpZFxuICAgICAgICBNQVZfRU5FUkdZX1NZU1RFTV9GTEFHUyBlbmVyZ3lfc3lzdGVtc1xuICAgICAgICBNQVZfQkFUVEVSWV9GVU5DVElPTiBiYXR0ZXJ5X2Z1bmN0aW9uXG4gICAgICAgIHVpbnQ4X3QgY2VsbHNfaW5fc2VyaWVzXG4gICAgICAgIFx1MjAyNlxuICAgIH1cbiAgICBjbGFzcyBCQVRURVJZX1NUQVRVU19WMiB7XG4gICAgICAgIHVpbnQ4X3QgaWRcbiAgICAgICAgdWludDE2X3Qgc3RhdGVfb2ZfY2hhcmdlXG4gICAgICAgIE1BVl9CQVRURVJZX1NUQVRVU19GTEFHUyBzdGF0dXNfZmxhZ3NcbiAgICB9XG4gICAgY2xhc3MgQkFUVEVSWV9DRUxMX1NUQVRVUyB7XG4gICAgICAgIHVpbnQ4X3QgaWRcbiAgICAgICAgdWludDhfdCBjZWxsc19pbnN0YW5jZVxuICAgICAgICB1aW50MTZfdCB2b2x0YWdlc1xuICAgIH1cbiAgICBjbGFzcyBGVUVMX0lORk9STUFUSU9OX1YyIHtcbiAgICAgICAgdWludDhfdCBpZFxuICAgICAgICBNQVZfRU5FUkdZX1NZU1RFTV9GTEFHUyBlbmVyZ3lfc3lzdGVtc1xuICAgICAgICBNQVZfRlVFTF9UWVBFIGZ1ZWxfdHlwZVxuICAgICAgICBmbG9hdCBtYXhpbXVtX2Z1ZWxcbiAgICB9XG4gICAgY2xhc3MgRlVFTF9TVEFUVVNfVjIge1xuICAgICAgICB1aW50OF90IGlkXG4gICAgICAgIHVpbnQxNl90IHBlcmNlbnRfcmVtYWluaW5nXG4gICAgICAgIE1BVl9GVUVMX1NUQVRVU19GTEFHUyBzdGF0dXNfZmxhZ3NcbiAgICB9XG4gICAgRU5FUkdZX1NZU1RFTV9JTkZPIFwiMVwiIC0tIFwiMVwiIEVORVJHWV9TWVNURU1fU1RBVFVTIDogaW5kZXhcbiAgICBFTkVSR1lfU1lTVEVNX0lORk8gXCIwLi4qXCIgLS0gXCIwLi4qXCIgQkFUVEVSWV9JTkZPIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvIChzaGFyZWQgZW5lcmd5X3N5c3RlbXMgYml0KVxuICAgIEVORVJHWV9TWVNURU1fSU5GTyBcIjAuLipcIiAtLSBcIjAuLipcIiBGVUVMX0lORk9STUFUSU9OX1YyIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvIChzaGFyZWQgZW5lcmd5X3N5c3RlbXMgYml0KVxuICAgIEJBVFRFUllfSU5GTyBcIjFcIiAtLSBcIjFcIiBCQVRURVJZX1NUQVRVU19WMiA6IGlkXG4gICAgQkFUVEVSWV9JTkZPIFwiMVwiIC0tIFwiMC4uKlwiIEJBVFRFUllfQ0VMTF9TVEFUVVMgOiBpZFxuICAgIEZVRUxfSU5GT1JNQVRJT05fVjIgXCIxXCIgLS0gXCIxXCIgRlVFTF9TVEFUVVNfVjIgOiBpZFxuIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgInVwZGF0ZUVkaXRvciI6IGZhbHNlfQ)
+
+### User-Defined Energy Systems
+
+The `MAV_ENERGY_SYSTEM_FLAGS` define a number of standard energy systems: propulsion, avionics, payload, and propulsion for VTOL multicopter (MC) and fixed-wing (FW) flight, which may be combined (e.g. propulsion + avionics, or all of them).
+The vast majority of vehicles can be represented using these standard definitions.
+
+Four `MAV_ENERGY_SYSTEM_FLAGS` bits ([`_USER_DEFINED1`](#MAV_ENERGY_SYSTEM_FLAGS) to `_USER_DEFINED4`) are reserved for functional domains that don't fit the predefined set.
+A human readable name for the domain can be provided in `ENERGY_SYSTEM_INFO.energy_system_name`.
+
+This allows for representing more flexible setups, such as a separate energy system for a winch or tethered power unit.
+`MAV_ENERGY_STATUS_FLAGS_INACTIVE` can be used to indicate that an energy system is not currently in use (for example, the VTOL MC or FW propulsion system that does not match the current flight mode).
+
+Propulsion (including VTOL MC/FW propulsion) and avionics energy systems are always flight-critical.
+By default other energy systems (payload and user-defined) are not treated as flight-critical.
+An emitter can set [`MAV_ENERGY_STATUS_FLAGS_FLIGHT_CRITICAL`](#MAV_ENERGY_STATUS_FLAGS) in `ENERGY_SYSTEM_STATUS.status_flags` to indicate that the GCS should treat its low/critical/emergency levels the same way as it would for propulsion (i.e. warn the user to return/land).
+The same flag can be used to indicate that a payload energy system should be treated as flight critical when active.
+
+### Setup Examples
+
+Examples of a few possible architectures are shown below.
+Each diagram shows the `_INFO` messages a vehicle would emit, with the field values that link them (the `MAV_ENERGY_SYSTEM_FLAGS_` prefix is omitted).
+The corresponding status messages are not shown: each is paired with its `_INFO` message by `index` or `id`, as shown in [Message Relationships](#message-relationships).
+
+::: info
+Support for individual energy source messages (batteries, fuel tanks) is optional.
+A system that does not want to expose per-source detail can just emit [ENERGY_SYSTEM_STATUS](#ENERGY_SYSTEM_STATUS).
+Source messages are therefore marked `«optional»` in the diagrams: a system that omits them still reports the same energy systems.
+:::
+
+#### Single Energy Source/Battery System
+
+A simple vehicle might report just one energy system that covers both propulsion and avionics, fed by a single battery:
+
+[![Single energy system fed by one battery](https://mermaid.ink/img/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVTMFtcIkVTMCA6IEVORVJHWV9TWVNURU1fSU5GT1wiXSB7XG4gICAgICAgIGluZGV4ID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT04gfCBBVklPTklDU1xuICAgIH1cbiAgICBjbGFzcyBCQVRbXCJCYXR0ZXJ5IDogQkFUVEVSWV9JTkZPXCJdIHtcbiAgICAgICAgaWQgPSAwXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gUFJPUFVMU0lPTiB8IEFWSU9OSUNTXG4gICAgfVxuICAgIEVTMCAuLiBCQVQgOiBcdTI1YjIgY29udHJpYnV0ZXMgdG9cbiAgICA8PG9wdGlvbmFsPj4gQkFUXG4iLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAidXBkYXRlRWRpdG9yIjogZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVTMFtcIkVTMCA6IEVORVJHWV9TWVNURU1fSU5GT1wiXSB7XG4gICAgICAgIGluZGV4ID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT04gfCBBVklPTklDU1xuICAgIH1cbiAgICBjbGFzcyBCQVRbXCJCYXR0ZXJ5IDogQkFUVEVSWV9JTkZPXCJdIHtcbiAgICAgICAgaWQgPSAwXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gUFJPUFVMU0lPTiB8IEFWSU9OSUNTXG4gICAgfVxuICAgIEVTMCAuLiBCQVQgOiBcdTI1YjIgY29udHJpYnV0ZXMgdG9cbiAgICA8PG9wdGlvbmFsPj4gQkFUXG4iLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAidXBkYXRlRWRpdG9yIjogZmFsc2V9)
+
+Note that actually sending/displaying the underlying source battery is optional: you could just display the energy system for GCS usage if desired.
+This allows graceful fallback if integrators don't think the battery level itself is all that useful.
+
+#### Dual Source/Battery System
+
+A vehicle with a dedicated avionics battery might instead report two energy systems, each fed by its own battery:
+
+[![Two energy systems, each fed by a separate battery](https://mermaid.ink/img/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVTMFtcIkVTMCA6IEVORVJHWV9TWVNURU1fSU5GT1wiXSB7XG4gICAgICAgIGluZGV4ID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT05cbiAgICB9XG4gICAgY2xhc3MgRVMxW1wiRVMxIDogRU5FUkdZX1NZU1RFTV9JTkZPXCJdIHtcbiAgICAgICAgaW5kZXggPSAxXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gQVZJT05JQ1NcbiAgICB9XG4gICAgY2xhc3MgQkFUMFtcIlByb3B1bHNpb24gYmF0dGVyeSA6IEJBVFRFUllfSU5GT1wiXSB7XG4gICAgICAgIGlkID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT05cbiAgICB9XG4gICAgY2xhc3MgQkFUMVtcIkF2aW9uaWNzIGJhdHRlcnkgOiBCQVRURVJZX0lORk9cIl0ge1xuICAgICAgICBpZCA9IDFcbiAgICAgICAgZW5lcmd5X3N5c3RlbXMgPSBBVklPTklDU1xuICAgIH1cbiAgICBFUzAgLi4gQkFUMCA6IFx1MjViMiBjb250cmlidXRlcyB0b1xuICAgIEVTMSAuLiBCQVQxIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvXG4gICAgPDxvcHRpb25hbD4-IEJBVDBcbiAgICA8PG9wdGlvbmFsPj4gQkFUMVxuIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgInVwZGF0ZUVkaXRvciI6IGZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVTMFtcIkVTMCA6IEVORVJHWV9TWVNURU1fSU5GT1wiXSB7XG4gICAgICAgIGluZGV4ID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT05cbiAgICB9XG4gICAgY2xhc3MgRVMxW1wiRVMxIDogRU5FUkdZX1NZU1RFTV9JTkZPXCJdIHtcbiAgICAgICAgaW5kZXggPSAxXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gQVZJT05JQ1NcbiAgICB9XG4gICAgY2xhc3MgQkFUMFtcIlByb3B1bHNpb24gYmF0dGVyeSA6IEJBVFRFUllfSU5GT1wiXSB7XG4gICAgICAgIGlkID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT05cbiAgICB9XG4gICAgY2xhc3MgQkFUMVtcIkF2aW9uaWNzIGJhdHRlcnkgOiBCQVRURVJZX0lORk9cIl0ge1xuICAgICAgICBpZCA9IDFcbiAgICAgICAgZW5lcmd5X3N5c3RlbXMgPSBBVklPTklDU1xuICAgIH1cbiAgICBFUzAgLi4gQkFUMCA6IFx1MjViMiBjb250cmlidXRlcyB0b1xuICAgIEVTMSAuLiBCQVQxIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvXG4gICAgPDxvcHRpb25hbD4-IEJBVDBcbiAgICA8PG9wdGlvbmFsPj4gQkFUMVxuIiwgIm1lcm1haWQiOiB7InRoZW1lIjogImRlZmF1bHQifSwgInVwZGF0ZUVkaXRvciI6IGZhbHNlfQ)
+
+#### VTOL: Separate MC and FW Propulsion Systems
+
+A VTOL vehicle might report separate (custom) propulsion energy systems for MC and FW modes (`MAV_ENERGY_SYSTEM_FLAGS_PROPULSION_VTOL_MC` / `_FW`), so a GCS can show the time/percentage remaining if the vehicle were to switch between modes.
+A single physical battery can contribute to both, while a fuel tank might only power the FW propulsion system:
+
+[![VTOL with separate MC/FW propulsion energy systems, sharing a battery](https://mermaid.ink/img/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVTMFtcIkVTMCA6IEVORVJHWV9TWVNURU1fSU5GT1wiXSB7XG4gICAgICAgIGluZGV4ID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT05fVlRPTF9NQ1xuICAgIH1cbiAgICBjbGFzcyBFUzFbXCJFUzEgOiBFTkVSR1lfU1lTVEVNX0lORk9cIl0ge1xuICAgICAgICBpbmRleCA9IDFcbiAgICAgICAgZW5lcmd5X3N5c3RlbXMgPSBQUk9QVUxTSU9OX1ZUT0xfRldcbiAgICB9XG4gICAgY2xhc3MgQkFUW1wiUHJvcHVsc2lvbiBiYXR0ZXJ5IDogQkFUVEVSWV9JTkZPXCJdIHtcbiAgICAgICAgaWQgPSAwXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gUFJPUFVMU0lPTl9WVE9MX01DIHwgUFJPUFVMU0lPTl9WVE9MX0ZXXG4gICAgfVxuICAgIGNsYXNzIEZVRUxbXCJGdWVsIHRhbmsgOiBGVUVMX0lORk9STUFUSU9OX1YyXCJdIHtcbiAgICAgICAgaWQgPSAwXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gUFJPUFVMU0lPTl9WVE9MX0ZXXG4gICAgfVxuICAgIEVTMCAuLiBCQVQgOiBcdTI1YjIgY29udHJpYnV0ZXMgdG9cbiAgICBFUzEgLi4gQkFUIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvXG4gICAgRVMxIC4uIEZVRUwgOiBcdTI1YjIgY29udHJpYnV0ZXMgdG9cbiAgICA8PG9wdGlvbmFsPj4gQkFUXG4gICAgPDxvcHRpb25hbD4-IEZVRUxcbiIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJ1cGRhdGVFZGl0b3IiOiBmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjogImNsYXNzRGlhZ3JhbVxuICAgIGRpcmVjdGlvbiBUQlxuICAgIGNsYXNzIEVTMFtcIkVTMCA6IEVORVJHWV9TWVNURU1fSU5GT1wiXSB7XG4gICAgICAgIGluZGV4ID0gMFxuICAgICAgICBlbmVyZ3lfc3lzdGVtcyA9IFBST1BVTFNJT05fVlRPTF9NQ1xuICAgIH1cbiAgICBjbGFzcyBFUzFbXCJFUzEgOiBFTkVSR1lfU1lTVEVNX0lORk9cIl0ge1xuICAgICAgICBpbmRleCA9IDFcbiAgICAgICAgZW5lcmd5X3N5c3RlbXMgPSBQUk9QVUxTSU9OX1ZUT0xfRldcbiAgICB9XG4gICAgY2xhc3MgQkFUW1wiUHJvcHVsc2lvbiBiYXR0ZXJ5IDogQkFUVEVSWV9JTkZPXCJdIHtcbiAgICAgICAgaWQgPSAwXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gUFJPUFVMU0lPTl9WVE9MX01DIHwgUFJPUFVMU0lPTl9WVE9MX0ZXXG4gICAgfVxuICAgIGNsYXNzIEZVRUxbXCJGdWVsIHRhbmsgOiBGVUVMX0lORk9STUFUSU9OX1YyXCJdIHtcbiAgICAgICAgaWQgPSAwXG4gICAgICAgIGVuZXJneV9zeXN0ZW1zID0gUFJPUFVMU0lPTl9WVE9MX0ZXXG4gICAgfVxuICAgIEVTMCAuLiBCQVQgOiBcdTI1YjIgY29udHJpYnV0ZXMgdG9cbiAgICBFUzEgLi4gQkFUIDogXHUyNWIyIGNvbnRyaWJ1dGVzIHRvXG4gICAgRVMxIC4uIEZVRUwgOiBcdTI1YjIgY29udHJpYnV0ZXMgdG9cbiAgICA8PG9wdGlvbmFsPj4gQkFUXG4gICAgPDxvcHRpb25hbD4-IEZVRUxcbiIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJ1cGRhdGVFZGl0b3IiOiBmYWxzZX0)
+
+## Message/Enum Summary
+
+| Message                                                                                                                     | Description                                                                                                                                                                                                                                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="ENERGY_SYSTEM_INFO"></a>[ENERGY_SYSTEM_INFO](../messages/development.md#ENERGY_SYSTEM_INFO) (WIP)                    | Energy system invariant/low-rate information: the functional domain(s) covered ([MAV_ENERGY_SYSTEM_FLAGS](#MAV_ENERGY_SYSTEM_FLAGS)) and, for user-defined domains, a human-readable name. Used by a GCS to discover the energy systems (and confirm protocol support) before requesting the status stream: see [Connection Flow](#connection-flow). |
+| <a id="ENERGY_SYSTEM_STATUS"></a>[ENERGY_SYSTEM_STATUS](../messages/development.md#ENERGY_SYSTEM_STATUS) (WIP)              | Energy system status: percentage and time remaining, and health/severity flags ([MAV_ENERGY_STATUS_FLAGS](#MAV_ENERGY_STATUS_FLAGS)). This is what should drive GCS low-battery/low-fuel warnings (`BATTERY_STATUS_V2` and `FUEL_STATUS_V2` have fault flags but no warning levels); it is expected to be streamed by default.                                                                                       |
+| <a id="BATTERY_INFO"></a>[BATTERY_INFO](../messages/common.md#BATTERY_INFO) (WIP)                                           | Battery invariant/low-rate information — e.g. battery name, chemistry, full/empty capacity, and the energy system(s) ([MAV_ENERGY_SYSTEM_FLAGS](#MAV_ENERGY_SYSTEM_FLAGS)) that the battery contributes to.                                                                                                                        |
+| <a id="BATTERY_STATUS_V2"></a>[BATTERY_STATUS_V2](../messages/development.md#BATTERY_STATUS_V2) (WIP)                       | Battery dynamic status — voltage, current, state of charge, and fault/health flags ([MAV_BATTERY_STATUS_FLAGS](../messages/development.md#MAV_BATTERY_STATUS_FLAGS)).                                                                                                                                                              |
+| <a id="BATTERY_CELL_STATUS"></a>[BATTERY_CELL_STATUS](../messages/development.md#BATTERY_CELL_STATUS) (WIP)                 | Optional per-cell voltages for a battery, indexed against `BATTERY_STATUS_V2`/`BATTERY_INFO`.                                                                                                                                                                                                                                      |
+| <a id="FUEL_INFORMATION_V2"></a>[FUEL_INFORMATION_V2](../messages/development.md#FUEL_INFORMATION_V2) (WIP)                 | Fuel tank invariant/low-rate information — fuel type, full capacity, and the energy system(s) the tank contributes to.                                                                                                                                                                                                             |
+| <a id="FUEL_STATUS_V2"></a>[FUEL_STATUS_V2](../messages/development.md#FUEL_STATUS_V2) (WIP)                                | Fuel tank dynamic status — percentage remaining, flow rate, temperature, and fault/health flags ([MAV_FUEL_STATUS_FLAGS](#MAV_FUEL_STATUS_FLAGS)).                                                                                                                                                                                 |
+| <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE)                | Command used to one-shot request any of the `_INFO` messages above.                                                                                                                                                                                                                                                                |
+| <a id="MAV_CMD_SET_MESSAGE_INTERVAL"></a>[MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) | Command used to request/stop streaming of any of the status messages above.                                                                                                                                                                                                                                                        |
+
+| Enum                                                                                                              | Description                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_ENERGY_SYSTEM_FLAGS"></a>[MAV_ENERGY_SYSTEM_FLAGS](../messages/common.md#MAV_ENERGY_SYSTEM_FLAGS)      | Bitmask of functional domains (propulsion, avionics, payload, VTOL MC/FW propulsion, user-defined). Used to associate sources with energy systems. |
+| <a id="MAV_ENERGY_STATUS_FLAGS"></a>[MAV_ENERGY_STATUS_FLAGS](../messages/development.md#MAV_ENERGY_STATUS_FLAGS) | Health/severity and configuration flags for an energy system as a whole (low/critical/emergency, inactive, unavailable, flight-critical).          |
+| <a id="MAV_FUEL_STATUS_FLAGS"></a>[MAV_FUEL_STATUS_FLAGS](../messages/development.md#MAV_FUEL_STATUS_FLAGS)       | Fault/health/state flags for a single fuel source (not ready to use, tank empty, leak detected, sensor fault).                                     |
+| <a id="MAV_FUEL_TYPE"></a>[MAV_FUEL_TYPE](../messages/common.md#MAV_FUEL_TYPE)                                    | Fuel type, defining the units used for capacity/flow fields in the fuel messages.                                                                  |
+| <a id="MAV_BATTERY_FUNCTION"></a>[MAV_BATTERY_FUNCTION](../messages/common.md#MAV_BATTERY_FUNCTION)               | Legacy battery function enum (superseded for this purpose by `MAV_ENERGY_SYSTEM_FLAGS`, but still set for backwards compatibility).                |
+
+## Connection Flow
+
+A GCS should discover and start streaming energy system status first, since this is the primary information it needs to show a user.
+Energy source (battery/fuel) discovery and streaming is a secondary, drill-down concern and can follow once system-level status is established.
+
+### 1. Discover and Stream Energy Systems
+
+The GCS first confirms the protocol is supported by requesting that all `ENERGY_SYSTEM_INFO` messages are emitted (once), and then requests that the corresponding ENERGY_SYSTEM_STATUS messages are streamed:
+
+[![Mermaid sequence: discover and stream energy system status](https://mermaid.ink/img/eyJjb2RlIjogInNlcXVlbmNlRGlhZ3JhbVxuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogRGlzY292ZXIgZW5lcmd5IHN5c3RlbSBzdXBwb3J0XG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFIChFTkVSR1lfU1lTVEVNX0lORk8pXG4gICAgYWx0IFN1cHBvcnRlZFxuICAgICAgICBEcm9uZS0-PkdDUzogQ09NTUFORF9BQ0sgKE1BVl9SRVNVTFRfQUNDRVBURUQpXG4gICAgICAgIERyb25lLT4-R0NTOiBFTkVSR1lfU1lTVEVNX0lORk8gKG9uZSBwZXIgZW5lcmd5IHN5c3RlbSlcbiAgICBlbHNlIE5vdCBzdXBwb3J0ZWRcbiAgICAgICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLIChNQVZfUkVTVUxUX1VOU1VQUE9SVEVEKVxuICAgICAgICBOb3RlIG92ZXIgR0NTOiBFbmQgLSBlbmVyZ3kgc3lzdGVtcyBwcm90b2NvbCBub3Qgc3VwcG9ydGVkXG4gICAgZW5kXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBlbmVyZ3kgc3lzdGVtIHN0YXR1cyBzdHJlYW1cbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9TRVRfTUVTU0FHRV9JTlRFUlZBTCAoRU5FUkdZX1NZU1RFTV9TVEFUVVMsIH4ycylcbiAgICBhbHQgU3VwcG9ydGVkXG4gICAgICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyAoTUFWX1JFU1VMVF9BQ0NFUFRFRClcbiAgICAgICAgRHJvbmUtLSlHQ1M6IEVORVJHWV9TWVNURU1fU1RBVFVTIChzdHJlYW1lZClcbiAgICBlbHNlIE5vdCBzdXBwb3J0ZWRcbiAgICAgICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLIChNQVZfUkVTVUxUX1VOU1VQUE9SVEVEKVxuICAgICAgICBOb3RlIG92ZXIgR0NTOiBFbmQgLSBzdGF0dXMgc3RyZWFtaW5nIG5vdCBzdXBwb3J0ZWRcbiAgICBlbmRcbiIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJ1cGRhdGVFZGl0b3IiOiBmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjogInNlcXVlbmNlRGlhZ3JhbVxuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogRGlzY292ZXIgZW5lcmd5IHN5c3RlbSBzdXBwb3J0XG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFIChFTkVSR1lfU1lTVEVNX0lORk8pXG4gICAgYWx0IFN1cHBvcnRlZFxuICAgICAgICBEcm9uZS0-PkdDUzogQ09NTUFORF9BQ0sgKE1BVl9SRVNVTFRfQUNDRVBURUQpXG4gICAgICAgIERyb25lLT4-R0NTOiBFTkVSR1lfU1lTVEVNX0lORk8gKG9uZSBwZXIgZW5lcmd5IHN5c3RlbSlcbiAgICBlbHNlIE5vdCBzdXBwb3J0ZWRcbiAgICAgICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLIChNQVZfUkVTVUxUX1VOU1VQUE9SVEVEKVxuICAgICAgICBOb3RlIG92ZXIgR0NTOiBFbmQgLSBlbmVyZ3kgc3lzdGVtcyBwcm90b2NvbCBub3Qgc3VwcG9ydGVkXG4gICAgZW5kXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBlbmVyZ3kgc3lzdGVtIHN0YXR1cyBzdHJlYW1cbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9TRVRfTUVTU0FHRV9JTlRFUlZBTCAoRU5FUkdZX1NZU1RFTV9TVEFUVVMsIH4ycylcbiAgICBhbHQgU3VwcG9ydGVkXG4gICAgICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyAoTUFWX1JFU1VMVF9BQ0NFUFRFRClcbiAgICAgICAgRHJvbmUtLSlHQ1M6IEVORVJHWV9TWVNURU1fU1RBVFVTIChzdHJlYW1lZClcbiAgICBlbHNlIE5vdCBzdXBwb3J0ZWRcbiAgICAgICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLIChNQVZfUkVTVUxUX1VOU1VQUE9SVEVEKVxuICAgICAgICBOb3RlIG92ZXIgR0NTOiBFbmQgLSBzdGF0dXMgc3RyZWFtaW5nIG5vdCBzdXBwb3J0ZWRcbiAgICBlbmRcbiIsICJtZXJtYWlkIjogeyJ0aGVtZSI6ICJkZWZhdWx0In0sICJ1cGRhdGVFZGl0b3IiOiBmYWxzZX0)
+
+1. GCS sends [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) requesting `ENERGY_SYSTEM_INFO` with `param2=0` (all instances), addressed to the autopilot (the component that identifies the vehicle).
+2. The drone acknowledges with `COMMAND_ACK`:
+   - `MAV_RESULT_ACCEPTED`, followed by one `ENERGY_SYSTEM_INFO` message per energy system it supports (this both confirms the protocol is supported and tells the GCS what icon/type to use for each system).
+     A GCS should not assume the `ENERGY_SYSTEM_INFO` messages arrive after the `COMMAND_ACK`, and must handle every instance (a generic request-message helper that completes on the first matching message is not enough on its own).
+   - `MAV_RESULT_UNSUPPORTED` if the protocol is not implemented. The GCS ends the flow and falls back to the [legacy Battery Protocol (v1)](../services/battery.md).
+3. GCS requests the `ENERGY_SYSTEM_STATUS` stream using [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL), at approximately 2 seconds (0.5 Hz) — the same nominal rate as the legacy [BATTERY_STATUS](../services/battery.md#BATTERY_STATUS) message.
+4. The drone acknowledges with `COMMAND_ACK`:
+   - `MAV_RESULT_ACCEPTED`, and starts streaming `ENERGY_SYSTEM_STATUS`.
+   - `MAV_RESULT_UNSUPPORTED` if status streaming is not supported. The GCS ends the flow.
+
+Each `ENERGY_SYSTEM_STATUS`/`ENERGY_SYSTEM_INFO` pair (matched by `index`) lets a GCS show an icon for the functional domain(s) it covers, with percentage/time remaining and a warning level derived from `status_flags`.
+If an energy system covers more than one function (e.g. propulsion and avionics combined) the GCS should reflect the most important function in the icon it shows.
+
+### 2. Discover and Stream Energy Sources (Optional)
+
+The GCS should then disable `BATTERY_STATUS` if it is being emitted.
+If the GCS wants to let a user drill down into the batteries/fuel tanks behind an energy system, it separately requests the source `_INFO` messages and their corresponding status streams:
+
+[![Mermaid sequence: discover and stream energy sources](https://mermaid.ink/img/eyJjb2RlIjogInNlcXVlbmNlRGlhZ3JhbVxuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogT3B0aW9uYWxseSBzdG9wIGxlZ2FjeSBiYXR0ZXJ5IHN0cmVhbXNcbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9TRVRfTUVTU0FHRV9JTlRFUlZBTCAoQkFUVEVSWV9TVEFUVVMsIGludGVydmFsPS0xKVxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDS1xuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IERpc2NvdmVyIGVuZXJneSBzb3VyY2VzXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFIChCQVRURVJZX0lORk8pXG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLIC8gQkFUVEVSWV9JTkZPIChvbmUgcGVyIGJhdHRlcnkpXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFIChGVUVMX0lORk9STUFUSU9OX1YyKVxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyAvIEZVRUxfSU5GT1JNQVRJT05fVjIgKG9uZSBwZXIgZnVlbCBzb3VyY2UpXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBtYXRjaGluZyBzb3VyY2Ugc3RhdHVzIHN0cmVhbXNcbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9TRVRfTUVTU0FHRV9JTlRFUlZBTCAoQkFUVEVSWV9TVEFUVVNfVjIsIH44cylcbiAgICBEcm9uZS0tKUdDUzogQkFUVEVSWV9TVEFUVVNfVjIgKHN0cmVhbWVkKVxuICAgIEdDUy0-PkRyb25lOiBNQVZfQ01EX1NFVF9NRVNTQUdFX0lOVEVSVkFMIChGVUVMX1NUQVRVU19WMiwgfjhzKVxuICAgIERyb25lLS0pR0NTOiBGVUVMX1NUQVRVU19WMiAoc3RyZWFtZWQpXG4gICAgTm90ZSBvdmVyIEdDUzogQSBOQUNLIGZvciBhIHNvdXJjZSBzdGF0dXMgc3RyZWFtIGRvZXMgbm90IGVuZCB0aGUgb3ZlcmFsbCBmbG93XG4iLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAidXBkYXRlRWRpdG9yIjogZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjogInNlcXVlbmNlRGlhZ3JhbVxuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogT3B0aW9uYWxseSBzdG9wIGxlZ2FjeSBiYXR0ZXJ5IHN0cmVhbXNcbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9TRVRfTUVTU0FHRV9JTlRFUlZBTCAoQkFUVEVSWV9TVEFUVVMsIGludGVydmFsPS0xKVxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDS1xuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IERpc2NvdmVyIGVuZXJneSBzb3VyY2VzXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFIChCQVRURVJZX0lORk8pXG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLIC8gQkFUVEVSWV9JTkZPIChvbmUgcGVyIGJhdHRlcnkpXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFIChGVUVMX0lORk9STUFUSU9OX1YyKVxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyAvIEZVRUxfSU5GT1JNQVRJT05fVjIgKG9uZSBwZXIgZnVlbCBzb3VyY2UpXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBtYXRjaGluZyBzb3VyY2Ugc3RhdHVzIHN0cmVhbXNcbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9TRVRfTUVTU0FHRV9JTlRFUlZBTCAoQkFUVEVSWV9TVEFUVVNfVjIsIH44cylcbiAgICBEcm9uZS0tKUdDUzogQkFUVEVSWV9TVEFUVVNfVjIgKHN0cmVhbWVkKVxuICAgIEdDUy0-PkRyb25lOiBNQVZfQ01EX1NFVF9NRVNTQUdFX0lOVEVSVkFMIChGVUVMX1NUQVRVU19WMiwgfjhzKVxuICAgIERyb25lLS0pR0NTOiBGVUVMX1NUQVRVU19WMiAoc3RyZWFtZWQpXG4gICAgTm90ZSBvdmVyIEdDUzogQSBOQUNLIGZvciBhIHNvdXJjZSBzdGF0dXMgc3RyZWFtIGRvZXMgbm90IGVuZCB0aGUgb3ZlcmFsbCBmbG93XG4iLCAibWVybWFpZCI6IHsidGhlbWUiOiAiZGVmYXVsdCJ9LCAidXBkYXRlRWRpdG9yIjogZmFsc2V9)
+
+1. If legacy `BATTERY_STATUS` is currently being streamed from the autopilot, the GCS should request it stop (`MAV_CMD_SET_MESSAGE_INTERVAL` with `interval=-1`), since the energy source messages now provide the equivalent information.
+2. GCS one-shot requests `BATTERY_INFO` and `FUEL_INFORMATION_V2` with `MAV_CMD_REQUEST_MESSAGE`.
+   The drone acknowledges each and sends the corresponding `_INFO` message(s) — one per battery/fuel source it has.
+3. Once it has received at least one `BATTERY_INFO` or `FUEL_INFORMATION_V2`, the GCS requests the corresponding status stream (`BATTERY_STATUS_V2`, and optionally `BATTERY_CELL_STATUS`, for batteries; `FUEL_STATUS_V2` for fuel tanks).
+   One request covers all instances; each status message is matched to its `_INFO` message by `id` (and component).
+   A nominal rate of approximately 8 seconds (0.125 Hz) is suggested — around a quarter of the legacy `BATTERY_STATUS` rate, since this is now drill-down detail rather than the primary status indicator.
+4. Unlike step 1, a `MAV_RESULT_UNSUPPORTED` NACK for an individual source message does not end the overall flow — it just means that particular source (or source status) isn't available, and the GCS should fall back to whatever `_INFO`/status it did receive.
+
+A GCS builds its UI by matching each source to its energy system(s) using the `energy_systems` bitmask (see [Energy Systems and Energy Sources](#energy-systems-and-energy-sources)).
+Selecting an energy system's icon can then open a detail view listing the matching sources.
+
+#### Sources on Other Components
+
+Sources reported by components other than the one the GCS ran the flow against (e.g. a smart battery) will not be included in the responses above.
+A GCS should discover them as follows:
+
+- When it receives a source status message (`BATTERY_STATUS_V2`, `FUEL_STATUS_V2`) from another component of the system, for which it has no `_INFO` message, it requests the `_INFO` message from that component (once).
+- When another component of the system sends a `HEARTBEAT` with `MAV_TYPE_BATTERY`, it requests `BATTERY_INFO` from that component (once).
+
+Such components should therefore either stream their status messages by default, or emit a `HEARTBEAT` with an appropriate `MAV_TYPE` (or both).
+
+## Rejoin Flow
+
+A GCS may connect to a system that is already streaming some or all of the energy system and source status messages — for example because another GCS previously started the flow, or because the vehicle is configured to stream them by default.
+
+In this case, the GCS should re-run the [connection flow](#connection-flow) again (one-shot request the `_INFO` messages and then stream the other messages).
+This may change the emitted stream rates for messages requested by the GCS.
+
+The GCS should start populating the UI incrementally: as soon as it has both an `_INFO` message and (if requested) a matching status message for a given energy system or source, it can show that entry, without waiting for the rest of the set to arrive.
+
+## Relationship to the Legacy Battery Protocol
+
+A flight stack that supports both protocols may stream [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) and the energy systems messages simultaneously; a GCS that supports the energy systems protocol should prefer it, and only fall back to `BATTERY_STATUS` if [ENERGY_SYSTEM_INFO](#ENERGY_SYSTEM_INFO) is not supported (see [step 1 of the Connection Flow](#_1-discover-and-stream-energy-systems)).
