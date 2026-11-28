@@ -345,6 +345,7 @@ Nested elements
 This section lists elements that are used to manage the lifecycle of [message](#message), [enum](#enum), and [entry](#entry) definitions (including commands). Only one of these tags should be applied to an element.
 
 The elements allow users and implementers to determine what messages are stable vs those that are still being developed or are planned for removal.
+C and C++ projects can get compile-time diagnostics when they use flagged definitions: see [XML Lifecycle Management](xml_lifecycle.md#diagnostics).
 
 ### `<wip>` (work-in-progress){#wip}
 
@@ -352,7 +353,7 @@ The `<wip>` element indicates that it's parent element is a work-in-progress.
 Work in progress elements have been proposed for inclusion in the standard, but do not yet have a validated implementation, and have not been accepted into the standard.
 
 They should not be included in release builds.
-The generator toolchain can be configured to conditionally build messages omitting the `<wip>` entries.
+C/C++ libraries can be configured to report use of `<wip>` entries at compile time ([details](xml_lifecycle.md#diagnostics)).
 
 Generally new elements should be defined in `development.xml`, and any definitions in that file are considered WIP by default.
 The `wip` element is intended primarily for indicating WIP additions to `common.xml` that for whatever reason could not be added to `development.xml`.
@@ -407,7 +408,7 @@ Often by the time an element is deprecated it has already been removed from curr
 The attributes indicates the time of deprecation and the replacement element, and may also include the intended date of removal.
 The content of the element may (optionally) contain a string with additional information about the planned removal and alternative definitions.
 
-<!-- The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries. -->
+C/C++ libraries can be configured to report use of `<deprecated>` entries at compile time ([details](xml_lifecycle.md#diagnostics)).
 
 ::: tip
 An entity should be marked as deprecated only when the key MAVLink stakeholders have agreed a path for removal.
